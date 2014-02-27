@@ -1,0 +1,3 @@
+:set -isrc:test
+:m + Test.DocTest
+:l Test
