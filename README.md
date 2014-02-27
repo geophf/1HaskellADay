@@ -1,7 +1,7 @@
 # 1 Haskell A Day exercises
 
 This project provides a git support for 1HaskellADay's exercises
-(see [@1HaskellADay|http://twitter.com/1HaskellADay])
+(see [@1HaskellADay](http://twitter.com/1HaskellADay))
 
 ## Getting started
 
