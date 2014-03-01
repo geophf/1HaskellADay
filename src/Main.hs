@@ -20,6 +20,7 @@ data Command
   | Read Int Int Int
   | ReadCurrent
   | ReadSolution Int Int Int
+  | Edit String Int Int Int
   | InvalidCommand String
   | Help
   deriving Eq
@@ -41,7 +42,6 @@ checkDateCommand :: Maybe Command -> Command
 checkDateCommand = fromMaybe $ InvalidCommand notice
     
 
-
 readCommand :: [String] -> Command
 readCommand ["check","current"] = CheckCurrent
 readCommand ("check":xs) =
@@ -52,8 +52,10 @@ readCommand ["read","current"] = ReadCurrent
 readCommand ("read":xs) = checkDateCommand $ readDateCommand Read xs
 readCommand ("readSolution":xs) =
   checkDateCommand $ readDateCommand ReadSolution xs
+readCommand ("edit":ed:xs) =
+  checkDateCommand $ readDateCommand (Edit ed) xs
 readCommand ("help":_) = Help
-readCommand _ = InvalidCommand "unknown command"
+readCommand _ = InvalidCommand $ "unknown command\n\n" ++ notice
 
 instance Read Command where
   readsPrec _ = return . (id &&& const "") . readCommand . words
@@ -66,6 +68,7 @@ execCommand (Read y m d) = readExercise y m d
 execCommand ReadCurrent = readCurrentExercise
 execCommand (ReadSolution y m d) = readSolution y m d
 execCommand (InvalidCommand s) = putStrLn s
+execCommand (Edit e y m d) = edit e y m d
 execCommand Help = putStrLn notice
 
 notice = unlines
@@ -73,8 +76,9 @@ notice = unlines
   , ""
   , "The currently available commands are the following:"
   , ""
-  , "check <year> <month> <day> check your proposition for a given day"
-  , "check current              check your proposition for a given day"
-  , "read  <year> <month> <day> read the exercise content for a given day"
-  , "read  current              read the exercise content for a given day"
+  , "check <year> <month> <day>          check your proposition for a given day"
+  , "check current                       check your proposition for today"
+  , "read  <year> <month> <day>          read a given exercise"
+  , "read  current                       read today's exercise"
+  , "edit  <editor> <year> <month> <day> edit a given exercise"
   ]
