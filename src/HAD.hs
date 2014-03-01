@@ -1,4 +1,4 @@
-module Test 
+module HAD 
   ( check
   , checkSolution
   , checkCurrent
@@ -40,7 +40,7 @@ edit :: String -- Editor
      -> Int -- Day
      -> IO ()
 edit ed y m d = do
-  let completePath = ("src":) . (++ ["Exercise.hs"]) $ modules y m d
+  let completePath = ("exercises":) . (++ ["Exercise.hs"]) $ modules y m d
   flip (readProcess ed) [] $ return . joinPath $ completePath
   return ()
 
@@ -68,7 +68,7 @@ checkFile fn y m d = let
 -- 
 -- check "HAD.Y2014.M02.D24"
 checkModule :: String -> IO ()
-checkModule = doctest . ("-isrc":) . return
+checkModule = doctest . ("-iexercises":) . return
 
 -- Helper that get current Day
 getCurrentDay :: IO (Integer, Int, Int)

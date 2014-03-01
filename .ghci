@@ -1,3 +1,3 @@
-:set -isrc:test
+:set -iexercises:src
 :m + Test.DocTest
-:l Test
+:l HAD

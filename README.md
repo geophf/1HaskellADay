@@ -5,8 +5,8 @@ This project provides a git support for 1HaskellADay's exercises
 
 ## Getting started
 
-- Find an exercise in the `src` folder (there is one in the `Exercise.hs` file
-  of each "leaf/date folder").  For example, the first one is in
+- Find an exercise in the `exercises` folder (there is one in the `Exercise.hs`
+  file of each "leaf/date folder").  For example, the first one is in
   `HAD\Y2014\M02\D24\Exercise.hs`
 - Do it.
 - At the root of the project, run `ghci`.
