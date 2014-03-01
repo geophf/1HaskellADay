@@ -12,3 +12,9 @@ This project provides a git support for 1HaskellADay's exercises
 - At the root of the project, run `ghci`.
 - check your answer with `check`. For example here: `check 2014 2 24`
 - compare your answer with the proposed one (in the `Solution.hs` file)
+
+### The 1had executable
+
+if you install 1HaskellADay with cabal (`cabal configure` and then
+`cabal install`), you can use the `1had` executable to ease the access and ests
+of the exercises.
