@@ -5,6 +5,7 @@ module HAD
   , edit
   , editCurrent
   , readExercise
+  , readSolution
   , readCurrentExercise
   )
   where
@@ -40,6 +41,12 @@ readExercise y m d = do
   s <- readFile $ exercisePath y m d
   putStrLn $ '\n':s
 
+-- Read an exercise content
+readSolution :: Int -> Int -> Int -> IO ()
+readSolution y m d = do
+  s <- readFile $ solutionPath y m d
+  putStrLn $ '\n':s
+
 -- Read the exercise of the day
 readCurrentExercise :: IO ()
 readCurrentExercise = runToday readExercise
@@ -60,10 +67,18 @@ editCurrent :: String -- Editor
 editCurrent = runToday . edit
 
 
+-- helper build a solution FilePath
+solutionPath :: Int -> Int -> Int -> FilePath
+solutionPath = elementPath "Solution.hs"
+
 -- helper build an exercise FilePath
 exercisePath :: Int -> Int -> Int -> FilePath
-exercisePath y m d =
-  joinPath . ("exercises":) . (++ ["Exercise.hs"]) $ modules y m d
+exercisePath = elementPath "Exercise.hs"
+
+-- Helper to access a file in an exercise directory
+elementPath :: String -> Int -> Int -> Int -> FilePath
+elementPath name y m d =
+  joinPath . ("exercises":) . (++ [name]) $ modules y m d
 
 -- helper to run a function on the given day exercise
 runToday :: (Int -> Int -> Int -> IO ()) -> IO ()

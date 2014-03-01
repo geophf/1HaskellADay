@@ -16,9 +16,10 @@ main = do
 data Command
   = Check Int Int Int
   | CheckCurrent
+  | CheckSolution Int Int Int
   | Read Int Int Int
   | ReadCurrent
-  | CheckSolution Int Int Int
+  | ReadSolution Int Int Int
   | InvalidCommand String
   | Help
   deriving Eq
@@ -49,6 +50,8 @@ readCommand ("checkSolution":xs) =
   checkDateCommand $ readDateCommand CheckSolution xs
 readCommand ["read","current"] = ReadCurrent
 readCommand ("read":xs) = checkDateCommand $ readDateCommand Read xs
+readCommand ("readSolution":xs) =
+  checkDateCommand $ readDateCommand ReadSolution xs
 readCommand ("help":_) = Help
 readCommand _ = InvalidCommand "unknown command"
 
@@ -61,6 +64,7 @@ execCommand CheckCurrent = checkCurrent
 execCommand (CheckSolution y m d) = checkSolution y m d
 execCommand (Read y m d) = readExercise y m d
 execCommand ReadCurrent = readCurrentExercise
+execCommand (ReadSolution y m d) = readSolution y m d
 execCommand (InvalidCommand s) = putStrLn s
 execCommand Help = putStrLn notice
 
