@@ -15,7 +15,7 @@ import Data.Time
 import Text.Printf (printf)
 import Test.DocTest (doctest)
 import System.FilePath.Posix (joinPath)
-import System.Process (readProcess)
+import System.Cmd (rawSystem)
 
 -- Runs the doctest of Exercise.hs file of te given date module.
 -- Example:
@@ -58,7 +58,7 @@ edit :: String -- Editor
      -> Int -- Day
      -> IO ()
 edit ed y m d = do
-  flip (readProcess ed) [] $ return $ exercisePath y m d
+  rawSystem ed $ return $ exercisePath y m d
   return ()
 
 -- Edit today's exercise
