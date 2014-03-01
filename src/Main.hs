@@ -36,24 +36,19 @@ readDateCommand cmd [xs,ys,zs] = do
     return $ cmd y m d
 readDateCommand cmd _ = Nothing
 
-checkDateCommand :: String -- command name
-                 -> Maybe Command
-                 -> Command
-checkDateCommand =
-  fromMaybe
-    . InvalidCommand . printf "usage: 1had %s <year> <month> <day>"
+checkDateCommand :: Maybe Command -> Command
+checkDateCommand = fromMaybe $ InvalidCommand notice
     
 
 
 readCommand :: [String] -> Command
-readCommand ("check":xs) = checkDateCommand "check" $ readDateCommand Check xs
+readCommand ["check","current"] = CheckCurrent
+readCommand ("check":xs) =
+  checkDateCommand $ readDateCommand Check xs
 readCommand ("checkSolution":xs) =
-  checkDateCommand "checkSolution" $ readDateCommand CheckSolution xs
-readCommand ["checkCurrent"] = CheckCurrent
-readCommand ("checkCurrent":_) = InvalidCommand ("usage: 1had checkCurrent")
-readCommand ("read":xs) = checkDateCommand "read" $ readDateCommand Read xs
-readCommand ["readCurrent"] = ReadCurrent
-readCommand ("readCurrent":_) = InvalidCommand ("usage: 1had readCurrent")
+  checkDateCommand $ readDateCommand CheckSolution xs
+readCommand ["read","current"] = ReadCurrent
+readCommand ("read":xs) = checkDateCommand $ readDateCommand Read xs
 readCommand ("help":_) = Help
 readCommand _ = InvalidCommand "unknown command"
 
@@ -74,8 +69,8 @@ notice = unlines
   , ""
   , "The currently available commands are the following:"
   , ""
-  , "check        check your proposition for a given day"
-  , "checkCurrent check your proposiiton for the current day"
-  , "read         read the exercise content for a given day"
-  , "readCurrent  read tzhe exercise of the current day"
+  , "check <year> <month> <day> check your proposition for a given day"
+  , "check current              check your proposition for a given day"
+  , "read  <year> <month> <day> read the exercise content for a given day"
+  , "read  current              read the exercise content for a given day"
   ]
