@@ -7,7 +7,7 @@ synopsis:            The "1 Haskell A Day questions" proposed on twitter
                      gathered on a git
 -- description:         
 homepage:            https://github.com/1HaskellADay/1HAD
-license:             PublicDomain
+license:             MIT
 license-file:        LICENSE
 author:              Nicolas Biri
 maintainer:          haskell@biri.name
