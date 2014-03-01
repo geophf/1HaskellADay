@@ -4,13 +4,15 @@ module HAD
   , checkCurrent
   , edit
   , editCurrent
+  , readExercise
+  , readCurrentExercise
   )
   where
 
 import Data.List (intercalate)
 import Data.Time
-import Text.Printf
-import Test.DocTest
+import Text.Printf (printf)
+import Test.DocTest (doctest)
 import System.FilePath.Posix (joinPath)
 import System.Process (readProcess)
 
@@ -32,6 +34,15 @@ checkSolution = checkFile "Solution"
 checkCurrent :: IO ()
 checkCurrent = runToday check
 
+-- Read an exercise content
+readExercise :: Int -> Int -> Int -> IO ()
+readExercise y m d = do
+  s <- readFile $ exercisePath y m d
+  putStrLn $ '\n':s
+
+-- Read the exercise of the day
+readCurrentExercise :: IO ()
+readCurrentExercise = runToday readExercise
 
 -- Edit the exercise of a given day
 edit :: String -- Editor
@@ -40,8 +51,7 @@ edit :: String -- Editor
      -> Int -- Day
      -> IO ()
 edit ed y m d = do
-  let completePath = ("exercises":) . (++ ["Exercise.hs"]) $ modules y m d
-  flip (readProcess ed) [] $ return . joinPath $ completePath
+  flip (readProcess ed) [] $ return $ exercisePath y m d
   return ()
 
 -- Edit today's exercise
@@ -49,6 +59,11 @@ editCurrent :: String -- Editor
             -> IO ()
 editCurrent = runToday . edit
 
+
+-- helper build an exercise FilePath
+exercisePath :: Int -> Int -> Int -> FilePath
+exercisePath y m d =
+  joinPath . ("exercises":) . (++ ["Exercise.hs"]) $ modules y m d
 
 -- helper to run a function on the given day exercise
 runToday :: (Int -> Int -> Int -> IO ()) -> IO ()

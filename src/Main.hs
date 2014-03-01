@@ -16,6 +16,8 @@ main = do
 data Command
   = Check Int Int Int
   | CheckCurrent
+  | Read Int Int Int
+  | ReadCurrent
   | CheckSolution Int Int Int
   | InvalidCommand String
   | Help
@@ -34,21 +36,25 @@ readDateCommand cmd [xs,ys,zs] = do
     return $ cmd y m d
 readDateCommand cmd _ = Nothing
 
+checkDateCommand :: String -- command name
+                 -> Maybe Command
+                 -> Command
+checkDateCommand =
+  fromMaybe
+    . InvalidCommand . printf "usage: 1had %s <year> <month> <day>"
+    
+
+
 readCommand :: [String] -> Command
-readCommand ("check":xs) = 
-  fromMaybe
-    (InvalidCommand "usage: 1had check <year> <month> <day>")
-    (readDateCommand Check xs)
+readCommand ("check":xs) = checkDateCommand "check" $ readDateCommand Check xs
 readCommand ("checkSolution":xs) =
-  fromMaybe
-    (InvalidCommand "usage: 1had checkSolution <year> <month> <day>")
-    (readDateCommand CheckSolution xs)
-readCommand ["checkCurrent"] =
-  CheckCurrent
-readCommand ("checkCurrent":_) =
-  InvalidCommand ("usage: 1had checkCurrent")
-readCommand ("help":_) =
-  Help
+  checkDateCommand "checkSolution" $ readDateCommand CheckSolution xs
+readCommand ["checkCurrent"] = CheckCurrent
+readCommand ("checkCurrent":_) = InvalidCommand ("usage: 1had checkCurrent")
+readCommand ("read":xs) = checkDateCommand "read" $ readDateCommand Read xs
+readCommand ["readCurrent"] = ReadCurrent
+readCommand ("readCurrent":_) = InvalidCommand ("usage: 1had readCurrent")
+readCommand ("help":_) = Help
 readCommand _ = InvalidCommand "unknown command"
 
 instance Read Command where
@@ -58,6 +64,8 @@ execCommand :: Command -> IO ()
 execCommand (Check y m d) = check y m d
 execCommand CheckCurrent = checkCurrent
 execCommand (CheckSolution y m d) = checkSolution y m d
+execCommand (Read y m d) = readExercise y m d
+execCommand ReadCurrent = readCurrentExercise
 execCommand (InvalidCommand s) = putStrLn s
 execCommand Help = putStrLn notice
 
@@ -68,4 +76,6 @@ notice = unlines
   , ""
   , "check        check your proposition for a given day"
   , "checkCurrent check your proposiiton for the current day"
+  , "read         read the exercise content for a given day"
+  , "readCurrent  read tzhe exercise of the current day"
   ]
