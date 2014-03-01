@@ -12,7 +12,7 @@ module HAD.Y2014.M02.D25.Exercise where
 -- >>> compress [1,1,1,1,1]
 -- [(1,5)]
 compress :: Eq a => [a] -> [(a, Int)]
-compress = map (head &&& length) . group
+compress = undefined
 
 -- | Expand a list with RLE
 --
@@ -24,7 +24,7 @@ compress = map (head &&& length) . group
 -- >>> expand [(1,5)]
 -- [1,1,1,1,1]
 expand :: [(a, Int)] -> [a]
-expand = (>>= uncurry (flip replicate))
+expand = undefined
 
 -- | It should verify
 -- prop> (expand . compress) xs == (xs :: String)
