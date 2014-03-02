@@ -1,7 +1,7 @@
 # 1 Haskell A Day exercises
 
 This project provides a git support for 1HaskellADay's exercises
-(see [@1HaskellADay](http://twitter.com/1HaskellADay))
+(see [@1HaskellADay](http://twitter.com/1HaskellADay) and the hashtag [#1HaskellADay](https://twitter.com/search?q=%231HaskellAday&src=hash))
 
 ## Getting started
 
@@ -15,6 +15,6 @@ This project provides a git support for 1HaskellADay's exercises
 
 ### The 1had executable
 
-if you install 1HaskellADay with cabal (`cabal configure` and then
-`cabal install`), you can use the `1had` executable to ease the access and ests
-of the exercises.
+If you install 1HaskellADay with cabal (`cabal configure` and then
+`cabal install`), you can use the `1had` executable for an easier access
+to the tests and exercices.
