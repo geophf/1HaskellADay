@@ -3,86 +3,98 @@ module Main
   ) where
 
 import HAD
-import Control.Arrow
-import Data.Maybe
-import Text.Printf
-import System.Environment
+import Data.Maybe (fromMaybe)
+import System.Environment (getArgs)
+
+import Control.Monad.Trans.Class (lift)
+import Control.Monad.Trans.State.Lazy (evalStateT, get, put, StateT)
+
+type Day = (Int, Int, Int)
 
 main :: IO ()
 main = do
- a <- getArgs
- execCommand . readCommand $ a
+ args <- getArgs
+ case args of
+   ("help":_) -> putStrLn notice
+   otherwise  -> fromMaybe (putStrLn $ "Invalid command\n\n" ++ notice) $
+     evalStateT parseDateCommand args
 
-data Command
-  = Check Int Int Int
-  | CheckCurrent
-  | CheckSolution Int Int Int
-  | Read Int Int Int
-  | ReadCurrent
-  | ReadSolution Int Int Int
-  | Edit String Int Int Int
-  | Help
-  | InvalidCommand
-  deriving Eq
+parseDateCommand :: StateT [String] Maybe (IO ())
+parseDateCommand = do
+  cmd <- parseDateCommandName
+  day <- parseDate
+  lift . return $ execDateCommand cmd =<< day
+  
+
+parseDateCommandName :: StateT [String] Maybe DateCommand
+parseDateCommandName = do
+  args <- get
+  (cName, xs) <- lift $ parseDateCommandArgs args
+  put xs
+  return cName
+
+parseDateCommandArgs :: [String] -> Maybe (DateCommand, [String])
+parseDateCommandArgs ("read":xs) = return (Read, xs)
+parseDateCommandArgs ("read-solution":xs) = return (ReadSolution, xs)
+parseDateCommandArgs ("check":xs) = return (Check, xs)
+parseDateCommandArgs ("check-solution":xs) = return (CheckSolution, xs)
+parseDateCommandArgs ("edit":e:xs) = return (Edit e, xs)
+parseDateCommandArgs _ = Nothing
+
+parseDate :: StateT [String] Maybe (IO Day)
+parseDate = do
+  args <- get
+  day <- lift $ parseDateArgs args
+  return day
+
+parseDateArgs :: [String] -> Maybe (IO Day)
+parseDateArgs ["current"] = return $ current
+parseDateArgs [xs,ys,zs]  = do
+    y <- readInt xs
+    m <- readInt ys
+    d <- readInt zs
+    return . return $ (y, m, d)
+parseDateArgs _           = Nothing
 
 readInt :: String -> Maybe Int
 readInt s = case readsPrec 1 s of
   [(x,"")] -> Just x
   []       -> Nothing
 
-readDateCommand :: (Int -> Int -> Int -> Command)
-                -> String
-                -> String
-                -> String
-                -> Maybe Command
-readDateCommand cmd xs ys zs = do
-    y <- readInt xs
-    m <- readInt ys
-    d <- readInt zs
-    return $ cmd y m d
 
-readCommandName :: String -> (Int -> Int -> Int -> Command)
-readCommandName "check" = Check
-readCommandName "read"  = Read
-readCommandName "checkSolution" = CheckSolution
-readCommandName "readSolution"  = ReadSolution
+execDateCommand :: DateCommand -> Day -> IO ()
+execDateCommand Check d = check d
+execDateCommand CheckSolution d = checkSolution d
+execDateCommand Read d = readExercise d
+execDateCommand ReadSolution d = readSolution d
+execDateCommand (Edit e) d = edit e d
 
-checkDateCommand :: Maybe Command -> Command
-checkDateCommand = fromMaybe $ InvalidCommand
-    
 
-readCommand :: [String] -> Command
-readCommand ["check","current"] = CheckCurrent
-readCommand ["read","current"] = ReadCurrent
-readCommand ("help":_) = Help
-readCommand [cmd,y,m,d] =
-  checkDateCommand $ readDateCommand (readCommandName cmd) y m d
-readCommand ["edit",ed,y,m,d] =
-  checkDateCommand $ readDateCommand (Edit ed) y m d
-readCommand _ = InvalidCommand
-
-instance Read Command where
-  readsPrec _ = return . (id &&& const "") . readCommand . words
-
-execCommand :: Command -> IO ()
-execCommand CheckCurrent = checkCurrent
-execCommand ReadCurrent = readCurrentExercise
-execCommand (Check y m d) = check y m d
-execCommand (Read y m d) = readExercise y m d
-execCommand (CheckSolution y m d) = checkSolution y m d
-execCommand (ReadSolution y m d) = readSolution y m d
-execCommand (Edit e y m d) = edit e y m d
-execCommand Help = putStrLn notice
-execCommand InvalidCommand = putStrLn ("Invalid command\n\n" ++ notice)
+data DateCommand
+  = Check
+  | CheckSolution
+  | Read
+  | ReadSolution
+  | Edit String
+  deriving Eq
 
 notice = unlines
   [ "usage: 1had <command> [<args>]"
   , ""
+  , "Example:"
+  , "1had read current"
+  , "1had edit vi 2014 2 24"
+  , ""
   , "The currently available commands are the following:"
   , ""
-  , "check <year> <month> <day>          check your proposition for a given day"
-  , "check current                       check your proposition for today"
-  , "read  <year> <month> <day>          read a given exercise"
-  , "read  current                       read today's exercise"
-  , "edit  <editor> <year> <month> <day> edit a given exercise"
+  , "help                           display this screen"
+  , "check          <date>          check your proposition for a given day"
+  , "check-solution <date>          check your proposition for a given day"
+  , "read           <date>          read a given exercise"
+  , "read-solution  <date>          read the solution for a given day"
+  , "edit  <editor> <date>          edit a given exercise"
+  , ""
+  , "Supported Date Format:"
+  , "current                        today" 
+  , "yyyy mm dd                     the given day"
   ]

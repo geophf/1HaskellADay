@@ -2,7 +2,7 @@
 -- see http://haskell.org/cabal/users-guide/
 
 name:                HAD
-version:             0.1.0.0
+version:             0.2.0.0
 synopsis:            The "1 Haskell A Day questions" proposed on twitter
                      gathered on a git
 -- description:         
@@ -18,9 +18,10 @@ cabal-version:       >=1.8
 
 executable 1had
   main-is:             Main.hs
-  build-depends:       base ==4.6.*
+  build-depends:       base >= 4.4
                ,       time ==1.4.*
                ,       doctest ==0.9.*
                ,       filepath==1.3.*
                ,       process ==1.1.*
+               ,       transformers >= 0.3
   hs-source-dirs:      src
