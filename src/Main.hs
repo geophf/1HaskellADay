@@ -44,11 +44,10 @@ parseDateCommandArgs _ = Nothing
 parseDate :: StateT [String] Maybe (IO Day)
 parseDate = do
   args <- get
-  day <- lift $ parseDateArgs args
-  return day
+  lift $ parseDateArgs args
 
 parseDateArgs :: [String] -> Maybe (IO Day)
-parseDateArgs ["current"] = return $ current
+parseDateArgs ["current"] = return current
 parseDateArgs [xs,ys,zs]  = do
     y <- readInt xs
     m <- readInt ys
