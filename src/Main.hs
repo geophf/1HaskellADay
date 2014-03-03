@@ -6,6 +6,7 @@ import HAD
 import Data.Maybe (fromMaybe)
 import System.Environment (getArgs)
 
+import Control.Monad
 import Control.Monad.Trans.Class (lift)
 import Control.Monad.Trans.State.Lazy (evalStateT, get, put, StateT)
 
@@ -47,12 +48,17 @@ parseDate = do
   lift $ parseDateArgs args
 
 parseDateArgs :: [String] -> Maybe (IO Day)
-parseDateArgs ["current"] = return current
+parseDateArgs [xs] | xs `elem` ["current", "last"] = return current
+                   | xs == "yesterday"             = return $ xDaysBefore 1
+                   | otherwise                     = Nothing
+parseDateArgs ["-d",ys]   = do
+  d <- fmap toInteger $ readInt ys
+  return $ xDaysBefore d
 parseDateArgs [xs,ys,zs]  = do
-    y <- readInt xs
-    m <- readInt ys
-    d <- readInt zs
-    return . return $ (y, m, d)
+  y <- readInt xs
+  m <- readInt ys
+  d <- readInt zs
+  return . return $ (y, m, d)
 parseDateArgs _           = Nothing
 
 readInt :: String -> Maybe Int
@@ -94,6 +100,9 @@ notice = unlines
   , "edit  <editor> <date>          edit a given exercise"
   , ""
   , "Supported Date Format:"
-  , "current                        today" 
-  , "yyyy mm dd                     the given day"
+  , "current                        today (or last Friday on Saturday/Sunday)" 
+  , "last                           today (or last Friday on Saturday/Sunday)" 
+  , "yesterday                      yesterday (or last Friday on Saturday/Sunday)" 
+  , "<yyyy> <mm> <dd>               the given day"
+  , "-d <int>                       x days before"
   ]
