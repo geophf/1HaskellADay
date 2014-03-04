@@ -1,7 +1,7 @@
 module HAD.Y2014.M03.D04.Exercise where
 
 -- | checkSort verify if a given list is sorted
--- Point-free version is hard to find BUT is redable.
+-- Point-free version is hard to find BUT is readable.
 -- Level: Medium
 --
 -- Examples:
