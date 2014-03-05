@@ -1,6 +1,6 @@
 module HAD.Y2014.M03.D05.Exercise where
 
--- | chainEndos chain a list of endomorphism to create a new one
+-- | chainEndos chain a list of endo-functions to create a new one
 -- Point-free version is feasible and readable.
 -- Level: Easy
 --
