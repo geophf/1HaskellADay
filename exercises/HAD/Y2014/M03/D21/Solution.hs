@@ -1,8 +1,5 @@
 module HAD.Y2114.M03.D21.Solution where
 
-import Control.Arrow (first, second)
-import Control.Applicative ((<$>),(<*>))
-
 import Control.Applicative
 import Control.Arrow
 import Data.Maybe

@@ -1,6 +1,6 @@
 module HAD.Y2014.M03.D12.Solution where
 
-import Control.Applicative ((<*>), (<$>)
+import Control.Applicative ((<*>), (<$>))
 import Control.Monad (mFilter)
 import Data.Maybe (catMaybes)
 
