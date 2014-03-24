@@ -12,4 +12,7 @@ import Data.List (group)
 -- >>> filterByPair [1, 2, 2, 2, 3, 3, 4]
 -- [2,2,3]
 filterByPair :: Eq a => [a] -> [a]
-filterByPair = (tail =<<) . group
+filterByPair = (init =<<) . group
+
+filterByPair' :: Eq a => [a] -> [a]
+filterByPair' = (tail =<<) . group
