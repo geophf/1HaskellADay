@@ -15,10 +15,6 @@ import Data.List (groupBy)
 -- >>> squareList 3 () $ repeat ()
 -- [[(),(),()],[(),(),()],[(),(),()]]
 --
+-- Solution proposed by am- on Github (by far better than mine):
 squareList :: Int -> a -> [a] -> [[a]] 
-squareList x e =
-  take x
-    . map (map snd)
-    . groupBy (const ((/= 0) . fst))
-    . zip (cycle [0..x-1])
-    . (++ repeat e)
+squareList n x = take n . map (take n) . iterate (drop n) . (++ repeat x)
