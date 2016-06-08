@@ -42,7 +42,7 @@ solver = undefined
 -- what are the results for the following values of m1, m2, and b?
 
 msandbs :: [(Rational, Rational, Rational)]
-msandbs = undefined
+msandbs = [(2, (-0.5), 4), (3, 2.3, 7)]
 
 {-- BONUS ----------------------------------------------------------------
 
