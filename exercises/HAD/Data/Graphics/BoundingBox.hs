@@ -2,8 +2,6 @@
 
 module Data.Graphics.BoundingBox where
 
--- http://lpaste.net/2865245555871711232
-
 import Control.Arrow
 import Control.Monad
 import Data.Foldable

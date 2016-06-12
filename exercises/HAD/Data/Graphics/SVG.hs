@@ -1,6 +1,5 @@
 module Data.Graphics.SVG where
 
--- http://lpaste.net/309926248828633088
 -- a solution to the SVG-problem posted at http://lpaste.net/4776707050010836992
 
 import Control.Logic.Frege (adjoin)  -- http://lpaste.net/111101

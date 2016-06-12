@@ -1,7 +1,5 @@
 module Data.XHTML where
 
--- http://lpaste.net/113385
-
 import Control.Arrow
 
 {--

@@ -2,16 +2,6 @@
 
 module Data.Matrix where
 
--- http://lpaste.net/4104557754952187904
-
-import Control.Arrow
-import Control.Lens
-import Control.Monad (join)
-
-import Data.Array
-import Data.List
-import Data.Tuple (swap)
-
 {-- a solution to the problem posted at http://lpaste.net/3386266226073272320
 
 Hey, Haskellers!
@@ -49,6 +39,15 @@ child's-play.
 Let's do that.
 
 Redeclare Matrix a to be an array-type indexed by a 2-tuple type. --}
+
+import Control.Arrow
+import Control.Lens
+
+import Data.Array
+import Data.List
+import Data.Tuple (swap)
+
+import Control.Logic.Frege (adjoin)
 
 data Matrix a = M { matrix :: Array (Int, Int) a } deriving Show
     -- the array has the bounds
@@ -159,7 +158,7 @@ Question: I see a linear-time definition here. Do you?
 transpose :: Matrix a -> Matrix a
 transpose =
    M . uncurry array
-     . (join (***) swap . bounds &&& map (first swap) . assocs) . matrix
+     . (adjoin swap . bounds &&& map (first swap) . assocs) . matrix
 
 -- swap :: (a,b) -> (b,a)
 -- swap = snd &&& fst
@@ -239,7 +238,7 @@ dualL lens = view lens (_2, _1) -- #1Liner Michael Thomas @mjtjunior
 vect :: Field2 s t a b => ((a -> Identity b) -> s -> Identity t)
                                     -> Int -> Matrix a -> [a]
 vect tupf idx (M mat) =
-   let range = (join (***) (view (dual tupf))) (bounds mat)
+   let range = (adjoin (view (dual tupf))) (bounds mat)
    in  map ((mat !) . flip (set (dual tupf) (set tupf idx (0,0))))
            (uncurry enumFromTo range)
 
@@ -310,7 +309,7 @@ cross :: Num a => Matrix a -> Matrix a -> Matrix a
 -- welp, we could just do this declaratively: Crc = ArBc
 
 cross a b =
-   let range = \tupf -> join (***) tupf . dims
+   let range = \tupf -> adjoin tupf . dims
        (r1, rn) = range fst a
        rs = enumFromTo r1 rn
        (c1, cn) = range snd b
@@ -394,7 +393,7 @@ no other cells.
 
 cnprow, cnpcol :: Int -> Matrix a -> [a]
 cnprow idx mat =
-   map (cell mat . (idx,)) . uncurry enumFromTo . join (***) snd $ dims mat
+   map (cell mat . (idx,)) . uncurry enumFromTo . adjoin snd $ dims mat
 
 {--
 *Main> row 1 tehMatrix ~> [1,2,3]
@@ -402,7 +401,7 @@ cnprow idx mat =
 --}
 
 cnpcol idx mat = -- same, but different
-   map (cell mat . (,idx)) . uncurry enumFromTo . join (***) fst $ dims mat
+   map (cell mat . (,idx)) . uncurry enumFromTo . adjoin fst $ dims mat
 
 {--
 *Main> mapM_ (putStrLn . show) $ map (flip col tehMatrix) [1..3] 
