@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="http://informationandvisualization.de/files/boxplot.css" />
+<style type="text/css">
+body {
+ font: 100%/1.45 Georgia,serif;	
+}
+/* Header style */
+h1 {
+	border-bottom:1px solid #222222;
+	border-top:1px solid #222222;
+	color:#222222;
+	font-size:65px;
+	font-weight:normal;
+	margin:0;
+	text-decoration:none;
+	text-shadow:3px 3px 3px #C0C0C0;
+}
+a {
+	color:#222222;
+	text-decoration:none;
+}
+#header {
+	text-align: center;
+	width: 823px;
+}
+
+#header h1 {
+	line-height:1.2;
+}
+#header h2 {
+	text-align: left;	
+	margin-top: 5px;
+}
+
+#back_link {
+	display: block;
+	margin-top: 265px;
+}
+
+#back_link:hover {
+	text-decoration: underline;	
+}
+/***************************************
+* Positioning of the box plot containers
+****************************************/
+div.boxplot-container {
+	border: none;
+	padding-bottom: 30px;
+	position: absolute;
+	left: 100px;
+	top: 150px;
+}
+
+div#content2 {
+	left: 300px;
+}
+</style>
+
+
+<script src="http://informationandvisualization.de/files/boxplot.js.txt"></script>
+
+<title>Box Plot Test</title>
+</head>
+<body>
+<div id="header">
+<a href="http://informationandvisualization.de/blog/box-plot">
+<h1>Information & Visualization</h1>
+</a>
+<h2>Box plot of unsorted data</h2>
+</div>
+<div id="content" class="boxplot-container">
+</div>
+<div id="content2" class="boxplot-container">
+</div>
+<a href="http://informationandvisualization.de/blog/box-plot" id="back_link">Back to box plot article.</a>
+</body>
+<!-- creation of the example data -->
+<script type="text/javascript">
+var dataArray = new Array(28,40,10,15,38,24,13,52,33,49,21,35,46,16,37);
+
+createBoxPlot(dataArray, 200, "content");
+
+<!--
+// var dataArray2 = new Array(18.37, 22.09, 30.41, 25.08, 22.4, 23.16, 34.59, 20.17, 30.41, 37.72, 15.2, 20.01);
+// createBoxPlot(dataArray2, 200, "content2");
+-->
+</script>
+
+<!-- Tracking code -->
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+try{var pageTracker = _gat._getTracker("UA-64695-4");pageTracker._trackPageview();} catch(err) {}
+//--><!]]>
+</script>
+</html>
