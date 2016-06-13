@@ -32,7 +32,7 @@ are the AX = B matrices:
 
 | 1 1  1 | | x |   |  6 |
 | 0 2  5 | | y | = | -4 |
-| 2 5 -1 | | z | = | 27 |
+| 2 5 -1 | | z |   | 27 |
 
 And X = (inv A) B
 
