@@ -1,7 +1,7 @@
 module Y2016.M06.D13.Solution where
 
 import Control.Arrow ((&&&), second)
-import Data.Array (range, bounds, assocs, array)
+import Data.Array (range, bounds, assocs, listArray)
 
 import Control.Logic.Frege (adjoin)
 import Data.Matrix
@@ -36,14 +36,12 @@ excludedSubMatrices :: Matrix a -> [Matrix a]
 
 excludedSubMatrices mat =
    let newbnd   = second (adjoin pred) (dims mat)
-       newrange = range newbnd
        lowmat   = filter ((/= 1) . fst . fst) (assocs $ matrix mat)
        excludes = range (1, snd . snd $ dims mat)
-   in  map (M . array newbnd . subMatrixOf lowmat newrange) excludes 
+   in  map (M . listArray newbnd . flip subMatrixOf lowmat) excludes 
 
-subMatrixOf :: [((Int, Int), a)] -> [(Int, Int)] -> Int -> [((Int, Int), a)]
-subMatrixOf oldMat newbounds excludeCol =
-   zip newbounds (map snd (filter ((/= excludeCol) . snd . fst) oldMat))
+subMatrixOf :: Int -> [((Int, Int), a)] -> [a]
+subMatrixOf excludeCol = map snd . filter ((/= excludeCol) . snd . fst)
 
 -- With the above defined, what are the determinants of the below matrices?
 
@@ -59,6 +57,8 @@ ex10 = fromLists [[2,-1,0], [3, -5, 2], [1,4,-2]]
 *Y2016.M06.D13.Solution> determinant ex1 ~> -11.0
 *Y2016.M06.D13.Solution> determinant ex2 ~> -13.0
 *Y2016.M06.D13.Solution> determinant ex10 ~> -4.0
+*Y2016.M06.D13.Solution> determinant (fromLists [[3,0,-1],[2,-5,4],[-3,1,3]]) ~> -44
+*Y2016.M06.D13.Solution> determinant (fromLists [[2,0,-1],[3,5,2],[-4,1,4]]) ~> 13
 
 Rolling determinant into Data.Matrix
 --}
