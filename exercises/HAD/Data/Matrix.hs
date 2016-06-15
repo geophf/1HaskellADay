@@ -428,19 +428,19 @@ det :: Num a => Matrix a -> [[a]] -> a
 det _ [[ans]] = ans -- determinant of a 1x1 matrix is its sole element
 det mat (row1:rows) =
    sum (zipWith3 product3 (cycle [1, -1]) row1
-                          (map determinant (excludedSubMatrices mat)))
+                   (map determinant (excludedSubMatrices mat 1)))
 
 product3 :: Num a => a -> a -> a -> a
 product3 a b c = a * b * c
 
-excludedSubMatrices :: Matrix a -> [Matrix a]
+excludedSubMatrices :: Matrix a -> Int -> [Matrix a]
 
 -- setup for det: factors a matrix into matrices that are not in each of the
 -- first row's columns
 
-excludedSubMatrices mat =
+excludedSubMatrices mat row =
    let newbnd   = second (adjoin pred) (dims mat)
-       lowmat   = filter ((/= 1) . fst . fst) (assocs $ matrix mat)
+       lowmat   = filter ((/= row) . fst . fst) (assocs $ matrix mat)
        excludes = range (1, snd . snd $ dims mat)
    in  map (M . listArray newbnd . flip subMatrixOf lowmat) excludes
 
