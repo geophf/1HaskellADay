@@ -1,13 +1,10 @@
 module Control.Boolean where
 
--- http://lpaste.net/108295
-
 import Prelude hiding (and, or, not)
 
 infixr 2 -|
 
 {--
-
 A solution to the Boolean logic exercise at http://lpaste.net/108272
 
 Okay, so I guess we are doing this thing.
@@ -22,8 +19,7 @@ you define all the other operators, so choose wisely.
 
 We choose the nand-approach for this solution set. The nor-approach also
 provides complete coverage of boolean logic.
-
- --}
+--}
 
 and, or, nand, nor, xor, impl, equ :: Bool -> Bool -> Bool
 
@@ -57,9 +53,9 @@ not = nand True
 -- tt: t = f, f = t
 
 {--
-
 AND THEN, once you've defined your operators, define a function, table,
-that returns a table of truth values for an input expression: --}
+that returns a table of truth values for an input expression:
+--}
 
 table :: [(Bool, Bool)] -> (Bool -> Bool -> Bool) -> [Bool]
 table truths fn = map (uncurry fn) truths
@@ -71,7 +67,6 @@ testBool :: (Bool -> Bool -> Bool) -> [Bool]
 testBool = table [(a, b) | a <- [True, False], b <- [True, False]]
 
 {--
-
 So, you get this:
 
 *Control.Boolean> testBool and
@@ -110,6 +105,5 @@ design; and Boole, via Shannon and Shestakov, provided the theoretical
 grounding for the Digital Age.[34]
 
 https://en.wikipedia.org/wiki/George_Boole
-
- --}
+--}
 
