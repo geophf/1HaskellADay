@@ -49,7 +49,7 @@ import Data.Tuple (swap)
 
 import Control.Logic.Frege (adjoin)
 
-data Matrix a = M { matrix :: Array (Int, Int) a } deriving Show
+data Matrix a = M { matrix :: Array (Int, Int) a } deriving (Eq, Show)
     -- the array has the bounds
 
 dims :: Matrix a -> ((Int, Int), (Int, Int))
