@@ -1,14 +1,12 @@
 module Data.Monetary.USD where
 
--- http://lpaste.net/109653
-
 -- Representation of US dollars as rational numbers
 -- 2015-12-07: Corrected read parse errors for stupid (AAPL) numbers like: $.12
 
 import Data.Monoid
 
-import Control.Presentation          -- http://lpaste.net/588030780018524160
-import Data.Monetary.Currency        -- http://lpaste.net/3442250682395000832
+import Control.Presentation
+import Data.Monetary.Currency
 
 -- Spraken dollars, mang!
 

@@ -1,9 +1,7 @@
 module Data.Monetary.Currency where
 
--- http://lpaste.net/3442250682395000832
-
-import Control.Presentation          -- http://lpaste.net/588030780018524160
-import Data.Percentage               -- http://lpaste.net/4915955460319739904
+import Control.Presentation
+import Data.Percentage
 
 -- A type-classical way of uniformly treating monetary values.
 
