@@ -32,7 +32,7 @@ twtr20160615 = Row (read "2016-06-15") (USD 15.71) (USD 16.44)
 -- represent the above data on twitter yesterday as a 'candlestick' using
 -- the high, the low, and the close as the measures
 
-candlestick :: Row -> Element
+candlestick :: Row -> [Element]
 candlestick = undefined
 
 -- With the above representation, display the candlestick in a boundingbox
