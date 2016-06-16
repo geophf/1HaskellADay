@@ -2,11 +2,7 @@
 
 module Control.Presentation where
 
--- http://lpaste.net/588030780018524160
-
 -- some presentation-layer stuff, existentially
-
-import Control.Arrow
 
 class Univ a where explode :: a -> [String]
 
