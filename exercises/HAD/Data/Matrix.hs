@@ -42,12 +42,15 @@ Redeclare Matrix a to be an array-type indexed by a 2-tuple type. --}
 
 import Control.Arrow
 import Control.Lens
-
 import Data.Array
 import Data.List
+import Data.Monoid
 import Data.Tuple (swap)
 
-import Control.Logic.Frege (adjoin)
+import Control.Automata.Cellular (runRule, genRule, seed)
+import Control.Logic.Frege ((-|), adjoin)
+import Data.Stream (takeS)
+import Data.Universe (toList)
 
 data Matrix a = M { matrix :: Array (Int, Int) a } deriving (Eq, Show)
     -- the array has the bounds
@@ -463,4 +466,46 @@ ex10 = fromLists [[2,-1,0], [3, -5, 2], [1,4,-2]]
 *Data.Matrix> determinant ex10 ~> -4.0
 *Data.Matrix> determinant (fromLists [[3,0,-1],[2,-5,4],[-3,1,3]]) ~> -44
 *Data.Matrix> determinant (fromLists [[2,0,-1],[3,5,2],[-4,1,4]]) ~> 13
+--}
+
+{--
+I'm sure there are many elegant ways to define the identity matrix.
+I'll use Rule 16 from the rules of 2-dimensional cellular automata.
+--}
+
+identity :: Num a => Int -> Matrix a
+identity n = fromLists (map (map (fromIntegral . fromEnum) . toList 0 n) cells)
+   where cells = takeS n (runRule (genRule 16) seed)
+
+{--
+*Y2016.M06.D15.Solution> pprint (identity 5)
+Matrix 5x5
+| 1 0 0 0 0 |
+| 0 1 0 0 0 |
+| 0 0 1 0 0 |
+| 0 0 0 1 0 |
+| 0 0 0 0 1 |
+Now show that the identity matrix is the identity matrix by crossing it with
+ex1, for example. Generate the correctly sized identity matrix to cross with
+any input matrix:
+--}
+
+instance Monoid (Matrix a) where
+   mempty             = error "No null-matrix defined"
+   mempty `mappend` a = a
+   a      `mappend` _ = a
+
+sameMatrix :: (Eq a, Num a) => Matrix a -> Matrix a
+sameMatrix mat =
+   let (l,r) = snd (dims mat) in
+   mat `cross` identity l == mat -| mat <> identity r `cross` mat == mat -| mat
+
+{--
+*Y2016.M06.D15.Solution> pprint $ sameMatrix ex1
+Matrix 2x2
+|  2.0  5.0 |
+|  1.0 -3.0 |
+YAY!
+
+The above (sameMatrix) is all very unit-testy; not sure if it should be here...
 --}
