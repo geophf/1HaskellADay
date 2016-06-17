@@ -26,3 +26,6 @@ The data is at twtr.csv under yesterday's exercise.
 axes :: [Row] -> Element    -- from a set of Rows, give labeled axes in which
                             -- to chart the data
 axes = undefined
+
+-- OR: I'm just waiting for somebody to tell me: "geophf! Use this charting
+-- API, dummy!" So, ... waiting ...
