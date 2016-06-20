@@ -35,3 +35,5 @@ solver = undefined
 
 equs :: [(Float, Float, Float)]
 equs = [(6,7,-3), (10, -1, -2), (4,3,-27), (15,-26,-21), (21,-12,1), (8,25,13)]
+
+-- these equations are from http://www.mathopolis.com/ for quadratic equations
