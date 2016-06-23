@@ -1,7 +1,5 @@
 module Data.Bag where
 
--- http://lpaste.net/107815
-
 {-- We "re"present the Bag data-type. The 'Bag' or 'MultiSet' data type. 'Bag' 
 is from anon. 'MultiSet' is a nonesensical word from more recent times from 
 those too embarrassed to used the word 'bag' in a sentence, so they say the word
