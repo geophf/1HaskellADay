@@ -1,7 +1,5 @@
 module Control.Logic.Frege where
 
--- http://lpaste.net/111101
-
 import Control.Arrow
 import Control.Monad
 import Data.Monoid
@@ -17,10 +15,8 @@ False -| m = mempty
 
 {-- e.g.:
 
-*Control.Logic.Frege> 3 > 4 -| Just "so"
-Nothing
-*Control.Logic.Frege> 3 > 1 -| Just "so"
-Just "so"
+*Control.Logic.Frege> 3 > 4 -| Just "so" ~> Nothing
+*Control.Logic.Frege> 3 > 1 -| Just "so" ~> Just "so"
 
 A bit more elaborate example:
 
