@@ -1,3 +1,5 @@
+module Y2016.M06.D29.Exercise where
+
 import Control.Scan.CSV
 
 {--
