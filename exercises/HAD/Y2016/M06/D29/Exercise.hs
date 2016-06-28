@@ -34,3 +34,12 @@ dispatcher = undefined
 
 -- hint: scanning the input file is easy using the above import.
 
+-- With dispatcher defined, apply "goodie.txt"; dispatcher should created
+-- an ABC-VALID file. Now apply "baddie.txt" (both in this repository),
+-- dispatcher should create an XYZ-INVALID file.
+
+-- goodie.txt URL:
+-- https://raw.githubusercontent.com/geophf/1HaskellADay/master/exercises/HAD/Y2016/M06/D29/goodie.txt
+
+-- baddie.txt URL:
+-- https://raw.githubusercontent.com/geophf/1HaskellADay/master/exercises/HAD/Y2016/M06/D29/baddie.txt
