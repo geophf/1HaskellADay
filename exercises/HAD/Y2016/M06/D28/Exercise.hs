@@ -42,7 +42,7 @@ How do you call the program? Your first argument will be the file that should
 be at your directory, so reading from the (operating) system when your Haskell
 program is invoked is another thing you have to do.
 
-At this directory is a file named schnitzengruben.txt. Look for it. Nothing
+At this directory is a file named Schnitzengruben.txt. Look for it. Nothing
 should happen (meaning 0 is returned to the operating system), now look for
 a file names Schatzie.txt. Nothing should happen, again, other than the fact
 that 4 is returned to the operating system.
@@ -51,3 +51,6 @@ Have at it!
 --}
 
 main = undefined
+
+-- Schnitzengruben.txt is at this directory and at the URL:
+-- https://raw.githubusercontent.com/geophf/1HaskellADay/master/exercises/HAD/Y2016/M06/D28/Schnitzengruben.txt
