@@ -1,7 +1,5 @@
 module Data.BidirectionalMap where
 
--- http://lpaste.net/23921430240428032
-
 -- So, we want to look up then look back
 
 import Data.Map (Map)
