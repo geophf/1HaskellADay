@@ -1,4 +1,4 @@
-module Y2016.M07.D01.Exercise where
+module Y2016.M07.D01.Solution where
 
 import Control.Monad ((>=>))
 import Data.List (intercalate)
