@@ -51,6 +51,9 @@ toEnumS idx = liftM (fromJust . BDM.lookback idx . table) get
    -- throws error if not there
    -- lookback function does a bi-directional map lookup from the value to key
 
+intVal :: SymbolTable -> String -> Int
+intVal syms = fromJust . (`BDM.lookup` (table syms))
+
 fromEnumS :: Monad m => String -> StateT SymbolTable m Int
 fromEnumS str = get >>= \(SymT table top) ->
    maybe (addSym str table (succ top)) return (BDM.lookup str table)
