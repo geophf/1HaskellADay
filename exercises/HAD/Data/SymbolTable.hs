@@ -46,10 +46,13 @@ Then 'de-enumerify' those value back to strings. --}
 -- the SymbolTable State monad. This is problematic for the raw functions,
 -- so let's just lift these unit functions into the State domain
 
-toEnumS :: Monad m => Int -> StateT SymbolTable m String
-toEnumS idx = liftM (fromJust . BDM.lookback idx . table) get
+strVal :: SymbolTable -> Int -> String
+strVal syms = fromJust . (`BDM.lookback` (table syms))
    -- throws error if not there
    -- lookback function does a bi-directional map lookup from the value to key
+
+toEnumS :: Monad m => Int -> StateT SymbolTable m String
+toEnumS idx = liftM (`strVal` idx) get
 
 intVal :: SymbolTable -> String -> Int
 intVal syms = fromJust . (`BDM.lookup` (table syms))
