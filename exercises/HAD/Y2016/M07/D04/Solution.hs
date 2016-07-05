@@ -1,4 +1,4 @@
-module Y2016.M07.D04.Exercise where
+module Y2016.M07.D04.Solution where
 
 import Control.Arrow ((&&&), (>>>))
 import Control.Monad ((>=>))
@@ -50,7 +50,7 @@ attribs :: [String]
 attribs = words "project tests started failures errors ignored"
 
 {--
-*Y2016.M07.D04.Exercise> reportTestSummary "Y2016/M07/D01/test.xml" 
+*Y2016.M07.D04.Solution> reportTestSummary "Y2016/M07/D01/test.xml" 
 -- REPORT -----------------------------------------------------------------
 
 Test Case Overview:     AA
