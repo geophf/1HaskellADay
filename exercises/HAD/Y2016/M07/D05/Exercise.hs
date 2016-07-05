@@ -1,4 +1,4 @@
-module Y2016.M07.D01.Exercise where
+module Y2016.M07.D05.Exercise where
 
 {--
 So, let's say, for example, hypothetically speaking, that we have a set of
