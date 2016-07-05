@@ -1,3 +1,5 @@
+module Y2016.M07.D06.Exercise where
+
 import Data.SymbolTable
 import Data.SymbolTable.Compiler
 
