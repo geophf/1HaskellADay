@@ -1,10 +1,7 @@
 module Y2016.M07.D07.Solution where
 
-import Control.Monad.State
-import qualified Data.Set as Set
 import Data.SymbolTable
 import Data.SymbolTable.Decompiler
-import Network.HTTP
 
 import Y2016.M07.D06.PrideAndPrejudice
 import Y2016.M07.D06.Solution
@@ -26,34 +23,27 @@ Encode it into a symbol table as you did for Pride and Prejudice. Good.
 to modules out there already.
 --}
 
-type Novel = String
-
 dracula2Syms :: Novel -> SymbolTable
-dracula2Syms = (`execState` empty) . mapM_ fromEnumS . Set.toList . Set.fromList
-   . map regularize . words
+dracula2Syms = wordsOnly
 
 {--
-(remember that "(Illustration:" is not a word but "Illustration" is.)
-
-Now, re assemble the document Dracula, but substituting each word in that
-novel for the a word similarly indexed from the Pride and Prejudice novel.
-
-What we are doing is encoding Dracula in English but using a very different
-mode of expression to encode it. What is the resulting novel you produce?
+*Y2016.M07.D07.Solution> fetchURL "http://www.gutenberg.org/cache/epub/345/pg345.txt" ~> drac
+*Y2016.M07.D07.Solution> dracula2Syms drac ~> dracsyms
+*Y2016.M07.D07.Solution> top dracsyms ~> 10724
 --}
 
 reinterpretDracula :: SymbolTable -> SymbolTable -> Novel -> Novel
-reinterpretDracula pnpsyms draculasyms drac = undefined
+reinterpretDracula pnpsyms draculasyms =
+  unwords . map (reindex draculasyms pnpsyms . regularize) . words
+
+reindex :: SymbolTable -> SymbolTable -> String -> String
+reindex from to word = strVal to (intVal from word * top to `div` top from)
 
 {--
-Hint: lookup the symbol index for each word in the novel Dracula, then, using
-that symbol index, replace it with the word in the Pride and Prejudice symbol
-table.
+*Y2016.M07.D07.Solution> let pnpsyms = snd (decompile "foo" S0)
+*Y2016.M07.D07.Solution> let janesdrac = reinterpretDracula pnpsyms dracsyms drac
+*Y2016.M07.D07.Solution> unwords . take 10 . drop 1500 $ words janesdrac
+"THOSE SWELLED DESERTS WHATSOMETHING SLY FALSEHOOD BRILLIANCY PATRONESS NONE INCLUDING"
 
-Hint: You can convert a Haskle module of a symbol-table to SymbolTable
-by using a function in Data.SymbolTable.Decompiler.
-
-Hint: You can use Network.HTTP to interact with these novels on project
-gutenberg.
+And there it is: Bram Stoker Dracula, reenvisioned by Jane Austen.
 --}
-
