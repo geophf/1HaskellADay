@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testrun name="DOUBTINGLY.CONSIDERED" project tests="22" started="22" failures="0" errors="0" ignored="0">
+  <testsuite name="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.ALARM" time="0.0">
+    <testcase name="RECONCILED" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.ALARM" time="0.0"></testcase>
+    <testcase name="PROMOTING.ÏTHE" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.ALARM" time="0.0"></testcase>
+    <testcase name="SINGULAR" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.ALARM" time="0.0"></testcase>
+    <testcase name="STEPS" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.ALARM" time="0.0"></testcase>
+  </testsuite>
+  <testsuite name="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.ARTICLE" time="0.0">
+    <testcase name="EXULTATION" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.ARTICLE" time="0.0"></testcase>
+    <testcase name="ENJOYMENTS" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.ARTICLE" time="0.0"></testcase>
+  </testsuite>
+  <testsuite name="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.BELLI" time="0.0">
+   <testcase name="TRAVELLING" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.BELLI" time="0.0"></testcase>
+    <testcase name="SEATS" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.BELLI" time="0.0"></testcase>
+    <testcase name="RESOLVEDNOR" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.BELLI" time="0.0"></testcase>
+    <testcase name="UNSOCIAL" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.BELLI" time="0.0"></testcase>
+    <testcase name="FORBORE" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.BELLI" time="0.0"></testcase>
+    <testcase name="GOODWILL" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.BELLI" time="0.0"></testcase>
+    <testcase name="HEAVY" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.BELLI" time="0.0"></testcase>
+    <testcase name="IMPLIES" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.BELLI" time="0.0"></testcase>
+    <testcase name="INSTRUCTIONS" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.BELLI" time="0.0"></testcase>
+    <testcase name="LAKES" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.BELLI" time="0.0"></testcase>
+    <testcase name="MAAM" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.BELLI" time="0.0"></testcase>
+    <testcase name="MIXTURE" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.BELLI" time="0.0"></testcase>
+    <testcase name="OBJECTING" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.BELLI" time="0.0"></testcase>
+    <testcase name="PAPERS" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.BELLI" time="0.0"></testcase>
+    <testcase name="POCKETBOOK" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.BELLI" time="0.0"></testcase>
+    <testcase name="TALENT" classname="COFFEE.DARED.CAMPFUL.WEARY.DIDAND.BELLI" time="0.0"></testcase>
+  </testsuite>
+</testrun>
