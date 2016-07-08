@@ -1,6 +1,6 @@
 module Y2016.M07.D06.Solution where
 
-import Control.Monad.State (execStateT)
+import Control.Monad.State (execState)
 import Data.Char (isAlpha, toUpper)
 import qualified Data.Set as Set
 import Data.SymbolTable
@@ -18,9 +18,15 @@ Extract ONLY the words from that file and load them all into a SymbolTable.
 Note: 'wife.' is not a word but 'wife' (no period or 'full stop') IS.
 --}
 
+type Novel = String
+
 prideAsSymbols :: FilePath -> IO SymbolTable
-prideAsSymbols url = simpleHTTP (getRequest url) >>= getResponseBody >>=
-   (`execStateT` empty) . mapM_ fromEnumS . Set.toList . Set.fromList . map regularize . words
+prideAsSymbols url =
+   simpleHTTP (getRequest url) >>= getResponseBody >>= pure . wordsOnly
+  
+wordsOnly :: Novel -> SymbolTable
+wordsOnly =  (`execState` empty) . mapM_ fromEnumS
+   . Set.toList . Set.fromList . map regularize . words
 
 regularize :: String -> String
 regularize = map toUpper . filter isAlpha
