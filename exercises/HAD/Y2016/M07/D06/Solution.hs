@@ -21,9 +21,11 @@ Note: 'wife.' is not a word but 'wife' (no period or 'full stop') IS.
 type Novel = String
 
 prideAsSymbols :: FilePath -> IO SymbolTable
-prideAsSymbols url =
-   simpleHTTP (getRequest url) >>= getResponseBody >>= pure . wordsOnly
-  
+prideAsSymbols = fmap wordsOnly . fetchURL
+ 
+fetchURL :: FilePath -> IO String
+fetchURL url = simpleHTTP (getRequest url) >>= getResponseBody
+
 wordsOnly :: Novel -> SymbolTable
 wordsOnly =  (`execState` empty) . mapM_ fromEnumS
    . Set.toList . Set.fromList . map regularize . words
