@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" type="text/css" href="/css/amelie.css"><script type="text/javascript" src="/js/jquery.js"></script><script type="text/javascript" src="/js/amelie.js"></script><script type="text/javascript" src="/js/highlight.pack.js"></script><title>Super size me! :: lpaste â Lambda pastebin</title><script>hljs.tabReplace = '    ';hljs.initHighlightingOnLoad();</script></head><body id="paste"><div class="wrap"><div class="nav"><a class="logo" href="/">Î»</a><a href="/browse">Browse</a><a href="mailto:chrisdone@gmail.com">Contact</a></div><div class="section section-dark"><h2><a href="#a2187209441198211072" id="a2187209441198211072" name="a2187209441198211072">Super size me!</a></h2><div class="paste-nav"><a href="/edit/2187209441198211072">Edit</a> - <a href="/annotate/2187209441198211072">Annotate</a> - <a href="/report/2187209441198211072">Report/Delete</a> - <a href="/raw/2187209441198211072">Raw</a> - <a href="https://fpcomplete.com/ide?title=Super%20size%20me!&amp;paste=http://lpaste.net/raw/2187209441198211072">Clone in IDE</a></div><ul class="paste-specs"><li><strong>Paste:</strong><a href="/2187209441198211072">#2187209441198211072</a> </li><li><strong>Author:</strong><a href="/browse?author=geophf">geophf</a></li><li><strong>Language:</strong>Haskell</li><li><strong>Channel:</strong>-</li><li><strong>Created:</strong>2016-04-26 01:23:46 UTC</li><li><strong>Revisions:</strong><br><ul class="revisions"><li>2016-04-29 02:38:14 UTC <a href="/revision/3254009764824219648">#3254009764824219648</a> <a href="/diff/1487892175889891328/3254009764824219648">(diff)</a>: Super size me! (<a href="/browse?author=geophf">geophf</a>)</li><li>2016-04-26 02:02:27 UTC <a href="/revision/1487892175889891328">#1487892175889891328</a> <a href="/diff/2187209441198211072/1487892175889891328">(diff)</a>: Super size me! (<a href="/browse?author=geophf">geophf</a>)</li><li>2016-04-26 01:23:46 UTC <a href="/revision/2187209441198211072">#2187209441198211072</a>: Super size me! (<a href="/browse?author=geophf">geophf</a>)</li></ul></li></ul><div class="clear"></div></div><div class="section section-light"><table class="code"><td class="line-nums"><pre><a href="#line1" id="line1" name="line1">1</a>
+<a href="#line2" id="line2" name="line2">2</a>
+<a href="#line3" id="line3" name="line3">3</a>
+<a href="#line4" id="line4" name="line4">4</a>
+<a href="#line5" id="line5" name="line5">5</a>
+<a href="#line6" id="line6" name="line6">6</a>
+<a href="#line7" id="line7" name="line7">7</a>
+<a href="#line8" id="line8" name="line8">8</a>
+<a href="#line9" id="line9" name="line9">9</a>
+<a href="#line10" id="line10" name="line10">10</a>
+<a href="#line11" id="line11" name="line11">11</a>
+<a href="#line12" id="line12" name="line12">12</a>
+<a href="#line13" id="line13" name="line13">13</a>
+<a href="#line14" id="line14" name="line14">14</a>
+<a href="#line15" id="line15" name="line15">15</a>
+<a href="#line16" id="line16" name="line16">16</a>
+<a href="#line17" id="line17" name="line17">17</a>
+<a href="#line18" id="line18" name="line18">18</a>
+<a href="#line19" id="line19" name="line19">19</a>
+<a href="#line20" id="line20" name="line20">20</a>
+<a href="#line21" id="line21" name="line21">21</a>
+<a href="#line22" id="line22" name="line22">22</a>
+<a href="#line23" id="line23" name="line23">23</a>
+<a href="#line24" id="line24" name="line24">24</a>
+<a href="#line25" id="line25" name="line25">25</a>
+<a href="#line26" id="line26" name="line26">26</a>
+<a href="#line27" id="line27" name="line27">27</a>
+<a href="#line28" id="line28" name="line28">28</a>
+<a href="#line29" id="line29" name="line29">29</a>
+<a href="#line30" id="line30" name="line30">30</a>
+<a href="#line31" id="line31" name="line31">31</a>
+<a href="#line32" id="line32" name="line32">32</a>
+<a href="#line33" id="line33" name="line33">33</a>
+<a href="#line34" id="line34" name="line34">34</a>
+<a href="#line35" id="line35" name="line35">35</a>
+<a href="#line36" id="line36" name="line36">36</a>
+<a href="#line37" id="line37" name="line37">37</a>
+<a href="#line38" id="line38" name="line38">38</a>
+<a href="#line39" id="line39" name="line39">39</a>
+<a href="#line40" id="line40" name="line40">40</a>
+<a href="#line41" id="line41" name="line41">41</a>
+<a href="#line42" id="line42" name="line42">42</a>
+<a href="#line43" id="line43" name="line43">43</a>
+<a href="#line44" id="line44" name="line44">44</a>
+<a href="#line45" id="line45" name="line45">45</a>
+<a href="#line46" id="line46" name="line46">46</a>
+<a href="#line47" id="line47" name="line47">47</a>
+<a href="#line48" id="line48" name="line48">48</a>
+<a href="#line49" id="line49" name="line49">49</a>
+<a href="#line50" id="line50" name="line50">50</a>
+<a href="#line51" id="line51" name="line51">51</a>
+<a href="#line52" id="line52" name="line52">52</a>
+<a href="#line53" id="line53" name="line53">53</a>
+<a href="#line54" id="line54" name="line54">54</a>
+<a href="#line55" id="line55" name="line55">55</a>
+<a href="#line56" id="line56" name="line56">56</a>
+</pre></td><td><pre><span class='hs-comment'>{--
+@1HaskellADay problem for 2016-04-26
+
+ref: Graph/sizin.hs
+
+Okay, you have circles measured by their diameter in pixle-widths of:
+--}</span>
+
+<span class='hs-keyword'>type</span> <span class='hs-conid'>Diameter</span> <span class='hs-keyglyph'>=</span> <span class='hs-conid'>Int</span>
+
+<span class='hs-definition'>widths</span> <span class='hs-keyglyph'>::</span> <span class='hs-keyglyph'>[</span><span class='hs-conid'>Diameter</span><span class='hs-keyglyph'>]</span>
+<span class='hs-definition'>widths</span> <span class='hs-keyglyph'>=</span> <span class='hs-keyglyph'>[</span><span class='hs-num'>10</span><span class='hs-layout'>,</span> <span class='hs-num'>20</span><span class='hs-layout'>,</span> <span class='hs-num'>50</span><span class='hs-layout'>,</span> <span class='hs-num'>65</span><span class='hs-layout'>,</span> <span class='hs-num'>80</span><span class='hs-keyglyph'>]</span>
+
+<span class='hs-comment'>{--
+50 px is considered 'normal.'
+
+(Don't ask me what 'normal' is: I have no clue.)
+
+10 px is tiny!
+80 px is kinda-big.
+
+These are NOT the be-all end-all of diameter sizes, as we are going to size
+cells based upon their properties.
+
+Today's Haskell problem: you have a set of clustering cells that you want to
+vary in size by the number of cells they cluster. If the minimum cell size is
+10 (TOO SMALL!) and the maximum cell size is 80, with the 'normal' cell size
+being 50 (whatever 'normal' means). Then:
+
+1. for the below clustering cells, what are their sizes?
+--}</span>
+
+<span class='hs-definition'>clusteringCells1</span> <span class='hs-keyglyph'>::</span> <span class='hs-keyglyph'>[</span><span class='hs-conid'>Int</span><span class='hs-keyglyph'>]</span>
+<span class='hs-definition'>clusteringCells1</span> <span class='hs-keyglyph'>=</span> <span class='hs-keyglyph'>[</span><span class='hs-num'>11</span><span class='hs-layout'>,</span> <span class='hs-num'>47</span><span class='hs-layout'>,</span> <span class='hs-num'>18</span><span class='hs-layout'>,</span> <span class='hs-num'>22</span><span class='hs-layout'>,</span> <span class='hs-num'>100</span><span class='hs-layout'>,</span> <span class='hs-num'>30</span><span class='hs-layout'>,</span> <span class='hs-num'>124</span><span class='hs-keyglyph'>]</span>
+
+<span class='hs-definition'>countToSize</span> <span class='hs-keyglyph'>::</span> <span class='hs-keyglyph'>[</span><span class='hs-conid'>Int</span><span class='hs-keyglyph'>]</span> <span class='hs-keyglyph'>-&gt;</span> <span class='hs-keyglyph'>[</span><span class='hs-conid'>Diameter</span><span class='hs-keyglyph'>]</span>
+<span class='hs-definition'>countToSize</span> <span class='hs-varid'>clusterCells</span> <span class='hs-keyglyph'>=</span> <span class='hs-varid'>undefined</span>
+
+<span class='hs-comment'>{--
+Note that countToSize is comonadic: it requires the context of all the cluster
+cells to determine what is max/min/'normal' (whatever 'normal' is).
+
+We could even layer more context into this function, making it a Coreader, by
+adding the context of the standard cells sizes, but ... eh.
+
+Okay. You've answered the first clustering set. What about this clustering set:
+--}</span>
+
+<span class='hs-definition'>clusteringCells2</span> <span class='hs-keyglyph'>::</span> <span class='hs-keyglyph'>[</span><span class='hs-conid'>Int</span><span class='hs-keyglyph'>]</span>
+<span class='hs-definition'>clusteringCells2</span> <span class='hs-keyglyph'>=</span> <span class='hs-keyglyph'>[</span><span class='hs-num'>42</span><span class='hs-layout'>,</span><span class='hs-num'>201</span><span class='hs-layout'>,</span><span class='hs-num'>950</span><span class='hs-layout'>,</span><span class='hs-num'>43</span><span class='hs-layout'>,</span><span class='hs-num'>52</span><span class='hs-layout'>,</span><span class='hs-num'>140</span><span class='hs-layout'>,</span><span class='hs-num'>476</span><span class='hs-layout'>,</span><span class='hs-num'>251</span><span class='hs-layout'>,</span><span class='hs-num'>602</span><span class='hs-layout'>,</span><span class='hs-num'>243</span><span class='hs-keyglyph'>]</span>
+
+<span class='hs-comment'>-- VERY different context. Well! Have at it!</span>
+
+<span class='hs-comment'>-- hint: does Ï (standard deviation) help at all here?</span>
+
+<span class='hs-comment'>-- A solution to this problem is posted at <a href="http://lpaste.net/5818908382240702464">http://lpaste.net/5818908382240702464</a></span></pre></td></table></div><div class="footer"><p><a href="http://github.com/chrisdone/lpaste">Web site source code on Github</a> / <a href="http://book.realworldhaskell.org/">Real World Haskell</a> / <a href="http://haskell.org/">Haskell.org</a> / <a href="http://planet.haskell.org/">Planet Haskell</a></p></div></div><script type="text/javascript"> var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-7443395-10']); _gaq.push(['_trackPageview']); (function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})(); </script></body></html>

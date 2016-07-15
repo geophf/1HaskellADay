@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" type="text/css" href="/css/amelie.css"><script type="text/javascript" src="/js/jquery.js"></script><script type="text/javascript" src="/js/amelie.js"></script><script type="text/javascript" src="/js/highlight.pack.js"></script><title>Sizing clusters by cell-counts :: lpaste â Lambda pastebin</title><script>hljs.tabReplace = '    ';hljs.initHighlightingOnLoad();</script></head><body id="paste"><div class="wrap"><div class="nav"><a class="logo" href="/">Î»</a><a href="/browse">Browse</a><a href="mailto:chrisdone@gmail.com">Contact</a></div><div class="section section-dark"><h2><a href="#a5818908382240702464" id="a5818908382240702464" name="a5818908382240702464">Sizing clusters by cell-counts</a></h2><div class="paste-nav"><a href="/edit/5818908382240702464">Edit</a> - <a href="/annotate/5818908382240702464">Annotate</a> - <a href="/report/5818908382240702464">Report/Delete</a> - <a href="/raw/5818908382240702464">Raw</a> - <a href="https://fpcomplete.com/ide?title=Sizing%20clusters%20by%20cell-counts&amp;paste=http://lpaste.net/raw/5818908382240702464">Clone in IDE</a></div><ul class="paste-specs"><li><strong>Paste:</strong><a href="/5818908382240702464">#5818908382240702464</a> </li><li><strong>Author:</strong><a href="/browse?author=geophf">geophf</a></li><li><strong>Language:</strong>Haskell</li><li><strong>Channel:</strong>-</li><li><strong>Created:</strong>2016-04-29 02:08:04 UTC</li><li><strong>Revisions:</strong><br><ul class="revisions"><li>2016-04-29 02:09:00 UTC <a href="/revision/670513724267692032">#670513724267692032</a> <a href="/diff/5818908382240702464/670513724267692032">(diff)</a>: Sizing clusters by cell-counts (<a href="/browse?author=geophf">geophf</a>)</li><li>2016-04-29 02:08:04 UTC <a href="/revision/5818908382240702464">#5818908382240702464</a>: Sizing clusters by cell-counts (<a href="/browse?author=geophf">geophf</a>)</li></ul></li></ul><div class="clear"></div></div><div class="section section-light"><table class="code"><td class="line-nums"><pre><a href="#line1" id="line1" name="line1">1</a>
+<a href="#line2" id="line2" name="line2">2</a>
+<a href="#line3" id="line3" name="line3">3</a>
+<a href="#line4" id="line4" name="line4">4</a>
+<a href="#line5" id="line5" name="line5">5</a>
+<a href="#line6" id="line6" name="line6">6</a>
+<a href="#line7" id="line7" name="line7">7</a>
+<a href="#line8" id="line8" name="line8">8</a>
+<a href="#line9" id="line9" name="line9">9</a>
+<a href="#line10" id="line10" name="line10">10</a>
+<a href="#line11" id="line11" name="line11">11</a>
+<a href="#line12" id="line12" name="line12">12</a>
+<a href="#line13" id="line13" name="line13">13</a>
+<a href="#line14" id="line14" name="line14">14</a>
+<a href="#line15" id="line15" name="line15">15</a>
+<a href="#line16" id="line16" name="line16">16</a>
+<a href="#line17" id="line17" name="line17">17</a>
+<a href="#line18" id="line18" name="line18">18</a>
+<a href="#line19" id="line19" name="line19">19</a>
+<a href="#line20" id="line20" name="line20">20</a>
+<a href="#line21" id="line21" name="line21">21</a>
+<a href="#line22" id="line22" name="line22">22</a>
+<a href="#line23" id="line23" name="line23">23</a>
+<a href="#line24" id="line24" name="line24">24</a>
+<a href="#line25" id="line25" name="line25">25</a>
+<a href="#line26" id="line26" name="line26">26</a>
+<a href="#line27" id="line27" name="line27">27</a>
+<a href="#line28" id="line28" name="line28">28</a>
+<a href="#line29" id="line29" name="line29">29</a>
+<a href="#line30" id="line30" name="line30">30</a>
+<a href="#line31" id="line31" name="line31">31</a>
+<a href="#line32" id="line32" name="line32">32</a>
+<a href="#line33" id="line33" name="line33">33</a>
+<a href="#line34" id="line34" name="line34">34</a>
+<a href="#line35" id="line35" name="line35">35</a>
+<a href="#line36" id="line36" name="line36">36</a>
+<a href="#line37" id="line37" name="line37">37</a>
+<a href="#line38" id="line38" name="line38">38</a>
+<a href="#line39" id="line39" name="line39">39</a>
+<a href="#line40" id="line40" name="line40">40</a>
+<a href="#line41" id="line41" name="line41">41</a>
+<a href="#line42" id="line42" name="line42">42</a>
+<a href="#line43" id="line43" name="line43">43</a>
+<a href="#line44" id="line44" name="line44">44</a>
+<a href="#line45" id="line45" name="line45">45</a>
+<a href="#line46" id="line46" name="line46">46</a>
+<a href="#line47" id="line47" name="line47">47</a>
+<a href="#line48" id="line48" name="line48">48</a>
+<a href="#line49" id="line49" name="line49">49</a>
+<a href="#line50" id="line50" name="line50">50</a>
+<a href="#line51" id="line51" name="line51">51</a>
+<a href="#line52" id="line52" name="line52">52</a>
+<a href="#line53" id="line53" name="line53">53</a>
+<a href="#line54" id="line54" name="line54">54</a>
+<a href="#line55" id="line55" name="line55">55</a>
+<a href="#line56" id="line56" name="line56">56</a>
+<a href="#line57" id="line57" name="line57">57</a>
+<a href="#line58" id="line58" name="line58">58</a>
+<a href="#line59" id="line59" name="line59">59</a>
+<a href="#line60" id="line60" name="line60">60</a>
+<a href="#line61" id="line61" name="line61">61</a>
+<a href="#line62" id="line62" name="line62">62</a>
+<a href="#line63" id="line63" name="line63">63</a>
+<a href="#line64" id="line64" name="line64">64</a>
+<a href="#line65" id="line65" name="line65">65</a>
+<a href="#line66" id="line66" name="line66">66</a>
+<a href="#line67" id="line67" name="line67">67</a>
+<a href="#line68" id="line68" name="line68">68</a>
+<a href="#line69" id="line69" name="line69">69</a>
+<a href="#line70" id="line70" name="line70">70</a>
+<a href="#line71" id="line71" name="line71">71</a>
+<a href="#line72" id="line72" name="line72">72</a>
+<a href="#line73" id="line73" name="line73">73</a>
+<a href="#line74" id="line74" name="line74">74</a>
+<a href="#line75" id="line75" name="line75">75</a>
+<a href="#line76" id="line76" name="line76">76</a>
+<a href="#line77" id="line77" name="line77">77</a>
+<a href="#line78" id="line78" name="line78">78</a>
+<a href="#line79" id="line79" name="line79">79</a>
+<a href="#line80" id="line80" name="line80">80</a>
+<a href="#line81" id="line81" name="line81">81</a>
+<a href="#line82" id="line82" name="line82">82</a>
+<a href="#line83" id="line83" name="line83">83</a>
+<a href="#line84" id="line84" name="line84">84</a>
+<a href="#line85" id="line85" name="line85">85</a>
+<a href="#line86" id="line86" name="line86">86</a>
+<a href="#line87" id="line87" name="line87">87</a>
+<a href="#line88" id="line88" name="line88">88</a>
+<a href="#line89" id="line89" name="line89">89</a>
+<a href="#line90" id="line90" name="line90">90</a>
+<a href="#line91" id="line91" name="line91">91</a>
+<a href="#line92" id="line92" name="line92">92</a>
+<a href="#line93" id="line93" name="line93">93</a>
+<a href="#line94" id="line94" name="line94">94</a>
+<a href="#line95" id="line95" name="line95">95</a>
+<a href="#line96" id="line96" name="line96">96</a>
+<a href="#line97" id="line97" name="line97">97</a>
+<a href="#line98" id="line98" name="line98">98</a>
+<a href="#line99" id="line99" name="line99">99</a>
+</pre></td><td><pre><span class='hs-keyword'>import</span> <span class='hs-conid'>Control</span><span class='hs-varop'>.</span><span class='hs-conid'>Arrow</span> <span class='hs-layout'>(</span><span class='hs-layout'>(</span><span class='hs-varop'>&amp;&amp;&amp;</span><span class='hs-layout'>)</span><span class='hs-layout'>)</span>
+
+<span class='hs-keyword'>import</span> <span class='hs-conid'>Graph</span><span class='hs-varop'>.</span><span class='hs-conid'>Math</span><span class='hs-varop'>.</span><span class='hs-conid'>Stats</span> <span class='hs-layout'>(</span><span class='hs-varid'>Âµ</span><span class='hs-layout'>,</span> <span class='hs-varid'>Ï</span><span class='hs-layout'>)</span>        <span class='hs-comment'>-- <a href="http://lpaste.net/2897500575581077504">http://lpaste.net/2897500575581077504</a></span>
+
+<span class='hs-comment'>{-- A solution to the problem posted at <a href="http://lpaste.net/2187209441198211072">http://lpaste.net/2187209441198211072</a>
+@1HaskellADay solution for 2016-04-26
+
+ref: Graph/sizin.hs
+
+Okay, you have circles measured by their diameter in pixle-widths of:
+--}</span>
+
+<span class='hs-keyword'>type</span> <span class='hs-conid'>Diameter</span> <span class='hs-keyglyph'>=</span> <span class='hs-conid'>Int</span>
+
+<span class='hs-definition'>widths</span> <span class='hs-keyglyph'>::</span> <span class='hs-keyglyph'>[</span><span class='hs-conid'>Diameter</span><span class='hs-keyglyph'>]</span>
+<span class='hs-definition'>widths</span> <span class='hs-keyglyph'>=</span> <span class='hs-keyglyph'>[</span><span class='hs-num'>10</span><span class='hs-layout'>,</span> <span class='hs-num'>20</span><span class='hs-layout'>,</span> <span class='hs-num'>50</span><span class='hs-layout'>,</span> <span class='hs-num'>65</span><span class='hs-layout'>,</span> <span class='hs-num'>80</span><span class='hs-keyglyph'>]</span>
+
+<span class='hs-comment'>{--
+50 px is considered 'normal.'
+
+(Don't ask me what 'normal' is: I have no clue.)
+
+10 px is tiny!
+80 px is kinda-big.
+
+These are NOT the be-all end-all of diameter sizes, as we are going to size
+cells based upon their properties.
+
+Today's Haskell problem: you have a set of clustering cells that you want to
+vary in size by the number of cells they cluster. If the minimum cell size is
+10 (TOO SMALL!) and the maximum cell size is 80, with the 'normal' cell size
+being 50 (whatever 'normal' means). Then:
+
+1. for the below clustering cells, what are their sizes?
+--}</span>
+
+<span class='hs-definition'>clusteringCells1</span> <span class='hs-keyglyph'>::</span> <span class='hs-keyglyph'>[</span><span class='hs-conid'>Int</span><span class='hs-keyglyph'>]</span>
+<span class='hs-definition'>clusteringCells1</span> <span class='hs-keyglyph'>=</span> <span class='hs-keyglyph'>[</span><span class='hs-num'>11</span><span class='hs-layout'>,</span> <span class='hs-num'>47</span><span class='hs-layout'>,</span> <span class='hs-num'>18</span><span class='hs-layout'>,</span> <span class='hs-num'>22</span><span class='hs-layout'>,</span> <span class='hs-num'>100</span><span class='hs-layout'>,</span> <span class='hs-num'>30</span><span class='hs-layout'>,</span> <span class='hs-num'>124</span><span class='hs-keyglyph'>]</span>
+
+<span class='hs-keyword'>type</span> <span class='hs-conid'>PixelContext</span> <span class='hs-keyglyph'>=</span> <span class='hs-layout'>(</span><span class='hs-conid'>Rational</span><span class='hs-layout'>,</span> <span class='hs-conid'>Rational</span><span class='hs-layout'>)</span>
+
+<span class='hs-definition'>countToSize</span> <span class='hs-keyglyph'>::</span> <span class='hs-conid'>PixelContext</span> <span class='hs-keyglyph'>-&gt;</span> <span class='hs-keyglyph'>[</span><span class='hs-conid'>Int</span><span class='hs-keyglyph'>]</span> <span class='hs-keyglyph'>-&gt;</span> <span class='hs-keyglyph'>[</span><span class='hs-conid'>Diameter</span><span class='hs-keyglyph'>]</span>
+
+<span class='hs-comment'>{--
+So, okay. Let's think about this. The median of size is actually 45, not 50:
+
+80 - 10 = 70 / 2 = 35 + 10 = 45
+
+So, we take the mean of our data set, map Ï over each element, find the max Ï
+and relate that to either extreme
+
+so Ï = 0 == 45, max Ï = 35 and we plus or minus out from there. Now, do we
+want a different than 80 max for really large clusters? We'll come back to
+that question after we see what the results are for this.
+
+... hm, how about just distances from mean?
+--}</span>
+
+<span class='hs-definition'>countToSize</span> <span class='hs-layout'>(</span><span class='hs-varid'>off</span><span class='hs-layout'>,</span><span class='hs-varid'>scl</span><span class='hs-layout'>)</span> <span class='hs-keyglyph'>=</span> <span class='hs-varid'>map</span> <span class='hs-layout'>(</span><span class='hs-varid'>round</span> <span class='hs-varop'>.</span> <span class='hs-layout'>(</span><span class='hs-varop'>+</span><span class='hs-varid'>off</span><span class='hs-layout'>)</span> <span class='hs-varop'>.</span> <span class='hs-layout'>(</span><span class='hs-varop'>*</span><span class='hs-varid'>scl</span><span class='hs-layout'>)</span><span class='hs-layout'>)</span> <span class='hs-varop'>.</span> <span class='hs-varid'>stddevs</span> <span class='hs-varop'>.</span> <span class='hs-varid'>map</span> <span class='hs-varid'>toRational</span>
+
+<span class='hs-definition'>stddevs</span> <span class='hs-keyglyph'>::</span> <span class='hs-keyglyph'>[</span><span class='hs-conid'>Rational</span><span class='hs-keyglyph'>]</span> <span class='hs-keyglyph'>-&gt;</span> <span class='hs-keyglyph'>[</span><span class='hs-conid'>Rational</span><span class='hs-keyglyph'>]</span>
+<span class='hs-definition'>stddevs</span> <span class='hs-keyglyph'>=</span> <span class='hs-varid'>uncurry</span> <span class='hs-varid'>map</span> <span class='hs-varop'>.</span> <span class='hs-layout'>(</span><span class='hs-varid'>flip</span> <span class='hs-layout'>(</span><span class='hs-varop'>/</span><span class='hs-layout'>)</span> <span class='hs-varop'>.</span> <span class='hs-varid'>Ï</span> <span class='hs-varop'>&amp;&amp;&amp;</span>
+         <span class='hs-layout'>(</span><span class='hs-varid'>uncurry</span> <span class='hs-varid'>map</span> <span class='hs-varop'>.</span> <span class='hs-layout'>(</span><span class='hs-varid'>flip</span> <span class='hs-layout'>(</span><span class='hs-comment'>-</span><span class='hs-layout'>)</span> <span class='hs-varop'>.</span> <span class='hs-varid'>Âµ</span> <span class='hs-varop'>&amp;&amp;&amp;</span> <span class='hs-varid'>id</span><span class='hs-layout'>)</span><span class='hs-layout'>)</span><span class='hs-layout'>)</span>
+
+<span class='hs-comment'>{--
+*Main&gt; Âµ (map toRational widths) ~&gt; 45
+*Main&gt; Ï (map toRational widths) ~&gt; 29.6
+*Main&gt; Âµ (map toRational clusteringCells1) ~&gt; 50.3
+*Main&gt; Ï (map toRational clusteringCells1) ~&gt; 44.2
+
+So I do need the pixel-context to be able to use the Ï here
+
+*Main&gt; stddevs (map toRational clusteringCells1) ~&gt;
+[(-3025) % 3402,(-253) % 3402,(-1243) % 1701,(-121) % 189,638 % 567,(-781) % 1701,946 % 567]
+
+Note that countToSize is comonadic: it requires the context of all the cluster
+cells to determine what is max/min/'normal' (whatever 'normal' is).
+
+We could even layer more context into this function, making it a Coreader, by
+adding the context of the standard cells sizes, but ... eh.
+
+Actually turns out I do need that to answer the question, so:
+
+*Main&gt; countToSize (45, 29.6) clusteringCells1 ~&gt; [19,43,23,26,78,31,94]
+
+Okay. You've answered the first clustering set. What about this clustering set:
+--}</span>
+
+<span class='hs-definition'>clusteringCells2</span> <span class='hs-keyglyph'>::</span> <span class='hs-keyglyph'>[</span><span class='hs-conid'>Int</span><span class='hs-keyglyph'>]</span>
+<span class='hs-definition'>clusteringCells2</span> <span class='hs-keyglyph'>=</span> <span class='hs-keyglyph'>[</span><span class='hs-num'>42</span><span class='hs-layout'>,</span> <span class='hs-num'>201</span><span class='hs-layout'>,</span><span class='hs-num'>950</span><span class='hs-layout'>,</span><span class='hs-num'>43</span><span class='hs-layout'>,</span><span class='hs-num'>52</span><span class='hs-layout'>,</span><span class='hs-num'>140</span><span class='hs-layout'>,</span><span class='hs-num'>476</span><span class='hs-layout'>,</span><span class='hs-num'>251</span><span class='hs-layout'>,</span><span class='hs-num'>602</span><span class='hs-layout'>,</span><span class='hs-num'>243</span><span class='hs-keyglyph'>]</span>
+
+<span class='hs-comment'>{--
+*Main&gt; countToSize (45, 29.6) clusteringCells2 ~&gt; 
+[19,35,110,19,20,29,63,40,75,39]
+
+SWEET (home Alabama)!
+
+The cluster-size property will be rolled into clusters as they are generated.
+--}</span></pre></td></table></div><div class="footer"><p><a href="http://github.com/chrisdone/lpaste">Web site source code on Github</a> / <a href="http://book.realworldhaskell.org/">Real World Haskell</a> / <a href="http://haskell.org/">Haskell.org</a> / <a href="http://planet.haskell.org/">Planet Haskell</a></p></div></div><script type="text/javascript"> var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-7443395-10']); _gaq.push(['_trackPageview']); (function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})(); </script></body></html>

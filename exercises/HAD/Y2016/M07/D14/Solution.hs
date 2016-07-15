@@ -91,6 +91,8 @@ problem = pullFrom prob
 {--
 *Y2016.M07.D14.Solution> problem (head probs) ~>
 "<!DOCTYPE HTML>\n<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">
+
+saved it out as prob.html
 --}
 
 solution = pullFrom sol
@@ -101,6 +103,8 @@ pullFrom f = getResponseBody <=< simpleHTTP . getRequest . url . f
 {--
 *Y2016.M07.D14.Solution> solution (head probs) ~>
 "<!DOCTYPE HTML>\n<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">
+
+saved it out as salu.html
 --}
 
 -- Now a trick will be to extract the sources from the HTML returned, ... but
