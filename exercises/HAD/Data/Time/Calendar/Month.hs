@@ -85,5 +85,15 @@ data AbbrevMonth = JAN | FEB | MAR | APR | MAY | JUN | JUL
 
 readTweetDate :: String -> Day
 readTweetDate (words -> [_,mos,day,_,_,yr]) =
-   fromGregorian (read yr) (fromEnum ((read (map toUpper mos)) :: AbbrevMonth))
+   fromGregorian (read yr)
+                 (succ (fromEnum ((read (map toUpper mos)) :: AbbrevMonth)))
                  (read day)
+
+{--
+An example from the JSON
+
+*Data.Time.Calendar.Month> readTweetDate "Tue Apr 26 01:30:36 +0000 2016" ~>
+2016-04-26
+
+... which also happens to be my birthday, oddly enough ... SWEET!
+--}
