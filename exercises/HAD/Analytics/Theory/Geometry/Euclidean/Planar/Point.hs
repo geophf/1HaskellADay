@@ -1,4 +1,4 @@
-module Analytics.Theory.Geometry.Euclidian.Planar.Point where
+module Analytics.Theory.Geometry.Euclidean.Planar.Point where
 
 import Data.Graph
 import Data.Array
