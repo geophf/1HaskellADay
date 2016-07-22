@@ -39,3 +39,10 @@ pathing = undefined
 -- 3. what is the path from 'b' to 'h'?
 -- 4. what is the path from 'd' to 'f'?
 -- 5. what is the path from 'm' to 'a'?
+
+-- As in yesterday's exercise:
+
+-- let (gr,fnPt,fnVertM) = graphit figure2 lineSegments 
+-- gets you the graph and
+
+-- Data.Graph.dfs gr [0] is the Forest of Vertex-values from 0
