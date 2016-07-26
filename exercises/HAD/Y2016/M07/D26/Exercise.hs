@@ -30,10 +30,13 @@ Remember to take into account cycles, if they are there any.
 
 import Y2016.M07.D20.Solution (FigureC)
 
-leastVerticesPathing :: FigureC -> Char -> Char -> String
+leastVerticesPathing :: FigureC -> Char -> Char -> [String]
 leastVerticesPathing fig start end = undefined
 
 {--
+The returned value: there may be multiple least-vertices pathings through a
+graph.
+
 Note the care in the name of this function. Least nodes visited is not 
 necessarily the shortest path, looking at the figure (for example, yesterday's
 'm' to 'a' path was "mgba" which is, distance-wise, not the shortest, even though
