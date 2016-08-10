@@ -38,6 +38,8 @@ indexedTweets = undefined
 -- Hint: since this slice is small-data, one way to index by the idx is to put 
 -- those values into a SymbolTable, then read out their enumerated values.
 
+-- recall that we read in the rows of JSON with: readJSONRows url
+
 -- Use the above definition to answer the below questions.
 
 -- We have 100 rows. How many unique tweets do we have in this data selection?
