@@ -27,7 +27,7 @@ instance FromJSON TweetGraph where
 --}
 
 data Tweet = Tweet { idx, txt, created :: String, favs :: Integer }
-   deriving Show
+   deriving (Eq, Ord, Show)
 
 instance FromJSON Tweet where
    parseJSON (Object obj) =
