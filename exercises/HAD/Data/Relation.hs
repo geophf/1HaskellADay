@@ -11,4 +11,3 @@ class Show a => Edge a where
 data Relation a rel b = Rel a rel b deriving (Eq, Show)
 
 -- moved all of the Cypher-related stuff to Graph.JSON.Cypher
--- found at http://lpaste.net/8198148860669853696
