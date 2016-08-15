@@ -25,8 +25,9 @@ return t, r, n limit 100
 The JSON is posted in this directory, or at this URL:
 --}
 
-graphRelUrl :: FilePath
-graphRelUrl = "https://raw.githubusercontent.com/geophf/1HaskellADay/master/exercises/HAD/Y2016/M08/D15/nodes-rels-100.json"
+twitterGraphUrl :: FilePath
+twitterGraphUrl = "https://raw.githubusercontent.com/geophf/1HaskellADay/"
+               ++ "master/exercises/HAD/Y2016/M08/D15/nodes-rels-100.json"
 
 {--
 Let's examine one of these rows of twitter data:
@@ -85,23 +86,23 @@ Structure the Graph- and Relationships-types as FromJSON instances, read in
 these data and then answer questions about their types/labels.
 --}
 
-data TwitterRowJ = RJ GraphJ RelationshipsJ
-
-instance FromJSON TwitterRowJ where
-   parseJSON (Object o) = RJ <$> o .: "graph" <*> o .: "relationships"
-
-data GraphJ = YouDeclareThisType
+data GraphJ = GJ [NodeJ] [RelJ]
 
 instance FromJSON GraphJ where
+   parseJSON (Object o) = GJ <$> o .: "nodes" <*> o .: "relationships"
+
+data NodeJ = YouDeclareThisType
+
+instance FromJSON NodeJ where
    parseJSON = undefined
 
-data RelationshipsJ = YouDeclareThatType
+data RelJ = YouDeclareThatType
 
-instance FromJSON RelationshipsJ where
+instance FromJSON RelJ where
    parseJSON = undefined
 
-readTwitterData :: FilePath -> IO [TwitterRowJ]
-readTwitterData = undefined
+readGraphJSON :: FilePath -> IO [GraphJ]
+readGraphJSON = undefined
 
 -- Okay, with that: We have tweets, that's fine, with the ["Tweet"] "label"
 -- but there are also have other labeled nodes (the example above has a
@@ -112,11 +113,18 @@ readTwitterData = undefined
 
 type Label = String
 
-nodeLabels :: [TwitterRowJ] -> [Label]
+nodeLabels :: [GraphJ] -> [Label]
 nodeLabels = undefined
 
 -- From the relationships data, what are all the "type"-values of the
 -- relationships between the tweets and associated information.
 
-relLabels :: [TwitterRowJ] -> [Label]
+relLabels :: [GraphJ] -> [Label]
 relLabels = undefined
+
+-- The neat thing about this exercise is that the graph-structure is the same
+-- regardless of the knowledge it represents. Be it twitter-data or any kind
+-- of data, such as stock-market analyses, the graph structure, or the
+-- knowledge-representation, has the same foundational elements of nodes and
+-- relations. So, solving this (specific) problem gives us a powerful (general)
+-- tool!
