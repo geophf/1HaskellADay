@@ -7,7 +7,7 @@ import Data.Aeson
 import Data.Maybe (fromJust)
 import qualified Data.Vector as V
 import Network.HTTP.Conduit (simpleHttp)
-import Graph.JSON.Cypher    -- available at 1HaskellADay git repository
+import Graph.JSON.Cypher.Read.Rows  -- available at 1HaskellADay git repository
 
 {--
 This is interesting.

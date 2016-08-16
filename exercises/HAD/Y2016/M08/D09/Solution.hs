@@ -9,7 +9,7 @@ import Data.Aeson.Types
 import Data.Char (toUpper)
 import qualified Data.Set as Set
 
-import Graph.JSON.Cypher
+import Graph.JSON.Cypher.Read.Rows
 
 {--
 Object (fromList [("favorites",Number 0.0),                    -- 3

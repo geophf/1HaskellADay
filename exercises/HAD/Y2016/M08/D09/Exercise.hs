@@ -3,7 +3,7 @@ module Y2016.M08.D09.Exercise where
 import Y2016.M08.D08.Exercise
 
 import Data.Aeson
-import Graph.JSON.Cypher
+import Graph.JSON.Cypher.Read.Rows
 
 {--
 Okay, yesterday we saw we had 100 rows! YAY! of unstructured data. YAY!

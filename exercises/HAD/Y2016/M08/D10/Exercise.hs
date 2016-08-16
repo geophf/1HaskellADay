@@ -5,7 +5,7 @@ import Data.Time
 import Data.Time.LocalTime
 
 import Data.SymbolTable
-import Graph.JSON.Cypher
+import Graph.JSON.Cypher.Read.Rows
 
 import Y2016.M08.D08.Exercise (url, readJSONRows)
 import Y2016.M08.D09.Exercise

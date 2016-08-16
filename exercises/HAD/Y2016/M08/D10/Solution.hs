@@ -15,7 +15,7 @@ import Control.Scan.CSV (rend)
 import Data.SymbolTable (SymbolTable)
 import Data.Time.Calendar.Month (readTweetDate)
 import qualified Data.SymbolTable as SymT
-import Graph.JSON.Cypher
+import Graph.JSON.Cypher.Read.Rows
 
 import Y2016.M08.D08.Solution (url, readJSONRows)
 import Y2016.M08.D09.Solution

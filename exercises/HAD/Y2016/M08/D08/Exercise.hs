@@ -3,7 +3,7 @@ module Y2016.M08.D08.Exercise where
 import Data.Aeson
 import qualified Data.Vector as V
 import Network.HTTP.Conduit (simpleHttp)  -- conduit is available via cabal
-import Graph.JSON.Cypher    -- available at 1HaskellADay git repository
+import Graph.JSON.Cypher.Read.Rows  -- available at 1HaskellADay git repository
 
 {--
 This is interesting.
