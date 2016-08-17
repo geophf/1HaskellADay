@@ -13,7 +13,7 @@ import Data.Time.Calendar.Month (readTweetDate)
 -- The indexed tweet is a tweet with a timestamp and also some index you
 -- choose to provide (usually some scaled version of the idx-value of RawT)
 
-data Tweet a = IndexedT a TimedTweet
+data Tweet a = IndexedT { index :: a, tt :: TimedTweet }
    deriving (Eq, Ord, Show)
 
 -- The raw tweet is complete and good for extracting from (e.g.) JSON
