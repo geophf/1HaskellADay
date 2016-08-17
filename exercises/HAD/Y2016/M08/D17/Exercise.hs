@@ -15,7 +15,7 @@ import Graph.JSON.Cypher.Read.Tweets
 import Y2016.M08.D15.Exercise (twitterGraphUrl)
 
 {--
-So we how have tweets from graph data, but they are not connected to any of
+So we now have tweets from graph data, but they are not connected to any of
 the external information about the tweets, such as URLs and hashtags or
 people tweeting or liking these tweets. The URLs and hashtags can be parsed
 from the tweet-text, but this is the 'hard-way' of doing things, particularly
