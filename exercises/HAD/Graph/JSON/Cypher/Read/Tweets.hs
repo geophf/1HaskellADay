@@ -2,21 +2,22 @@ module Graph.JSON.Cypher.Read.Tweets where
 
 -- provides functions for extracting tweets from graph-JSON
 
-import Control.Arrow ((&&&))
+import Control.Arrow ((&&&), (>>>))
 import Data.Map (Map)
 import qualified Data.Map as Map
-import Data.Maybe (fromJust)
+import Data.Maybe (mapMaybe)
 
 import Data.Twitter
 import Graph.JSON.Cypher.Read
 import Graph.JSON.Cypher.Read.Graphs
 
-tweetFrom :: PropertiesJ -> RawTweet
+tweetFrom :: PropertiesJ -> Maybe RawTweet
 tweetFrom (PJ props) = 
-   fromJust (RawT <$> props <<-$ "id_str" <*> props <<-$ "text"
-                  <*> props <<-$ "created_at" <*> props <<-# "favorites")
+   RawT <$> props <<-$ "id_str" <*> props <<-$ "text"
+        <*> props <<-$ "created_at" <*> props <<-# "favorites"
 
--- from the PropertiesJ, then convert that to a TimedTweet using t2tt.
+-- problem: not all tweets have these fields: some are just bare id's
+-- I chose to reject these place-holders for now.
 
 {--
 *Y2016.M08.D16.Solution> readGraphJSON twitterGraphUrl ~> tweets
@@ -45,7 +46,13 @@ filterTweetNodes = filter isTweet . concatMap nodes
 
 indexedTweets :: [GraphJ] -> Map String RawTweet
 indexedTweets = 
-   Map.fromList . map (idn &&& tweetFrom . propsn) . filterTweetNodes
+   filterTweetNodes                                    >>>
+   mapMaybe (liftTweet . (idn &&& tweetFrom . propsn)) >>> 
+   Map.fromList
+
+liftTweet :: (a, Maybe b) -> Maybe (a,b)
+liftTweet (_, Nothing) = Nothing
+liftTweet (a, Just b) = Just (a,b)
 
 {-- 
 How many unique tweets are in the data set?
