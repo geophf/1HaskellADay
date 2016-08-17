@@ -11,10 +11,10 @@ import Data.Twitter
 import Graph.JSON.Cypher.Read
 import Graph.JSON.Cypher.Read.Graphs
 
-tweetFrom :: PropertiesJ -> Tweet
+tweetFrom :: PropertiesJ -> RawTweet
 tweetFrom (PJ props) = 
-   fromJust (Tweet <$> props <<-$ "id_str" <*> props <<-$ "text"
-                   <*> props <<-$ "created_at" <*> props <<-# "favorites")
+   fromJust (RawT <$> props <<-$ "id_str" <*> props <<-$ "text"
+                  <*> props <<-$ "created_at" <*> props <<-# "favorites")
 
 -- from the PropertiesJ, then convert that to a TimedTweet using t2tt.
 
@@ -43,7 +43,7 @@ filterTweetNodes = filter isTweet . concatMap nodes
 -- as the cypher query result generates one for its internal use and shares it
 -- with us! Convenient.
 
-indexedTweets :: [GraphJ] -> Map String Tweet
+indexedTweets :: [GraphJ] -> Map String RawTweet
 indexedTweets = 
    Map.fromList . map (idn &&& tweetFrom . propsn) . filterTweetNodes
 
