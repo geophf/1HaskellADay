@@ -55,11 +55,14 @@ How many unique tweets are in the data set?
 
 -- And with all the above we have:
 
-tweetsFrom :: FilePath -> IO [TimedTweet]
-tweetsFrom = fmap (map t2tt . Map.elems . indexedTweets) . readGraphJSON
+readTweetsFrom :: FilePath -> IO [TimedTweet]
+readTweetsFrom = fmap tweetsFrom . readGraphJSON
+
+tweetsFrom :: [GraphJ] -> [TimedTweet]
+tweetsFrom = map t2tt . Map.elems . indexedTweets
 
 {--
-*Y2016.M08.D16.Solution> fmap head (tweetsFrom twitterGraphUrl) ~>
+*Y2016.M08.D16.Solution> fmap head (readTweetsFrom twitterGraphUrl) ~>
 TT {date = 2016-05-20, time = 18:32:47, 
     twt = Tweet {idx = "733727186679672833", 
                  txt = "The weight's the thing\nWherein I'll catch the "
