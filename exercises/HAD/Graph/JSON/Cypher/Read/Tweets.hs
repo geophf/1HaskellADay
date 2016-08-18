@@ -6,6 +6,8 @@ import Control.Arrow ((&&&), (>>>))
 import Data.Map (Map)
 import qualified Data.Map as Map
 import Data.Maybe (mapMaybe)
+import Data.Set (Set)
+import qualified Data.Set as Set
 
 import Data.Twitter
 import Graph.JSON.Cypher.Read
@@ -77,4 +79,21 @@ TT {date = 2016-05-20, time = 18:32:47,
                     ++ "#haskell solution https://t.co/XVqbPRfjAo",
                  created = "Fri May 20 18:32:47 +0000 2016",
                  favs = 1}}
+--}
+
+-- we want a set of indexed tweets from our graph-JSON
+
+uniqueTweets :: [GraphJ] -> Set (Tweet String)
+uniqueTweets = 
+   indexedTweets           >>>
+   Map.map t2tt            >>>
+   Map.toList              >>>
+   map (uncurry IndexedT)  >>>
+   Set.fromList
+
+{--
+*Y2016.M08.D17.Solution> readGraphJSON twitterGraphUrl ~> tweets
+*Y2016.M08.D17.Solution> let unqt = uniqueTweets tweets ~> length ~> 29
+*Y2016.M08.D17.Solution> head (Set.toList unqt) ~>
+IndexedT {index = "1134", tt = TT {date = 2016-05-20, ...}}
 --}
