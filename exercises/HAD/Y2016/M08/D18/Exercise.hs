@@ -32,7 +32,7 @@ The structure of an URL in JSON in the twitter nodes-set is:
 {"url":"http://logicaltypes.blogspot.com/2016/05/april-2016-1haskelladay-problem-and.html"}
 --}
 
-data URL = URI { url :: String } deriving (Eq, Ord, Show
+data URL = URI { url :: String } deriving (Eq, Ord, Show)
 
 instance FromJSON URL where
    parseJSON = undefined
