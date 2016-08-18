@@ -10,4 +10,21 @@ class Show a => Edge a where
 
 data Relation a rel b = Rel a rel b deriving (Eq, Show)
 
--- moved all of the Cypher-related stuff to Graph.JSON.Cypher
+-- Now we have a directional relation: a dart, that expresses how this datum
+-- (tweet) is related to other data.
+
+data Direction = GoingTo | ComingFrom
+   deriving (Eq, Ord)
+
+instance Show Direction where
+   show GoingTo = ">"
+   show ComingFrom = "<"
+
+type Label = String
+
+data Dart a = Drt Direction Label a
+   deriving (Eq, Ord)
+
+instance Show a => Show (Dart a) where
+   show (Drt GoingTo lbl val) = '-':lbl ++ ">" ++ show val
+   show (Drt ComingFrom lbl val) = '<':lbl ++ "-" ++ show val
