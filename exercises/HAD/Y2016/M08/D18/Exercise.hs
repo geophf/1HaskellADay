@@ -29,7 +29,9 @@ into a Haskell-friendly type.
 
 The structure of an URL in JSON in the twitter nodes-set is:
 
-{"url":"http://logicaltypes.blogspot.com/2016/05/april-2016-1haskelladay-problem-and.html"}
+{"id":"1033",
+ "labels":["Link"],
+ "properties":{"url":"http://logicaltypes.blogspot.com/2016/05/april-2016-1haskelladay-problem-and.html"}
 --}
 
 data URL = URI { url :: String } deriving (Eq, Ord, Show)
