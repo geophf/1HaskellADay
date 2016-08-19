@@ -52,6 +52,24 @@ data PropertiesJ = PJ (Map String Value) deriving Show
 instance FromJSON PropertiesJ where
    parseJSON (Object o) = PJ <$> o .: "properties"
 
+-- sometimes I need properties-lists as objects:
+
+prop2obj :: PropertiesJ -> Value
+prop2obj (PJ o) = toJSON o
+
+-- and I need to parse that into Results. The thing is, I don't like Result
+-- values, but I'm fine with Maybe values, so we have this (lossy) translation:
+
+res2mb :: Result a -> Maybe a
+res2mb (Success a) = Just a
+res2mb _           = Nothing
+
+-- and that way I can translate from a PropertiesJ-set to another value like:
+
+-- res2mb . fromJSON . prop2obj . propsn
+
+-- which gives me a Maybe-wrapped value
+
 data NodeJ =
    NJ { idn :: String, labels :: [String], propsn :: PropertiesJ }
       deriving Show
