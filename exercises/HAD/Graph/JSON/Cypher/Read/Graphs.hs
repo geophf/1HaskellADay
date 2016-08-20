@@ -78,6 +78,8 @@ instance FromJSON NodeJ where
    parseJSON obj@(Object o) =
          NJ <$> o .: "id" <*> o .: "labels" <*> parseJSON obj
 
+-- Question: is a Stateful NodeJ-value typed as NodeJS? #justaskin
+
 data RelJ = 
    RJ { idr, kind, startn, endn :: String, propsr :: PropertiesJ }
       deriving Show
