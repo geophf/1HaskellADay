@@ -1,8 +1,11 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Graph.JSON.Cypher.Read.Tweets where
 
 -- provides functions for extracting tweets from graph-JSON
 
 import Control.Arrow ((&&&), (>>>))
+import Data.Aeson
 import Data.Map (Map)
 import qualified Data.Map as Map
 import Data.Maybe (mapMaybe)
@@ -13,6 +16,7 @@ import Data.Twitter
 import Graph.JSON.Cypher.Read
 import Graph.JSON.Cypher.Read.Graphs
 
+{--
 tweetFrom :: PropertiesJ -> Maybe RawTweet
 tweetFrom (PJ props) = 
    RawT <$> props <<-$ "id_str" <*> props <<-$ "text"
@@ -21,7 +25,6 @@ tweetFrom (PJ props) =
 -- problem: not all tweets have these fields: some are just bare id's
 -- I chose to reject these place-holders for now.
 
-{--
 *Y2016.M08.D16.Solution> readGraphJSON twitterGraphUrl ~> tweets
 *Y2016.M08.D16.Solution> let twit = last . nodes $ head tweets
 *Y2016.M08.D16.Solution> twit ~> 
@@ -30,7 +33,11 @@ NJ {idn = "255",labels = ["Tweet"],propsn = PJ (fromList [("created_at",...)])}
 Tweet {idx = "727179491756396546", txt = "April 2016 @1HaskellADay...", ...}
 --}
 
--- Using the above definition, define the below
+instance FromJSON RawTweet where
+   parseJSON (Object o) = RawT <$> o .: "id_str" <*> o .: "text"
+         <*> o .: "created_at" <*> o .: "favorites"
+
+-- Using the above declaration, define the below
 
 -- first, we need to know which nodes are tweets:
 
@@ -48,13 +55,9 @@ filterTweetNodes = filter isTweet . concatMap nodes
 
 indexedTweets :: [GraphJ] -> Map String RawTweet
 indexedTweets = 
-   filterTweetNodes                                    >>>
-   mapMaybe (liftTweet . (idn &&& tweetFrom . propsn)) >>> 
+   filterTweetNodes                             >>>
+   mapMaybe (sequence . (idn &&& node2valM))    >>> 
    Map.fromList
-
-liftTweet :: (a, Maybe b) -> Maybe (a,b)
-liftTweet (_, Nothing) = Nothing
-liftTweet (a, Just b) = Just (a,b)
 
 {-- 
 How many unique tweets are in the data set?
@@ -97,3 +100,23 @@ uniqueTweets =
 *Y2016.M08.D17.Solution> head (Set.toList unqt) ~>
 IndexedT {index = "1134", tt = TT {date = 2016-05-20, ...}}
 --}
+
+-- URL -----------------------------------------------------------------
+
+instance FromJSON URL where
+   parseJSON (Object o) = URI <$> o .: "url"
+
+twitterURLs :: [GraphJ] -> Map String URL
+{--
+twitterURLs = Map.fromList . mapMaybe (sequence . (idn &&& node2valM))
+            . filter ((elem "Link") . labels) . concatMap nodes
+--}
+twitterURLs = nodeMapper "Link"   -- MUCH better!
+
+-- notice how twitterURLs follows the same template as indexedTweets
+
+-- so:
+
+nodeMapper :: FromJSON a => String -> [GraphJ] -> Map String a
+nodeMapper k = Map.fromList . mapMaybe (sequence . (idn &&& node2valM))
+             . filter ((elem k) . labels) . concatMap nodes

@@ -10,6 +10,8 @@ import Data.Time hiding (parseTime)
 import Control.Scan.CSV (rend)
 import Data.Time.Calendar.Month (readTweetDate)
 
+-- Tweet -----------------------------------------------------------------
+
 -- The indexed tweet is a tweet with a timestamp and also some index you
 -- choose to provide (usually some scaled version of the idx-value of RawT)
 
@@ -45,3 +47,13 @@ parseTime :: String -> TimeOfDay
 parseTime (words -> [_,_,_,time,_,_]) = 
    let [hr,min,sec] = rend ':' time in
    TimeOfDay (read hr) (read min) (read sec)
+
+-- URL ------------------------------------------------------------------
+
+data URL = URI { url :: String } deriving (Eq, Ord, Show)
+
+-- okay, not really awe-inspiring, but there it is
+
+-- User -----------------------------------------------------------------
+
+

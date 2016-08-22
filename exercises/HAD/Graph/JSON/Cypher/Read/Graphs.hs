@@ -66,7 +66,8 @@ res2mb _           = Nothing
 
 -- and that way I can translate from a PropertiesJ-set to another value like:
 
--- res2mb . fromJSON . prop2obj . propsn
+node2valM :: FromJSON a => NodeJ -> Maybe a
+node2valM = res2mb . fromJSON . prop2obj . propsn
 
 -- which gives me a Maybe-wrapped value
 
