@@ -42,7 +42,7 @@ instance FromJSON Hashtag where
 isHashtag :: [GraphJ] -> [NodeJ]
 isHashtag = undefined
 
-hashtags :: [GraphJ] -> (String, Hashtag)
+hashtags :: [GraphJ] -> [(String, Hashtag)]
 hashtags = undefined    -- gives the hashtag ids and the hashtags
 
 -- Now find the unique set of Hashtags indexed by hashtag id:
