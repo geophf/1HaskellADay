@@ -1,7 +1,5 @@
 module Y2016.M08.D22.Exercise where
 
-import Y2016.M08.D15.Exercise (twitterGraphUrl)
-
 {--
 So, we've looked at tweets, urls/links, users, and so we have just a bit left
 (that concerns me, anyway), and that is the Hashtag (or '#brown' to tweeps in
@@ -34,6 +32,8 @@ import Data.Twitter
 import Graph.JSON.Cypher.Read.Graphs
 import Graph.JSON.Cypher.Read.Tweets
 
+import Y2016.M08.D15.Exercise (twitterGraphUrl)
+
 data Hashtag = Tag { tag :: String } deriving (Eq, Ord, Show)
 
 instance FromJSON Hashtag where
@@ -49,6 +49,8 @@ hashtags = undefined    -- gives the hashtag ids and the hashtags
 
 hashtagMap :: FilePath -> IO (Map String Hashtag)
 hashtagMap url = undefined
+
+-- hint: recall that readGraphJSON twitterGraphUrl will get you [GraphJ]
 
 -- How many hashtags are there?
 
