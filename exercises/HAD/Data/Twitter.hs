@@ -56,4 +56,7 @@ data URL = URI { url :: String } deriving (Eq, Ord, Show)
 
 -- User -----------------------------------------------------------------
 
-
+data User = Tweep { screen, name, location :: String,
+                    followers, following :: Int,
+                    icon :: String }
+   deriving (Eq, Ord, Show)
