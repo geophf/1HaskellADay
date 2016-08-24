@@ -5,8 +5,12 @@ module Data.Relation where
 class Node a where
    asNode :: a -> String
 
+-- example: asNode (Nd f) = "Node { name: '" ++ show f ++ "' }"
+
 class Show a => Edge a where
    asEdge :: a -> String
+
+-- an example for asEdge would be "USING" or "RETWEETS"
 
 data Relation a rel b = Rel a rel b deriving (Eq, Show)
 
