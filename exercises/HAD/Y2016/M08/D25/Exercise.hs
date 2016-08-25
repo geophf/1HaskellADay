@@ -14,7 +14,7 @@ We'll look at that another day.
 
 Today: bitcoin.
 
-I've downloaded the historical price of bitcoin vs. USD from bitcoinity.com.
+I've downloaded the historical price of bitcoin vs. USD from http://bitcoinity.org
 The CSV-file downloaded contains multiple exchanges but let's focus on the
 last column 'others' that has the longest history.
 
