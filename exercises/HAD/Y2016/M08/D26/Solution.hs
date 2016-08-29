@@ -9,6 +9,8 @@ import qualified Data.Map as Map
 import Data.Maybe (mapMaybe)
 import Data.Time
 
+-- these modules are available in this, the 1HaskellADay, git repository
+
 import Control.DList
 import Control.List (weave)
 import Control.Logic.Frege ((<<-))
@@ -280,4 +282,7 @@ asCSV (a,(b,c)) = weave [show a, show b, show c]
 *Y2016.M08.D26.Solution> chartBTCvsAU "Y2016/M08/D26/bitcoin-vs-gold-5yrs.csv" bitto goldo
 
 Saved at this directory and charted on solution tweet.
+
+The correllation between gold and bitcoin over five years seems to me that
+there is no correllation between the two. Do you see a correllation?
 --}
