@@ -1,6 +1,6 @@
 {-# LANGUAGE ViewPatterns #-}
 
-module Y2016.M08.D25.Exercise where
+module Y2016.M08.D25.Solution where
 
 import Control.Arrow ((&&&))
 import Control.Monad
