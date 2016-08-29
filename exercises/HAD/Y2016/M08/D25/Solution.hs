@@ -67,7 +67,7 @@ lump prices (BTC b) =
 
 -- where 'today' is the most recent day in BitCoinPrices
 
-today :: BitCoinPrices -> Day
+today :: Map Day a -> Day
 today = last . Map.keys
 
 {--
