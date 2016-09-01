@@ -80,4 +80,8 @@ things3 = map BTC [4.4, 1.2, 9.6]
 
 -- yes, we are, strangely enough, making a Merkle tree of bitcoins. NEAT!
 
+constructMerkleTree :: [a] -> MerkleTree a
+constructMerkleTree = undefined      -- Hint: hmm, is a MerkleTree Foldable? hm
+
 -- In future exercises we'll look at balance-on-inserting-new-nodes and copying
+
