@@ -43,7 +43,8 @@ with that (eventually) we should be able to construct any Merkle tree.
 Let's do this.
 --}
 
-type MerkleTree a = Branch a  -- that was hard
+data MerkleTree a = Merkle { root :: Branch a }
+   deriving (Eq, Ord, Show)
 
 data Branch a = Parent { hashID :: Digest SHA256, leftBr, rightBr :: Branch a }
               | Branch { hashID :: Digest SHA256, leftLf, rightLf :: Leaf a }
@@ -121,17 +122,19 @@ things3 = map BTC [4.4, 1.2, 9.6]
 constructMerkleTree :: Show a => [a] -> MerkleTree a
 constructMerkleTree = -- okay, we're disembling here, we're just constructing
                       -- the three-node tree here.
+   Merkle .
    uncurry mkparent . (uncurry mkbranch . adjoin mkleaf . (head &&& head . tail)
                    &&& mkbranch1 . mkleaf . last)
 
 {--
 *Y2016.M09.D01.Solution> constructMerkleTree things3 ~>
-Parent {hashID = 3c56...,
+Merkle {root = 
+    Parent {hashID = 3c56...,
         leftBr = Branch {hashID = e3b2..., 
                          leftLf = Leaf {dataHash = b75a..., packet = BTC 4.40}, 
                          rightLf = Leaf {dataHash = 4bde..., packet = BTC 1.20}}, 
         rightBr = Twig {hashID = 346b....,
-                        soleLf = Leaf {dataHash = 2ef5..., packet = BTC 9.60}}}
+                        soleLf = Leaf {dataHash = 2ef5..., packet = BTC 9.60}}}}
 --}
 
 -- In future exercises we'll look at balance-on-inserting-new-nodes and copying
