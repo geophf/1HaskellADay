@@ -1,7 +1,7 @@
 module Y2016.M09.D02.Exercise where
 
 import Data.Aeson
-import Network.Http.Conduit
+import Network.HTTP.Conduit
 
 {--
 Yesterday we started giving form to Merkle trees, but there's a lot of
