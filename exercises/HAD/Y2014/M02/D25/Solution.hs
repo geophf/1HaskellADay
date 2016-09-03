@@ -29,5 +29,9 @@ compress = map (head &&& length) . group
 expand :: [(a, Int)] -> [a]
 expand = (>>= uncurry (flip replicate))
 
+expand' :: [(a, Int)] -> [a]
+expand' = concat . map (\ (x,y) -> replicate y x)
+
+
 -- It should verify
 -- prop> (expand . compress) xs == (xs :: String)
