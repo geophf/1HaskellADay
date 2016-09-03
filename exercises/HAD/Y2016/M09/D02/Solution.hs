@@ -6,7 +6,6 @@ import Data.Aeson
 import Data.ByteString.Lazy.Char8 (ByteString)
 import qualified Data.ByteString.Lazy.Char8 as BL
 import Data.Maybe (fromJust)
--- import qualified Data.Text as T
 import Network.HTTP.Conduit
 
 {--
