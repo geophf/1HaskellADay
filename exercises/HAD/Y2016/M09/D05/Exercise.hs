@@ -15,8 +15,8 @@ that transaction-as-JSON.
 
 data Transaction =
    TX { lockTime, version, size :: Integer, inputs :: [Input],
-        time, txIndex, vInSize, vOutSize :: Integer, hashCode :: Digest SHA256,
-        relayedBy :: HostAddress, out :: [Output] }
+        time, txIndex, vInSize, vOutSize :: Integer, hashCode :: String,
+        relayedBy :: HostName, out :: [Output] }
       deriving (Eq, Ord, Show)
 
 instance FromJSON Transaction where
