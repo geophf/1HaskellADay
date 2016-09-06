@@ -12,10 +12,15 @@ import Data.Maybe (fromJust)
 import qualified Data.Text as T
 import Network.Socket
 
+-- below import available on 1HaskellADay git repository
+
+import Data.BlockChain.Block.Types
+
 {--
 Last Friday we looked at reading in a summary of a Block of the block chain.
 Part of that summary data was a set of transaction indices (called 'tx' in the
 JSON). But what are these transactions?
+
 Today we will take a sample transaction, represent it in Haskell, and read in
 that transaction-as-JSON.
 --}
@@ -27,7 +32,7 @@ instance FromJSON Packet where
 
 data Transaction =
    TX { lockTime, version, size :: Integer, inputs :: [Input],
-        time, txIndex, vInSize, vOutSize :: Integer, hashCode :: String,
+        time, txIndex, vInSize, vOutSize :: Integer, hashCode :: Hash,
         relayedBy :: HostName, out :: [Output] }
       deriving (Eq, Ord, Show)
 
@@ -42,7 +47,8 @@ instance FromJSON Transaction where
 -- of course, to read in a SHA256 digest as JSON, we need to define that
 
 instance FromJSON (Digest SHA256) where
-   parseJSON (String s) = return . fromJust . digestFromByteString . B.pack $ T.unpack s
+   parseJSON (String s) =
+     return . fromJust . digestFromByteString . B.pack $ T.unpack s
 
 data Input =
    In { sequence :: Integer, prevOut :: Maybe Output, inScript :: String }

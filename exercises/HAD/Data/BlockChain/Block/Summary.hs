@@ -8,6 +8,10 @@ import qualified Data.ByteString.Lazy.Char8 as BL
 import Data.Maybe (fromJust)
 import Network.HTTP.Conduit
 
+-- below import available from 1HaskellADay git repository
+
+import Data.BlockChain.Block.Types
+
 {--
 Yesterday we started giving form to Merkle trees, but there's a lot of
 developments to flesh out that structure, such as inserting nodes (so Merkle
@@ -43,7 +47,7 @@ parse the JSON, and give the result as a Haskell Block value
 --}
 
 data Summary =
-   Summary { blockHash :: String, time, blockIndex, height :: Integer, 
+   Summary { blockHash :: Hash, time, blockIndex, height :: Integer, 
              txIndices :: [Integer] }
       deriving (Eq, Ord, Show)
 
