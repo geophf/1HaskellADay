@@ -60,13 +60,13 @@ instance FromJSON Input where
 
 data Output =
    Out { spent :: Bool, outTxIndex, typ, value, n :: Integer,
-         addr, outScript :: String }
+         addr :: Maybe String, outScript :: String }
       deriving (Eq, Ord, Show)
 
 instance FromJSON Output where
-   parseJSON (Object o) = Out <$> o .: "spent" <*> o .: "tx_index"
-                              <*> o .: "type"  <*> o .: "value" <*> o .: "n"
-                              <*> o .: "addr"  <*> o .: "script"
+   parseJSON (Object o) = Out <$> o .:  "spent" <*> o .: "tx_index"
+                              <*> o .:  "type"  <*> o .: "value" <*> o .: "n"
+                              <*> o .:? "addr"  <*> o .: "script"
 
 -- With the above types having FromJSON instances defined, read in the two
 -- transactions at this directory or also at the url:
