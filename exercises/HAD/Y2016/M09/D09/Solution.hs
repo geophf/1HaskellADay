@@ -86,9 +86,7 @@ so:
 
 solveAll :: [(String, String, Int)] -> Map Char Int -> [Int] -> [Map Char Int]
 solveAll [] ctx = const (pure ctx)
-solveAll eqs ctx =
-   solver (head eqs) ctx >=>
-   uncurry (solveAll (tail eqs)) . first (Map.union ctx)
+solveAll (e:qs) ctx = solver e ctx >=> uncurry (solveAll qs) . first (Map.union ctx)
 
 {--
 *Y2016.M09.D09.Solution> solveAll sums Map.empty [0..9] ~>
