@@ -13,7 +13,7 @@ sums = [("FAT", "CAT", 904), ("STORE","CAKE",60836), ("EACH", "ROSE", 7839)]
 
 -- solve these sums
 
-solver :: (String, String, Int) -> Map Char Int -> [Int] -> [Map Char Int]
+solver :: (String, String, Int) -> Map Char Int -> [Int] -> [(Map Char Int, [Int])]
 
 -- type signature corrected by @petermilley
 
