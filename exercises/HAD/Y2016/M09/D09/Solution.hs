@@ -34,10 +34,9 @@ assign ctx ch domain =
 -- we do that for each of the letter. 
 
 assigns :: Map Char Int -> String -> [Int] -> [([(Char, Int)], [Int])]
-assigns _ [] dat = [([], dat)]
-assigns ctx (ch:s) digs = assign ctx ch digs >>= \(a,b) ->
-                          assigns ctx s b    >>= \(as,bs) -> 
-                          return (a:as, bs)
+assigns _ [] = pure . ([],)
+assigns ctx (ch:s) =
+   assign ctx ch >=> \(a,b) -> assigns ctx s b >>= return . first (a:)
 
 {--
 *Y2016.M09.D09.Solution> let ans = assigns Map.empty "FAT" [0..9]
@@ -52,7 +51,7 @@ assigns ctx (ch:s) digs = assign ctx ch digs >>= \(a,b) ->
 -- Now we convert a word into a number:
 
 numfrom :: Map Char Int -> String -> Int
-numfrom ctx = foldl (\tots ch -> 10 * tots + ctx Map.! ch) 0
+numfrom ctx = foldl (\tots -> (10 * tots +) . (ctx Map.!)) 0
 
 {--
 *Y2016.M09.D09.Solution> let fats = map (first (flip numfrom "FAT" . Map.fromList)) ans
@@ -62,11 +61,12 @@ numfrom ctx = foldl (\tots ch -> 10 * tots + ctx Map.! ch) 0
 
 solver :: (String, String, Int) -> Map Char Int -> [Int] -> [(Map Char Int, [Int])]
 solver (a,b,c) ctx domain =
-   assigns ctx a domain >>= \(asol, rest)   -> 
-   let amap = merge ctx asol in
-   assigns amap b rest  >>= \(bsol, subdom) ->
-   let newmap = merge amap bsol in
-   guard (numfrom newmap a + numfrom newmap b == c) >>
+   assigns ctx a domain                 >>= \(asol, rest)   -> 
+   let amap = merge ctx asol     in
+   assigns amap b rest                  >>= \(bsol, subdom) ->
+   let newmap = merge amap bsol
+       n = numfrom newmap        in
+   guard (n a + n b == c)               >>
    return (newmap, subdom)
 
 merge :: Ord a => Map a b -> [(a,b)] -> Map a b
