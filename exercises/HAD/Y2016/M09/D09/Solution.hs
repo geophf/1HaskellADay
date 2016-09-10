@@ -31,7 +31,7 @@ assign ctx ch domain =
    maybe (fmap (first (ch,)) (takeout domain)) (pure . (,domain) . (ch,))
          (Map.lookup ch ctx)
 
--- we do that for each of the letter. 
+-- we do that for each of the letters. 
 
 assigns :: Map Char Int -> String -> [Int] -> [([(Char, Int)], [Int])]
 assigns _ [] = pure . ([],)
@@ -62,11 +62,12 @@ numfrom ctx = foldl (\tots -> (10 * tots +) . (ctx Map.!)) 0
 solver :: (String, String, Int) -> Map Char Int -> [Int] -> [(Map Char Int, [Int])]
 solver (a,b,c) ctx domain =
    assigns ctx a domain                 >>= \(asol, rest)   -> 
-   let amap = merge ctx asol     in
+   let amap = merge ctx asol
+       na = numfrom amap a       in
+   guard (na < c)                       >>
    assigns amap b rest                  >>= \(bsol, subdom) ->
-   let newmap = merge amap bsol
-       n = numfrom newmap        in
-   guard (n a + n b == c)               >>
+   let newmap = merge amap bsol  in
+   guard (na + numfrom newmap b == c)   >>
    return (newmap, subdom)
 
 merge :: Ord a => Map a b -> [(a,b)] -> Map a b
