@@ -13,7 +13,10 @@ sums = [("FAT", "CAT", 904), ("STORE","CAKE",60836), ("EACH", "ROSE", 7839)]
 
 -- solve these sums
 
-solver :: (String, String, Int) -> Map Char Int -> Map Char Int
+solver :: (String, String, Int) -> Map Char Int -> [Map Char Int]
+
+-- type signature corrected by @petermilley
+
 solver sum domain = undefined
 
 -- solving all three will map the letter to the digits [0..9]
