@@ -10,6 +10,8 @@ Today we'll do a little domino arithmetic.
 A domino tile is a tile with the playing side divided in half with each half
 marked with zero up to 6 (inclusive) marks
 
+https://en.wikipedia.org/wiki/Dominoes
+
 So, an example tile:
 
    _________________
