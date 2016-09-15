@@ -7,7 +7,7 @@ import qualified Data.Map as Map
 
 -- below import available at 1HaskellADay git repository
 
-import Control.List (takeout)
+import Control.List (permute)
 import Control.Logic.Frege ((<<-))
 
 {--
@@ -82,9 +82,8 @@ twoDominosProduct = (first (10*) >>> uncurry (+)) <<- twoDominos2numbers
 -- So, we can brute-force this:
 
 solver :: [Domino] -> [Map Char Int]
-solver tiles = takeout tiles >>= \(d1@(x,y), t1) ->
-   takeout t1 >>= \(d2@(z,a), t2) ->
-   takeout t2 >>= \(d3@(b,c), [d4@(d,e)]) ->
+solver tiles =
+   permute tiles >>= \[d1@(x,y), d2@(z,a), d3@(b,c), d4@(d,e)] ->
    guard (uncurry (*) (twoDominos2numbers d1 d2) == twoDominosProduct d3 d4) >>
    return (Map.fromList (zip "xyzabcde" [x,y,z,a,b,c,d,e]))
 
@@ -92,7 +91,7 @@ solver tiles = takeout tiles >>= \(d1@(x,y), t1) ->
 *Y2016.M09.D14.Solution> solver dominos 
 [fromList [('a',6),('b',2),('c',5),('d',5),('e',6),('x',4),('y',2),('z',6)]]
 *Y2016.M09.D14.Solution> 426 * 6 ~> 2556
-*Y2016.M09.D14.Solution> 426 * 6 == 2556 ~> True
+                         xyz * a == bcde
 
 n.b.: this solution just so happens to work for this problem's data set, but it
 does NOT work where dominos must be flipped. Can you solve that more general 
