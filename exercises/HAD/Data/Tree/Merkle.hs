@@ -18,7 +18,8 @@ import qualified Data.ByteString.Lazy.Char8 as BL
 
 -- the below import available from 1HaskellADay git repository
 
-import Control.Logic.Frege (adjoin)
+import Control.Logic.Frege ((<<-), adjoin)
+import Data.Monetary.BitCoin
 
 {-- HASHING -----------------------------------------------------------------
 
@@ -82,8 +83,11 @@ do contain a hash that is the hash of the concatenation of the hashes of its
 resulting String ... result.
 --}
 
-childrenHash :: Digest SHA256 -> Digest SHA256 -> Digest SHA256
-childrenHash = curry (adjoin show >>> uncurry (++) >>> hashDatum)
+hash256 :: String -> Digest SHA256
+hash256 = hashlazy . BL.pack
+
+childrenHash :: Hash -> Hash -> Hash
+childrenHash = show . hash256 <<- (++)
 
 -- Take the two hashed hashes from the above strings, concatenate them, then
 -- hash hash that concatenation (of the two hash hashes). What is your result?
@@ -121,12 +125,15 @@ Let's do this.
 data MerkleTree a = Merkle { root :: Branch a }
    deriving (Eq, Ord, Show)
 
-data Branch a = Parent { hashID :: Digest SHA256, leftBr, rightBr :: Branch a }
-              | Branch { hashID :: Digest SHA256, leftLf, rightLf :: Leaf a }
-              | Twig   { hashID :: Digest SHA256, soleLf :: Leaf a }
+type Hash = String   -- because I can't convert String -> Digest SHA256
+                     -- even from (hash str)
+
+data Branch a = Parent { hashID :: Hash, leftBr, rightBr :: Branch a }
+              | Branch { hashID :: Hash, leftLf, rightLf :: Leaf a }
+              | Twig   { hashID :: Hash, soleLf :: Leaf a }
    deriving (Eq, Ord, Show)
 
-data Leaf a = Leaf { dataHash :: Digest SHA256, packet :: a }
+data Leaf a = Leaf { dataHash :: Hash, packet :: a }
    deriving (Eq, Ord, Show)
 
 -- Ya see what I did with branch, didja? A branch has either branches OR it
@@ -139,7 +146,10 @@ data Leaf a = Leaf { dataHash :: Digest SHA256, packet :: a }
 -- Now, we do a simple leaf and branch construction.
 
 mkleaf :: Show a => a -> Leaf a
-mkleaf = uncurry Leaf . (hashDatum &&& id)
+mkleaf = uncurry Leaf . (show . hashDatum &&& id)
+
+things3 :: [BitCoin]
+things3 = map BTC [4.4,1.2,9.6]
 
 {--
 *Y2016.M09.D01.Solution> let leaves = map mkleaf things3 
