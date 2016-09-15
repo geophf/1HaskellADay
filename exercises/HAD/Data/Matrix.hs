@@ -488,7 +488,6 @@ Matrix 5x5
 Now show that the identity matrix is the identity matrix by crossing it with
 ex1, for example. Generate the correctly sized identity matrix to cross with
 any input matrix:
---}
 
 instance Monoid (Matrix a) where
    mempty             = error "No null-matrix defined"
@@ -500,7 +499,6 @@ sameMatrix mat =
    let (l,r) = snd (dims mat) in
    mat `cross` identity l == mat -| mat <> identity r `cross` mat == mat -| mat
 
-{--
 *Y2016.M06.D15.Solution> pprint $ sameMatrix ex1
 Matrix 2x2
 |  2.0  5.0 |
@@ -508,4 +506,6 @@ Matrix 2x2
 YAY!
 
 The above (sameMatrix) is all very unit-testy; not sure if it should be here...
+
+-- removing sameMatrix as the monoid definition gives an overlapping warning
 --}
