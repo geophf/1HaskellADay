@@ -1,7 +1,5 @@
 module Y2016.M09.D15.Exercise where
 
-import Control.Arrow
-
 -- the below import is available from the 1HaskellADay git repository
 
 import Data.Matrix
