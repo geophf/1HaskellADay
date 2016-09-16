@@ -60,3 +60,14 @@ word = map Ltr "BINOCULAR"
 
 -- given the standard rules of sudoku: no letter repeats in a row, column, nor
 -- nonent
+
+{-- BONUS -----------------------------------------------------------------
+
+List all 9 letter words with unique letters. BRAGGART isn't one of them, because
+it has repeated 'G's.
+
+Hint: use, e.g. on macs: /usr/share/dict/words or some other lexicon to help.
+--}
+
+wordsofunique9letters :: [String] -> [String]
+wordsofunique9letters = undefined
