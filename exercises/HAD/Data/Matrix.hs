@@ -75,12 +75,22 @@ countWith f = zipWith f [1..]
 -- redefine pprint so it works with this new type pretty-printing as before
 
 pprint :: Show a => Matrix a -> IO ()
-pprint (M arr) =
+pprint (M arr) = -- pprintWith show
    let ((_,_),(rows,cols)) = bounds arr in
    putStrLn ("Matrix " ++ show rows ++ ('x':show cols)) >> showRows arr
 
+{--
+pprintWith :: (a -> String) -> Matrix a -> IO ()
+pprintWith f (M arr) =
+   let (rows,cols) = snd (bounds arr) in
+   putStrLn ("Matrix " ++ show rows ++ ('x':show cols)) >> showRowsWith f arr
+--}
+
 maxWidth :: Show a => [a] -> Int
-maxWidth vals = maximum $ map (succ . length . show) vals
+maxWidth = maxString . map show -- maximum $ map (succ . length . show) vals
+
+maxString :: [String] -> Int
+maxString = maximum . map (succ . length)
 
 formatted :: Show a => Int -> a -> String
 formatted padding val =
@@ -102,6 +112,17 @@ showRows daterz =
                        (elems daterz)
        padding = maxWidth (concat elims)
    in  mapM_ (showRow padding) elims
+
+{--
+showRowsWith :: (a -> String) -> Array (Int,Int) a -> IO ()
+showRowsWith f daterz =
+   let cols  = snd (snd (bounds daterz))
+       elims = unfoldr (\lst -> let (lhs,rhs) = splitAt cols lst in
+                                if null lhs then Nothing else Just (lhs,rhs))
+                       (elems daterz)
+       padding = maxString (concatMap (map  f) elims)
+   in  mapM_ (showRow padding) (concatMap (map f) elims)
+--}
 
 -- pprint the following matrix:
 
@@ -206,11 +227,11 @@ cell (M arr) idx = arr ! idx
 *Main> cell (transpose tehMatrix) (2,2) ~> 5
 --}
 
-cpnrows, cpncols :: Matrix a -> [[a]]
-cpnrows mat@(M arr) =
-   let ((r1,_),(rn,_)) = bounds arr in map (flip cnprow mat) [r1..rn]
-cpncols mat@(M arr) = 
-   let ((_,c1),(_,cn)) = bounds arr in map (flip cnpcol mat) [c1..cn]
+rows, cols :: Matrix a -> [[a]]
+rows mat@(M arr) =
+   let ((r1,_),(rn,_)) = bounds arr in map (flip row mat) [r1..rn]
+cols mat@(M arr) = 
+   let ((_,c1),(_,cn)) = bounds arr in map (flip col mat) [c1..cn]
 
 -- what is rows tehMatrix?
 -- what is cols tehMatrix?
@@ -222,13 +243,6 @@ cpncols mat@(M arr) =
 
 (rows &&& cols) tehMatrix == (cols &&& rows) (transpose tehMatrix)
 --}
-
-badRow, badCol :: Int -> Matrix a -> [a]
-badRow = vect fst
-badCol = vect snd
-
-vect :: ((Int, Int) -> Int) -> Int -> Matrix a -> [a]
-vect tupf idx = map snd . filter ((== idx) . tupf . fst) . assocs . matrix
 
 {-- A bit of lens-y exploration ...
 
@@ -319,7 +333,7 @@ cross a b =
        cs = enumFromTo c1 cn
        bounds = ((r1,c1), (rn,cn))
    in  M (array bounds (rs >>= \r -> cs >>= \c ->
-                        return ((r,c), dotProduct (cnprow r a) (cnpcol c b))))
+                        return ((r,c), dotProduct (row r a) (col c b))))
 
 dotProduct :: Num a => [a] -> [a] -> a
 -- unsafe check here?
@@ -394,8 +408,8 @@ no other cells.
 
 --}
 
-cnprow, cnpcol :: Int -> Matrix a -> [a]
-cnprow idx mat =
+row, col :: Int -> Matrix a -> [a]
+row idx mat =
    map (cell mat . (idx,)) . uncurry enumFromTo . adjoin snd $ dims mat
 
 {--
@@ -403,7 +417,7 @@ cnprow idx mat =
 *Main> row 2 tehMatrix ~> [4,5,6]
 --}
 
-cnpcol idx mat = -- same, but different
+col idx mat = -- same, but different
    map (cell mat . (,idx)) . uncurry enumFromTo . adjoin fst $ dims mat
 
 {--
@@ -425,7 +439,7 @@ Sounds recurrant.
 --}
 
 determinant :: Num a => Matrix a -> a
-determinant = uncurry det . (id &&& cpnrows)
+determinant = uncurry det . (id &&& rows)
 
 det :: Num a => Matrix a -> [[a]] -> a
 det _ [[ans]] = ans -- determinant of a 1x1 matrix is its sole element
