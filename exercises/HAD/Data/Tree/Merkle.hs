@@ -12,13 +12,14 @@ an article on that.
 http://chimera.labs.oreilly.com/books/1234000001802/ch07.html#merkle_trees
 --}
 
-import Control.Arrow ((>>>), (&&&))
+import Control.Arrow ((>>>), (&&&), app)
 import Crypto.Hash
 import qualified Data.ByteString.Lazy.Char8 as BL
 
 -- the below import available from 1HaskellADay git repository
 
 import Control.Logic.Frege ((<<-), adjoin)
+import Data.BlockChain.Block.Types (Hash)
 import Data.Monetary.BitCoin
 
 {-- HASHING -----------------------------------------------------------------
@@ -125,12 +126,25 @@ Let's do this.
 data MerkleTree a = Merkle { root :: Branch a }
    deriving (Eq, Ord, Show)
 
+{-- moved to Data.BlockChain.Block.Types
+
 type Hash = String   -- because I can't convert String -> Digest SHA256
                      -- even from (hash str)
+--}
 
-data Branch a = Parent { hashID :: Hash, leftBr, rightBr :: Branch a }
+data Branch a = Parent { hashID :: Hash, leftBr, rightBr :: BalancedBranch a }
               | Branch { hashID :: Hash, leftLf, rightLf :: Leaf a }
+                       -- least hash is (dataHash . leftLf)
               | Twig   { hashID :: Hash, soleLf :: Leaf a }
+                       -- least hash is (dataHash . soleLf)
+   deriving (Eq, Ord, Show)
+
+least :: Branch a -> Hash
+least (Twig _ sl) = dataHash sl
+least (Branch _ ll _) = dataHash ll
+least (Parent _ lb _) = leastHash lb
+
+data BalancedBranch a = BB { leastHash :: Hash, branch :: Branch a }
    deriving (Eq, Ord, Show)
 
 data Leaf a = Leaf { dataHash :: Hash, packet :: a }
@@ -158,6 +172,12 @@ things3 = map BTC [4.4,1.2,9.6]
  Leaf {dataHash = 2ef5..., packet = BTC 9.60}]
 --}
 
+leavesHashes :: (Leaf a, Leaf a) -> Hash
+leavesHashes = uncurry childrenHash . adjoin dataHash
+
+kidsHashes :: (Branch a, Branch a) -> Hash
+kidsHashes = uncurry childrenHash . adjoin hashID
+
 -- makes a branch that has only 1 leaf, which we 'duplicate':
 
 -- Actually, I find typing a sole-child branch differently (as a 'Twig') will
@@ -168,15 +188,15 @@ mkbranch1 = uncurry Twig
           . (uncurry childrenHash . (dataHash &&& dataHash) &&& id)
 
 {--
-*Y2016.M09.D01.Solution> mkbranch1 (last leaves) ~> tw
+*Y2016.M09.D01.Solution> let tw = mkbranch1 (last leaves)
 Twig {hashID = 346b..., soleLf = Leaf {dataHash = 2ef5..., packet = BTC 9.60}}
 --}
 
 mkbranch :: Leaf a -> Leaf a -> Branch a
-mkbranch a b = Branch ((uncurry childrenHash . adjoin dataHash) (a,b)) a b
+mkbranch a b = Branch (leavesHashes (a,b)) a b
 
 {--
-*Y2016.M09.D01.Solution> mkbranch (head leaves) (head $ tail leaves) ~> br ~>
+*Y2016.M09.D01.Solution> let br = mkbranch (head leaves) (head $ tail leaves) ~>
 Branch {hashID = e3b2..., 
         leftLf = Leaf {dataHash = b75a..., packet = BTC 4.40},
         rightLf = Leaf {dataHash = 4bde..., packet = BTC 1.20}}
@@ -184,15 +204,31 @@ Branch {hashID = e3b2...,
 
 -- one more thing: let's construct a parent branch from two child branches
 
+mkparentFromParents :: (BalancedBranch a, BalancedBranch a) -> Branch a
+mkparentFromParents =
+   app . (uncurry . Parent . (ua childrenHash (hashID . branch)) &&& id)
+
 mkparent :: Branch a -> Branch a -> Branch a
-mkparent a b = Parent (childrenHash (hashID a) (hashID b)) a b
+mkparent = curry (mkparentFromParents . adjoin mkbb)
+
+mkbb :: Branch a -> BalancedBranch a
+mkbb = uncurry BB . (least &&& id)
+
+ua :: (b -> b -> c) -> (a -> b) -> (a, a) -> c
+ua g f = uncurry g . adjoin f
 
 {--
 *Y2016.M09.D01.Solution> mkparent br tw ~>
-Parent {hashID = 3c56..., 
-        leftBr = Branch {hashID = e3b2..., 
-                         leftLf = Leaf {dataHash = b75a..., packet = BTC 4.40},
-                         rightLf = Leaf {dataHash = 4bde..., packet = BTC 1.20}},
-        rightBr = Twig {hashID = 346b...,
-                        soleLf = Leaf {dataHash = 2ef5..., packet = BTC 9.60}}}
+Parent {hashID = "6e84df977ad3e62ebb6348dba8b00ed2449f02a474711bd38a26b158c0e51d8e",
+    leftBr = BB {leastHash = "b75afa7bfae31070012a57c5e76ae4b93b9585478e33c2ba897f25e33940e3cf", 
+                 branch = Branch {hashID = "787a63f32768903d2c4fbd1e7e58d79a0298309be1d2e35f52076f31f6849ab9", 
+                                  leftLf = Leaf {dataHash = "b75afa7bfae31070012a57c5e76ae4b93b9585478e33c2ba897f25e33940e3cf", 
+                                                 packet = BTC 4.40},
+                                  rightLf = Leaf {dataHash = "4bdede6162533ffcb79db0ceb6be2d318b86c34b1c69e2fbc7da109a69a83d0b", 
+                                                  packet = BTC 1.20}}},
+    rightBr = BB {leastHash = "2ef5d9f1f8a5412e23384041311da037ee4c55dd4575533157bbd5498bb77a69", 
+                  branch = Twig {hashID = "54e4d0abf6b4a4efef62f96ca898fdc0b1fd7e42d84eef343131c4ad8ef98d24", 
+                                 soleLf = Leaf {dataHash = "2ef5d9f1f8a5412e23384041311da037ee4c55dd4575533157bbd5498bb77a69", 
+                                                packet = BTC 9.60}}}}
+
 --}
