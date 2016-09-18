@@ -139,6 +139,8 @@ data Branch a = Parent { hashID :: Hash, leftBr, rightBr :: BalancedBranch a }
                        -- least hash is (dataHash . soleLf)
    deriving (Eq, Ord, Show)
 
+-- the fn least presupposes it is working with an already-balanced Merkle tree
+
 least :: Branch a -> Hash
 least (Twig _ sl) = dataHash sl
 least (Branch _ ll _) = dataHash ll
