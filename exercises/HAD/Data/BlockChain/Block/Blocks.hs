@@ -2,6 +2,7 @@
 
 module Data.BlockChain.Block.Blocks where
 
+import Control.Arrow ((&&&))
 import Data.Aeson
 import Data.Maybe (fromJust)
 import Network.HTTP.Conduit
@@ -12,6 +13,7 @@ import qualified Data.BlockChain.Block.Summary as Smy
 import Data.BlockChain.Block.Transactions (Transaction)
 import qualified Data.BlockChain.Block.Transactions as Txn
 import Data.BlockChain.Block.Types
+import Data.Tree.Merkle
 
 {--
 There is a reason the summary is called the summary, for, when we download the
@@ -74,3 +76,14 @@ For block (hash: "0000000000000000039eb091b53b88042b9dc578285604914f6837c470c075
 We should be able to link the transcation in this full block with the
 summary block transaction index ... we'll get to doing that another day.
 --}
+
+-- From a set of hashes we want to fetch the blocks:
+
+fetchBlocks :: [Hash] -> IO [Block]
+fetchBlocks = mapM (readBlock rawBlockURL)
+
+-- Now we want a specific kind of Merkle leaf. As we already have the hash,
+-- we use the block hash for the leaf hash
+
+mkBlockLeaf :: Block -> Leaf Block
+mkBlockLeaf = uncurry Leaf . (blockhash &&& id)
