@@ -15,6 +15,8 @@ http://chimera.labs.oreilly.com/books/1234000001802/ch07.html#merkle_trees
 import Control.Arrow ((>>>), (&&&), app)
 import Crypto.Hash
 import qualified Data.ByteString.Lazy.Char8 as BL
+import Data.Function (on)
+import Data.List (sortBy)
 
 -- the below import available from 1HaskellADay git repository
 
@@ -234,3 +236,68 @@ Parent {hashID = "6e84df977ad3e62ebb6348dba8b00ed2449f02a474711bd38a26b158c0e51d
                                                 packet = BTC 9.60}}}}
 
 --}
+
+-- INSERTION -----------------------------------------------------------------
+
+{--
+Okay, here we do balanced insertion into Merkle trees, with which we include
+the fromList function.
+--}
+
+insertLeaf :: Leaf a -> MerkleTree a -> MerkleTree a
+insertLeaf l (Merkle x) = Merkle (insertL' l x)
+
+-- simple enough, eh?
+
+insertL' :: Leaf a -> Branch a -> Branch a
+
+-- simple case: we branch a twig:
+
+insertL' l (Twig h l') = Branch (leavesHashes (l, l')) l l'
+
+-- simple case: we parent a branch:
+
+insertL' l (Branch h l' l'') =
+   let [l1, l2, l3] = sortBy (compare `on` dataHash) [l, l', l'']
+       br = Branch (leavesHashes (l1, l2)) l1 l2
+       tw = Twig (dataHash l3) l3
+   in  mkparent br tw
+
+-- complex case: for a parent we have to cdr-down to the branch or twig
+-- then recompute the hashes all the way back up to the root
+
+insertL' l p@(Parent h b1 b2) =
+
+-- but to cdr-down, we need to know the less-than/greater-than values of
+-- the left/right branches. Hm. Why do I have to invent this?
+
+-- Invented: put into Data.Tree.Merkle as part of the MerkleTree structure.
+
+{--
+There are 5 cases:
+1. less than least lb b1, insert into b1
+2. less than least rb b1, insert into b1
+3. less than least lb b2, insert into b1
+4. less than least rb b2, insert into b2
+5. greater than least rb b2, insert into b2
+After than decision matrix, we need to rehash whatever branch, all the way down.
+... which means reconstructing this branch!
+--}
+   either (flip (curry mkparentFromParents) b2) (curry mkparentFromParents b1)
+   $ insertLrehash l (if dataHash l < leastHash b2 then Left b1 else Right b2)
+
+-- this gives the re-realized child branch, now we regraft it onto the parent
+-- rehashing ... I think there's an ArrowChoice for all this?
+
+type Eitherness a = Either (BalancedBranch a) (BalancedBranch a)
+
+insertLrehash :: Leaf a -> Eitherness a -> Eitherness a
+insertLrehash l (Left br) = Left . mkbb . insertL' l $ branch br
+insertLrehash l (Right br) = Right . mkbb . insertL' l $ branch br
+
+-- Now that you have the summaries, build a Merkle tree from them
+
+fromList :: [Leaf a] -> MerkleTree a
+fromList = uncurry (foldr insertLeaf) . (Merkle . mkbranch1 . head &&& tail)
+
+-- n.b. must be non-empty list, because there's no empty MerkleTree.
