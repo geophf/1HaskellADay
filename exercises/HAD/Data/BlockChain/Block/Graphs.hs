@@ -24,6 +24,7 @@ import Data.Monetary.BitCoin
 import qualified Data.Monetary.Currency as BTC
 
 import Data.Relation
+import Data.Tree.Merkle
 
 import Graph.Query
 import Graph.JSON.Cypher
@@ -171,4 +172,61 @@ MATCH path=(o)-[:OUT]->(t)<-[:IN]-(i)
 RETURN path, count(o) 
 ORDER BY count(o) DESC
 LIMIT 25
+--}
+
+-- MERKLE TREES-AS-GRAPHS ----------------------------------------------------
+
+mkTradeLeaf :: Transaction -> Leaf Trade
+mkTradeLeaf = uncurry Leaf . (tradeHash &&& id) . tx2trade
+
+data REL = START | CHILD | TRANSACTION deriving Show
+
+instance Edge REL where
+   asEdge = show
+
+data Container a = ROOT (MerkleTree a) | BRANCH (Branch a) | DATUM (Leaf a)
+   deriving Show
+
+instance Node a => Node (Container a) where
+   asNode (ROOT p) = "ROOT { " ++ addrRep (hashID (root p)) ++ " }"
+   asNode (BRANCH b) = "BRANCH { " ++ addrRep (hashID b) ++ " }"
+   asNode (DATUM f) = asNode (packet f)
+
+merkAsRel :: MerkleTree a -> [Relation (Container a) REL (Container a)]
+merkAsRel r = Rel (ROOT r) START (BRANCH (root r)):mar (root r)
+
+mar :: Branch a -> [Relation (Container a) REL (Container a)]
+mar p@(Parent h lb rb) =
+   let [l,r] = map branch [lb, rb] in
+   map (Rel (BRANCH p) CHILD . BRANCH) [l,r] ++ mar l ++ mar r
+mar b@(Branch h l r) = 
+   map (Rel (BRANCH b) TRANSACTION . DATUM) [l,r]
+mar t@(Twig h d) = [Rel (BRANCH t) TRANSACTION (DATUM d)]
+
+{--
+*Y2016.M09.D19.Solution> latestTransactions ~> x
+*Y2016.M09.D19.Solution> length x ~> 237
+*Y2016.M09.D19.Solution> let trds = map mkTradeLeaf x
+*Y2016.M09.D19.Solution> head trds
+Leaf {dataHash = "dbac60c56454dcaeb65c55a4bde851372b56946725874af914475b12c3308ac7", 
+      packet = Trd {tradeHash = "dbac60c56454dcaeb65c55a4bde851372b56946725874af914475b12c3308ac7", 
+                    executed = 2016-09-26 01:59:19, ins = [Nothing], 
+                    outs = [("1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY",BTC 12.55)]}}
+
+*Y2016.M09.D19.Solution> let merk = fromList trds
+*Y2016.M09.D19.Solution> getGraphResponse ("http://neo4j:1234F0ul@127.0.0.1:7474/" ++ transaction)
+                                  (map (mkCypher "a" "rel" "b") (merkAsRel merk))
+"{\"results\":[{\"columns\":[],\"data\":[]},{\"columns\":[],\"data\":[]},...],\"errors\":[]}\n"
+
+Shows the Merkle Tree with stubs of the transactions ... but, as this is a
+graph database, we can load in the transactions and they will be liked in,
+automagically!
+
+*Y2016.M09.D19.Solution Graph.Query> getGraphResponse
+                     ("http://neo4j:1234F0ul@127.0.0.1:7474/" ++ transaction) 
+                     (map (mkCypher "a" "rel" "b") 
+                          (concatMap (trade2relations . packet) trds))
+... \"errors\":[]}\n"
+
+Now the Merkle Tree includes the full transactions, as well
 --}
