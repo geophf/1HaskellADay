@@ -176,6 +176,8 @@ LIMIT 25
 
 -- MERKLE TREES-AS-GRAPHS ----------------------------------------------------
 
+type TreeName = String
+
 mkTradeLeaf :: Transaction -> Leaf Trade
 mkTradeLeaf = uncurry Leaf . (tradeHash &&& id) . tx2trade
 
@@ -184,16 +186,19 @@ data REL = START | CHILD | TRANSACTION deriving Show
 instance Edge REL where
    asEdge = show
 
-data Container a = ROOT (MerkleTree a) | BRANCH (Branch a) | DATUM (Leaf a)
+data Container a = ROOT TreeName (MerkleTree a)
+                 | BRANCH (Branch a)
+                 | DATUM (Leaf a)
    deriving Show
 
 instance Node a => Node (Container a) where
-   asNode (ROOT p) = "ROOT { " ++ addrRep (hashID (root p)) ++ " }"
+   asNode (ROOT n p) = "ROOT { name: '" ++ n ++ "', "
+                     ++ addrRep (hashID (root p)) ++ " }"
    asNode (BRANCH b) = "BRANCH { " ++ addrRep (hashID b) ++ " }"
    asNode (DATUM f) = asNode (packet f)
 
-merkAsRel :: MerkleTree a -> [Relation (Container a) REL (Container a)]
-merkAsRel r = Rel (ROOT r) START (BRANCH (root r)):mar (root r)
+merkAsRel :: String -> MerkleTree a -> [Relation (Container a) REL (Container a)]
+merkAsRel n r = Rel (ROOT n r) START (BRANCH (root r)):mar (root r)
 
 mar :: Branch a -> [Relation (Container a) REL (Container a)]
 mar p@(Parent h lb rb) =
