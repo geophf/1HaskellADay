@@ -8,7 +8,7 @@ So you have a Merkle tree; great! And you can compare it! Great!
 1. Well, one thing to do is to copy it, so you have two (duplicate) Merkle trees.
 
 2. Another thing to do is to update a branch of one Merkle tree with the branch
-of another. That sounds simple, but this is disceptive. For the whole Merkle
+of another. That sounds simple, but this is deceptive. For the whole Merkle
 tree, itself, is a branch, and a change to a node affects the hash at the main
 branch. How do we know which node changed (or was added to, or whatever).
 
