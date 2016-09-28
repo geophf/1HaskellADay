@@ -90,6 +90,12 @@ dn p@(Parent _ _ _) _ = [p]   -- traversal stops, tree2 exhausted
 dn p1 p2 = if hashID p1 == hashID p2 then [] else [p1]
 
 {--
+First, let's compare trees that have the same structure:
+*Y2016.M09.D26.Solution> diffNodes a b ~> []
+
+Sweet! Now, let's compare the original tree with the tree that has the BTC 7.7
+added in:
+
 *Y2016.M09.D26.Solution> diffNodes a bb
 [Parent {hashID = "96704128e696729e5b180036137..."}, ...]
 
