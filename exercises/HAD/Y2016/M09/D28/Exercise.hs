@@ -64,6 +64,10 @@ Merkle Tree using addLeaf. Does the addLeaf solution have the same or fewer
 branches than the insertLeaf one?
 --}
 
-a, bb :: MerkleTree BitCoin
-a = coins2Merk coins
-bb = undefined          -- insert or add leaf of BTC 7.7 to a
+a, a', bb, bb' :: MerkleTree BitCoin
+a = undefined           -- insert coins into Merkle tree
+a' = undefined          -- add coins into Merkle tree
+bb = undefined          -- insert leaf of BTC 7.7 to a
+bb' = undefined         -- add leaf of BTC 7.7 to a'
+
+-- what are the branch counts of a vs a'? bb vs bb'?
