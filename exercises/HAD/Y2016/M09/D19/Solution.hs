@@ -7,6 +7,9 @@ import Data.Maybe (mapMaybe)
 
 import Data.BlockChain.Block.Blocks
 import Data.BlockChain.Block.Graphs
+    hiding (REL, DATUM, TRANSACTION, BRANCH, START, ROOT, CHILD, Container, mar)
+  -- the above hidden terms were introduced by working through this solution
+  -- then were moved to the Data.BlockChain.Block.Graphs module
 import Data.BlockChain.Block.Summary
 import Data.BlockChain.Block.Transactions
 import Data.BlockChain.Block.Types
