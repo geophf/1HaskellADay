@@ -126,7 +126,7 @@ Let's do this.
 --}
 
 data MerkleTree a = Merkle { root :: Branch a }
-   deriving (Eq, Ord, Show)
+   deriving (Eq, Ord)
 
 {-- moved to Data.BlockChain.Block.Types
 
@@ -139,7 +139,7 @@ data Branch a = Parent { hashID :: Hash, leftBr, rightBr :: BalancedBranch a }
                        -- least hash is (dataHash . leftLf)
               | Twig   { hashID :: Hash, soleLf :: Leaf a }
                        -- least hash is (dataHash . soleLf)
-   deriving (Eq, Ord, Show)
+   deriving (Eq, Ord)
 
 -- the fn least presupposes it is working with an already-balanced Merkle tree
 
@@ -149,7 +149,7 @@ least (Branch _ ll _) = dataHash ll
 least (Parent _ lb _) = leastHash lb
 
 data BalancedBranch a = BB { leastHash :: Hash, branch :: Branch a }
-   deriving (Eq, Ord, Show)
+   deriving (Eq, Ord)
 
 data Leaf a = Leaf { dataHash :: Hash, packet :: a }
    deriving (Eq, Ord, Show)
