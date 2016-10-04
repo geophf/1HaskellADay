@@ -126,7 +126,7 @@ Let's do this.
 --}
 
 data MerkleTree a = Merkle { root :: Branch a }
-   deriving (Eq, Ord)
+   deriving (Eq, Ord, Show)
 
 {-- moved to Data.BlockChain.Block.Types
 
@@ -141,6 +141,11 @@ data Branch a = Parent { hashID :: Hash, leftBr, rightBr :: BalancedBranch a }
                        -- least hash is (dataHash . soleLf)
    deriving (Eq, Ord)
 
+instance Show (Branch a) where
+   show (Parent _ _ _) = "Parent"
+   show (Branch _ _ _) = "Branch"
+   show (Twig _ _) = "Twig"
+
 -- the fn least presupposes it is working with an already-balanced Merkle tree
 
 least :: Branch a -> Hash
@@ -150,6 +155,9 @@ least (Parent _ lb _) = leastHash lb
 
 data BalancedBranch a = BB { leastHash :: Hash, branch :: Branch a }
    deriving (Eq, Ord)
+
+-- n.b.: show instance for BalancedBranch is unnecessary, as this is a helper
+-- type to Branch a
 
 data Leaf a = Leaf { dataHash :: Hash, packet :: a }
    deriving (Eq, Ord, Show)
@@ -301,3 +309,13 @@ fromList :: [Leaf a] -> MerkleTree a
 fromList = uncurry (foldr insertLeaf) . (Merkle . mkbranch1 . head &&& tail)
 
 -- n.b. must be non-empty list, because there's no empty MerkleTree.
+
+-- FOLDABLE -----------------------------------------------------------------
+
+instance Foldable MerkleTree where
+   foldr f z = foldr f z . root
+
+instance Foldable Branch where
+   foldr f z (Twig _ (Leaf _ v)) = f v z
+   foldr f z (Branch _ (Leaf _ v1) (Leaf _ v2)) = f v1 (f v2 z)
+   foldr f z (Parent _ bb1 bb2) = foldr f (foldr f z (branch bb1)) (branch bb2)
