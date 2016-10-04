@@ -219,7 +219,7 @@ Leaf {dataHash = "dbac60c56454dcaeb65c55a4bde851372b56946725874af914475b12c3308a
                     outs = [("1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY",BTC 12.55)]}}
 
 *Y2016.M09.D19.Solution> let merk = fromList trds
-*Y2016.M09.D19.Solution> getGraphResponse ("http://neo4j:1234F0ul@127.0.0.1:7474/" ++ transaction)
+*Y2016.M09.D19.Solution> getGraphResponse ("http://neo4j:password@127.0.0.1:7474/" ++ transaction)
                                   (map (mkCypher "a" "rel" "b") (merkAsRel merk))
 "{\"results\":[{\"columns\":[],\"data\":[]},{\"columns\":[],\"data\":[]},...],\"errors\":[]}\n"
 
@@ -228,7 +228,7 @@ graph database, we can load in the transactions and they will be liked in,
 automagically!
 
 *Y2016.M09.D19.Solution Graph.Query> getGraphResponse
-                     ("http://neo4j:1234F0ul@127.0.0.1:7474/" ++ transaction) 
+                     ("http://neo4j:password@127.0.0.1:7474/" ++ transaction) 
                      (map (mkCypher "a" "rel" "b") 
                           (concatMap (trade2relations . packet) trds))
 ... \"errors\":[]}\n"
