@@ -18,6 +18,8 @@ import Data.BlockChain.Block.Transactions (Transaction)
 import Data.BlockChain.Block.Types (Hash)
 import Data.Tree.Merkle (MerkleTree)
 
+import Y2016.M09.D22.Exercise (latestTransactions)
+
 {--
 So, with the end-goal in sight, that is: to have the same Merkle tree everywhere,
 we'd like to inject some realistic raison d'etre, some sine qua non, some
