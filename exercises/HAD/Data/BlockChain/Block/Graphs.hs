@@ -8,7 +8,6 @@ import Data.Function (on)
 import Data.List (sortBy)
 import Data.Maybe (mapMaybe)
 import Data.Ord
-import Data.Time.Clock.POSIX (posixSecondsToUTCTime)
 import Data.Time.LocalTime
 
 -- below imports available from 1HaskellADay git repository
@@ -19,6 +18,7 @@ import Data.BlockChain.Block.Blocks hiding (time)
 import Data.BlockChain.Block.Summary hiding (time)
 import Data.BlockChain.Block.Transactions hiding (sequence)
 import Data.BlockChain.Block.Types
+import Data.BlockChain.Block.Utils (est2time, val2BTC)
 
 import Data.Monetary.BitCoin
 import qualified Data.Monetary.Currency as BTC
@@ -69,19 +69,13 @@ outputs with a BTC (BitCoin) value for each output. Use the transactions from
 the latestSummary.
 --}
 
-val2BTC :: Integer -> BitCoin
-val2BTC = BTC . (/ 100000000) . fromIntegral
-
--- *Y2016.M09.D23.Solution> val2BTC 1302390887 ~> BTC 13.02
-
 data Trade = Trd { tradeHash :: Hash, executed :: LocalTime,
                    ins :: [Maybe Hash], outs :: [(Hash, BitCoin)] }
    deriving (Eq, Ord, Show)
 
 tx2trade :: Transaction -> Trade
 tx2trade tx = Trd (hashCode tx)
-                  (utcToLocalTime (TimeZone (negate 300) False "EST")
-                                . posixSecondsToUTCTime . fromIntegral $ time tx)
+                  (est2time $ time tx)
                   (map (prevOut >=> addr) (inputs tx))
                   (mapMaybe (\o -> fmap (,val2BTC (value o)) (addr o)) (out tx))
 
