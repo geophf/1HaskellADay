@@ -11,9 +11,18 @@ import Data.Monetary.BitCoin
 
 -- Converting POSIX int to LocalTime (my timezone. You can get your own)
 
-int2time :: Integer -> LocalTime
-int2time = utcToLocalTime (TimeZone (negate 300) False "EST")
-               . posixSecondsToUTCTime . fromIntegral
+est2time :: Integer -> LocalTime
+est2time = int2time est
+
+-- Okay, okay! Here's the generic form:
+
+int2time :: TimeZone -> Integer -> LocalTime
+int2time tz = utcToLocalTime est . posixSecondsToUTCTime . fromIntegral
+
+-- and MY timezone. YOU can get your own!
+
+est :: TimeZone
+est = TimeZone (negate 300) False "EST"
 
 -- Converting 'value'-value (big-int) to BTC
 
