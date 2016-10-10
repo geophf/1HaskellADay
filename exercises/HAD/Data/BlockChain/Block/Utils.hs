@@ -28,3 +28,5 @@ est = TimeZone (negate 300) False "EST"
 
 val2BTC :: Integer -> BitCoin
 val2BTC = BTC . (/ 100000000) . fromIntegral
+
+-- *Y2016.M09.D23.Solution> val2BTC 1302390887 ~> BTC 13.02
