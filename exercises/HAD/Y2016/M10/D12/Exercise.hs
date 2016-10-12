@@ -46,3 +46,7 @@ tabluate :: Rasa a => [Attribute] -> [Element] -> [a] -> Element
 tabluate attribs headers rows = undefined
 
 -- Download the blocks for today and show the block info as an HTML table
+
+-- You do get the joke today, I hope.
+-- tabluate :: Rasa
+-- Right?
