@@ -91,3 +91,25 @@ instance (XML headElts, XML bodyElts) => XML (Document headElts bodyElts) where
       Elt "html" [] [E (Elt "head" [] (map (E . rep) heads)),
                      E (Elt "body" [] (map (E . rep) bods))]
    kind doc = "xmldocument"
+
+-- Now we need a way to represent rows of some data type as an HTML table:
+
+class Rasa a where
+   printRow :: a -> Element
+
+{--
+Great. Now that you have that, define a function tabluate that takes a list of
+Attributes, a list of Elements that preceed the table body, and a list of Rasa
+values and returns an HTML TABLE element that packages them all together.
+
+So, if BlockInfo were a Rasa instance then
+
+tabluate [Attrib "border" "1"] [table header for columns Hash and Time]
+         [BlockInfo 13 "adkfjkjhfa" 1399482, BlockInfo 227 "adfjkhdf" 1400122]
+
+would give an HTML table that would output the BlockInfo values in rows with
+their data in the appropriately labeled columns.
+--}
+
+tabluate :: Rasa a => [Attribute] -> [Element] -> [a] -> Element
+tabluate attribs headers rows = undefined
