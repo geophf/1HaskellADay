@@ -66,4 +66,6 @@ tabluate attribs headers rows =
       (blocks blks)
 *Y2016.M10.D12.Solution> writeFile "Y2016/M10/D12/table.html" 
            (show (rep (Doc [Elt "title" [] [S "Today's Blocks"]] [table])))
+
+Moving Rasa and tabulate to Data.XHTML
 --}
