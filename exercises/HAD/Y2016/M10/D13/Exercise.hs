@@ -16,7 +16,7 @@ just what joggers do: they record data.
 Ismael has recorded his daily running entries into ActivityLog.csv in this
 directory which is also available from this URL:
 
-xxx
+https://raw.githubusercontent.com/geophf/1HaskellADay/master/exercises/HAD/Y2016/M10/D13/ActivityLog.csv
 
 Read in these rows and answer the below questions.
 --}
