@@ -110,12 +110,13 @@ instance Rasa BlockInfo where
                        [E (Elt "a" [Attrib "href" ("http://127.0.0.1/block/" ++ hash)] [S hash]),
                         S . show $ est2time t])
 
-tabluate [Attrib "border" "1"] [table header for columns Hash and Time]
+tabulate [Attrib "border" "1"] [table header for columns Hash and Time]
          [BlockInfo 13 "adkfjkjhfa" 1399482, BlockInfo 227 "adfjkhdf" 1400122]
 
 would give an HTML table that would output the BlockInfo values in rows with
 their data in the appropriately labeled columns.
 --}
 
-tabluate :: Rasa a => [Attribute] -> [Element] -> [a] -> Element
-tabluate attribs headers rows = undefined
+tabulate :: Rasa a => [Attribute] -> [Element] -> [a] -> Element
+tabulate attribs headers rows =
+   Elt "table" attribs (map E (headers ++ map printRow rows))
