@@ -15,6 +15,7 @@ import Network.Socket
 -- below import available on 1HaskellADay git repository
 
 import Data.BlockChain.Block.Types
+import Data.BlockChain.Block.Utils
 
 {--
 Last Friday we looked at reading in a summary of a Block of the block chain.
@@ -35,6 +36,8 @@ data Transaction =
         time, txIndex, vInSize, vOutSize :: Integer, hashCode :: Hash,
         relayedBy :: HostName, out :: [Output] }
       deriving (Eq, Ord, Show)
+
+instance Sheesh Transaction where hash = hashCode
 
 instance FromJSON Transaction where
    parseJSON (Object o) = TX <$> o .: "lock_time"  <*> o .: "ver"
