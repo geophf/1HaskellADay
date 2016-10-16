@@ -125,3 +125,8 @@ tabulate attribs headers rows =
 
 thdrs :: [String] -> Element
 thdrs = Elt "tr" [] . map (E . Elt "th" [] . pure . S)
+
+-- and for making table rows...
+
+tr :: [Content] -> Element
+tr = Elt "tr" [] . map (E . Elt "td" [] . pure)
