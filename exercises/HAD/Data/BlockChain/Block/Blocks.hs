@@ -42,6 +42,9 @@ data Block = Block { blockhash :: Hash, ver :: Integer, prevBlock :: String,
                      tx :: [Transaction] }
    deriving (Eq, Ord, Show)
 
+instance Sheesh Block where
+   hash = blockhash
+
 instance FromJSON Block where
    parseJSON (Object o) = Block <$> o .: "hash"        <*> o .: "ver"
                                 <*> o .: "prev_block"  <*> o .: "mrkl_root"
