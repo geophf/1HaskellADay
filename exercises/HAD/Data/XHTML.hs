@@ -120,3 +120,8 @@ their data in the appropriately labeled columns.
 tabulate :: Rasa a => [Attribute] -> [Element] -> [a] -> Element
 tabulate attribs headers rows =
    Elt "table" attribs (map E (headers ++ map printRow rows))
+
+-- this is a useful function to give a table a set of column headers:
+
+thdrs :: [String] -> Element
+thdrs = Elt "tr" [] . map (E . Elt "th" [] . pure . S)

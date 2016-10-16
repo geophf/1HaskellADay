@@ -195,8 +195,8 @@ instance Show d => Rasa (Entry d) where
          map (E . Elt "td" [] . pure . S) [show m, show p, show w])
 
 asHTMLTable :: ActivityLog KM -> Element      -- for our Metricized friends
-asHTMLTable = tabulate [Attrib "border" "1"]
-   [Elt "tr" [] (map (E . Elt "th" [] . pure . S) (words "date KM pace weight"))]
+asHTMLTable =
+   tabulate [Attrib "border" "1"] [thdrs (words "date KM pace weight")]
    . Map.elems
 
 {--
