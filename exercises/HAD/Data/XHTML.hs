@@ -102,7 +102,13 @@ Great. Now that you have that, define a function tabluate that takes a list of
 Attributes, a list of Elements that preceed the table body, and a list of Rasa
 values and returns an HTML TABLE element that packages them all together.
 
-So, if BlockInfo were a Rasa instance then
+So, if BlockInfo were a Rasa instance, e.g.:
+
+instance Rasa BlockInfo where
+   printRow (BlockInfo ht hash time) = 
+      Elt "tr" [] (map (Elt "td" [] . pure)
+                       [E (Elt "a" [Attrib "href" ("http://127.0.0.1/block/" ++ hash)] [S hash]),
+                        S . show $ est2time t])
 
 tabluate [Attrib "border" "1"] [table header for columns Hash and Time]
          [BlockInfo 13 "adkfjkjhfa" 1399482, BlockInfo 227 "adfjkhdf" 1400122]
