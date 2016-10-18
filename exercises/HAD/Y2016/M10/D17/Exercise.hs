@@ -37,7 +37,7 @@ data Prices = Price { leaders, losers :: Set Stock }
 
 type Hist = Map Day Prices
 
-readPrices :: FilePath -> Hist
+readPrices :: FilePath -> IO Hist
 readPrices file = undefined
 
 -- Now.
