@@ -16,13 +16,13 @@ genReport :: TestRun -> [String]
 genReport (ROFF proj t s f e i) =
    let p = s - f - e - i in
    ["-- REPORT " ++ replicate 65 '-', "",
-    "Test Case Overview:     " ++ proj, "",
-    "Total Tests:            " ++ show t,
-    "Total Started:          " ++ show s,
-    "Total Passed:           " ++ show p,
-    "Total Failures:         " ++ show f,
-    "Total Errors:           " ++ show e,
-    "Total Ignored:          " ++ show i, "",
+    "Test Case Overview:," ++ proj, "",
+    "Total Tests:," ++ show t,
+    "Total Started:," ++ show s,
+    "Total Passed:," ++ show p,
+    "Total Failures:," ++ show f,
+    "Total Errors:," ++ show e,
+    "Total Ignored:," ++ show i, "",
     if s == p then "All unit test cases passed."
     else "WAIT! WHAT? YOU'RE ALL FIRED!", "",
     "-- END-REPORT " ++ replicate 61 '-', ""]
