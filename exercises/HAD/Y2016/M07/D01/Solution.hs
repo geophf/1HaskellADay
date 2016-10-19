@@ -31,15 +31,16 @@ then to write out the unit tests as CSV rows as test.csv
 junitXML2CSV :: FilePath -> IO ()
 junitXML2CSV =
    readFile >=> mapM_ (putStrLn . intercalate ",")
-              . (attribs:)
+              . (columnHeaders:)
               . map extractAttribs
               . filter (isTagOpenName "testcase") . parseTags
 
 extractAttribs :: Tag String -> [String]
 extractAttribs tag = [fromAttrib] <*> attribs <*> [tag]
 
-attribs :: [String]
+attribs, columnHeaders :: [String]
 attribs = words "name classname time"
+columnHeaders = ["Test Name","Class Tested","Test Execution Time"]
 
 {--
 *Y2016.M07.D01.Exercise> junitXML2CSV "Y2016/M07/D01/test.xml" 
