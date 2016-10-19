@@ -1,12 +1,10 @@
 module Graph.ScoreCard where
 
--- http://lpaste.net/7322735479504240640
-
 import Control.Arrow
 import Data.Array
 import Data.List (transpose)
 
-import Control.List (minmax)           -- http://lpaste.net/107211
+import Control.List (minmax)
 
 {-- A solution to the problem posted at http://lpaste.net/4278240752024158208
 @1HaskellADay solution for 2016-03-11
