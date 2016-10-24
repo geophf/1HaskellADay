@@ -14,11 +14,13 @@ import Control.DList                            -- http://lpaste.net/107607
 import Control.Logic.Frege ((<<-), adjoin)      -- http://lpaste.net/111101
 import Graph.ScoreCard                  -- http://lpaste.net/7322735479504240640
 
+{--
 -- the below imports are for demonstrating k-means clustering with Top5s stocks
 
 import Graph.Query                      -- http://lpaste.net/6813513488191717376
 import Graph.ScoreCard.Loader           -- http://lpaste.net/1163865820011429888
 import Graph.Top5sAppearances           -- http://lpaste.net/4928100283508064256
+--}
 
 {-- A solution to the problem posted at http://lpaste.net/5690415111206862848
 @1HaskellADay solution for 2016-03-25
