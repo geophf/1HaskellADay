@@ -2,17 +2,15 @@
 
 module Graph.KMeans where
 
--- http://lpaste.net/3576182129349885952
-
 import Control.Arrow
 import Data.Array
 import Data.Map (Map)
 import qualified Data.Map as Map
 import Data.Monoid
 
-import Control.DList                            -- http://lpaste.net/107607
-import Control.Logic.Frege ((<<-), adjoin)      -- http://lpaste.net/111101
-import Graph.ScoreCard                  -- http://lpaste.net/7322735479504240640
+import Control.DList
+import Control.Logic.Frege ((<<-), adjoin)
+import Graph.ScoreCard
 
 {--
 -- the below imports are for demonstrating k-means clustering with Top5s stocks
