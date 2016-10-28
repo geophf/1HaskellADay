@@ -93,7 +93,13 @@ computeClusterCenter :: (Ix b, Fractional c) => SCCluster a b c -> Center b c
 -- we ... 'assume' all vectors are of uniform length, so we can just put
 -- them into a matrix and mean them
 
-computeClusterCenter (map values . dlToList . snd -> arrs@(samp:_)) =
+-- We need, however, to manage the case of clusters of size 1:
+
+computeClusterCenter (map values . dlToList . snd -> arrs) = ccc' arrs
+
+ccc' :: (Ix b, Fractional c) => [Array b c] -> Center b c
+ccc' [arr] = arr
+ccc' arrs@(samp:_) =
    listArray (bounds samp)
              ((uncurry map . first (flip (/))) (sumDown (map elems arrs)))
 
