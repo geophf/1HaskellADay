@@ -44,8 +44,8 @@ afollower = undefined
 -- 3. List the users by the ratio of followers to following. You figure out what
 -- ratio and which ordering makes sense to you for your data mining wizardry.
 
-arationing :: Users -> [User]
-arationing = undefined
+arational :: Users -> [User]
+arational = undefined
 
 {--
 Now, why the DYI-theme this week?
