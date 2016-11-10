@@ -44,6 +44,13 @@ f <<- g = (f .) . g
 adjoin :: Arrow a => a b c -> a (b, b) (c, c)
 adjoin = join (***)
 
+-- uncurry g . curry (adjoin f) occurs so often it needs it's own function
+
+natx :: (b -> b -> c) -> (a -> b) -> a -> a -> c
+natx g f = uncurry g <<- curry (adjoin f)
+
+-- This common function just so happens to be called a natural transformation!
+
 -- Now for the pattern monad m >>= \x -> guard (p x) >> return x
 
 assert :: MonadPlus m => (a -> Bool) -> a -> m a
