@@ -36,7 +36,7 @@ look at this question tomorrow. Not today.
 
 data Users = StructureOfUsersMentionedInTwitterInfoJSON
 data Entities = SomeEntityStructureYouDefineWhichIncludes Users
-data Status = SomeStatusStructure
+data Status = SomeStatusStructureIncluding Entities
 data TweepInfo = SomeStructureYouDefine Status
 
 instance FromJSON TweepInfo where
