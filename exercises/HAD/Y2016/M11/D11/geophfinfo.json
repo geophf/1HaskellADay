@@ -1,0 +1,166 @@
+[
+    {
+        "id": 81457442,
+        "id_str": "81457442",
+        "name": "geophf \u0646",
+        "screen_name": "geophf",
+        "location": "Back East, U.S.A.",
+        "description": "Ultra-reactionary, but not conservative\nBleeding heart, but not liberal\nPater Familias: Priest, prophet and king of my family\nYes, a patriarch\nMaronite Catholic",
+        "url": "http:\/\/t.co\/mTBw39uC8A",
+        "entities": {
+            "url": {
+                "urls": [
+                    {
+                        "url": "http:\/\/t.co\/mTBw39uC8A",
+                        "expanded_url": "http:\/\/logicaltypes.blogspot.com",
+                        "display_url": "logicaltypes.blogspot.com",
+                        "indices": [
+                            0,
+                            22
+                        ]
+                    }
+                ]
+            },
+            "description": {
+                "urls": []
+            }
+        },
+        "protected": false,
+        "followers_count": 2129,
+        "friends_count": 1675,
+        "listed_count": 385,
+        "created_at": "Sat Oct 10 22:38:55 +0000 2009",
+        "favourites_count": 30832,
+        "utc_offset": -18000,
+        "time_zone": "Quito",
+        "geo_enabled": true,
+        "verified": false,
+        "statuses_count": 79076,
+        "lang": "en",
+        "status": {
+            "created_at": "Thu Nov 10 16:00:19 +0000 2016",
+            "id": 796744304932876288,
+            "id_str": "796744304932876288",
+            "text": "@ACatholicPrayer @KChasie I love Ps 51. I recite it every day of Lent.\nhttps:\/\/t.co\/8RPXexSknv\nMiserere, Arvo P\u00e4rt,\u2026 https:\/\/t.co\/yE9Au3PG8O",
+            "truncated": true,
+            "entities": {
+                "hashtags": [],
+                "symbols": [],
+                "user_mentions": [
+                    {
+                        "screen_name": "ACatholicPrayer",
+                        "name": "CatholicPrayer",
+                        "id": 377775232,
+                        "id_str": "377775232",
+                        "indices": [
+                            0,
+                            16
+                        ]
+                    },
+                    {
+                        "screen_name": "KChasie",
+                        "name": "Kevingutuo chasie",
+                        "id": 4495736686,
+                        "id_str": "4495736686",
+                        "indices": [
+                            17,
+                            25
+                        ]
+                    }
+                ],
+                "urls": [
+                    {
+                        "url": "https:\/\/t.co\/8RPXexSknv",
+                        "expanded_url": "https:\/\/www.youtube.com\/watch?v=OCgL9g0PicE",
+                        "display_url": "youtube.com\/watch?v=OCgL9g\u2026",
+                        "indices": [
+                            71,
+                            94
+                        ]
+                    },
+                    {
+                        "url": "https:\/\/t.co\/yE9Au3PG8O",
+                        "expanded_url": "https:\/\/twitter.com\/i\/web\/status\/796744304932876288",
+                        "display_url": "twitter.com\/i\/web\/status\/7\u2026",
+                        "indices": [
+                            117,
+                            140
+                        ]
+                    }
+                ]
+            },
+            "source": "<a href=\"http:\/\/twitter.com\" rel=\"nofollow\">Twitter Web Client<\/a>",
+            "in_reply_to_status_id": 796740020115738626,
+            "in_reply_to_status_id_str": "796740020115738626",
+            "in_reply_to_user_id": 377775232,
+            "in_reply_to_user_id_str": "377775232",
+            "in_reply_to_screen_name": "ACatholicPrayer",
+            "geo": null,
+            "coordinates": null,
+            "place": {
+                "id": "4dad272dba156a02",
+                "url": "https:\/\/api.twitter.com\/1.1\/geo\/id\/4dad272dba156a02.json",
+                "place_type": "city",
+                "name": "Annandale",
+                "full_name": "Annandale, VA",
+                "country_code": "US",
+                "country": "United States",
+                "contained_within": [],
+                "bounding_box": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [
+                                -77.262146,
+                                38.811091
+                            ],
+                            [
+                                -77.157684,
+                                38.811091
+                            ],
+                            [
+                                -77.157684,
+                                38.865962
+                            ],
+                            [
+                                -77.262146,
+                                38.865962
+                            ]
+                        ]
+                    ]
+                },
+                "attributes": {}
+            },
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 0,
+            "favorite_count": 0,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "en"
+        },
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "642D8B",
+        "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme10\/bg.gif",
+        "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme10\/bg.gif",
+        "profile_background_tile": true,
+        "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/463717122\/fear_normal.jpg",
+        "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/463717122\/fear_normal.jpg",
+        "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/81457442\/1429367288",
+        "profile_link_color": "FF0000",
+        "profile_sidebar_border_color": "000000",
+        "profile_sidebar_fill_color": "7AC3EE",
+        "profile_text_color": "3D1957",
+        "profile_use_background_image": true,
+        "has_extended_profile": true,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false,
+        "translator_type": "none"
+    }
+]
