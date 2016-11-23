@@ -1,8 +1,22 @@
-module Y2016.M11.D22.Exercise where
+module Y2016.M11.D22.Solution where
 
-import Data.Time
+import Control.Arrow (second, (&&&))
+import Data.Function (on)
+import Data.List (sortBy)
 import Data.Map (Map)
 import qualified Data.Map as Map
+import Data.Monoid (getSum)
+import Data.Ord
+
+import Data.Time
+import Data.Time.Clock
+
+-- below imports available from 1HaskellADay git repository
+
+import Control.Logic.Frege ((<<-))
+import Data.Bag
+
+import Y2016.M11.D21.Solution (daysLeft)
 
 {--
 SO MUCH happening in the month of November!
@@ -53,10 +67,23 @@ activities = Map.fromList [("capture portal", 1250), ("Place resonator", 625),
 -- As yesterday:
 -- 1. How many points does player1 need to reach level 13?
 
+need :: Score -> Score -> Score
+need = (-)
+
+-- *Y2016.M11.D22.Solution> need level13 player1 ~> 710021
+
 -- 2. How many days does player1 have to reach that goal, ... given that
 --    'today' is 'today'.
 
+-- (same definition as yesterday suffices)
+-- *Y2016.M11.D22.Solution> daysLeft ~> 8
+
 -- 3. How many points per day does player1 have to maintain to reach level 13?
+
+pointsPerDay :: ΔScore -> Days -> Score
+pointsPerDay = div
+
+-- *Y2016.M11.D22.Solution> fmap (pointsPerDay (need level13 player1) . fromIntegral) daysLeft ~> 88752
 
 {-- BONUS -----------------------------------------------------------------
 
@@ -68,4 +95,21 @@ type ΔScore = Int
 type Count = Int
 
 level13DailyActivitySet :: Days -> ΔScore -> [(Count, Activity)]
-level13DailyActivitySet daysLeft scoreDiff = undefined
+level13DailyActivitySet =
+   bagit . lvl13Goal (sorted (Map.toList activities)) <<- flip pointsPerDay
+
+lvl13Goal :: [(Activity, Score)] -> ΔScore -> [Activity]
+lvl13Goal [] score = [] -- error ("We have " ++ show score ++ " points to go!")
+lvl13Goal list@((act, scor):rest) score =
+   if score < 1 then [] else
+   if scor > score then lvl13Goal rest score
+   else act : lvl13Goal list (score - scor)
+
+sorted :: [(a, Int)] -> [(a, Int)]
+sorted = sortBy (compare `on` Down . snd)
+
+bagit :: [Activity] -> [(Count, Activity)]
+bagit = map (swap . second getSum) . rank . fromList
+
+swap :: (a, b) -> (b, a)
+swap = snd &&& fst
