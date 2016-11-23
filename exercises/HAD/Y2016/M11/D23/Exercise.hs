@@ -45,8 +45,8 @@ Chart the above projection using your favorite charting software
 
 --}
 
-chartSeries :: FilePath -> [(x, y)] -> IO ()
-chartSeries chartFile series = undefined
+chartSeries :: FilePath -> [(x, y)] -> y -> IO ()
+chartSeries chartFile series limit = undefined
 
 {-- THOUGHT --------------------------------------------------------------
 
