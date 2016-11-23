@@ -14,7 +14,7 @@ import Data.Time.Clock
 -- below imports available from 1HaskellADay git repository
 
 import Control.Logic.Frege ((<<-))
-import Data.Bag
+import Data.Bag (fromList, rank)
 
 import Y2016.M11.D21.Solution (daysLeft)
 
