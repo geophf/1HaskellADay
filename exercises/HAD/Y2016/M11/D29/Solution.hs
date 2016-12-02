@@ -1,11 +1,12 @@
 module Y2016.M11.D29.Solution where
 
-import Control.Arrow ((&&&))
+import Control.Arrow ((&&&), second)
 import Data.Time
 
 -- below imports is available at 1HaskellADay git repository
 
 import Control.List (weave)
+import Control.Presentation (laxmi)
 import Control.Scan.CSV (csv)
 import Y2016.M11.D28.Solution
 
@@ -67,20 +68,22 @@ data points along with the fitted curve using the µgain.
 Good fit of data? Show your results.
 --}
 
-chartProgression :: FilePath -> [(Day, Score)] -> IO ()
+chartProgression :: Show a => FilePath -> [(a, Rational)] -> IO ()
 chartProgression outputfile dailyscores = writeFile outputfile .
    unlines . ("Date,Score,Fitted Score":) $ extension dailyscores
 
-extension :: Show a => [(a, Score)] -> [String]
+extension :: Show a => [(a, Rational)] -> [String]
 extension scores@((_, score):_) =
-   ext scores score (floor $ µgain (map (toRational . snd) scores))
+   ext scores (toRational score) (µgain (map (toRational . snd) scores))
 
-ext :: Show a => [(a, Score)] -> Score -> Score -> [String]
+ext :: Show a => [(a, Rational)] -> Rational -> Rational -> [String]
 ext [] _ _ = []
-ext ((d,s):rest) score add = weave [show d, show s, show score]
+ext ((d,s):rest) score add = weave [show d, lax s, lax score]
    :ext rest (score + add) add
+      where lax = laxmi 2
 
 {--
 *Y2016.M11.D29.Solution> readDailyScores "Y2016/M11/D29/scores.csv"       >>=
                          chartProgression "Y2016/M11/D29/progression.csv"
+                       . map (second toRational)
 --}
