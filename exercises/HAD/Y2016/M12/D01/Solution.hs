@@ -52,4 +52,10 @@ Let's see.
 chartBTC :: FilePath -> BitCoinPrices -> IO ()
 chartBTC outfile = chartProgression outfile . Map.toList . Map.map value
 
--- we'll look at other curve fitting algorithms, but not today.
+{--
+*Y2016.M12.D01.Solution>
+    btcPriceHistoryFromURL "Y2016/M12/D01/market-price-btc.csv" >>=
+    chartBTC "Y2016/M12/D01/btcprices.csv"
+
+We'll look at other curve fitting algorithms, but not today.
+--}
