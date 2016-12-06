@@ -112,4 +112,8 @@ tuples2Str (d,(u,(sma12,sma26))) = weave (show d:map show [u,sma12,sma26])
 *Y2016.M12.D05.Solution> btcPriceHistoryFromURL "Y2016/M12/D01/market-price-btc.csv" >>= btcSMA12and26 "Y2016/M12/D05/btcSMAs12and26.csv"
 
 The ol' reverse-compute-reverse-trick worked! AHA!
+
+You see, looking at the resulting chart, that the SMA 12 follows the data-points
+more closely and is therefore more reactive, and the SMA 26 follows the data-
+points, but in a more sluggish manner and is therefore the 'smoother' curve.
 --}
