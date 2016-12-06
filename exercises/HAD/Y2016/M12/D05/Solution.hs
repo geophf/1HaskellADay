@@ -120,16 +120,17 @@ computeSMAs = uncurry zip . second (reverse . computeSMAs' . reverse) . unzip
 
 -- computeSMAs, as written, is actually a metafunction that formats the data 
 -- for use by the 'actual' function to do the work. Let's, then, generalize
--- this function
+-- this function. And I overthought projecting forward through time. As these
+-- data points are chronologically-arrayed, we are already projecting forward
+-- so the reverse . f . reverse contortions are unnecessary (and wrong).
 
 project :: ([n] -> [m]) -> [(a, n)] -> [(a, m)]
-project f = uncurry zip . second (reverse . f . reverse) . unzip
-
+project f = uncurry zip . second f . unzip
 
 -- project makes the very big assumption that the input list is a chronologically-
 -- ordered time-series. We control this by Map.toList on the BitCoinPrices
 -- value, but we could also require this by tightening up the types so that
--- reverse . f . reverse means what we say, not what we hope.
+-- second f means what we say, not what we hope.
 
 -- But then do we get TOO specific with the types and render project unusable
 -- for whole classes of problems? This is my conundrum.
