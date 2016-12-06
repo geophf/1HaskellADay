@@ -163,7 +163,7 @@ tuples2Str (d,(u,(lo,hi))) = weave (show d:map show [u,lo,hi])
 
 The ol' reverse-compute-reverse-trick worked! AHA!
 
-You see, looking at the resulting chart, that the SMA 12 follows the data-points
-more closely and is therefore more reactive, and the SMA 26 follows the data-
+You see, looking at the resulting chart, that the SMA 15 follows the data-points
+more closely and is therefore more reactive, and the SMA 50 follows the data-
 points, but in a more sluggish manner and is therefore the 'smoother' curve.
 --}
