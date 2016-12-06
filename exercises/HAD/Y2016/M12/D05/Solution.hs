@@ -101,8 +101,7 @@ btcSMA15and50 outfile =
 
 -- a generalization of the above function for any paired technical analyses:
 
-btcAnalyses :: String -> ([USD] -> [Indicators USD])
-            -> FilePath -> BitCoinPrices -> IO ()
+btcAnalyses :: String -> ([USD] -> [Indicators USD]) -> FilePath -> BitCoinPrices -> IO ()
 btcAnalyses indicatorNames indfns outfile =
    writeFile outfile . unlines . (("Date,BTC Price," ++ indicatorNames) :)
                      . map tuples2Str . project indfns . Map.toList
@@ -120,7 +119,7 @@ computeSMAs = uncurry zip . second (reverse . computeSMAs' . reverse) . unzip
 --}
 
 -- computeSMAs, as written, is actually a metafunction that formats the data 
--- for use by the 'actual' function to do the work. Let's, then generalize, 
+-- for use by the 'actual' function to do the work. Let's, then, generalize
 -- this function
 
 project :: ([n] -> [m]) -> [(a, n)] -> [(a, m)]
