@@ -8,7 +8,7 @@ import Data.Time
 -- below import available via 1HaskellADay git repository
 
 import Control.List  -- for weave and List Comonad
-import Control.Logic.Frege ((<<-))
+import Control.Logic.Frege ((<<-), adjoin)
 import Data.Monetary.BitCoin
 import Data.Monetary.USD
 
@@ -58,7 +58,7 @@ it follows the same process.
 
 --}
 
-sma :: (Fractional a, Num a) => Int -> [a] -> a
+sma :: Fractional a => Int -> [a] -> a
 sma = uncurry (/) . (sum &&& fromIntegral . length) <<- take
 
 -- as you can see from the signature, sma is comonadic, and that's how we'll
@@ -73,7 +73,9 @@ estimators. Well, that's hard to say without experience as a guide. In the
 stock markets, analysts agree that SMA 12 and SMA 26 are both good forecasting
 tools.
 
-Apply both SMA 12 and SMA 26 to a year of the historical BitCoin prices. What 
+CORRECTION: SMA 15 and 50 are considered to be good indicators
+
+Apply both SMA 15 and SMA 50 to a year of the historical BitCoin prices. What 
 are the results that you see?
 
 The historical BitCoin prices are available at the URL 
@@ -87,29 +89,78 @@ https://raw.githubusercontent.com/geophf/1HaskellADay/master/exercises/HAD/Y2016
 (including the mean gain prices, which you may ignore if you wish)
 --}
 
-btcSMA12and26 :: FilePath -> BitCoinPrices -> IO ()
-btcSMA12and26 outfile =
-   writeFile outfile . unlines . ("Date,BTC Price,SMA 12, SMA 26" :)
-                     . map tuples2Str . computeSMAs . Map.toList
-
 -- Actually, price HISTORY analyses goes FORWARD through time, which means
 -- it goes BACKWARDS through the list of chronologically-ascending values
 
-type PriceSMAs = (USD, (USD, USD))
+{--
+btcSMA15and50 :: FilePath -> BitCoinPrices -> IO ()
+btcSMA15and50 outfile =
+   writeFile outfile . unlines . ("Date,BTC Price,SMA 15,SMA 50" :)
+                     . map tuples2Str . project computeSMAs . Map.toList
+--}
 
+-- a generalization of the above function for any paired technical analyses:
+
+btcAnalyses :: String -> ([USD] -> [Indicators USD])
+            -> FilePath -> BitCoinPrices -> IO ()
+btcAnalyses indicatorNames indfns outfile =
+   writeFile outfile . unlines . (("Date,BTC Price," ++ indicatorNames) :)
+                     . map tuples2Str . project indfns . Map.toList
+
+-- allowing us to write the processor function:
+
+btcSMA15and50 :: FilePath -> BitCoinPrices -> IO ()
+btcSMA15and50 = btcAnalyses "SMA 15,SMA 50" computeSMAs
+
+type Indicators a = (a, (a, a))
+
+{--
 computeSMAs :: [(Day, USD)] -> [(Day, PriceSMAs)]
 computeSMAs = uncurry zip . second (reverse . computeSMAs' . reverse) . unzip
+--}
+
+-- computeSMAs, as written, is actually a metafunction that formats the data 
+-- for use by the 'actual' function to do the work. Let's, then generalize, 
+-- this function
+
+project :: ([n] -> [m]) -> [(a, n)] -> [(a, m)]
+project f = uncurry zip . second (reverse . f . reverse) . unzip
+
+
+-- project makes the very big assumption that the input list is a chronologically-
+-- ordered time-series. We control this by Map.toList on the BitCoinPrices
+-- value, but we could also require this by tightening up the types so that
+-- reverse . f . reverse means what we say, not what we hope.
+
+-- But then do we get TOO specific with the types and render project unusable
+-- for whole classes of problems? This is my conundrum.
 
 -- the computation over the list is simply an extension of the SMA
 
-computeSMAs' :: [USD] -> [PriceSMAs]
-computeSMAs' list = list =>> (extract &&& (sma 12 &&& sma 26))
+{--
+computeSMAs :: [USD] -> [Indicators USD]
+computeSMAs list = list =>> (extract &&& (sma 15 &&& sma 50))
+--}
 
-tuples2Str :: Show a => (a, PriceSMAs) -> String
-tuples2Str (d,(u,(sma12,sma26))) = weave (show d:map show [u,sma12,sma26])
+-- but this, too, is a specialization of a generalized function:
+
+extend2 :: ([a] -> a) -> ([a] -> a) -> [a] -> [Indicators a]
+extend2 f g history = history =>> (extract &&& (f &&& g))
+
+-- so then we simply write here:
+
+computeSMAs :: Fractional a => [a] -> [Indicators a]
+computeSMAs = uncurry extend2 (adjoin sma (15, 50))
+
+-- Then provide the results in printable form (CSV-format)
+
+tuples2Str :: (Show a, Show b) => (a, Indicators b) -> String
+tuples2Str (d,(u,(lo,hi))) = weave (show d:map show [u,lo,hi])
 
 {--
-*Y2016.M12.D05.Solution> btcPriceHistoryFromURL "Y2016/M12/D01/market-price-btc.csv" >>= btcSMA12and26 "Y2016/M12/D05/btcSMAs12and26.csv"
+*Y2016.M12.D05.Solution> 
+   btcPriceHistoryFromURL "Y2016/M12/D01/market-price-btc.csv" >>=
+   btcSMA15and50 "Y2016/M12/D05/btcSMAs15and50.csv"
 
 The ol' reverse-compute-reverse-trick worked! AHA!
 
