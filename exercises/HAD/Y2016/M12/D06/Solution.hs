@@ -1,6 +1,6 @@
 module Y2016.M12.D06.Solution where
 
-import Control.Arrow ((&&&), (***))
+import Control.Arrow ((&&&))
 
 -- below imports available from 1HaskellADay git repository
 
