@@ -145,7 +145,10 @@ computeSMAs list = list =>> (extract &&& (sma 15 &&& sma 50))
 -- but this, too, is a specialization of a generalized function:
 
 extend2 :: ([a] -> a) -> ([a] -> a) -> [a] -> [Indicators a]
-extend2 f g history = history =>> (extract &&& (f &&& g))
+extend2 f g history = reverse (reverse history =>> (extract &&& (f &&& g)))
+
+-- In 'backward-looking' extensional functions (such as sma), extend2
+-- needs the reverse . reverse to take 'back' into the history.
 
 -- so then we simply write here:
 
