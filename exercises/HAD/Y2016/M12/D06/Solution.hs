@@ -1,6 +1,6 @@
 module Y2016.M12.D06.Solution where
 
-import Control.Arrow ((&&&))
+import Control.Arrow ((&&&), (***))
 
 -- below imports available from 1HaskellADay git repository
 
@@ -64,6 +64,7 @@ ema n prevEMA = (prevEMA * (1 - α) +) . (α *) . head -- given the list never e
    where α = 2.0 / (1.0 + fromIntegral n)
 
 -- define ema
+
 -- question: is this the best approach, type-wise? As EMA is defined recursively
 -- should ema's declaration be Int -> [a] -> [a]? Or should the previous EMA
 -- be stored in, e.g. the State-monad? What is a good number for the first
@@ -71,27 +72,28 @@ ema n prevEMA = (prevEMA * (1 - α) +) . (α *) . head -- given the list never e
 
 -- Thoughts on this from type-theorists?
 
--- Now for the BitCoin Price history chart the historical prices against
+-- Now for the BitCoin Price history, chart the historical prices against
 -- EMA 12 and EMA 26, as you did yesterday for SMA
 
 btcEMA12and26 :: FilePath -> BitCoinPrices -> IO ()
 btcEMA12and26 = btcAnalyses "EMA 12,EMA 26" computeEMAs
 
+-- starter-function kicks off the computation with the first value as seed
+
 computeEMAs :: Fractional a => [a] -> [Indicators a]
-computeEMAs list@(first:rest) =
-   let prevs = emaApp (first, first) list in
-   (first, prevs):computeEMAs' prevs rest
+computeEMAs = uncurry computeEMAs' . ((head &&& head) &&& id)
+
+-- the worker-function inlines EMA computations into the time-series
 
 computeEMAs' :: Fractional a => (a, a) -> [a] -> [Indicators a]
 computeEMAs' _ [] = []
-computeEMAs' prevs list@(h:t) =
-   let nuance = emaApp prevs list in
+computeEMAs' (p12, p26) list@(h:t) =
+   let nuance = (ema 12 p12 &&& ema 26 p26) list in
    (h, nuance):computeEMAs' nuance t
 
-emaApp :: Fractional a => (a, a) -> [a] -> (a, a)
-emaApp (p12, p26) = ema 12 p12 &&& ema 26 p26
-
 {--
+The computeEMAs' function is a stateful mapping over the price-history.
+
 Reminder: The historical BitCoin prices are available from the URL:
 
 http://www.investopedia.com/articles/trading/10/simple-exponential-moving-averages-compare.asp?ad=dirN&qo=investopediaSiteSearch&qsrc=0&o=40186
