@@ -44,5 +44,5 @@ http://docs.oracle.com/javase/tutorial/java/nutsandbolts/_keywords.html
 Or whatever you like.
 --}
 
-wordSquare :: Int -> [String] -> Matrix Char
+wordSquare :: Int -> [String] -> [Matrix Char]
 wordSquare n lexicon = undefined
