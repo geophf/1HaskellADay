@@ -1,0 +1,1511 @@
+[
+    {
+        "id": 280515519,
+        "id_str": "280515519",
+        "name": "RC Guerrilla",
+        "screen_name": "RCGuerrilla",
+        "location": "Probably at Church or a Bar",
+        "description": "Roman Catholic Guerrilla; Fall like Saul, Get up like Paul; \u201cI do believe, help my unbelief!\u201d  \/  We know that all things work for good for those who love God",
+        "url": null,
+        "entities": {
+            "description": {
+                "urls": []
+            }
+        },
+        "protected": false,
+        "followers_count": 1013,
+        "friends_count": 973,
+        "listed_count": 248,
+        "created_at": "Mon Apr 11 13:45:01 +0000 2011",
+        "favourites_count": 4857,
+        "utc_offset": -7200,
+        "time_zone": "Brasilia",
+        "geo_enabled": true,
+        "verified": false,
+        "statuses_count": 31671,
+        "lang": "en",
+        "status": {
+            "created_at": "Fri Dec 09 19:31:55 +0000 2016",
+            "id": 807306802123698176,
+            "id_str": "807306802123698176",
+            "text": "I think Francis was pretty clear on this. Or is it ok to dissent on this issue? https:\/\/t.co\/n1D61xyUuV",
+            "truncated": false,
+            "entities": {
+                "hashtags": [],
+                "symbols": [],
+                "user_mentions": [],
+                "urls": [
+                    {
+                        "url": "https:\/\/t.co\/n1D61xyUuV",
+                        "expanded_url": "https:\/\/twitter.com\/NewWaysMinistry\/status\/807288695099424769",
+                        "display_url": "twitter.com\/NewWaysMinistr\u2026",
+                        "indices": [
+                            80,
+                            103
+                        ]
+                    }
+                ]
+            },
+            "source": "<a href=\"http:\/\/twitter.com\/download\/android\" rel=\"nofollow\">Twitter for Android<\/a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "geo": null,
+            "coordinates": null,
+            "place": {
+                "id": "0933c11f6b472a2b",
+                "url": "https:\/\/api.twitter.com\/1.1\/geo\/id\/0933c11f6b472a2b.json",
+                "place_type": "city",
+                "name": "Campinas",
+                "full_name": "Campinas, Brasil",
+                "country_code": "BR",
+                "country": "Brazil",
+                "contained_within": [],
+                "bounding_box": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [
+                                -47.2450492,
+                                -23.06071
+                            ],
+                            [
+                                -46.815387,
+                                -23.06071
+                            ],
+                            [
+                                -46.815387,
+                                -22.729279
+                            ],
+                            [
+                                -47.2450492,
+                                -22.729279
+                            ]
+                        ]
+                    ]
+                },
+                "attributes": {}
+            },
+            "contributors": null,
+            "is_quote_status": true,
+            "quoted_status_id": 807288695099424769,
+            "quoted_status_id_str": "807288695099424769",
+            "retweet_count": 0,
+            "favorite_count": 0,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "en"
+        },
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "131516",
+        "profile_background_image_url": "http:\/\/pbs.twimg.com\/profile_background_images\/684794832863281153\/mXmSu4IE.jpg",
+        "profile_background_image_url_https": "https:\/\/pbs.twimg.com\/profile_background_images\/684794832863281153\/mXmSu4IE.jpg",
+        "profile_background_tile": true,
+        "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/685447717527617537\/hTBRRbK1_normal.jpg",
+        "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/685447717527617537\/hTBRRbK1_normal.jpg",
+        "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/280515519\/1462802267",
+        "profile_link_color": "009999",
+        "profile_sidebar_border_color": "000000",
+        "profile_sidebar_fill_color": "000000",
+        "profile_text_color": "000000",
+        "profile_use_background_image": true,
+        "has_extended_profile": false,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": true,
+        "follow_request_sent": false,
+        "notifications": false,
+        "translator_type": "none"
+    },
+    {
+        "id": 81457442,
+        "id_str": "81457442",
+        "name": "geophf \u0646",
+        "screen_name": "geophf",
+        "location": "Back East, U.S.A.",
+        "description": "Ultra-reactionary, but not conservative\nBleeding heart, but not liberal\nPater Familias: Priest, prophet and king of my family\nYes, a patriarch\nMaronite Catholic",
+        "url": "http:\/\/t.co\/mTBw39uC8A",
+        "entities": {
+            "url": {
+                "urls": [
+                    {
+                        "url": "http:\/\/t.co\/mTBw39uC8A",
+                        "expanded_url": "http:\/\/logicaltypes.blogspot.com",
+                        "display_url": "logicaltypes.blogspot.com",
+                        "indices": [
+                            0,
+                            22
+                        ]
+                    }
+                ]
+            },
+            "description": {
+                "urls": []
+            }
+        },
+        "protected": false,
+        "followers_count": 2249,
+        "friends_count": 1781,
+        "listed_count": 402,
+        "created_at": "Sat Oct 10 22:38:55 +0000 2009",
+        "favourites_count": 32259,
+        "utc_offset": -18000,
+        "time_zone": "Quito",
+        "geo_enabled": true,
+        "verified": false,
+        "statuses_count": 81920,
+        "lang": "en",
+        "status": {
+            "created_at": "Fri Dec 09 19:16:47 +0000 2016",
+            "id": 807302995633381376,
+            "id_str": "807302995633381376",
+            "text": "Math problem\nWho is the most exclusive tweep below?\nWho is the most profligate in their follow backs?\nWhat is the m\u2026 https:\/\/t.co\/97YzEinoUw",
+            "truncated": true,
+            "entities": {
+                "hashtags": [],
+                "symbols": [],
+                "user_mentions": [],
+                "urls": [
+                    {
+                        "url": "https:\/\/t.co\/97YzEinoUw",
+                        "expanded_url": "https:\/\/twitter.com\/i\/web\/status\/807302995633381376",
+                        "display_url": "twitter.com\/i\/web\/status\/8\u2026",
+                        "indices": [
+                            117,
+                            140
+                        ]
+                    }
+                ]
+            },
+            "source": "<a href=\"http:\/\/twitter.com\" rel=\"nofollow\">Twitter Web Client<\/a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": true,
+            "quoted_status_id": 807300120723288064,
+            "quoted_status_id_str": "807300120723288064",
+            "retweet_count": 0,
+            "favorite_count": 0,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "en"
+        },
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "642D8B",
+        "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme10\/bg.gif",
+        "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme10\/bg.gif",
+        "profile_background_tile": true,
+        "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/463717122\/fear_normal.jpg",
+        "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/463717122\/fear_normal.jpg",
+        "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/81457442\/1429367288",
+        "profile_link_color": "FF0000",
+        "profile_sidebar_border_color": "000000",
+        "profile_sidebar_fill_color": "7AC3EE",
+        "profile_text_color": "3D1957",
+        "profile_use_background_image": true,
+        "has_extended_profile": true,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false,
+        "translator_type": "none"
+    },
+    {
+        "id": 16122052,
+        "id_str": "16122052",
+        "name": "Steve Skojec",
+        "screen_name": "SteveSkojec",
+        "location": "Washington, DC",
+        "description": "Writer. Podcaster. Catholic. Publisher of https:\/\/t.co\/tBS1wr8Sd1. Ready to rumble.",
+        "url": "http:\/\/t.co\/IPTSLGxGMM",
+        "entities": {
+            "url": {
+                "urls": [
+                    {
+                        "url": "http:\/\/t.co\/IPTSLGxGMM",
+                        "expanded_url": "http:\/\/www.steveskojec.com",
+                        "display_url": "steveskojec.com",
+                        "indices": [
+                            0,
+                            22
+                        ]
+                    }
+                ]
+            },
+            "description": {
+                "urls": [
+                    {
+                        "url": "https:\/\/t.co\/tBS1wr8Sd1",
+                        "expanded_url": "http:\/\/OnePeterFive.com",
+                        "display_url": "OnePeterFive.com",
+                        "indices": [
+                            42,
+                            65
+                        ]
+                    }
+                ]
+            }
+        },
+        "protected": false,
+        "followers_count": 2810,
+        "friends_count": 894,
+        "listed_count": 85,
+        "created_at": "Thu Sep 04 00:07:13 +0000 2008",
+        "favourites_count": 5157,
+        "utc_offset": -18000,
+        "time_zone": "Eastern Time (US & Canada)",
+        "geo_enabled": true,
+        "verified": false,
+        "statuses_count": 22041,
+        "lang": "en",
+        "status": {
+            "created_at": "Fri Dec 09 19:30:42 +0000 2016",
+            "id": 807306495175991296,
+            "id_str": "807306495175991296",
+            "text": "Q. \"What is the different between a Jesuit and an Evangelical?\"\n\nA. \"An Evangelical knows he is not a Catholic.\"",
+            "truncated": false,
+            "entities": {
+                "hashtags": [],
+                "symbols": [],
+                "user_mentions": [],
+                "urls": []
+            },
+            "source": "<a href=\"https:\/\/about.twitter.com\/products\/tweetdeck\" rel=\"nofollow\">TweetDeck<\/a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 1,
+            "favorite_count": 2,
+            "favorited": false,
+            "retweeted": false,
+            "lang": "en"
+        },
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "1A1B1F",
+        "profile_background_image_url": "http:\/\/pbs.twimg.com\/profile_background_images\/169567002\/Twitter-background.jpg",
+        "profile_background_image_url_https": "https:\/\/pbs.twimg.com\/profile_background_images\/169567002\/Twitter-background.jpg",
+        "profile_background_tile": false,
+        "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/723946082837913600\/p3a7Ls8o_normal.jpg",
+        "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/723946082837913600\/p3a7Ls8o_normal.jpg",
+        "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/16122052\/1443289515",
+        "profile_link_color": "2F2F2F",
+        "profile_sidebar_border_color": "181A1E",
+        "profile_sidebar_fill_color": "252429",
+        "profile_text_color": "666666",
+        "profile_use_background_image": true,
+        "has_extended_profile": false,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false,
+        "translator_type": "none"
+    },
+    {
+        "id": 2800496042,
+        "id_str": "2800496042",
+        "name": "St. Peter's Cricket",
+        "screen_name": "VaticanCricket",
+        "location": "Vatican",
+        "description": "The \u201cSt. Peter\u2019s Cricket Club\u201d brings together cricket supporters around the Vatican and has the Patronage of the Pontifical Council for Culture.",
+        "url": "https:\/\/t.co\/iXoshCntXu",
+        "entities": {
+            "url": {
+                "urls": [
+                    {
+                        "url": "https:\/\/t.co\/iXoshCntXu",
+                        "expanded_url": "https:\/\/www.facebook.com\/vaticancricketclub",
+                        "display_url": "facebook.com\/vaticancricket\u2026",
+                        "indices": [
+                            0,
+                            23
+                        ]
+                    }
+                ]
+            },
+            "description": {
+                "urls": []
+            }
+        },
+        "protected": false,
+        "followers_count": 542,
+        "friends_count": 77,
+        "listed_count": 10,
+        "created_at": "Tue Sep 09 20:31:41 +0000 2014",
+        "favourites_count": 252,
+        "utc_offset": null,
+        "time_zone": null,
+        "geo_enabled": true,
+        "verified": false,
+        "statuses_count": 444,
+        "lang": "en-gb",
+        "status": {
+            "created_at": "Fri Sep 23 10:54:06 +0000 2016",
+            "id": 779272626095132672,
+            "id_str": "779272626095132672",
+            "text": "RT @winningruns: Huge privilege to be asked to speak w\/ @VaticanCricket - love these boys. Once ordained, local Catholic Parishes are in fo\u2026",
+            "truncated": false,
+            "entities": {
+                "hashtags": [],
+                "symbols": [],
+                "user_mentions": [
+                    {
+                        "screen_name": "winningruns",
+                        "name": "tom benham",
+                        "id": 19653579,
+                        "id_str": "19653579",
+                        "indices": [
+                            3,
+                            15
+                        ]
+                    },
+                    {
+                        "screen_name": "VaticanCricket",
+                        "name": "St. Peter's Cricket",
+                        "id": 2800496042,
+                        "id_str": "2800496042",
+                        "indices": [
+                            56,
+                            71
+                        ]
+                    }
+                ],
+                "urls": []
+            },
+            "source": "<a href=\"http:\/\/twitter.com\/download\/android\" rel=\"nofollow\">Twitter for Android<\/a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "retweeted_status": {
+                "created_at": "Fri Sep 23 10:53:34 +0000 2016",
+                "id": 779272492179460096,
+                "id_str": "779272492179460096",
+                "text": "Huge privilege to be asked to speak w\/ @VaticanCricket - love these boys. Once ordained, local Catholic Parishes ar\u2026 https:\/\/t.co\/nDydcaWxvV",
+                "truncated": true,
+                "entities": {
+                    "hashtags": [],
+                    "symbols": [],
+                    "user_mentions": [
+                        {
+                            "screen_name": "VaticanCricket",
+                            "name": "St. Peter's Cricket",
+                            "id": 2800496042,
+                            "id_str": "2800496042",
+                            "indices": [
+                                39,
+                                54
+                            ]
+                        }
+                    ],
+                    "urls": [
+                        {
+                            "url": "https:\/\/t.co\/nDydcaWxvV",
+                            "expanded_url": "https:\/\/twitter.com\/i\/web\/status\/779272492179460096",
+                            "display_url": "twitter.com\/i\/web\/status\/7\u2026",
+                            "indices": [
+                                117,
+                                140
+                            ]
+                        }
+                    ]
+                },
+                "source": "<a href=\"http:\/\/twitter.com\/download\/iphone\" rel=\"nofollow\">Twitter for iPhone<\/a>",
+                "in_reply_to_status_id": null,
+                "in_reply_to_status_id_str": null,
+                "in_reply_to_user_id": null,
+                "in_reply_to_user_id_str": null,
+                "in_reply_to_screen_name": null,
+                "geo": null,
+                "coordinates": null,
+                "place": null,
+                "contributors": null,
+                "is_quote_status": false,
+                "retweet_count": 2,
+                "favorite_count": 5,
+                "favorited": false,
+                "retweeted": false,
+                "possibly_sensitive": false,
+                "lang": "en"
+            },
+            "is_quote_status": false,
+            "retweet_count": 2,
+            "favorite_count": 0,
+            "favorited": false,
+            "retweeted": false,
+            "lang": "en"
+        },
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "000000",
+        "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+        "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+        "profile_background_tile": false,
+        "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/509440579353067520\/9F4bvTRW_normal.jpeg",
+        "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/509440579353067520\/9F4bvTRW_normal.jpeg",
+        "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/2800496042\/1410295247",
+        "profile_link_color": "1B95E0",
+        "profile_sidebar_border_color": "000000",
+        "profile_sidebar_fill_color": "000000",
+        "profile_text_color": "000000",
+        "profile_use_background_image": false,
+        "has_extended_profile": true,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false,
+        "translator_type": "none"
+    },
+    {
+        "id": 309160156,
+        "id_str": "309160156",
+        "name": "Vatican Insider (EN)",
+        "screen_name": "vatican_en",
+        "location": "Vatican City",
+        "description": "All of @LaStampa\u2019s latest stories on the #Vatican & @Pontifex. We also tweet in other languages: @vatican_it, @vatican_es, @vatican_ar, @vatican_zh @vatican_pl",
+        "url": "http:\/\/t.co\/oTDpRO4Xw0",
+        "entities": {
+            "url": {
+                "urls": [
+                    {
+                        "url": "http:\/\/t.co\/oTDpRO4Xw0",
+                        "expanded_url": "http:\/\/www.vaticaninsider.com",
+                        "display_url": "vaticaninsider.com",
+                        "indices": [
+                            0,
+                            22
+                        ]
+                    }
+                ]
+            },
+            "description": {
+                "urls": []
+            }
+        },
+        "protected": false,
+        "followers_count": 24228,
+        "friends_count": 166,
+        "listed_count": 602,
+        "created_at": "Wed Jun 01 16:45:03 +0000 2011",
+        "favourites_count": 0,
+        "utc_offset": 3600,
+        "time_zone": "Rome",
+        "geo_enabled": false,
+        "verified": false,
+        "statuses_count": 8061,
+        "lang": "en",
+        "status": {
+            "created_at": "Thu Dec 08 12:54:12 +0000 2016",
+            "id": 806844325137027074,
+            "id_str": "806844325137027074",
+            "text": "Pope Francis on Immaculate Conception: God awaits our \u2019yes\u2019\u00a0 https:\/\/t.co\/oHfVuXTyZr @la_stampa",
+            "truncated": false,
+            "entities": {
+                "hashtags": [],
+                "symbols": [],
+                "user_mentions": [
+                    {
+                        "screen_name": "la_stampa",
+                        "name": "La Stampa",
+                        "id": 716767568770498564,
+                        "id_str": "716767568770498564",
+                        "indices": [
+                            85,
+                            95
+                        ]
+                    }
+                ],
+                "urls": [
+                    {
+                        "url": "https:\/\/t.co\/oHfVuXTyZr",
+                        "expanded_url": "http:\/\/dlvr.it\/Mr3czB",
+                        "display_url": "dlvr.it\/Mr3czB",
+                        "indices": [
+                            61,
+                            84
+                        ]
+                    }
+                ]
+            },
+            "source": "<a href=\"https:\/\/dlvrit.com\/\" rel=\"nofollow\">dlvr.it<\/a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 11,
+            "favorite_count": 7,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "en"
+        },
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "0D5262",
+        "profile_background_image_url": "http:\/\/pbs.twimg.com\/profile_background_images\/366805385\/VaticanInsider_Twitter_com.png",
+        "profile_background_image_url_https": "https:\/\/pbs.twimg.com\/profile_background_images\/366805385\/VaticanInsider_Twitter_com.png",
+        "profile_background_tile": false,
+        "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/652140962685284352\/x8IMnu1P_normal.png",
+        "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/652140962685284352\/x8IMnu1P_normal.png",
+        "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/309160156\/1444317510",
+        "profile_link_color": "0084B4",
+        "profile_sidebar_border_color": "C0DEED",
+        "profile_sidebar_fill_color": "DDEEF6",
+        "profile_text_color": "333333",
+        "profile_use_background_image": true,
+        "has_extended_profile": false,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false,
+        "translator_type": "none"
+    },
+    {
+        "id": 39725086,
+        "id_str": "39725086",
+        "name": "Crisis Magazine",
+        "screen_name": "CrisisMag",
+        "location": "Manchester, NH",
+        "description": "Articulating the truths of Catholicism on matters of faith, business, politics, culture, and family life.",
+        "url": "http:\/\/t.co\/P8KfEf42tk",
+        "entities": {
+            "url": {
+                "urls": [
+                    {
+                        "url": "http:\/\/t.co\/P8KfEf42tk",
+                        "expanded_url": "http:\/\/www.crisismagazine.com",
+                        "display_url": "crisismagazine.com",
+                        "indices": [
+                            0,
+                            22
+                        ]
+                    }
+                ]
+            },
+            "description": {
+                "urls": []
+            }
+        },
+        "protected": false,
+        "followers_count": 12303,
+        "friends_count": 413,
+        "listed_count": 494,
+        "created_at": "Wed May 13 10:24:25 +0000 2009",
+        "favourites_count": 19,
+        "utc_offset": -18000,
+        "time_zone": "Eastern Time (US & Canada)",
+        "geo_enabled": false,
+        "verified": false,
+        "statuses_count": 7559,
+        "lang": "en",
+        "status": {
+            "created_at": "Fri Dec 09 16:50:14 +0000 2016",
+            "id": 807266114501799938,
+            "id_str": "807266114501799938",
+            "text": "Fortifying the Virtue of Fortitude https:\/\/t.co\/Wrv1C8EjrB",
+            "truncated": false,
+            "entities": {
+                "hashtags": [],
+                "symbols": [],
+                "user_mentions": [],
+                "urls": [
+                    {
+                        "url": "https:\/\/t.co\/Wrv1C8EjrB",
+                        "expanded_url": "http:\/\/catholicexchange.com\/fortifying-virtue-fortitude",
+                        "display_url": "catholicexchange.com\/fortifying-vir\u2026",
+                        "indices": [
+                            35,
+                            58
+                        ]
+                    }
+                ]
+            },
+            "source": "<a href=\"http:\/\/www.hootsuite.com\" rel=\"nofollow\">Hootsuite<\/a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 0,
+            "favorite_count": 1,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "en"
+        },
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "0D2D61",
+        "profile_background_image_url": "http:\/\/pbs.twimg.com\/profile_background_images\/419383494\/crisis-twitterbg.png",
+        "profile_background_image_url_https": "https:\/\/pbs.twimg.com\/profile_background_images\/419383494\/crisis-twitterbg.png",
+        "profile_background_tile": false,
+        "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/1812110745\/Crisis_twitter_normal.jpg",
+        "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/1812110745\/Crisis_twitter_normal.jpg",
+        "profile_link_color": "0D4EB8",
+        "profile_sidebar_border_color": "C0DEED",
+        "profile_sidebar_fill_color": "DDEEF6",
+        "profile_text_color": "333333",
+        "profile_use_background_image": true,
+        "has_extended_profile": false,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false,
+        "translator_type": "none"
+    },
+    {
+        "id": 718592022,
+        "id_str": "718592022",
+        "name": "hannah \u2615\ufe0f",
+        "screen_name": "hanmariams",
+        "location": "Florida State University",
+        "description": "if I die please don't let them play on eagles wings at my funeral",
+        "url": "https:\/\/t.co\/IUUCSfibaq",
+        "entities": {
+            "url": {
+                "urls": [
+                    {
+                        "url": "https:\/\/t.co\/IUUCSfibaq",
+                        "expanded_url": "http:\/\/catholicscomehome.com",
+                        "display_url": "catholicscomehome.com",
+                        "indices": [
+                            0,
+                            23
+                        ]
+                    }
+                ]
+            },
+            "description": {
+                "urls": []
+            }
+        },
+        "protected": false,
+        "followers_count": 2428,
+        "friends_count": 655,
+        "listed_count": 41,
+        "created_at": "Thu Jul 26 19:19:55 +0000 2012",
+        "favourites_count": 32610,
+        "utc_offset": -14400,
+        "time_zone": "Atlantic Time (Canada)",
+        "geo_enabled": true,
+        "verified": false,
+        "statuses_count": 17161,
+        "lang": "en",
+        "status": {
+            "created_at": "Fri Dec 09 18:38:56 +0000 2016",
+            "id": 807293470402609153,
+            "id_str": "807293470402609153",
+            "text": "RT @GirlsConvoMemes: https:\/\/t.co\/gKSkgJ5cCv",
+            "truncated": false,
+            "entities": {
+                "hashtags": [],
+                "symbols": [],
+                "user_mentions": [
+                    {
+                        "screen_name": "GirlsConvoMemes",
+                        "name": "How to talk to girls",
+                        "id": 806915543844294656,
+                        "id_str": "806915543844294656",
+                        "indices": [
+                            3,
+                            19
+                        ]
+                    }
+                ],
+                "urls": [],
+                "media": [
+                    {
+                        "id": 807293338714075136,
+                        "id_str": "807293338714075136",
+                        "indices": [
+                            21,
+                            44
+                        ],
+                        "media_url": "http:\/\/pbs.twimg.com\/media\/CzQVA6uXcAAxwMp.jpg",
+                        "media_url_https": "https:\/\/pbs.twimg.com\/media\/CzQVA6uXcAAxwMp.jpg",
+                        "url": "https:\/\/t.co\/gKSkgJ5cCv",
+                        "display_url": "pic.twitter.com\/gKSkgJ5cCv",
+                        "expanded_url": "https:\/\/twitter.com\/GirlsConvoMemes\/status\/807293348730073088\/photo\/1",
+                        "type": "photo",
+                        "sizes": {
+                            "large": {
+                                "w": 750,
+                                "h": 211,
+                                "resize": "fit"
+                            },
+                            "small": {
+                                "w": 680,
+                                "h": 191,
+                                "resize": "fit"
+                            },
+                            "thumb": {
+                                "w": 150,
+                                "h": 150,
+                                "resize": "crop"
+                            },
+                            "medium": {
+                                "w": 750,
+                                "h": 211,
+                                "resize": "fit"
+                            }
+                        },
+                        "source_status_id": 807293348730073088,
+                        "source_status_id_str": "807293348730073088",
+                        "source_user_id": 806915543844294656,
+                        "source_user_id_str": "806915543844294656"
+                    }
+                ]
+            },
+            "extended_entities": {
+                "media": [
+                    {
+                        "id": 807293338714075136,
+                        "id_str": "807293338714075136",
+                        "indices": [
+                            21,
+                            44
+                        ],
+                        "media_url": "http:\/\/pbs.twimg.com\/media\/CzQVA6uXcAAxwMp.jpg",
+                        "media_url_https": "https:\/\/pbs.twimg.com\/media\/CzQVA6uXcAAxwMp.jpg",
+                        "url": "https:\/\/t.co\/gKSkgJ5cCv",
+                        "display_url": "pic.twitter.com\/gKSkgJ5cCv",
+                        "expanded_url": "https:\/\/twitter.com\/GirlsConvoMemes\/status\/807293348730073088\/photo\/1",
+                        "type": "photo",
+                        "sizes": {
+                            "large": {
+                                "w": 750,
+                                "h": 211,
+                                "resize": "fit"
+                            },
+                            "small": {
+                                "w": 680,
+                                "h": 191,
+                                "resize": "fit"
+                            },
+                            "thumb": {
+                                "w": 150,
+                                "h": 150,
+                                "resize": "crop"
+                            },
+                            "medium": {
+                                "w": 750,
+                                "h": 211,
+                                "resize": "fit"
+                            }
+                        },
+                        "source_status_id": 807293348730073088,
+                        "source_status_id_str": "807293348730073088",
+                        "source_user_id": 806915543844294656,
+                        "source_user_id_str": "806915543844294656"
+                    },
+                    {
+                        "id": 807293338718191616,
+                        "id_str": "807293338718191616",
+                        "indices": [
+                            21,
+                            44
+                        ],
+                        "media_url": "http:\/\/pbs.twimg.com\/media\/CzQVA6vWQAAxRnd.jpg",
+                        "media_url_https": "https:\/\/pbs.twimg.com\/media\/CzQVA6vWQAAxRnd.jpg",
+                        "url": "https:\/\/t.co\/gKSkgJ5cCv",
+                        "display_url": "pic.twitter.com\/gKSkgJ5cCv",
+                        "expanded_url": "https:\/\/twitter.com\/GirlsConvoMemes\/status\/807293348730073088\/photo\/1",
+                        "type": "photo",
+                        "sizes": {
+                            "small": {
+                                "w": 680,
+                                "h": 680,
+                                "resize": "fit"
+                            },
+                            "medium": {
+                                "w": 1079,
+                                "h": 1079,
+                                "resize": "fit"
+                            },
+                            "thumb": {
+                                "w": 150,
+                                "h": 150,
+                                "resize": "crop"
+                            },
+                            "large": {
+                                "w": 1079,
+                                "h": 1079,
+                                "resize": "fit"
+                            }
+                        },
+                        "source_status_id": 807293348730073088,
+                        "source_status_id_str": "807293348730073088",
+                        "source_user_id": 806915543844294656,
+                        "source_user_id_str": "806915543844294656"
+                    },
+                    {
+                        "id": 807293338990821377,
+                        "id_str": "807293338990821377",
+                        "indices": [
+                            21,
+                            44
+                        ],
+                        "media_url": "http:\/\/pbs.twimg.com\/media\/CzQVA7wWQAE-jAk.jpg",
+                        "media_url_https": "https:\/\/pbs.twimg.com\/media\/CzQVA7wWQAE-jAk.jpg",
+                        "url": "https:\/\/t.co\/gKSkgJ5cCv",
+                        "display_url": "pic.twitter.com\/gKSkgJ5cCv",
+                        "expanded_url": "https:\/\/twitter.com\/GirlsConvoMemes\/status\/807293348730073088\/photo\/1",
+                        "type": "photo",
+                        "sizes": {
+                            "medium": {
+                                "w": 750,
+                                "h": 661,
+                                "resize": "fit"
+                            },
+                            "small": {
+                                "w": 680,
+                                "h": 599,
+                                "resize": "fit"
+                            },
+                            "thumb": {
+                                "w": 150,
+                                "h": 150,
+                                "resize": "crop"
+                            },
+                            "large": {
+                                "w": 750,
+                                "h": 661,
+                                "resize": "fit"
+                            }
+                        },
+                        "source_status_id": 807293348730073088,
+                        "source_status_id_str": "807293348730073088",
+                        "source_user_id": 806915543844294656,
+                        "source_user_id_str": "806915543844294656"
+                    },
+                    {
+                        "id": 807293341259993089,
+                        "id_str": "807293341259993089",
+                        "indices": [
+                            21,
+                            44
+                        ],
+                        "media_url": "http:\/\/pbs.twimg.com\/media\/CzQVBENXEAE11u_.jpg",
+                        "media_url_https": "https:\/\/pbs.twimg.com\/media\/CzQVBENXEAE11u_.jpg",
+                        "url": "https:\/\/t.co\/gKSkgJ5cCv",
+                        "display_url": "pic.twitter.com\/gKSkgJ5cCv",
+                        "expanded_url": "https:\/\/twitter.com\/GirlsConvoMemes\/status\/807293348730073088\/photo\/1",
+                        "type": "photo",
+                        "sizes": {
+                            "small": {
+                                "w": 594,
+                                "h": 680,
+                                "resize": "fit"
+                            },
+                            "large": {
+                                "w": 1787,
+                                "h": 2047,
+                                "resize": "fit"
+                            },
+                            "thumb": {
+                                "w": 150,
+                                "h": 150,
+                                "resize": "crop"
+                            },
+                            "medium": {
+                                "w": 1048,
+                                "h": 1200,
+                                "resize": "fit"
+                            }
+                        },
+                        "source_status_id": 807293348730073088,
+                        "source_status_id_str": "807293348730073088",
+                        "source_user_id": 806915543844294656,
+                        "source_user_id_str": "806915543844294656"
+                    }
+                ]
+            },
+            "source": "<a href=\"http:\/\/twitter.com\/download\/iphone\" rel=\"nofollow\">Twitter for iPhone<\/a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "retweeted_status": {
+                "created_at": "Fri Dec 09 18:38:27 +0000 2016",
+                "id": 807293348730073088,
+                "id_str": "807293348730073088",
+                "text": "https:\/\/t.co\/gKSkgJ5cCv",
+                "truncated": false,
+                "entities": {
+                    "hashtags": [],
+                    "symbols": [],
+                    "user_mentions": [],
+                    "urls": [],
+                    "media": [
+                        {
+                            "id": 807293338714075136,
+                            "id_str": "807293338714075136",
+                            "indices": [
+                                0,
+                                23
+                            ],
+                            "media_url": "http:\/\/pbs.twimg.com\/media\/CzQVA6uXcAAxwMp.jpg",
+                            "media_url_https": "https:\/\/pbs.twimg.com\/media\/CzQVA6uXcAAxwMp.jpg",
+                            "url": "https:\/\/t.co\/gKSkgJ5cCv",
+                            "display_url": "pic.twitter.com\/gKSkgJ5cCv",
+                            "expanded_url": "https:\/\/twitter.com\/GirlsConvoMemes\/status\/807293348730073088\/photo\/1",
+                            "type": "photo",
+                            "sizes": {
+                                "large": {
+                                    "w": 750,
+                                    "h": 211,
+                                    "resize": "fit"
+                                },
+                                "small": {
+                                    "w": 680,
+                                    "h": 191,
+                                    "resize": "fit"
+                                },
+                                "thumb": {
+                                    "w": 150,
+                                    "h": 150,
+                                    "resize": "crop"
+                                },
+                                "medium": {
+                                    "w": 750,
+                                    "h": 211,
+                                    "resize": "fit"
+                                }
+                            }
+                        }
+                    ]
+                },
+                "extended_entities": {
+                    "media": [
+                        {
+                            "id": 807293338714075136,
+                            "id_str": "807293338714075136",
+                            "indices": [
+                                0,
+                                23
+                            ],
+                            "media_url": "http:\/\/pbs.twimg.com\/media\/CzQVA6uXcAAxwMp.jpg",
+                            "media_url_https": "https:\/\/pbs.twimg.com\/media\/CzQVA6uXcAAxwMp.jpg",
+                            "url": "https:\/\/t.co\/gKSkgJ5cCv",
+                            "display_url": "pic.twitter.com\/gKSkgJ5cCv",
+                            "expanded_url": "https:\/\/twitter.com\/GirlsConvoMemes\/status\/807293348730073088\/photo\/1",
+                            "type": "photo",
+                            "sizes": {
+                                "large": {
+                                    "w": 750,
+                                    "h": 211,
+                                    "resize": "fit"
+                                },
+                                "small": {
+                                    "w": 680,
+                                    "h": 191,
+                                    "resize": "fit"
+                                },
+                                "thumb": {
+                                    "w": 150,
+                                    "h": 150,
+                                    "resize": "crop"
+                                },
+                                "medium": {
+                                    "w": 750,
+                                    "h": 211,
+                                    "resize": "fit"
+                                }
+                            }
+                        },
+                        {
+                            "id": 807293338718191616,
+                            "id_str": "807293338718191616",
+                            "indices": [
+                                0,
+                                23
+                            ],
+                            "media_url": "http:\/\/pbs.twimg.com\/media\/CzQVA6vWQAAxRnd.jpg",
+                            "media_url_https": "https:\/\/pbs.twimg.com\/media\/CzQVA6vWQAAxRnd.jpg",
+                            "url": "https:\/\/t.co\/gKSkgJ5cCv",
+                            "display_url": "pic.twitter.com\/gKSkgJ5cCv",
+                            "expanded_url": "https:\/\/twitter.com\/GirlsConvoMemes\/status\/807293348730073088\/photo\/1",
+                            "type": "photo",
+                            "sizes": {
+                                "small": {
+                                    "w": 680,
+                                    "h": 680,
+                                    "resize": "fit"
+                                },
+                                "medium": {
+                                    "w": 1079,
+                                    "h": 1079,
+                                    "resize": "fit"
+                                },
+                                "thumb": {
+                                    "w": 150,
+                                    "h": 150,
+                                    "resize": "crop"
+                                },
+                                "large": {
+                                    "w": 1079,
+                                    "h": 1079,
+                                    "resize": "fit"
+                                }
+                            }
+                        },
+                        {
+                            "id": 807293338990821377,
+                            "id_str": "807293338990821377",
+                            "indices": [
+                                0,
+                                23
+                            ],
+                            "media_url": "http:\/\/pbs.twimg.com\/media\/CzQVA7wWQAE-jAk.jpg",
+                            "media_url_https": "https:\/\/pbs.twimg.com\/media\/CzQVA7wWQAE-jAk.jpg",
+                            "url": "https:\/\/t.co\/gKSkgJ5cCv",
+                            "display_url": "pic.twitter.com\/gKSkgJ5cCv",
+                            "expanded_url": "https:\/\/twitter.com\/GirlsConvoMemes\/status\/807293348730073088\/photo\/1",
+                            "type": "photo",
+                            "sizes": {
+                                "medium": {
+                                    "w": 750,
+                                    "h": 661,
+                                    "resize": "fit"
+                                },
+                                "small": {
+                                    "w": 680,
+                                    "h": 599,
+                                    "resize": "fit"
+                                },
+                                "thumb": {
+                                    "w": 150,
+                                    "h": 150,
+                                    "resize": "crop"
+                                },
+                                "large": {
+                                    "w": 750,
+                                    "h": 661,
+                                    "resize": "fit"
+                                }
+                            }
+                        },
+                        {
+                            "id": 807293341259993089,
+                            "id_str": "807293341259993089",
+                            "indices": [
+                                0,
+                                23
+                            ],
+                            "media_url": "http:\/\/pbs.twimg.com\/media\/CzQVBENXEAE11u_.jpg",
+                            "media_url_https": "https:\/\/pbs.twimg.com\/media\/CzQVBENXEAE11u_.jpg",
+                            "url": "https:\/\/t.co\/gKSkgJ5cCv",
+                            "display_url": "pic.twitter.com\/gKSkgJ5cCv",
+                            "expanded_url": "https:\/\/twitter.com\/GirlsConvoMemes\/status\/807293348730073088\/photo\/1",
+                            "type": "photo",
+                            "sizes": {
+                                "small": {
+                                    "w": 594,
+                                    "h": 680,
+                                    "resize": "fit"
+                                },
+                                "large": {
+                                    "w": 1787,
+                                    "h": 2047,
+                                    "resize": "fit"
+                                },
+                                "thumb": {
+                                    "w": 150,
+                                    "h": 150,
+                                    "resize": "crop"
+                                },
+                                "medium": {
+                                    "w": 1048,
+                                    "h": 1200,
+                                    "resize": "fit"
+                                }
+                            }
+                        }
+                    ]
+                },
+                "source": "<a href=\"http:\/\/twitter.com\/download\/iphone\" rel=\"nofollow\">Twitter for iPhone<\/a>",
+                "in_reply_to_status_id": null,
+                "in_reply_to_status_id_str": null,
+                "in_reply_to_user_id": null,
+                "in_reply_to_user_id_str": null,
+                "in_reply_to_screen_name": null,
+                "geo": null,
+                "coordinates": null,
+                "place": null,
+                "contributors": null,
+                "is_quote_status": false,
+                "retweet_count": 68,
+                "favorite_count": 79,
+                "favorited": false,
+                "retweeted": false,
+                "possibly_sensitive": false,
+                "lang": "und"
+            },
+            "is_quote_status": false,
+            "retweet_count": 68,
+            "favorite_count": 0,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "und"
+        },
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "ACDED6",
+        "profile_background_image_url": "http:\/\/pbs.twimg.com\/profile_background_images\/567697115699097601\/zuwtXK9r.jpeg",
+        "profile_background_image_url_https": "https:\/\/pbs.twimg.com\/profile_background_images\/567697115699097601\/zuwtXK9r.jpeg",
+        "profile_background_tile": true,
+        "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/800920931212390400\/j0Ybwjr__normal.jpg",
+        "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/800920931212390400\/j0Ybwjr__normal.jpg",
+        "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/718592022\/1478813559",
+        "profile_link_color": "038543",
+        "profile_sidebar_border_color": "FFFFFF",
+        "profile_sidebar_fill_color": "F6F6F6",
+        "profile_text_color": "333333",
+        "profile_use_background_image": true,
+        "has_extended_profile": true,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false,
+        "translator_type": "none"
+    },
+    {
+        "id": 828433290,
+        "id_str": "828433290",
+        "name": "Eye of the Tiber",
+        "screen_name": "EyeOfTheTiber",
+        "location": "",
+        "description": "Breaking Catholic news so you don't have to.",
+        "url": "http:\/\/t.co\/N68CPGuCSp",
+        "entities": {
+            "url": {
+                "urls": [
+                    {
+                        "url": "http:\/\/t.co\/N68CPGuCSp",
+                        "expanded_url": "http:\/\/eyeofthetiber.com",
+                        "display_url": "eyeofthetiber.com",
+                        "indices": [
+                            0,
+                            22
+                        ]
+                    }
+                ]
+            },
+            "description": {
+                "urls": []
+            }
+        },
+        "protected": false,
+        "followers_count": 7283,
+        "friends_count": 93,
+        "listed_count": 113,
+        "created_at": "Mon Sep 17 05:56:49 +0000 2012",
+        "favourites_count": 36,
+        "utc_offset": -28800,
+        "time_zone": "Pacific Time (US & Canada)",
+        "geo_enabled": false,
+        "verified": false,
+        "statuses_count": 1075,
+        "lang": "en",
+        "status": {
+            "created_at": "Tue Nov 29 19:09:23 +0000 2016",
+            "id": 803677254333054976,
+            "id_str": "803677254333054976",
+            "text": "At least he found out how crazy she was before they got serious. https:\/\/t.co\/EEQ6g5RwpU",
+            "truncated": false,
+            "entities": {
+                "hashtags": [],
+                "symbols": [],
+                "user_mentions": [],
+                "urls": [
+                    {
+                        "url": "https:\/\/t.co\/EEQ6g5RwpU",
+                        "expanded_url": "https:\/\/twitter.com\/drudge_report\/status\/803669060638547968",
+                        "display_url": "twitter.com\/drudge_report\/\u2026",
+                        "indices": [
+                            65,
+                            88
+                        ]
+                    }
+                ]
+            },
+            "source": "<a href=\"http:\/\/twitter.com\/download\/iphone\" rel=\"nofollow\">Twitter for iPhone<\/a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": true,
+            "quoted_status_id": 803669060638547968,
+            "quoted_status_id_str": "803669060638547968",
+            "retweet_count": 2,
+            "favorite_count": 6,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "en"
+        },
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "C0DEED",
+        "profile_background_image_url": "http:\/\/pbs.twimg.com\/profile_background_images\/443142577919770624\/QqB65Z-8.png",
+        "profile_background_image_url_https": "https:\/\/pbs.twimg.com\/profile_background_images\/443142577919770624\/QqB65Z-8.png",
+        "profile_background_tile": false,
+        "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/2646885340\/d2c2d5e8d4fb8a8f2e8ccdd4afb92b27_normal.png",
+        "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/2646885340\/d2c2d5e8d4fb8a8f2e8ccdd4afb92b27_normal.png",
+        "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/828433290\/1400534582",
+        "profile_link_color": "0084B4",
+        "profile_sidebar_border_color": "FFFFFF",
+        "profile_sidebar_fill_color": "DDEEF6",
+        "profile_text_color": "333333",
+        "profile_use_background_image": true,
+        "has_extended_profile": false,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false,
+        "translator_type": "none"
+    },
+    {
+        "id": 2564270210,
+        "id_str": "2564270210",
+        "name": "Tommy Tighe",
+        "screen_name": "theghissilent",
+        "location": "Archdiocese of San Francisco",
+        "description": "From the desire to be retweeted, deliver us Lord.",
+        "url": "https:\/\/t.co\/86ycZb27sC",
+        "entities": {
+            "url": {
+                "urls": [
+                    {
+                        "url": "https:\/\/t.co\/86ycZb27sC",
+                        "expanded_url": "http:\/\/catholichipster.com",
+                        "display_url": "catholichipster.com",
+                        "indices": [
+                            0,
+                            23
+                        ]
+                    }
+                ]
+            },
+            "description": {
+                "urls": []
+            }
+        },
+        "protected": false,
+        "followers_count": 5116,
+        "friends_count": 200,
+        "listed_count": 80,
+        "created_at": "Thu Jun 12 23:47:18 +0000 2014",
+        "favourites_count": 24629,
+        "utc_offset": null,
+        "time_zone": null,
+        "geo_enabled": false,
+        "verified": false,
+        "statuses_count": 16322,
+        "lang": "en",
+        "status": {
+            "created_at": "Fri Dec 09 18:52:50 +0000 2016",
+            "id": 807296967424380928,
+            "id_str": "807296967424380928",
+            "text": "Live reaction from the crowd gathered around St. Peter's as the Vatican Christmas tree was finally lit! https:\/\/t.co\/ZuZXDfDTvj",
+            "truncated": false,
+            "entities": {
+                "hashtags": [],
+                "symbols": [],
+                "user_mentions": [],
+                "urls": [],
+                "media": [
+                    {
+                        "id": 807296951163043840,
+                        "id_str": "807296951163043840",
+                        "indices": [
+                            104,
+                            127
+                        ],
+                        "media_url": "http:\/\/pbs.twimg.com\/tweet_video_thumb\/CzQYTMJUQAAHDqc.jpg",
+                        "media_url_https": "https:\/\/pbs.twimg.com\/tweet_video_thumb\/CzQYTMJUQAAHDqc.jpg",
+                        "url": "https:\/\/t.co\/ZuZXDfDTvj",
+                        "display_url": "pic.twitter.com\/ZuZXDfDTvj",
+                        "expanded_url": "https:\/\/twitter.com\/theghissilent\/status\/807296967424380928\/photo\/1",
+                        "type": "photo",
+                        "sizes": {
+                            "large": {
+                                "w": 400,
+                                "h": 224,
+                                "resize": "fit"
+                            },
+                            "thumb": {
+                                "w": 150,
+                                "h": 150,
+                                "resize": "crop"
+                            },
+                            "small": {
+                                "w": 340,
+                                "h": 190,
+                                "resize": "fit"
+                            },
+                            "medium": {
+                                "w": 400,
+                                "h": 224,
+                                "resize": "fit"
+                            }
+                        }
+                    }
+                ]
+            },
+            "extended_entities": {
+                "media": [
+                    {
+                        "id": 807296951163043840,
+                        "id_str": "807296951163043840",
+                        "indices": [
+                            104,
+                            127
+                        ],
+                        "media_url": "http:\/\/pbs.twimg.com\/tweet_video_thumb\/CzQYTMJUQAAHDqc.jpg",
+                        "media_url_https": "https:\/\/pbs.twimg.com\/tweet_video_thumb\/CzQYTMJUQAAHDqc.jpg",
+                        "url": "https:\/\/t.co\/ZuZXDfDTvj",
+                        "display_url": "pic.twitter.com\/ZuZXDfDTvj",
+                        "expanded_url": "https:\/\/twitter.com\/theghissilent\/status\/807296967424380928\/photo\/1",
+                        "type": "animated_gif",
+                        "sizes": {
+                            "large": {
+                                "w": 400,
+                                "h": 224,
+                                "resize": "fit"
+                            },
+                            "thumb": {
+                                "w": 150,
+                                "h": 150,
+                                "resize": "crop"
+                            },
+                            "small": {
+                                "w": 340,
+                                "h": 190,
+                                "resize": "fit"
+                            },
+                            "medium": {
+                                "w": 400,
+                                "h": 224,
+                                "resize": "fit"
+                            }
+                        },
+                        "video_info": {
+                            "aspect_ratio": [
+                                25,
+                                14
+                            ],
+                            "variants": [
+                                {
+                                    "bitrate": 0,
+                                    "content_type": "video\/mp4",
+                                    "url": "https:\/\/video.twimg.com\/tweet_video\/CzQYTMJUQAAHDqc.mp4"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "source": "<a href=\"http:\/\/twitter.com\/download\/iphone\" rel=\"nofollow\">Twitter for iPhone<\/a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 3,
+            "favorite_count": 12,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "en"
+        },
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "000000",
+        "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+        "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+        "profile_background_tile": false,
+        "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/803812268391567360\/56mPczaQ_normal.jpg",
+        "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/803812268391567360\/56mPczaQ_normal.jpg",
+        "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/2564270210\/1480024493",
+        "profile_link_color": "001F3D",
+        "profile_sidebar_border_color": "000000",
+        "profile_sidebar_fill_color": "000000",
+        "profile_text_color": "000000",
+        "profile_use_background_image": false,
+        "has_extended_profile": true,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false,
+        "translator_type": "none"
+    }
+]
