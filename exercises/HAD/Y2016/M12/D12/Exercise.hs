@@ -1,4 +1,4 @@
-module Y2016.M12.D12 where
+module Y2016.M12.D12.Exercise where
 
 {--
 Today's Haskell exercise is from the Mensa Genuis Quiz-a-Day book. And I quote:
