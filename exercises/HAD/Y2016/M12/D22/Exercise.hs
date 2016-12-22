@@ -32,8 +32,8 @@ data USStateDebt = SomeStructureThatDeclaresDebtsUSState
 
 type URL = FilePath
 
-readPersonalDebtData :: URL -> IO [USStateDebt]
-readPersonalDebtData url = undefined
+readUSStateDebtData :: URL -> IO [USStateDebt]
+readUSStateDebtData url = undefined
 
 -- Now that you have these data, answer the below questions
 
