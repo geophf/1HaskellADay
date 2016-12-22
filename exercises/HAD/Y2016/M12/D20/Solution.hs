@@ -40,9 +40,7 @@ indexible.
 --}
 
 usCounties :: [[String]] -> [County]
-usCounties = tail
-           . concatMap (either (const []) (pure . meld)
-                      . stateContext . (!! 3))
+usCounties = concatMap (either (const []) (pure . meld) . stateContext . (!! 3))
 
 -- line2SAIPERow discards StateAbbrv information, so we have to route around
 -- a bit to get that info using Lens-hackery
