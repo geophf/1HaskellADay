@@ -17,6 +17,10 @@ import Y2016.M12.D21.Exercise
 So, a couple of days ago we were able to cluster US Counties by SAIPE/poverty
 statistics. Great!
 
+Data is gzipped here:
+
+Y2016/M12/D15/SAIPESNC_15DEC16_11_35_13_00.csv.gz
+
 The problem is that there are so many counties. And, clustering them, we lost
 our reference to their US States.
 
