@@ -65,7 +65,8 @@ stateyearline (_:st:yr:pop:_:_:_:_:_:_:_:med:mean:_) =
 stateyearline x = error ("Could not parse " ++ show x)
 
 readStr :: String -> Int
-readStr = read . filter (/= ',')
+readStr "NA" = 0
+readStr x = read (filter (/= ',') x)
     -- include (init . taili) to eliminate quotes?
     -- No, csv already ('automagically') eliminates quotes
 
