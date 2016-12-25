@@ -157,7 +157,7 @@ instance Show a => Node (SimpleCell a) where
 data SimpleSecurity a = Sec a deriving Show
 
 instance Show a => Node (SimpleSecurity a) where
-   asNode (Sec s) = "SECURITY { symbol: '" ++ show s ++ "' }"
+   asNode (Sec s) = "SECURITY { symbol: \"" ++ show s ++ "\" }"
 
 mkRel :: Show a => ColoredScoreCard a b c
       -> Relation (SimpleCell a) Linkage (SimpleSecurity a)
