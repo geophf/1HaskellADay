@@ -37,7 +37,7 @@ data NamedClusters key scorecard = NC { tup :: (String, Clusters key scorecard) 
    deriving Show
 
 instance Node (NamedClusters key scorecard) where
-   asNode (NC (nm, _)) = "CLUSTERS { for: '" ++ show nm ++ "', name: 'Clusters' }"
+   asNode (NC (nm, _)) = "CLUSTERS { for: \"" ++ show nm ++ "\", name: 'Clusters' }"
 
 colorization :: (Ix a, Ix b, RealFrac c) => SCClusters a b c
              -> [ScoreCard a b c]
@@ -154,14 +154,14 @@ data SimpleCell a = Cell a deriving Show
 instance Show a => Node (SimpleCell a) where
    asNode (Cell s) = "CELL { idx: \"" ++ show s ++ "\" }"
 
-data SimpleSecurity a = Sec a deriving Show
+data SimpleDatum a = Datum a deriving Show
 
-instance Show a => Node (SimpleSecurity a) where
-   asNode (Sec s) = "SECURITY { symbol: \"" ++ show s ++ "\" }"
+instance Show a => Node (SimpleDatum a) where
+   asNode (Datum s) = "DATUM { symbol: \"" ++ show s ++ "\" }"
 
 mkRel :: Show a => ColoredScoreCard a b c
-      -> Relation (SimpleCell a) Linkage (SimpleSecurity a)
-mkRel = (Cell &&& Sec >>> uncurry (`Rel` LINKS_TO)) . idx . sc
+      -> Relation (SimpleCell a) Linkage (SimpleDatum a)
+mkRel = (Cell &&& Datum >>> uncurry (`Rel` LINKS_TO)) . idx . sc
 
 relateClusteredCells :: Show a => Endpoint
                      -> NamedClusters z (ColoredScoreCard a b c) -> IO String
