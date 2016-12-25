@@ -66,7 +66,7 @@ data CSCCluster a b c = CSCC Int (Cluster (ColoredScoreCard a b c))
 instance Node (CSCCluster a b c) where
    asNode (CSCC idx clust@(Sum x, cells)) =
       let color = getSum (foldMap (Sum . colour) cells) `div` x in
-      "CLUSTER { idx: '" ++ show idx ++ "', heat: " ++ showColor color
+      "CLUSTER { idx: \"" ++ show idx ++ "\", heat: " ++ showColor color
               ++ ", size: " ++ show x ++ " }"
 
 type CSCCRel a b c = Relation (Src a b c) Membership (Src a b c)
@@ -152,7 +152,7 @@ instance Edge Linkage where asEdge = show
 data SimpleCell a = Cell a deriving Show
 
 instance Show a => Node (SimpleCell a) where
-   asNode (Cell s) = "CELL { idx: '" ++ show s ++ "' }"
+   asNode (Cell s) = "CELL { idx: \"" ++ show s ++ "\" }"
 
 data SimpleSecurity a = Sec a deriving Show
 
