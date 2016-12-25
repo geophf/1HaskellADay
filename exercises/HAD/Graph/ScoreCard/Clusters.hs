@@ -10,15 +10,17 @@ import Data.Foldable
 import qualified Data.Map as Map
 import Data.Monoid
 
-import Data.Graphics.Color            -- http://lpaste.net/9210044109090193408
-import Data.Relation                  -- http://lpaste.net/2242323977663938560
-import Graph.JSON.Cypher              -- http://lpaste.net/8198148860669853696
-import Graph.KMeans                   -- http://lpaste.net/3576182129349885952
-import Graph.Query                    -- http://lpaste.net/6813513488191717376
-import Graph.ScoreCard                -- http://lpaste.net/7322735479504240640
-import Graph.ScoreCard.Colored        -- http://lpaste.net/1795812773775540224
-import Graph.ScoreCard.ColorScheme    -- http://lpaste.net/5433500771834396672
-import Graph.Top5sAppearances         -- http://lpaste.net/4928100283508064256
+-- below imports available from 1HaskellADay git repository
+
+import Data.Graphics.Color
+import Data.Relation
+import Graph.JSON.Cypher
+import Graph.KMeans
+import Graph.Query
+import Graph.ScoreCard
+import Graph.ScoreCard.Colored
+import Graph.ScoreCard.ColorScheme
+-- import Graph.Top5sAppearances      -- http://lpaste.net/4928100283508064256
 
 {-- A solution to the problem posted at http://lpaste.net/9073884707980050432
 @1HaskellADay solution for 2016-04-12
@@ -37,7 +39,7 @@ data NamedClusters key scorecard = NC { tup :: (String, Clusters key scorecard) 
    deriving Show
 
 instance Node (NamedClusters key scorecard) where
-   asNode (NC (nm, _)) = "CLUSTERS { for: \"" ++ show nm ++ "\", name: 'Clusters' }"
+   asNode (NC (nm, _)) = "CLUSTERS { for: " ++ show nm ++ ", name: 'Clusters' }"
 
 colorization :: (Ix a, Ix b, RealFrac c) => SCClusters a b c
              -> [ScoreCard a b c]
