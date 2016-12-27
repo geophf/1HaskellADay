@@ -1,0 +1,95 @@
+{-# LANGUAGE ViewPatterns #-}
+
+module Analytics.Math.Statistics.StandardDeviation where
+
+-- http://lpaste.net/8056787266321776640
+
+import Control.Arrow
+import Control.Monad
+
+import Analytics.Math.SquareRoot (rSqrt) -- http://lpaste.net/872647512421302272
+import Control.Presentation              -- http://lpaste.net/588030780018524160
+import Control.Scan.CSV                  -- http://lpaste.net/109651 
+
+{-- You know: wikipedia:
+
+http://en.wikipedia.org/wiki/Standard_deviation
+
+So, we have rows in this CSV-format:
+
+Date,30%,70%,%K,%D,Close
+2015-04-28,30,70,60.51,83.10,130.56
+2015-04-27,30,70,94.46,92.15,132.64
+2015-04-24,30,70,94.32,92.22,130.28
+2015-04-23,30,70,87.68,83.99,129.66
+...
+
+Now, what we really care about here is %k and %d, so let's get that --}
+
+parseKD :: FilePath -> IO [(Rational, Rational)]
+parseKD = 
+   liftM (map ((head &&& last)
+        . map (\str -> toRational (read str :: Double)) . take 2 . drop 3 . csv)
+        . tail . lines) . readFile 
+
+{--
+*Main> liftM (take 5) $ parseKD "seer/aapl-analysis.csv" 
+[(60.51,83.1),(94.46,92.15),(94.32,92.22),(87.68,83.99),(94.65,82.19)]
+--}
+
+data Nat = One | Two | ThreeOn deriving (Eq, Ord, Enum, Show, Read)
+  -- complete and consistent ... yeah, right!
+
+data StandardDeviation = SD { n :: Nat, sigma :: Rational } deriving (Eq, Ord)
+
+-- I hate the Show instance of Double, btw
+
+instance Show StandardDeviation where 
+   show (SD n rat) = "SD " ++ show n ++ " " ++ laxmi 2 rat
+instance Univ StandardDeviation where
+   explode (SD nat dist) = [show nat, laxmi 2 dist]
+instance Read StandardDeviation where readsPrec _ = return . stddevFromCSVstring
+
+stddevFromCSVstring :: String -> (StandardDeviation, String)
+stddevFromCSVstring (csv -> (num:mag:rest)) =
+   let doubstep = read mag :: Double
+   in  (SD (read num) (toRational doubstep), unwordsBy ',' rest)
+
+-- This sample variance presupposes a computed (moving) variance (snd)
+-- if this is not the case, then refactor such that we first compute μ then
+-- have μ as snd. Simple enough.
+
+sampleVariance :: [(Rational,Rational)] -> Rational
+sampleVariance = uncurry (/) . (sum . map var &&& fromIntegral . pred . length)
+
+var :: (Rational,Rational) -> Rational
+var = (^ 2) . uncurry (-)
+
+{--
+*Main> liftM sampleVariance $ parseKD "seer/aapl-analysis.csv" ~> 177.86
+*Main> sqrt it ~> 13.34
+--}
+
+-- σ is handed the data set paired with a computed (moving) μ for each datum
+
+σ :: [(Rational, Rational)] -> (Rational, Rational) -> StandardDeviation
+σ sample kdpoint = num2SD (rsqte (var kdpoint) / rsqte (sampleVariance sample))
+
+rsqte :: Rational -> Rational
+rsqte = flip rSqrt 0.01
+
+num2SD :: Rational -> StandardDeviation
+num2SD = uncurry SD . (num2nat &&& id)
+
+num2nat :: Rational -> Nat
+num2nat dist | dist <= 1.0 = One
+             | dist <= 2.0 = Two
+             | otherwise   = ThreeOn
+
+exPts :: [(Rational, Rational)]
+exPts = [(92.15, 94.46), (83.99, 87.68), (52.59, 30.16)]
+
+{--
+*Main> parseKD "seer/aapl-analysis.csv" ~> let aapl = it
+*Main> map (σ aapl) exPts ~> [SD One 0.17,SD One 0.27,SD Two 1.68]
+--}
