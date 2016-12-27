@@ -2,14 +2,19 @@
 
 module Analytics.Math.Statistics.StandardDeviation where
 
--- http://lpaste.net/8056787266321776640
+{--
+Original established to compute standard deviations against stochastic 
+oscillators, but can be applied to any data set with a norm and some variance.
+--}
 
 import Control.Arrow
 import Control.Monad
 
-import Analytics.Math.SquareRoot (rSqrt) -- http://lpaste.net/872647512421302272
-import Control.Presentation              -- http://lpaste.net/588030780018524160
-import Control.Scan.CSV                  -- http://lpaste.net/109651 
+-- below imports available via 1HaskellADay git repository
+
+import Analytics.Math.SquareRoot (rSqrt)
+import Control.Presentation
+import Control.Scan.CSV
 
 {-- You know: wikipedia:
 
