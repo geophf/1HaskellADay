@@ -1,7 +1,5 @@
 module Analytics.Math.SquareRoot where
 
--- http://lpaste.net/872647512421302272
-
 -- Arbitrary precision square root for Rational
 
 -- see attribution below
@@ -10,6 +8,7 @@ import Data.Ratio
 
 -- The square root of x, within error tolerance e
 -- Warning: diverges if e=0 and x is not a perfect square
+
 rSqrt :: Rational -> Rational -> Rational
 rSqrt x _ | x < 0 = error "rSqrt of negative"
 rSqrt _ e | e < 0 = error "rSqrt negative tolerance"
