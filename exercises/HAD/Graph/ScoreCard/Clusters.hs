@@ -2,8 +2,6 @@
 
 module Graph.ScoreCard.Clusters where
 
--- http://lpaste.net/8982640331094753280
-
 import Control.Arrow ((>>>), (&&&), second)
 import Data.Array
 import Data.Foldable
@@ -162,12 +160,12 @@ data SimpleDatum a = Datum a deriving Show
 instance Show a => Node (SimpleDatum a) where
    asNode (Datum s) = "DATUM { symbol: \"" ++ show s ++ "\" }"
 
-mkRel :: Show a => ColoredScoreCard a b c
+mkRel :: Show a => ScoreCard a b c
       -> Relation (SimpleCell a) Linkage (SimpleDatum a)
-mkRel = (Cell &&& Datum >>> uncurry (`Rel` LINKS_TO)) . idx . sc
+mkRel = (Cell &&& Datum >>> uncurry (`Rel` LINKS_TO)) . idx
 
 relateClusteredCells :: Show a => Endpoint
-                     -> NamedClusters z (ColoredScoreCard a b c) -> IO String
+                     -> NamedClusters z (ScoreCard a b c) -> IO String
 relateClusteredCells endpt =
    uploadClusters endpt . fmap mkRel . mconcat
                         . Map.elems . Map.map snd . snd . tup
