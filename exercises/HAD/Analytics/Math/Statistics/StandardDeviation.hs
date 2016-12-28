@@ -7,8 +7,7 @@ Original established to compute standard deviations against stochastic
 oscillators, but can be applied to any data set with a norm and some variance.
 --}
 
-import Control.Arrow
-import Control.Monad
+import Control.Arrow ((&&&))
 
 -- below imports available via 1HaskellADay git repository
 
@@ -33,7 +32,7 @@ Now, what we really care about here is %k and %d, so let's get that --}
 
 parseKD :: FilePath -> IO [(Rational, Rational)]
 parseKD = 
-   liftM (map ((head &&& last)
+   fmap (map ((head &&& last)
         . map (\str -> toRational (read str :: Double)) . take 2 . drop 3 . csv)
         . tail . lines) . readFile 
 
@@ -53,7 +52,8 @@ instance Show StandardDeviation where
    show (SD n rat) = "SD " ++ show n ++ " " ++ laxmi 2 rat
 instance Univ StandardDeviation where
    explode (SD nat dist) = [show nat, laxmi 2 dist]
-instance Read StandardDeviation where readsPrec _ = return . stddevFromCSVstring
+instance Read StandardDeviation where
+   readsPrec _ = pure . stddevFromCSVstring
 
 stddevFromCSVstring :: String -> (StandardDeviation, String)
 stddevFromCSVstring (csv -> (num:mag:rest)) =
@@ -65,7 +65,7 @@ stddevFromCSVstring (csv -> (num:mag:rest)) =
 -- have μ as snd. Simple enough.
 
 sampleVariance :: [(Rational,Rational)] -> Rational
-sampleVariance = uncurry (/) . (sum . map var &&& fromIntegral . pred . length)
+sampleVariance = (/) . sum . map var <*> fromIntegral . pred . length
 
 var :: Fractional a => (a,a) -> a
 var = (^ 2) . uncurry (-)
@@ -91,7 +91,7 @@ rsqte :: Rational -> Rational
 rsqte = flip rSqrt 0.01
 
 num2SD :: Rational -> StandardDeviation
-num2SD = uncurry SD . (num2nat &&& id)
+num2SD = SD . num2nat <*> id
 
 num2nat :: Rational -> Nat
 num2nat dist | dist <= 1.0 = One
