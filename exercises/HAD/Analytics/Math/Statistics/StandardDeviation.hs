@@ -67,7 +67,7 @@ stddevFromCSVstring (csv -> (num:mag:rest)) =
 sampleVariance :: [(Rational,Rational)] -> Rational
 sampleVariance = uncurry (/) . (sum . map var &&& fromIntegral . pred . length)
 
-var :: (Rational,Rational) -> Rational
+var :: Fractional a => (a,a) -> a
 var = (^ 2) . uncurry (-)
 
 -- of course, we need µ for the computation, so ...
