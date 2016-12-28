@@ -8,6 +8,7 @@ oscillators, but can be applied to any data set with a norm and some variance.
 --}
 
 import Control.Arrow ((&&&))
+import Data.Array
 
 -- below imports available via 1HaskellADay git repository
 
@@ -41,7 +42,7 @@ parseKD =
 [(60.51,83.1),(94.46,92.15),(94.32,92.22),(87.68,83.99),(94.65,82.19)]
 --}
 
-data Nat = One | Two | ThreeOn deriving (Eq, Ord, Enum, Show, Read)
+data Nat = One | Two | ThreeOn deriving (Eq, Ord, Enum, Bounded, Ix, Show, Read)
   -- complete and consistent ... yeah, right!
 
 data StandardDeviation = SD { n :: Nat, sigma :: Rational } deriving (Eq, Ord)
@@ -64,7 +65,7 @@ stddevFromCSVstring (csv -> (num:mag:rest)) =
 -- if this is not the case, then refactor such that we first compute μ then
 -- have μ as snd. Simple enough.
 
-sampleVariance :: [(Rational,Rational)] -> Rational
+sampleVariance :: Fractional a => [(a,a)] -> a
 sampleVariance = (/) . sum . map var <*> fromIntegral . pred . length
 
 var :: Fractional a => (a,a) -> a
@@ -84,16 +85,17 @@ var = (^ 2) . uncurry (-)
 
 -- σ is handed the data set paired with a computed (moving) μ for each datum
 
-σ :: [(Rational, Rational)] -> (Rational, Rational) -> StandardDeviation
-σ sample kdpoint = num2SD (rsqte (var kdpoint) / rsqte (sampleVariance sample))
+σ :: RealFrac a => [(a, a)] -> (a, a) -> StandardDeviation
+σ sample kdpoint =
+   num2SD (rsqte (var kdpoint) / rsqte (sampleVariance sample))
 
-rsqte :: Rational -> Rational
-rsqte = flip rSqrt 0.01
+rsqte :: RealFrac a => a -> a
+rsqte = fromRational . flip rSqrt 0.01 . toRational
 
-num2SD :: Rational -> StandardDeviation
-num2SD = SD . num2nat <*> id
+num2SD :: RealFrac a => a -> StandardDeviation
+num2SD = SD . num2nat <*> toRational
 
-num2nat :: Rational -> Nat
+num2nat :: RealFrac a => a -> Nat
 num2nat dist | dist <= 1.0 = One
              | dist <= 2.0 = Two
              | otherwise   = ThreeOn
