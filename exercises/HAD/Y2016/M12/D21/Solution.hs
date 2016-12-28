@@ -42,7 +42,7 @@ arrayify :: SAIPERow -> Array Axes Float
 arrayify row =
    listArray (Population, Poverty) (map fromIntegral [pop row, poverty row])
 
-clusterSAIPE :: SAIPEScoreCards -> IO (SCClusters USCounty Axes Float)
+clusterSAIPE :: SAIPEScoreCards -> IO (SCClusters Int USCounty Axes Float)
 clusterSAIPE counties = let (gens, clusters) = kmeans 30 counties in
    putStrLn ("Clustered in " ++ show gens ++ " generations.") >>
    return clusters
