@@ -70,6 +70,13 @@ sampleVariance = uncurry (/) . (sum . map var &&& fromIntegral . pred . length)
 var :: (Rational,Rational) -> Rational
 var = (^ 2) . uncurry (-)
 
+-- of course, we need µ for the computation, so ...
+
+µ :: Fractional a => [a] -> a
+µ = (/) . sum <*> fromIntegral . length
+
+-- *Analytics.Math.Statistics.StandardDeviation> µ [1,3, 9, 6, 4, 7] ~> 5.0
+
 {--
 *Main> liftM sampleVariance $ parseKD "seer/aapl-analysis.csv" ~> 177.86
 *Main> sqrt it ~> 13.34
