@@ -63,7 +63,7 @@ see, e.g.: https://www.youtube.com/watch?v=zHbxbb2ye3E
 --}
 
 type Clusters key scorecard = Map key (Cluster scorecard)
-type SCClusters a b c = Clusters Int (ScoreCard a b c)
+type SCClusters key a b c = Clusters key (ScoreCard a b c)
 
 {--
 Okay.
@@ -144,7 +144,7 @@ c' base@(i, dist) ((idx, ctr):rest) sc =
 
 -- so: epoch
 
-epoch :: (Ix b, Ord c, Fractional c) => SCClusters a b c -> SCClusters a b c
+epoch :: (Ix b, Ord c, Fractional c) => SCClusters Int a b c -> SCClusters Int a b c
 epoch clusters =
 
 -- for each cluster, we compute the cluster center
@@ -158,15 +158,15 @@ epoch clusters =
 
 -- the start: divy up the pool into n clusters
 
-divy :: Int -> [ScoreCard a b c] -> SCClusters a b c
+divy :: Int -> [ScoreCard a b c] -> SCClusters Int a b c
 divy n = flip (d' n) Map.empty . splitAt n
 
 d' :: Int -> ([ScoreCard a b c], [ScoreCard a b c])
-          -> SCClusters a b c -> SCClusters a b c
+          -> SCClusters Int a b c -> SCClusters Int a b c
 d' n (sommat, []) = addn sommat
 d' n (sommat, rest) = d' n (splitAt n rest) . addn sommat
 
-addn :: [ScoreCard a b c] -> SCClusters a b c -> SCClusters a b c
+addn :: [ScoreCard a b c] -> SCClusters Int a b c -> SCClusters Int a b c
 addn sommat = flip (foldr (uncurry add1)) (zip [1..] sommat)
 
 -- the end: stop when the clusters become stable.
@@ -178,11 +178,11 @@ sameCluster (sz1, cl1) (sz2, cl2) =
 -- and now we tie it all together:
 
 kmeans :: (Eq a, Ix b, Ord c, Fractional c) =>
-          Int -> [ScoreCard a b c] -> (Int, SCClusters a b c)
+          Int -> [ScoreCard a b c] -> (Int, SCClusters Int a b c)
 kmeans = km' 0 <<- divy
 
 km' :: (Eq a, Ix b, Ord c, Fractional c) =>
-       Int -> SCClusters a b c -> (Int, SCClusters a b c)
+       Int -> SCClusters Int a b c -> (Int, SCClusters Int a b c)
 km' gen start =
    let next = epoch start 
    in  if   all (uncurry sameCluster)
