@@ -160,12 +160,12 @@ data SimpleDatum a = Datum a deriving Show
 instance Show a => Node (SimpleDatum a) where
    asNode (Datum s) = "DATUM { symbol: \"" ++ show s ++ "\" }"
 
-mkRel :: Show a => ScoreCard a b c
+mkRel :: Show a => ColoredScoreCard a b c
       -> Relation (SimpleCell a) Linkage (SimpleDatum a)
-mkRel = (Cell &&& Datum >>> uncurry (`Rel` LINKS_TO)) . idx
+mkRel = (Cell &&& Datum >>> uncurry (`Rel` LINKS_TO)) . idx . sc
 
 relateClusteredCells :: Show a => Endpoint
-                     -> NamedClusters z (ScoreCard a b c) -> IO String
+                     -> NamedClusters z (ColoredScoreCard a b c) -> IO String
 relateClusteredCells endpt =
    uploadClusters endpt . fmap mkRel . mconcat
                         . Map.elems . Map.map snd . snd . tup
