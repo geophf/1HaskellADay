@@ -41,9 +41,9 @@ data NamedClusters key scorecard = NC { tup :: (String, Clusters key scorecard) 
 instance Node (NamedClusters key scorecard) where
    asNode (NC (nm, _)) = "CLUSTERS { for: " ++ show nm ++ ", name: 'Clusters' }"
 
-colorization :: (Ix a, Ix b, RealFrac c) => SCClusters a b c
+colorization :: (Ix a, Ix b, Ord key, RealFrac c) => SCClusters key a b c
              -> [ScoreCard a b c]
-             -> Clusters Int (ColoredScoreCard a b c)
+             -> Clusters key (ColoredScoreCard a b c)
 colorization clusters origs =  -- ...
 
 {--
@@ -63,43 +63,44 @@ data Membership = IN deriving Show
 
 instance Edge Membership where asEdge = show
 
-data CSCCluster a b c = CSCC Int (Cluster (ColoredScoreCard a b c))
+data CSCCluster key a b c = CSCC key (Cluster (ColoredScoreCard a b c))
 
-instance Node (CSCCluster a b c) where
+instance Show key => Node (CSCCluster key a b c) where
    asNode (CSCC idx clust@(Sum x, cells)) =
       let color = getSum (foldMap (Sum . colour) cells) `div` x in
       "CLUSTER { idx: \"" ++ show idx ++ "\", heat: " ++ showColor color
               ++ ", size: " ++ show x ++ " }"
 
-type CSCCRel a b c = Relation (Src a b c) Membership (Src a b c)
+type CSCCRel key a b c = Relation (Src key a b c) Membership (Src key a b c)
 
 relateClusters :: (Enum a, Ix a, Ix b, RealFrac c) =>
-        NamedClusters Int (ColoredScoreCard a b c) -> [CSCCRel a b c]
+        NamedClusters key (ColoredScoreCard a b c) -> [CSCCRel key a b c]
 relateClusters =
    uncurry concatMap . (relateCluster &&&
                         map (uncurry CSCC) . Map.toList . snd . tup)
 
-data Src a b c = Root (NamedClusters Int (ColoredScoreCard a b c))
-                  | Branch (CSCCluster a b c)
-                  | Leaf (ColoredScoreCard a b c)
+data Src key a b c = Root (NamedClusters key (ColoredScoreCard a b c))
+                   | Branch (CSCCluster key a b c)
+                   | Leaf (ColoredScoreCard a b c)
 
-instance (Show a, Show b, Ix b, Show c) => Node (Src a b c) where
+instance (Show a, Show b, Ix b, Show c, Show key) => Node (Src key a b c) where
    asNode (Root x)   = asNode x
    asNode (Branch x) = asNode x
    asNode (Leaf x)   = asNode x
 
-instance (Show a, Ix b, Show b, Show c) => Show (Src a b c) where show = asNode
+instance (Show a, Ix b, Show b, Show c, Show key) => Show (Src key a b c) where
+   show = asNode
 
-relateCluster :: Enum a => NamedClusters Int (ColoredScoreCard a b c)
-              -> CSCCluster a b c -> [CSCCRel a b c]
+relateCluster :: Enum a => NamedClusters key (ColoredScoreCard a b c)
+              -> CSCCluster key a b c -> [CSCCRel key a b c]
 relateCluster c cluster@(CSCC _ (_, cells)) = 
    Rel (Root c) IN (Branch cluster):map (relateCSC cluster) (toList cells)
 
-relateCSC :: CSCCluster a b c -> ColoredScoreCard a b c -> CSCCRel a b c
+relateCSC :: CSCCluster key a b c -> ColoredScoreCard a b c -> CSCCRel key a b c
 relateCSC cluster cell = Rel (Branch cluster) IN (Leaf cell)
 
 {--
-*Main> let rels = relateClusters1 scores clusters
+*Main> let rels = relateClusters scores clusters
 *Main> uploadClusters (endpoint ++ ('/': transaction)) rels
 
 Resulting graph with nodes enhanced with meta-data shown on @1HaskellADay
