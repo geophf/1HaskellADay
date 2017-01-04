@@ -19,7 +19,8 @@ Cluster these data.
 data Axes = Population | Poverty
    deriving (Eq, Ord, Show, Enum, Bounded, Ix)
 
-clusterSAIPE :: [ScoreCard USCounty Axes Float] -> SCClusters USCounty Axes Float
+clusterSAIPE :: [ScoreCard USCounty Axes Float]
+             -> SCClusters Int USCounty Axes Float
 clusterSAIPE counties = undefined
 
 {--
