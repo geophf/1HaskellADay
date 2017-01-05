@@ -73,4 +73,3 @@ Now ratios are very small numbers [0, 1], but populations and debts are very
 big ones. Tomorrow we'll level these disparate data sets and look at clustered
 results.
 --}
---}
