@@ -162,5 +162,11 @@ highest poverty ratios:
 Now ratios are very small numbers [0, 1], but populations and debts are very
 big ones. Tomorrow we'll level these disparate data sets and look at clustered
 results.
---}
 
+Added charts and CSV files of resulting data analyses:
+
+Y2017/M01/D05/01-poverty-us-state.png
+Y2017/M01/D05/02-total-debts-us-state.png
+Y2017/M01/D05/debt-by-us-state.csv
+Y2017/M01/D05/poverty-by-us-state.csv
+--}
