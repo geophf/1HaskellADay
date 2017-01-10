@@ -104,9 +104,15 @@ instance ToJSON Person where
           {age: #{age}, name: #{name}, likes: #{likes}} |]
 
 pers2JSON :: Person -> ByteString
-pers2JSON = encode . toJSON
+pers2JSON = encode
 
 {--
+originally was encode . toJSON
+
+Philipp Maier @AkiiZedd writes: Just `encode` should work as well.
+
+Fixed that.
+
 *Y2017.M01.D09.Solution> BL.putStrLn (pers2JSON jane)
 {"age":23,"name":"Jane","likes":[]}
 --}
