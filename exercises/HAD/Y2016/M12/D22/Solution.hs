@@ -105,4 +105,14 @@ the URL, to read the original data each time, apparently because we cannot
 assume that the data at the URL is static. So I kept hitting the server until
 I got a secure server exception from the host. ick. So, if you're in the IO
 monad, stay in that domain until you're done with that computation.
+
+From a request by Edward Visel @alistaire: per capita debt by US State:
+
+*Y2016.M12.D22.Solution> readUSStateDebtData debtURL ~> debts
+*Y2016.M12.D22.Solution> let pers = personalDebtPerStateRanked debts
+*Y2016.M12.D22.Solution> writeFile "Y2016/M12/D22/persDebtRanked.csv"
+       . unlines . ("US State,Per Capita Debt":)
+       . map (\(USStDebt nm _ per) -> show nm ++ (',': show per)) $ reverse pers
+
+persDebtRanked.csv and percapitadebts.png located in this directory.
 --}
