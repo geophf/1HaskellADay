@@ -52,7 +52,7 @@ ellisto :: [Int]
 ellisto = [1..10]
 
 gtfo :: [Int] -> Maybe Int  -- gtfo: greather than five-o
-gtfo = undefined
+gtfo = find (> 5)
 
 {--
 Now, el-@yoeight defines any and all in terms of newtypes And and Or.
@@ -89,7 +89,7 @@ anyAF :: Traversable f => (a -> Bool) -> f a -> Bool
 anyAF = hoBool <<- find
 
 {--
-*Y2017.M01.D16.Solution> find (> 5) ellisto ~> Just 6
+*Y2017.M01.D16.Solution> gtfo ellisto ~> Just 6
 *Y2017.M01.D16.Solution> anyAF (> 5) ellisto ~> True
 *Y2017.M01.D16.Solution> let thats_a_neg = anyAF (< 0)
 *Y2017.M01.D16.Solution> thats_a_neg ellisto ~> False
