@@ -1,5 +1,3 @@
-{-# LANGUAGE InstanceSigs, ScopedTypeVariables, RankNTypes #-}
-
 module Y2017.M01.D17.Solution where
 
 import Control.Arrow ((***))
