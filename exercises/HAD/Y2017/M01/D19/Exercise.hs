@@ -18,7 +18,7 @@ Today's Haskell exercise: define lastest.
 lastest :: Traversable t => t a -> Maybe a
 lastest = undefined
 
--- Question: Is lastest total? Let's see
+-- Question: Is lastest a total function? Let's see:
 
 nada, uno, multa :: [Int]
 nada = []
