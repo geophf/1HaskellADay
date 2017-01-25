@@ -4,10 +4,6 @@ import Control.Monad (filterM, (>=>), join)
 import Data.List (isSuffixOf, isPrefixOf)
 import System.Directory
 
--- below imports available from 1HaskellADay git repository
-
-import Control.Logic.Frege (adjoin)
-
 {--
 Okay, they say 'a' is the second-most popular 'word' in Haskell.
 
