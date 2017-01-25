@@ -22,7 +22,7 @@ files in that directory.
 
 type Directory = FilePath
 
-haskellFiles :: Directory -> [FilePath]
+haskellFiles :: Directory -> IO [FilePath]
 haskellFiles dir = undefined
 
 {-- BONUS -----------------------------------------------------------------
@@ -33,7 +33,7 @@ those files, by which I mean: include either the relative path or the full
 absolute path to the enumerated files.
 --}
 
-haskellFilesR :: Directory -> [FilePath]
+haskellFilesR :: Directory -> IO [FilePath]
 haskellFilesR dir = undefined
 
 -- So we've got the haskell file names, tomorrow we'll look at file contents
