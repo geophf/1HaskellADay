@@ -84,10 +84,14 @@ data AbbrevMonth = JAN | FEB | MAR | APR | MAY | JUN | JUL
    deriving (Eq, Ord, Enum, Bounded, Ix, Show, Read)
 
 readTweetDate :: String -> Day
-readTweetDate (words -> [_,mos,day,_,_,yr]) =
-   fromGregorian (read yr)
-                 (succ (fromEnum ((read (map toUpper mos)) :: AbbrevMonth)))
-                 (read day)
+readTweetDate (words -> [_,month,day,_,_,yr]) =
+   fromGregorian (read yr) (mos month) (read day)
+
+mos :: String -> Int
+mos = succ . fromEnum . readMos
+
+readMos :: String -> AbbrevMonth
+readMos = read . map toUpper
 
 {--
 An example from the JSON
