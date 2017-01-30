@@ -47,7 +47,7 @@ And, yes, the Start Epoch is in the Julian year NEGATIVE 1410,
 And, yes, the Final Epoch is in the Julian year 3002.
 --}
 
-epoch2Day :: String -> Day
+epoch2Day :: [String] -> [Day]
 epoch2Day = undefined
 
 -- What is the Start Epoch Day value?
