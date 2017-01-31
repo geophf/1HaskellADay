@@ -85,15 +85,21 @@ Well, a date line has this format:
 --}
 
 lineParser :: String -> Maybe Day
-lineParser = parseWhich >=> match "Epoch: JED=" >=> parseNum'' >=> parseDay
+lineParser = preamble >=> match "Epoch: JED=" >=> parseNum'' >=> parseDay
           -- and ignore the rest of the line
 
 match :: String -> String -> Maybe String
 match = stripPrefix
 
-parseWhich, parseNum'' :: String -> Maybe String
+preamble, parseWhich, parseNum'' :: String -> Maybe String
+preamble = mconcat . ([match] <*> ["Start ", "Final "] <*>) . pure
+
+  -- The function preamble replaces parseWhich. Which one reads better for you?
+
 parseWhich str = match "Start " str <|> match "Final " str
-parseNum'' str = snd <$> parseNum str
+
+-- parseNum'' str = snd <$> parseNum str
+parseNum'' = fmap snd . parseNum   -- #1Liner via matt @themattchan
 
 parseNum :: String -> Maybe (Float, String)
 parseNum = Just . head . reads
@@ -109,9 +115,7 @@ Just (2817872.5," 3002-DEC-22-00:00:00")
 parseDay :: String -> Maybe Day
 parseDay = parseNum >=> \(yr, rest) ->
            let (month:day:_) = rend '-' (tail rest)
-               m = mos month
-               d = read day
-           in  return (fromJulian (floor yr) m d)
+           in  return (fromJulian (floor yr) (mos month) (read day))
 
 {--
 *Y2017.M01.D30.Solution> parseNum'' "  1206160.5-1410-APR-16-00:00:00" >>= parseDay
@@ -137,6 +141,11 @@ epoch2Day = mapMaybe lineParser
 {--
 *Y2017.M01.D30.Solution> epoch2Day dateSnippet 
 [-1410-04-03,3003-01-12]
+
+-- and to answer the above questions with the Julian dates:
+
+*Y2017.M01.D30.Solution> map showJulian it
+["-1410-04-16","3002-12-22"]
 --}
 
 -- Throughout this week, we'll be looking at reading in double-precision
