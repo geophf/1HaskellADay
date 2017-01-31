@@ -92,7 +92,9 @@ match :: String -> String -> Maybe String
 match = stripPrefix
 
 preamble, parseWhich, parseNum'' :: String -> Maybe String
-preamble = mconcat . ([match] <*> ["Start ", "Final "] <*>) . pure
+
+preamble = foldMap match ["Start ", "Final "] -- Nickolay Kudasov @crazy_fizruk
+  -- my solution: mconcat . ([match] <*> ["Start ", "Final "] <*>) . pure
 
   -- The function preamble replaces parseWhich. Which one reads better for you?
 
@@ -105,6 +107,9 @@ parseNum :: String -> Maybe (Float, String)
 parseNum = Just . head . reads
 
 {--
+Using the function 'reads' to parse a number with possible padding and 
+additional follow-on characters: https://www.vex.net/~trebla/haskell/reads.xhtml 
+
 *Y2017.M01.D30.Solution> parseNum "  1206160.5-1410-APR-16-00:00:00"
 Just (1206160.5,"-1410-APR-16-00:00:00")
 
