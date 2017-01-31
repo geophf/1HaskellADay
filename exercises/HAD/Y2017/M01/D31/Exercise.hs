@@ -23,8 +23,8 @@ samplePoint = "  3.461497957769017000D+07 -9.557376026160824000D+06 -2.490153072
 -- above is a sample 3-dimensional point. Read in each of these and re-represent
 -- these values as Haskell numbers
 
-readDouble :: String -> Double
-readDouble = undefined
+parseDouble :: String -> Double
+parseDouble = undefined
 
 -- hint: (read "3.461497957769017000D+07") :: Double throws this error:
 -- *** Exception: Prelude.read: no parse
@@ -36,8 +36,8 @@ readDouble = undefined
 data Triple = ThreeD { x,y,z :: Double }
    deriving (Eq, Ord, Show)
 
-read3DPoint :: String -> Triple
-read3DPoint = undefined
+parse3DPoint :: String -> Triple
+parse3DPoint = undefined
 
 -- Problem three:
 -- These data are in a file with other information. Group these data accordingly
@@ -45,7 +45,7 @@ read3DPoint = undefined
 data Epoch = Ephem { file :: String, group, ncoefficient :: Int, points :: [Triple] }
    deriving (Eq, Ord, Show)
 
-readEpochs :: FilePath -> [Epoch]
+readEpochs :: FilePath -> IO [Epoch]
 readEpochs = undefined
 
 -- Questions:
