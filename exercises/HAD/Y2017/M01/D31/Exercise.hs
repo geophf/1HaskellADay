@@ -50,6 +50,7 @@ readEpochs = undefined
 
 -- Questions:
 -- 1. How many epoch are in ascm0800-2recs.102 and in ascm1100-2recs.102
+--    (these files are located under de102/ in this directory)
 -- 2. How many Triples are in each epoch for each file? Same number for each
 --    file, or the number of Triples different for each file?
 -- 3. What is the z value for the last triple for each epoch?
