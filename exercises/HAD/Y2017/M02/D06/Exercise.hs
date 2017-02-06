@@ -7,7 +7,7 @@ This problem is from http://rosalind.info/problems/sset/ and reads thus:
 
 Counting Subsets, solved by 1457 as of February 6th, 2017:
 
-Characters and SNPsclick to collapse
+Characters and SNPs
 
 A character is any feature (genetic, physical, etc.) that divides a collection 
 of organisms into two separate groups. One commonly used genetic character is 
