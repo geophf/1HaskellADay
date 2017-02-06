@@ -64,3 +64,5 @@ What does counting subsets have to do with characters and "ON"/"OFF" switches?
 
 subsetSizeOfSetOfSize :: Integer -> Integer
 subsetSizeOfSetOfSize n = undefined
+
+-- define the above function and solve for n = 972 then n = 994
