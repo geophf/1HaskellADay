@@ -143,7 +143,7 @@ grouper input = undefined
 
 {-- BONUS -----------------------------------------------------------------
 
-Read in the file at this directory: Y2017/M02/D07/rosalind_seto.txt, or url:
+Read in the file at this directory: Y2017/M02/D07/rosalind_seto.txt.gz, or url:
 
 https://github.com/geophf/1HaskellADay/blob/master/exercises/HAD/Y2017/M02/D07/rosalind_seto.txt.gz?raw=true
 
