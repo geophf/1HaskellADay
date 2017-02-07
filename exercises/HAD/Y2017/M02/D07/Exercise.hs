@@ -119,6 +119,15 @@ complement context a = undefined
 
 -- It's still a comonad, but okay.
 
+-- So I proposed the above for complement to push my agenda: comonads
+-- (I LOVE'm!). Another way to look at complement is that it is a function
+-- with the universe value curried in. So, we can have complement declared:
+
+complemnt :: Grp a -> Grp a -> Grp a
+complemnt universe a = undefined
+
+-- if that is a better frame with which to define that function for you.
+
 -- Now that we have the above group operations defined, we tie it all together:
 
 -- 1. read in the context (the size of the universe) and the two sets
