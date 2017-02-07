@@ -3,6 +3,8 @@ module Y2017.M02.D07.Exercise where
 import Control.Comonad
 import Data.Set (Set, fromList)
 
+import Codec.Compression.GZip
+
 {--
 Rosalind problem solving, day 2, from: http://rosalind.info/problems/seto/
 
@@ -138,3 +140,16 @@ grouper input = undefined
 
 -- verify that the input, shown above when run through the program grouper,
 -- properly prints the output, yes, but also equals the groups enumerated.
+
+{-- BONUS -----------------------------------------------------------------
+
+Read in the file at this directory: Y2017/M02/D07/rosalind_seto.txt, or url:
+
+https://github.com/geophf/1HaskellADay/blob/master/exercises/HAD/Y2017/M02/D07/rosalind_seto.txt.gz?raw=true
+
+do a grouper on it and then save the result in proper format as expected by
+rosalind.info as ans.txt.
+--}
+
+saveSetoAns :: FilePath -> FilePath -> IO ()
+saveSetoAns rosalindInput answerFile = undefined
