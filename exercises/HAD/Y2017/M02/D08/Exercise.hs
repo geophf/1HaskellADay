@@ -60,7 +60,7 @@ offspring.
 sample :: String
 sample = "1 0 0 1 0 1"
 
--- so we need to convert our sample to a list of floats:
+-- so we need to convert our sample to a list of Ints:
 
 parseInput :: String -> [Int]
 parseInput = undefined
