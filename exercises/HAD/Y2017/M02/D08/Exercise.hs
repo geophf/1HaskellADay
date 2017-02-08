@@ -62,8 +62,8 @@ sample = "1 0 0 1 0 1"
 
 -- so we need to convert our sample to a list of floats:
 
-parseSample :: String -> [Int]
-parseSample = undefined
+parseInput :: String -> [Int]
+parseInput = undefined
 
 -- then verify our solution is the result below:
 
@@ -74,3 +74,8 @@ result = 3.5
 
 expectedOffspring :: [Int] -> Float
 expectedOffspring numberedCouples = undefined
+
+-- After you verify expectedOffspring works with sample, what is the answer for:
+
+population :: String
+population = "17224 19615 19440 18066 17971 19296"
