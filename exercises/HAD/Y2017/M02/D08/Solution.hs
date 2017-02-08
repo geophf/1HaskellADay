@@ -1,8 +1,5 @@
 module Y2017.M02.D08.Solution where
 
-import Data.Map (Map)
-import qualified Data.Map as Map
-
 {--
 Today's Haskell problem is from http://rosalind.info/problems/iev/
 
