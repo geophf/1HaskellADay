@@ -61,4 +61,11 @@ numbers. This is what we call dynamic programming.
 fibr :: [Integer] -> Integer -> Integer
 fibr fibs n = undefined
 
--- What is the values of map fibr [sample, big, really]? Are they return timely?
+-- of course you need to seed your fibonacci computer for it to work. What shall
+-- your seed be?
+
+seed :: [Integer]
+seed = undefined
+
+-- What is the values of map (fibr seed) [sample, big, really]? 
+-- Are they return timely?
