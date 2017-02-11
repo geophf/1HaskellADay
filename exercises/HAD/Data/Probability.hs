@@ -30,7 +30,16 @@ instance Monad Prob where
 
 instance Applicative Prob where
    pure x = Prob [(x,1)]
-   f <*> prob = undefined -- I have no idea
+   (Prob fs) <*> (Prob xs) =
+
+-- Okay, let's think this through
+
+-- Okay, let's not. Let's let YOU think this through. AHA!
+
+      undefined
+
+-- Yeah, I'm going to make this an @1HaskellADay exercise. That's right.
+-- I went there.
 
 -- From the above, with a loaded coin, we can compute the probabilities of
 -- all tails in a coin-toss:
