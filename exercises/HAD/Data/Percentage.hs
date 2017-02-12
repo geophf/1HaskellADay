@@ -8,4 +8,4 @@ data Percentage = P { percent :: Rational }
 instance Show Percentage where
    show = (++ "%") . rep
 instance Raw Percentage where
-   rep (P p) = laxmi 2 p
+   rep = laxmi 2 . (100 *) . percent
