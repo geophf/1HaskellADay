@@ -43,7 +43,7 @@ Redeclare Matrix a to be an array-type indexed by a 2-tuple type. --}
 import Control.Arrow
 import Control.Lens
 import Data.Array
-import Data.List
+import Data.List hiding (transpose)
 import Data.Monoid
 import Data.Tuple (swap)
 
@@ -181,11 +181,7 @@ Question: I see a linear-time definition here. Do you?
 
 transpose :: Matrix a -> Matrix a
 transpose =
-   M . uncurry array
-     . (adjoin swap . bounds &&& map (first swap) . assocs) . matrix
-
--- swap :: (a,b) -> (b,a)
--- swap = snd &&& fst
+   M . (array . adjoin swap . bounds <*> map (first swap) . assocs) . matrix
 
 -- As Андреев Кирилл @nonaem00 for the #1Liner, swap is defined in Data.Tuple
 

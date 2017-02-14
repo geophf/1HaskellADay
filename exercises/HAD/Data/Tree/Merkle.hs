@@ -3,12 +3,9 @@ module Data.Tree.Merkle where
 {--
 We'll look at Merkle trees from the tweet we saw yesterday on @1HaskellADay
 from Carlos Galdino @carlosgaldino.
-
 http://blog.carlosgaldino.com/merkle-trees.html
-
 Also, Merkle trees are used in the Blockchain (which BitCoin uses), so here's
 an article on that.
-
 http://chimera.labs.oreilly.com/books/1234000001802/ch07.html#merkle_trees
 --}
 
@@ -25,11 +22,9 @@ import Data.BlockChain.Block.Types (Hash)
 import Data.Monetary.BitCoin
 
 {-- HASHING -----------------------------------------------------------------
-
 We're not going to declare and construct Merkle trees today, what we are
 going to do is to get warmed up with hashing functions, specifically the
 SHA256 hashing function.
-
 Define a function that takes a string and hashes it to an SHA256 digest:
 --}
 
@@ -59,7 +54,6 @@ e08e9c734649decf1e099179d85b6b3e8fc7f0fdd7a2f8c4e09d1286e4a59838
 So, here's the thing. Bitcoin doubly hashes the string, or, more correctly,
 it hashes the exchange in the block, then it hashes that hash. Let's do the
 same thing:
-
 Fortunately, as Digest SHA256 is a show instance, we just call hashShow again:
 --}
 
@@ -74,7 +68,6 @@ hashhash = hashShow
 *Y2016.M08.D31.Solution> mapM_ (print . hashhash) hash0 ~> hashes1
 f80961602c4ea1b17ede78ede6ea7d9ac43229dc70f77129dedf3f6e0786664e
 e236d4d55f3da96c7aa5ec8c4896622abe0ae13e2d2339edf71b04c4df040fdb
-
 verified by eyeballs, the hashes are different.
 --}
 
@@ -101,25 +94,19 @@ childrenHash = show . hash256 <<- (++)
 --}
 
 {-- MERKLE TREES ------------------------------------------------------------
-
 Merkle trees are balanced binary trees that carry metadata, these metadata are
 the hash of the data (if the node is leaf) or the hash of the child nodes (if
 the node is not leaf). That means something: all non-leaf nodes, EXCEPT the
 root, have two child nodes. What happens if there is a dangling leaf node?
-
 The Merkle tree solves this by duplicating that leaf node.
-
 So, if we have three leaf nodes: a, b, c, then the Merkle tree looks like this:
-
                  ROOT
                 /    \
                x      y
               / \    / \
              a   b  c   c 
-
 Got it? Great! If you don't, read up on Merkle trees. You do know how to wiki,
 right?
-
 So, today, we are going to be creating two constructs: Leaf and Branch, and
 with that (eventually) we should be able to construct any Merkle tree.
 Let's do this.
@@ -129,7 +116,6 @@ data MerkleTree a = Merkle { root :: Branch a }
    deriving (Eq, Ord, Show)
 
 {-- moved to Data.BlockChain.Block.Types
-
 type Hash = String   -- because I can't convert String -> Digest SHA256
                      -- even from (hash str)
 --}
@@ -242,7 +228,6 @@ Parent {hashID = "6e84df977ad3e62ebb6348dba8b00ed2449f02a474711bd38a26b158c0e51d
                   branch = Twig {hashID = "54e4d0abf6b4a4efef62f96ca898fdc0b1fd7e42d84eef343131c4ad8ef98d24", 
                                  soleLf = Leaf {dataHash = "2ef5d9f1f8a5412e23384041311da037ee4c55dd4575533157bbd5498bb77a69", 
                                                 packet = BTC 9.60}}}}
-
 --}
 
 -- INSERTION -----------------------------------------------------------------
