@@ -64,6 +64,11 @@ parentsB = undefined  -- Aa, Aa
 
 -- What is the probability that 2 or more of the children are mixed?
 
+atLeast :: Eq a => Prob a -> a -> Int -> Rational
+atLeast distribution outcome n = undefined
+
+-- You can also make a an Ord instance if that helps you
+
 -- Hint: the probability of x outcomes is what? (think: combinations), so
 -- the probability of at least x outcomes is x outcomes + x+1 outcomes + ...
 
