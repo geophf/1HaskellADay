@@ -64,8 +64,11 @@ parentsB = undefined  -- Aa, Aa
 
 -- What is the probability that 2 or more of the children are mixed?
 
-atLeast :: Eq a => Prob a -> a -> Int -> Rational
-atLeast distribution outcome n = undefined
+atLeast :: Eq a => Prob a -> a -> Int -> Int -> Rational
+atLeast distribution outcome k n = undefined
+
+-- where k is the number of outcomes and n is the total number of events or
+-- specifically: k is the number of Aa genotype offspring and n is all children
 
 -- You can also make a an Ord instance if that helps you
 
