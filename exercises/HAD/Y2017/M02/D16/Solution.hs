@@ -151,7 +151,7 @@ outcomes distribution outcome k n =
 -- I take: http://math.stackexchange.com/questions/267186/2-heads-or-more-in-3-coin-toss-formula?noredirect=1&lq=1
 -- as the directive here
 
-   fromMaybe 0 (fmap ((* choose n k) . toRational . (^ n))
+   fromMaybe 0 (fmap ((* choose n k) . (^ n))
                      (Map.lookup outcome (condense' distribution)))
 
 
