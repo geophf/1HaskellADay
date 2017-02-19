@@ -2,15 +2,21 @@
 
 module Data.Probability where
 
+-- A direct lift from http://learnyouahaskell.com/for-a-few-monads-more#making-monads
+
+import Control.Applicative
 import Control.Arrow (first, second, (***), (&&&))
 
 import Data.Function (on)
 import Data.List (groupBy, sort, genericLength)
 import Data.Map (Map)
 import qualified Data.Map as Map
+import Data.Maybe (fromMaybe)
 import Data.Ratio
 
--- A direct lift from http://learnyouahaskell.com/for-a-few-monads-more#making-monads
+-- below import available from 1HaskellADay git repository
+
+import Analytics.Math.Combinatorics
 
 newtype Prob a = Prob { getProb :: [(a,Rational)] } deriving Show
 
@@ -39,13 +45,20 @@ instance Applicative Prob where
    pure x = Prob [(x,1)]
    Prob fs <*> Prob xs = Prob (map (\(f,p) -> f *** (p *)) fs <*> xs)
 
+-- and since we have a fail case above, let's have an Alternative:
+
+instance Alternative Prob where
+   empty = Prob []
+   (Prob [])      <|> x = x
+   x@(Prob (_:_)) <|> _ = x
+
 -- From the above, with a loaded coin, we can compute the probabilities of
 -- all tails in a coin-toss:
 
 data Coin = Heads | Tails deriving (Eq, Ord, Show)
 
 coin, loadedCoin :: Prob Coin
-coin = Prob [(Heads, 0.5), (Tails, 0.5)]
+coin = uniform [Heads, Tails]
 loadedCoin = Prob [(Heads, 0.1), (Tails, 0.9)]
 
 flipThree :: Prob Bool
@@ -89,3 +102,21 @@ condense = recoalesce . condense'
 
 uniform :: [a] -> Prob a
 uniform as = let prob = 1 % genericLength as in Prob (map (,prob) as)
+
+-- Now we look at the probability of event x occuring both k times (exactly)
+-- and at least k times
+
+outcomes :: Ord a => Prob a -> a -> Integer -> Integer -> Rational
+outcomes distribution outcome k n =
+
+-- I take: http://math.stackexchange.com/questions/267186/2-heads-or-more-in-3-coin-toss-formula?noredirect=1&lq=1
+-- as the directive here
+
+   fromMaybe 0 (fmap ((* choose n k) . (^ n))
+                     (Map.lookup outcome (condense' distribution)))
+
+-- Given the above, atLeast becomes a summer function over the ks
+
+atLeast :: Ord a => Prob a -> a -> Integer -> Integer -> Rational
+atLeast distribution outcome k n =
+   sum (map (flip (outcomes distribution outcome) n) [k .. n])
