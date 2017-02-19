@@ -75,7 +75,7 @@ match parentA parentB = undefined
 -- Let's try it out. What are the possible traits of a child of parents A and B?
 
 parentA, parentB :: Traits
-parentA = Genotypes . Map.fromList . zip "ab" . map mkgene $ words "Aa Ba"
+parentA = Genotypes . Map.fromList . zip "ab" . map mkgene $ words "Aa Bb"
 parentB = parentA -- parent B has the same traits as parent A.
 
 -- Hint: look to flipThree for combining genotypes into a new set of traits
