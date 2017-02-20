@@ -106,17 +106,20 @@ uniform as = let prob = 1 % genericLength as in Prob (map (,prob) as)
 -- Now we look at the probability of event x occuring both k times (exactly)
 -- and at least k times
 
+nthProb :: Ord a => Prob a -> a -> Integer -> Rational
+nthProb dist outcome n =
+   fromMaybe 0 (fmap (^ n) (Map.lookup outcome (condense' dist)))
+
 outcomes :: Ord a => Prob a -> a -> Integer -> Integer -> Rational
 outcomes distribution outcome k n =
 
 -- I take: http://math.stackexchange.com/questions/267186/2-heads-or-more-in-3-coin-toss-formula?noredirect=1&lq=1
 -- as the directive here
 
-   fromMaybe 0 (fmap ((* choose n k) . (^ n))
-                     (Map.lookup outcome (condense' distribution)))
+   nthProb distribution outcome n * choose n k
 
 -- Given the above, atLeast becomes a summer function over the ks
 
 atLeast :: Ord a => Prob a -> a -> Integer -> Integer -> Rational
 atLeast distribution outcome k n =
-   sum (map (flip (outcomes distribution outcome) n) [k .. n])
+   sum (map (choose n) [k .. n]) * nthProb distribution outcome n
