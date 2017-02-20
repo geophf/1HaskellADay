@@ -1,5 +1,6 @@
-module Y2017.M02.D20.Exercise where
+module Y2017.M02.D20.Solution where
 
+import Control.Arrow ((&&&))
 import Data.Map (Map)
 import qualified Data.Map as Map
 import Data.Monoid
@@ -44,6 +45,29 @@ record and use it to compute the GC-content signature of a string.
 --}
 
 gcContent' :: DNAStrand -> Percentage
-gcContent' dna = undefined
+gcContent' dna =
+
+-- our nucleotide-totals is as follows:
+
+   let nukes = Map.toList (Bag.fromList dna)
+
+-- well, the totals of all the nucleotides IS the length of the list:
+
+       len   = sum (map snd nukes)
+
+-- the length of nukes is 4 or less, dna can have thousands of nucleotides
+
+-- And now, along with the old definition, we have everything we need
+
+   in  P (uncurry (%) $ adjoin (fromIntegral . getSum) (sumGC nukes, len))
 
 -- Now, using Rosalind/rosy_strands.txt verify that gcContent' == gcContent
+
+{--
+>>> fmap (map (ident &&& gcContent . strand)) $ readFASTA "Rosalind/rosy_strands.txt" 
+[("Rosalind_6404",53.75%),("Rosalind_5959",53.57%),("Rosalind_0808",60.91%)]
+>>> fmap (map (ident &&& gcContent' . strand)) $ readFASTA "Rosalind/rosy_strands.txt" 
+[("Rosalind_6404",53.75%),("Rosalind_5959",53.57%),("Rosalind_0808",60.91%)]
+--}
+
+-- moving gcContent' definition to Rosalind.GCContent.gcContent
