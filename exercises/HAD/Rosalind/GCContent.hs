@@ -64,9 +64,30 @@ import Data.Percentage
 import Rosalind.Types
 
 gcContent :: DNAStrand -> Percentage
-gcContent strand =
-   let gcs = getSum (sumGC (Map.toList (Bag.fromList strand)))
-   in  P (uncurry (%) $ adjoin fromIntegral (gcs, length strand))
+gcContent dna =
+
+-- our nucleotide-totals is as follows:
+
+   let nukes = Map.toList (Bag.fromList dna)
+
+-- well, the totals of all the nucleotides IS the length of the list:
+
+       len   = sum (map snd nukes)
+
+-- the length of nukes is 4 or less, dna can have thousands of nucleotides
+
+-- And now, along with the old definition, we have everything we need
+
+   in  P (uncurry (%) $ adjoin (fromIntegral . getSum) (sumGC nukes, len))
+
+-- Now, using Rosalind/rosy_strands.txt verify that gcContent' == gcContent
+
+{--
+>>> fmap (map (ident &&& gcContent . strand)) $ readFASTA "Rosalind/rosy_strands.txt" 
+[("Rosalind_6404",53.75%),("Rosalind_5959",53.57%),("Rosalind_0808",60.91%)]
+>>> fmap (map (ident &&& gcContent' . strand)) $ readFASTA "Rosalind/rosy_strands.txt" 
+[("Rosalind_6404",53.75%),("Rosalind_5959",53.57%),("Rosalind_0808",60.91%)]
+--}
 
 sumGC :: Monoid m => [(Char, m)] -> m
 sumGC = foldr (\(x,y) -> ((x `elem` "GC" -| y) <>)) mempty
