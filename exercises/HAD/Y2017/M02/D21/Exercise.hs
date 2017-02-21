@@ -1,5 +1,7 @@
 module Y2017.M02.D21.Exercise where
 
+import Network.HTTP.Conduit
+
 {--
 Mortal Fibonacci Rabbits solved by 5142 as of February 20th, 2017
 
@@ -38,3 +40,10 @@ fibo n = undefined
 
 nRabbitsAtGenerationWithMortality :: Integer -> Integer -> Integer
 nRabbitsAtGenerationWithMortality gen mortality = undefined
+
+{-- BONUS -----------------------------------------------------------------
+
+Solve for some larger numbers in the file at this directory at rosalind_fibd.txt
+or at the URL:
+https://raw.githubusercontent.com/geophf/1HaskellADay/master/exercises/HAD/Y2017/M02/D21/rosalind_fibd.txt
+--}
