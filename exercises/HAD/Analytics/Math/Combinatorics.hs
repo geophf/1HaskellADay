@@ -9,7 +9,14 @@ choose :: Integer -> Integer -> Rational
 choose n k = factorial n / (factorial k * factorial (n - k))
 
 {-- FIBONACCI ------------------------------------------------------------
-What is the value of fibo really?
+Recall the doubly-recursive definition of fibonacci is:
+
+fibo :: Integer -> Integer
+fibo n | n <  1    = 0
+       | n == 1    = 1
+       | n >  1    = fibo (n-1) + fibo (n-2)
+
+But what is the value of fibo really?
 
 That's a problem, isn't it, because fibo is in exponential time if defined
 doubly-recursively. But here's the thing: if you know F(n) you already know
@@ -34,7 +41,7 @@ seed = [1,0]
 -- Are they return timely?
 
 {--
->>> map (fibr seed) [sample, big, really]
+>>> map (fibr seed) [6, 25, 100]
 [8,75025,354224848179261915075]
 returned with no delay.
 
@@ -49,3 +56,6 @@ fibonacci :: Integer -> Integer
 fibonacci = fibr seed
 
 -- is a perfectly acceptable definition
+
+-- There are two problems with fibr which we will address, and then there is
+-- a more general recurrence relationship by which we may define fibonacci
