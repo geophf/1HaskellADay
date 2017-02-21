@@ -15,14 +15,12 @@ ATATCCATTTGTCAGCAGACACGC
 We need to read in strands of sequenced DNA and tag them.
 --}
 
-type Ident = String
-type DNAStrand = String
+-- below import available via 1HaskellADay git repository
 
-data IdxStrand = IS { ident :: Ident, strand :: DNAStrand }
-   deriving (Eq, Ord, Show)
+import Rosalind.Types
 
 readFASTA :: FilePath -> IO [IdxStrand]
-readFASTA = fmap (readStrands . words) . readFile
+readFASTA = fmap (readStrands . lines) . readFile
 
 -- Your basic builder-function, building a FASTA strand:
 -- First line is the FASTA ID
