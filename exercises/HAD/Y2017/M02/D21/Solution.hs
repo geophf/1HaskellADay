@@ -63,7 +63,8 @@ recur :: Integer -> Integer -> Integer
 recur = recurring [1,1]
 
 recurring :: [Integer] -> Integer -> Integer -> Integer
-recurring (a:b:_) n k | n < 3     = a
+recurring (a:b:_) n k | n < 1     = 0
+                      | n < 3     = a
                       | otherwise = recurring [b * k + a,a] (pred n) k
 
 {--
