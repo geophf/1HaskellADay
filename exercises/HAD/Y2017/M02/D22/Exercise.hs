@@ -29,7 +29,7 @@ fibonacci' n = undefined
 
 -- hint: look at, ... possibly to improve, ... fibr definition.
 
--- What are the fibonacci values for n <- [6, 25, 105, 1027]?
+-- What are the fibonacci values for n <- [-12, 6, 25, 105, 1027]?
 
 {-- BONUS -----------------------------------------------------------------
 
@@ -47,5 +47,5 @@ So, define fibonacci in terms of a recurrence relation.
 fibonacci :: Integer -> Integer
 fibonacci n = undefined
 
--- What, again, are the values for (map fibonacci [7, 19, 99, 2022])?
+-- What, again, are the values for (map fibonacci [-3, 7, 19, 99, 2022])?
 -- What is the memory footprint for finding these values? How long did it take?
