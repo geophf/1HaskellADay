@@ -37,7 +37,7 @@ fibr fibs@(x:y:_) n = fibr (x+y:fibs) (pred n)
 seed :: [Integer]
 seed = [1,0]
 
--- What is the values of map (fibr seed) [sample, big, really]? 
+-- What is the values of map (fibr seed) [6, 25, 100]? 
 -- Are they return timely?
 
 {--
