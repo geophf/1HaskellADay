@@ -113,5 +113,7 @@ Some entries in UniProt have one primary (citable) accession number and some
 secondary numbers, appearing due to merging or demerging entries. In this 
 problem, you may be given any type of ID. If you type the secondary ID into the 
 UniProt query, then you will be automatically redirected to the page containing 
-the primary ID. You can find more information about UniProt IDs here.
+the primary ID. You can find more information about UniProt IDs at this URL:
+
+http://www.uniprot.org/help/accession_numbers
 --}
