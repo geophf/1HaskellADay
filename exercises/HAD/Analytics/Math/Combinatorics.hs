@@ -8,6 +8,35 @@ factorial = toRational . product . enumFromTo 1
 choose :: Integer -> Integer -> Rational
 choose n k = factorial n / (factorial k * factorial (n - k))
 
+{-- RECURRENT RELATIONS --------------------------------------------------
+First of all, recall that recur was defined as follows:
+recur :: Integer -> Integer -> Integer
+recur 1 k = 1
+recur 2 k = 1
+recur n k = recur (pred (pred n)) k * k + recur (pred n) k
+but recall that dynamic programming allows us to speed up this computation:
+--}
+
+recur :: Integer -> Integer -> Integer
+recur = recurring [1,1]
+
+recurring :: [Integer] -> Integer -> Integer -> Integer
+recurring (a:b:_) n k | n < 1     = 0
+                      | n < 3     = a
+                      | otherwise = recurring [b * k + a,a] (pred n) k
+
+{--
+>>> recur 5 3
+19
+>>> recur 35 2 
+11453246123
+...in no time
+Note that I drop 'older' elements of the recurrence list: after they are 
+computed, they are no longer needed and discarded, so the recurrence 
+relationship is now efficient in both time and space, whereas the original
+doubly recursive algorithm is efficient in neither.
+--}
+
 {-- FIBONACCI ------------------------------------------------------------
 Recall the doubly-recursive definition of fibonacci is:
 
@@ -24,7 +53,6 @@ F(n-1) ... so why recompute that subtree when you've already just computed it
 So, use that knowledge. Retain it. Define a fibonacci function that returns
 the fibonacci at n in linear time by retaining the previous [0..n-1] fibonacci
 numbers. This is what we call dynamic programming.
---}
 
 fibr :: [Integer] -> Integer -> Integer
 fibr _ 0 = 0
@@ -40,22 +68,33 @@ seed = [1,0]
 -- What is the values of map (fibr seed) [6, 25, 100]? 
 -- Are they return timely?
 
-{--
 >>> map (fibr seed) [6, 25, 100]
 [8,75025,354224848179261915075]
 returned with no delay.
 
 Epilogue.
 
-There is no law stating you couldn't've defined fibo in terms of fibr from the
-get-go, knowing that binary functions can be linearized (Paul Taurau's 
-binary prolog papers come to mind here). So:
+Fibonacci is a specific expression of a recurrence relation.
+
+So, define fibonacci in terms of a recurrence relation.
 --}
 
 fibonacci :: Integer -> Integer
-fibonacci = fibr seed
+fibonacci = flip recur 1
 
--- is a perfectly acceptable definition
+-- What, again, are the values for (map fibonacci [-3, 7, 19, 99, 2022])?
+-- What is the memory footprint for finding these values? How long did it take?
 
--- There are two problems with fibr which we will address, and then there is
--- a more general recurrence relationship by which we may define fibonacci
+{--
+>>> map fibonacci [-3, 7, 19, 99, 2022]
+[0,13,4181,218922995834555169026,167310648784659280728144836725590014814177
+ 40079747676087675370408011426011453649538013501424462864154046500947901593
+ 42993763061932388177841294054658044451407589934236871431466133901233545579
+ 36785042721146861530732824681611737331775039385078670522766530356710254069
+ 89498837517631736503027808071321841320104867836063619983051403713130141974
+ 92869017898957795184267726464050334235713601159942285530988710466965209813
+ 84561779336]
+
+The new, improved fibonacci along with the recurrence relation function is being
+rolled into Analytics.Math.Combinatorics.
+--}
