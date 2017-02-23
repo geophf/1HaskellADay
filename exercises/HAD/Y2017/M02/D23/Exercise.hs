@@ -3,6 +3,11 @@ module Y2017.M02.D23.Exercise where
 import Control.Arrow (second)
 import Network.HTTP.Conduit
 
+-- below imports from 1HaskellADay git repository 'may' help reading FASTA files
+
+import Rosalind.Types
+import Rosalind.Scan.FASTA
+
 {--
 Finding a Protein Motif solved by 2726 as of February 22nd, 2017
 
