@@ -1,7 +1,7 @@
 module Y2017.M02.D23.Exercise where
 
 import Control.Arrow (second)
-import Network.HTTP.Conduit
+import Network.HTTP
 
 -- below imports from 1HaskellADay git repository 'may' help reading FASTA files
 
@@ -57,7 +57,7 @@ access ID "uniprot_id" in the UniProt database, by inserting the ID number into
 --}
 
 baseURL :: String
-baseURL = "http://www.uniprot.org/uniprot/uniprot_id/"
+baseURL = "http://www.uniprot.org/uniprot/" -- then the uniprot_id
 
 {--
 Alternatively, you can obtain a protein sequence in FASTA format by following
