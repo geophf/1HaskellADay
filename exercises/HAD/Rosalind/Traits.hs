@@ -1,6 +1,5 @@
 module Rosalind.Traits where
 
-import Control.Arrow ((***))
 import Control.Monad (guard, join, liftM2)
 import Data.Map (Map)
 import qualified Data.Map as Map
