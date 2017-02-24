@@ -117,3 +117,12 @@ the primary ID. You can find more information about UniProt IDs at this URL:
 
 http://www.uniprot.org/help/accession_numbers
 --}
+
+{-- BONUS -----------------------------------------------------------------
+
+For the file rosalind_mprt-3.txt at this directory or at the URL:
+
+https://raw.githubusercontent.com/geophf/1HaskellADay/master/exercises/HAD/Y2017/M02/D23/rosalind_mprt-3.txt
+
+read in that file and find the Nglycos motifs of the proteins there enumerated
+--}
