@@ -185,7 +185,7 @@ retargeted (trips:rest) = trips >>= (`map` retargeted rest) . (:)
   -- n.b. "trips >>= for (retargeted rest) . (:)" loops. Why?
 
 go :: String -> [[NucleotideTriple]]
-go acid = target acid codons
+go = (`target` codons)
 
 {--
 >>> go "kmspdw"
