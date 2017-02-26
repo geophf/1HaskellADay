@@ -217,4 +217,25 @@ let bases [A, G, T, C]
 in  length [Triple (a, b, c) | a <- bases, b <- bases, c <- bases]
 
 4. solution provided by the go function or target function
+
+The target-function gives you a list of all possible NucleotideTriple sequences 
+from a given amino acid target.
+
+Notice something, incidentally, for both the acid and the target functions:
+list is used to represent nondeterminism, but it's also used to represent
+a string, or an 'ordered sequence,' of elements. This is a strength of List a,
+right? that it can be used so nonspecifically; its strength and its weakness.
+
+Thought: what is a better data type to represent nondeterminism (that is:
+a function may have none, one, or many solutions from a given input)? What is
+a better data type to represent an (rigidly?) ordered input or output sequence
+of elements?
+
+Your thoughts and experiences on this?
+
+Citation for this problem statement: I found the article upon which this 
+problem was based, all these years ago. The acid definitions and the KMSPDW
+sequence was from a puzzle set in Doctor Dobb's Journal. 
+
+link: http://www.drdobbs.com/dr-eccos-omniheurist-corner/184405008
 --}
