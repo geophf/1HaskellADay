@@ -55,10 +55,9 @@ distance :: Eq a => a -> [a] -> Maybe (Int, [a])
 distance = distance' 0
 
 distance' :: Eq a => Int -> a -> [a] -> Maybe (Int, [a])
-distance' _      _   []                = Nothing
-distance' offset elt (h:t) | elt == h  = Just (offset, t)
-                           | otherwise =
-   distance' offset elt t >>= return . first succ
+distance' _   _   []                = Nothing
+distance' ptr elt (h:t) | elt == h  = Just (ptr, t)
+                        | otherwise = fmap (first succ) (distance' ptr elt t)
 
 -- it's actually distance' we want, as we are most often dealing with offsets
 
@@ -121,46 +120,15 @@ instance Eq a => Ord (Path a) where
 minimumest :: Eq a => [a] -> [a] -> Maybe (a, ([a], [a]))
 minimumest [] _ = Nothing
 minimumest _ [] = Nothing
-minimumest (a:as) (b:bs) =
+minimumest (a:as) (b:bs) = race 0 (a:as) (b:bs) >>= project 2 as bs . dist <*> id
 
 -- given two lists as and bs, find the next element that is shared by both
 -- lists using the least amount of steps to get to that next shared element.
 
--- first, we find the respective initial distances, to get a feel of the
--- challenge
-
-   race 0 (a:as) (b:bs) >>= project 2 as bs . dist <*> id
+-- So, we find the respective initial distances, to get a feel of the challenge,
+-- then we recurse.
 
 -- find the two distances from each respective list and return the winner
-
-{--
-race :: Eq a => Int -> [a] -> [a] -> Maybe (Path a)
-race offset (a:as) (b:bs) =
-   distance' offset a (b:bs) >>= \(bdist, newbs) ->
-   distance' offset b (a:as) >>= \(adist, newas) ->
-   return (min (P bdist a (as, newbs)) (P adist b (newas, bs)))
-
--- of course, we need to cover the case if one of the returns a value
--- and one of them doesn't! ... and under Min-domain
-
-newtype Min a = Min { getMin :: Maybe a }
-
-instance Ord a => Monoid (Min a) where
-   mempty = Min Nothing
-   Min Nothing `mappend` x           = x
-   x           `mappend` Min Nothing = x
-   Min a       `mappend` Min b       = Min (min a b)
-
--- now we can write a race-function
-
-race :: Eq a => Int -> [a] -> [a] -> Maybe (Path a)
-race offset (a:as) (b:bs) =
-   getMin (Min (distance' offset a (b:bs))
-        <> Min (distance' offset b (a:as))) >>= \(dist, news)
-
-... nope, we need both. We can't afford information-loss here. So we need a
-race' fn that takes Maybe-arguments and deals with the fallout that way:
---}
 
 race :: Eq a => Int -> [a] -> [a] -> Maybe (Path a)
 race offset (a:as) (b:bs) =
@@ -169,20 +137,72 @@ race offset (a:as) (b:bs) =
 race' :: Eq a => [a] -> [a] -> Maybe (Int, [a]) -> Maybe (Int, [a])
       -> Maybe (Path a)
 race' _ _ Nothing Nothing = Nothing
-race' (a:as) _ (Just (bdist, newbs)) Nothing = Just (P bdist a (as, newbs))
-race' _ (b:bs) Nothing (Just (adist, newas)) = Just (P adist b (newas, bs))
-race' (a:as) (b:bs) (Just (bdist, newbs)) (Just (adist, newas)) =
-   return (min (P bdist a (as, newbs)) (P adist b (newas, bs)))
+race' as _ (Just b) Nothing = Just (mkP as b)
+race' _ bs Nothing (Just a) = Just (mkP bs a)
+race' as bs (Just b) (Just a) = Just (min (mkP as b) (mkP bs a))
+
+mkP :: [a] -> (Int, [a]) -> Path a
+mkP (a:as) (bdist, newbs) = P bdist a (as, newbs)
+
+{--
+Huh! By adding a mkP-function and simplifying race' I went from:
+
+>>> unfoldr (uncurry minimumest) (rosalind64, rosalind23)
+"ACCTG"
+
+to
+
+>>> unfoldr (uncurry minimumest) (rosalind64, rosalind23)
+"ACCTTG"
+
+why??? Maybe with the more complicated/explicit parameters of distance' I mixed
+up an argument causing the erroneous output. idk. ¯\_(ツ)_/¯
+
+Let's try this new approach against the rosalind.info-challenge when I get home.
+
+But first, to verify:
+
+>>> unfoldr (uncurry minimumest) (rosalind23, rosalind64)
+"AACTG"
+
+NOPE! SHOOT! No magic bullet, as we're still broken in the reverse case. Perhaps
+something is happening when we're at the last element of one of the lists...
+--}
 
 -- here is the engine of minimumest:
 
 project :: Eq a => Int -> [a] -> [a] -> Int -> Path a -> Maybe (a, ([a], [a]))
+
+{--
 project _      [] _  _       _                   = Nothing
 project _      _  [] _       _                   = Nothing
-project offset as bs mindist minp | mindist <= offset = Just ((val &&& path) minp)
-                                  | otherwise         =
+project offset as bs mindis minp | mindis <= offset = Just ((val &&& path) minp)
+                                 | otherwise        =
    race offset as bs >>=
    (project (offset + 2) (tail as) (tail bs) . dist <*> id) . min minp
+
+Here's the problem for project: when we reach the end of one of the lists,
+but we have an active possibility, the [] -> Nothing cancels that solution and
+we lose it. We have to do the test before we do the list matching.
+--}
+
+project idx as bs mindis minp | mindis <= idx = Just ((val &&& path) minp)
+                              | otherwise     = proj' idx as bs minp
+
+proj' :: Eq a => Int -> [a] -> [a] -> Path a -> Maybe (a, ([a], [a]))
+proj' _ [] _ _ = Nothing
+proj' _ _ [] _ = Nothing
+proj' idx (_:as) (_:bs) minP =
+   race idx as bs >>= (project (idx + 2) as bs . dist <*> id) . min minP
+
+{--
+>>> unfoldr (uncurry minimumest) (rosalind64, rosalind23)
+"ACCTTG"
+>>> unfoldr (uncurry minimumest) (rosalind23, rosalind64)
+"AACTGG"
+
+There! Fixed it!
+--}
 
 -- so, for the lists:
 
