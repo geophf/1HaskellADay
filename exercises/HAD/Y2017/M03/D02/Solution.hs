@@ -245,11 +245,4 @@ We'll tie this together tomorrow, vis:
 
 >>> unfoldr (uncurry minimumest) (rosalind23, rosalind64)
 "AACTTG"
-
-BUT!
-
->>> unfoldr (uncurry minimumest) (rosalind64, rosalind23)
-"ACCTG"
-
-Uh, oh! We'll have to explore this further!
 --}
