@@ -192,8 +192,8 @@ project idx as bs mindis minp | mindis <= idx = Just ((val &&& path) minp)
 proj' :: Eq a => Int -> [a] -> [a] -> Path a -> Maybe (a, ([a], [a]))
 proj' _ [] _ _ = Nothing
 proj' _ _ [] _ = Nothing
-proj' idx (_:as) (_:bs) minP =
-   race idx as bs >>= (project (idx + 2) as bs . dist <*> id) . min minP
+proj' idx a@(_:as) b@(_:bs) minP =
+   race idx a b >>= (project (idx + 2) as bs . dist <*> id) . min minP
 
 {--
 >>> unfoldr (uncurry minimumest) (rosalind64, rosalind23)
