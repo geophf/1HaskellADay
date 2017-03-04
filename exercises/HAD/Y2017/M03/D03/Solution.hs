@@ -12,7 +12,7 @@ url: http://rosalind.info/problems/pper/
 
 Partial Permutations solved by 2239 as of February 28th, 2017
 
-Partial Gene Orderingsclick to collapse
+Partial Gene Orderings
 
 Similar species will share many of the same genes, possibly with modifications. 
 Thus, we can compare two genomes by analyzing the orderings of their genes, then
@@ -49,7 +49,8 @@ result :: Integer
 result = 51200
 
 partial_permutation :: Integer -> Integer -> Rational
-partial_permutation n k = factorial n / factorial (n-k)
+partial_permutation n k = -- factorial n / factorial (n-k) -- which reduces to:
+   toRational (product [(n - pred k) .. n])
 
 pper :: Integer -> Integer -> Integer
 pper = (`mod` 1000000) . numerator <<- partial_permutation
