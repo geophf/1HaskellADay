@@ -86,7 +86,7 @@ choosey n k = partial_permutation n k / factorial k
 -- verify that choosey == choose for [(n,k) <- [1..100]] ...ish.
 
 {--
->>> and ([1..100] >>= \k -> [k .. 100] >>= \n -> return (choose n k == choosey n k))
+>>> and [choose n k == choosey n k | k <- [1..100], n <- [k .. 100]]
 True
 --}
 
