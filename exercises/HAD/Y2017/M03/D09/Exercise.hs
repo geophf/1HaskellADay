@@ -71,7 +71,8 @@ Figure 4.
 
 Figure 4. The bonding graph for the RNA string s = UAGCGUGAUCAC.
 
-Note that a matching contained in the basepair edges will represent one possibility for base pairing interactions in s, as shown in Figure 5. For such a 
+Note that a matching contained in the basepair edges will represent one 
+possibility for base pairing interactions in s, as shown in Figure 5. For such a
 matching to exist, s must have the same number of occurrences of 'A' as 'U' and 
 the same number of occurrences of 'C' as 'G'.
 
