@@ -78,3 +78,6 @@ classify :: Map Tongue Distribution -> FilePath -> Tongue
 classify ontology file = undefined
 
 -- So, ... how did we do? ;)
+
+-- Question: do word endings follow a Zipf distribution? Which language most
+-- closely follows the Zipf distribution? Which language, least?
