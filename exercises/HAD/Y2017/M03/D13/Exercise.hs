@@ -1,5 +1,7 @@
 module Y2017.M03.D13.Exercise where
 
+import Network.HTTP.Conduit
+
 {--
 
 Oh, yeah. Let's do this one!
@@ -20,7 +22,7 @@ anagram line = undefined
 -- snaps for defining anagram elegantly
 
 sonnet :: FilePath
-sonnet = "Y2017/M03/D13/sonnet.txt"
+sonnet = "https://raw.githubusercontent.com/geophf/1HaskellADay/master/exercises/HAD/Y2017/M03/D13/sonnet.txt"
 
 {--
 So, read in the first line. Use it as the basis of the anagram. 
@@ -32,4 +34,3 @@ anagram of the first line.
 
 What are your results?
 --}
-
