@@ -1,6 +1,6 @@
 {-# LANGUAGE ViewPatterns #-}
 
-module Analytics.Theory.Statistics.StandardDeviation where
+module Analytics.Statistics.StandardDeviation where
 
 {--
 Original established to compute standard deviations against stochastic 
