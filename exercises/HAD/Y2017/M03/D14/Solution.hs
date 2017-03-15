@@ -110,4 +110,6 @@ What is the value of sumNumerator (nthConvergent 100 e)?
 sumNumerator (nthConvergent 10 e)
 
 is ... something.
+
+Moving this solution to Analytics.Math.ContinuedFractions
 --}
