@@ -1,6 +1,7 @@
 module Y2017.M03.D15.Exercise where
 
 import Data.Array
+import Data.List (foldl')
 import Data.Set (Set)
 
 -- below import available via 1HaskellADay git repository
@@ -99,17 +100,32 @@ pascalRow :: PascalRow -> Int -> PascalRow
 pascalRow prevRow n = undefined
 
 firstRow :: PascalRow
-firstRow = array (1,1) [(1,1)]
+firstRow = listArray (1,1) [1]
 
--- Again, what is the 51st row of the Pascal triangle?
+{-- 
+Again, what is the 51st row of the Pascal triangle?
 
--- What are the unique values of the first 51 rows of the Pascal triangle?
--- You should have (significantly fewer) values than a 5565 count. How many
--- unique values do you have? What is the greatest value that you have?
+>>> foldl' pascalRow firstRow [1 .. 51] == pascalRow' 51
+True
+--}
 
 uniqueValuesUpTo :: Int -> Set Integer
 uniqueValuesUpTo row = undefined
 
--- Tomorrow we may or may not look at factorizing these puppehz! It may involve
--- Elliptic curve factorization or it may involve more direct (brutish) prime
--- factorization. We shall see. Your thoughts?
+{--
+What are the unique values of the first 8 rows of the Pascal triangle?
+
+>>> uniqueValuesUpTo 8 == Set.fromList [1,2,3,4,5,6,7,10,15,20,21,35]
+True
+
+* What are the unique values of the first 51 rows of the Pascal triangle?
+You should have (significantly fewer) values than a 1326 count. 
+
+* How many unique values do you have? 
+
+* What is the greatest value that you have?
+
+Tomorrow we may or may not look at factorizing these puppehz! It may involve
+Elliptic curve factorization or it may involve more direct (brutish) prime
+factorization. We shall see. Your thoughts?
+--}
