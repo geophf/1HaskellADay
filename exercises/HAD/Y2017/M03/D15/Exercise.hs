@@ -46,9 +46,6 @@ triangle.
 
 type PascalRow = Array Int Integer
 
-squareFree :: Integer -> Bool
-squareFree n = undefined
-
 {--
 Huh.
 
