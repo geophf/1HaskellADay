@@ -5,7 +5,9 @@ module Analytics.Theory.Number.Prime where
 
 import qualified Data.Set as PQ
 
-import Analytics.Math.SquareRoot
+-- below import available via 1HaskellADay git repository
+
+import Analytics.Theory.Number.SquareRoot
 
 type Prime = Integer
 
