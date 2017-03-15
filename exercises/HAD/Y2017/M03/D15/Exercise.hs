@@ -53,13 +53,13 @@ Huh.
 
 We can see that these numbers can get big:
 
->>> 105 `choose` 52
-3136262529306125724764953838760 % 1
+>>> 51 `choose` 25
+247959266474052 % 1
 
 But the good news is that there are only a few of these numbers:
 
->>> sum [1 .. 105]
-5565
+>>> sum [1 .. 51]
+1326
 
 And uniqueness wipes out the redundant ones, which removes a majority of them.
 
@@ -73,7 +73,9 @@ Try it this way:
 pascalRow' :: Integer -> PascalRow
 pascalRow' row = undefined
 
--- of course the pascalRow n has n columns
+-- of course the pascalRow' n has n columns
+
+-- Show rows 1 - 8 of Pascal's Triangle as computed by pascalRow'
 
 -- What is the value of pascalRow' 51? How long did it take?
 
