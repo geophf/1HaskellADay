@@ -6,7 +6,7 @@ import Data.Set (Set)
 
 -- below import available via 1HaskellADay git repository
 
-import Analytics.Math.Combinatorics (choose)
+import Analytics.Theory.Number.Combinatorics (choose)
 
 {--
 Today, in the U.S.A. Corporate tax forms are due to the IRS. I mention this in 
