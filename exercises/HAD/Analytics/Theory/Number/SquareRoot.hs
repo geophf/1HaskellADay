@@ -1,4 +1,4 @@
-module Analytics.Math.SquareRoot where
+module Analytics.Theory.Number.SquareRoot where
 
 -- Arbitrary precision square root for Rational
 

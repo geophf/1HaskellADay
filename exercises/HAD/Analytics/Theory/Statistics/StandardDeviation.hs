@@ -1,6 +1,6 @@
 {-# LANGUAGE ViewPatterns #-}
 
-module Analytics.Math.Statistics.StandardDeviation where
+module Analytics.Theory.Statistics.StandardDeviation where
 
 {--
 Original established to compute standard deviations against stochastic 
@@ -12,7 +12,7 @@ import Data.Array
 
 -- below imports available via 1HaskellADay git repository
 
-import Analytics.Math.SquareRoot (rSqrt)
+import Analytics.Theory.Number.SquareRoot (rSqrt)
 import Control.Presentation
 import Control.Scan.CSV
 

@@ -1,4 +1,4 @@
-module Analytics.Math.Combinatorics where
+module Analytics.Theory.Number.Combinatorics where
 
 -- Where you want to get all factorial and stuff
 

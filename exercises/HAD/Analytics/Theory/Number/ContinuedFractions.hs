@@ -1,4 +1,4 @@
-module Analytics.Math.ContinuedFractions where
+module Analytics.Theory.Number.ContinuedFractions where
 
 -- A study of representing transcendentals as continued fractions with values
 -- for e and √2
