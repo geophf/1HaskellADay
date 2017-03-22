@@ -21,7 +21,7 @@ ridiculous! Let's just take a sample here that's "good enough," then call it
 a day and hit the pub, awaiting our accolades to come.
 --}
 
-goldbach :: Int -> Maybe (Prime, Prime)
+goldbach :: Int -> [(Prime, Prime)]
 goldbach num = undefined
 
 {--
