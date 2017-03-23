@@ -1,4 +1,4 @@
-module Y2017.M03.D21.Exercise where
+module Y2017.M03.D23.Exercise where
 
 {--
 Okay, we're going explore a bit of probability and see where that takes us.
