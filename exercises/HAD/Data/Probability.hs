@@ -16,7 +16,7 @@ import Data.Ratio
 
 -- below import available from 1HaskellADay git repository
 
-import Analytics.Math.Combinatorics
+import Analytics.Theory.Number.Combinatorics
 
 newtype Prob a = Prob { getProb :: [(a,Rational)] } deriving Show
 
