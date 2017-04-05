@@ -30,7 +30,7 @@ url = "http://data.bitcoinity.org/export_data.csv?currency=USD"
 
 -- the above URL gives 2 years of BitCoin data as price per USD
 
-btcPrices :: FilePath -> BitCoinPrices
+btcPrices :: FilePath -> IO BitCoinPrices
 btcPrices url = undefined
 
 -- load in the Date,ave,max,min and return the (Day,average) pairs
