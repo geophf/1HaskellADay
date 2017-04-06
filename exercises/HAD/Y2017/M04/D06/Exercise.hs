@@ -11,6 +11,8 @@ boundaries in the mainframe and MacOS 8 has '#' ... just because.
 
 Just because they 'think different' [sic].
 
+And let's not even get started with the FORTH 1024-byte memory blocks, shall we?
+
 So, GIVEN that you know the operating system ... (HOW)? ... create an operator
 that returns the appropriate address-separating token to index to resources
 managed by the operating system.
