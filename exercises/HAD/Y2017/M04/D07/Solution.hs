@@ -1,7 +1,5 @@
 module Y2017.M04.D07.Solution where
 
-import Control.Monad (guard)
-
 -- below module available via 1HaskellADay git repository
 
 import Control.Logic.Frege ((<<-))
@@ -114,9 +112,12 @@ Let's do this. Let's work from a total number of tiles and work backwards.
 --}
 
 totalTiles :: [Int]
-totalTiles = map (*7) [1,3 ..] >>= \tot ->
-   guard (tot `mod` 3 == 1 && tot `mod` 4 == 1 && tot `mod` 5 == 1
-       && tot `mod` 6 == 1) >> return tot
+totalTiles = filter mod1ForEverything (map (*7) [1,3 ..])
+
+mod1ForEverything :: Int -> Bool
+mod1ForEverything n = and (map ((== 1) . mod n) [3..6])
+
+   -- not a 'fast-fail' function, but I can live with it.
 
 -- totalTiles gives us the total number of tiles that satisfies the above
 -- constraints. So you've just written a constraint solver to help you decorate
