@@ -16,7 +16,8 @@ beautiful decorated tiles, ...
 
 ... [see what she did with that? 'decorating for Spring' and 'decorated tiles'?]
 
-... enough to provide a border in two rooms. You really can't figure out how to arrange them, however. If you set a border of two tiles all around, there's one
+... enough to provide a border in two rooms. You really can't figure out how to
+arrange them, however. If you set a border of two tiles all around, there's one
 left over; if you set three tiles all around, or four, or five, or six, there's
 still one tile left over.* Finally, you try a block of seven tiles for each 
 corner, and you come out even.
