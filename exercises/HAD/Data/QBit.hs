@@ -59,7 +59,7 @@ constrain fn = SuperPosition (takeout >=> assert (fn . fst))
 -- is already (too) well-understood, so it's not needed here.
 
 draw :: Eq a => QBit a -> [a] -> [(QBit a, [a])]
-draw (SuperPosition f) pool = fmap (first Observed) (f pool)
+draw (SuperPosition f) pool = first Observed <$> f pool
 draw obs@(Observed a) pool = [(obs, delete a pool)]
 
 -- *Data.QBit Control.List> draw free [1..5] ~>
@@ -69,9 +69,9 @@ draw obs@(Observed a) pool = [(obs, delete a pool)]
 
 draws :: Eq a => [QBit a] -> [a] -> [([QBit a], [a])]
 draws [] sommat = -- erhm ... idk
-   return ([], sommat) -- okay, that worked! :D
+   [([], sommat)] -- okay, that worked! :D
 draws (b:its) pool = draw b pool >>= \(b1, p1) ->
-   fmap (first (b1 :)) (draws its p1)
+   first (b1:) <$> draws its p1
  
 -- *Data.QBit Control.List> draws (replicate 2 free) [1..3] ~>
 -- [([1,2],[3]),([1,3],[2]),([2,1],[3]),([2,3],[1]),([3,1],[2]),([3,2],[1])]
