@@ -1,7 +1,10 @@
 module Data.QBit where
 
-import Control.Arrow
-import Control.Monad
+import Control.Arrow (first)
+import Control.Monad ((>=>))
+import Data.List (delete)
+
+-- below imports available via 1HaskellADay git repository
 
 import Control.List (takeout)
 import Control.Logic.Frege (assert)
@@ -24,7 +27,7 @@ are pretty darn neat!
 So here it is. And I do love me my logic variables, and these allow one to
 build in constraints, so that makes them so much the better.
 
- --}
+--}
 
 -- a QBit is in an indetermined state, it's either ground to a letter
 -- (fer shur) or it's possibly one of an exhaustible pool of letters
@@ -55,20 +58,20 @@ constrain fn = SuperPosition (takeout >=> assert (fn . fst))
 -- An alternative is a draw-from without disturbing the pool, but that
 -- is already (too) well-understood, so it's not needed here.
 
-draw :: QBit a -> [a] -> [(QBit a, [a])]
-draw (SuperPosition f) pool = liftM (first Observed) (f pool)
-draw (Observed a) pool = [(Observed a, pool)]
+draw :: Eq a => QBit a -> [a] -> [(QBit a, [a])]
+draw (SuperPosition f) pool = fmap (first Observed) (f pool)
+draw obs@(Observed a) pool = [(obs, delete a pool)]
 
 -- *Data.QBit Control.List> draw free [1..5] ~>
 -- [(1,[2,3,4,5]),(2,[1,3,4,5]),(3,[1,2,4,5]),(4,[1,2,3,5]),(5,[1,2,3,4])]
 
 -- and the listy version of draw:
 
-draws :: [QBit a] -> [a] -> [([QBit a], [a])]
+draws :: Eq a => [QBit a] -> [a] -> [([QBit a], [a])]
 draws [] sommat = -- erhm ... idk
    return ([], sommat) -- okay, that worked! :D
 draws (b:its) pool = draw b pool >>= \(b1, p1) ->
-   liftM (first (b1 :)) (draws its p1)
+   fmap (first (b1 :)) (draws its p1)
  
 -- *Data.QBit Control.List> draws (replicate 2 free) [1..3] ~>
 -- [([1,2],[3]),([1,3],[2]),([2,1],[3]),([2,3],[1]),([3,1],[2]),([3,2],[1])]
