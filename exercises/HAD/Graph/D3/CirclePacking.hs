@@ -65,8 +65,10 @@ Or take a clustered or hierarchical data set that you have and output those
 data as the above name|children JSON format.
 --}
 
-relatedDataAsPackedCircles :: ToJSON json => a -> json
-relatedDataAsPackedCircles = undefined
+relatedDataAsPackedCircles :: (Ix b, Show a) => b -> NamedClusters Int (CSC a b) -> Hierarchy
+relatedDataAsPackedCircles = asHier
+
+-- the Hierarchy value can be encoded as a JSON-string
 
 {--
 *Main> loadScoreCardsFromEndpoint (endpoint ++ ('/': transaction)) queryTop5shows 
@@ -96,17 +98,20 @@ kiddies :: [Hierarchy] -> [Pair]
 kiddies [] = []
 kiddies k = ["children" .= k]
 
-asHier :: (Ix b, Show a) => b -> NamedClusters Int (ColoredScoreCard a b Float) -> Hierarchy
+type CSC a b = ColoredScoreCard a b Float
+type ClCSC a b = Cluster (ColoredScoreCard a b Float)
+
+asHier :: (Ix b, Show a) => b -> NamedClusters Int (CSC a b) -> Hierarchy
 asHier b = uncurry Hier . second (Kids . map (toHier b) . Map.toList) . tup
 
-toHier :: (Ix b, Show a) => b -> (Int, Cluster (ColoredScoreCard a b Float)) -> Hierarchy
-toHier b = uncurry Hier . (show *** kidsFrom b) -- we need to include size here!
+toHier :: (Ix b, Show a) => b -> (Int, ClCSC a b) -> Hierarchy
+toHier b = uncurry Hier . (show *** kidsFrom b)
 
-kidsFrom :: (Ix b, Show a) => b -> Cluster (ColoredScoreCard a b Float) -> Children
+kidsFrom :: (Ix b, Show a) => b -> ClCSC a b -> Children
 kidsFrom b = Kids . map (hierFromSc b . sc) . toList . snd
 
 hierFromSc :: (Ix b, Show a) => b -> ScoreCard a b Float -> Hierarchy
-hierFromSc b = uncurry Hier . (show . idx &&& Size . floor . (! b) . values)
+hierFromSc b = Hier . show . idx <*> Size . floor . (! b) . values
 
 {--
 Whew! That only took a month! SO!
