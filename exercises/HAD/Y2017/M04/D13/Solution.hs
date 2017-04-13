@@ -31,22 +31,6 @@ asNum (N digs) = n 0 (reverse digs)
    where n _ [] = 0
          n p (h:t) = 10 ^ p * extract h + n (succ p) t
 
-{--
-toNums :: Int -> Nums
-toNums = N . map (Observed . read . pure) . show
-
-fNums :: (Int -> Int) -> Nums -> Nums
-fNums f = toNums . f . asNum
-
-instance Num Nums where
-   n1 + n2 = toNums (asNum n1 + asNum n2)
-   n1 * n2 = toNums (asNum n1 * asNum n2)
-   abs     = fNums abs
-   signum  = fNums signum
-   fromInteger = toNums . fromInteger
-   negate  = fNums negate
---}
-
 -- so, with all t he the above, it makes sense to work with Nums values
 
 multiplicationPuzzle :: Nums -> Nums -> Nums -> [(Int, Int, Int)]
@@ -55,11 +39,6 @@ multiplicationPuzzle (N x) (N y) (N z) =
    draws y l1               >>= \(b, l2)        ->
    draws z l2               >>= \(c@(n:_), foo) ->
    guard (null foo)         >>
-{--
-   if (not (null foo)) then
-   error ("I have " ++ show foo ++ " elements left")
-   else
---}
    guard (extract n /= 0)   >>
    let [n1, n2, n3] = map (asNum . N) [a, b, c] in
    guard (n1 * n2 == n3)    >>
