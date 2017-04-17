@@ -57,7 +57,7 @@ parseDepth :: FromJSON a => Text -> Value -> Text -> Parser a
 parseDepth sub (Object o) key = o .: key >>= (.: sub)
 
 stateCapitals :: String -> IO [StateCapital]
-stateCapitals query = fromKinda . mapM fromJSON . resultSet <$> sparql query
+stateCapitals query = reifyWikiResults <$> sparql query
 
 -- ... or, given any input Wikidata results as a ByteString, returns [a]
 
@@ -67,15 +67,6 @@ reifyWikiResults = fromKinda . mapM fromJSON . resultSet
 fromKinda :: Result (Vector a) -> [a]
 fromKinda (Error e) = []
 fromKinda (Success x) = toList x
-
-{--
-data WikiResults = WikiRes [Value]
-   deriving Show
-
-instance FromJSON WikiResults where
-   parseJSON o = parseDepth "bindings" o "results"
-   -- parseJSON x = error ("wft is " ++ show x)
---}
 
 resultSet :: ByteString -> Array
 resultSet bytes =
