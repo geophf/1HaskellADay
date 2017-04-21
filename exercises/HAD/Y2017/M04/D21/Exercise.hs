@@ -25,7 +25,7 @@ Hm. Another question: why do we want to reinvent the wheel?
 
 -- or --
 
-Wiykidata can plot information on a map for you "fo' free!"
+Wikidata can plot information on a map for you "fo' free!"
 
 Compose a SPARQL wikidata query that asks for the above information:
 --}
