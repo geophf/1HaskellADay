@@ -108,3 +108,12 @@ instance Num a => Num (QBit a) where
 -- *Data.QBit> Observed 3 + Observed 4 ~> (Observed) 7
 -- *Data.QBit> Observed 3 + free ~>
 -- *** Exception: Cannot extract information from a SuperPosition
+
+-- Constrains values of QBits for Eq a values:
+
+eitherOr, neitherNor :: Int -> Int -> (Int -> Bool)
+eitherOr a b = (||) . (== a) <*> (== b)
+neitherNor n m = (&&) . (/= n) <*> (/= m)
+
+andNot :: Int -> (Int -> Bool)
+andNot = (/=)
