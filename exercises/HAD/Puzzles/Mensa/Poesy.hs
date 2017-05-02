@@ -70,3 +70,8 @@ So, with that:
 
 ... and "smart" is complimentary. You're looking smart today!
 --}
+
+runRules :: [Rule] -> IO [Word]
+runRules rules = let len = length rules in
+   ((`filter` (word rules)) . flip Set.member)
+      <$> nltrdict len (head rules) "/usr/share/dict/words"
