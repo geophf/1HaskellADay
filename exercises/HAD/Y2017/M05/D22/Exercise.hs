@@ -75,7 +75,7 @@ uniqueLanguages langs = undefined
 
 -- for your primary language, about how many speakers are there?
 
-speakersOf :: [Language] -> Integer
-speakersOf langs = undefined
+speakersOf :: [Language] -> String -> Integer
+speakersOf langs yourlang = undefined
 
 -- hint: Using the [Language]-structure may not be the best way to find this answer.
