@@ -28,9 +28,6 @@ First, let's get the connection URI:
 type Endpoint = String
 
 {--
-endpoint :: Endpoint
-endpoint = "http://PUBLIC_TOP5s:Fx5sFmVohZhV3ExoWSzW@publictop5s.sb02.stations.graphenedb.com:24789"
-
 Sweet. Now that we have that, let's make a REST-call to that endpoint to get
 a set of the distinct stock symbols stored in that database. The Cypher query
 to do that is:
