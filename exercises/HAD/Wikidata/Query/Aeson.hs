@@ -41,12 +41,16 @@ parseVal = parseDepth "value"
 parseDepth :: FromJSON a => Text -> Value -> Text -> Parser a
 parseDepth sub (Object o) key = o .: key >>= (.: sub)
 
+parseOpt :: FromJSON a => Value -> Text -> Parser (Maybe a)
+parseOpt (Object o) key = o .:? key >>= maybe (return Nothing) (.: "value")
+
 {-- e.g.:
 
-data StateCapital = StateCap { state, capital :: String }
+data StateCapital = StateCap { state, capital :: String, bird :: Maybe String }
   deriving (Eq, Ord, Show)
 
 instance FromJSON StateCapital where
    parseJSON o = StateCap <$> parseVal o "stateLabel"
                           <*> parseVal o "capitalLabel"
+                          <*> parseOpt o "birdLabel"
 --}

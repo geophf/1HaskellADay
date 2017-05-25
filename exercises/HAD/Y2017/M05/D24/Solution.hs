@@ -46,11 +46,13 @@ data Language = Lang { lang, root :: String, nspeakers :: Integer,
                        parent, grand, great, great2 :: Maybe String }
    deriving (Eq, Show)
 
+{--
 -- first of all we need to parse JSON to a Maybe-value. Aeson has this, but
 -- doesn't have a convenient way to parse Maybe-ness in depth.
 
 parseOpt :: FromJSON a => Value -> Text -> Parser (Maybe a)
 parseOpt (Object o) key = o .:? key >>= maybe (return Nothing) (.: "value")
+--}
 
 -- now we need an intermediary for numeric encoding
 
