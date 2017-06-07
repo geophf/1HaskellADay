@@ -19,7 +19,7 @@ You have a binary tree of the following structure:
 data Sym = A | B | C | D | E | F | G | H | I | J | K | L | M | N | O
    deriving (Eq, Ord, Enum, Bounded, Show)
 
-data Node a = Bin (Node a) (Node a) | Leaf a
+data Node a = Bin a (Node a) (Node a) | Leaf a
    deriving (Eq, Show)
 
 abcdefg :: Node Sym
