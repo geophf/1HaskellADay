@@ -52,5 +52,5 @@ connectionString username pass server port db = undefined
 
 {--
 >>> connectionString <$> dbUserName <*> dbPassword <*> dbmsServer <*> pure 5432 <*> dbName
-"postgress://geophf:youWish@pellefant.db.elephantsql.com:5432/1HaskellADay"
+"postgres://geophf:youWish@pellefant.db.elephantsql.com:5432/1HaskellADay"
 --}
