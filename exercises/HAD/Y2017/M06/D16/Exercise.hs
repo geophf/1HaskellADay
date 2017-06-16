@@ -21,7 +21,8 @@ natively, use your local SQL database for next week, if you have one of those.
 written down on a post-it note, because that's Industry-standard.
 
 In your OS environment, create the variables SQL_DAAS_USERNAME,
-SQL_DAAS_PASSWORD, and SQL_DAAS_CONNECTION_URL, populating those values.
+SQL_DAAS_PASSWORD, SQL_DAAS_SERVER_URL, and SQL_DAAS_DB_NAME, populating the
+values.
 --}
 
 dbUserName, dbPassword, dbmsServer, dbName :: IO String
