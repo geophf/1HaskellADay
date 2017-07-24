@@ -23,7 +23,7 @@ justTheDriver = 1 - twoPassengers - threeOrMore
 1 % 20
 >>> threeOrMore 
 1 % 50
-> justTheDriver 
+>>> justTheDriver 
 93 % 100
 --}
 
