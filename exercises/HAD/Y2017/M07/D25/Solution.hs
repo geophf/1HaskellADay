@@ -4,7 +4,6 @@ import Control.Monad
 
 -- below import available via 1HaskellADay git repository
 
-import Control.Logic.Frege ((-|))
 import Relational.Scheme.Types
 
 {--
@@ -23,8 +22,8 @@ that, but no. The Reasoned Schemer demonstrates fresh variables in terms of
 So, let's define (≡) with atomic, ground terms.
 --}
 
-(≡) :: MonadPlus m => Monoid (m ()) => Atom -> Atom -> m ()
-p ≡ q = p == q -| return () -- using logic programming to define unification.
+(≡) :: MonadPlus m => Atom -> Atom -> m ()
+p ≡ q = guard (p == q)  -- that was easy!
 
 {-- that is to say: "If p unifies with q, the statement succeeds."
 
