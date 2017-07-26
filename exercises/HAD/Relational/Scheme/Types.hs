@@ -153,3 +153,6 @@ Okay, great! We're scanning and parsing atoms! There appears to be a pattern
 of application around the (<|>)-operator in the definition of replAtom. Is there
 a more succinct definition for that function?
 --}
+
+instance Read Atom where
+   readsPrec _ atom = [(replAtom atom, "")]
