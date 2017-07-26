@@ -1,8 +1,9 @@
 module Relational.Scheme.Unification.Atoms where
 
+import Control.Monad
+
 -- below import available via 1HaskellADay git repository
 
-import Control.Logic.Frege ((-|))
 import Relational.Scheme.Types
 
 {--
@@ -21,8 +22,8 @@ that, but no. The Reasoned Schemer demonstrates fresh variables in terms of
 So, let's define (≡) with atomic, ground terms.
 --}
 
-unifyAtoms :: Applicative m => Monoid (m ()) => Atom -> Atom -> m ()
-unifyAtoms p q = p == q -| pure ()
+unifyAtoms :: MonadPlus m => Atom -> Atom -> m ()
+unifyAtoms p q = guard (p == q)
     -- using logic programming to define unification.
 
 {-- that is to say: "If p unifies with q, the statement succeeds."
