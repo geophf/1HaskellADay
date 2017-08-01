@@ -98,7 +98,9 @@ parse str = undefined
 -- Now it gets fun. Given a munging function, ... let's say it's rot13, ...
 
 rot13 :: Char -> Char
-rot13 x = chr (ord x - ord 'A' + 13 `mod` 26 + ord 'A')
+rot13 x = chr ((ord x - ord 'A' + 13) `mod` 26 + ord 'A')
+
+-- (of course, rot13 only makes sense with ALL CAP STRINGS!)
 
 -- rot13 is just one example of a munging function, another example could be an
 -- 'English to Greek'-munger, or another scheme which we may develop.
