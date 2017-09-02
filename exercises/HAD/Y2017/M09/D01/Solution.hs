@@ -178,4 +178,8 @@ Yesterday, India was the winner, today India is the loser, and Thailand wins
 the internets!
 
 Question: What is a good way to represent these findings visually?
+
+Perhaps this?
+
+>>> percFBuserPerCountry populationQ url >>= chartFBusers "Y2017/M09/D01/fbusers.csv"
 --}

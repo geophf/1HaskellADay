@@ -69,7 +69,7 @@ by country.
 
 -- one way to do this is to output it as CSV and let your spreadsheet chart it
 
-chartFBusers :: FilePath -> FBusers Count -> IO ()
+chartFBusers :: Ord a => Show a => FilePath -> FBusers a -> IO ()
 chartFBusers outputfile =
    writeFile outputfile
            . unlines . ("Country,FB Users":)
