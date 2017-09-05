@@ -54,3 +54,10 @@ wordFreq  url dir = undefined
 
 mostFreq :: [(String, Int)] -> (String, Int)
 mostFreq wordFreqs = undefined
+
+{--
+Article sources:
+
+b/ Blei_AP article extracts
+n/ NSF grant requests extracts
+--}
