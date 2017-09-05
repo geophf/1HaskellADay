@@ -30,6 +30,10 @@ import qualified Data.Map as Map
 import Data.Monoid
 import Data.Ord
 
+-- below import available via 1HaskellADay git repository
+
+import Control.Logic.Frege ((<<-))
+
 -- an implementation of the bag data type from http://lpaste.net/107881
 
 {-- 
@@ -65,8 +69,11 @@ add = flip addn 1  -- geddit? 'add a bag'? geddit?
 -- This happens often enough; we want to rank by the frequency, most frequent
 -- first
 
-rank :: Ord a => Bag a -> [(a, Sum Int)]
-rank = sortBy (comparing (Down . snd)) . Map.toList
+rank :: Ord a => Bag a -> [(a, Int)]
+rank = sortOn (Down . snd) . toList
+
+toList :: Bag a -> [(a, Int)]
+toList = Map.toList . Map.map getSum
 
 -- we used to have a countOf, but now this reduces, simply, to Map.!
 
@@ -77,3 +84,14 @@ fromList = foldr add emptyBag
 
 size :: Bag a -> Int
 size = getSum . sum . Map.elems
+
+merge :: Ord a => Bag a -> Bag a -> Bag a
+merge =
+
+-- well, let's think about this merge a and b is
+
+-- get all the elements in a that are not in b and vice versa:
+-- now we need to sum the sums of the a /\ b
+
+-- this is Map.mergeWithKey, yes?
+   Map.mergeWithKey (const (pure <<- (<>))) id id
