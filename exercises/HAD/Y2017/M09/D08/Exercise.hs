@@ -3,6 +3,7 @@ module Y2017.M09.D08.Exercise where
 import Codec.Compression.GZip
 import Data.ByteString.Lazy.Char8 (ByteString)
 import Network.HTTP.Conduit
+import System.Directory
 
 {--
 But, of course, to be an ETL, you're moving data from one source to another
