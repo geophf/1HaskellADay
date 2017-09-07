@@ -1,0 +1,16 @@
+              Abstract
+CTS - 0080371
+Warhaft
+
+Turbulence theory, in which formal
+              relationships between statistical properties of the velocity field are
+              developed, undergird the development of the models and computational approaches
+              which are the bases for most computational fluid dynamics. The latter is of
+              considerable and growing value in fluids engineering. In this investigation,
+              the PI will extend his earlier successful efforts to contribute fundamental-
+              experimental observations that clarify and refine the basis for new theories.
+              He will, in this work, examine very large turbulence Reynolds numbers and his
+              data will further clarify issues related to the fundamentally important issue
+              of local isotropy. It can be noted that ever larger R-values are to basic
+              turbulence research as ever higher beam energies are to particle physics.
+

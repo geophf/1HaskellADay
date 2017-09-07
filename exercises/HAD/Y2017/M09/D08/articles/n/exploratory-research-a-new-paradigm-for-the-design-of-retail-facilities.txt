@@ -1,0 +1,35 @@
+              Manufacturing and service enterprises invest significant resources in the design
+              and operation of factories and warehouses.  If properly executed, the physical
+              configuration of these facilities can simplify the flow of material and
+              products.  If poorly executed, it can lead to severe inefficiencies, high
+              operating costs, and poor quality.  Over the years, much attention has been
+              focused on effectively planning the layout of manufacturing and logistical
+              facilities.  In contrast, the design and planning of retail facilities has been
+              given little attention despite the importance of the retail sector to the
+              overall economy.  Retail layout problems differ from manufacturing/logistics
+              layout problems in several significant ways:  (1) the objective of retail
+              facilities is to maximize sales rather than to minimize travel time or material
+              moves; (2) customer demand is both highly variable and unpredictable; (3)
+              customers often augment an initial shopping list with impulse items that they
+              encounter in their sojourn through the facility; 
+(4) retail facilities are
+              essentially self service facilities; (5) and except for checkout, customers are
+              an integral part of the service mechanism.
+
+The goal of this research is to
+              develop a framework for a quantitative approach to the design of retail
+              facilities.  Our activities are focused on modeling customer demand,
+              characterizing customer flow, and formulating suitable optimization problem(s),
+              including specifying an appropriate objective function and constraints for both
+              the physical layout of customer paths and the sequencing of product families in
+              the facility.  We intend to focus on non-traditional layouts that we believe
+              may significantly outperform traditional aisle-based layouts commonly found in
+              many retail facilities. While this research is exploratory in nature, it will
+              build on the long history of research in layout for manufacturing facilities. 
+              Moreover, we believe this research has the potential to extend operations
+              research techniques to an important economic sector that has been overlooked in
+              the past.  Additionally, this research will open a new area for teaching
+              facility design.  It will provide the foundation for introducing retail
+              facility layout into facility design courses, which are common core courses in
+              industrial engineering curricula.
+

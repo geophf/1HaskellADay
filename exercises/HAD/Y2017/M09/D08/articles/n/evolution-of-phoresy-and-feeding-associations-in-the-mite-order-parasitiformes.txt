@@ -1,0 +1,36 @@
+              ABSTRACT
+
+
+	The origin of parasitism is one of the enduring questions in
+              biology.  Because parasitism has arisen multiple times among mites, they are an
+              excellent taxon in which to study this phenomenon   Mites show also many other
+              types of associations, allowing hypotheses on transitions among diverse types
+              of associations.  Phoresy is of particular interest, as it is a common
+              phenomenon in mites.  In this type of association one organism (a mite) uses
+              another organism (insect or vertebrate) to move from one place to another.  It
+              does not involve feeding on the host, or development during the period of
+              transport.  Various authors have proposed that phoresy might be a precursor to
+              feeding associations such as parasitism, and the goal of this project is to
+              test that idea.  The test group is the mite order Parasitiformes, the smaller
+              of the two mite orders, currently including about 77 families. Testing the
+              phoresy to parasitism hypothesis can be done by determining whether lineages
+              that are parasitic nest within lineages that are phoretic, a pattern predicted
+              under this hypothesis.  This approach requires good knowledge of historical
+              relationships, but unfortunately, knowledge of such relationships in this group
+              is incomplete.  A large part of the project is therefore devoted to deriving
+              well supported hypotheses of relationships within Parasitiformes.  This will be
+              done using a combination of morphological and molecular data.  Molecular data
+              consist of sequence data for parts of the 18S and 28S nuclear ribosomal RNA
+              genes, and the nuclear protein coding gene Elongation Factor 1-alpha.
+
+This
+              group is of general biological interest in part because it includes  ticks of
+              medical importance and the economically important bee parasite Varroa.  Both
+              parasitism and phoresy are common within Parasitiformes making it a good
+              candidate for this project.   By providing rigorous hypotheses of relationships
+              among Parasitiformes, this research will improve our understanding of numerous
+              ecologically, medically, and economically important mites and make this  group
+              of mites available as a model system for broad questions in evolutionary
+              biology.
+
+

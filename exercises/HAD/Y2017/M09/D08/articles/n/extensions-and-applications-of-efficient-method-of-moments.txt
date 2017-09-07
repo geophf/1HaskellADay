@@ -1,0 +1,38 @@
+              The proposed research to be undertaken will continue and extend a long-standing
+              program of research in nonlinear econometric methods. The view is that an
+              econometric specification is an approximation to the underlying data generating
+              mechanism. In keeping with this view, methodologies have been developed that
+              sequentially improve the approximation as information becomes available, and
+              permit reliable inference at each intermediate stage of model evolution. These
+              objectives have been accomplished at a level of generality that encompasses
+              most nonlinear econometric inference procedures. The basic idea is to endow a
+              procedure with nonparametric properties by replacing the structural model with
+              a truncated series expansion, the error density with a truncated expansion, or
+              both. By letting the truncation point grow adaptively with sample size, the
+              approximation is accurate enough at each intermediate stage to permit reliable
+              inference and ultimate convergence to the underlying data generating mechanism
+              is assured.
+Tightly parameterized structural modeling can be carried out
+              within this paradigm. The idea is to require that moments implied by the
+              structural model match the scores of a model developed according to the
+              methodology described above. This estimator has certain advantages. Estimates
+              can be made as efficient as if maximum likelihood had been employed. Unlike
+              maximum likelihood, the computational burden does not increase if the state
+              vector is partially observed either because the structural model contains
+              latent variables or because data is missing. Studentized scores serve as
+              diagnostic tests and, because the scores correspond to identifiable features of
+              data, failure to pass a diagnostic indicates which features of data a tightly
+              parameterized structural model cannot explain. This is an invaluable aid to
+              model development.
+The specific proposal is to establish that the advantages
+              claimed above follow from assumptions that are more primitive than the high
+              level assumptions used to date, to improve computational efficiency, and to
+              continue an ongoing program of empirical work that exploits the new
+              methodologies discussed above. Initial work will focus on the estimation of
+              structural macro models with attention to the simultaneous use of time series
+              and panel data. Reduced form applications will focus on methods for extracting
+              the continuous time volatility process from discretely sampled asset prices and
+              efficiently predicting functionals of the continuous time process such as
+              integrated forward volatility.
+
+

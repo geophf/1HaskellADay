@@ -1,0 +1,33 @@
+              Telomeres are nucleoprotein structures that form a protective cap on the ends of
+              eukaryotic chromosomes and protect them from end-to-end fusions and
+              degradation.  Telomeres are generated and sustained through the action of
+              telomerase, a ribonucleoprotein complex with reverse transcriptase activity. 
+              In mammals, telomerase is part of a biological clock that determines the
+              capacity for cellular proliferation, as its expression is strongly linked to
+              aging and tumorigenesis. Previous studies have shown that the model plant,
+              Arabidopsis, exhibits an exceptionally high tolerance to telomere dysfunction. 
+              In this research, molecular, genetic and cytogenetic approaches will be
+              conducted to investigate how telomerase conveys stability to the Arabidopsis
+              genome and to identify new components of the telomerase holoenzyme complex. The
+              first objective is to examine the plasticity of the plant genome and
+              developmental profile by studying how plants that lack telomerase can recover
+              when the enzyme activity is restored. Objectives two and three focus on
+              identifying and characterizing components of the telomerase holoenzyme.
+              Molecular and biochemical approaches will be used to identify the RNA subunit
+              of telomerase.  When the telomerase RNA is in hand, mutations will be
+              introduced into the telomere templating domain to investigate how changing the
+              nucleotide sequence of the telomere affects genome stability.  The third
+              objective is to examine the function of dyskerin in Arabidopsis. The human
+              dyskerin protein binds to the telomerase RNA subunit.  Mutations in this gene
+              lead to the genetic disorder, dyskeratosis congenita, which is characterized by
+              defects in stem cell proliferation.  Objective three will determine whether
+              dyskerin plays a role in telomere maintenance and telomerase RNP biogenesis in
+              Arabidopsis. As part of this study, a mutation will be engineered in the
+              Arabidopsis dyskerin gene in an attempt to mimic the disease dyskeratosis in
+              plants. Together, these studies will not only provide novel information about
+              the role of telomerase in plants, but are also likely to yield insight into the
+              structure of the telomerase RNP holoenzyme and its function in conveying genome
+              stability to a broad range of higher eukaryotes.
+
+
+

@@ -1,0 +1,12 @@
+              Use of FRP composites for strengthening of existing structures have rapidly
+              increased in the last decade. However, in applications, some fundamental
+              aspects are still not well understood, specifically those related to
+              performance and behavior of FRP-retrofitted members under cyclic loading and
+              the role of environmental effects on this behavior. The proposed research,
+              through rigorous experimental, analytical, and numerical studies, will
+              contribute to better understanding of retrofitted systems behavior under
+              monotonic and cyclic loads combined with environmental effects. This will form
+              a basis for development of an integrated design methodology for safe
+              applications and for better assessment of durability of such systems, which are
+              becoming widespread around the world.
+

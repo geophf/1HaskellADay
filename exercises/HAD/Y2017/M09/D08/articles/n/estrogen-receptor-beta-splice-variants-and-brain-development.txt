@@ -1,0 +1,23 @@
+              The hippocampus, a part of the mammalian brain involved in cognitive functions,
+              is also sensitive to the steroid hormone estrogen.  Estrogen is known to
+              influence the sexual differentiation of the hippocampus, but the molecular
+              mechanisms for this development are not clear.  Numbers of estrogen receptor
+              (ER) molecules in the hippocampus increase during development, triggered by
+              transient expression of both the alpha and beta forms of ER, which suggests a
+              possible novel critical period for estrogen action.  The transient expression
+              of ER-beta is predominantly of an isoform splice variant termed -delta 3 (-d3),
+              which acts through a unique molecular mechanism to regulate target genes,
+              unlike the classically described estrogen-response element (ERE).  This project
+              uses molecular biology to examine the function in vitro of these -d3 splice
+              variants of ER-beta.  Transient transfection, reporter gene analysis, and other
+              transcription and trafficking assays will determine how -d3 variants drive
+              transcription and interact with other regulatory proteins and other ER receptor
+              types.  The project also bridges the effects seen in vitro with those normal
+              physiological events seen in the living animal.
+   Results will clarify a
+              novel mechanism of how estrogens affect hippocampal development, and will be
+              important beyond neuroendocrinology, on developmental biology and potentially
+              on cognitive neuroscience.  The project also involves training undergraduates
+              and graduate students in an excellent laboratory research environment.
+
+

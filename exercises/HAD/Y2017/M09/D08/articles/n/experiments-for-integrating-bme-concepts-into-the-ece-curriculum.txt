@@ -1,0 +1,29 @@
+              Biomedical engineering (BME) is one of the fastest growing fields, with an
+              expected job growth rate that is twice that of the overall job growth rate in
+              the US. However, there are only 22 schools offering accredited undergraduate
+              degrees in BME, and most schools do not have the resources to offer new degree
+              programs. The resulting gap between the demand for qualified BME professionals
+              and the programs for educating them constitutes a significant, yet unmet,
+              national need. Our goal has been to develop a new educational paradigm to help
+              reduce this gap. Our paradigm is based on a general method for introducing
+              novel multidisciplinary content into core engineering curriculum. Our
+              methodology consists of the integration of content specific laboratory
+              experiments into core courses to provide essential background, followed by an
+              elective providing topical depth. BME is used as the novel content and
+              electrical and/or computer engineering (ECE) as the core curriculum. The method
+              is versatile, as it can be easily modified to integrate other novel
+              multidisciplinary content into any engineering program to provide a
+              better-rounded engineering education. The implementation of this method has two
+              specific objectives: first to provide ECE students with fundamental and
+              contemporary BME knowledge for future career and graduate study opportunities;
+              and second to improve students' interest in and comprehension of ECE concepts
+              by acquainting them with engineering solutions to real world problems in
+              medicine. These objectives are being achieved by integrating a set of
+              experiments - designed to demonstrate a wide spectrum of BME concepts - into
+              core ECE courses, along with a new elective providing a comprehensive BME
+              overview. A major outcome of our project is a learning paradigm, which can
+              serve as a model for integrating novel content into core engineering
+              curriculum. The full development of our approach will serve as a building block
+              for future undergraduate minor / concentration programs in a variety of novel
+              content areas, such as biomedical engineering.
+

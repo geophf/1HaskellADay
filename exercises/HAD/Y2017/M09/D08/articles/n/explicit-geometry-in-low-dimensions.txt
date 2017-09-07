@@ -1,0 +1,38 @@
+              Proposal:  DMS-0072622
+
+PI: Igor Rivin
+
+Abstract:  I propose to concentrate
+              on constructive (and, if possible,
+efficient) methods for finding and
+              characterizing OPTIMAL
+geometric representations for combinatorial,
+              topological, or 
+geometric objects in low dimensions. In one dimension we will
+              study graphs, in
+two dimensions, Riemann surfaces, in three dimensions --
+              compact manifolds. We
+will study direct geometric invariants (volume,
+              curvature integrals, diameter)
+as well as less tractable but in many ways
+              attractive spectral invariants
+(individual eigenvalues or determinants
+              (regularized or not) of elliptic
+operators). 
+
+In all cases, our goal is
+              find the nicest geometric representation of a
+topological object. An obvious
+              example is that of the "round" metric on the
+sphere. People have been lucky to
+              discover this metric early, because the
+natural processes of weather work
+              stones into approximately round
+shapes. Unfortunately, nature is not there to
+              help us with more complicated
+mathematical objects, so we have to invent
+              artificial processes which will
+work them into "canonical" shapes, so we can
+              better understand the underlying
+structure.
+
