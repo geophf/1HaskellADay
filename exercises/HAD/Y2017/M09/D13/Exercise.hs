@@ -55,7 +55,7 @@ I guess we'll never know the answer to some questions in life ...
 
 Or, you can use the API call from the US Naval Observatory, e.g.:
 
-http://aa.usno.navy.mil/jdconverter?ID=AA&jd=900327&format=json
+http://http://api.usno.navy.mil/jdconverter?ID=AA&jd=900327&format=json
 --}
 
 myID :: String
@@ -69,7 +69,7 @@ navyEmail = "navobsy_aa-help@navy.mil"
 -- they use this to justify their services
 
 jdconverter :: URL
-jdconverter = "http://aa.usno.navy.mil/jdconverter"
+jdconverter = "http://api.usno.navy.mil/jdconverter"
 
 -- call the jdconverter with your id and the jd. What do you get?
 
