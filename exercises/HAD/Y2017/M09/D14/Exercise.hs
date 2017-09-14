@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings, QuasiQuotes #-}
 
 module Y2017.M09.D14.Exercise where
 
@@ -6,11 +6,14 @@ import qualified Codec.Compression.GZip as GZ
 import Data.ByteString.Lazy.Char8 (ByteString)
 import Data.Time
 import Database.PostgreSQL.Simple
+import Database.PostgreSQL.Simple.SqlQQ
 import Network.HTTP.Conduit
 
 -- below imports available via 1HaskellADay git repository
 
-import Store.SQL.Connection (connectionStringFromEnv)
+import Store.SQL.Connection (connectInfo)
+
+-- you need to set some SQL environment variables for connectInfo to work
 
 {--
 Today, we're going to upload the articles, their dates, and the article text
@@ -40,3 +43,12 @@ loadCompress url archive filename = undefined
 
 insertArticles :: Connection -> [Article] -> IO ()
 insertArticles conn arts = undefined
+
+-- with maybe a statement like the following:
+
+insertStmt :: Query
+insertStmt = [sql|INSERT INTO article (article_id, publication_dt, raw_text)
+                  VALUES (?,?,?)|]
+
+sampleInsert :: Article
+sampleInsert = Art "AP900821-0227.txt" (fromGregorian 1990 9 23) "blah, blah"
