@@ -1,6 +1,7 @@
 module Y2017.M09.D13.Solution where
 
 import Data.Time
+import Data.Time.Clock
 import Network.HTTP.Conduit
 
 -- below imports available via 1HaskellADay git repository
@@ -34,14 +35,16 @@ are Gregorian dates, but not Y2K-compliant. SO, this becomes a bit easier
 to recode
 --}
 
-dateFromString :: String -> Day
+dateFromString :: String -> UTCTime
 dateFromString (y1:y2:m1:m2:d1:d2:_dash:h1:h2:minutes) =
-   fromGregorian (1900 + fromIntegral (c y1 y2)) (c m1 m2) (c d1 d2)
+   UTCTime (fromGregorian (1900 + fromIntegral (c y1 y2)) (c m1 m2) (c d1 d2))
+           (secondsToDiffTime (mins minutes * 60 + 3600 * c h1 h2))
       where c x y = read [x,y]
+            mins (m1:m2:_) = c m1 m2
 
 {--
 >>> dateFromString (drop 2 sampleTitle)
-1990-03-27
+1990-03-27 02:42:00 UTC
 --}
 
 -- TODAY'S HASKELL EXERCISE -------------------------------------------------
@@ -54,7 +57,7 @@ articlesDir = "Y2017/M09/D08/articles/b/"
 -- and for each article extract the Julian date (by reading in the first 
 -- Integer) and return the corresponding Day published for that article:
 
-fileNameToDay :: FilePath -> Day
+fileNameToDay :: FilePath -> UTCTime
 fileNameToDay = dateFromString . drop 2
 
 {--
