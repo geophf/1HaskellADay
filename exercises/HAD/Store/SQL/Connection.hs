@@ -1,5 +1,6 @@
 module Store.SQL.Connection where
 
+import Database.PostgreSQL.Simple
 import System.Environment
 
 {--
@@ -45,7 +46,14 @@ dbPort = read <$> getEnv "SQL_DAAS_SERVER_PORT"
 "1HaskellADay"
 >>> dbPort
 5432
+--}
 
+connectInfo :: IO ConnectInfo
+connectInfo = ConnectInfo <$> dbmsServer
+                          <*> (fromIntegral <$> dbPort)
+                          <*> dbUserName <*> dbPassword <*> dbName
+
+{--
 Okay, using the above results, if your connection string is in the format:
 
 postgres://user:pass@server:5432/dbname
