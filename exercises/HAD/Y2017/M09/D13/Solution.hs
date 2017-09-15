@@ -36,15 +36,19 @@ to recode
 --}
 
 dateFromString :: String -> UTCTime
-dateFromString (y1:y2:m1:m2:d1:d2:_dash:h1:h2:minutes) =
+dateFromString (y1:y2:m1:m2:d1:d2:_dash:minutes) =
    UTCTime (fromGregorian (1900 + fromIntegral (c y1 y2)) (c m1 m2) (c d1 d2))
-           (secondsToDiffTime (mins minutes * 60 + 3600 * c h1 h2))
+           (secondsToDiffTime (60 * read (take 4 minutes)))
       where c x y = read [x,y]
-            mins (m1:m2:_) = c m1 m2
 
 {--
+Actually, I noted minutes were like 0094, etc, so I'm thinkin they are minutes
+from midnight: I'm going with that.
+
+>>> sampleTitle 
+"AP900327-0242.txt"
 >>> dateFromString (drop 2 sampleTitle)
-1990-03-27 02:42:00 UTC
+1990-03-27 04:02:00 UTC
 --}
 
 -- TODAY'S HASKELL EXERCISE -------------------------------------------------
@@ -52,7 +56,7 @@ dateFromString (y1:y2:m1:m2:d1:d2:_dash:h1:h2:minutes) =
 -- Read in the file names at 
 
 articlesDir :: FilePath
-articlesDir = "Y2017/M09/D08/articles/b/"
+articlesDir = "Y2017/M09/D08/articles/b"
 
 -- and for each article extract the Julian date (by reading in the first 
 -- Integer) and return the corresponding Day published for that article:
