@@ -44,8 +44,11 @@ keys and use that to define lookupWord.
 transposeDict :: Dictionary -> Map Int String
 transposeDict = Map.fromList . map swap . Map.toList
 
+flipLookId :: Map Int String -> KeyWord -> Maybe String
+flipLookId dict = (`Map.lookup` dict) . kwId
+
 lookupWord :: Dictionary -> KeyWord -> Maybe String
-lookupWord (transposeDict -> dict) = (`Map.lookup` dict) . kwId
+lookupWord (transposeDict -> dict) = flipLookId dict
 
 -- given a mapping (string -> int) and a keyword (declared in Y2017.M09.D15)
 -- return the word associated with the keyword encoding.
@@ -63,8 +66,7 @@ Just "census"
 
 top5Words :: Dictionary -> Map Int KeyWord -> [String]
 top5Words (transposeDict -> dict) =
-   mapMaybe ((`Map.lookup` dict) . kwId)
-          . take 5 . sortOn (Down . strength) . Map.elems
+   mapMaybe (flipLookId dict) . take 5 . sortOn (Down . strength) . Map.elems
 
 {--
 >>> top5Words (dict wc) (kws wc)
