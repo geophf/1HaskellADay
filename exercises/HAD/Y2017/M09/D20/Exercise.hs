@@ -105,8 +105,8 @@ insertAllKeys conn dict = undefined
 
 -- then 2. insert all the keywords for AP900327-0094.txt into article_keyword
 
-insertAllArticleKeyWords :: Connection -> Map Int KeyWord -> IO ()
-insertAllArticleKeyWords conn kws = undefined
+insertAllArticleKeyWords :: Connection -> Int -> Map Int KeyWord -> IO ()
+insertAllArticleKeyWords conn artId kws = undefined
 
 -- hint: you may wish to convert kws to [ArticleKeyWord]
 
