@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings, QuasiQuotes #-}
 
-module Y2017.M09.D14.Solution where
+module Y2017.M09.D20.Exercise where
 
 import Control.Monad (void)
 import Data.ByteString.Lazy.Char8 (ByteString)
