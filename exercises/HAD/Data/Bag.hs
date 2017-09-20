@@ -72,8 +72,11 @@ add = flip addn 1  -- geddit? 'add a bag'? geddit?
 rank :: Ord a => Bag a -> [(a, Int)]
 rank = sortOn (Down . snd) . toList
 
-toList :: Bag a -> [(a, Int)]
-toList = Map.toList . Map.map getSum
+asMap :: Ord a => Bag a -> Map a Int
+asMap = Map.map getSum
+
+toList :: Ord a => Bag a -> [(a, Int)]
+toList = Map.toList . asMap
 
 -- we used to have a countOf, but now this reduces, simply, to Map.!
 
