@@ -24,7 +24,7 @@ compute the strength of each word of the article
 --}
 
 data KeyWord = KW { kwId, count :: Int, strength :: Float }
-   deriving (Eq, Show)
+   deriving (Eq, Ord, Show)
 
 -- a keyword has an id, a count in the document, and its relative strength
 
@@ -40,7 +40,11 @@ kea dict file = undefined
 
 -- A helper function might be ... well, helpful:
 
-kea' :: (Dictionary, Map Int KeyWord) -> Int -> String -> (Dictionary, Map Int KeyWord)
+data WordContext =
+   WC { dict :: Dictionary, kws :: Map Int KeyWord, index :: Int }
+      deriving Show
+
+kea' :: WordContext -> Int -> String -> WordContext
 kea' context wordCount word = undefined
 
 -- given a dictionary and a set of keywords, update the dictionary with a new
