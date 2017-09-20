@@ -63,5 +63,5 @@ analyze a set of articles? Compute the set of keywords for all the articles
 in articlesDir
 --}
 
-keywordsAllArticles :: URL -> Directory -> IO (Map Int KeyWord)
-keywordsAllArticles url dir = undefined
+keywordsAllArticles :: Directory -> IO (Dictionary, Map FileName (Map Int KeyWord))
+keywordsAllArticles dir = undefined
