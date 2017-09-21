@@ -79,4 +79,3 @@ insertNewKeys ctx stop conn = undefined
 -- the insertAllArticlesKeyWords function (how?)
 
 -- With AP900327-0242.txt, insert new keys and keywords for artId = 3.
---}
