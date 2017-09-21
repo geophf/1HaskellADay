@@ -114,7 +114,7 @@ inserter conn = void <<- executeMany conn
 
 {--
 >>> connectInfo 
-ConnectInfo {connectHost = "pellefant.db.elephantsql.com", connectPort = 5432, connectUser = "upksmrvp", connectPassword = "k_3U6Tcgv5gRY_PoX_AHOekD4khtyYf8", connectDatabase = "upksmrvp"}
+ConnectInfo {connectHost = "..." ...}
 >>> conn <- connect it
 >>> length (dict wordcontext)
 91
