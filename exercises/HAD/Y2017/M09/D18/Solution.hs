@@ -66,11 +66,11 @@ fromList [("a",1 % 165),("abstract",1 % 165),...,("work",2 % 165)]
 strengthifier :: Directory -> IO (Map FilePath (Strength String))
 strengthifier dir =
    articlesAt "" dir >>=
-   foldM (\m filename ->
-                fmap (wordStrength . wc) (BL.readFile filename) >>= \dict ->
-                return (Map.insert filename dict m)) Map.empty
+   foldM (\m filename -> flip (Map.insert filename) m . wordStrength . wc
+                              <$> BL.readFile filename) Map.empty
 
 {--
+>>> take5 = take 5 . Map.toList
 >>> mapM_ ((\(title, top5) -> print title *> print top5) . second take5) . take5 
                  <$> strengthifier (exerciseDir ++ "/n") 
 "Y2017/M09/D08/articles//n//estrogen-receptor-beta-splice-variants-and-brain-development.txt"
