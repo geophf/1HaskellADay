@@ -28,7 +28,7 @@ compute the strength of each word of the article
 --}
 
 data KeyWord = KW { kwId, count :: Int, strength :: Rational }
-   deriving (Eq, Show)
+   deriving (Eq, Ord, Show)
 
 -- a keyword has an id, a count in the document, and its relative strength
 
