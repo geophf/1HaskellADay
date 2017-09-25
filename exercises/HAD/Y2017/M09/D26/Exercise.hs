@@ -2,6 +2,8 @@
 
 module Y2017.M09.D26.Exercise where
 
+import Data.Aeson
+import Data.Aeson.Encode.Pretty
 import Data.ByteString.Lazy.Char8 (ByteString)
 import qualified Data.ByteString.Lazy.Char8 as BL
 import Data.Map (Map)
@@ -72,3 +74,16 @@ instance ToRow RawNames where
 
 -- We will address that question tomorrow when we get into some simple name
 -- parsers.
+
+{-- BONUS -----------------------------------------------------------------
+
+Output your RawNames values as JSON.
+
+--}
+
+instance ToJSON RawNames where
+   toJSON rn = undefined
+
+-- BONUS-BONUS ------------------------------------------------------------
+
+-- prettily.
