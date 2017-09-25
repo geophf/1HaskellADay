@@ -2,6 +2,7 @@
 
 module Y2017.M09.D26.Exercise where
 
+import qualified Codec.Compression.GZip as GZ
 import Data.Aeson
 import Data.Aeson.Encode.Pretty
 import Data.ByteString.Lazy.Char8 (ByteString)
@@ -21,7 +22,7 @@ import Store.SQL.Connection (connectInfo)
 
 import Y2017.M09.D20.Solution (inserter)
 import Y2017.M09.D22.Exercise (scanArticles, dir, arts, rawText)
-import Y2017.M09.D25.Exercise (parseArticle, metadata)
+import Y2017.M09.D25.Exercise (parseArticle, metadata, Article, artId)
 
 {--
 So, I wrote a whole exercise for today, which you will see as tomorrow's 
@@ -54,8 +55,8 @@ data RawNames = Raw { fromArticle :: Int, text :: String }
 
 -- with our handy insert statement:
 
-insertRawNames :: Query
-insertRawNames = [sql|INSERT INTO name_stg (article_id,names) VALUES (?,?)|]
+insertRawNamesStmt :: Query
+insertRawNamesStmt = [sql|INSERT INTO name_stg (article_id,names) VALUES (?,?)|]
 
 -- from the above, derive the below:
 
@@ -67,6 +68,20 @@ instance ToRow RawNames where
 
 -- For all the articles compressed in the archive, (art ++ dir), insert the
 -- names from the Person metadata into the names_stg table at the index artId.
+
+-- Before we do that, we have to convert articles scanned by
+
+-- articles <- scanArticles . GZ.decompress <$> BL.readFile (dir ++ arts)
+
+-- to a list of raw names values
+
+art2RawNames :: Article -> RawNames
+art2RawNames art = undefined
+
+-- and with that transformation function, we can insert raw names from articles
+
+insertAllRawNames :: Connection -> [RawNames] -> IO ()
+insertAllRawNames conn = inserter conn insertRawNamesStmt
 
 -- How many rows did you insert? [low key: your answer should be '11']
 
