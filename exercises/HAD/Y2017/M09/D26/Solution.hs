@@ -3,6 +3,7 @@
 module Y2017.M09.D26.Solution where
 
 import qualified Codec.Compression.GZip as GZ
+import Control.Arrow ((&&&))
 import Data.Aeson
 import Data.Aeson.Encode.Pretty
 import Data.ByteString.Lazy.Char8 (ByteString)
@@ -84,7 +85,27 @@ extractArticles gz = Map.toList articles >>= uncurry parseArticle
 -- then let's grab the line that has the raw names listed from each article
 
 art2RawNames :: Article -> Maybe RawNames
-art2RawNames art = Raw (artId art) <$> (Map.lookup "Person" $ metadata art)
+art2RawNames = fmap . Raw . artId <*> Map.lookup "Person" . metadata
+
+-- really? mapping the functor OVER the Applicative functor? REALLY?
+
+{--
+Previous attempts:
+
+* uncurry fmap . (Raw . artId &&& Map.lookup "Person" . metadata)
+
+whenever I see the pattern 
+
+uncurry f . (this &&& that)
+
+I know I'm unnecessarily complicating things
+
+I mean: why compose a tuple simply to uncurry it?
+
+* fmap (Raw (artId art)) . Map.lookup "Person" $ metadata art
+
+ugh: repeated names ('art'). That's gross.
+--}
 
 -- and with that transformation function, we can insert raw names from articles
 
