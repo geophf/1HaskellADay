@@ -87,7 +87,7 @@ art2RawNames art = undefined
 -- and with that transformation function, we can insert raw names from articles
 
 insertAllRawNames :: Connection -> [RawNames] -> IO ()
-insertAllRawNames conn = inserter conn insertRawNamesStmt
+insertAllRawNames conn = undefined
 
 -- How many rows did you insert? [low key: your answer should be '11']
 
