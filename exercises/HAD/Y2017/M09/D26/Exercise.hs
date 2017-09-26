@@ -81,7 +81,7 @@ extractArticles gz = undefined
 
 -- then let's grab the line that has the raw names listed from each article
 
-art2RawNames :: Article -> RawNames
+art2RawNames :: Article -> Maybe RawNames
 art2RawNames art = undefined
 
 -- and with that transformation function, we can insert raw names from articles
