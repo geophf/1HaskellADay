@@ -21,7 +21,7 @@ import Network.HTTP.Conduit
 import Store.SQL.Connection (connectInfo)
 
 import Y2017.M09.D20.Solution (inserter)
-import Y2017.M09.D22.Exercise (scanArticles, dir, arts, rawText)
+import Y2017.M09.D22.Exercise (scanArticles, dir, arts, rawText, articleTextById)
 import Y2017.M09.D25.Exercise (parseArticle, metadata, Article, artId)
 
 {--
@@ -63,17 +63,23 @@ insertRawNamesStmt = [sql|INSERT INTO name_stg (article_id,names) VALUES (?,?)|]
 instance ToRow RawNames where
    toRow rn = undefined
 
--- Okay, great, and you can use the inserter from before to construct the
--- procedure that inserts RawNames values into PostgreSQL database.
+{-- 
+Okay, great, and you can use the inserter from before to construct the
+procedure that inserts RawNames values into PostgreSQL database.
 
--- For all the articles compressed in the archive, (art ++ dir), insert the
--- names from the Person metadata into the names_stg table at the index artId.
+Before we do that, we have to convert articles scanned to a list of raw names 
+values. And before we do that, let's create a function that pipelines the whole
+process of extracting articles from the archive and reifying those articles
+to the Y2017.M09.D25.Article type.
+--}
 
--- Before we do that, we have to convert articles scanned by
+type Compressed = ByteString
+-- reminder to me that this is a compressed archive
 
--- articles <- scanArticles . GZ.decompress <$> BL.readFile (dir ++ arts)
+extractArticles :: Compressed -> [Article] 
+extractArticles gz = undefined
 
--- to a list of raw names values
+-- then let's grab the line that has the raw names listed from each article
 
 art2RawNames :: Article -> RawNames
 art2RawNames art = undefined
