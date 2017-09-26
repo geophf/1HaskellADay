@@ -90,6 +90,7 @@ insertAllRawNames :: Connection -> [RawNames] -> IO ()
 insertAllRawNames conn = undefined
 
 -- How many rows did you insert? [low key: your answer should be '11']
+-- [... or should it?]
 
 -- Now: how many names did you insert?
 
