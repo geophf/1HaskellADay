@@ -3,7 +3,6 @@
 module Y2017.M09.D26.Solution where
 
 import qualified Codec.Compression.GZip as GZ
-import Control.Arrow ((&&&))
 import Data.Aeson
 import Data.Aeson.Encode.Pretty
 import Data.ByteString.Lazy.Char8 (ByteString)
@@ -65,6 +64,9 @@ insertRawNamesStmt = [sql|INSERT INTO name_stg (article_id,names) VALUES (?,?)|]
 instance ToRow RawNames where
    toRow rn = [toField (fromArticle rn),toField (text rn)]
 
+-- this looks like an applicative functor definition, but it's weird because
+-- the toField 'function' is actually two different function value types.
+
 {-- 
 Okay, great, and you can use the inserter from before to construct the
 procedure that inserts RawNames values into PostgreSQL database.
@@ -82,15 +84,33 @@ extractArticles :: Compressed -> [Article]
 extractArticles gz = Map.toList articles >>= uncurry parseArticle
    where articles = articleTextById . scanArticles $ GZ.decompress gz
 
+{--
+>>> articles <- extractArticles <$> BL.readFile (dir ++ arts)
+--}
+
 -- then let's grab the line that has the raw names listed from each article
 
 art2RawNames :: Article -> Maybe RawNames
-art2RawNames = fmap . Raw . artId <*> Map.lookup "Person" . metadata
+art2RawNames = fmap . Raw . artId <*> Map.lookup "People" . metadata
 
 -- really? mapping the functor OVER the Applicative functor? REALLY?
 
 {--
-Previous attempts:
+>>> names = mapMaybe art2RawNames articles
+>>> names
+[Raw {fromArticle = 1, text = "Cuomo, Mario M"},
+ Raw {fromArticle = 2, text = "Reagan, Ronald Wilson"},
+ Raw {fromArticle = 3, text = "Obama, Barack Cameron, David"},
+ Raw {fromArticle = 4, text = "Armstrong, Karen"},
+ Raw {fromArticle = 5, text = "Cuomo, Mario M"},
+ Raw {fromArticle = 7, text = "Rivlin, Reuven"},
+ Raw {fromArticle = 8, text = "Francis (Pope)"},
+ Raw {fromArticle = 10, text = "Yingluck Shinawatra"},
+ Raw {fromArticle = 11, text = "Baraka, Amiri"}]
+
+n.b.: articles 6 and 9 have no people associated with them.
+
+Previous attempts with self-critiques:
 
 * uncurry fmap . (Raw . artId &&& Map.lookup "Person" . metadata)
 
@@ -112,15 +132,41 @@ ugh: repeated names ('art'). That's gross.
 insertAllRawNames :: Connection -> [RawNames] -> IO ()
 insertAllRawNames conn = inserter conn insertRawNamesStmt
 
--- For all the articles compressed in the archive, (art ++ dir), insert the
--- names from the Person metadata into the names_stg table at the index artId.
+{-- 
+For all the articles compressed in the archive, (dir ++ arts), insert the
+names from the Person metadata into the names_stg table at the index artId.
 
--- How many rows did you insert? [low key: your answer should be '11']
+>>> connectInfo 
+ConnectInfo {connectHost = "..." ...}
+>>> conn <- connect it
+>>> insertAllRawNames conn names
+>>> close conn
 
--- Now: how many names did you insert?
+How many rows did you insert? [low key: your answer should be '11']
 
--- We will address that question tomorrow when we get into some simple name
--- parsers.
+$ select count(1) from name_stg;
+9
+[actually, it was 9 rows, as two articles didn't have associated people]
+
+$ select * from name_stg;
+
+id	article_id	names
+----------------------------------------------------
+1	1		Cuomo, Mario M
+2	2		Reagan, Ronald Wilson
+3	3		Obama, Barack Cameron, David
+4	4		Armstrong, Karen
+5	5		Cuomo, Mario M
+6	7		Rivlin, Reuven
+7	8		Francis (Pope)
+8	10		Yingluck Shinawatra
+9	11		Baraka, Amiri
+
+Now: how many names did you insert?
+
+We will address that question tomorrow when we get into some simple name
+parsers.
+--}
 
 {-- BONUS -----------------------------------------------------------------
 
@@ -131,10 +177,46 @@ Output your RawNames values as JSON.
 instance ToJSON RawNames where
    toJSON rn = object ["fromArticle" .= fromArticle rn, "names" .= text rn]
 
-{--
->>
---}
-
 -- BONUS-BONUS ------------------------------------------------------------
 
 -- prettily.
+
+{--
+>>> mapM_ (BL.putStrLn . encodePretty) names
+{
+    "names": "Cuomo, Mario M",
+    "fromArticle": 1
+}
+{
+    "names": "Reagan, Ronald Wilson",
+    "fromArticle": 2
+}
+{
+    "names": "Obama, Barack Cameron, David",
+    "fromArticle": 3
+}
+{
+    "names": "Armstrong, Karen",
+    "fromArticle": 4
+}
+{
+    "names": "Cuomo, Mario M",
+    "fromArticle": 5
+}
+{
+    "names": "Rivlin, Reuven",
+    "fromArticle": 7
+}
+{
+    "names": "Francis (Pope)",
+    "fromArticle": 8
+}
+{
+    "names": "Yingluck Shinawatra",
+    "fromArticle": 10
+}
+{
+    "names": "Baraka, Amiri",
+    "fromArticle": 11
+}
+--}
