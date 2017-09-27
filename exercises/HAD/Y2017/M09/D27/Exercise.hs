@@ -25,7 +25,7 @@ Just "Cuomo, Mario M"
 But here's the thing. A person's name has structure in the data store:
 --}
 
-data Person = Name { source, family, given, rest :: String }
+data Person = Name { source :: String, family, given, rest :: Maybe String }
    deriving (Eq, Ord, Show)
 
 -- parse the author and "People" metadata to Person values
