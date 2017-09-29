@@ -60,11 +60,11 @@ Second of all, parse the document set into this enriched Article format.
 --}
 
 data Article =
-   Art { artId              :: Integer,
-         title, author      :: String,
-         url                :: FilePath,
-         abstract, fullText :: ByteString,
-         metadata           :: Map String String }
+   Art { artId                 :: Integer,
+         title, author         :: String,
+         url                   :: FilePath,
+         abstract, fullText    :: ByteString,
+         metadata              :: Map String String }
       deriving (Eq, Show)
 
 -- n.b. I ignore some attributes in the raw text.

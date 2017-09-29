@@ -37,15 +37,16 @@ import Y2017.M09.D26.Solution (extractArticles)
 
 insertArtsStmt :: Query
 insertArtsStmt = [sql|INSERT INTO article (id,title,author,publish_dt,url,
-                                           abstract,full_text,people)
-                      VALUES (?,?,?,?,?,?,?,?)|]
+                                           abstract,full_text,people,locations)
+                      VALUES (?,?,?,?,?,?,?,?,?)|]
 
 -- create a ToRow instance of the Article type:
 
 instance ToRow Article where
    toRow art = [toField (artId art),toField (title art), toField (author art),
                 look "Publication date" art, toField (url art),
-                byt abstract art, byt fullText art, look "People" art]
+                byt abstract art, byt fullText art, look "People" art,
+                look "Location" art]
       where look r = toField . Map.lookup r . metadata
             byt f  = toField . byteStr . f
 
