@@ -13,9 +13,9 @@ in the article table and populate the person table and the join table today.
 
 SO! ETL PROCESS!
 
-Today, we're going to read the raw names, with their indices, from the article 
-table in the data store, parse those raw names, then store those names in a new 
-data table with the referenced raw name index.
+Today, we're going to read the raw names, with their indices, from the article table
+in the data store, parse those raw names (as we did in Y2017.M09.D27.Exercise),
+then store those names in a new data table with the referenced raw name index.
 
 YAY!
 
@@ -23,8 +23,10 @@ YAY!
 names from the raw text then store the names at the same time.)
 --}
 
+import Data.ByteString.Lazy.Char8 (ByteString)
+import qualified Data.ByteString.Lazy.Char8 as BL
 import Data.Map (Map)
-import Data.Time
+import qualified Data.Map as Map
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
 import Database.PostgreSQL.Simple.ToRow
@@ -39,49 +41,42 @@ import Y2017.M09.D20.Solution (inserter)
 import Y2017.M09.D26.Exercise
 import Y2017.M09.D27.Exercise
 
--- First off, we need to read the raw names with an index from the article table
+-- First off, we need to read the raw names with an index:
 
--- there's not a one-to-one mapping of the Y2017.M09.D25.Exercise.Article and
--- the article table, so we create that one-to-one mapping here
-
-data ArticleProxy =
-   AP { articleIdx :: Int,
-        title      :: Maybe String,
-        author     :: Maybe String,
-        publishDt  :: Maybe Day,
-        abstract   :: Maybe String,
-        url        :: Maybe FilePath,
-        section    :: Maybe String,
-        fulleTxt   :: String,
-        updateDt   :: Maybe Day,
-        people     :: Maybe String }
-   deriving (Eq, Ord, Show)
-
-instance FromRow ArticleProxy where 
+instance FromRow RawNames where 
    fromRow = undefined
 
 -- using the following query:
 
-selectArticleStmt :: Query
-selectArticleStmt = [sql|SELECT * FROM article|]
+selectRawNamesStmt :: Query
+selectRawNamesStmt = [sql|SELECT id, people FROM article WHERE people IS NOT NULL|]
 
--- [sql|SELECT (id, people) from article|] -- this returns an opaque 'record'
+{--
+n.b.: You see what we're doing here. There's no concept of RawNames now in the
+database entity-relation model (the ER-model), just articles with a people field
+But we're extracting the RawNames values from the article table. ETL lolneatness
 
-selectArticle :: Connection -> IO [ArticleProxy]
-selectArticle conn = undefined
+Side note: thanks to Nathan Lander @NathanLander for resolving the difference
+between 
 
-article2RawNames :: ArticleProxy -> Maybe RawNames
-article2RawNames artProx = undefined
+SELECT (id,people) 
 
--- n.b.: You see what we're doing here. There's no concept of RawNames now in 
--- the database entity-relation model (the ER-model), just articles with a 
--- people field. But we're extracting the RawNames values from the article 
--- table. ETL lolneatness.
+which returns an opaque 'record'-type 
+
+and 
+
+SELECT id,people
+
+which returns a tuple.
+--}
+
+selectRawNames :: Connection -> IO [RawNames]
+selectRawNames conn = undefined
 
 -- Okay, now that we've got the raw names, convert them into a meta-person
 -- value with the raw-name id and then the parsed person value:
 
-data IxPerson = IPers { rawNameIdx :: Integer, pers :: Person }
+data IxPerson = IPers { rawNameIdx :: Int, pers :: Person }
    deriving (Eq, Ord, Show)
 
 raw2persons :: RawNames -> [IxPerson]
@@ -136,6 +131,5 @@ insertArtPersJoin conn joins = undefined
 
 -- and have much rejoicing! YAY! *throws confetti
 
--- Now there's the question of how to ensure we only insert a name once, but 
--- then that gets into name-matching algorithms, and I'm going to punt on that
--- for now.
+-- Now there's the question of how to ensure we only insert a name once, but then
+-- that gets into name-matching algorithms, and I'm going to punt on that for now.
