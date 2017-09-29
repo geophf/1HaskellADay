@@ -51,7 +51,7 @@ Say you have a staging table in PostgreSQL called name_stg with the following
 structure:
 --}
 
-data RawNames = Raw { fromArticle :: Int, text :: String }
+data RawNames = Raw { fromArticle :: Integer, text :: String }
    deriving (Eq, Ord, Show)
 
 -- with our handy insert statement:

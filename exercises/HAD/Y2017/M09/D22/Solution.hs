@@ -31,7 +31,7 @@ Read in the compressed archive and realize a set of articles from that archive.
 Here's why I say it's an easy problem:
 --}
 
-data Article = Art { artId :: Int, rawText :: ByteString }
+data Article = Art { artId :: Integer, rawText :: ByteString }
    deriving (Eq, Ord, Show)
 
 -- so an article is just a BLOB of data, still unstructured
@@ -39,16 +39,16 @@ data Article = Art { artId :: Int, rawText :: ByteString }
 scanArticles :: ByteString -> [Article]
 scanArticles = eachArticle emptyDL 1 . tail . BL.lines
 
-eachArticle :: DList ByteString -> Int -> [ByteString] -> [Article]
+eachArticle :: DList ByteString -> Integer -> [ByteString] -> [Article]
 eachArticle dl x [] = let a@(Art _ txt) = reifyArt x dl in
    if BL.length txt > 0 then [a] else []   -- added if to delete empty articles
 eachArticle dl x (h:t) = cont (isLinebreak h) h dl x t
 
-cont :: Bool -> ByteString -> DList ByteString -> Int -> [ByteString] -> [Article]
+cont :: Bool -> ByteString -> DList ByteString -> Integer -> [ByteString] -> [Article]
 cont True _ dl x t = reifyArt x dl : eachArticle emptyDL (succ x) t
 cont False h dl x t = eachArticle (dl <| h) x t
 
-reifyArt :: Int -> DList ByteString -> Article
+reifyArt :: Integer -> DList ByteString -> Article
 reifyArt x dl = Art x (BL.unlines $ dlToList dl)
 
 isLinebreak :: ByteString -> Bool
@@ -125,7 +125,7 @@ EASY-PEASY!
 Define this function. Just for the love of it
 --}
 
-articleTextById :: [Article] -> Map Int ByteString
+articleTextById :: [Article] -> Map Integer ByteString
 articleTextById = Map.fromList . map (artId &&& rawText)
 
 {--

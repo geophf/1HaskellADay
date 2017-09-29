@@ -60,7 +60,7 @@ Second of all, parse the document set into this enriched Article format.
 --}
 
 data Article =
-   Art { artId              :: Int,
+   Art { artId              :: Integer,
          title, author      :: String,
          url                :: FilePath,
          abstract, fullText :: ByteString,
@@ -118,7 +118,7 @@ parseKV = (head &&& BL.tail . BL.concat . tail) . BL.split ':'
 
 -- and with that, we have a scheme to parse an article
 
-parseArticle :: MonadPlus m => Int -> ByteString -> m Article
+parseArticle :: MonadPlus m => Integer -> ByteString -> m Article
 parseArticle artId txt =
    let (_:_:title:author:_pub:url:abstract:_link1:_link2:text:meta)
             = sections txt
