@@ -29,17 +29,18 @@ import Network.HTTP.Conduit
 -- below imports available via 1HaskellADay git repository
 
 import Store.SQL.Connection (connectInfo)
+import Store.SQL.Util.Indexed
+import Store.SQL.Util.Inserts (inserter)
 
-import Y2017.M09.D20.Solution (inserter)
 import Y2017.M09.D25.Exercise
 import Y2017.M09.D26.Exercise (extractArticles)
 
 -- Given the following insert statement:
 
 insertArtsStmt :: Query
-insertArtsStmt = [sql|INSERT INTO article (id,title,author,publish_dt,abstract,
-                                           full_text,people)
-                      VALUES (?,?,?,?,?,?,?)|]
+insertArtsStmt = [sql|INSERT INTO article (src_id,title,author,publish_dt,abstract,
+                                           full_text,people,locations)
+                      VALUES (?,?,?,?,?,?,?) returning id|]
 
 -- create a ToRow instance of the Article type:
 
@@ -49,7 +50,7 @@ instance ToRow Article where
 -- Now, extract the articles from the compressed archive (extractArticles),
 -- and insert the articles into the database:
 
-insertArts :: Connection -> [Article] -> IO ()
+insertArts :: Connection -> [Article] -> IO [Index]
 insertArts conn arts = undefined
 
 -- Then say: YAY! and throw confetti!

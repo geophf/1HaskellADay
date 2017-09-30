@@ -7,14 +7,15 @@ Continuing in the name-theme and in the ETL-theme, let's combine the two!
 
 You see from the results yesterday that the unprocessed names are stored
 in the database in the article table. The persons are stored in a person table
-which is joined to the article table via article_person allowing for any number of
-people to be associated with an article. We're going to parse the names we store
-in the article table and populate the person table and the join table today.
+which is joined to the article table via article_person allowing for any number 
+of people to be associated with an article. We're going to parse the names we 
+store in the article table and populate the person table and the join table 
+today.
 
 SO! ETL PROCESS!
 
-Today, we're going to read the raw names, with their indices, from the article table
-in the data store, parse those raw names (as we did in Y2017.M09.D27.Exercise),
+Today, we're going to read the raw names, with their indices, from the article 
+table in the data store, parse those raw names (as we did in Y2017.M09.D27.Exercise),
 then store those names in a new data table with the referenced raw name index.
 
 YAY!
@@ -36,8 +37,8 @@ import Database.PostgreSQL.Simple.FromRow
 -- below imports available via 1HaskellADay git repository
 
 import Store.SQL.Connection (connectInfo)
+import Store.SQL.Util.Inserts (inserter)
 
-import Y2017.M09.D20.Solution (inserter)
 import Y2017.M09.D26.Exercise
 import Y2017.M09.D27.Exercise
 

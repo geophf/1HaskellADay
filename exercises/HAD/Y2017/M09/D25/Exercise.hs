@@ -53,7 +53,7 @@ Second of all, parse the document set into this enriched Article format.
 --}
 
 data Article =
-   Art { artId              :: Int,
+   Art { srcId              :: Integer,
          title, author      :: String,
          url                :: FilePath,
          abstract, fullText :: ByteString,

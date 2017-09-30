@@ -20,10 +20,10 @@ import Network.HTTP.Conduit
 -- below imports available via 1HaskellADay git repository
 
 import Store.SQL.Connection (connectInfo)
+import Store.SQL.Util.Inserts (inserter)
 
-import Y2017.M09.D20.Solution (inserter)
 import Y2017.M09.D22.Solution (scanArticles, dir, arts, rawText, articleTextById)
-import Y2017.M09.D25.Solution (parseArticle, metadata, Article, artId)
+import Y2017.M09.D25.Solution (parseArticle, metadata, Article, srcId)
 
 {--
 So, I wrote a whole exercise for today, which you will see as tomorrow's 
@@ -91,7 +91,7 @@ extractArticles gz = Map.toList articles >>= uncurry parseArticle
 -- then let's grab the line that has the raw names listed from each article
 
 art2RawNames :: Article -> Maybe RawNames
-art2RawNames = fmap . Raw . artId <*> Map.lookup "People" . metadata
+art2RawNames = fmap . Raw . srcId <*> Map.lookup "People" . metadata
 
 -- really? mapping the functor OVER the Applicative functor? REALLY?
 

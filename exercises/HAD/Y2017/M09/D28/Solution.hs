@@ -29,32 +29,32 @@ import Network.HTTP.Conduit
 -- below imports available via 1HaskellADay git repository
 
 import Store.SQL.Connection (connectInfo)
+import Store.SQL.Util.Indexed
+import Store.SQL.Util.Inserts (look, byt, byteStr, inserter)
 
-import Y2017.M09.D20.Solution (inserter)
 import Y2017.M09.D22.Exercise (dir, arts)
 import Y2017.M09.D25.Solution
 import Y2017.M09.D26.Solution (extractArticles)
 
 insertArtsStmt :: Query
-insertArtsStmt = [sql|INSERT INTO article (id,title,author,publish_dt,url,
+insertArtsStmt = [sql|INSERT INTO article (src_id,title,author,publish_dt,url,
                                            abstract,full_text,people,locations)
-                      VALUES (?,?,?,?,?,?,?,?,?)|]
+                      VALUES (?,?,?,?,?,?,?,?,?) returning id|]
 
 -- create a ToRow instance of the Article type:
 
 instance ToRow Article where
-   toRow art = [toField (artId art),toField (title art), toField (author art),
-                look "Publication date" art, toField (url art),
-                byt abstract art, byt fullText art, look "People" art,
-                look "Location" art]
-      where look r = toField . Map.lookup r . metadata
-            byt f  = toField . byteStr . f
+   toRow art = [toField (srcId art),toField (title art), toField (author art),
+                lookm "Publication date" art, toField (url art),
+                byt abstract art, byt fullText art, lookm "People" art,
+                lookm "Location" art]
+      where lookm r = look r metadata
 
 -- Now, extract the articles from the compressed archive (extractArticles),
 -- and insert the articles into the database:
 
-insertArts :: Connection -> [Article] -> IO ()
-insertArts conn = inserter conn insertArtsStmt
+insertArts :: Connection -> [Article] -> IO [Index]
+insertArts = insertRows insertArtsStmt
 
 -- Then say: YAY! and throw confetti!
 

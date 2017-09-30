@@ -19,6 +19,7 @@ import Network.HTTP.Conduit
 
 import Control.Logic.Frege ((<<-))
 import Store.SQL.Connection (connectInfo)
+import Store.SQL.Util.Inserts (inserter)
 
 {--
 This week we have been working on encoding and decoding strings to ints and
@@ -104,9 +105,6 @@ against the data store returns the id = 2
 insertAllKeys :: Connection -> Dictionary -> IO ()
 insertAllKeys conn =
    inserter conn insertKeyStmt . map (uncurry Key . swap) . Map.toList
-
-inserter :: ToRow a => Connection -> Query -> [a] -> IO ()
-inserter conn = void <<- executeMany conn
 
 -- the above function assumes an empty keyword table
 

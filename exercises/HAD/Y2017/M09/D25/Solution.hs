@@ -17,6 +17,7 @@ import Network.HTTP.Conduit
 
 import Control.DList
 import Control.Logic.Frege (adjoin)
+import Store.SQL.Util.Inserts (byteStr)
 
 import Y2017.M09.D22.Solution (scanArticles, articleTextById, dir, arts, rawText)
 
@@ -60,7 +61,7 @@ Second of all, parse the document set into this enriched Article format.
 --}
 
 data Article =
-   Art { artId                 :: Integer,
+   Art { srcId                 :: Integer,
          title, author         :: String,
          url                   :: FilePath,
          abstract, fullText    :: ByteString,
@@ -132,9 +133,6 @@ parseArticle artId txt =
        return (Art artId (byteStr title) (byteStr auth) (byteStr url)
                    abstr txt2 mets)
 
-byteStr :: ByteString -> String
-byteStr = BL.unpack
-
 check :: MonadPlus m => ByteString -> ByteString -> m ()
 check should is = if should == is then return () else
    error ("Key should be " ++ show should ++ " but is actually " ++ show is)
@@ -170,7 +168,7 @@ Output the above structure as JSON. Yeah, I went there. Fight me.
 
 instance ToJSON Article where
    toJSON art =
-      object ["articleId" .= artId art, "title" .= title art,
+      object ["sourceId" .= srcId art, "title" .= title art,
               "author" .= author art, "url" .= url art,
               "abstract" .= byteStr (abstract art),
               "fullText" .= byteStr (fullText art),
@@ -188,7 +186,7 @@ instance ToJSON Article where
     "articleId": 3
 }
 
-Note that the attributes have a space preceeding them, due to splitting on ':'
+Note that the attributes have a space preceding them, due to splitting on ':'
 ... let's fix that.
 
 ... added in fix of BL.tail to the parseKV definition.

@@ -36,8 +36,9 @@ import Database.PostgreSQL.Simple.FromRow
 -- below imports available via 1HaskellADay git repository
 
 import Store.SQL.Connection (connectInfo)
+import Store.SQL.Util.Indexed
+import Store.SQL.Util.Inserts (inserter)
 
-import Y2017.M09.D20.Solution (inserter)
 import Y2017.M09.D26.Solution
 import Y2017.M09.D27.Solution
 
@@ -76,6 +77,9 @@ between SELECT (id,people) and SELECT id,people.
 data IxPerson = IPers { articleIdx :: Integer, pers :: Person }
    deriving (Eq, Ord, Show)
 
+instance Indexed IxPerson where
+   idx = articleIdx
+
 raw2persons :: RawNames -> [IxPerson]
 raw2persons (Raw idx peeps) = map (IPers idx) (parsePerson peeps)
 
@@ -102,12 +106,14 @@ instance ToRow IxPerson where
 
 -- and then insert the peoples into the database...
 
+{--
 data Index = Idx { idx :: Integer } deriving (Eq, Ord, Show)
 
 instance FromRow Index where fromRow = Idx <$> field
+--}
 
 insertPers :: Connection -> [IxPerson] -> IO [Index] -- getting the person indices
-insertPers conn = returning conn insertPersStmt
+insertPers = insertRows insertPersStmt
 
 {--
 >>> ixpeeps <- insertPers conn peeps

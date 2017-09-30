@@ -19,10 +19,10 @@ import Network.HTTP.Conduit
 -- below imports available via 1HaskellADay git repository
 
 import Store.SQL.Connection (connectInfo)
+import Store.SQL.Util.Inserts (inserter)
 
-import Y2017.M09.D20.Solution (inserter)
 import Y2017.M09.D22.Exercise (scanArticles, dir, arts, rawText, articleTextById)
-import Y2017.M09.D25.Exercise (parseArticle, metadata, Article, artId)
+import Y2017.M09.D25.Exercise (parseArticle, metadata, Article, srcId)
 
 {--
 So, I wrote a whole exercise for today, which you will see as tomorrow's 
