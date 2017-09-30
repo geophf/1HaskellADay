@@ -26,5 +26,8 @@ byteStr = BL.unpack
 
 -- a couple of toField functions
 
+look :: ToField a => Ord k => k -> (f -> Map k a) -> f -> Action
 look r m = toField . Map.lookup r . m
+
+byt :: (a -> ByteString) -> a -> Action
 byt f    = toField . byteStr . f
