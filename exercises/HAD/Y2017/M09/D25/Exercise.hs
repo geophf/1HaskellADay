@@ -54,7 +54,8 @@ Second of all, parse the document set into this enriched Article format.
 
 data Article =
    Art { srcId              :: Integer,
-         title, author      :: String,
+         title              :: String,
+         author             :: Maybe String,
          url                :: FilePath,
          abstract, fullText :: ByteString,
          metadata           :: Map String String }

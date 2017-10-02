@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings, ViewPatterns #-}
 
 module Y2017.M09.D25.Solution where
 
@@ -11,12 +11,13 @@ import Data.ByteString.Lazy.Char8 (ByteString)
 import qualified Data.ByteString.Lazy.Char8 as BL
 import Data.Map (Map)
 import qualified Data.Map as Map
+import Data.Maybe
 import Network.HTTP.Conduit
 
 -- below import available via 1HaskellADay git repository
 
 import Control.DList
-import Control.Logic.Frege (adjoin)
+import Control.Logic.Frege (adjoin, (-|))
 import Store.SQL.Util.Inserts (byteStr)
 
 import Y2017.M09.D22.Solution (scanArticles, articleTextById, dir, arts, rawText)
@@ -62,7 +63,8 @@ Second of all, parse the document set into this enriched Article format.
 
 data Article =
    Art { srcId                 :: Integer,
-         title, author         :: String,
+         title                 :: String,
+         author                :: Maybe String,
          url                   :: FilePath,
          abstract, fullText    :: ByteString,
          metadata              :: Map String String }
@@ -120,22 +122,44 @@ parseKV = (head &&& BL.tail . BL.concat . tail) . BL.split ':'
 -- and with that, we have a scheme to parse an article
 
 parseArticle :: MonadPlus m => Integer -> ByteString -> m Article
-parseArticle artId txt =
-   let (_:_:title:author:_pub:url:abstract:_link1:_link2:text:meta)
-            = sections txt
-       (auth1, auth) = parseKV author
+parseArticle artId = parseArt' artId . sections
+
+parseArt' :: MonadPlus m => Integer -> [ByteString] -> m Article
+
+{--
+parseArt' artId (_:_:title:author:_pub:url:abstract:_link1:_link2:text:meta) = 
+   let (auth1, auth) = parseKV author
        (abs1, abstr) = parseKV abstract
        (txt1, txt2)  = parseKV text
        mets          = Map.fromList (map (adjoin byteStr . parseKV) meta)
-   in  check "Author" auth1 >>
-       check "Abstract" abs1 >>
-       check "Full text" txt1 >>
+   in  check artId "Author" auth1 >>
+       check artId "Abstract" abs1 >>
+       check artId "Full text" txt1 >>
        return (Art artId (byteStr title) (byteStr auth) (byteStr url)
                    abstr txt2 mets)
 
-check :: MonadPlus m => ByteString -> ByteString -> m ()
-check should is = if should == is then return () else
-   error ("Key should be " ++ show should ++ " but is actually " ++ show is)
+Actually, the above expectation is incorrect for some articles that do not
+have an author by-line. We must make the author by-line optional.
+--}
+
+parseArt' artId (_:_:title:rest) =
+   let (auth, parseFn)                      = parseAuthor (head rest)
+       (url:abstract:link1:link2:text:meta) = tail (parseFn rest)
+       (abs1, abstr)                        = parseKV abstract
+       (txt1, txt2)                         = parseKV text
+       mets            = Map.fromList (map (adjoin byteStr . parseKV) meta)
+   in  check artId "Abstract" abs1  >>
+       check artId "Full text" txt1 >>
+       return (Art artId (byteStr title) auth (byteStr url) abstr txt2 mets)
+
+parseAuthor :: ByteString -> (Maybe String, [a] -> [a])
+parseAuthor (parseKV -> (k,v)) =
+   fromMaybe (Nothing, id) (k == "Author" -| Just (Just (byteStr v), tail))
+   
+check :: MonadPlus m => Integer -> ByteString -> ByteString -> m ()
+check idx should is = if should == is then return () else
+   error ("For article " ++ show idx ++ ": Key should be " ++ show should
+       ++ " but is actually " ++ show is)
 
 {--
 >>> Just art3 = parseArticle 3 (rawText $ head articles)
