@@ -66,7 +66,7 @@ fetchSubjectsStmt = [sql|SELECT * from subject|]
 fetchSubjects :: Connection -> IO [IxSubject]
 fetchSubjects conn = undefined
 
-subjects :: [IxSubject] -> (Map Int String, Map String Int)
+subjects :: [IxSubject] -> (Map Integer String, Map String Integer)
 subjects subjs = undefined
 
 {--
