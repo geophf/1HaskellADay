@@ -116,8 +116,21 @@ So, let's tease these sections apart and put data to data, as it were.
 
 parseKV :: -- maybe I should study up on parser technology? idk
            -- [ByteString] -> Maybe ((ByteString, ByteString), [ByteString])
-           ByteString -> (ByteString, ByteString)
-parseKV = (head &&& BL.tail . BL.concat . tail) . BL.split ':'
+           Integer -> ByteString -> (ByteString, ByteString)
+parseKV artId str =
+   let kv = BL.split ':' str in
+   if length kv < 2
+   then error ("No key-value in article " ++ show artId ++ ", line: '"
+            ++ byteStr str ++ "'")
+   else let k = head kv
+            v = BL.concat (tail kv) in
+   if BL.length v == 0
+   then error ("Value empty for " ++ byteStr k ++ " in article " ++ show artId)
+   else (k, BL.tail v)
+
+-- (head &&& BL.tail . BL.concat . tail) . BL.split ':'
+
+-- Lots of guards around this parsing out of key-value pairs
 
 -- and with that, we have a scheme to parse an article
 
@@ -143,17 +156,25 @@ have an author by-line. We must make the author by-line optional.
 --}
 
 parseArt' artId (_:_:title:rest) =
-   let (auth, parseFn)                      = parseAuthor (head rest)
-       (url:abstract:link1:link2:text:meta) = tail (parseFn rest)
-       (abs1, abstr)                        = parseKV abstract
-       (txt1, txt2)                         = parseKV text
-       mets            = Map.fromList (map (adjoin byteStr . parseKV) meta)
+   let (auth, parseFn)               = parseAuthor artId (head rest)
+       -- (url:abstract:link1:link2:text:meta) = tail (parseFn rest)
+       (url:abstract:text:meta)      = parseTail artId parseFn rest
+       (abs1, abstr)                 = parseKV artId abstract
+       (txt1, txt2)                  = parseKV artId text
+       mets         = Map.fromList (map (adjoin byteStr . parseKV artId) meta)
    in  check artId "Abstract" abs1  >>
        check artId "Full text" txt1 >>
        return (Art artId (byteStr title) auth (byteStr url) abstr txt2 mets)
+parseArt' artId huh = mzero -- for the trailing garbage at EOF
 
-parseAuthor :: ByteString -> (Maybe String, [a] -> [a])
-parseAuthor (parseKV -> (k,v)) =
+parseTail :: Show a => Integer -> ([a] -> [a]) -> [a] -> [a]
+parseTail artId f (tail . f -> (url:abstract:link1:link2:text:meta)) =
+   (url:abstract:text:meta)
+parseTail artId _ huh =
+   error ("Cannot parse rest of article " ++ show artId ++ ": " ++ show huh)
+
+parseAuthor :: Integer -> ByteString -> (Maybe String, [a] -> [a])
+parseAuthor artId (parseKV artId -> (k,v)) =
    fromMaybe (Nothing, id) (k == "Author" -| Just (Just (byteStr v), tail))
    
 check :: MonadPlus m => Integer -> ByteString -> ByteString -> m ()
