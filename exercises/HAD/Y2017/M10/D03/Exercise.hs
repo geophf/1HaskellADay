@@ -125,7 +125,7 @@ archive x =
 
 type SubjectTable = MemoizingTable Integer Subject
 
-type MemoizingState m a = StateT (SubjectTable, Map Index Subject) m a
+type MemoizingState m a = StateT (SubjectTable, Map Index [Subject]) m a
 
 getSubjectsMT :: Monad m => Index -> Article -> MemoizingState m ()
 getSubjectsMT ix art = undefined
