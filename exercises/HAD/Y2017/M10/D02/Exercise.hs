@@ -121,7 +121,7 @@ instance ToRow Pivot where
 
 -- Do that. How many name-pivots did you insert?
 
--- The Pivot table functionality will be moved to Store.SQL.Util.Pivot
+-- The Pivot table functionality will be moved to Store.SQL.Util.Pivots
 
 {-- BONUS -----------------------------------------------------------------
 
