@@ -74,7 +74,8 @@ Okay, so we can read the current state from the database. That's great!
 
 Now let's look at a workflow.
 
-We have a set of subjects in the database, we parse some articles with subjects,some are already in the database, some are new subjects.
+We have a set of subjects in the database, we parse some articles with subjects,
+some are already in the database, some are new subjects.
 
 What do we do when we want to join these subjects to the articles we store into
 the database?
