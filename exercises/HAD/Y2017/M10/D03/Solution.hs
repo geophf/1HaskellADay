@@ -301,33 +301,33 @@ timedETL archive conn =
    getCurrentTime >>= \start ->
    extractBlocks <$> BL.readFile archive >>= \blocks ->
    getCurrentTime >>= \exblks ->
-   print ("Extracting blocks: " ++ show (diffUTCTime exblks start)) >>
+   putStrLn ("Extracting blocks: " ++ show (diffUTCTime exblks start)) >>
    insertBlocks conn blocks >>= \ixblks ->
    getCurrentTime >>= \inblks ->
-   print ("Inserting blocks: " ++ show (diffUTCTime inblks exblks)) >>
+   putStrLn ("Inserting blocks: " ++ show (diffUTCTime inblks exblks)) >>
    let articles = join (zipWith block2Article ixblks blocks) in
    insertArts conn articles >>= \ixarts ->
    getCurrentTime >>= \inarts ->
-   print ("Inserting articles: " ++ show (diffUTCTime inarts inblks)) >>
+   putStrLn ("Inserting articles: " ++ show (diffUTCTime inarts inblks)) >>
    let rns = catMaybes (zipWith art2RawNames ixarts articles)
        pers = concatMap raw2persons rns in
    insertPers conn pers >>= \ixpers ->
    getCurrentTime >>= \inpers ->
-   print ("Inserting names: " ++ show (diffUTCTime inpers inarts)) >>
+   putStrLn ("Inserting names: " ++ show (diffUTCTime inpers inarts)) >>
    inserter conn insertArtPersJoinStmt (zipWith joinValue pers ixpers) >>
    getCurrentTime >>= \inpersjoin ->
-   print ("Inserting name-joins: " ++ show (diffUTCTime inpersjoin inpers)) >>
+   putStrLn ("Inserting name-joins: " ++ show (diffUTCTime inpersjoin inpers)) >>
    let memtable = initMemTable (Map.empty , Map.empty)
        stat = execState (zipWithM_ getSubjectsMT ixarts articles) 
                                    (memtable, Map.empty) in
    uploadMT conn (fst stat) >>= \ixsubs ->
    getCurrentTime >>= \newsubs ->
-   print ("Inserting new subjects: " ++ show (diffUTCTime newsubs inpersjoin)) >>
+   putStrLn ("Inserting new subjects: " ++ show (diffUTCTime newsubs inpersjoin)) >>
    let tab = updateMT ixsubs (fst stat) in
    insertSubjPivot conn (evalState buildSubjectPivots (tab, snd stat)) >>
    getCurrentTime >>= \thatsIt ->
    let totalTime = diffUTCTime thatsIt start in
-   print ("Total time: " ++ show totalTime) >>
+   putStrLn ("Total time: " ++ show totalTime) >>
    return totalTime
 
 {--
