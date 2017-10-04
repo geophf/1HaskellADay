@@ -8,6 +8,9 @@ the two, as necessary.
 
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.FromRow
+import Database.PostgreSQL.Simple.FromField
+import Database.PostgreSQL.Simple.ToRow
+import Database.PostgreSQL.Simple.ToField
 
 -- the class of indexed types: you ask for the index for a, you're getting it!
 
@@ -39,3 +42,17 @@ ixrows <- insertRows conn q rows
 
 to get the indices generated for rows
 --}
+
+{-- Indexed Values ----------------------------------------------------------
+
+Represents a row in a key-value table
+--}
+
+data IxValue a = IxV { ix :: Integer, val :: a }
+   deriving (Eq, Ord, Show)
+
+instance ToField a => ToRow (IxValue a) where
+   toRow (IxV i v) = [toField i, toField v]
+
+instance FromField a => FromRow (IxValue a) where
+   fromRow = IxV <$> field <*> field
