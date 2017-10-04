@@ -165,7 +165,8 @@ buildSubjectPivots :: Monad m => MemoizingState m [Pivot]
 buildSubjectPivots = undefined
 
 insertSubjPivotStmt :: Query
-insertSubjPivotStmt = [sql|INSERT INTO article_subject VALUES (?,?)|]
+insertSubjPivotStmt =
+   [sql|INSERT INTO article_subject (article_id,subject_id) VALUES (?,?)|]
 
 insertSubjPivot :: Connection -> [Pivot] -> IO ()
 insertSubjPivot conn pivots = undefined
