@@ -102,7 +102,7 @@ timespan for that, ... or whatever you'd like. Here's one such representation:
 type Title = String
 type Topic = String
 
-type Grouping = Map Topic (Map Day Title)
+type Grouping = Map Topic (Map Day [Title])
 
 graphTopics :: [Subject] -> [Pivot] -> [ArticleSummary] -> Grouping
 graphTopics subjs pivs sums = undefined
