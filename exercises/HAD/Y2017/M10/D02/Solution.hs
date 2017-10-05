@@ -49,6 +49,7 @@ import Control.Logic.Frege ((-|))
 import Store.SQL.Connection
 import Store.SQL.Util.Indexed
 import Store.SQL.Util.Inserts (byteStr,inserter)
+import Store.SQL.Util.Pivots
 
 import Y2017.M09.D22.Solution (arts, dir)
 import Y2017.M09.D25.Solution
@@ -171,7 +172,6 @@ the names, then store them as parsed entities in the database connected to the
 source article via a join-table. These join tables, also known as 'pivot 
 tables,' are prevalent and follow a certain structure. Instead of the specific
 ArticlePersonJoin structure, we'll declare and use the general Pivot type here.
---}
 
 data Pivot = Pvt { srcIx, trgId :: Integer }
    deriving (Eq, Ord, Show)
@@ -189,7 +189,6 @@ instance ToRow Pivot where
 
 -- Do that. How many name-pivots did you insert?
 
-{--
 >>> inserter conn insertArtPersJoinStmt (zipWith joinValue pers ixpers)
 --}
 
