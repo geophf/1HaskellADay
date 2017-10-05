@@ -45,7 +45,7 @@ fetchSubjects conn = undefined
 -- next, fetch the article_subject table into [Pivot]
 
 fetchArtSubjStmt :: Query
-fetchArtSubjStmt = [sql|SELECT (article_id,subject_id) from article_subject|]
+fetchArtSubjStmt = [sql|SELECT article_id,subject_id from article_subject|]
 
 fetchSubjPivots :: Connection -> IO [Pivot]
 fetchSubjPivots conn = undefined
@@ -80,7 +80,7 @@ instance FromRow ArticleSummary where
 
 fetchArticleBySubjStmt :: Query
 fetchArticleBySubjStmt =
-   [sql|SELECT (id,title,publish_dt) FROM article
+   [sql|SELECT id,title,publish_dt FROM article
         WHERE id IN SELECT article_id FROM article_subject
                     WHERE subject_id IN ?|]
 
