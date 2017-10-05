@@ -57,5 +57,5 @@ instance ToField a => ToRow (IxValue a) where
 instance FromField a => FromRow (IxValue a) where
    fromRow = IxV <$> field <*> field
 
-instance Indexed IxValue where
+instance Indexed (IxValue a) where
    idx = ix
