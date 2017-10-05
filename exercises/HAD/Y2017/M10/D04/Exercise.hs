@@ -32,6 +32,10 @@ import Store.SQL.Connection (connectInfo)
 import Store.SQL.Util.Indexed
 import Store.SQL.Util.Pivots
 
+-- If you want to visualize your data sets as packed circles:
+
+-- import Graph.D3.CirclePacking
+
 -- using the below query, extract the Subject table into an IxValue list
 
 fetchSubjectStmt :: Query
