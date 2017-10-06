@@ -168,4 +168,6 @@ dayArts (d, ts) = Hier (show d) (Kids (map (flip Hier (Size 1)) ts))
 *Looks at circles of all topics.
 
 HOLY SHNITZELS! THAT THERE IS A LOT OF DATA!
+
+'Tomorrow' we'll look at narrowing the view and looking at only a few topics.
 --}
