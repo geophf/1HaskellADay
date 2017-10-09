@@ -32,8 +32,11 @@ import Network.HTTP.Conduit
 
 -- below imports available via 1HaskellADay git repository
 
+import Data.MemoizingTable (MemoizingTable)
+import qualified Data.MemoizingTable as Mem
+
 import Store.SQL.Connection (connectInfo)
-import Store.SQL.Util.Indexed hiding (IxValue)
+import Store.SQL.Util.Indexed
 import Store.SQL.Util.Inserts
 import Store.SQL.Util.Pivots
 
@@ -91,11 +94,13 @@ the database?
 
 Okay, so that's the workflow. Let's go about doing this, creating the structure
 we need for the workflow-context.
---}
+
+-- moved declaration to Data.MemoizingTable
 
 data MemoizingTable a b =
    MT { fromTable :: Map a b, readIndex :: Map b a, newValues :: Set b }
       deriving Show
+--}
 
 initMemTable :: Ord a => Ord b => (Map a b, Map b a) -> MemoizingTable a b
 initMemTable (keys, vals) = undefined
@@ -175,7 +180,8 @@ insertSubjPivot conn pivots = undefined
 
 The subject table structure is not uncommon. Create a type that has a key-value
 pair and create FromRow and ToRow instances of it.
---}
+
+-- moving these declarations to Store.SQL.Util.Indexed
 
 data IxValue = WhatKeyValuePair
 
@@ -190,7 +196,7 @@ instance FromRow IxValue where
 
 -- You can roll your own ETL process for this. Hint: see the bonus-bonus question.
 
-{-- BONUS-BONUS -----------------------------------------------------------
+-- BONUS-BONUS -----------------------------------------------------------
 
 Yesterday's etlProcess got it done for article and name insertion. Add the
 functionality of Subject insertion, AND time each command (function that
