@@ -33,7 +33,7 @@ import Network.HTTP.Conduit
 -- below imports available via 1HaskellADay git repository
 
 import Store.SQL.Connection (connectInfo)
-import Store.SQL.Util.Indexed
+import Store.SQL.Util.Indexed hiding (IxValue)
 import Store.SQL.Util.Inserts
 import Store.SQL.Util.Pivots
 
