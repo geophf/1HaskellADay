@@ -39,6 +39,7 @@ import Network.HTTP.Conduit
 
 import Control.Logic.Frege (adjoin)
 import Control.Scan.CSV (rend)
+import Data.MemoizingTable
 import Store.SQL.Connection (connectInfo)
 import Store.SQL.Util.Indexed
 import Store.SQL.Util.Inserts
@@ -75,11 +76,14 @@ fetchSubjectsStmt = [sql|SELECT * from subject|]
 fetchSubjects :: Connection -> IO [IxSubject]
 fetchSubjects = flip query_ fetchSubjectsStmt
 
+{--
+
+-- subjects is now Data.MemoizingTable.bifurcate
+
 subjects :: [IxSubject] -> (Map Integer String, Map String Integer)
 subjects = -- the two Map.fromList functions are DIFFERENT FUNCTIONS! smh
    Map.fromList . map (idx &&& subject) &&& Map.fromList . map (subject &&& idx)
 
-{--
 Okay, so we can read the current state from the database. That's great!
 
 Now let's look at a workflow.
@@ -101,7 +105,8 @@ the database?
 
 Okay, so that's the workflow. Let's go about doing this, creating the structure
 we need for the workflow-context.
---}
+
+-- below code moved to Data.MemoizingTable
 
 data MemoizingTable a b =
    MT { fromTable :: Map a b, readIndex :: Map b a, newValues :: Set b }
@@ -110,7 +115,6 @@ data MemoizingTable a b =
 initMemTable :: Ord a => Ord b => (Map a b, Map b a) -> MemoizingTable a b
 initMemTable = flip (uncurry MT) Set.empty
 
-{--
 So, to make subjects a memoizing table, we read in the subjects from the 
 database. As we read in articles, we scan the readKey map for subjects already
 stored into the database. Those we get the indicies. For those new subjects,
@@ -149,10 +153,17 @@ parseSubjects :: String -> [Subject]
 parseSubjects = map Subj . (head &&& map tail . tail >>> uncurry (:)) . rend ';'
 
 updateNewSubjs :: [Subject] -> SubjectTable -> SubjectTable
+
+-- updateNewSubjs reduces to Data.MemoizingTable.triageMT
+
+{--
 updateNewSubjs subjs (MT mapi mapk n00b) =
    MT mapi mapk (foldr (\subj -> 
          if containsKey subj mapk then id else Set.insert subj) n00b subjs)
             where containsKey k = Set.member k . Map.keysSet
+--}
+
+updateNewSubjs = flip (foldl (flip triageMT))
 
 -- we get the article, extract its subject information then factor the subject
 -- into the ones already indexed verse the ones we haven't yet stored in the
@@ -209,13 +220,14 @@ id	subject
 8	Bills
 9	Books
 10	Burnout
---}
 
 -- uploads the new subjects discovered in parsing the articles and then
 -- gets back the indices for those new subjects
 
 -- Okay, now we've got the indexed subjects, we update the MemoizingTable
 -- with those new subjects:
+
+-- moved to Data.MemoizingTable
 
 updateMT :: [IxSubject] -> SubjectTable -> SubjectTable
 updateMT (subjects -> (mi, mk)) (MT mi' mk' _) =
@@ -225,7 +237,6 @@ updateMT (subjects -> (mi, mk)) (MT mi' mk' _) =
 -- The updated subjects should be the set of used-to-be-new subjects in the
 -- memoizing table. Clear that set and update the maps with the new information
 
-{--
 >>> let tab = updateMT ixsubs (fst stat)
 --}
 
@@ -271,7 +282,8 @@ id	article_id	subject_id
 
 The subject table structure is not uncommon. Create a type that has a key-value
 pair and create FromRow and ToRow instances of it.
---}
+
+-- moved to Store.SQL.Util.Indexed
 
 data IxValue a = IxV { ix :: Integer, val :: a }
    deriving (Eq, Ord, Show)
@@ -287,7 +299,7 @@ instance FromField a => FromRow (IxValue a) where
 
 -- You can roll your own ETL process for this. Hint: see the bonus-bonus question.
 
-{-- BONUS-BONUS -----------------------------------------------------------
+-- BONUS-BONUS -----------------------------------------------------------
 
 Yesterday's etlProcess got it done for article and name insertion. Add the
 functionality of Subject insertion, AND time each command (function that
@@ -323,12 +335,15 @@ timedETL archive conn =
    uploadMT conn (fst stat) >>= \ixsubs ->
    getCurrentTime >>= \newsubs ->
    putStrLn ("Inserting new subjects: " ++ show (diffUTCTime newsubs inpersjoin)) >>
-   let tab = updateMT ixsubs (fst stat) in
+   let tab = updateMT (map ixsubj2pair ixsubs) (fst stat) in
    insertSubjPivot conn (evalState buildSubjectPivots (tab, snd stat)) >>
    getCurrentTime >>= \thatsIt ->
    let totalTime = diffUTCTime thatsIt start in
    putStrLn ("Total time: " ++ show totalTime) >>
    return totalTime
+
+ixsubj2pair :: IxSubject -> (Integer, Subject)
+ixsubj2pair = idx &&& Subj . subject
 
 {--
 >>> timedETL (archive ONE) conn
