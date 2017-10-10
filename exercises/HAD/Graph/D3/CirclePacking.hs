@@ -147,5 +147,8 @@ $ php -S 127.0.0.1:8080
 At the directory where your circles.html and top5s.json is located
 
 A sample circle-packing algorithm against D3js.org can be found at:
+
 http://bl.ocks.org/mbostock/4063530
+
+or, here: Graph/D3/circles.html
 --}
