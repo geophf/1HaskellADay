@@ -78,7 +78,9 @@ cont True _ dl t = reifyBlock dl ++ eachBlock emptyDL t
 cont False h dl t = eachBlock (dl <| h) t
 
 isLineBreak :: ByteString -> Bool
-isLineBreak = (== "____________") . BL.take 12
+isLineBreak =
+     (== "_______________________________________________________")
+   . BL.take 55
 
 reifyBlock :: MonadPlus m => DList ByteString -> m Block
 reifyBlock dl = let ans = dlToList dl in

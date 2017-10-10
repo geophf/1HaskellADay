@@ -52,7 +52,9 @@ reifyArt :: Integer -> DList ByteString -> Article
 reifyArt x dl = Art x (BL.unlines $ dlToList dl)
 
 isLinebreak :: ByteString -> Bool
-isLinebreak = (== "_____") . BL.take 5
+isLinebreak =
+     (== "_______________________________________________________")
+   . BL.take 55
 
 -- you should get 11 articles from your scan of 
 
