@@ -23,7 +23,7 @@ import qualified Data.Set as Set
 
 -- below imports available via 1HaskellADay git repository
 
-import Graph.D3.CirclePacking -- hint: use this to visualize your results
+import Data.Hierarchy          -- hint: use this to visualize your results
 import Store.SQL.Util.Pivots
 
 import Y2017.M10.D04.Solution
