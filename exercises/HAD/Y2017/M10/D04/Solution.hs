@@ -121,6 +121,9 @@ data ArticleSummary =
 instance FromRow ArticleSummary where
    fromRow = ArtSum <$> field <*> field <*> field
 
+instance Indexed ArticleSummary where
+   idx = artId
+
 fetchArticleBySubjStmt :: Query
 fetchArticleBySubjStmt =
    [sql|SELECT id,title,publish_dt FROM article
