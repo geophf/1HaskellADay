@@ -85,19 +85,6 @@ counts in the subcircles and this we get from the original scores so:
 *Main Graph.KMeans> let nms = NC ("Top5s", colorization clusters scores )
 
 With this we can now generate our JSON hierarchical structure
-
-data Hierarchy = Hier String Children deriving Show
-data Children = Kids [Hierarchy]
-              | Size Int
-   deriving Show
-
-instance ToJSON Hierarchy where
-   toJSON (Hier nm (Kids k)) = object ("name" .= nm:kiddies k)
-   toJSON (Hier nm (Size s)) = object ["name" .= nm, "size" .= s]
-
-kiddies :: [Hierarchy] -> [Pair]
-kiddies [] = []
-kiddies k = ["children" .= k]
 --}
 
 type CSC a b = ColoredScoreCard a b Float
