@@ -9,6 +9,7 @@ import Data.Aeson
 import Data.Aeson.Encode.Pretty
 import Data.ByteString.Lazy.Char8 (ByteString)
 import qualified Data.ByteString.Lazy.Char8 as BL
+import Data.Char (isDigit)
 import Data.Map (Map)
 import qualified Data.Map as Map
 import Data.Maybe
@@ -139,44 +140,85 @@ parseArticle artId = parseArt' artId . sections
 
 parseArt' :: MonadPlus m => Integer -> [ByteString] -> m Article
 
-{--
-parseArt' artId (_:_:title:author:_pub:url:abstract:_link1:_link2:text:meta) = 
-   let (auth1, auth) = parseKV author
-       (abs1, abstr) = parseKV abstract
-       (txt1, txt2)  = parseKV text
-       mets          = Map.fromList (map (adjoin byteStr . parseKV) meta)
-   in  check artId "Author" auth1 >>
-       check artId "Abstract" abs1 >>
-       check artId "Full text" txt1 >>
-       return (Art artId (byteStr title) (byteStr auth) (byteStr url)
-                   abstr txt2 mets)
+-- n.b. author by-line is optional for some articles.
 
-Actually, the above expectation is incorrect for some articles that do not
-have an author by-line. We must make the author by-line optional.
---}
-
-parseArt' artId (_:_:title:rest) =
-   let (auth, parseFn)               = parseAuthor artId (head rest)
-       -- (url:abstract:link1:link2:text:meta) = tail (parseFn rest)
-       (url:abstract:text:meta)      = parseTail artId parseFn rest
-       (abs1, abstr)                 = parseKV artId abstract
-       (txt1, txt2)                  = parseKV artId text
+parseArt' artId (_:doc:title:rest@(_:_:_)) =
+   parseHeader (title:rest) (byteStr doc) >>= \idx ->
+   let (auth, parseFn)               = parseAuthor idx (head rest)
+       (url:abstract:text:meta)      = parseTail idx parseFn rest
+       (abs1, abstr)                 = parseKV idx abstract
+       (txt1, txt2)                  = parseKV idx text
        mets         = Map.fromList (map (adjoin byteStr . parseKV artId) meta)
-   in  check artId "Abstract" abs1  >>
-       check artId "Full text" txt1 >>
+   in  check idx "Abstract" abs1  >>
+       check idx "Full text" txt1 >>
        return (Art artId (byteStr title) auth (byteStr url) abstr txt2 mets)
 parseArt' artId huh = mzero -- for the trailing garbage at EOF
 
-parseTail :: Show a => Integer -> ([a] -> [a]) -> [a] -> [a]
-parseTail artId f (tail . f -> (url:abstract:link1:link2:text:meta)) =
-   (url:abstract:text:meta)
-parseTail artId _ huh =
-   error ("Cannot parse rest of article " ++ show artId ++ ": " ++ show huh)
+egheader :: String
+egheader = "Document 102 of 999"
+
+-- parse that line and return x in "Document x of y"
+
+parseHeader :: MonadPlus m => [ByteString] -> String -> m Integer
+
+{--
+... but hold your horses there, pahdnah. What happens when everything goes
+South, as it did for me on document 221?
+
+Do we fail hard and cause the ETL to crash?
+
+Well, yes. Yes, in fact, we do just that, looking at Y2017.M09.D25.Exercise.
+
+Ah, good, then. smh.
+--}
+
+parseHeader bytes = parseHeader' bytes . words
+
+parseHeader' :: MonadPlus m => [ByteString] -> [String] -> m Integer
+parseHeader' _bytes [doc,n,off,m] =
+   guard (doc == "Document" && off == "of") >>
+   guard (all isDigit (n ++ m)) >>
+   return (read n)
+
+parseHeader' bytes garbage =
+
+-- there's a special case in some archives: they have a bibliography at the end
+
+   if garbage == ["Bibliography"] then fail "Bibliography" else
+
+-- then there's the 'huh? what happened?' case:
+
+   error ("Expected 'Document x of y' but got '" ++ unwords garbage ++ "';"
+       ++ "context: " ++ show bytes)
+
+-- Now parse header. What is your result?
+{--
+>>> parseHeader egheader
+102
+--}
 
 parseAuthor :: Integer -> ByteString -> (Maybe String, [a] -> [a])
 parseAuthor artId (parseKV artId -> (k,v)) =
    fromMaybe (Nothing, id) (k == "Author" -| Just (Just (byteStr v), tail))
    
+parseTail :: Integer -> ([ByteString] -> [ByteString]) -> [ByteString] -> [ByteString]
+parseTail artId f (tail . f -> (url:abstract:link1:link2:textish:rest)) =
+   let (text,meta) = textIs textish rest in (url:abstract:text:meta)
+parseTail artId _ huh =
+   error ("Cannot parse rest of article " ++ show artId ++ ": " ++ show huh)
+
+-- Now. Here. There are some random articles that have random line-breaks
+-- randomly insertered, pel-mel. We must account for this or it messes up
+-- parsing the metadata.
+
+textIs :: ByteString -> [ByteString] -> (ByteString, [ByteString])
+textIs txt [] = (txt, [])
+textIs txt rest@(r:est) =
+   if BL.length r == 0 then textIs txt est else
+   case tail (BL.split ':' r) of
+      [] -> textIs (BL.append txt r) est
+      (_:_) -> (txt, rest)
+
 check :: MonadPlus m => Integer -> ByteString -> ByteString -> m ()
 check idx should is = if should == is then return () else
    error ("For article " ++ show idx ++ ": Key should be " ++ show should
