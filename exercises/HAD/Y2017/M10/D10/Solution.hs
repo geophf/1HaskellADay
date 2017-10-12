@@ -39,9 +39,9 @@ import Y2017.M10.D04.Solution
 import Y2017.M10.D05.Solution
 import Y2017.M10.D09.Solution (top10sTopics)
 
-topicCounts :: [(Topic, Int)] -> IO ()
-topicCounts =
-   putStrLn . unlines . ("Topic,Articles":)
+topicCounts :: FilePath -> [(Topic, Int)] -> IO ()
+topicCounts csvfile =
+   writeFile csvfile . unlines . ("Topic,Articles":)
             . map (uncurry (++) . second ((',':) . show))
 
 -- Make it 'look good.' Have a header, format the text, make it so that even 
@@ -55,7 +55,10 @@ topicCounts =
 >>> pivs <- (rows . fromJust . decode <$> BL.readFile "Y2017/M10/D05/art-subj.json") :: IO [Pivot]
 >>> let grp = graphTopics subjs pivs arts 
 >>> let top10s = top10sTopics grp
->>> topicCounts top10s
+>>> topicCounts "Y2017/M10/D10/topics.csv" top10s
+
+And in the file you find:
+
 Topic,Articles
 Social networks,42
 Presidents,30
