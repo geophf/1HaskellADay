@@ -13,6 +13,8 @@ import Data.Monoid
 
 -- Below imports available via 1HaskellADay git repository
 
+import Data.Hierarchy
+
 import Graph.KMeans
 import Graph.Query
 import Graph.ScoreCard
@@ -83,7 +85,6 @@ counts in the subcircles and this we get from the original scores so:
 *Main Graph.KMeans> let nms = NC ("Top5s", colorization clusters scores )
 
 With this we can now generate our JSON hierarchical structure
---}
 
 data Hierarchy = Hier String Children deriving Show
 data Children = Kids [Hierarchy]
@@ -97,6 +98,7 @@ instance ToJSON Hierarchy where
 kiddies :: [Hierarchy] -> [Pair]
 kiddies [] = []
 kiddies k = ["children" .= k]
+--}
 
 type CSC a b = ColoredScoreCard a b Float
 type ClCSC a b = Cluster (ColoredScoreCard a b Float)
