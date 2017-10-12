@@ -31,6 +31,9 @@ dbPassword = undefined
 dbmsServer = undefined
 dbName = undefined
 
+dbPort :: IO Int
+dbPort = undefined
+
 {-- 
 >>> dbUserName
 "geophf"

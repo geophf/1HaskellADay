@@ -31,6 +31,9 @@ dbPassword = getEnv "SQL_DAAS_PASSWORD"
 dbmsServer = getEnv "SQL_DAAS_SERVER_URL"
 dbName = getEnv "SQL_DAAS_DB_NAME"
 
+dbPort :: IO Int
+dbPort = read <$> getEnv "SQL_DAAS_SERVER_PORT"
+
 {-- 
 >>> dbUserName
 "geophf"
@@ -40,6 +43,8 @@ dbName = getEnv "SQL_DAAS_DB_NAME"
 "pellefant.db.elephantsql.com"
 >>> dbName
 "1HaskellADay"
+>>> dbPort
+5432
 
 Okay, using the above results, if your connection string is in the format:
 
@@ -60,3 +65,10 @@ connectionString username pass server port db =
 Next week we'll be connecting to and interacting with a SQL DBMS using 
 Database.Persist.
 --}
+
+connectionStringFromEnv :: IO String
+connectionStringFromEnv =
+   connectionString <$> dbUserName <*> dbPassword <*> dbmsServer
+                                   <*> dbPort     <*> dbName
+
+-- moving this solution to Database.Connection
