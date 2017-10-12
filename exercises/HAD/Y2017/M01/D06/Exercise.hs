@@ -61,7 +61,7 @@ Let's write an ENHANCED scorecard (not just 'Enhanced' scorecard, but all-caps)
 that incorporates the centroid as part of its sine qua non.
 --}
 
-data EnhancedScoreCard a b c = ESC { centroid :: a, scorecard :: ScoreCard a b c }
+data EnhancedScoreCard a b c = ESC { center :: c, scorecard :: ScoreCard a b c }
    deriving (Eq, Show)
 
 enhanceScoreCard :: ScoreCard a b c -> EnhancedScoreCard a b c
