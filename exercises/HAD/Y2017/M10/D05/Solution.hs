@@ -46,7 +46,7 @@ import Database.PostgreSQL.Simple
 
 -- below imports available via 1HaskellADay git repository
 
-import Graph.D3.CirclePacking
+import Data.Hierarchy
 import Store.SQL.Util.Indexed
 import Store.SQL.Util.Pivots
 
