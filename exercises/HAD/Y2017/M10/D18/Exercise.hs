@@ -36,6 +36,7 @@ import Data.Time
 
 import Y2017.M10.D04.Exercise
 import Y2017.M10.D05.Exercise
+import Y2017.M10.D17.Exercise
 
 type Regroup = Map Day (Map Topic Int)
 
@@ -52,3 +53,13 @@ regroup them then spit them out to a CSV file
 
 regroupTo :: FilePath -> Grouping -> IO ()
 regroupTo csvout group = undefined
+
+{-- BONUS -----------------------------------------------------------------
+
+Well, from yesterday's app, we have already computed the grouping, so:
+roll this functionality into the charter app you created yesterday.
+
+Run charter against the NYT compressed archives in Y2017/M10/D03/NYT*.gz
+
+What are your results? Upload your charts to twitter.
+--}
