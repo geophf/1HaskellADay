@@ -64,8 +64,8 @@ YES!
 --}
 
 line2SAIPERow :: [String] -> Either USState (County, SAIPERow)
-line2SAIPERow line =
-   either Left (Right .  (,line2row line) . fst) (stateContext (line !! 3))
+line2SAIPERow line@(_yr:_pre:_id:nm:pop:pov:_rest) =
+   either Left (Right .  (,line2row line) . fst) (stateContext nm)
 line2SAIPERow x = error ("Could not parse line '" ++ show x ++ "'")
 
 line2row (_yr:_pre:_id:_name:pop:poverty:_rest) =
