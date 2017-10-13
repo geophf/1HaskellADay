@@ -51,7 +51,7 @@ In row 3 the ∞s are somwhere to the left of the #s.
 In row 4 the #s are somwhere to the left of the ∞s.
 Row 6 is a palindrome.
 
-In column A the *s are somehwere between the ∞s.
+In column A the *s are somewhere between the ∞s.
 In column B no adjacent squares are the same symbol.
 Column D is the only column with adjacent ∞s.
 In column E the # are somwhere above the *s.
