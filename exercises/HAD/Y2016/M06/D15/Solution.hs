@@ -40,7 +40,7 @@ instance Monoid (Matrix a) where
 sameMatrix :: (Eq a, Num a) => Matrix a -> Matrix a
 sameMatrix mat =
    let (l,r) = snd (dims mat) in
-   mat `cross` identity l == mat -| mat <> identity r `cross` mat == mat -| mat
+   mat `cross` identity l == mat && identity r `cross` mat == mat -| mat
 
 {--
 *Y2016.M06.D15.Solution> pprint $ sameMatrix ex1
