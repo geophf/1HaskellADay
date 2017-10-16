@@ -141,10 +141,10 @@ to show weight of article subject by date, or popularity of a topic, and the
 timespan for that, ... or whatever you'd like. Here's one such representation:
 --}
 
-type Title = String
 type Topic = String
+type Title = String
 
-type Grouping = Map Topic (Map Day [Title])
+type Grouping = Map Topic (Map Day [ArticleSummary])
 
 graphTopics :: [Subject] -> [Pivot] -> [ArticleSummary] -> Grouping
 graphTopics subjs pivs sums =
@@ -175,14 +175,14 @@ articles arts = mapMaybe (flip Map.lookup arts)
 artIdBySubj :: Integer -> [Pivot] -> [Integer]
 artIdBySubj subjId = map srcIx . filter ((== subjId) . trgId)
 
-articlesByDate :: [ArticleSummary] -> [(Day, [Title])]
-articlesByDate arts =
+articlesByDate :: [ArticleSummary] -> [(Day, [ArticleSummary])]
+articlesByDate =
 
 -- we need to convert [[(d1,t1), (d1,t2)], [(d2,t3)], ...] to
 --                    [(d1, [t1, t2]), (d2, [t3]), ...]
 
    map (fst . head &&& map snd)
-       (groupBy ((==) `on` fst) (sortOn fst (map (published &&& title) arts)))
+       . groupBy ((==) `on` fst) . sortOn fst . map (published &&& id)
 
 {--
 >>> let graph = graphTopics subjs pivs arts

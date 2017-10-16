@@ -133,11 +133,11 @@ visualize file = BL.writeFile file . encodePretty . groupToHierarchy
 groupToHierarchy :: Grouping -> Hierarchy
 groupToHierarchy = Hier "NYT Archive" . Kids . map topicArts . Map.toList
 
-topicArts :: (Topic, Map Day [Title]) -> Hierarchy
+topicArts :: (Topic, Map Day [ArticleSummary]) -> Hierarchy
 topicArts (topic, days) = Hier topic (Kids (map dayArts (Map.toList days)))
 
-dayArts :: (Day, [Title]) -> Hierarchy
-dayArts (d, ts) = Hier (show d) (Kids (map (flip Hier (Size 1)) ts))
+dayArts :: (Day, [ArticleSummary]) -> Hierarchy
+dayArts (d, ts) = Hier (show d) (Kids (map (flip Hier (Size 1) . title) ts))
 
 {--
 >>> let grp = graphTopics subjs pivs arts 
