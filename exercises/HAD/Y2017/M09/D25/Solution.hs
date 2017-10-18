@@ -21,8 +21,6 @@ import Control.DList
 import Control.Logic.Frege (adjoin, (-|))
 import Store.SQL.Util.Inserts (byteStr)
 
-import Y2017.M09.D22.Solution (scanArticles, articleTextById, dir, arts, rawText)
-
 {--
 So, 'yesterday' (Friday) we were able to scan a compressed NYT article archive,
 separate out each article, then return those articles as Haskell structures
