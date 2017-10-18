@@ -5,7 +5,7 @@ class Node a where
 
 -- example: asNode (Nd f) = "Node { name: '" ++ show f ++ "' }"
 
-class Show a => Edge a where
+class Edge a where
    asEdge :: a -> String
 
 -- an example for asEdge would be "USING" or "RETWEETS"
