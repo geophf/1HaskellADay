@@ -34,11 +34,12 @@ import Data.Time
 
 -- below imports available via 1HaskellADay git repository
 
+import Data.Archive
 import Y2017.M10.D04.Exercise
 import Y2017.M10.D05.Exercise
 import Y2017.M10.D17.Exercise
 
-type Regroup = Map Day (Map Topic Int)
+type Regroup = Archive (Map Topic Int)
 
 regroup :: Grouping -> Regroup
 regroup group = undefined
