@@ -41,7 +41,7 @@ parseChartIgnore = undefined
 fetchSubjectFromLine :: MonadPlus m => String -> m Topic
 fetchSubjectFromLine line = undefined
 
--- returns the line if it's not empty nor a comment
+-- returns the line if it's neither empty nor a comment
 
 {--
 Now that you have the subjects to ignore, we filter them out from the resulting
