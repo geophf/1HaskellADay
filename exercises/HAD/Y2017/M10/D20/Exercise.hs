@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Y2017.M10.D19.Exercise where
+module Y2017.M10.D20.Exercise where
 
 {--
 So, yesterday we output our Regroup as a CSV and then showed it as a stacked
