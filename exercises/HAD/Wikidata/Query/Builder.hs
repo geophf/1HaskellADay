@@ -39,11 +39,11 @@ mbshow Nothing = ""
 mbshow (Just a) = ' ':show a
 
 spacing :: Aggregator -> String
-spacing (Nd nd@(Nod _ lbl)) = ' ': show nd ++ (lbl -| (' ':show nd ++ "Label"))
-spacing (Agg rel)  = ' ':showRel rel
+spacing (Nd nd) = spacelabel nd
+spacing (Agg rel)  = " (" ++ showRel rel ++ ")"
 
 service :: String -> String
-service lang = "SERVICE wikibase:label { bd:serviceParam wikibase:language "
+service lang = " SERVICE wikibase:label { bd:serviceParam wikibase:language "
    ++ show lang ++ " }"
 
 -- where our nodes and properties are:
@@ -164,6 +164,7 @@ stateCapitalSPARQL =
          
 
 -- b. Write a query-generating function for a SPARQL value
+--}
 
 queryBuilder :: SPARQL -> String
 queryBuilder (Query dis ns cl sort lmt) =
@@ -172,6 +173,7 @@ queryBuilder (Query dis ns cl sort lmt) =
                ++ service "en" ++ " }"
                ++ mbshow sort ++ mbshow (Lmt <$> lmt)
 
+{--
 -- c. Build the query. How does it compare to the original stateCapitalsQuery?
 
 >>> queryBuilder stateCapitalSPARQL 
