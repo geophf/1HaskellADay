@@ -16,7 +16,7 @@ get a slice) to represent the view in the graph.
 
 HOW DO WE DO THIS?
 
-Well, like Shirlock Holmes, it's elementary! Follow the imports, my dear
+Well, like Sherlock Holmes, it's elementary! Follow the imports, my dear
 Dr. Watson!
 --}
 
