@@ -1,0 +1,10 @@
+# .chartignore: tells charter which subjects to filter out from analyses
+
+# this is a comment line
+
+# [blank lines are allowed, too]
+
+# I'm ignoring the followin subjects, because I'm icy-cold like dat.
+
+Presidents
+Social networks
