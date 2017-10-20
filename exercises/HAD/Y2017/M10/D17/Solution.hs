@@ -27,6 +27,7 @@ you'd like to render the results.
 --}
 
 import qualified Data.ByteString.Lazy.Char8 as BL
+import Data.Set (Set)
 import qualified Data.Set as Set
 import Data.Time
 import Data.Time.Clock
@@ -48,6 +49,8 @@ import Y2017.M10.D04.Solution (graphTopics, ArticleSummary, Grouping, Topic, fet
 import Y2017.M10.D05.Solution (visualize)
 import Y2017.M10.D09.Solution (top10sTopics, reformGrouping)
 import Y2017.M10.D10.Solution (topicCounts)
+
+import Y2017.M10.D19.Solution -- I'M IMPORTING FROM THE FUTURE!
 
 {--
 This program runs the analysis against the database and outputs the report
@@ -123,21 +126,24 @@ generateTopicalityCSV csvfile subjects =
 Okay, the above is redundant. Let's simplify with:
 --}
 
-topNrelevance :: Int -> [ArticleSummary] -> [Pivot] -> [Subject]
+topNrelevance :: Int -> Set Topic -> [ArticleSummary] -> [Pivot] -> [Subject]
                -> ([(Topic, Int)], Grouping)
-topNrelevance n articles pivots subjects =
+topNrelevance n filts articles pivots subjects =
    let grp = graphTopics subjects pivots articles
-       relevant = take n (top10sTopics grp) in
+       tops = top10sTopics grp
+       relevant = take n (filter ((`Set.notMember` filts) . fst) tops) in
    (relevant, reformGrouping (Set.fromList (map fst relevant)) grp)
 
 marshalGrouping :: Connection -> Day -> Day -> Int -> IO ([(Topic, Int)], Grouping)
 marshalGrouping conn from to n =
    articlesByDate conn from to >>= \arts ->
-   topNrelevance n arts <$> articleSubjects conn (map idx arts) <*> fetchSubjects conn
+   parseChartIgnore            >>= \ignores ->
+   topNrelevance n ignores arts <$> articleSubjects conn (map idx arts)
+                                <*> fetchSubjects conn
 
 -- so now we can use the report generators we've imported
 
--- And with the above, we can define our program:
+{-- And with the above, we can define our program:
 
 main' :: [String] -> IO ()
 
@@ -151,6 +157,7 @@ main' _ = putStrLn (unlines ["", "charter <reportDir> <fromDay> <toDay> <n>", ""
   "\tAnalyzes database partitioned by <fromDay> to <toDay>, inclusive.",
   "\t\t(connection information in environment).",
   "\tOutputs top <n> circles.json and topics.csv to <reportDir>"])
+--}
    
 runReports :: [(Topic, Int)] -> Grouping -> FilePath -> FilePath -> FilePath -> IO ()
 runReports tops grp reportDir jsonfile csvfile =

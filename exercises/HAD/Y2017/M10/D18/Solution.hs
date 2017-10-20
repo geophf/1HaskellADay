@@ -110,5 +110,6 @@ main' [reportDir, from, to, n] =
 
 main' _ = putStrLn (unlines ["", "charter <reportDir> <fromDay> <toDay> <n>", "",
   "\tAnalyzes database partitioned by <fromDay> to <toDay>, inclusive.",
-  "\t\t(connection information in environment)",
+  "\t\t(connection information in environment;",
+  "\t\t ignore subjects in ~/.chartignore).",
   "\tOutputs top <n> circles.json, stacks.csv and topics.csv to <reportDir>"])
