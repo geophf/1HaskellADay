@@ -1,4 +1,9 @@
+{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
+
 module Data.Relation where
+
+-- defines relations as a "thing." So we have nodes, relations, and from those,
+-- we can model anything, right? ... well, constructively, that is.
 
 class Node a where
    asNode :: a -> String
@@ -30,3 +35,12 @@ data Dart a = Drt Direction Label a
 instance Show a => Show (Dart a) where
    show (Drt GoingTo lbl val) = '-':lbl ++ ">" ++ show val
    show (Drt ComingFrom lbl val) = '<':lbl ++ "-" ++ show val
+
+-- RELATABLE -----------------------------------------------------------------
+
+class Relatable a b rel | a b -> rel where
+   relate :: a -> b -> Relation a rel a
+
+-- what we are saying here is that our relation-type is uniquely-determined
+-- by the types a and b, but, not only that, but for each relation a -> b
+-- there is some relation determined by the values a and b
