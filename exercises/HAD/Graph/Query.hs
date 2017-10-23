@@ -1,11 +1,17 @@
 module Graph.Query where
 
 import Data.Aeson
+import Data.Foldable (toList)
 import qualified Data.ByteString.Lazy.Char8 as BL
 
 import Network.HTTP
 
+import System.Environment
+
+-- below imports available via 1HaskellADay git repository
+
 import Graph.JSON.Cypher
+import Data.Relation
 
 {-- A solution to the problem posted at http://lpaste.net/7339795115373756416
 @1HaskellADay solution for 2016-03-21
@@ -26,6 +32,9 @@ First, let's get the connection URI:
 --}
 
 type Endpoint = String
+
+graphEndpoint :: IO Endpoint
+graphEndpoint = getEnv "CYPHERDB_ACCESS"
 
 {--
 Sweet. Now that we have that, let's make a REST-call to that endpoint to get
@@ -74,3 +83,9 @@ getGraphResponse transactionEndpoint queries =
 
 YAY!
 --}
+
+-- now we want to automate translation of relations to Cypher
+
+cyphIt :: (Node a, Node b, Edge rel, Foldable t)
+       => Endpoint -> t (Relation a rel b) -> IO String
+cyphIt url = getGraphResponse url . map (mkCypher "a" "rel" "b") . toList
