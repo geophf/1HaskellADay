@@ -119,11 +119,11 @@ you choose, or create your own data visualization
 visualize :: Grouping -> IO ()
 visualize groups = undefined
 
-groupToHierarchy :: Grouping -> Hierarchy
+groupToHierarchy :: Grouping -> Hierarchy String
 groupToHierarchy = Hier "NYT Archive" . undefined
 
-topicArts :: (Topic, Map Day [Title]) -> Hierarchy
+topicArts :: (Topic, Map Day [Title]) -> Hierarchy String
 topicArts row = undefined
 
-dayArts :: (Day, [Title]) -> Hierarchy
+dayArts :: (Day, [Title]) -> Hierarchy String
 dayArts = undefined
