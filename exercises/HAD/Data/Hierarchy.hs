@@ -27,12 +27,6 @@ ref: Graph/d3circs.hs
 
 Possible imports that may help:
 
-import Control.Arrow
-import Data.Array
-import Data.Foldable
-import qualified Data.Map as Map
-import Data.Monoid
-
 import Control.List (weave)
 import Data.Graphics.Color
 import Data.Relation
@@ -76,18 +70,25 @@ counts in the subcircles and this we get from the original scores so:
 With this we can now generate our JSON hierarchical structure
 --}
 
-data Hierarchy = Hier String Children deriving Show
-data Children = Kids [Hierarchy]
+-- below import available via 1HaskellADay git repository
+
+import Data.Relation
+
+data Hierarchy a = Hier { node :: a, kids :: Children a } deriving Show
+data Children a = Kids [Hierarchy a]
               | Size Int
    deriving Show
 
-instance ToJSON Hierarchy where
-   toJSON (Hier nm (Kids k)) = object ("name" .= nm:kiddies k)
-   toJSON (Hier nm (Size s)) = object ["name" .= nm, "size" .= s]
+class Tuple a where
+   toPair :: a -> Pair
 
-kiddies :: [Hierarchy] -> [Pair]
+instance Tuple a => ToJSON (Hierarchy a) where
+   toJSON (Hier nm (Kids k)) = object (toPair nm:kiddies k)
+   toJSON (Hier nm (Size s)) = object [toPair nm, "size" .= s]
+
+kiddies :: Tuple a => [Hierarchy a] -> [Pair]
 kiddies [] = []
-kiddies k = ["children" .= k]
+kiddies k = ["children" .= map toJSON k]
 
 {--
 Whew! That only took a month! SO!
@@ -110,6 +111,76 @@ Whew! That only took a month! SO!
 *Main BL> encode hier ~> "{\"children\":[{\"children\":[{\"name\":\"GMCR\","size":12},...
 *Main BL> BL.writeFile "Graph/top5s.json" (encode hier)
 --}
+
+{--
+-- okay, so what data is hierarchical?
+
+class Hierarchical a where
+   hierarchy :: a -> Hierarchy
+
+-- we can also make an hierarchy a set of relations
+
+   relation :: a -> [Relation b rel b]
+   nodify :: a -> b
+
+instance Hierarchical Hierarchy where
+   hierarchy = id
+
+-- the hierarchy of a hierarchy is itself
+-- [so, I guess we're in the hierarchy category now]
+
+   relation (Hier nm (Kids k)) =
+      map (Rel (BRANCH nm) CONTAINS . nodify) k ++ concatMap relation k
+   relation (Hier nm (Size sz)) = []
+
+   nodify (Hier nm (Size sz)) = LEAF nm sz
+   nodify (Hier nm (Kids k)) = BRANCH nm
+
+-- the default relationship in an hierarchy is containment
+
+data Container = CONTAINS
+   deriving (Eq, Show)
+
+instance Edge Container where asEdge = show
+
+-- the default nodes of a hierarchy are branching nodes and leaf nodes
+
+data Branch = BRANCH String | LEAF String Int
+   deriving (Eq, Show)
+
+instance Node Branch where
+   asNode (BRANCH nm) = "BRANCH { name: '" ++ nm ++ "' }"
+   asNode (LEAF nm sz) = "LEAF { name: '" ++ nm ++ ", size: " ++ show sz ++ " }"
+
+-- and the answer is no ... until I can master dependent types in Haskell
+--}
+
+-- Okay, the above was me trying to generalize to the type-level hierarchies-
+-- as-relations. That's a problem (that Haskell has solved, I'm sure), but a
+-- much simpler is 'relational'-izing, specifically, Hierarchy, or, generally
+-- Hierarchy a where a is some relatable-type.
+
+-- figuring out what a 'relatable-type' is an interesting problem, too.
+
+-- So, is there some type, Hierarchy a, where a is relatable, such that
+-- Hierarchy a is relatable?
+
+-- Well, yes. As plain Hierarchy, under the old regime, or, now:
+-- Hierarchy String is relatable, then if a is hierarchical then a is relatable
+
+-- Q.E.D.
+
+-- Now, with the redefinition of Hierarchy (string) to Hierarchy a where a
+-- is a tuple-type, we can relationalize an hierarchy by treating the tuple
+-- as a typed value where the key is the name of the type
+
+-- ... or, more generally: we can realize relations from any hierarchy
+-- of relatable types thus:
+
+hier2rel :: Relatable a a rel => Hierarchy a -> [Relation a rel a]
+hier2rel (Hier _ (Size _)) = []
+hier2rel (Hier h (Kids kids)) = 
+   zipWith relate (repeat h) (map node kids) ++ concatMap hier2rel kids
 
 {-- BONUS ------------------------------------------------------------------
 
