@@ -127,17 +127,37 @@ graphically as:
 you choose, or create your own data visualization
 --}
 
+-- With the generalization of hierarchies:
+
+data ArchiveNode = Date Day | Group Topic | Sum ArticleSummary | Archive String
+
+instance Tuple ArchiveNode where
+   toPair (Date d) = ("date", toJSON d)
+   toPair (Group t) = ("topic", toJSON t)
+   toPair (Sum art) = ("article", toJSON art)
+   toPair (Archive arc) = ("archive", toJSON arc)
+{--
+instance ToJSON ArchiveNode where
+   toJSON (Date d) = object ["date" .= d]
+   toJSON (Group t) = object ["topic" .= t]
+   toJSON (Sum art) = object ["article" .= art]
+   toJSON (Archive arc) = object ["archive" .= arc]
+--}
+
 visualize :: FilePath -> Grouping -> IO ()
 visualize file = BL.writeFile file . encodePretty . groupToHierarchy
 
-groupToHierarchy :: Grouping -> Hierarchy
-groupToHierarchy = Hier "NYT Archive" . Kids . map topicArts . Map.toList
+groupToHierarchy :: Grouping -> Hierarchy ArchiveNode
+groupToHierarchy =
+   Hier (Archive "NYT Archive") . Kids . map topicArts . Map.toList
 
-topicArts :: (Topic, Map Day [ArticleSummary]) -> Hierarchy
-topicArts (topic, days) = Hier topic (Kids (map dayArts (Map.toList days)))
+topicArts :: (Topic, Map Day [ArticleSummary]) -> Hierarchy ArchiveNode
+topicArts (topic, days) =
+   Hier (Group topic) (Kids (map dayArts (Map.toList days)))
 
-dayArts :: (Day, [ArticleSummary]) -> Hierarchy
-dayArts (d, ts) = Hier (show d) (Kids (map (flip Hier (Size 1) . title) ts))
+dayArts :: (Day, [ArticleSummary]) -> Hierarchy ArchiveNode
+dayArts (d, ts) =
+   Hier (Date d) (Kids (map (flip Hier (Size 1) . Sum) ts))
 
 {--
 >>> let grp = graphTopics subjs pivs arts 
