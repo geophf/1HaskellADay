@@ -8,6 +8,9 @@ them back up together again/weaving/intercalating <-- smh: 'intercalate'? really
 import Control.Arrow
 import Data.List (intercalate)
 
+-- below imports available via 1HaskellADay git repository
+
+import Control.List (weave)
 import Control.Presentation
 
 -- I do this often enough: scanning in a CSV file, so, here it is:
@@ -85,7 +88,13 @@ unwordsBy :: Char -> [String] -> String
 unwordsBy char = intercalate (pure char)
 
 uncsv :: Univ a => a -> String
-uncsv = unwordsBy ',' . explode
+uncsv = weave . map enquotify . explode
+
+-- What happens when a string has an embedded comma? We quote it.
+
+enquotify :: String -> String
+enquotify str | any (== ',') str = '"':str ++ pure '"'
+              | otherwise        = str
 
 {--
 let ans = ["REQMT207","REQMT228","REQMT57","REQMT228","REQMT57"]
