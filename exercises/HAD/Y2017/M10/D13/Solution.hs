@@ -47,9 +47,8 @@ import Y2017.M10.D02.Solution
 import Y2017.M10.D03.Solution     -- subject memoization
 
 main' :: [String] -> IO ()
-main' files@(_:_) =
-   connectInfo >>= connect >>= \conn -> mapM_ (runETL conn) files >> close conn
-main' [] = putStrLn (unlines ["etl <compressed archives>", "",
+main' files@(_:_) = withConnection (flip mapM_ files . runETL)
+main' [] = putStrLn (unlines ["", "etl <compressed archives>", "",
    "\tscans compressed archive and stores in database pointed to in "
        ++ "environment"])
 
@@ -58,9 +57,19 @@ main' [] = putStrLn (unlines ["etl <compressed archives>", "",
 
 runETL :: Connection -> String -> IO ()
 runETL conn archive =
-   getCurrentTime >>= \start -> 
-   putStrLn "ETL process: start." >>
-   extractBlocks <$> BL.readFile archive >>= \blocks ->
+   getCurrentTime                                >>= \start -> 
+   putStrLn "ETL process: start."                >>
+   extractBlocks <$> BL.readFile archive         >>=
+   transformLoad conn                            >>
+   getCurrentTime                                >>=
+   putStrLn . ("ETL process complete: " ++)
+            . show . flip diffUTCTime start
+
+-- say we need to modify the blocks, e.g.: to replace special characters with
+-- ASCII-equivalents:
+
+transformLoad :: Connection -> [Block] -> IO ()
+transformLoad conn blocks =
    insertBlocks conn blocks >>= \ixblks ->
    let articles = join (zipWith block2Article ixblks blocks) in
    insertArts conn articles >>= \ixarts ->
@@ -76,9 +85,7 @@ runETL conn archive =
    let tab = Mem.updateMT (map ixsubj2pair ixsubs) (fst stat)
        pivs = evalState buildSubjectPivots (tab, snd stat)
        subjs = mt2IxSubjects tab in
-   insertSubjPivot conn pivs >>
-   getCurrentTime >>=
-   putStrLn . ("ETL process complete: " ++) . show . flip diffUTCTime start
+   insertSubjPivot conn pivs
 
 mt2IxSubjects :: MemoizingTable Integer Subject -> [IxValue String]
 mt2IxSubjects = map (uncurry IxV . second subj) . Map.toList . Mem.fromTable
