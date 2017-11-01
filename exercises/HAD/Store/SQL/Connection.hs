@@ -80,3 +80,8 @@ connectionStringFromEnv =
                                    <*> dbPort     <*> dbName
 
 -- moving this solution to Database.Connection
+
+-- And when you want to do something with a live connection (then you're done):
+
+withConnection :: (Connection -> IO ()) -> IO ()
+withConnection fn = connectInfo >>= connect >>= \conn -> fn conn >> close conn
