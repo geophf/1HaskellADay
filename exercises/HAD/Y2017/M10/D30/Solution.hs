@@ -119,7 +119,7 @@ specialChars (c:hars) acc | ord c > 127 =
 charing :: String -> DList Char -> (String, String)
 charing [] acc = (dlToList acc, [])
 charing (c:hars) acc | ord c > 127 = charing hars (acc <| c)
-                     | otherwise   = (dlToList acc, hars)
+                     | otherwise   = (dlToList acc, c:hars)
 
 -- intentionally dropped c: we know it's not a special character, so drop it.
 
