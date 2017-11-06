@@ -12,6 +12,7 @@ The format, including all its beautious noise is here as kw_index_file.txt
 --}
 
 import qualified Codec.Compression.GZip as GZ
+import Control.Arrow (first)
 import qualified Data.ByteString.Lazy.Char8 as BL
 import Data.Map (Map)
 import qualified Data.Map as Map
@@ -115,21 +116,36 @@ KW 9.0 (SQS {string = "subject line .)"})
 --}
 
 sampleKeywordList :: String
-sampleKeywordList = "[(12.25, 'state department would say'), (12.236813186813185, 'pifer said american diplomats')]"
+sampleKeywordList = "[(12.25, 'state department would say'), "
+                  ++ "(12.236813186813185, 'pifer said american diplomats')]"
 
 {--
->>> (read sampleKeywordList ) :: [Keyword]
+>>> (read sampleKeywordList) :: [Keyword]
 [KW 12.25 (SQS {string = "state department would say"}),
  KW 12.236813186813185 (SQS {string = "pifer said american diplomats"})]
 --}
 
 instance Read Keyword where
-   readsPrec _ = bracketed '(' ')' (readComma KW)
+   readsPrec _ = map (first (uncurry KW)) . forceOrder
 
 {--
 fml on readList. seriously.
 --}
    readList = bracketed '[' ']' listkws
+
+forceOrder :: Read n => String -> [((n, SingleQuotedString), String)]
+
+-- okay, so keyword tuples are coming at us either (strength, sqs) OR (sqs, strength)
+-- WTF? Okay, whatever. So we just ask our parser to deal with it.
+
+forceOrder str@(_openParen:first:rest) | first == '\'' = -- inverted structure: (sqs, strength)
+   let (str1, _quot:_comma:numParen) = break (== '\'') rest
+       (num,_closeParen:restRest) = break (== ')') (trim numParen) in
+   [((read num, SQS str1), restRest)]
+                            | otherwise     = -- (n, 'quot') order
+   let (num, _comma:str1) = break (== ',') (tail str)
+       (str2, _quot1:_closeParen:restRest) = break (== '\'') (tail (trim str1)) in
+   [((read num, SQS str2), restRest)]
 
 listkws :: String -> [Keyword]
 listkws [] = []
@@ -149,6 +165,8 @@ have to parse the elements, one-by-one:
 
 listkws listElts = 
 
+{--
+Given forceOrder ...
 -- first, we read the num:
 
    let (_openParen:n,_comma:rest) = break (== ',') listElts
@@ -157,12 +175,16 @@ listkws listElts =
 -- have to parse to the end of the singly-quoted string
 
        (str,_quot:_closeParen:rest') = break (== '\'') (softtail $ trim rest)
+--}
+   let [(ans, rest')] = forceOrder listElts
 
 -- now, rest' may have a comma, or may be the end
 
        (_stuff,end) = break (== ',') rest'
 
-   in  KW (read n) (SQS str) : listkws (trim $ softtail end)
+   in  uncurry KW ans : listkws (trim $ softtail end)
+
+-- so, in light of the above, readComma becomes superfluous? Nope: MapRowElement
 
 readComma :: (Read n, Read a) => (n -> a -> f) -> String -> f
 readComma f (break (== ',') -> (n,(_comma:list))) =
