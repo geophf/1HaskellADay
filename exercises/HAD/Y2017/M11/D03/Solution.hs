@@ -25,46 +25,6 @@ You'll see, when you decompress the file, that the format is thus:
 
 [id1, [(strength, 'key phrase')]], [id2, ...], ...
 
-The information here is a bit different than what we have in our data store,
-however.
-
-1. The id's are 0-based, and do not have a one-to-one correspondence to the
-   ids in the data store.
-2. The full text is in a list and single quoted, also, special characters are
-   removed
-
-so, how do we match the key phrases to the articles in the database so we
-can store them there?
-
-One way is to get ids of this data set to match the ids in the data store.
-
-YA THINK?
-
-Another is to create a matched-pair of ids to ids.
-
-Let's do the latter, because I don't have time to wait for the former.
-
-Ah, the life of a start-up, where people cut corners to save time and end up
-wasting so much time by hurrying up.
-
-So, first up, we're going to create an in-memory pivot table that translates
-from this data set's ids to ...
-
-No. No. We are going to wait until genius matches the ids to the data store
-THEN we're going to store the keywords.
-
-... 4 days later.
-
-Finally got a data set where the ids match the data-store ids. So let's proceed
-
-... but only after the drama of me explaining for THREE DAYS why I need ids to
-match, then, on the fourth day, the boss-man saying: "Why don't the ids match?
-They need to match! How can I do my queries if the ids don't match?"
-
-Yeah. Great. Glad you're on-board with matching ids now.
-
-ANYWAY.
-
 We have several interesting problems with this data set:
 
 1. it's a set of raw 'lists' ... I say 'lists' because the list elements vary
@@ -127,18 +87,16 @@ sampleKeywordList = "[(12.25, 'state department would say'), "
 
 instance Read Keyword where
    readsPrec _ = map (first (uncurry KW)) . forceOrder
-
-{--
-fml on readList. seriously.
---}
-   readList = bracketed '[' ']' listkws
+   readList = bracketed '[' ']' listkws  -- in theory should work, so long as no
+                                         -- SQS has a ']'-character
 
 forceOrder :: Read n => String -> [((n, SingleQuotedString), String)]
 
 -- okay, so keyword tuples are coming at us either (strength, sqs) OR (sqs, strength)
 -- WTF? Okay, whatever. So we just ask our parser to deal with it.
 
-forceOrder str@(_openParen:first:rest) | first == '\'' = -- inverted structure: (sqs, strength)
+forceOrder str@(_openParen:first:rest) | first == '\'' =
+          -- inverted structure: (sqs, strength)
    let (str1, _quot:_comma:numParen) = break (== '\'') rest
        (num,_closeParen:restRest) = break (== ')') (trim numParen) in
    [((read num, SQS str1), restRest)]
@@ -149,33 +107,7 @@ forceOrder str@(_openParen:first:rest) | first == '\'' = -- inverted structure: 
 
 listkws :: String -> [Keyword]
 listkws [] = []
-
-{--
-listkws (break (== ')') -> (el, r:est)) =
-
--- we're effed if the keyword contains parentheses
-
-   -- error ("read in " ++ el ++ [r]) :
-   read (el ++ [r]) : listkws (trim (softtail est))
-
-No, that didn't work, because there may be ... and there actually are ...
-embedded parenthesized expressions in the singly-quoted strings. So, we
-have to parse the elements, one-by-one:
---}
-
 listkws listElts = 
-
-{--
-Given forceOrder ...
--- first, we read the num:
-
-   let (_openParen:n,_comma:rest) = break (== ',') listElts
-
--- now rest has the singly-quoted string and the rest of the list, so we
--- have to parse to the end of the singly-quoted string
-
-       (str,_quot:_closeParen:rest') = break (== '\'') (softtail $ trim rest)
---}
    let [(ans, rest')] = forceOrder listElts
 
 -- now, rest' may have a comma, or may be the end
@@ -184,24 +116,10 @@ Given forceOrder ...
 
    in  uncurry KW ans : listkws (trim $ softtail end)
 
--- so, in light of the above, readComma becomes superfluous? Nope: MapRowElement
-
-readComma :: (Read n, Read a) => (n -> a -> f) -> String -> f
-readComma f (break (== ',') -> (n,(_comma:list))) =
-   f (read n) (read (trim list))
-
 trim :: String -> String
 trim [] = []
 trim list@(h:t) | h == ' ' = trim t
                 | otherwise = list
-
-{--
-data SpacyList a = SL [a]
-   deriving (Eq, Ord, Show)
-
-instance Read a => Read (SpacyList a) where
-   readsPrec _ = xxx
---}
 
 data MapRowElement = MRE Int [Keyword]
    deriving (Eq, Ord, Show)
@@ -216,6 +134,10 @@ bracketed match1 match2 readf (s:tring) =
 
 instance Read MapRowElement where
    readsPrec _ = bracketed '[' ']' (readComma MRE)
+
+readComma :: (Read n, Read a) => (n -> a -> f) -> String -> f
+readComma f (break (== ',') -> (n,(_comma:list))) =
+   f (read n) (read (trim list))
 
 -- From our MapRowElements we need to realize a map:
 
