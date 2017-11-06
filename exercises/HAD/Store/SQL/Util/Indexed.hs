@@ -35,6 +35,14 @@ instance FromRow Index where
 insertRows :: ToRow a => Query -> Connection -> [a] -> IO [Index]
 insertRows = flip returning
 
+-- ... and if we have to insert the index itself as a row or column ...
+
+instance ToRow Index where
+   toRow i = [toField (idx i)]
+
+instance ToField Index where
+   toField i = toField (idx i)
+
 {--
 insertRows is called thus:
 
