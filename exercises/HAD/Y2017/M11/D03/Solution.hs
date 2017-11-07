@@ -121,10 +121,10 @@ trim [] = []
 trim list@(h:t) | h == ' ' = trim t
                 | otherwise = list
 
-data MapRowElement = MRE Int [Keyword]
+data MapRowElement = MRE Integer [Keyword]
    deriving (Eq, Ord, Show)
 
-tuple :: MapRowElement -> (Int, [Keyword])
+tuple :: MapRowElement -> (Integer, [Keyword])
 tuple (MRE n list) = (n, list)
 
 bracketed :: Char -> Char -> (String -> a) -> String -> [(a, String)]
@@ -141,7 +141,7 @@ readComma f (break (== ',') -> (n,(_comma:list))) =
 
 -- From our MapRowElements we need to realize a map:
 
-type KeywordMap = Map Int [Keyword]
+type KeywordMap = Map Integer [Keyword]
 
 rows2Map :: [MapRowElement] -> KeywordMap
 rows2Map = Map.fromList . map tuple

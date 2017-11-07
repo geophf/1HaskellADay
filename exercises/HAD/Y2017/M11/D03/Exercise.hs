@@ -90,7 +90,7 @@ sampleKeyword = "(9.0, 'subject line .)')"
 sampleKeywordList :: String
 sampleKeywordList = "[(12.25, 'state department would say'), (12.236813186813185, 'pifer said american diplomats')]"
 
-data MapRowElement = MRE Int [Keyword]
+data MapRowElement = MRE Integer [Keyword]
    deriving (Eq, Ord, Show)
 
 instance Read MapRowElement where
@@ -104,7 +104,7 @@ instance Read SingleQuotedString where
 
 -- From our MapRowElements we need to realize a map:
 
-type KeywordMap = Map Int [Keyword]
+type KeywordMap = Map Integer [Keyword]
 
 rows2Map :: [MapRowElement] -> KeywordMap
 rows2Map rows = undefined
