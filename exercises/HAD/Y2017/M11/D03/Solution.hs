@@ -64,7 +64,7 @@ SQS "european union citizens living"
 --}
 
 type Strength = Double
-data Keyword = KW Strength SingleQuotedString
+data Keyword = KW { strength :: Strength, keyphrase :: SingleQuotedString }
    deriving (Eq, Ord, Show)
 
 sampleKeyword :: String 
