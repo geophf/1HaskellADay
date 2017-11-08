@@ -77,20 +77,20 @@ Hm.
 --}
 
 type Strength = Double
-data Keyword = KW { strength :: Strength, keyphrase :: SingleQuotedString }
+data Keyphrase = KW { strength :: Strength, keyphrase :: SingleQuotedString }
    deriving (Eq, Ord, Show)
 
-instance Read Keyword where
+instance Read Keyphrase where
    readsPrec = undefined
    readList = undefined  -- careful!
 
-sampleKeyword :: String
-sampleKeyword = "(9.0, 'subject line .)')"
+sampleKeyphrase :: String
+sampleKeyphrase = "(9.0, 'subject line .)')"
 
-sampleKeywordList :: String
-sampleKeywordList = "[(12.25, 'state department would say'), (12.236813186813185, 'pifer said american diplomats')]"
+sampleKeyphraseList :: String
+sampleKeyphraseList = "[(12.25, 'state department would say'), (12.236813186813185, 'pifer said american diplomats')]"
 
-data MapRowElement = MRE Integer [Keyword]
+data MapRowElement = MRE Integer [Keyphrase]
    deriving (Eq, Ord, Show)
 
 instance Read MapRowElement where
@@ -104,14 +104,14 @@ instance Read SingleQuotedString where
 
 -- From our MapRowElements we need to realize a map:
 
-type KeywordMap = Map Integer [Keyword]
+type KeyphraseMap = Map Integer [Keyphrase]
 
-rows2Map :: [MapRowElement] -> KeywordMap
+rows2Map :: [MapRowElement] -> KeyphraseMap
 rows2Map rows = undefined
 
 -- NOW you can read in the file.
 
-readKeywords :: FilePath -> IO KeywordMap
-readKeywords kwFile = undefined
+readKeyphrases :: FilePath -> IO KeyphraseMap
+readKeyphrases kwFile = undefined
 
 -- How many keywords does id 12 have? How many elements does the map have?

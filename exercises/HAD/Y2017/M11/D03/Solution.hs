@@ -64,28 +64,28 @@ SQS "european union citizens living"
 --}
 
 type Strength = Double
-data Keyword = KW { strength :: Strength, keyphrase :: SingleQuotedString }
+data Keyphrase = KW { strength :: Strength, keyphrase :: SingleQuotedString }
    deriving (Eq, Ord, Show)
 
-sampleKeyword :: String 
-sampleKeyword = "(9.0, 'subject line .)')"
+sampleKeyphrase :: String 
+sampleKeyphrase = "(9.0, 'subject line .)')"
 
 {--
->>> (read sampleKeyword) :: Keyword
+>>> (read sampleKeyphrase) :: Keyphrase
 KW 9.0 (SQS {string = "subject line .)"})
 --}
 
-sampleKeywordList :: String
-sampleKeywordList = "[(12.25, 'state department would say'), "
+sampleKeyphraseList :: String
+sampleKeyphraseList = "[(12.25, 'state department would say'), "
                   ++ "(12.236813186813185, 'pifer said american diplomats')]"
 
 {--
->>> (read sampleKeywordList) :: [Keyword]
+>>> (read sampleKeyphraseList) :: [Keyphrase]
 [KW 12.25 (SQS {string = "state department would say"}),
  KW 12.236813186813185 (SQS {string = "pifer said american diplomats"})]
 --}
 
-instance Read Keyword where
+instance Read Keyphrase where
    readsPrec _ = map (first (uncurry KW)) . forceOrder
    readList = bracketed '[' ']' listkws  -- in theory should work, so long as no
                                          -- SQS has a ']'-character
@@ -105,7 +105,7 @@ forceOrder str@(_openParen:first:rest) | first == '\'' =
        (str2, _quot1:_closeParen:restRest) = break (== '\'') (tail (trim str1)) in
    [((read num, SQS str2), restRest)]
 
-listkws :: String -> [Keyword]
+listkws :: String -> [Keyphrase]
 listkws [] = []
 listkws listElts = 
    let [(ans, rest')] = forceOrder listElts
@@ -121,10 +121,10 @@ trim [] = []
 trim list@(h:t) | h == ' ' = trim t
                 | otherwise = list
 
-data MapRowElement = MRE Integer [Keyword]
+data MapRowElement = MRE Integer [Keyphrase]
    deriving (Eq, Ord, Show)
 
-tuple :: MapRowElement -> (Integer, [Keyword])
+tuple :: MapRowElement -> (Integer, [Keyphrase])
 tuple (MRE n list) = (n, list)
 
 bracketed :: Char -> Char -> (String -> a) -> String -> [(a, String)]
@@ -141,22 +141,22 @@ readComma f (break (== ',') -> (n,(_comma:list))) =
 
 -- From our MapRowElements we need to realize a map:
 
-type KeywordMap = Map Integer [Keyword]
+type KeyphraseMap = Map Integer [Keyphrase]
 
-rows2Map :: [MapRowElement] -> KeywordMap
+rows2Map :: [MapRowElement] -> KeyphraseMap
 rows2Map = Map.fromList . map tuple
 
 -- NOW you can read in the file.
 
-readKeywords, readCompressedKeywords :: FilePath -> IO KeywordMap
-readKeywords = fmap (rows2Map . map read . lines) . readFile
-readCompressedKeywords =
+readKeyphrases, readCompressedKeyphrases :: FilePath -> IO KeyphraseMap
+readKeyphrases = fmap (rows2Map . map read . lines) . readFile
+readCompressedKeyphrases =
    fmap (rows2Map . map read . lines . BL.unpack . GZ.decompress) . BL.readFile
 
 -- How many keywords does id 12 have? How many elements does the map have?
 
 {--
->>> kwMap <- readKeywords (kwDir ++ "kw_index_file.txt")
+>>> kwMap <- readKeyphrases (kwDir ++ "kw_index_file.txt")
 >>> length kwMap
 100
 >>> length (kwMap Map.! 12)
