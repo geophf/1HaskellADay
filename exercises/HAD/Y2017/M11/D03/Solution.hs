@@ -92,8 +92,9 @@ instance Read Keyphrase where
 
 forceOrder :: Read n => String -> [((n, SingleQuotedString), String)]
 
--- okay, so keyword tuples are coming at us either (strength, sqs) OR (sqs, strength)
--- WTF? Okay, whatever. So we just ask our parser to deal with it.
+-- okay, so keyword tuples are coming at us either (strength, sqs) OR
+-- (sqs, strength) WTF? Okay, whatever. So we just ask our parser to deal with
+-- it.
 
 forceOrder str@(_openParen:first:rest) | first == '\'' =
           -- inverted structure: (sqs, strength)
@@ -102,8 +103,9 @@ forceOrder str@(_openParen:first:rest) | first == '\'' =
    [((read num, SQS str1), restRest)]
                             | otherwise     = -- (n, 'quot') order
    let (num, _comma:str1) = break (== ',') (tail str)
-       (str2, _quot1:_closeParen:restRest) = break (== '\'') (tail (trim str1)) in
-   [((read num, SQS str2), restRest)]
+       (str2, _quot1:_closeParen:restRest) = break (== '\'') (tail (trim str1)) 
+   in  [((read num, SQS str2), restRest)]
+  
 
 listkws :: String -> [Keyphrase]
 listkws [] = []
