@@ -44,7 +44,7 @@ pl eh = fail ("Cannot parse line " ++ show eh)
 -- parse this line to a Score value:
 
 line :: String
-line = "3041,At Rally  Trump Blames Media for Countrys Deepening Divisions',0.70604"
+line = "3041,At Rally Trump Blames Media for Countrys Deepening Divisions',0.70604"
 
 {--
 >> parseLine line
@@ -83,7 +83,8 @@ cullTicks = filter (/= '\'')
 [1685,1733,1790,1891,2210,2256,2277,2315,2327,2340,2389,2729,2778,3041,3104,
  3112,3183,3548,3713,3798,3984,4166,6169,6252,6333,6495,6641,6858,9785,10571]
 >>> (head &&& last) (Map.toList scores)
-((1685,Row {idx = 1685, title = "Trump Tower a Home for Celebrities and Charlatans", 
+((1685,Row {idx = 1685,
+            title = "Trump Tower a Home for Celebrities and Charlatans", 
             score = VAL 0.579907}),
 (10571,Row {idx = 10571, title = "Trumps Scandals a List", score = VAL 0.550488}))
 --}
