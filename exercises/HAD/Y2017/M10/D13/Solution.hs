@@ -78,11 +78,11 @@ transformLoad conn blocks =
    insertPers conn pers >>= \ixpers ->
    inserter conn insertArtPersJoinStmt (zipWith joinValue pers ixpers) >>
    fetchSubjects conn >>= \isubs ->
-   let memtable = Mem.initMemTable (Mem.bifurcate (map ixsubj2pair isubs))
+   let memtable = Mem.start (map ixsubj2pair isubs)
        stat = execState (zipWithM_ getSubjectsMT ixarts articles)
                                    (memtable, Map.empty) in
    uploadMT conn (fst stat) >>= \ixsubs ->
-   let tab = Mem.updateMT (map ixsubj2pair ixsubs) (fst stat)
+   let tab = Mem.update (map ixsubj2pair ixsubs) (fst stat)
        pivs = evalState buildSubjectPivots (tab, snd stat)
        subjs = mt2IxSubjects tab in
    insertSubjPivot conn pivs
