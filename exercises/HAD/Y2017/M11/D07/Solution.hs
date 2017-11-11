@@ -83,14 +83,16 @@ data Recommendation =
             scoreDate :: Day,
             scoreAuthor :: Maybe String,
             scoreKWs :: [Keyphrase],
-            scoreScore :: Float }
+            scoreScore :: Double }
       deriving (Eq, Show)
 
+{-- moved to Score module
 -- so we need to convert from a Value Float to just a Float. Let's say QRY is 0.
 
-val2float :: Value Float -> Float
+val2float :: Num a => Value a -> a
 val2float QRY = 0
 val2float (VAL x) = x
+--}
 
 marry :: Map Integer Recommend -> Map Integer Score -> [Recommendation]
 marry recs =

@@ -18,6 +18,12 @@ import Store.SQL.Util.Indexed
 data Value a = QRY | VAL a
    deriving (Eq, Ord, Show)
 
+-- so we need to convert from a Value a to just a. Let's say QRY is 0.
+
+val2float :: Num a => Value a -> a
+val2float QRY = 0
+val2float (VAL x) = x
+
 instance Read a => Read (Value a) where
    readsPrec _ str | str == "QRY" = [(QRY, "")]
                    | otherwise    =
