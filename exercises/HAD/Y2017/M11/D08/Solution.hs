@@ -23,6 +23,7 @@ import Y2017.M11.D03.Solution
 
 import Data.Aeson
 import Data.Aeson.Encode.Pretty
+import Data.ByteString.Lazy.Char8 (ByteString)
 import qualified Data.ByteString.Lazy.Char8 as BL
 import qualified Data.Map as Map
 
@@ -40,9 +41,11 @@ instance ToJSON Keyphrase where
 
 saveRecs :: FilePath -> KeyphraseMap -> [Recommendation] -> IO ()
 saveRecs outputfile keyphrases =
-   BL.writeFile outputfile
-     . encodePretty
-     . map (\rec ->
+   BL.writeFile outputfile . showRecs keyphrases
+
+showRecs :: KeyphraseMap -> [Recommendation] -> ByteString
+showRecs keyphrases = encodePretty
+   . map (\rec ->
                rec { scoreKWs = keyphrases Map.! fromIntegral (scoreIdx rec) })
 
 -- assume recs starts with an empty list for article_keyphrase
