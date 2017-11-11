@@ -3,11 +3,11 @@
 module Y2017.M11.D07.Exercise where
 
 {--
-Yesterday's exercise we read in a set of scored documents; the exercise before, we
-parsed a set of keywords associated with articles.
+Yesterday's exercise we read in a set of scored documents; the exercise before,
+we parsed a set of keywords associated with articles.
 
-Today continues the parsing exercises. This time we're parsing JSON, so it 'should'
-be easy. Right?
+Today continues the parsing exercises. This time we're parsing JSON, so it 
+'should' be easy. Right?
 
 Given the structure at recommend.json, parse that structure
 --}
@@ -33,14 +33,16 @@ instance FromJSON Recommend where
 readRecs :: FilePath -> IO (Map Integer Recommend)
 readRecs file = undefined
 
--- how many recommendations are there? How many title have the word 'Trump' in them?
+-- how many recommendations are there? How many title have the word 'Trump' in 
+-- them?
 
--- hint: you may want to declare a structure that takes a list of recommendations.
+-- hint: you may want to declare a structure that takes a list of 
+-- recommendations.
 
 {-- BONUS -----------------------------------------------------------------
 
-From yesterday's exercise you loaded in a set of scores. Today you have a set of 
-recommendations ... without scores.
+From yesterday's exercise you loaded in a set of scores. Today you have a set
+of recommendations ... without scores.
 
 Marry the two. Now, output JSON in the following format:
 
@@ -73,5 +75,6 @@ writeRecs outputFile = undefined
 
 ... and you see the pprinted json of the recommendations with their scores.
 
-Tomorrow, we will add the keywords for these specific articles and output this as JSON
+Tomorrow, we will add the keywords for these specific articles and output this 
+as JSON
 --}
