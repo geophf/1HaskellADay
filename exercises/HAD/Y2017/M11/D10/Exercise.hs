@@ -82,7 +82,8 @@ article conn = undefined -- query_ conn articlesStmt
 ... which is fine, as we haven't done any analysis (that we've stored in the 
 database) on our article set. So let's do that.
 
-We do that by inserting the keyphrase with its article index into the database, then checked to make sure we have the article id, or, if not, add it to our 
+We do that by inserting the keyphrase with its article index into the database,
+then checked to make sure we have the article id, or, if not, add it to our 
 memoizing table.
 
 Goodness this is a lot of housekeeping!
