@@ -20,10 +20,10 @@ import Database.PostgreSQL.Simple.FromRow
 
 import Store.SQL.Connection
 
-import Y2017.M11.D03.Solution
-import Y2017.M11.D06.Solution
-import Y2017.M11.D07.Solution
-import Y2017.M11.D08.Solution
+import Y2017.M11.D03.Solution -- for KeyPhrase
+import Y2017.M11.D06.Solution -- for Value and Score
+import Y2017.M11.D07.Solution -- marrying Recommended articles to scores
+import Y2017.M11.D08.Solution -- attaching keyphrases to recommended articles
 
 -- here's our SQL to get our structure
 
