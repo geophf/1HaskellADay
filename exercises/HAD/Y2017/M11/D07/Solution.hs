@@ -24,6 +24,8 @@ import Data.Time
 
 -- below import available via 1HaskellADay git repository
 
+import Store.SQL.Util.Indexed
+
 import Y2017.M11.D06.Solution hiding (title)
 import Y2017.M11.D03.Solution
 
@@ -40,14 +42,17 @@ instance FromJSON Recommend where
       Rec <$> o .: "id" <*> o .: "title" <*> o .: "full_text"
           <*> o .:? "author" <*> o .: "publish_dt"
 
-data RecommendSet = RS { recs :: [Recommend] }
+instance Indexed Recommend where
+   idx (Rec i _ _ _ _) = read i
+
+data RecommendSet = RS { unrecs :: [Recommend] }
 
 instance FromJSON RecommendSet where
    parseJSON (Object o) = RS <$> o .: "recommend"
 
 readRecs :: FilePath -> IO (Map Integer Recommend)
 readRecs =
-    fmap (Map.fromList . map (read . recIdx &&& id) . recs . fromJust . decode)
+    fmap (Map.fromList . map (read . recIdx &&& id) . unrecs . fromJust . decode)
          . BL.readFile
 
 -- How many recommendations are there? How many title have the word 'Trump' in 
