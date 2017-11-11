@@ -27,7 +27,8 @@ import qualified Data.Set as Set
 
 import Control.DList (emptyDL)
 import Control.Scan.Config
-import Data.MemoizingTable
+import Data.MemoizingTable (MemoizingTable)
+import qualified Data.MemoizingTable as MT
 import Store.SQL.Connection (withConnection)
 
 import Y2017.M09.D25.Solution (parseHeader)
@@ -67,7 +68,7 @@ type SpecialCharTable = MemoizingTable SpecialChars AsciiEquiv
 
 readSpecialChars :: FilePath -> IO SpecialCharTable
 readSpecialChars =
-   fmap (initMemTable . (,Map.empty) . Map.fromList
+   fmap (MT.init . (,Map.empty) . Map.fromList
        . map ((head &&& parseAscii . tail) . words) . Set.toList)
       . parseConfig
 
@@ -90,7 +91,7 @@ repository :: FilePath
 repository = "Y2017/M11/D01/NYTOnline_08-29-17_09-05-17_pt3a.txt.gz"
 
 scanArchive :: SpecialCharTable -> FilePath -> IO (Either () [Context])
-scanArchive (Map.keysSet . fromTable -> chars) =
+scanArchive (Map.keysSet . MT.fromTable -> chars) =
    fmap ((\blks -> case concatMap (identify' chars) blks of
                 [] -> Left ()
                 ctx@(_:_) -> Right ctx) . extractBlocks) . BL.readFile
@@ -126,13 +127,13 @@ characters to the config file for manual update.
 
 replaceSpecialChars :: SpecialCharTable -> Block -> Block
 replaceSpecialChars chars =
-   Block . BL.pack . refineString (fromTable chars) . BL.unpack . block
+   Block . BL.pack . refineString chars . BL.unpack . block
 
-refineString :: Map SpecialChars AsciiEquiv -> String -> String
+refineString :: SpecialCharTable -> String -> String
 refineString chars str@(_:_) =
    let (pre, post) = break (\c -> ord c > 127) str
        (spc, rest) = charing post emptyDL
-       replacement = case Map.lookup spc chars of
+       replacement = case Map.lookup spc (MT.fromTable chars) of
                Just DELETE -> ""
                Just (REPLACE str) -> str
                Nothing -> "" -- end of block ffs
