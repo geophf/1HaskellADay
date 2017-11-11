@@ -25,14 +25,15 @@ import Database.PostgreSQL.Simple.ToField
 -- below imports available via 1HaskellADay git repository
 
 import Control.Logic.Frege (adjoin)
-import Data.MemoizingTable
+import Data.MemoizingTable (MemoizingTable)
+import qualified Data.MemoizingTable as MT
 import Store.SQL.Connection
 import Store.SQL.Util.Indexed
 import Store.SQL.Util.Inserts
 import Store.SQL.Util.Pivots
 
 import Y2017.M11.D03.Solution              -- Keyphrase
-import Y2017.M11.D06.Solution hiding (idx) -- Score, Value
+import Y2017.M11.D06.Solution              -- Score, Value
 import Y2017.M11.D07.Solution              -- Recommend
 
 -- We will read in our keyphrases and scores/recommendations and store them in
@@ -242,7 +243,7 @@ insertAnalyzedStmt = [sql|INSERT INTO article_analysis (article_id) VALUES (?)|]
 
 insertAnalyses :: Connection -> MTII -> IO ()
 insertAnalyses conn =
-   inserter conn insertAnalyzedStmt . map Idx . Set.toList . newValues
+   inserter conn insertAnalyzedStmt . map Idx . Set.toList . MT.newValues
 
 -- which, of course, we need to collate these values to insert
 -- So we take all the scored recommendations, and all the keywords, and we diff 
@@ -250,17 +251,20 @@ insertAnalyses conn =
 
 -- which means we need to make scored indexed by article id
 
+{--
+Move this instance to the Score module
 instance Indexed Score where
    idx (Row i _ _) = i
+--}
 
 analyzed :: Map Integer Score -> KeyphraseMap -> MTII -> MTII
 analyzed (Map.keys -> scrs) (map fromIntegral . Map.keys -> kws) =
-   flip (foldr triageMT) (scrs ++ kws)
+   flip (foldr MT.triage) (scrs ++ kws)
 
 -- but we need a memoizing table to start from ...
 
 startMT :: [(Integer, Integer)] -> MTII
-startMT = initMemTable . adjoin Map.fromList . (id &&& map swap)
+startMT = MT.init . adjoin Map.fromList . (id &&& map swap)
 
 {--
 >>> mtii = analyzed scrs kws (startMT arts)

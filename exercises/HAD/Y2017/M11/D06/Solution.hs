@@ -13,6 +13,7 @@ import qualified Data.Map as Map
 -- Below import available via 1HaskellADay git repository
 
 import Control.Scan.CSV
+import Store.SQL.Util.Indexed
 
 data Value a = QRY | VAL a
    deriving (Eq, Ord, Show)
@@ -26,8 +27,11 @@ instance Read a => Read (Value a) where
            guard (null rest) >>
            return (VAL val, "")
 
-data Score = Row { idx :: Integer, title :: String, score :: Value Float }
+data Score = Row { rowIdx :: Integer, title :: String, score :: Value Double }
    deriving (Eq, Ord, Show)
+
+instance Indexed Score where
+   idx (Row i _ _) = i
 
 parseLine :: String -> [Score]
 parseLine = pl . csv
