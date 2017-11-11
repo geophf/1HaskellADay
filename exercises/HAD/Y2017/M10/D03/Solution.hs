@@ -39,7 +39,8 @@ import Network.HTTP.Conduit
 
 import Control.Logic.Frege (adjoin)
 import Control.Scan.CSV (rend)
-import Data.MemoizingTable
+import Data.MemoizingTable (MemoizingTable(MT))
+import qualified Data.MemoizingTable as MT
 import Store.SQL.Connection (connectInfo)
 import Store.SQL.Util.Indexed
 import Store.SQL.Util.Inserts
@@ -154,7 +155,7 @@ parseSubjects = map Subj . (head &&& map tail . tail >>> uncurry (:)) . rend ';'
 
 updateNewSubjs :: [Subject] -> SubjectTable -> SubjectTable
 
--- updateNewSubjs reduces to Data.MemoizingTable.triageMT
+-- updateNewSubjs reduces to Data.MemoizingTable.triage
 
 {--
 updateNewSubjs subjs (MT mapi mapk n00b) =
@@ -163,7 +164,7 @@ updateNewSubjs subjs (MT mapi mapk n00b) =
             where containsKey k = Set.member k . Map.keysSet
 --}
 
-updateNewSubjs = flip (foldl (flip triageMT))
+updateNewSubjs = flip (foldl (flip MT.triage))
 
 -- we get the article, extract its subject information then factor the subject
 -- into the ones already indexed verse the ones we haven't yet stored in the
@@ -329,13 +330,13 @@ timedETL archive conn =
    inserter conn insertArtPersJoinStmt (zipWith joinValue pers ixpers) >>
    getCurrentTime >>= \inpersjoin ->
    putStrLn ("Inserting name-joins: " ++ show (diffUTCTime inpersjoin inpers)) >>
-   let memtable = initMemTable (Map.empty , Map.empty)
+   let memtable = MT.start []
        stat = execState (zipWithM_ getSubjectsMT ixarts articles) 
                                    (memtable, Map.empty) in
    uploadMT conn (fst stat) >>= \ixsubs ->
    getCurrentTime >>= \newsubs ->
    putStrLn ("Inserting new subjects: " ++ show (diffUTCTime newsubs inpersjoin)) >>
-   let tab = updateMT (map ixsubj2pair ixsubs) (fst stat) in
+   let tab = MT.update (map ixsubj2pair ixsubs) (fst stat) in
    insertSubjPivot conn (evalState buildSubjectPivots (tab, snd stat)) >>
    getCurrentTime >>= \thatsIt ->
    let totalTime = diffUTCTime thatsIt start in
