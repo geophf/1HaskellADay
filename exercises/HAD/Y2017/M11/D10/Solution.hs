@@ -184,7 +184,7 @@ insertStudiedStmt =
 insertRecsStmt :: Query
 insertRecsStmt =
    [sql|INSERT INTO recommendation
-                        (recommended_article_id,article_id,hindsight_score)
+                        (recommended_article_id,for_article_id,hindsight_score)
         VALUES (?,?,?)|]
 
 insertStudied :: Connection -> Score -> IO ()
@@ -192,7 +192,7 @@ insertStudied conn (Row i _ QRY) = inserter conn insertStudiedStmt [Idx i]
 
 insertRecs :: Connection -> Index -> [Score] -> IO ()
 insertRecs conn idx = inserter conn insertRecsStmt
-                             . map (\(Row i _ (VAL f)) -> (idx,i,f))
+                             . map (\(Row i _ (VAL f)) -> (i,idx,f))
 
 -- which means we need to partition the scores by type:
 
@@ -229,6 +229,8 @@ id	recommended_article_id	article_id	score
 3	6495			1790		89.0
 4	6495			1886		78.0
 5	6495			1891		93.0
+
+Oops! WRONG! BACKWARDS! ... and it only took all this time to notice this smh!
 --}
 
 -- ANALYSES -----------------------------------------------------------------
