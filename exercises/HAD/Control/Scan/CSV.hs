@@ -58,26 +58,68 @@ softtail (h:t) = t
 
 -- *Main> rend ',' "1,2,3" ~> ["1","2","3"]
 
-csv :: String -> [String]
 -- csv = rend ',' -- so we could just write this.
 
 -- No, we need to make csv "-escape-aware
 
+csv :: String -> [String]
 csv "" = []
 csv str = (rend ',' *** escapedThenCSVd >>> uncurry (++)) (break (== '"') str)
 
+escapedThenCSVd :: String -> [String]
 escapedThenCSVd "" = []
 escapedThenCSVd str =
-   (second (csv . softtail . softtail) >>> uncurry (:)) (break (== '"') (tail str))
+   let (reg, quoted) = uncurry checkDoublyDoubleQuote (break (== '"') (tail str))
+
+-- so here's the problem, if this is not an end-quote, then we need to continue
+-- parsing reg ++ quoted as one contiguous string.
+
+-- but also here's the problem. If it is the end-quote AND it's the last column
+-- then we're running up against _|_ for lists.
+
+   in (second (csv . drop 2) >>> uncurry (:)) (reg, quoted)
+
+checkDoublyDoubleQuote :: String -> String -> (String, String)
+checkDoublyDoubleQuote pre quoted =
+   if take 2 quoted == "\"\""
+   then let (post, newquoted) = break (== '"') (drop 2 quoted) in
+        checkDoublyDoubleQuote (pre ++ ('"':post)) newquoted
+   else (pre, quoted)
 
 {--
-*Main> csv "1,2,3" ~> ["1","2","3"]
-*Main> csv "\"1,2\",3" ~> ["1,2","3"]
-*Main> csv "\"1,2\",3,4,5,\"6,7,8\",9,10" ~> ["1,2","3","4","5","6,7,8","9","10"]
-*Main> csv "\"1,2\",3,4,5,\"6,7,8\",\"9,10\"" ~> ["1,2","3","4","5","6,7,8","9,10"]
+>>> csv "1,2,3" 
+["1","2","3"]
+>>> csv "\"1,2\",3" 
+["1,2","3"]
+>>> csv "\"1,2\",3,4,5,\"6,7,8\",9,10" 
+["1,2","3","4","5","6,7,8","9","10"]
+>>> csv "\"1,2\",3,4,5,\"6,7,8\",\"9,10\"" 
+["1,2","3","4","5","6,7,8","9,10"]
 
 There ya go! Quote escaping csv-parser. Yay.
+
+Not quite.
+
+We need to scan this line, too:
 --}
+
+quotedLine :: String
+quotedLine = "11,Education Department Withdraws Controversial ESSA Spending "
+          ++ "Proposal,1/18/17,Alyson Klein,\"That big fight over spending "
+          ++ "rules for the Every Student Succeeds Act has ended not with a "
+          ++ "bang, but a whimper: U.S. Secretary of Education John B. King, "
+          ++ "Jr. is throwing in the towel, withdrawing a proposed regulation "
+          ++ "for a section of the law known as \"\"supplement-not-supplant"
+          ++ "\"\" that had strong backing in the civil rights community, but "
+          ++ "angered state chiefs, advocates for districts, and Republicans "
+          ++ "in Congress.\",http://blogs.edweek.org/edweek/campaign-k-12/ass"
+          ++ "ets_c/2016/12/King%20blog%20pic-thumb-500x331-22556.jpg,"
+          ++ "http://blogs.edweek.org/edweek/campaign-k-12/2017/01/essa_john_"
+          ++ "b_king_jr_withdraws_.html,\"2,000,000\",11"
+
+-- You see what's going on here? Quoted strings within quoted columns are
+-- doubly double-quoted. We need a CSV that does all the above AND recognizes
+-- doubly double-quotes as part of the column, not as a column separator.
 
 -- Straight from Prelude.unwords using 'sep' instead of spaces as separators.
 -- isn't this intercalate? In which case (intercalate is just a weird word for
