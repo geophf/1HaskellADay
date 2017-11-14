@@ -7,8 +7,11 @@ NYT article archives.
 
 import Control.Arrow ((&&&))
 import Control.Monad (guard)
+import qualified Data.ByteString.Char8 as B
 import Data.Map (Map)
 import qualified Data.Map as Map
+import Database.PostgreSQL.Simple.FromField
+import Database.PostgreSQL.Simple.ToField
 
 -- Below import available via 1HaskellADay git repository
 
@@ -23,6 +26,20 @@ data Value a = QRY | VAL a
 val2float :: Num a => Value a -> a
 val2float QRY = 0
 val2float (VAL x) = x
+
+val2mb :: Value a -> Maybe a
+val2mb QRY = Nothing
+val2mb (VAL x) = Just x
+
+instance Read a => FromField (Value a) where
+   fromField f mdata = case B.unpack `fmap` mdata of
+       Nothing  -> return QRY
+       Just dat -> case [ x | (x,t) <- reads dat, ("","") <- lex t ] of
+                       [x] -> return (VAL x)
+--                       _   -> returnError ConversionFailed f dat
+
+instance ToField a => ToField (Value a) where
+   toField = toField . val2mb
 
 instance Read a => Read (Value a) where
    readsPrec _ str | str == "QRY" = [(QRY, "")]
