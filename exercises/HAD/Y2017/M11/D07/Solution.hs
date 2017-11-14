@@ -91,14 +91,6 @@ data Recommendation =
             scoreScore :: Double }
       deriving (Eq, Show)
 
-{-- moved to Score module
--- so we need to convert from a Value Float to just a Float. Let's say QRY is 0.
-
-val2float :: Num a => Value a -> a
-val2float QRY = 0
-val2float (VAL x) = x
---}
-
 marry :: Map Integer Recommend -> Map Integer Score -> [Recommendation]
 marry recs =
    mapMaybe (\(idx, val2float . score -> scr) ->
