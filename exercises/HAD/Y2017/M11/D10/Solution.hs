@@ -224,13 +224,11 @@ THERE we go! (fixing the query to return null)
 $ select * from recommendation LIMIT 5;
 
 id	recommended_article_id	article_id	score
-1	6495			1733		96.0
-2	6495			1778		87.0
-3	6495			1790		89.0
-4	6495			1886		78.0
-5	6495			1891		93.0
-
-Oops! WRONG! BACKWARDS! ... and it only took all this time to notice this smh!
+1	1733			6495		96.0
+2	1778			6495		87.0
+3	1790			6495		89.0
+4	1886			6495		78.0
+5	1891			6495		93.0
 --}
 
 -- ANALYSES -----------------------------------------------------------------
