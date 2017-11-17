@@ -6,6 +6,7 @@ concept allowing the user to distinguish between data and indices or to combine
 the two, as necessary.
 --}
 
+import Control.Arrow ((&&&))
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.FromRow
 import Database.PostgreSQL.Simple.FromField
@@ -67,3 +68,6 @@ instance FromField a => FromRow (IxValue a) where
 
 instance Indexed (IxValue a) where
    idx = ix
+
+ix2tup :: IxValue a -> (Integer, a)
+ix2tup = ix &&& val
