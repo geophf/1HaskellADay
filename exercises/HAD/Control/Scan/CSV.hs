@@ -10,7 +10,7 @@ import Data.List (intercalate)
 
 -- below imports available via 1HaskellADay git repository
 
-import Control.List (weave)
+import Control.List (weave,softtail)
 import Control.Presentation
 
 -- I do this often enough: scanning in a CSV file, so, here it is:
@@ -51,10 +51,6 @@ rendBy fn [] = []
 rendBy fn line@(h:t) =
     if fn h then ([]:rendBy fn t)  -- to keep columns aligned
     else (second (rendBy fn . softtail) >>> uncurry (:)) $ break fn line
-
-softtail :: [a] -> [a]
-softtail [] = []
-softtail (h:t) = t
 
 -- *Main> rend ',' "1,2,3" ~> ["1","2","3"]
 

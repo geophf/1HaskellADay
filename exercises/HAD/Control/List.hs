@@ -38,6 +38,12 @@ chops n list = take n list : chops n (drop n list)
 
 -- *Main> chops 4 [1..12] ~> [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
 
+-- softtail, because Harley Davidson
+
+softtail :: [a] -> [a]
+softtail [] = []
+softtail (h:t) = t
+
 -- powerSet, because we all need a little powerSet-love-action now and again
 
 -- declarative semantics, but blows up
