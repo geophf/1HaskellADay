@@ -34,16 +34,17 @@ recommendFile = "Y2017/M11/D07/recommend.json"
 
 data Recommend =
    Rec { recIdx :: String, title, text :: String,
-         author :: Maybe String, published :: Day }
+         author :: Maybe String, published :: Day,
+         viewCnt :: Maybe Integer }
       deriving (Eq, Show)
 
 instance FromJSON Recommend where
    parseJSON (Object o) =
       Rec <$> o .: "id" <*> o .: "title" <*> o .: "full_text"
-          <*> o .:? "author" <*> o .: "publish_dt"
+          <*> o .:? "author" <*> o .: "publish_dt" <*> o .: "view_count"
 
 instance Indexed Recommend where
-   idx (Rec i _ _ _ _) = read i
+   idx (Rec i _ _ _ _ _) = read i
 
 data RecommendSet = RS { unrecs :: [Recommend] }
 
@@ -88,6 +89,7 @@ data Recommendation =
             scoreDate :: Day,
             scoreAuthor :: Maybe String,
             scoreKWs :: [Keyphrase],
+            scoreViewCnt :: Maybe Integer,
             scoreScore :: Double }
       deriving (Eq, Show)
 
@@ -96,7 +98,7 @@ marry recs =
    mapMaybe (\(idx, val2float . score -> scr) ->
                Map.lookup idx recs >>= \rec ->
                return (Scored idx (title rec) (text rec) (published rec) 
-                              (author rec) [] scr))
+                              (author rec) [] (viewCnt rec) scr))
        . Map.toList
 
 -- how many recommendations did you get from that marriage?
@@ -119,6 +121,7 @@ instance ToJSON Recommendation where
                         "article_date" .= scoreDate rec,
                         "article_keywords" .= scoreKWs rec,
                         "article_score" .= scoreScore rec,
+                        "article_view_count" .= scoreViewCnt rec,
                         "article_author" .= scoreAuthor rec]
 
 -- Of course, we need keyword JSON instance, but leave that undefined for now
