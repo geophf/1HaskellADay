@@ -28,8 +28,11 @@ import Y2017.M11.D08.Solution -- attaching keyphrases to recommended articles
 -- here's our SQL to get our structure
 
 recommendsStmt :: Query
-recommendsStmt = [sql|SELECT id,title,full_text,author,publish_dt FROM article
-                      WHERE id IN ?|]
+recommendsStmt =
+   [sql|SELECT a.id,a.title,s.summary,a.author,a.publish_dt,a.view_count
+        FROM article a
+        LEFT JOIN article_summary s ON s.article_id = a.id
+        WHERE a.id IN ?|]
 
 fetchRecommend :: Connection -> [Integer] -> IO [Recommend]
 fetchRecommend conn = query conn recommendsStmt . Only . In
@@ -38,7 +41,7 @@ fetchRecommend conn = query conn recommendsStmt . Only . In
 
 instance FromRow Recommend where
    fromRow = Rec <$> (show <$> (field :: RowParser Integer))
-                 <*> field <*> field <*> field <*> field
+                 <*> field <*> field <*> field <*> field <*> field
 
 -- Now that we have our data on the recommendations, the scores and the keywords
 -- (see imports above): generate the JSON as before
