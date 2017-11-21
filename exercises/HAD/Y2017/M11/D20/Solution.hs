@@ -173,6 +173,8 @@ Okay, that's enough commands to package up into an application:
 recs :: Connection -> [KeyWord] -> IO [Recommendation]
 recs conn keywords = kwTable conn >>= recs' conn keywords
 
+-- we'll look at improving recs in a future 1HaskellADay exercise
+
 recs' :: Connection -> [KeyWord] -> KWtable -> IO [Recommendation]
 recs' conn keywords kwtable = do
    idxn <- filterArts conn kwtable keywords
