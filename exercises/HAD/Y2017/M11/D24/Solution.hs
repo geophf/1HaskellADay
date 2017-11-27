@@ -15,6 +15,7 @@ For example.
 import Data.Aeson.Encode.Pretty (encodePretty)
 import qualified Data.ByteString.Lazy.Char8 as BL
 import qualified Data.Map as Map
+import Data.Maybe (mapMaybe)
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
 import Database.PostgreSQL.Simple.FromRow
@@ -65,9 +66,10 @@ articleData :: SpecialCharTable -> Connection -> [IxValue (Value Strength)]
             -> IO [Brief]
 articleData chars conn artIds =
    let strengths = Map.fromList (map ix2tup artIds) in
-   map (\(idx,tit,summ,_auth :: Maybe String,dt,vc) ->
-         Summarized idx dt (refineString chars tit) (summarize chars <$> summ)
-                    vc (strengths Map.! idx))
+   mapMaybe (\(idx,tit,summ,_auth :: Maybe String,dt,vc) ->
+         summ >>= \s ->
+         return (Summarized idx dt (refineString chars tit) (summarize chars s)
+                    vc (strengths Map.! idx)))
         <$> query conn recommendsStmt (Only (In (map idx artIds)))
 
 -- now we have to return those as JSON ... but we already know how to do that.
