@@ -35,7 +35,8 @@ import Y2017.M11.D20.Solution -- for article sets filtered by keyword search
 
 data Brief =
    Summarized { briefIdx :: Integer, date :: Maybe Day,
-                title, summary :: String,
+                title :: String,
+                summary :: Maybe String,
                 viewCount :: Maybe Integer,
                 rank :: Value Strength }
       deriving (Eq, Show)
@@ -43,7 +44,7 @@ data Brief =
 rec2brief :: SpecialCharTable -> Recommendation -> Brief
 rec2brief chrs (Scored idx tit txt dt _ _ vc score) =
    Summarized idx (pure dt) (refineString chrs tit)
-              (summarize chrs txt) vc (VAL score)
+              (summarize chrs <$> txt) vc (VAL score)
 
 summarize :: SpecialCharTable -> String -> String
 summarize = refineString -- having the rec read a summary now

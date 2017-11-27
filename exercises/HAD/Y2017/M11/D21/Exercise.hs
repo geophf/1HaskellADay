@@ -15,7 +15,7 @@ Okay, then! Let's do that!
 From yesterday's results, do the above. Capice?
 --}
 
-import Data.Aeson
+import Data.Aeson hiding (Value)
 import Data.Aeson.Encode.Pretty
 import Data.Time
 
@@ -23,12 +23,15 @@ import Data.Time
 
 import Y2017.M11.D01.Exercise -- for special character filtration
 import Y2017.M11.D03.Exercise -- for Strength
+import Y2017.M11.D06.Exercise hiding (title) -- for Value
 import Y2017.M11.D07.Exercise -- for Recommendation
 import Y2017.M11.D20.Exercise -- for article sets filtered by keyword search
 
 data Brief =
-   Summarized { briefIdx :: Integer, date :: Day, title, summary :: String,
-                rank :: Strength }
+   Summarized { briefIdx :: Integer, date :: Maybe Day,
+                title :: String,
+                summary :: Maybe String,
+                rank :: Value Strength }
       deriving (Eq, Show)
 
 rec2brief :: Recommendation -> Brief
