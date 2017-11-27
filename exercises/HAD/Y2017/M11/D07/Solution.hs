@@ -33,14 +33,15 @@ recommendFile :: FilePath
 recommendFile = "Y2017/M11/D07/recommend.json"
 
 data Recommend =
-   Rec { recIdx :: String, title, text :: String,
-         author :: Maybe String, published :: Day,
+   Rec { recIdx, title :: String,
+         text, author :: Maybe String,
+         published :: Day,
          viewCnt :: Maybe Integer }
       deriving (Eq, Show)
 
 instance FromJSON Recommend where
    parseJSON (Object o) =
-      Rec <$> o .: "id" <*> o .: "title" <*> o .: "full_text"
+      Rec <$> o .: "id" <*> o .: "title" <*> o .:? "full_text"
           <*> o .:? "author" <*> o .: "publish_dt" <*> o .: "view_count"
 
 instance Indexed Recommend where
@@ -85,7 +86,8 @@ article_author: <<- if present
 
 data Recommendation =
    Scored { scoreIdx :: Integer, 
-            scoreTitle, scoreText :: String, 
+            scoreTitle :: String,
+            scoreText :: Maybe String, 
             scoreDate :: Day,
             scoreAuthor :: Maybe String,
             scoreKWs :: [Keyphrase],
