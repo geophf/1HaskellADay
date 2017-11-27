@@ -29,8 +29,7 @@ import Y2017.M11.D20.Exercise -- for article sets filtered by keyword search
 
 data Brief =
    Summarized { briefIdx :: Integer, date :: Maybe Day,
-                title :: String,
-                summary :: Maybe String,
+                title, summary :: String,
                 rank :: Value Strength }
       deriving (Eq, Show)
 

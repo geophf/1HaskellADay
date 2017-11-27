@@ -19,6 +19,7 @@ import Control.Monad ((>=>))
 import Data.Aeson hiding (Value)
 import Data.Aeson.Encode.Pretty (encodePretty)
 import qualified Data.ByteString.Lazy.Char8 as BL
+import Data.Maybe (mapMaybe)
 import Data.Time
 
 -- below imports available 1HaskellADay git repository
@@ -35,16 +36,16 @@ import Y2017.M11.D20.Solution -- for article sets filtered by keyword search
 
 data Brief =
    Summarized { briefIdx :: Integer, date :: Maybe Day,
-                title :: String,
-                summary :: Maybe String,
+                title, summary :: String,
                 viewCount :: Maybe Integer,
                 rank :: Value Strength }
       deriving (Eq, Show)
 
-rec2brief :: SpecialCharTable -> Recommendation -> Brief
+rec2brief :: SpecialCharTable -> Recommendation -> Maybe Brief
 rec2brief chrs (Scored idx tit txt dt _ _ vc score) =
-   Summarized idx (pure dt) (refineString chrs tit)
-              (summarize chrs <$> txt) vc (VAL score)
+   txt >>= \summ ->
+   return (Summarized idx (pure dt) (refineString chrs tit)
+              (summarize chrs summ) vc (VAL score))
 
 summarize :: SpecialCharTable -> String -> String
 summarize = refineString -- having the rec read a summary now
@@ -87,4 +88,4 @@ main' keywords = do
    homeDir <- home
    special <- readSpecialChars (homeDir ++ "/.specialChars.prop")
    withConnection (flip recs keywords >=>
-      BL.putStrLn . encodePretty . map (rec2brief special))
+      BL.putStrLn . encodePretty . mapMaybe (rec2brief special))
