@@ -66,7 +66,7 @@ articleData :: SpecialCharTable -> Connection -> [IxValue (Value Strength)]
 articleData chars conn artIds =
    let strengths = Map.fromList (map ix2tup artIds) in
    map (\(idx,tit,summ,_auth :: Maybe String,dt,vc) ->
-         Summarized idx dt (refineString chars tit) (summarize chars summ)
+         Summarized idx dt (refineString chars tit) (summarize chars <$> summ)
                     vc (strengths Map.! idx))
         <$> query conn recommendsStmt (Only (In (map idx artIds)))
 
