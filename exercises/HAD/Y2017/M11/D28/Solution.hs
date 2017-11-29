@@ -63,4 +63,6 @@ This may not be your cup of tea, but here it is: write a PHP script that calls
 this program with the _REQUEST arguments, then have that PHP script call
 start on the source article id to return JSON of all the entries of the
 recommendation table for that source article.
+
+The PHP script is located at Y2017/M11/D28/remove_show.php
 --}
