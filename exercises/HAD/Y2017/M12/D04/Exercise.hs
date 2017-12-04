@@ -35,6 +35,25 @@ copyDirs srcDir destDir = undefined
 -- copies srcDir to destDir
 -- duplicate files are not copied, newer files overwrite/overrule older files
 
+-- Copy over the files in sample/ to parExample/, observing the guidance above.
+
+dir :: FilePath
+dir = "Y2017/M12/D04/"
+
+srcDir, destDir :: FilePath
+srcDir = dir ++ "sample/"
+destDir = dir ++ "parExample/"
+
+{--
+So, in this specific case:
+
+* srcDir/eenie.txt should do nothing, as both files are the same
+* srcDir/meanie.txt should copy and overwrite the file in destDir/ as the
+  src file is newer
+* srcDir/miny.txt should NOT copy over as destDir file is newer
+* srcDir/moe.txt should copy, as there is no file in destDir by that name.
+--}
+
 {-- BONUS -----------------------------------------------------------------
 
 Create a directory structure that mimics the directory structure being updated.
