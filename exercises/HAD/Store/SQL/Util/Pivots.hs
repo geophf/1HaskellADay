@@ -12,6 +12,7 @@ ArticlePersonJoin structure, we'll declare and use the general Pivot type here.
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
 import Database.PostgreSQL.Simple.ToRow
+import Database.PostgreSQL.Simple.FromRow
 import Database.PostgreSQL.Simple.ToField
 
 -- below import available via 1HaskellADay git repository
@@ -37,3 +38,6 @@ instance ToRow Pivot where
 {-- e.g.:
 >>> inserter conn insertArtPersJoinStmt (zipWith joinValue pers ixpers)
 --}
+
+instance FromRow Pivot where
+   fromRow = Pvt <$> field <*> field
