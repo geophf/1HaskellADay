@@ -1,3 +1,5 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Store.SQL.Util.Pivots where
 
 {-- Pivot tables ---------------------------------------------------------------
@@ -9,6 +11,7 @@ tables,' are prevalent and follow a certain structure. Instead of the specific
 ArticlePersonJoin structure, we'll declare and use the general Pivot type here.
 --}
 
+import Data.Aeson
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
 import Database.PostgreSQL.Simple.ToRow
@@ -41,3 +44,6 @@ instance ToRow Pivot where
 
 instance FromRow Pivot where
    fromRow = Pvt <$> field <*> field
+
+instance ToJSON Pivot where
+   toJSON (Pvt k1 k2) = object ["article_id" .= k1, "subject_id" .= k2]
