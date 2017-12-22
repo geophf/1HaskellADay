@@ -41,7 +41,7 @@ instance ToJSON a => ToJSON (Packet a) where
 instance FromJSON a => FromJSON (Packet a) where
    parseJSON (Object o) = undefined
 
-data Article = Art { content :: [String] }
+data Article = Art { uuid, title :: String, content :: [String] }
    deriving (Eq, Show)
 
 instance FromJSON Article where
