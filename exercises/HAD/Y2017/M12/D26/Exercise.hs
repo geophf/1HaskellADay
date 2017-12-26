@@ -34,7 +34,7 @@ instance ToRow Article where
 
 insertArticleStgStmt :: Query
 insertArticleStgStmt =
-    [sql|INSERT INTO article_stg (block) VALUE (?) returning id|]
+    [sql|INSERT INTO article_stg (block) VALUES (?) returning id|]
 
 insertStagedArt :: Connection -> [Article] -> IO [Index]
 insertStagedArt conn arts = undefined
