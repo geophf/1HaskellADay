@@ -41,30 +41,36 @@ instance ToJSON a => ToJSON (Packet a) where
 instance FromJSON a => FromJSON (Packet a) where
    parseJSON (Object o) = undefined
 
-data Article = Art { uuid, title :: String, content :: [String] }
+data SimpleArticle = Simp { uuid, title :: String, content :: [String] }
    deriving (Eq, Show)
 
-instance FromJSON Article where
+class HTML a where
+   body :: a -> [String]
+
+instance HTML SimpleArticle where
+   body = content
+
+instance FromJSON SimpleArticle where
    parseJSON (Object o) = undefined
 
-instance ToJSON Article where
+instance ToJSON SimpleArticle where
    toJSON art = undefined
 
 -- Now we can redeclare and redefine readSample on the new Article declaration
 
-readSample :: FilePath -> IO (Packet Article)
+readSample :: FilePath -> IO (Packet SimpleArticle)
 readSample file = undefined
 
 -- Now that you have the content as a list of strings we want two things
 
 -- 1. the unparsed string as a block of HTML
 
-htmlBlock :: Article -> String
+htmlBlock :: HTML a => a -> String
 htmlBlock art = undefined
 
 -- 2. the parsed text as a set of lines of tag-free text
 
-plainText :: Article -> [String]
+plainText :: HTML a => a -> [String]
 plainText art = undefined
 
 -- hint: use tagsoup to help here

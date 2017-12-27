@@ -48,22 +48,28 @@ instance FromJSON a => FromJSON (Packet a) where
       Pack <$> o .: "view" <*> o .: "count" <*> o .: "total"
            <*> o .: "next" <*> o .: "prev"  <*> o .: "rows"
 
-readSample :: FilePath -> IO (Packet Article)
+readSample :: FilePath -> IO (Packet SimpleArticle)
 readSample file = fromJust . decode <$> BL.readFile file
 
-data Article = Art { uuid, title :: String, content :: [String] }
+data SimpleArticle = Simp { uuid, title :: String, content :: [String] }
    deriving (Eq, Show)
 
-instance FromJSON Article where
-   parseJSON (Object o) =
-      Art <$> o .: "uuid" <*> o .: "title" <*> o .: "content"
+class HTML a where
+   body :: a -> [String]
 
-instance ToJSON Article where
+instance HTML SimpleArticle where
+   body = content
+
+instance FromJSON SimpleArticle where
+   parseJSON (Object o) =
+      Simp <$> o .: "uuid" <*> o .: "title" <*> o .: "content"
+
+instance ToJSON SimpleArticle where
    toJSON art =
-      object ["title" .= title art, "content" .= content art, "uuid" .= uuid art]
+      object ["title" .= title art,"content" .= content art,"uuid" .= uuid art]
 
 {-- and thus we have our content function making the below O.B.E
-content :: Article -> [String]
+content :: SimpleArticle -> [String]
 content art = undefined
 --}
 
@@ -80,13 +86,16 @@ content art = undefined
 
 -- 1. the unparsed string as a block of HTML
 
-htmlBlock :: Article -> String
-htmlBlock = unlines . content
+htmlBlock :: HTML a => a -> String
+htmlBlock = unlines . body
 
 -- 2. the parsed text as a set of lines of tag-free text
 
-plainText :: Article -> [String]
-plainText = map (unwords . mapMaybe text . parseTags) . content
+plainText :: HTML a => a -> [String]
+plainText = map demark . body
+
+demark :: String -> String
+demark = unwords . mapMaybe text . parseTags
 
 text :: Tag String -> Maybe String
 text (TagText s) = Just s
@@ -96,10 +105,10 @@ text _           = Nothing
 
 -- What are the htmlBlock and plainText for each of the articles of subset.json?
 
-art2art :: Article -> [String]
+art2art :: SimpleArticle -> [String]
 art2art art = "":([uuid, nl, title, nl] <*> [art]) ++ plainText art
 
-nl :: Article -> String
+nl :: a -> String
 nl = const ""
 
 {--
