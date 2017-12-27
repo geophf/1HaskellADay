@@ -26,7 +26,7 @@ import Database.PostgreSQL.Simple.ToRow
 
 import Store.SQL.Util.Indexed
 
-instance ToRow Article where
+instance ToRow Block where
    toRow art = undefined
 
 -- The insert statement gives the Article structure
@@ -36,7 +36,7 @@ insertArticleStgStmt :: Query
 insertArticleStgStmt =
     [sql|INSERT INTO article_stg (block) VALUES (?) returning id|]
 
-insertStagedArt :: Connection -> [Article] -> IO [Index]
+insertStagedArt :: Connection -> [Block] -> IO [Index]
 insertStagedArt conn arts = undefined
 
 -- insertStagedArt stores a set of articles and returns the ids the database

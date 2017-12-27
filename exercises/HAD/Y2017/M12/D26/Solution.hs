@@ -31,8 +31,8 @@ import Database.PostgreSQL.Simple.ToField (toField)
 import Store.SQL.Connection (withConnection)
 import Store.SQL.Util.Indexed
 
-instance ToRow Article where
-   toRow art = [toField . BL.unpack $ encodePretty art]
+instance ToRow Block where
+   toRow = pure . toField . BL.unpack . encodePretty
 
 -- The insert statement gives the Article structure
 -- (also image attached from the Entity-relation diagram)
@@ -41,7 +41,7 @@ insertArticleStgStmt :: Query
 insertArticleStgStmt =
     [sql|INSERT INTO article_stg (block) VALUES (?) returning id|]
 
-insertStagedArt :: Connection -> [Article] -> IO [Index]
+insertStagedArt :: Connection -> [Block] -> IO [Index]
 insertStagedArt conn = returning conn insertArticleStgStmt
 
 -- insertStagedArt stores a set of articles and returns the ids the database

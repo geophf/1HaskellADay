@@ -30,7 +30,7 @@ import Data.ByteString.Lazy.Char8 (ByteString)
 
 data Packet =
       Pack { view :: String, count, total, next :: Int, prev :: Maybe Int,
-             rows :: [UnparsedArticle] }
+             rows :: [Block] }
       deriving (Eq, Show)
 
 instance ToJSON Packet where
@@ -39,7 +39,7 @@ instance ToJSON Packet where
 instance FromJSON Packet where
    parseJSON obj = undefined
 
-type UnparsedArticle = Value
+type Block = Value
 
 -- for now, our article values are just value-placeholders.
 
