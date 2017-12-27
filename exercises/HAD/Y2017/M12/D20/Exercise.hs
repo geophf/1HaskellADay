@@ -29,7 +29,8 @@ import Data.Aeson.Encode.Pretty (encodePretty)
 import Data.ByteString.Lazy.Char8 (ByteString)
 
 data Packet =
-      Pack { view :: String, count, total, next :: Int, prev :: Maybe Int, rows :: [Article] }
+      Pack { view :: String, count, total, next :: Int, prev :: Maybe Int,
+             rows :: [UnparsedArticle] }
       deriving (Eq, Show)
 
 instance ToJSON Packet where
@@ -38,7 +39,7 @@ instance ToJSON Packet where
 instance FromJSON Packet where
    parseJSON obj = undefined
 
-type Article = Value
+type UnparsedArticle = Value
 
 -- for now, our article values are just value-placeholders.
 

@@ -36,7 +36,8 @@ import qualified Data.Text as T
 import Control.Logic.Frege ((<<-))
 
 data Packet =
-   Pack { view :: String, count, total, next :: Int, prev :: Maybe Int, rows :: [Article] }
+   Pack { view :: String, count, total, next :: Int, prev :: Maybe Int,
+          rows :: [UnparsedArticle] }
       deriving (Eq, Show)
 
 instance ToJSON Packet where
@@ -63,7 +64,7 @@ Just (Pack {view = "default", count = 100, total = 279091, next = 100, prev = No
 "{\"next\":100,\"count\":100,\"total\":279091,\"view\":\"default\",\"prev\":null,\"rows\":[]}"
 --}
 
-type Article = Value
+type UnparsedArticle = Value
 
 dir :: FilePath
 dir = "Y2017/M12/D20/"
