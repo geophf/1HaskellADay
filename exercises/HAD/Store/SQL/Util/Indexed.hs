@@ -60,11 +60,11 @@ Represents a row in a key-value table
 data IxValue a = IxV { ix :: Integer, val :: a }
    deriving (Eq, Ord, Show)
 
-instance ToField a => ToRow (IxValue a) where
-   toRow (IxV i v) = [toField i, toField v]
+instance ToRow a => ToRow (IxValue a) where
+   toRow (IxV i v) = toField i:toRow v
 
-instance FromField a => FromRow (IxValue a) where
-   fromRow = IxV <$> field <*> field
+instance FromRow a => FromRow (IxValue a) where
+   fromRow = IxV <$> field <*> fromRow
 
 instance Indexed (IxValue a) where
    idx = ix
