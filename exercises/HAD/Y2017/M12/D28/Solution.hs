@@ -81,4 +81,22 @@ So we know that lastupdated is (kinda) optional.
 Let's roll that change into the data type and try it again.
 
 Lather, rinse, repeat until we have a clean and complete upload.
+
+next iteration, article 82:
+
+    "prologue": null,
+
+And article 81:
+
+    "keywords": [
+        "naval air station oceana",
+        "air show",
+        "air force",
+        "thunderbirds",
+        "navy",
+        "blue angels",
+        2019
+    ],
+
+-- huh, that's going to be a doozy to fix.
 --}
