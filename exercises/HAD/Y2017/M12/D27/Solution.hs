@@ -66,10 +66,14 @@ import Database.PostgreSQL.Simple.ToField (toField)
 import Database.PostgreSQL.Simple.ToRow
 
 data DatedArticle =
-   Carbon { uuid, title, url, prologue  :: String,
+   Carbon { uuid, title, url            :: String,
+            prologue                    :: Maybe String,
             authors                     :: [Value],
-            starttime, lastupdated      :: ZonedTime,
-            sections, keywords, content :: [String] }
+            starttime                   :: Maybe ZonedTime,
+            lastupdated                 :: Maybe ZonedTime,
+            sections                    :: [String],
+            keywords                    :: [Value],
+            content                     :: [String] }
       deriving Show
 
 -- so, but how do we get from that wild and wonderful structure in the JSON
@@ -78,9 +82,11 @@ data DatedArticle =
 iso8601like :: String
 iso8601like = "%FT%T%z"
 
-parseDate :: Value -> Parser ZonedTime
+parseDate :: Value -> Parser (Maybe ZonedTime)
 parseDate (Object o) =
-   o.: "iso8601" >>= parseTimeM True defaultTimeLocale iso8601like
+   o.:? "iso8601" >>= \mbstr -> return (case mbstr of
+         Nothing -> Nothing
+         Just t  -> parseTimeM True defaultTimeLocale iso8601like t)
 
 showDate :: ZonedTime -> String
 showDate = formatTime defaultTimeLocale iso8601like
@@ -120,10 +126,9 @@ instance HTML DatedArticle where
 
 instance ToRow DatedArticle where
    toRow art@(Carbon uu ti ur pr au st la se ke co) =
-      [toField la, toField st, toField uu, toField ur, toField pr,
+      [toField la, toField st, toField uu, toField ur, toField (demark <$> pr),
        toField (htmlBlock art), toField (unlines $ plainText art),
        toField (weave se), toField ti] 
-      
 
 -- The insert statement gives the Article structure
 -- (also image attached from the Entity-relation diagram)
