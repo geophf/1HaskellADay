@@ -57,12 +57,18 @@ import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
 import Database.PostgreSQL.Simple.ToRow
 
+-- updated to take into account optionality and varying types in keywords
+-- (see Y2017.M12.D28.Exercise)
+
 data DatedArticle =
-   Carbon { uuid, title, url, prologue  :: String,
-            authors                     :: [Value],
-            starttime, lastupdated      :: Day,
-            sections, keywords, content :: [String] }      
-      deriving (Eq, Show)
+   Carbon { uuid, title, url       :: String,
+            prologue               :: Maybe String,
+            authors                :: [Value],
+            starttime, lastupdated :: Maybe ZonedTime,
+            sections               :: [String],
+            keywords               :: [Value],
+            content                :: [String] }
+      deriving Show
 
 instance HTML DatedArticle where
    body art = undefined

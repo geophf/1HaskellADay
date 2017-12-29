@@ -66,14 +66,13 @@ import Database.PostgreSQL.Simple.ToField (toField)
 import Database.PostgreSQL.Simple.ToRow
 
 data DatedArticle =
-   Carbon { uuid, title, url            :: String,
-            prologue                    :: Maybe String,
-            authors                     :: [Value],
-            starttime                   :: Maybe ZonedTime,
-            lastupdated                 :: Maybe ZonedTime,
-            sections                    :: [String],
-            keywords                    :: [Value],
-            content                     :: [String] }
+   Carbon { uuid, title, url       :: String,
+            prologue               :: Maybe String,
+            authors                :: [Value],
+            starttime, lastupdated :: Maybe ZonedTime,
+            sections               :: [String],
+            keywords               :: [Value],
+            content                :: [String] }
       deriving Show
 
 -- so, but how do we get from that wild and wonderful structure in the JSON
