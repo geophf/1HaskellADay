@@ -67,7 +67,8 @@ data DatedArticle =
             starttime, lastupdated :: Maybe ZonedTime,
             sections               :: [String],
             keywords               :: [Value],
-            content                :: [String] }
+            content                :: [String],
+            byline                 :: String }
       deriving Show
 
 instance HTML DatedArticle where

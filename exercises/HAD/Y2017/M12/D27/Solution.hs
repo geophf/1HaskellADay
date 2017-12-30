@@ -72,7 +72,8 @@ data DatedArticle =
             starttime, lastupdated :: Maybe ZonedTime,
             sections               :: [String],
             keywords               :: [Value],
-            content                :: [String] }
+            content                :: [String],
+            byline                 :: Maybe String }
       deriving Show
 
 -- so, but how do we get from that wild and wonderful structure in the JSON
@@ -114,7 +115,8 @@ instance FromJSON DatedArticle where
              <*> o .: "prologue" <*> o .: "authors"
              <*> (o .: "starttime" >>= parseDate)
              <*> (o .: "lastupdated" >>= parseDate)
-             <*> o .: "sections" <*> o .: "keywords" <*> o .: "content"
+             <*> o .: "sections" <*> o .: "keywords"
+             <*> o .: "content" <*> o .: "byline"
 
 -- we also need to make DatedArticle an HTML instance
 
@@ -124,7 +126,7 @@ instance HTML DatedArticle where
 -- Now, with that parsed structure, save the Article set to the database
 
 instance ToRow DatedArticle where
-   toRow art@(Carbon uu ti ur pr au st la se ke co) =
+   toRow art@(Carbon uu ti ur pr au st la se ke co _) =
       [toField la, toField st, toField uu, toField ur, toField (demark <$> pr),
        toField (htmlBlock art), toField (unlines $ plainText art),
        toField (weave se), toField ti] 
