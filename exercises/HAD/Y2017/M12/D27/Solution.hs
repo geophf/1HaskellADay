@@ -62,13 +62,13 @@ with the parsed information, save those articles to our PostgreSQL data store.
 import Data.Time
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
-import Database.PostgreSQL.Simple.ToField (toField)
+import Database.PostgreSQL.Simple.ToField
 import Database.PostgreSQL.Simple.ToRow
 
-data DatedArticle =
+data DatedArticle a =
    Carbon { uuid, title, url       :: String,
             prologue               :: Maybe String,
-            authors                :: [Value],
+            authors                :: [a],
             starttime, lastupdated :: Maybe ZonedTime,
             sections               :: [String],
             keywords               :: [Value],
@@ -100,7 +100,7 @@ sampleDate = BL.unlines ["{",
 
 -- note that changing -05:00 to -04:00 does NOT change the time zone
 
-readArticles :: FilePath -> IO (Packet DatedArticle)
+readArticles :: FilePath -> IO (Packet (DatedArticle Value))
 readArticles json = fromJust . decode <$> BL.readFile json
 
 {--
@@ -109,7 +109,7 @@ readArticles json = fromJust . decode <$> BL.readFile json
 "2017-12-12T22:00:00-0500"
 --}
 
-instance FromJSON DatedArticle where
+instance FromJSON a => FromJSON (DatedArticle a) where
    parseJSON (Object o) =
       Carbon <$> o .: "uuid" <*> o .: "title" <*> o .: "url"
              <*> o .: "prologue" <*> o .: "authors"
@@ -120,12 +120,12 @@ instance FromJSON DatedArticle where
 
 -- we also need to make DatedArticle an HTML instance
 
-instance HTML DatedArticle where
+instance HTML (DatedArticle a) where
    body = content
 
 -- Now, with that parsed structure, save the Article set to the database
 
-instance ToRow DatedArticle where
+instance ToField a => ToRow (DatedArticle a) where
    toRow art@(Carbon uu ti ur pr au st la se ke co _) =
       [toField la, toField st, toField uu, toField ur, toField (demark <$> pr),
        toField (htmlBlock art), toField (unlines $ plainText art),
@@ -137,13 +137,14 @@ instance ToRow DatedArticle where
 insertArticleStmt :: Query
 insertArticleStmt =
    [sql|INSERT INTO article (src_id,update_dt,publish_dt,article_id,url,
-                             abstract,full_text,rendered_text,sections,title)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) returning id|]
+                             abstract,full_text,rendered_text,sections,title,
+                             authors)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) returning id|]
 
-ixArt2ixArt :: Index -> DatedArticle -> IxValue DatedArticle
+ixArt2ixArt :: Index -> (DatedArticle a) -> IxValue (DatedArticle a)
 ixArt2ixArt (Idx x) art = IxV x art
 
-insertArts :: Connection -> [Index] -> [DatedArticle] -> IO [Index]
+insertArts :: ToField a => Connection -> [Index] -> [DatedArticle a] -> IO [Index]
 insertArts conn = returning conn insertArticleStmt <<- zipWith ixArt2ixArt
 
 -- from the source article ids in the article_stg table and the parsed articles,
@@ -156,10 +157,10 @@ in article_stg (hint: Y2017.M12.D26.Exercise), then stores the parsed article
 information with the source article id in the database as well.
 --}
 
-parseArticle :: Int -> Value -> IO (Maybe DatedArticle)
+parseArticle :: Int -> Value -> IO (Maybe (DatedArticle Value))
 parseArticle idx = pa idx . fromJSON
 
-pa :: Int -> Result DatedArticle -> IO (Maybe DatedArticle)
+pa :: Int -> Result (DatedArticle Value) -> IO (Maybe (DatedArticle Value))
 pa idx (Success art) = 
    putStrLn ("Parsed " ++ uuid art) >> return (Just art)
 pa idx (Error err) =
