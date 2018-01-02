@@ -55,15 +55,16 @@ with the parsed information, save those articles to our PostgreSQL data store.
 import Data.Time
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
+import Database.PostgreSQL.Simple.ToField
 import Database.PostgreSQL.Simple.ToRow
 
 -- updated to take into account optionality and varying types in keywords
 -- (see Y2017.M12.D28.Exercise)
 
-data DatedArticle =
+data DatedArticle a =
    Carbon { uuid, title, url       :: String,
             prologue               :: Maybe String,
-            authors                :: [Value],
+            authors                :: [a],
             starttime, lastupdated :: Maybe ZonedTime,
             sections               :: [String],
             keywords               :: [Value],
@@ -71,7 +72,7 @@ data DatedArticle =
             byline                 :: String }
       deriving Show
 
-instance HTML DatedArticle where
+instance HTML (DatedArticle a) where
    body art = undefined
 
 -- so, but how do we get from that wild and wonderful structure in the JSON
@@ -87,12 +88,12 @@ sampleDate = BL.unlines ["{",
                 "\"iso8601\": \"2017-12-12T22:00:00-05:00\"",
             "}"]
 
-instance FromJSON DatedArticle where
+instance FromJSON a => FromJSON (DatedArticle a) where
    parseJSON (Object o) = undefined
 
 -- Now, with that parsed structure, save the Article set to the database
 
-instance ToRow DatedArticle where
+instance ToField a => ToRow (DatedArticle a) where
    toRow art = undefined
 
 -- The insert statement gives the Article structure
@@ -101,13 +102,14 @@ instance ToRow DatedArticle where
 insertArticleStmt :: Query
 insertArticleStmt =
    [sql|INSERT INTO article (src_id,update_dt,publish_dt,article_id,url,
-                             abstract,full_text,rendered_text,sections,title)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) returning id|]
+                             abstract,full_text,rendered_text,sections,title,
+                             authors)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) returning id|]
 
 -- please make sure abstract/prologue and full_text/content are HTML-tag-free.
 -- hint: Y2017.M12.D22.Exercise
 
-insertArts :: Connection -> [Index] -> [DatedArticle] -> IO [Index]
+insertArts :: Connection -> [Index] -> [DatedArticle a] -> IO [Index]
 insertArts conn srcIdx arts = undefined
 
 -- from the source article ids in the article_stg table and the parsed articles,
