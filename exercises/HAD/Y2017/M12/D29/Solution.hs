@@ -44,23 +44,30 @@ import Y2017.M12.D20.Solution
 import Y2017.M12.D26.Solution
 import Y2017.M12.D27.Solution
 
+{--
+Let's not do this just yet ...
+
+import Y2018.M01.D02.Solution hiding (uuid)
+   -- okay, so I'm importing from the future.
+--}
+
 type Logger m a = WriterT (DList String) m a
 
-processBlock :: Monad m => Integer -> Block -> Logger m (Maybe DatedArticle)
+processBlock :: Monad m => Integer -> Block -> Logger m (Maybe (DatedArticle Value))
 processBlock idx = pb idx . fromJSON
 
 say :: Monad m => String -> Logger m ()
 say = tell . dl'
 
-pb :: Monad m => Integer -> Result DatedArticle -> Logger m (Maybe DatedArticle)
+pb :: Monad m => Integer -> Result (DatedArticle Value) -> Logger m (Maybe (DatedArticle Value))
 pb idx (Success art) = 
    say ("Parsed " ++ uuid art) >> return (Just art)
 pb idx (Error err) =
    say ("Could not parse article " ++ show idx ++ ", error: " ++ err) >>
    return Nothing
 
-elide :: Monad m => (DatedArticle -> Bool) -> [Block]
-      -> Logger m [(Block, Maybe DatedArticle)]
+elide :: Monad m => (DatedArticle Value -> Bool) -> [Block]
+      -> Logger m [(Block, Maybe (DatedArticle Value))]
 elide crit blocks =
    zipWithM (liftM2 fmap (,) . processBlock)   -- Bazzargh @bazzargh
             [1..] blocks >>= filterM (\(blk, mbda) ->
@@ -68,11 +75,11 @@ elide crit blocks =
          Nothing  -> return True    -- give unparsed blocks a free pass
          Just art -> decide crit art)
 
-decide :: Monad m => (DatedArticle -> Bool) -> DatedArticle -> Logger m Bool
+decide :: Monad m => (DatedArticle a -> Bool) -> DatedArticle a -> Logger m Bool
 decide crit art = if crit art then return True
    else say (uuid art ++ " is an Associated Press article") >> return False
 
-apArt :: DatedArticle -> Bool
+apArt :: DatedArticle a -> Bool
 apArt art = case byline art of
    Nothing    -> True
    Just bylin -> not ("Associated Press" `isInfixOf` bylin)
