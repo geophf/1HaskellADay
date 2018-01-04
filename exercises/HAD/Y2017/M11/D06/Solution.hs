@@ -1,7 +1,7 @@
 module Y2017.M11.D06.Solution where
 
 {--
-Another parsing exercise: let's parse in a CSV file fron some analysis on the
+Another parsing exercise: let's parse in a CSV file from some analysis on the
 NYT article archives.
 --}
 
