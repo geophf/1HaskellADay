@@ -11,6 +11,7 @@ then add the refined lookups to the known sets.
 import Prelude hiding (init)
 
 import Control.Arrow ((&&&))
+import Control.Monad.State
 import Data.Map (Map)
 import qualified Data.Map as Map
 import Data.Set (Set)
@@ -36,6 +37,14 @@ triage k (MT mapi mapk n00b) =
    MT mapi mapk ((if containsKey k mapk then id else Set.insert k) n00b)
       where containsKey k = Set.member k . Map.keysSet
 
+-- triaging with state
+
+type MemoizingS m a b c = StateT (MemoizingTable a b, Map a [b]) m c
+
+triageM :: Monad m => Ord a => Ord b => a -> [b] -> MemoizingS m a b ()
+triageM idx vals = get >>= \(mt0, reserve) ->
+   put ((foldr triage mt0 &&& flip (Map.insert idx) reserve) vals)
+ 
 -- When we get indices for the new information, we update the memoizing table
 
 update :: Ord a => Ord b => [(a,b)] -> MemoizingTable a b -> MemoizingTable a b
