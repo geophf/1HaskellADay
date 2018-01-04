@@ -61,7 +61,10 @@ class Subjective a where
 instance ToRow Subject where
    toRow subj = undefined
 
-type IxSubject = IxValue String -- ISubj { subjIdx :: Integer, subject :: String }
+instance FromRow Subject where
+   fromRow = undefined
+
+type IxSubject = IxValue Subject -- ISubj { subjIdx :: Integer, subject :: String }
    -- deriving (Eq, Ord, Show)
 
 {--

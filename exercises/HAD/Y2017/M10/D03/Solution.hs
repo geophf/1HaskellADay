@@ -62,7 +62,10 @@ data Subject = Subj { subj :: String }
 instance ToRow Subject where
    toRow = pure . toField . subj
 
-type IxSubject = IxValue String -- ISubj { subjIdx :: Integer, subject :: String }
+instance FromRow Subject where
+   fromRow = Subj <$> field
+
+type IxSubject = IxValue Subject -- ISubj { subjIdx :: Integer, subject :: String }
    -- deriving (Eq, Ord, Show)
 
 {--
@@ -187,7 +190,7 @@ uploadSubjects = flip returning uploadSubjectStmt
 uploadMT :: Connection -> SubjectTable -> IO [IxSubject]
 uploadMT conn (MT _ _ news) =
    let subjs = Set.toList news in
-   zipWith (flip IxV) (map subj subjs) . map idx <$> uploadSubjects conn subjs
+   zipWith (flip IxV) subjs . map idx <$> uploadSubjects conn subjs
 
 {--
 >>> connectInfo 
@@ -346,7 +349,7 @@ timedETL archive conn =
    uploadMT conn (fst stat) >>= \ixsubs ->
    getCurrentTime >>= \newsubs ->
    putStrLn ("Inserting new subjects: " ++ show (diffUTCTime newsubs inpersjoin)) >>
-   let tab = MT.update (map (second Subj . ix2tup) ixsubs) (fst stat) in
+   let tab = MT.update (map ix2tup ixsubs) (fst stat) in
    insertSubjPivot conn (evalState buildSubjectPivots (tab, snd stat)) >>
    getCurrentTime >>= \thatsIt ->
    let totalTime = diffUTCTime thatsIt start in
