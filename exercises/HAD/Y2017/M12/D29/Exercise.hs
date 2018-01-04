@@ -28,6 +28,7 @@ database.
 What are the AP articles? That, I leave as an exercise to the Haskeller.
 --}
 
+import Data.Aeson
 import Database.PostgreSQL.Simple (Connection)
 
 -- below imports available via 1HaskellADay git repository
@@ -36,7 +37,7 @@ import Y2017.M12.D20.Exercise
 import Y2017.M12.D26.Exercise
 import Y2017.M12.D27.Exercise
 
-processBlock :: Monad m => Integer -> Block -> m (Maybe DatedArticle)
+processBlock :: Monad m => Integer -> Block -> m (Maybe (DatedArticle Value))
 processBlock idx block = undefined
 
 -- hint: we kinda had to do that to solve D27 exercise
@@ -44,8 +45,8 @@ processBlock idx block = undefined
 -- include the index and reason for failing to process the block. Your report
 -- can be either to the WriterMonad for logging or to the IO monad...for logging
 
-elide :: Monad m => (DatedArticle -> Bool) -> [Block]
-      -> m [(Block, Maybe DatedArticle)]
+elide :: Monad m => (DatedArticle a -> Bool) -> [Block]
+      -> m [(Block, Maybe (DatedArticle a))]
 elide crit blocks = undefined
 
 -- hint: Besides some type-handwaving, this looks familiar, fam
