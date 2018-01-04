@@ -64,7 +64,7 @@ import Database.PostgreSQL.Simple.ToRow
 data DatedArticle a =
    Carbon { uuid, title, url       :: String,
             prologue               :: Maybe String,
-            authors                :: [a],
+            authors                :: a,
             starttime, lastupdated :: Maybe ZonedTime,
             sections               :: [String],
             keywords               :: [Value],
@@ -103,8 +103,8 @@ insertArticleStmt :: Query
 insertArticleStmt =
    [sql|INSERT INTO article (src_id,update_dt,publish_dt,article_id,url,
                              abstract,full_text,rendered_text,sections,title,
-                             authors)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) returning id|]
+                             authors,keywords)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) returning id|]
 
 -- please make sure abstract/prologue and full_text/content are HTML-tag-free.
 -- hint: Y2017.M12.D22.Exercise

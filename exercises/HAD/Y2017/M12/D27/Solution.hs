@@ -30,11 +30,14 @@ field in Haskell), the more complex fields we'll handle a day at a time in turn.
 --}
 
 import Control.Monad (zipWithM)
+
 import Data.Aeson
 import Data.Aeson.Types
 import Data.ByteString.Lazy.Char8 (ByteString)
 import qualified Data.ByteString.Lazy.Char8 as BL
 import Data.Maybe (fromJust, catMaybes)
+import qualified Data.Text as T
+
 import Text.HTML.TagSoup
 
 -- below import available via 1HaskellADay git repository
@@ -68,7 +71,7 @@ import Database.PostgreSQL.Simple.ToRow
 data DatedArticle a =
    Carbon { uuid, title, url       :: String,
             prologue               :: Maybe String,
-            authors                :: [a],
+            authors                :: a,
             starttime, lastupdated :: Maybe ZonedTime,
             sections               :: [String],
             keywords               :: [Value],
@@ -129,7 +132,12 @@ instance ToField a => ToRow (DatedArticle a) where
    toRow art@(Carbon uu ti ur pr au st la se ke co _) =
       [toField la, toField st, toField uu, toField ur, toField (demark <$> pr),
        toField (htmlBlock art), toField (unlines $ plainText art),
-       toField (weave se), toField ti, toField ("authors" :: String)]
+       toField (weave se), toField ti, toField au,
+       toField (weave (map showVal ke))]
+
+showVal :: Value -> String
+showVal (String str) = T.unpack str
+showVal (Number n) = show n
 
 -- The insert statement gives the Article structure
 -- (also image attached from the Entity-relation diagram)
@@ -138,8 +146,8 @@ insertArticleStmt :: Query
 insertArticleStmt =
    [sql|INSERT INTO article (src_id,update_dt,publish_dt,article_id,url,
                              abstract,full_text,rendered_text,sections,title,
-                             authors)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) returning id|]
+                             authors,keywords)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) returning id|]
 
 ixArt2ixArt :: Index -> (DatedArticle a) -> IxValue (DatedArticle a)
 ixArt2ixArt (Idx x) art = IxV x art

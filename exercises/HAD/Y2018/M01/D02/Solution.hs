@@ -64,10 +64,6 @@ sample = "Y2017/M12/D20/sample.json"
 kw2subj :: Value -> Subject
 kw2subj = Subj . showVal
 
-showVal :: Value -> String
-showVal (String str) = T.unpack str
-showVal (Number n) = show n
-
 {--
 >>> blcks <- rows <$> readSample sample
 >>> (arts, log) = runWriter (elide apArt blcks)
