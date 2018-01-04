@@ -152,11 +152,13 @@ archive x =
 
 type SubjectTable = MemoizingTable Integer Subject
 
-type MemoizingState m a = StateT (SubjectTable, Map Index [Subject]) m a
+type MemoizingState m a = StateT (SubjectTable, Map Integer [Subject]) m a
 
+{--
 getSubjectsMT :: Subjective s => Monad m => Index -> s -> MemoizingState m ()
 getSubjectsMT ix art = get >>= \(mt, subjs) ->
    put ((flip updateNewSubjs mt &&& flip (Map.insert ix) subjs) (subjects art))
+--}
 
 art2Subj :: Article -> [Subject]
 art2Subj = parseSubjects <=< maybeToList . Map.lookup "Subject" . metadata
@@ -261,7 +263,7 @@ updateMT (subjects -> (mi, mk)) (MT mi' mk' _) =
 buildSubjectPivots :: Monad m => MemoizingState m [Pivot]
 buildSubjectPivots = get >>= \(MT _ keys _, joins) ->
    return (map (uncurry Pvt)
-               (concatMap (sequence . (idx *** map (keys Map.!)))
+               (concatMap (sequence . (second (map (keys Map.!))))
                           (Map.toList joins)))
 
 insertSubjPivotStmt :: Query
@@ -344,7 +346,8 @@ timedETL archive conn =
    getCurrentTime >>= \inpersjoin ->
    putStrLn ("Inserting name-joins: " ++ show (diffUTCTime inpersjoin inpers)) >>
    let memtable = MT.start []
-       stat = execState (zipWithM_ getSubjectsMT ixarts articles) 
+       stat = execState (zipWithM_ MT.triageM (map idx ixarts) (map subjects articles))
+                                -- getSubjectsMT ixarts articles) 
                                    (memtable, Map.empty) in
    uploadMT conn (fst stat) >>= \ixsubs ->
    getCurrentTime >>= \newsubs ->
