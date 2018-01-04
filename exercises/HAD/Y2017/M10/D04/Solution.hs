@@ -70,9 +70,6 @@ fetchArtSubjStmt = [sql|SELECT article_id,subject_id from article_subject|]
 -- of course we need a FromRow instance for Pivot that we will roll right 
 -- into the Store.SQL.Util.Pivot module after this exercise ...
 
-instance FromRow Pivot where
-   fromRow = Pvt <$> field <*> field
-
 fetchSubjPivots :: Connection -> IO [Pivot]
 fetchSubjPivots = flip query_ fetchArtSubjStmt
 
