@@ -61,14 +61,16 @@ class Subjective a where
 instance ToRow Subject where
    toRow subj = undefined
 
-data IxSubject = ISubj { subjIdx :: Integer, subject :: String }
-   deriving (Eq, Ord, Show)
+type IxSubject = IxValue String -- ISubj { subjIdx :: Integer, subject :: String }
+   -- deriving (Eq, Ord, Show)
 
+{--
 instance Indexed IxSubject where
    idx subj = undefined
 
 instance FromRow IxSubject where
    fromRow = undefined
+--}
 
 fetchSubjectsStmt :: Query
 fetchSubjectsStmt = [sql|SELECT * from subject|]

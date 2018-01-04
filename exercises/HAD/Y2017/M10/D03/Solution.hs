@@ -13,7 +13,7 @@ Well, it's what we're going to look at today!
 me: what?)
 --}
 
-import Control.Arrow ((&&&), (>>>), (***))
+import Control.Arrow ((&&&), (>>>), (***), second)
 import Control.Monad (void, (<=<))
 import Control.Monad.State
 import Data.ByteString.Lazy.Char8 (ByteString)
@@ -62,14 +62,16 @@ data Subject = Subj { subj :: String }
 instance ToRow Subject where
    toRow = pure . toField . subj
 
-data IxSubject = ISubj { subjIdx :: Integer, subject :: String }
-   deriving (Eq, Ord, Show)
+type IxSubject = IxValue String -- ISubj { subjIdx :: Integer, subject :: String }
+   -- deriving (Eq, Ord, Show)
 
+{--
 instance Indexed IxSubject where
    idx = subjIdx
 
 instance FromRow IxSubject where
    fromRow = ISubj <$> field <*> field
+--}
 
 -- So, since we have a Subject-type, we want also to have a class of values
 -- from which we can extract subjects. This is called 'subject-oriented
@@ -185,7 +187,7 @@ uploadSubjects = flip returning uploadSubjectStmt
 uploadMT :: Connection -> SubjectTable -> IO [IxSubject]
 uploadMT conn (MT _ _ news) =
    let subjs = Set.toList news in
-   zipWith (flip ISubj) (map subj subjs) . map idx <$> uploadSubjects conn subjs
+   zipWith (flip IxV) (map subj subjs) . map idx <$> uploadSubjects conn subjs
 
 {--
 >>> connectInfo 
@@ -344,17 +346,17 @@ timedETL archive conn =
    uploadMT conn (fst stat) >>= \ixsubs ->
    getCurrentTime >>= \newsubs ->
    putStrLn ("Inserting new subjects: " ++ show (diffUTCTime newsubs inpersjoin)) >>
-   let tab = MT.update (map ixsubj2pair ixsubs) (fst stat) in
+   let tab = MT.update (map (second Subj . ix2tup) ixsubs) (fst stat) in
    insertSubjPivot conn (evalState buildSubjectPivots (tab, snd stat)) >>
    getCurrentTime >>= \thatsIt ->
    let totalTime = diffUTCTime thatsIt start in
    putStrLn ("Total time: " ++ show totalTime) >>
    return totalTime
 
-ixsubj2pair :: IxSubject -> (Integer, Subject)
-ixsubj2pair = idx &&& Subj . subject
-
 {--
+ixsubj2pair :: IxSubject -> (Integer, Subject)
+ixsubj2pair = idx &&& Subj . val
+
 >>> timedETL (archive ONE) conn
 "Extracting blocks: 0.000989s"
 "Inserting blocks: 2.956464s"
