@@ -84,7 +84,7 @@ class Subjective a where
    subjects :: a -> [Subject]
 
 fetchSubjectsStmt :: Query
-fetchSubjectsStmt = [sql|SELECT * from subject|]
+fetchSubjectsStmt = [sql|SELECT * from keyword_pub|]
 
 fetchSubjects :: Connection -> IO [IxSubject]
 fetchSubjects = flip query_ fetchSubjectsStmt

@@ -76,7 +76,7 @@ instance FromRow IxSubject where
 --}
 
 fetchSubjectsStmt :: Query
-fetchSubjectsStmt = [sql|SELECT * from subject|]
+fetchSubjectsStmt = [sql|SELECT * from keyword_pub|]
 
 fetchSubjects :: Connection -> IO [IxSubject]
 fetchSubjects conn = undefined
@@ -156,7 +156,7 @@ getSubjectsMT ix art = undefined
 -- database. We also update the map of subjects in each article.
 
 uploadSubjectsStmt :: Query
-uploadSubjectsStmt = [sql|INSERT INTO subject (subject) VALUES (?) returning id|]
+uploadSubjectsStmt = [sql|INSERT INTO keyword_pub (keyword) VALUES (?) returning id|]
 
 uploadSubjects :: Connection -> [Subject] -> IO [Index]
 uploadSubjects conn subjs = undefined
@@ -187,7 +187,7 @@ buildSubjectPivots = undefined
 
 insertSubjPivotStmt :: Query
 insertSubjPivotStmt =
-   [sql|INSERT INTO article_subject (article_id,subject_id) VALUES (?,?)|]
+   [sql|INSERT INTO article_kw_pub (article_id,keyword_id) VALUES (?,?)|]
 
 insertSubjPivot :: Connection -> [Pivot] -> IO ()
 insertSubjPivot conn pivots = undefined
