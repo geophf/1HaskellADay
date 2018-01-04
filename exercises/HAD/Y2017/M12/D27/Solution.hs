@@ -129,7 +129,7 @@ instance ToField a => ToRow (DatedArticle a) where
    toRow art@(Carbon uu ti ur pr au st la se ke co _) =
       [toField la, toField st, toField uu, toField ur, toField (demark <$> pr),
        toField (htmlBlock art), toField (unlines $ plainText art),
-       toField (weave se), toField ti] 
+       toField (weave se), toField ti, toField ("authors" :: String)]
 
 -- The insert statement gives the Article structure
 -- (also image attached from the Entity-relation diagram)
