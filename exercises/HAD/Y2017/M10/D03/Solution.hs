@@ -71,6 +71,13 @@ instance Indexed IxSubject where
 instance FromRow IxSubject where
    fromRow = ISubj <$> field <*> field
 
+-- So, since we have a Subject-type, we want also to have a class of values
+-- from which we can extract subjects. This is called 'subject-oriented
+-- programming.'
+
+class Subjective a where
+   subjects :: a -> [Subject]
+
 fetchSubjectsStmt :: Query
 fetchSubjectsStmt = [sql|SELECT * from subject|]
 
@@ -142,10 +149,9 @@ type SubjectTable = MemoizingTable Integer Subject
 
 type MemoizingState m a = StateT (SubjectTable, Map Index [Subject]) m a
 
-getSubjectsMT :: Monad m => Index -> Article -> MemoizingState m ()
-getSubjectsMT ix art = get >>= \(mt, subjmap) ->
-   let subjs = art2Subj art in
-   put (updateNewSubjs subjs mt, Map.insert ix subjs subjmap)
+getSubjectsMT :: Subjective s => Monad m => Index -> s -> MemoizingState m ()
+getSubjectsMT ix art = get >>= \(mt, subjs) ->
+   put ((flip updateNewSubjs mt &&& flip (Map.insert ix) subjs) (subjects art))
 
 art2Subj :: Article -> [Subject]
 art2Subj = parseSubjects <=< maybeToList . Map.lookup "Subject" . metadata
@@ -308,6 +314,8 @@ interacts with IO) in the ETL. Report the times here with a total time for
 the whole ETL process on the archives here. Do this using the articles stored
 in the archive function, Part TWO.
 --}
+
+instance Subjective Article where subjects = art2Subj
 
 timedETL :: FilePath -> Connection -> IO NominalDiffTime
 timedETL archive conn =

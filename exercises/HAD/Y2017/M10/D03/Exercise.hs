@@ -51,6 +51,13 @@ data table:
 data Subject = Subj { subj :: String }
    deriving (Eq, Ord, Show)
 
+-- So, since we have a Subject-type, we want also to have a class of values
+-- from which we can extract subjects. This is called 'subject-oriented 
+-- programming.'
+
+class Subjective a where
+   subjects :: a -> [Subject]
+
 instance ToRow Subject where
    toRow subj = undefined
 
@@ -69,10 +76,12 @@ fetchSubjectsStmt = [sql|SELECT * from subject|]
 fetchSubjects :: Connection -> IO [IxSubject]
 fetchSubjects conn = undefined
 
+{--
+subjects, declared below, can be simply done with tups and bifurcate
+
 subjects :: [IxSubject] -> (Map Integer String, Map String Integer)
 subjects subjs = undefined
 
-{--
 Okay, so we can read the current state from the database. That's great!
 
 Now let's look at a workflow.
@@ -132,7 +141,9 @@ type SubjectTable = MemoizingTable Integer Subject
 
 type MemoizingState m a = StateT (SubjectTable, Map Index [Subject]) m a
 
-getSubjectsMT :: Monad m => Index -> Article -> MemoizingState m ()
+-- now we use our Subjective instances to extract our subjects
+
+getSubjectsMT :: Subjective s => Monad m => Index -> s -> MemoizingState m ()
 getSubjectsMT ix art = undefined
 
 -- we get the article, extract its subject information then factor the subject
