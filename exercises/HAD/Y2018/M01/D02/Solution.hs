@@ -89,15 +89,6 @@ from the database and update the subject table.
 instance Subjective (DatedArticle a) where
    subjects = map kw2subj . keywords
 
-{--
--- original idea, rewritten as class-variant
-
-getSubjsMT :: Monad m => Index -> DatedArticle Value -> MemoizingState m ()
-getSubjsMT ix art = get >>= \(mt, subjmap) ->
-   let subjs = map kw2subj (keywords art) in
-   put (updateNewSubjs subjs mt, Map.insert ix subjs subjmap)
---}
-
 {-- BONUS -----------------------------------------------------------------
 
 Store the articles as per Y2017.M12.D29.Exercise and, add to the ETL process
@@ -125,9 +116,10 @@ storeSubjects :: Connection -> [IxValue (DatedArticle Value)] -> IO ()
 storeSubjects conn ixarts =
    fetchSubjects conn >>= \presubs ->
    let memtable = MT.start (map ix2tup presubs)
-       (ids,arts) = unzip (map (first Idx . ix2tup) ixarts)
-       stat = execState (zipWithM_ getSubjectsMT ids arts) (memtable,Map.empty)
-       substate = (fst stat)
+       (ids,arts) = unzip (map ix2tup ixarts)
+       stat = execState (zipWithM_ MT.triageM ids (map subjects arts))
+                                   (memtable,Map.empty)
+       substate = fst stat
    in  uploadMT conn substate >>= \ixsubs ->
    let table = MT.update (map ix2tup ixsubs) substate
    in  insertSubjPivot conn (evalState buildSubjectPivots (table, snd stat))

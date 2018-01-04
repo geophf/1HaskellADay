@@ -154,12 +154,6 @@ type SubjectTable = MemoizingTable Integer Subject
 
 type MemoizingState m a = StateT (SubjectTable, Map Integer [Subject]) m a
 
-{--
-getSubjectsMT :: Subjective s => Monad m => Index -> s -> MemoizingState m ()
-getSubjectsMT ix art = get >>= \(mt, subjs) ->
-   put ((flip updateNewSubjs mt &&& flip (Map.insert ix) subjs) (subjects art))
---}
-
 art2Subj :: Article -> [Subject]
 art2Subj = parseSubjects <=< maybeToList . Map.lookup "Subject" . metadata
 
@@ -170,13 +164,6 @@ updateNewSubjs :: [Subject] -> SubjectTable -> SubjectTable
 
 -- updateNewSubjs reduces to Data.MemoizingTable.triage
 
-{--
-updateNewSubjs subjs (MT mapi mapk n00b) =
-   MT mapi mapk (foldr (\subj -> 
-         if containsKey subj mapk then id else Set.insert subj) n00b subjs)
-            where containsKey k = Set.member k . Map.keysSet
---}
-
 updateNewSubjs = flip (foldl (flip MT.triage))
 
 -- we get the article, extract its subject information then factor the subject
@@ -184,7 +171,7 @@ updateNewSubjs = flip (foldl (flip MT.triage))
 -- database. We also update the map of subjects in each article.
 
 uploadSubjectStmt :: Query
-uploadSubjectStmt = [sql|INSERT INTO subject (subject) VALUES (?) returning id|]
+uploadSubjectStmt = [sql|INSERT INTO keyword_pub (keyword) VALUES (?) returning id|]
 
 uploadSubjects :: Connection -> [Subject] -> IO [Index]
 uploadSubjects = flip returning uploadSubjectStmt
@@ -241,17 +228,10 @@ id	subject
 -- Okay, now we've got the indexed subjects, we update the MemoizingTable
 -- with those new subjects:
 
--- moved to Data.MemoizingTable
-
-updateMT :: [IxSubject] -> SubjectTable -> SubjectTable
-updateMT (subjects -> (mi, mk)) (MT mi' mk' _) =
-   initMemTable (merge (Map.map Subj mi) mi', merge (Map.mapKeys Subj mk) mk')
-      where merge m1 = Map.fromList . (Map.toList m1 ++) . Map.toList
-
 -- The updated subjects should be the set of used-to-be-new subjects in the
 -- memoizing table. Clear that set and update the maps with the new information
 
->>> let tab = updateMT ixsubs (fst stat)
+>>> let tab = MT.update ixsubs (fst stat)
 --}
 
 -- Now we should have everything we need to upload the subjects associated
@@ -268,7 +248,7 @@ buildSubjectPivots = get >>= \(MT _ keys _, joins) ->
 
 insertSubjPivotStmt :: Query
 insertSubjPivotStmt =
-   [sql|INSERT INTO article_subject (article_id,subject_id) VALUES (?,?)|]
+   [sql|INSERT INTO article_kw_pub (article_id,keyword_id) VALUES (?,?)|]
 
 insertSubjPivot :: Connection -> [Pivot] -> IO ()
 insertSubjPivot = flip inserter insertSubjPivotStmt
@@ -296,17 +276,6 @@ id	article_id	subject_id
 
 The subject table structure is not uncommon. Create a type that has a key-value
 pair and create FromRow and ToRow instances of it.
-
--- moved to Store.SQL.Util.Indexed
-
-data IxValue a = IxV { ix :: Integer, val :: a }
-   deriving (Eq, Ord, Show)
-
-instance ToField a => ToRow (IxValue a) where
-   toRow (IxV i v) = [toField i, toField v]
-
-instance FromField a => FromRow (IxValue a) where
-   fromRow = IxV <$> field <*> field
 
 -- from the function archive, parse the Part ONE articles, insert those articles
 -- and the associated auxilary information, including names and subjects.
@@ -347,7 +316,6 @@ timedETL archive conn =
    putStrLn ("Inserting name-joins: " ++ show (diffUTCTime inpersjoin inpers)) >>
    let memtable = MT.start []
        stat = execState (zipWithM_ MT.triageM (map idx ixarts) (map subjects articles))
-                                -- getSubjectsMT ixarts articles) 
                                    (memtable, Map.empty) in
    uploadMT conn (fst stat) >>= \ixsubs ->
    getCurrentTime >>= \newsubs ->
