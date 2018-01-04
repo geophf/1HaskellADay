@@ -34,7 +34,7 @@ import qualified Data.Map as Map
 import Data.Set (Set)
 import qualified Data.Set as Set
 
-type KeyWord = String -- denotes a sigle word
+type KeyWord = String -- denotes a single word
 type ArticleId = Integer
 
 type IndexedArticles = Map KeyWord (Set ArticleId)
