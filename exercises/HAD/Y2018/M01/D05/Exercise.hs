@@ -45,7 +45,7 @@ sect = "sports/high-school/scores"
 -- if "sports" are mentioned in multiple sections, then it's the same sports
 -- root node.
 
-sects2rels :: String -> Relation a rel b
+sects2rels :: String -> [Relation a rel b]
 sects2rels sect = undefined
 
 -- you declare what the types a, rel, and b are
