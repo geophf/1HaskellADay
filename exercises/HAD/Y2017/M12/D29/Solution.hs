@@ -53,8 +53,10 @@ import Y2018.M01.D02.Solution hiding (uuid)
 
 type Logger m a = WriterT (DList String) m a
 
-processBlock :: Monad m => Integer -> Block -> Logger m (Maybe (DatedArticle Value))
-processBlock idx = pb idx . fromJSON
+processBlock :: FromJSON a => Monad m =>
+             (Integer -> Result (DatedArticle a) -> Logger m (Maybe (DatedArticle a)))
+             -> Integer -> Block -> Logger m (Maybe (DatedArticle a))
+processBlock processor idx = processor idx . fromJSON
 
 say :: Monad m => String -> Logger m ()
 say = tell . dl'
@@ -66,14 +68,15 @@ pb idx (Error err) =
    say ("Could not parse article " ++ show idx ++ ", error: " ++ err) >>
    return Nothing
 
-elide :: Monad m => (DatedArticle Value -> Bool) -> [Block]
-      -> Logger m [(Block, Maybe (DatedArticle Value))]
-elide crit blocks =
-   zipWithM (liftM2 fmap (,) . processBlock)   -- Bazzargh @bazzargh
+elide :: Monad m => (Integer -> Block -> Logger m (Maybe (DatedArticle a)))
+      -> (DatedArticle a -> Bool) -> [Block]
+      -> Logger m [(Block, Maybe (DatedArticle a))]
+elide generate test blocks =
+   zipWithM (liftM2 fmap (,) . generate)   -- Bazzargh @bazzargh
             [1..] blocks >>= filterM (\(blk, mbda) ->
       case mbda of
          Nothing  -> return True    -- give unparsed blocks a free pass
-         Just art -> decide crit art)
+         Just art -> decide test art)
 
 decide :: Monad m => (DatedArticle a -> Bool) -> DatedArticle a -> Logger m Bool
 decide crit art = if crit art then return True
@@ -97,7 +100,7 @@ etl :: Connection -> FilePath -> IO ()
 etl conn json =
    readSample json >>= \pac ->
    let blocks = rows pac
-       (blxArts, log) = runWriter (elide apArt blocks) in
+       (blxArts, log) = runWriter (elide (processBlock pb) apArt blocks) in
    mapM_ putStrLn (dlToList log) >>
    insertStagedArt conn (map fst blxArts) >>= \ixs ->
    let ins = unzip (catMaybes (zipWith (\ ix (_,mbart) -> sequence (ix, mbart))
