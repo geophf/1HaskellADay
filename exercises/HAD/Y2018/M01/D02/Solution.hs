@@ -38,10 +38,12 @@ import Control.Monad.State
 import Control.Monad.Writer (runWriter)
 
 import Data.Aeson
+import Data.Functor.Identity (Identity)
 import qualified Data.Map as Map
 import Data.Maybe (catMaybes)
 import qualified Data.Text as T
-import Database.PostgreSQL.Simple
+import Database.PostgreSQL.Simple (Connection)
+import Database.PostgreSQL.Simple.ToField (ToField)
 
 -- Below imports available via 1HaskellADay git repository
 
@@ -95,20 +97,21 @@ as subjects.
 -- parseArticles extracts the blocks, their parsed articles, and the log of
 -- the parsing action.
 
-parseArticles :: FilePath -> IO ([(Block,Maybe (DatedArticle Value))], [String])
-parseArticles json =
+parseArticles :: FromJSON a => BlockParser Identity a -> FilePath
+              -> IO ([(Block,Maybe (DatedArticle a))], [String])
+parseArticles generator json =
    rows <$> readSample json >>=
-   return . second dlToList . runWriter . elide apArt
+   return . second dlToList . runWriter . elide generator apArt
 
-storeArticles :: Connection -> [(Block, Maybe (DatedArticle Value))]
-              -> IO [IxValue (DatedArticle Value)]
+storeArticles :: ToField a => Connection -> [(Block, Maybe (DatedArticle a))]
+              -> IO [IxValue (DatedArticle a)]
 storeArticles conn blxArts =
    insertStagedArt conn (map fst blxArts) >>= \ixs ->
    let zips = zipWith (\ix (_,mbart) -> sequence (ix,mbart)) ixs blxArts
        ins  = unzip (catMaybes zips) in
    flip (zipWith IxV) (snd ins) <$> (map idx <$> uncurry (insertArts conn) ins)
 
-storeSubjects :: Connection -> [IxValue (DatedArticle Value)] -> IO ()
+storeSubjects :: Connection -> [IxValue (DatedArticle a)] -> IO ()
 storeSubjects conn ixarts =
    fetchSubjects conn >>= \presubs ->
    let memtable = MT.start (map ix2tup presubs)
@@ -120,18 +123,19 @@ storeSubjects conn ixarts =
    let table = MT.update (map ix2tup ixsubs) substate
    in  insertSubjPivot conn (evalState buildSubjectPivots (table, snd stat))
 
-storeAncilliary :: Connection -> [IxValue (DatedArticle Value)] -> IO ()
+storeAncilliary :: Connection -> [IxValue (DatedArticle a)] -> IO ()
 storeAncilliary = storeSubjects -- but expanded laterz
 
-etl :: (Connection -> [IxValue (DatedArticle Value)] -> IO ()) -> Connection
-    -> FilePath -> IO ()
-etl ancilliaryFn conn json =
-   parseArticles json        >>=
-   storeArticles conn . fst  >>=
+etl :: ToField a => FromJSON a => BlockParser Identity a
+    -> (Connection -> [IxValue (DatedArticle a)] -> IO ())
+    -> Connection -> FilePath -> IO ()
+etl generator ancilliaryFn conn json =
+   parseArticles generator json >>=
+   storeArticles conn . fst     >>=
    ancilliaryFn conn
 
 {--
->>> withConnection (flip (etl storeAncilliary) sample)
+>>> withConnection (flip (etl pb storeAncilliary) sample)
 
 $ select count(1) from subject;
 453
