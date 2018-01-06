@@ -1,10 +1,12 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Graph.Query where
 
 import Data.Aeson
 import Data.Foldable (toList)
 import qualified Data.ByteString.Lazy.Char8 as BL
 
-import Network.HTTP
+import Network.HTTP.Conduit
 
 import System.Environment
 
@@ -72,9 +74,18 @@ a String. We'll look at parsing out the response as JSON tomorrow.
 --}
 
 getGraphResponse :: Foldable t => Endpoint -> t (Cypher) -> IO String
-getGraphResponse transactionEndpoint queries =
-   simpleHTTP (postRequestWithBody transactionEndpoint "application/json"
+getGraphResponse transactionEndpoint queries = do
+   url <- parseRequest transactionEndpoint
+   let post = url { method="POST",
+                    requestBody = RequestBodyLBS (cypher2JSON queries) }
+   manager <- newManager tlsManagerSettings
+   response <- httpLbs post manager
+   return (BL.unpack (responseBody response))
+
+{--
+   simpleHttp (transactionEndpoint "application/json"
                        . BL.unpack $ cypher2JSON queries) >>= getResponseBody
+--}
 
 {--
 *Main> getGraphResponse (endpoint ++ ('/':transaction)) [queryStocks] ~>
