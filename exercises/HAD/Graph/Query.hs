@@ -83,11 +83,6 @@ getGraphResponse transactionEndpoint queries = do
    return (BL.unpack (responseBody response))
 
 {--
-   simpleHttp (transactionEndpoint "application/json"
-                       . BL.unpack $ cypher2JSON queries) >>= getResponseBody
---}
-
-{--
 *Main> getGraphResponse (endpoint ++ ('/':transaction)) [queryStocks] ~>
 "{\"results\":[{\"columns\":[\"s.symbol\"],\"data\":[{\"row\":[\"RDS.B\"]},
 ...{\"row\":[\"AAAP\"]},{\"row\":[\"CPGX\"]}]}],\"errors\":[]}"
