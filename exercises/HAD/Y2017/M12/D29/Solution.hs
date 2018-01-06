@@ -30,10 +30,13 @@ What are the AP articles? That, I leave as an exercise to the Haskeller.
 
 import Control.Monad
 import Control.Monad.Writer
+
 import Data.Aeson
+import Data.Functor.Identity (Identity)
 import Data.List (isInfixOf)
 import Data.Maybe (catMaybes)
 import Database.PostgreSQL.Simple (Connection)
+import Database.PostgreSQL.Simple.ToField (ToField)
 
 -- below imports available via 1HaskellADay git repository
 
@@ -61,18 +64,21 @@ processBlock processor idx = processor idx . fromJSON
 say :: Monad m => String -> Logger m ()
 say = tell . dl'
 
-pb :: Monad m => Integer -> Result (DatedArticle Value) -> Logger m (Maybe (DatedArticle Value))
+type BlockParser m a =
+   Integer -> Result (DatedArticle a) -> Logger m (Maybe (DatedArticle a))
+
+pb :: Monad m => BlockParser m Value
 pb idx (Success art) = 
    say ("Parsed " ++ uuid art) >> return (Just art)
 pb idx (Error err) =
    say ("Could not parse article " ++ show idx ++ ", error: " ++ err) >>
    return Nothing
 
-elide :: Monad m => (Integer -> Block -> Logger m (Maybe (DatedArticle a)))
+elide :: FromJSON a => Monad m => (BlockParser m a)
       -> (DatedArticle a -> Bool) -> [Block]
       -> Logger m [(Block, Maybe (DatedArticle a))]
 elide generate test blocks =
-   zipWithM (liftM2 fmap (,) . generate)   -- Bazzargh @bazzargh
+   zipWithM (liftM2 fmap (,) . processBlock generate)   -- Bazzargh @bazzargh
             [1..] blocks >>= filterM (\(blk, mbda) ->
       case mbda of
          Nothing  -> return True    -- give unparsed blocks a free pass
@@ -96,11 +102,11 @@ apArt art = case byline art of
 -- store blocks of AP articles, so the blocks, too, must be elided even if 
 -- processing succeeds (for any AP article)
 
-etl :: Connection -> FilePath -> IO ()
-etl conn json =
+etl :: ToField a => FromJSON a => BlockParser Identity a -> Connection -> FilePath -> IO ()
+etl generate conn json =
    readSample json >>= \pac ->
    let blocks = rows pac
-       (blxArts, log) = runWriter (elide (processBlock pb) apArt blocks) in
+       (blxArts, log) = runWriter (elide generate apArt blocks) in
    mapM_ putStrLn (dlToList log) >>
    insertStagedArt conn (map fst blxArts) >>= \ixs ->
    let ins = unzip (catMaybes (zipWith (\ ix (_,mbart) -> sequence (ix, mbart))
@@ -109,7 +115,8 @@ etl conn json =
    putStrLn ("Wrote " ++ (show $ length artIds) ++ " articles to the database.")
 
 {--
->>> withConnection (`etl` "Y2017/M12/D20/sample.json")
+>>> withConnection (flip (etl pb) "Y2017/M12/D20/sample.json")
+
 ...
 Parsed 14eb45b4-8875-5ba5-bccf-bafcb4fa7261
 Parsed 78b33904-79d6-5631-ab66-3e9167de9e82
