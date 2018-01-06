@@ -11,7 +11,12 @@ tables,' are prevalent and follow a certain structure. Instead of the specific
 ArticlePersonJoin structure, we'll declare and use the general Pivot type here.
 --}
 
+import Control.Arrow (second)
+import Control.Monad.State
+
 import Data.Aeson
+import qualified Data.Map as Map
+
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
 import Database.PostgreSQL.Simple.ToRow
@@ -19,6 +24,9 @@ import Database.PostgreSQL.Simple.FromRow
 import Database.PostgreSQL.Simple.ToField
 
 -- below import available via 1HaskellADay git repository
+
+import Data.MemoizingTable (MemoizingState, MemoizingTable(MT))
+import qualified Data.MemoizingTable as MT
 
 import Store.SQL.Util.Indexed
 
@@ -47,3 +55,14 @@ instance FromRow Pivot where
 
 instance ToJSON Pivot where
    toJSON (Pvt k1 k2) = object ["article_id" .= k1, "subject_id" .= k2]
+
+{--
+This happens frequently: we need to tie together a symbol table to the primary
+table. The symbol table is built in a MemoizingTable
+--}
+
+buildPivots :: Ord val => Monad m => MemoizingState m [Pivot] Integer val
+buildPivots = get >>= \(MT _ keys _, joins) ->
+   return (map (uncurry Pvt)
+               (concatMap (sequence . (second (map (keys Map.!))))
+                          (Map.toList joins)))
