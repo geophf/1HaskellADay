@@ -24,6 +24,9 @@ data MemoizingTable a b =
    MT { fromTable :: Map a b, readIndex :: Map b a, newValues :: Set b }
       deriving Show
 
+type MemoizingState m a key val =
+   StateT (MemoizingTable key val, Map key [val]) m a
+
 -- creates a new memoizing table
 
 init :: Ord a => Ord b => (Map a b, Map b a) -> MemoizingTable a b
