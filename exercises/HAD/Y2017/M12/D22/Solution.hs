@@ -123,3 +123,5 @@ And then, the piece d'resistance:
 >>> writeFile ("Y2017/M12/D22/plainArts.txt") (unlines (concatMap art2art (rows pac)))
 THANK you, tagsoup, for making HTML parsing out of the html content a breeze!
 --}
+
+-- moving HTML class to its own module
