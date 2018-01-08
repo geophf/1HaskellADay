@@ -16,6 +16,7 @@ import Control.Monad.State
 
 import Data.Aeson
 import qualified Data.Map as Map
+import qualified Data.Set as Set
 
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
@@ -66,3 +67,39 @@ buildPivots = get >>= \(MT _ keys _, joins) ->
    return (map (uncurry Pvt)
                (concatMap (sequence . (second (map (keys Map.!))))
                           (Map.toList joins)))
+
+{--
+Keywords, Authors, and sections. All three follow the same pattern:
+
+* fetch previously stored values
+* memoize
+* materials values from article set, see which values are new
+* store new values, relate all values.
+
+If we are following the same pattern, is there a generalization of the
+functions for all of this, so we can have one function that does the work
+for any memoize-y type? What would this function look like?
+--}
+
+memoizeStore :: ToRow a => Ord a =>
+                Connection
+             -> (Connection -> IO [IxValue a])
+             -> (Connection -> [a] -> IO [Index])
+             -> Query
+             -> (article -> [a])
+             -> [IxValue article]
+             -> IO ()
+memoizeStore conn fetcher storer pivotQuery getter ixarts =
+
+-- so, 1. we need to fetch currently-stored values and start the MemoizingTable
+
+   fetcher conn >>= \ixvals ->
+   let memtable = MT.start (map ix2tup ixvals)
+       (ids,arts) = unzip (map ix2tup ixarts)
+       stat = execState (zipWithM_ MT.triageM ids (map getter arts))
+                                   (memtable,Map.empty)
+       substate = Set.toList (MT.newValues (fst stat))
+   in  storer conn substate >>= \ixnewvals ->
+   let table = MT.update (zip (map idx ixnewvals) substate) (fst stat)
+   in  void (executeMany conn pivotQuery
+                         (evalState buildPivots (table, snd stat)))
