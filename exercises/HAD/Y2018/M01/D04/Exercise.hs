@@ -37,7 +37,7 @@ There's another.
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
 import Database.PostgreSQL.Simple.FromRow
-import Database.PostgreSQL.Simple.ToField (toField)
+import Database.PostgreSQL.Simple.ToField
 import Database.PostgreSQL.Simple.ToRow
 
 -- Below imports available via 1HaskellADay git repository
@@ -62,6 +62,14 @@ data Author = Author { uuid, screenName, firstName, lastName :: String }
 
 instance FromJSON Author where
    parseJSON (Object o) = undefined
+
+data Authors = Authors { authorSet :: [Author] }
+
+instance FromJSON Authors where
+   parseJSON o = undefined
+
+instance ToField Authors where
+   toField authos = undefined
 
 -- How many articles have no authors? 1? more?
 
