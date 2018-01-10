@@ -25,6 +25,7 @@ import Database.PostgreSQL.Simple.ToRow
 -- below import available via 1HaskellADay git repository
 
 import Y2017.M12.D20.Exercise -- for Packet
+import Y2018.M01.D04.Exercise hiding (etl)  -- hint for bonus
 
 instance ToRow Packet where
    toRow pack = undefined
