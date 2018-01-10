@@ -33,3 +33,9 @@ instance ToRow Packet where
 Using Y2017.M12.D20.Exercise.readSample, load in the packet and store its
 information.
 --}
+
+{-- BONUS -----------------------------------------------------------------
+
+Rewrite the etl-process to store the packet information (that is: don't discard
+packet information anymore) along with the articles.
+--}
