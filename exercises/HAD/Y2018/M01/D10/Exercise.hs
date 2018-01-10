@@ -26,6 +26,7 @@ import Database.PostgreSQL.Simple.ToRow
 
 import Y2017.M12.D20.Exercise -- for Packet
 import Y2018.M01.D04.Exercise hiding (etl)  -- hint for bonus
+import Y2018.M01.D09.Exercise -- for logging
 
 instance ToRow Packet where
    toRow pack = undefined
@@ -38,5 +39,6 @@ information.
 {-- BONUS -----------------------------------------------------------------
 
 Rewrite the etl-process to store the packet information (that is: don't discard
-packet information anymore) along with the articles.
+packet information anymore) along with the articles. Remember to include logging
+functionality as well!
 --}
