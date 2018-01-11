@@ -28,6 +28,13 @@ import Y2017.M12.D20.Exercise -- for Packet
 import Y2018.M01.D04.Exercise hiding (etl)  -- hint for bonus
 import Y2018.M01.D09.Exercise -- for logging
 
+insertPacketStmt :: Query
+insertPacketStmt = 
+   [sql|INSERT INTO packet (view,prev,next,total,count) VALUES (?,?,?,?,?)|]
+
+insertPackets :: Connection -> [Packet] -> IO ()
+insertPackets conn packs = undefined
+
 instance ToRow Packet where
    toRow pack = undefined
 
