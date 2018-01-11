@@ -29,10 +29,6 @@ define a function that returns a Haskell lookup table
 import Data.Map (Map)
 import Database.PostgreSQL.Simple
 
--- below import available via 1HaskellADay git repository
-
-import Store.SQL.Util.Indexed
-
 type LookupTable = Map String Integer
 
 lookupTable :: Connection -> String -> IO LookupTable
@@ -40,7 +36,7 @@ lookupTable conn tableName = undefined
 
 -- you may need this:
 
-ix2lookup :: Show a => IxValue a -> (String, Integer)
+ix2lookup :: (Integer, String) -> (String, Integer)
 ix2lookup ixval = undefined
 
 -- there are two lookup tables we've dealt with in recent exercises:
