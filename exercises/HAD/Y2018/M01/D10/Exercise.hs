@@ -17,6 +17,8 @@ information is a piece of that puzzle.
 planning auditing. We shall see. For today, just write the toRow function
 --}
 
+import Data.Functor.Identity (Identity)
+
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
 import Database.PostgreSQL.Simple.ToField (toField)
@@ -24,9 +26,14 @@ import Database.PostgreSQL.Simple.ToRow
 
 -- below import available via 1HaskellADay git repository
 
-import Y2017.M12.D20.Exercise -- for Packet
+import Data.LookupTable (LookupTable)
+
+import Store.SQL.Util.Indexed
+
+import Y2017.M12.D20.Exercise (Packet)
+import Y2017.M12.D27.Exercise (DatedArticle)
+import Y2017.M12.D29.Exercise (BlockParser)
 import Y2018.M01.D04.Exercise hiding (etl)  -- hint for bonus
-import Y2018.M01.D09.Exercise -- for logging
 
 insertPacketStmt :: Query
 insertPacketStmt = 
@@ -49,3 +56,8 @@ Rewrite the etl-process to store the packet information (that is: don't discard
 packet information anymore) along with the articles. Remember to include logging
 functionality as well!
 --}
+
+gruntWerk :: LookupTable -> BlockParser Identity Authors
+    -> (Connection -> [IxValue (DatedArticle Authors)] -> IO ())
+    -> Connection -> Packet -> IO (IxValue (DatedArticle Authors))
+gruntWerk lk generator ancillaryFn conn pack = undefined

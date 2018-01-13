@@ -85,12 +85,10 @@ parseArticles generator =
 -- so we want to do all the work of the ETL AND return the indexed articles and
 -- packet for down-the-road work, as necessary
 
-gruntWerk ::  BlockParser Identity Authors
+gruntWerk :: LookupTable -> BlockParser Identity Authors
     -> (Connection -> [IxValue (DatedArticle Authors)] -> IO ())
-    -> Connection -> FilePath -> IO (Packet, IxValue (DatedArticle Authors))
-gruntWerk generator ancillaryFn conn jsonFile =
-   lookupTable conn "severity_lk"                    >>= \lk ->
-   readStorePacket conn jsonFile                     >>= \pack ->
+    -> Connection -> Packet -> IO (Packet, IxValue (DatedArticle Authors))
+gruntWerk lk generator ancillaryFn conn pack =
    let (arts,logentries) = parseArticles generator pack in
    insertLogEntries conn lk [mkentry ("Inserted "
                       ++ show (pack { rows = [] }))] >>
@@ -105,4 +103,7 @@ gruntWerk generator ancillaryFn conn jsonFile =
 etl :: BlockParser Identity Authors
     -> (Connection -> [IxValue (DatedArticle Authors)] -> IO ())
     -> Connection -> FilePath -> IO ()
-etl generator ancillaryFn conn = void . gruntWerk generator ancillaryFn conn
+etl generator ancillaryFn conn jsonFile =
+   lookupTable conn "severity_lk"                    >>= \lk ->
+   readStorePacket conn jsonFile                     >>= \pack ->
+   void (gruntWerk lk generator ancillaryFn conn pack)
