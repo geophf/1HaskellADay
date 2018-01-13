@@ -87,7 +87,7 @@ parseArticles generator =
 
 gruntWerk :: LookupTable -> BlockParser Identity Authors
     -> (Connection -> [IxValue (DatedArticle Authors)] -> IO ())
-    -> Connection -> Packet -> IO (Packet, IxValue (DatedArticle Authors))
+    -> Connection -> Packet -> IO (IxValue (DatedArticle Authors))
 gruntWerk lk generator ancillaryFn conn pack =
    let (arts,logentries) = parseArticles generator pack in
    insertLogEntries conn lk [mkentry ("Inserted "
@@ -97,7 +97,7 @@ gruntWerk lk generator ancillaryFn conn pack =
    storeAncilliary conn ixarts                       >>
    insertLogEntries conn lk [mkentry ("stored " ++ (show $ length ixarts)
                                     ++ " articles")] >>
-   return (pack, last ixarts)
+   return (last ixarts)
       where mkentry = Entry INFO "etl_pilot" "Y2018.M01.D10.Solution"
 
 etl :: BlockParser Identity Authors
