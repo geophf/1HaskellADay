@@ -147,7 +147,8 @@ instance Ord Author where
 -- so we need to fetch the authors from the database and 
 
 fetchAuthorStmt :: Query
-fetchAuthorStmt = [sql|SELECT * from author|]
+fetchAuthorStmt = 
+   [sql|SELECT id,uuid,screen_name,given_name,family_name from author|]
 
 fetchAuthors :: Connection -> IO [IxValue Author]
 fetchAuthors conn = query_ conn fetchAuthorStmt
