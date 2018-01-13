@@ -82,10 +82,13 @@ parseArticles :: FromJSON a => BlockParser Identity a -> Packet
 parseArticles generator =
    second dlToList . runWriter . elide generator apArt . rows
 
-etl :: BlockParser Identity Authors
+-- so we want to do all the work of the ETL AND return the indexed articles and
+-- packet for down-the-road work, as necessary
+
+gruntWerk ::  BlockParser Identity Authors
     -> (Connection -> [IxValue (DatedArticle Authors)] -> IO ())
-    -> Connection -> FilePath -> IO ()
-etl generator ancillaryFn conn jsonFile =
+    -> Connection -> FilePath -> IO (Packet, IxValue (DatedArticle Authors))
+gruntWerk generator ancillaryFn conn jsonFile =
    lookupTable conn "severity_lk"                    >>= \lk ->
    readStorePacket conn jsonFile                     >>= \pack ->
    let (arts,logentries) = parseArticles generator pack in
@@ -95,5 +98,11 @@ etl generator ancillaryFn conn jsonFile =
    storeArticles conn arts                           >>= \ixarts ->
    storeAncilliary conn ixarts                       >>
    insertLogEntries conn lk [mkentry ("stored " ++ (show $ length ixarts)
-                                                ++ " articles")]
+                                    ++ " articles")] >>
+   return (pack, last ixarts)
       where mkentry = Entry INFO "etl_pilot" "Y2018.M01.D10.Solution"
+
+etl :: BlockParser Identity Authors
+    -> (Connection -> [IxValue (DatedArticle Authors)] -> IO ())
+    -> Connection -> FilePath -> IO ()
+etl generator ancillaryFn conn = void . gruntWerk generator ancillaryFn conn
