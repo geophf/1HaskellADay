@@ -121,6 +121,9 @@ instance FromRow Author where
 -- the authors from the articles, store unique authors, and pivot on the new
 -- articles' authors.
 
+pa :: Monad m => Integer -> Result (DatedArticle Authors) -> Logger m (Maybe (DatedArticle Authors))
+pa idx art = undefined
+
 {-- BONUS -----------------------------------------------------------------
 
 Store the articles as per Y2017.M12.D29.Exercise and, add to the ETL process
