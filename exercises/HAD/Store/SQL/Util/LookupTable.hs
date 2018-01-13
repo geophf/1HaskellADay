@@ -27,7 +27,6 @@ define a function that returns a Haskell lookup table
 --}
 
 import qualified Data.ByteString.Char8 as B
-import Data.Map (Map)
 import qualified Data.Map as Map
 import Data.Tuple (swap)
 
@@ -35,11 +34,11 @@ import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.FromRow
 import Database.PostgreSQL.Simple.Types
 
--- below import available via 1HaskellADay git repository
+-- below imports available via 1HaskellADay git repository
+
+import Data.LookupTable (LookupTable)
 
 import Store.SQL.Connection (withConnection)
-
-type LookupTable = Map String Integer
 
 lookupTable :: Connection -> String -> IO LookupTable
 lookupTable conn tablename =
