@@ -38,3 +38,13 @@ readPacket :: Integer -> IO (Maybe Packet)
 readPacket offset = undefined
 
 -- What is the value of next for the packet read? How many blocks were read?
+
+{-- BONUS -----------------------------------------------------------------
+
+What if it takes a long time to get a response? The default timeout is 5
+seconds. What if it takes up to 60 seconds? Write a function that modifies
+the default timeout to allow for a longer response time.
+--}
+
+rp' :: Int -> Integer -> IO (Maybe Packet)
+rp' secs offset = undefined
