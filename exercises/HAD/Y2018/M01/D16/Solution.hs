@@ -15,6 +15,8 @@ The rest endpoint:
 --}
 
 import Data.Aeson (decode)
+import Data.ByteString.Lazy.Char8 (ByteString)
+import qualified Data.ByteString.Lazy.Char8 as BL
 
 import Network.HTTP.Conduit
 
@@ -36,7 +38,7 @@ the offset is from the most recent, or only active audit log entry:
 For now just pick an offset so we can load in a packet:
 --}
 
-readPacket :: Integer -> IO (Maybe Packet)
+readPacket :: Integer -> IO (Either Packet String)
 
 {--
 here is the plain-jain simpleHttp answer to the exercise:
@@ -48,12 +50,17 @@ readPacket offset = simpleHttp (endpoint ++ show offset) >>= return . decode
 
 readPacket = rp' 60
 
-rp' :: Int -> Integer -> IO (Maybe Packet)
+rp' :: Int -> Integer -> IO (Either Packet String)
 rp' secs offset =
    newManager tlsManagerSettings >>= \mgr ->
    parseRequest (endpoint ++ show offset) >>= \req ->
    let req' = req { responseTimeout = responseTimeoutMicro (secs * 1000000) } in
-   httpLbs req' mgr >>= return . decode . responseBody
+   httpLbs req' mgr >>= return . eitherify decode . responseBody
+
+eitherify :: (ByteString -> Maybe Packet) -> ByteString -> Either Packet String
+eitherify f str = case f str of
+   Just pack -> Left pack
+   Nothing   -> Right (BL.unpack str)
 
 -- What is the value of next for the packet read? How many blocks were read?
 

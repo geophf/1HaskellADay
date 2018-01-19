@@ -34,7 +34,7 @@ the offset is from the most recent, or only active audit log entry:
 For now just pick an offset so we can load in a packet:
 --}
 
-readPacket :: Integer -> IO (Maybe Packet)
+readPacket :: Integer -> IO (Either Packet String)
 readPacket offset = undefined
 
 -- What is the value of next for the packet read? How many blocks were read?
@@ -46,5 +46,5 @@ seconds. What if it takes up to 60 seconds? Write a function that modifies
 the default timeout to allow for a longer response time.
 --}
 
-rp' :: Int -> Integer -> IO (Maybe Packet)
+rp' :: Int -> Integer -> IO (Either Packet String)
 rp' secs offset = undefined
