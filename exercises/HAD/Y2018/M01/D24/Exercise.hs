@@ -49,10 +49,10 @@ decode :: [(Int, a)] -> [a]
 decode pairs = undefined
 
 {--
->>> decode it
+>>> decode (encode sample)
 "aaaabccaadeeee"
 
->>> it == sample
+>>> decode (encode sample) == sample
 True
 --}
 
