@@ -52,10 +52,10 @@ decode :: [(Int, a)] -> [a]
 decode = concatMap (uncurry replicate)
 
 {--
->>> decode it
+>>> decode (encode sample)
 "aaaabccaadeeee"
 
->>> it == sample
+>>> decode (encode sample) == sample
 True
 --}
 
