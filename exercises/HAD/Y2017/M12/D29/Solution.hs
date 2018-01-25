@@ -56,8 +56,7 @@ import Y2018.M01.D02.Solution hiding (uuid)
 
 type Logger m a = WriterT (DList String) m a
 
-processBlock :: FromJSON a => Monad m =>
-             (Integer -> Result (DatedArticle a) -> Logger m (Maybe (DatedArticle a)))
+processBlock :: FromJSON a => Monad m => BlockParser m a
              -> Integer -> Block -> Logger m (Maybe (DatedArticle a))
 processBlock processor idx = processor idx . fromJSON
 

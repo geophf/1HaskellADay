@@ -43,9 +43,9 @@ import Y2017.M12.D27.Exercise
 
 type Logger m a = WriterT (DList String) m a
 
-processBlock :: Monad m => Integer -> Block -> m (Maybe (DatedArticle Value))
-processBlock idx block = undefined
-
+processBlock :: FromJSON a => Monad m => BlockParser m a
+             -> Integer -> Block -> Logger m (Maybe (DatedArticle a))
+processBlock processor idx block = undefined
 say :: Monad m => String -> Logger m ()
 say msg = undefined
 
