@@ -44,11 +44,13 @@ import Text.HTML.TagSoup
 
 import Control.List (weave)
 import Control.Logic.Frege ((<<-))
+
+import Data.HTML
+
 import Store.SQL.Connection (withConnection)
 import Store.SQL.Util.Indexed
 
-import Y2017.M12.D20.Solution (readSample, rows)
-import Y2017.M12.D22.Solution hiding (content, title, uuid, readSample, rows)
+import Y2017.M12.D20.Solution (Packet, readSample, rows)
 import Y2017.M12.D26.Solution (insertStagedArt)
 
 {--
@@ -103,10 +105,10 @@ sampleDate = BL.unlines ["{",
 
 -- note that changing -05:00 to -04:00 does NOT change the time zone
 
+{--
 readArticles :: FilePath -> IO (Packet (DatedArticle Value))
 readArticles json = fromJust . decode <$> BL.readFile json
 
-{--
 >>> arts <- readArticles "Y2017/M12/D27/one-article.json" 
 >>> showDate (starttime . head $ rows arts)
 "2017-12-12T22:00:00-0500"

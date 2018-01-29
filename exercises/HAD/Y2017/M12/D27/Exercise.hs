@@ -39,7 +39,9 @@ import Text.HTML.TagSoup
 
 import Store.SQL.Util.Indexed (Index)
 
-import Y2017.M12.D22.Exercise
+-- import Y2017.M12.D22.Exercise hiding (content)
+
+import Data.HTML
 
 {--
 You see from the above imported exercise that we have already scanned and parsed
