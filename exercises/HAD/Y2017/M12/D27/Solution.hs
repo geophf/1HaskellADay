@@ -131,7 +131,7 @@ instance HTML (DatedArticle a) where
 instance ToField a => ToRow (DatedArticle a) where
    toRow art@(Carbon uu ti ur pr au st la se ke co _) =
       [toField la, toField st, toField uu, toField ur, toField (demark <$> pr),
-       toField (htmlBlock art), toField (unlines $ plainText art),
+       toField (unlines $ plainText art), toField (htmlBlock art), 
        toField (weave se), toField ti, toField au,
        toField (weave (map showVal ke))]
 
