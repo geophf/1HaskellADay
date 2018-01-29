@@ -26,13 +26,18 @@ import qualified Data.ByteString.Lazy.Char8 as BL
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
 import Database.PostgreSQL.Simple.ToRow
-import Database.PostgreSQL.Simple.ToField (toField)
+import Database.PostgreSQL.Simple.ToField (ToField, toField)
 
 import Store.SQL.Connection (withConnection)
 import Store.SQL.Util.Indexed
 
+{-- already defined in DataBase.PostgreSQL.Simple.ToField
+instance ToField Block where
+   toField = BL.unpack . encodePretty
+--}
+
 instance ToRow Block where
-   toRow = pure . toField . BL.unpack . encodePretty
+   toRow = pure . toField
 
 -- The insert statement gives the Article structure
 -- (also image attached from the Entity-relation diagram)
