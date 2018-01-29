@@ -43,6 +43,7 @@ import Data.Time.LocalTime
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.FromRow
 import Database.PostgreSQL.Simple.SqlQQ
+import Database.PostgreSQL.Simple.Time hiding (Date)
 
 -- below imports available via 1HaskellADay git repository
 
@@ -89,8 +90,13 @@ fetchLastUpdated conn = undefined
 
 -- Of course, it would be nice for Day to have a FromRow-instance, wouldn't it?
 
-data Date = Date { day :: Day }
+data Date = Date LocalTimestamp
    deriving (Eq, Ord, Show)
+
+day :: Date -> Day
+day (Date (Finite ts)) = undefined
+
+-- Haskell's simple PostgreSQL uses their own date/time representation
 
 instance FromRow Date where
    fromRow = undefined
