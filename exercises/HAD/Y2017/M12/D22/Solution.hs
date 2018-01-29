@@ -94,6 +94,8 @@ htmlBlock = unlines . body
 plainText :: HTML a => a -> [String]
 plainText = map demark . body
 
+-- 3. finds the content of the tag, removing the tags
+
 demark :: String -> String
 demark = unwords . mapMaybe text . parseTags
 

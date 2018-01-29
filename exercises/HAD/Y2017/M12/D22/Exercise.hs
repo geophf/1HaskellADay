@@ -73,6 +73,11 @@ htmlBlock art = undefined
 plainText :: HTML a => a -> [String]
 plainText art = undefined
 
+-- 3. finds the content of the tag, removing the tags
+
+demark :: String -> String
+demark = undefined
+
 -- hint: use tagsoup to help here
 
 -- What are the htmlBlock and plainText for each of the articles of subset.json?
