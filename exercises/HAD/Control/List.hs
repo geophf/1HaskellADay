@@ -18,10 +18,8 @@ instance Comonad [] where
    duplicate list@(h:t) = list : duplicate t
    -- or duplicate = init . tails for nonempty lists
 
--- I'm always testing for lists of only one element, so ...
-
-singleton :: [a] -> Bool
-singleton = (== 1) . length
+singleton :: a -> [a]
+singleton = pure
 
 -- (the whole finite set of dependent types in Haskell thing ... *blush*)
 
