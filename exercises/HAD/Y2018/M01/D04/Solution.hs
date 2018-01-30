@@ -73,6 +73,7 @@ instance FromJSON Author where
              <*> o .: "first_name" <*> o .: "last_name"
 
 data Authors = Authors { authorSet :: [Author] }
+   deriving Show
 
 instance FromJSON Authors where
    parseJSON o = Authors <$> parseJSONList o

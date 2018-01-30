@@ -64,6 +64,7 @@ instance FromJSON Author where
    parseJSON (Object o) = undefined
 
 data Authors = Authors { authorSet :: [Author] }
+   deriving Show
 
 instance FromJSON Authors where
    parseJSON o = undefined
