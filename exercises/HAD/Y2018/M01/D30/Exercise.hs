@@ -124,3 +124,12 @@ NEW and UPDATED articles separately?
 
 We'll look at these questions further tomorrow.
 --}
+
+{-- BONUS -----------------------------------------------------------------
+
+Put it all together into an app that spits out a status of the numbers of
+new, updated, and redundant articles from a REST endpoint pull.
+--}
+
+main' :: [String] -> IO ()
+main' args = undefined
