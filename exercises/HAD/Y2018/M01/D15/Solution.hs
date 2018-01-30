@@ -28,6 +28,9 @@ import Control.Monad (void)
 import Data.Aeson
 import Data.Functor.Identity (Identity)
 import qualified Data.Map as Map
+import Data.Time
+import Data.Time.Clock
+import Data.Time.LocalTime
 
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
@@ -65,12 +68,13 @@ data AuditEntry =
         column           :: Maybe String,
         change           :: String,
         row              :: Integer,
-        action           :: Action }
+        action           :: Action,
+        time             :: LocalTime }
       deriving (Eq, Show)
 
 instance ToRow AuditEntry where
-   toRow (AE app user tab col delt row act) =
-      toField row:map toField [app, user, tab, delt]
+   toRow (AE app user tab col delt row act time) =
+      toField row:toField time:map toField [app, user, tab, delt]
 
 -- the actions are:
 
@@ -103,7 +107,7 @@ instance ToRow AuditEntry' where
 -- given, of course, you have a mapping from Action -> Action'
 
 aud2act' :: AuditEntry -> LookupTable -> Action'
-aud2act' (AE _ _ _ _ _ _ a) = Act' a
+aud2act' (AE _ _ _ _ _ _ a _) = Act' a
 
 {--
 Great, we have the preliminaries out of the way.
@@ -120,21 +124,24 @@ action: INSERT
 change: show next packet value
 --}
 
-mkAuditStmt :: Packet -> IxValue article -> AuditEntry
+mkAuditStmt :: Packet -> IxValue article -> IO AuditEntry
 mkAuditStmt pac article =
-   AE "ETL" "SYSTEM" "article" Nothing (show (next pac)) (idx article) INSERT
+   getCurrentTime >>= \utc ->
+   getCurrentTimeZone >>= \tz ->
+   return (AE "ETL" "SYSTEM" "article" Nothing (show (next pac))
+              (idx article) INSERT (utcToLocalTime tz utc))
 
 -- then insert that statement into the database
 
 insertAuditEntryStmt :: Query
 insertAuditEntryStmt =
-   [sql|INSERT INTO audit (row_number,application,user_name,table_name,change,action)
-        VALUES (?,?,?,?,?,?)|]
+   [sql|INSERT INTO audit (row_number,time,application,user_name,table_name,change,action)
+        VALUES (?,?,?,?,?,?,?)|]
 
 insertAuditEntries :: Connection -> LookupTable -> Packet -> IxValue a -> IO ()
-insertAuditEntries conn lk pac =
-   void . executeMany conn insertAuditEntryStmt
-        . map ((`AE'` lk) . mkAuditStmt pac) . pure
+insertAuditEntries conn lk pac ix =
+   mkAuditStmt pac ix >>=
+   void . executeMany conn insertAuditEntryStmt . map (`AE'` lk) . pure
 
 -- BUT ONLY AFTER deactivating all previously inserted audit records
 
@@ -167,3 +174,5 @@ etl generator ancillaryFn conn json =
    readStorePacket conn json                    >>= \pac  ->
    gruntWerk sev generator ancillaryFn conn pac >>=
    storeAuditInfo conn actv actn pac
+
+-- moving Auditing to Data and Store/SQL/Util

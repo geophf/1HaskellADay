@@ -25,6 +25,7 @@ that article that will allow us to pick up where we left off.
 
 import Data.Aeson
 import Data.Functor.Identity (Identity)
+import Data.Time
 
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
@@ -58,7 +59,8 @@ data AuditEntry =
         column           :: Maybe String, 
         change           :: String,
         row              :: Integer,
-        action           :: Action }
+        action           :: Action,
+        time             :: Day }
       deriving (Eq, Show)
 
 -- the actions are:
