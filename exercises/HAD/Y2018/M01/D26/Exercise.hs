@@ -25,6 +25,10 @@ TODAY's exercise is to download a week's-worth of articles from a REST endpoint.
 import Data.Time
 import Data.Time.Clock
 
+-- below imports available via 1HaskellADay git repository
+
+import Data.Logger
+
 -- of course, we've accessed the REST endpoint before so:
 
 import Y2018.M01.D16.Exercise (readPacket)
@@ -36,5 +40,5 @@ import Y2017.M12.D27.Exercise (DatedArticle, starttime, lastupdated)
 
 -- how many packets constitute a week's-worth of articles?
 
-oneWeek :: IO [Packet]
+oneWeek :: Logger IO [Packet]
 oneWeek = undefined

@@ -24,6 +24,7 @@ TODAY's exercise is to download a week's-worth of articles from a REST endpoint.
 
 import Control.Arrow ((&&&))
 import Control.Monad (guard)
+import Control.Monad.State (lift)
 
 import Data.Aeson (fromJSON, Value)
 import Data.Aeson.Types
@@ -32,6 +33,10 @@ import Data.Time
 import Data.Time.Calendar
 import Data.Time.Clock
 import Data.Time.LocalTime
+
+-- below imports available via 1HaskellADay git repositry
+
+import Data.Logger
 
 -- of course, we've accessed the REST endpoint before so:
 
@@ -44,8 +49,8 @@ import Y2017.M12.D27.Solution (DatedArticle, starttime, lastupdated)
 
 -- how many packets constitute a week's-worth of articles?
 
-oneWeek :: IO [Packet]
-oneWeek = getCurrentTime >>= \(UTCTime d _) -> ow (addDays (-7) d) 0 []
+oneWeek :: Logger IO [Packet]
+oneWeek = lift getCurrentTime >>= \(UTCTime d _) -> ow (addDays (-7) d) 0 []
 
 {--
 >>> packs <- oneWeek
@@ -53,13 +58,18 @@ oneWeek = getCurrentTime >>= \(UTCTime d _) -> ow (addDays (-7) d) 0 []
 4
 --}
 
-ow :: Day -> Integer -> [Packet] -> IO [Packet]
+ow :: Day -> Integer -> [Packet] -> Logger IO [Packet]
 ow term offset acc =
-   readPacket offset >>= either (processArts term acc) (errOut term offset acc)
+   lift (readPacket offset) >>=
+   either (processArts term acc) (errOut term offset acc)
 
-errOut :: Day -> Integer -> [Packet] -> String -> IO [Packet]
+logerr :: String -> Logger IO ()
+logerr msg = say (Entry ERROR "daily upload" "Y2018.M01.D26.Solution" msg) >>
+   lift (putStrLn msg)
+
+errOut :: Day -> Integer -> [Packet] -> String -> Logger IO [Packet]
 errOut term offset acc err =
-   putStrLn ("Error reading packet at " ++ show offset ++ ": " ++ err) >>
+   logerr ("Error reading packet at " ++ show offset ++ ": " ++ err) >>
    ow term offset acc
 
 {--
@@ -71,16 +81,17 @@ CallStack (from HasCallStack):
 ... so that works!
 --}
 
-processArts :: Day -> [Packet] -> Packet -> IO [Packet]
+processArts :: Day -> [Packet] -> Packet -> Logger IO [Packet]
 processArts term acc p =
    case pa term (rows p) of
       []         -> return acc
-      arts@(_:_) -> ow term (fromIntegral $ next p) (p { rows = map fst arts }:acc)
+      a@(_:_) -> ow term (fromIntegral $ next p) (p { rows = map fst a }:acc)
 
 pa :: Day -> [Block] -> [(Block, DatedArticle Value)]
 pa term = mapMaybe (pa' term . (id &&& fromJSON))
 
-pa' :: Day -> (Block, Result (DatedArticle Value)) -> Maybe (Block, DatedArticle Value)
+pa' :: Day -> (Block, Result (DatedArticle Value))
+    -> Maybe (Block, DatedArticle Value)
 pa' term (_, Error _) = Nothing
 pa' term (b, Success v) =
    starttime v                                        >>=
