@@ -91,7 +91,7 @@ toPairs :: Foldable m => MultiMap k a (m a) -> [(k, a)]
 toPairs = concatMap (sequence . fmap Fld.toList) . toList
 -- from Diego Roque @__gcd for #1liner challenge on @1HaskellADay
 
-fromList :: (Monoid (m a), Ord k, Ord a) => (a -> m a) -> [(k, a)]
+fromList :: (Monoid (m a), Ord k) => (a -> m a) -> [(k, a)]
             -> MultiMap k a (m a)
 fromList liftFn = foldr (uncurry insert) (MM Map.empty liftFn)
 
