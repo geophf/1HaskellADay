@@ -12,9 +12,9 @@ import Control.DList
 
 import Data.LookupTable (LookupTable)
 
-type Logger m a = WriterT (DList String) m a
+type Logger m a = WriterT (DList LogEntry) m a
 
-say :: Monad m => String -> Logger m ()
+say :: Monad m => LogEntry -> Logger m ()
 say = tell . dl'
 
 data Severity = TRACE | DEBUG | INFO | WARN | ERROR | FATAL
