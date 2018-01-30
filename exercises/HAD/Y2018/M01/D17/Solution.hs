@@ -18,10 +18,13 @@ Today's Haskell problem.
 Read in the audit trail, but only read in the active record
 --}
 
+import Data.Time.LocalTime
+
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
 import Database.PostgreSQL.Simple.FromField
 import Database.PostgreSQL.Simple.FromRow
+import Database.PostgreSQL.Simple.Time
 
 -- below imports available via 1HaskellADay git repository
 
@@ -31,14 +34,18 @@ import Y2018.M01.D15.Solution
 
 fetchActiveAuditEntryStmt :: Query
 fetchActiveAuditEntryStmt =
-   [sql|SELECT    application,user_name,table_name,column_name,change,row_number,action
+   [sql|SELECT    application,user_name,table_name,column_name,change,
+                  row_number,action,time
         FROM      audit a
         LEFT JOIN active_lk l ON l.id = a.active_ind
         WHERE     l.active = 'ACTIVE' AND a.application = 'ETL'|]
 
 instance FromRow AuditEntry where
-   fromRow = AE <$> field <*> field <*> field
-                <*> field <*> field <*> field <*> field
+   fromRow = AE <$> field <*> field <*> field <*> field
+                <*> field <*> field <*> field <*> (parseTime <$> field)
+
+parseTime :: LocalTimestamp -> LocalTime
+parseTime (Finite ts) = ts
 
 -- of course, to read in an audit entry, we need to read in an action ...
 -- ... but I just don't care at this point:
