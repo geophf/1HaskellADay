@@ -4,7 +4,8 @@ module Y2018.M02.D01.Solution where
 So there's a clever algorithm to find whether words are anagrams.
 
 So, from the fundamental theorem of arithmetic we know that an integer is an
-unique product of primes, so, knowing that, we can substitute letters for primesand, boom, our 'hashing algorithm' 'automagically' falls out:
+unique product of primes, so, knowing that, we can substitute letters for 
+primesand, boom, our 'hashing algorithm' 'automagically' falls out:
 
 all words with the same prime multiples are anagrams.
 
