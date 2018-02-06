@@ -32,7 +32,7 @@ import Control.DList (DList, dl')
 import Data.LookupTable (LookupTable)
 import Data.Logger (LogEntry, LogEntry'(LE'))
 
-import Store.SQL.Util.Logging hiding (insertStampedEntries)
+import Store.SQL.Util.Logging hiding (insertStampedEntries, insertStampedEntryStmt)
 
 data Stamped a = Stamped { stamped :: a, time :: LocalTime }
    deriving Show
@@ -62,7 +62,8 @@ insertStampedEntryStmt :: Query
 insertStampedEntryStmt =
    [sql|INSERT INTO log (time,severity,app,module,message) VALUES (?,?,?,?,?)|]
 
-{-- moving to Store.SQL.Util.Logging:
+-- moving to Store.SQL.Util.Logging:
+
 insertStampedEntries :: Connection -> LookupTable -> [Stamped LogEntry] -> IO ()
 insertStampedEntries conn lktab =
 
@@ -74,7 +75,6 @@ insertStampedEntries conn lktab =
 
    void . executeMany conn insertStampedEntryStmt
         . map (\(Stamped a t) -> Stamped (LE' a lktab) t)
---}
 
 -- The concept of Stamped will be moved to Data.Stamped and 
 -- Store.SQL.Util.Stamping. The new stamped log entry type will be rolled into 
