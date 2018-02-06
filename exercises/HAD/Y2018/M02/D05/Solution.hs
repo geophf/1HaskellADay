@@ -32,7 +32,7 @@ import Control.DList (DList, dl')
 import Data.LookupTable (LookupTable)
 import Data.Logger (LogEntry, LogEntry'(LE'))
 
--- import Store.SQL.Util.Logging
+import Store.SQL.Util.Logging hiding (insertStampedEntries)
 
 data Stamped a = Stamped { stamped :: a, time :: LocalTime }
    deriving Show
