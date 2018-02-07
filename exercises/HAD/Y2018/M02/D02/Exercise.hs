@@ -21,6 +21,7 @@ import Database.PostgreSQL.Simple
 import Data.Logger (Logger)
 
 import Y2017.M12.D27.Exercise (DatedArticle)
+
 import Y2018.M01.D26.Exercise -- for downloading from the endpoint
 import Y2018.M01.D29.Exercise -- for determining how far back to go
 import Y2018.M01.D30.Exercise -- for triaging from the triage

@@ -12,6 +12,7 @@ packets.
 Hint: you may have seen this before in a different context.
 --}
 
+import Control.Monad ((>=>))
 import Control.Monad.Writer
 
 import Data.Map (Map)
@@ -31,6 +32,7 @@ import Store.SQL.Connection (withConnection)
 
 import Y2017.M12.D27.Solution (DatedArticle)
 import Y2017.M12.D29.Solution (apArt)
+
 import Y2018.M01.D26.Solution (ow)
 import Y2018.M01.D29.Solution (oneWeekAgo)
 import Y2018.M01.D30.Solution hiding (main') -- for triaging from the triage
@@ -84,9 +86,7 @@ triageSansAP conn = do
 
 main' :: [String] -> IO ()
 main' [] = errmsg
-main' ["go"] =
-   withConnection (\conn ->
-      triageSansAP conn >>= \((_,tri), log) ->
-      print (Map.map length tri) >>
-      mapM_ print log)
+main' ["go"] = withConnection (triageSansAP >=> \((_,tri), log) ->
+                 mapM_ print log            >>
+                 print (Map.map length tri))
 main' _ = errmsg
