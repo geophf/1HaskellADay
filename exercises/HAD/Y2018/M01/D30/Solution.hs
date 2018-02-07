@@ -233,6 +233,6 @@ main' ["go"] = withConnection (\conn -> do
 main' _      = errmsg
 
 errmsg :: IO ()
-errmsg = putStrLn (unlines ["", "check_dailies", "",
+errmsg = putStrLn (unlines ["", "check_dailies <go>", "",
    "\tprints status of articles from REST endpoint",
    "\t\tstatus: NEW, UPDATED, REDUNDANT"])
