@@ -78,15 +78,17 @@ updateBlocks conn blocks = undefined
 -- the sorted results coming out match the block ids (I learned that one the
 -- hard way!
 
-insertAndUpdate :: Map Triage [ArticleTriageInformation] -> IO ()
-insertAndUpdate triage = undefined
+insertAndUpdate :: Connection -> Map Triage [ArticleTriageInformation] 
+                -> StampedWriter LogEntry [IxValue (DatedArticle Authors)]
+insertAndUpdate conn triage = undefined
 
 {-- BONUS -----------------------------------------------------------------
 
 Now, put this all together to create the daily upload process
 --}
 
-dailyUpload :: Connection -> Logger IO ()
+dailyUpload :: Connection
+            -> StampedWriter LogEntry (Maybe (Packet, IxValue (DatedArticle Authors)))
 dailyUpload conn = undefined
 
 -- reminders:
@@ -101,3 +103,6 @@ dailyUpload conn = undefined
 
 -- some (or all?) of this functionality may be handled for you already
 -- by functions we've defined in exercises prior.
+
+main' :: [String] -> IO ()
+main' args = undefined
