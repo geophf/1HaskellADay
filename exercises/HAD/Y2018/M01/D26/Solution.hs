@@ -37,6 +37,7 @@ import Data.Time.LocalTime
 -- below imports available via 1HaskellADay git repositry
 
 import Data.Logger
+import Data.Stamped
 
 -- of course, we've accessed the REST endpoint before so:
 
@@ -49,7 +50,7 @@ import Y2017.M12.D27.Solution (DatedArticle, starttime, lastupdated)
 
 -- how many packets constitute a week's-worth of articles?
 
-oneWeek :: Logger IO [Packet]
+oneWeek :: StampedWriter LogEntry [Packet]
 oneWeek = lift getCurrentTime >>= \(UTCTime d _) -> ow (addDays (-7) d) 0 []
 
 {--
@@ -58,16 +59,16 @@ oneWeek = lift getCurrentTime >>= \(UTCTime d _) -> ow (addDays (-7) d) 0 []
 4
 --}
 
-ow :: Day -> Integer -> [Packet] -> Logger IO [Packet]
+ow :: Day -> Integer -> [Packet] -> StampedWriter LogEntry [Packet]
 ow term offset acc =
    lift (readPacket offset) >>=
    either (processArts term acc) (errOut term offset acc)
 
-logerr :: String -> Logger IO ()
-logerr msg = say (Entry ERROR "daily upload" "Y2018.M01.D26.Solution" msg) >>
+logerr :: String -> StampedWriter LogEntry ()
+logerr msg = sayIO (Entry ERROR "daily upload" "Y2018.M01.D26.Solution" msg) >>
    lift (putStrLn msg)
 
-errOut :: Day -> Integer -> [Packet] -> String -> Logger IO [Packet]
+errOut :: Day -> Integer -> [Packet] -> String -> StampedWriter LogEntry [Packet]
 errOut term offset acc err =
    logerr ("Error reading packet at " ++ show offset ++ ": " ++ err) >>
    ow term offset acc
@@ -81,7 +82,7 @@ CallStack (from HasCallStack):
 ... so that works!
 --}
 
-processArts :: Day -> [Packet] -> Packet -> Logger IO [Packet]
+processArts :: Day -> [Packet] -> Packet -> StampedWriter LogEntry [Packet]
 processArts term acc p =
    case pa term (rows p) of
       []         -> return acc
