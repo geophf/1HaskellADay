@@ -12,7 +12,7 @@ all words with the same prime multiples are anagrams.
 So, with that, what are the anagrams in your local dictionary?
 --}
 
-import Control.Arrow ((&&&))
+import Control.Arrow ((&&&), second)
 import Data.Array (Array, listArray, (!))
 import Data.Char (toUpper, isAlpha)
 import Data.Ord
@@ -37,10 +37,10 @@ localDictionary = "/usr/share/dict/words"
 --}
 
 anagramSets :: [String] -> Map Integer [String]
-anagramSets = Map.map dlToList . MM.store . MM.fromList dl' . map (primeWord &&& id)
+anagramSets = Map.map dlToList . MM.store . MM.fromList dl' . map (wordPrime &&& id)
 
-primeWord :: String -> Integer
-primeWord = foldr (*) 1 . map ((primes !) . toUpper) . filter isAlpha
+wordPrime :: String -> Integer
+wordPrime = product . map ((primes !) . toUpper) . filter isAlpha
 
 primes :: Array Char Integer
 primes = listArray ('A','Z')
@@ -51,11 +51,11 @@ primes = listArray ('A','Z')
 -- How many anagram sets are there? Exclude single-word sets: those don't count
 
 count :: Map a [b] -> Map a [b]
-count = Map.filter doubleton
+count = Map.filter doublePlusTon
 
-doubleton :: [a] -> Bool
-doubleton (_:_:_) = True
-doubleton _       = False
+doublePlusTon :: [a] -> Bool
+doublePlusTon (_:_:_) = True
+doublePlusTon _       = False
 
 {--
 >>> anagrams = count $ anagramSets hinglish
