@@ -66,23 +66,23 @@ aud2act' (AE _ _ _ _ _ _ a _) = Act' a
 Great, we have the preliminaries out of the way.
 
 make an entry in the audit table, given the next-value of a Packet and the id
-of the article table of the last article inserted, with an audit entry with
+of the packet table of the last packet inserted, with an audit entry with
 these values:
 
 app: "ETL"
 user: "SYSTEM"
-table_name: "article"
-row_number: article id column value
+table_name: "packet"
+row_number: packet id column value
 action: INSERT
 change: show next packet value
 --}
 
-mkAuditStmt :: String -> IxValue article -> IO AuditEntry
-mkAuditStmt nextPac article =
+mkAuditStmt :: String -> IxValue packet -> IO AuditEntry
+mkAuditStmt nextPac packet =
    getCurrentTime >>= \utc ->
    getCurrentTimeZone >>= \tz ->
-   return (AE "ETL" "SYSTEM" "article" Nothing nextPac
-              (idx article) INSERT (utcToLocalTime tz utc))
+   return (AE "ETL" "SYSTEM" "packet" Nothing nextPac
+              (idx packet) INSERT (utcToLocalTime tz utc))
 
 -- then insert that statement into the database
 
@@ -109,9 +109,9 @@ deactivatePriorAuditEntries conn lk =
 
 storeAuditInfo :: Connection -> LookupTable -> LookupTable -> String
                -> IxValue a -> IO ()
-storeAuditInfo conn activ actn nextPack art =
+storeAuditInfo conn activ actn nextPack pack =
    deactivatePriorAuditEntries conn activ >>
-   insertAuditEntries conn actn nextPack art
+   insertAuditEntries conn actn nextPack pack
 
 {-- BONUS -----------------------------------------------------------------
 
