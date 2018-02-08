@@ -69,8 +69,8 @@ insertPacketArtPvtStmt :: Query
 insertPacketArtPvtStmt =
    [sql|INSERT INTO article_packet (packet_id,article_id) VALUES (?,?)|]
 
-pivotArtPackage :: Index -> [IxValue (DatedArticle a)] -> [Pivot]
-pivotArtPackage pvtId arts = undefined
+pivotArtPacket :: Index -> [IxValue (DatedArticle a)] -> [Pivot]
+pivotArtPacket pvtId arts = undefined
 
 -- hint: is there a function that does this in module Pivots?
 

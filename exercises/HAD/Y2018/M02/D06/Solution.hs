@@ -69,10 +69,10 @@ insertPackets conn packs =
 
 insertPacketArtPvtStmt :: Query
 insertPacketArtPvtStmt =
-   [sql|INSERT INTO article_packet (packet_id,article_id) VALUES (?,?)|]
+   [sql|INSERT INTO article_packet (article_id,packet_id) VALUES (?,?)|]
 
-pivotArtPackage :: Index -> [IxValue (DatedArticle a)] -> [Pivot]
-pivotArtPackage = map . flip joinValue
+pivotArtPacket :: [IxValue (DatedArticle a)] -> Index -> [Pivot]
+pivotArtPacket arts = zipWith joinValue arts . repeat
 
 -- hint: is there a function that does this in module Pivots?
 
