@@ -27,6 +27,7 @@ import Control.DList (dlToList)
 import Control.Logic.Frege (assert)
 
 import Data.Logger (Logger, LogEntry)
+import Data.Stamped (Stamped)
 
 import Store.SQL.Connection (withConnection)
 
@@ -71,7 +72,7 @@ but this time, first removes the AP articles
 --}
 
 triageSansAP :: Connection
-             -> IO (([ArticleMetaData], Map Triage [ArticleTriageInformation]), [LogEntry])
+             -> IO (([ArticleMetaData], Map Triage [ArticleTriageInformation]), [Stamped LogEntry])
 triageSansAP conn = do
    owa <- oneWeekAgo conn
    (packs,log) <- runWriterT (ow owa 0 [])
