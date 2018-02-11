@@ -18,7 +18,7 @@ say :: Monad m => LogEntry -> Logger m ()
 say = tell . dl'
 
 data Severity = TRACE | DEBUG | INFO | WARN | ERROR | FATAL
-   deriving (Eq, Ord, Show)
+   deriving (Eq, Ord, Show, Read)
 
 data LogEntry = Entry { sev :: Severity,app,mod,msg :: String }
    deriving (Eq, Show)
