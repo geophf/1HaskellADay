@@ -1,5 +1,7 @@
 module Control.List where
 
+-- A set of operations not included in the standard library of Data.List
+
 import Control.Applicative (liftA2)
 import Control.Arrow ((***), (&&&))
 import Control.Comonad
@@ -23,7 +25,11 @@ singleton = pure
 
 -- (the whole finite set of dependent types in Haskell thing ... *blush*)
 
--- A set of operations not included in the standard library of Data.List
+-- list is the maybe-function for lists
+
+list :: b -> ([a] -> b) -> [a] -> b
+list ans f []      = ans
+list _   f l@(_:_) = f l
 
 -- chops, as in mutton. We chop a list into little, tiny pieces, and then
 -- eat them up, yum!
