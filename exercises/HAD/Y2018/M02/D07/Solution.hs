@@ -239,7 +239,7 @@ info2ixarts (ATI _ (b, a) amd) = (,b) . flip IxV a . artId <$> amd
 -- and let's tie it all together:
 
 dailyUpload :: Connection -> Day -> [ArticleMetaData]
-            -> StampedWriter LogEntry ()
+            -> StampedWriter LogEntry [IxValue Packet]
 dailyUpload conn date amd =
    ow date 0 []                                             >>= \packs ->
    let arts' = articles packs
@@ -253,10 +253,13 @@ dailyUpload conn date amd =
    processRest conn bins
 
 processRest :: Connection -> Map Triage [ArticleTriageInformation]
-            -> [IxValue (DatedArticle Authors)] -> StampedWriter LogEntry ()
+            -> [IxValue (DatedArticle Authors)]
+            -> StampedWriter LogEntry [IxValue Packet]
 processRest conn tri arts@(_:_) =
-   processPackets conn tri arts >>= lift . mapM_ (processAudit conn)
-processRest _ _ [] = return ()
+   processPackets conn tri arts           >>= \packs ->
+   lift (mapM_ (processAudit conn) packs) >>
+   return packs
+processRest _ _ [] = return []
 
 main' :: [String] -> IO ()
 main' [] = errorMsg
@@ -267,12 +270,13 @@ main' ["go"] =
    withConnection (\conn ->
       oneWeekAgo conn                               >>= \date ->
       fetchArticleMetaData conn (addDays (-1) date) >>= \amd ->
-      runWriterT (dailyUpload conn date amd)        >>= \(_, logs) ->
+      runWriterT (dailyUpload conn date amd)        >>= \(packs, logs) ->
       lookupTable conn "severity_lk"                >>= \sev ->
-      insertStampedEntries conn sev (dlToList logs))             >>
-      getCurrentTime                                             >>=
-      putStrLn . ("Daily update process complete: " ++)
-               . show . flip diffUTCTime start
+      insertStampedEntries conn sev (dlToList logs) >>
+      getCurrentTime                                >>=
+      putStrLn . (("Daily update process complete for packets "
+                ++ show (map idx packs) ++ " ") ++) . show
+                 . flip diffUTCTime start)
 main' _ = errorMsg
 
 errorMsg :: IO ()
