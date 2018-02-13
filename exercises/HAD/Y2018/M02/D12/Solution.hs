@@ -33,8 +33,11 @@ import qualified Data.MultiMap as MM
 
 -- the file is:
 
+artsDir :: FilePath
+artsDir = "Y2018/M02/D12/"
+
 csvFile :: FilePath
-csvFile = "Y2018/M02/D12/25_random_articles.csv"
+csvFile = "25_random_articles.csv"
 
 {--
 How many rows are in the data set? How many columns? Does each row have the
@@ -114,3 +117,11 @@ json2Arts file = fromJust . decode . GZ.decompress <$> BL.readFile file
 
 mapify :: [Article] -> Map String Article
 mapify = Map.fromList . map (artId &&& id)
+
+{--
+>>> csv2json csvFile (artsDir ++ "arts.json")
+
+$ gzip "Y2018/M02/D12/arts.json"
+
+... which we will be looking at in tomorrow's exercise.
+--}

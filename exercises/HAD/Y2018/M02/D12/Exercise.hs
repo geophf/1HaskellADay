@@ -22,8 +22,11 @@ import Data.HTML
 
 -- the file is:
 
-csvFiles :: FilePath
-csvFiles = "Y2018/M02/D12/25_random_articles.csv"
+artsDir :: FilePath
+artsDir = "Y2018/M02/D12/"
+
+csvFile :: FilePath
+csvFile = artsDir ++ "25_random_articles.csv"
 
 {--
 How many rows are in the data set? How many columns? Does each row have the
