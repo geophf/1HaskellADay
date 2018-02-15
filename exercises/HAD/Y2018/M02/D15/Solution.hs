@@ -1,4 +1,4 @@
-module Y2018.M02.D15.Exercise where
+module Y2018.M02.D15.Solution where
 
 {--
 Another problem from P99: the late, great Prolog 99 problems set, reposed at:
