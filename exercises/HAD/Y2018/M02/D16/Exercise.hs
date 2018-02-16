@@ -50,5 +50,34 @@ From the set of numbers stored in:
 rndNums :: FilePath
 rndNums = "Y2018/M02/D16/rndnums.txt"
 
--- find the coprime pairs. How many coprime pairs are there?
+-- How many coprime pairs are there of adjacent pairs?
 -- Did you have to consider efficiency in your search, or nah?
+
+{--
+>>> nums <- concatMap words . drop 2 . lines <$> readFile rndNums
+>>> length nums
+94
+
+pairwise :: [a] -> [(a,a)]
+pairwise [_] = []
+pairwise (a:b:rest) = (a,b) : pairwise (a:rest) ++ pairwise (b:rest)
+
+Hm.
+
+>>> product [1..94]
+108736615665674308027365285256786601004186803580182872307497374434045199869417927630229109214583415458560865651202385340530688000000000000000000000
+
+... well, I don't have all day, so ...
+--}
+
+pairOff :: [a] -> [(a,a)]
+pairOff (a:b:rest) = (a,b) : pairOff rest
+pairOff [_] = []
+pairOff [] = []
+
+pairs :: FilePath -> IO [(Int, Int)]
+pairs file = undefined
+
+-- create a report of the coprime pairs from rndnum.txt in this format:
+
+-- [((328286,30706),False),((429273,188961),False),((517634,176001),True),...]
