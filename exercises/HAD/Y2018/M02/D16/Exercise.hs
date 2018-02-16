@@ -1,0 +1,54 @@
+module Y2018.M02.D16.Exercise where
+
+{--
+I know what you're thinking.
+
+(I'm all psycho like that)
+
+You're thinking: "Hahaha, geophf! You published an exercise yesterday that had
+a solution of:
+
+gcd = Prelude.gcd
+
+Hahaha!"
+
+Well, okay, ... sue me, sue me, shoot bullets through me, ... I love you.
+
+Sigh. Does anybody sing it any better than Frank?
+
+Well, I did that exercise yesterday, because 1. I wanted to, and 2. I have
+today's exercise which is the very next exercise from P99, archived at:
+
+http://www.ic.unicamp.br/~meidanis/courses/mc336/2009s2/prolog/problemas/
+
+(*) Determine whether two positive integer numbers are coprime.
+Two numbers are coprime if their greatest common divisor equals 1.
+Example:
+?- coprime(35, 64).
+Yes
+--}
+
+coprime :: Integral a => a -> a -> Bool
+coprime a b = undefined
+
+{--
+>>> coprime 35 64
+True
+--}
+
+-- Determine if these pairs of Ints are coprime
+-- numbers provided by random.org
+
+jack0diamonds :: [(Int, Int)]
+jack0diamonds = [(485319,761353), (991054, 636321), (503867, 517005)]
+
+{-- BONUS -----------------------------------------------------------------
+
+From the set of numbers stored in:
+--}
+
+rndNums :: FilePath
+rndNums = "Y2018/M02/D16/rndnums.txt"
+
+-- find the coprime pairs. How many coprime pairs are there?
+-- Did you have to consider efficiency in your search, or nah?
