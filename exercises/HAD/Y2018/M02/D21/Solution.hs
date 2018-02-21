@@ -88,7 +88,7 @@ lists have length 2. This is the most frequent length.
 --}
 
 lfsort :: [[a]] -> [[a]]
-lfsort = concat . sortOn length . groupBy ((==) `on` length) . sortOn length
+lfsort = concat . lsort . groupBy ((==) `on` length) . lsort
 
 {--
 or from Bazzargh @bazzargh
