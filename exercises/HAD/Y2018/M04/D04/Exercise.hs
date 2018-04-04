@@ -27,6 +27,7 @@ import Database.PostgreSQL.Simple.ToRow
 
 -- below imports available via 1HaskellADay git repository
 
+import Data.LookupTable
 import Data.MemoizingTable
 
 import Store.SQL.Connection
@@ -42,14 +43,25 @@ import Y2018.M04.D03.Exercise (Author, authors)
 authorTableName :: String
 authorTableName = "author"
 
+lookupAuthors :: Connection -> IO LookupTable
+lookupAuthors conn = undefined
+
+type MemoizedAuthors m = MemoizingS m Integer Author ()
+
+lk2MS :: Monad m => LookupTable -> MemoizedAuthors m
+lk2MS table = undefined
+
 -- 2. from yesterday's exercise, triage the authors into the memoizing table
+
+addNewAuthors :: [Author] -> MemoizedAuthors m
+addNewAuthors authors = undefined
 
 -- 3. store the new memoizing table values into the author table
 
 authorStmt :: Query
 authorStmt = [sql|INSERT INTO author (author) VALUES (?) returning id|]
 
-insertAuthors :: Connection -> [Author] -> IO [Index]
-insertAuthors conn authors = undefined
+insertAuthors :: Connection -> MemoizedAuthors IO
+insertAuthors conn = undefined
 
 -- and there we go for today! Have at it!
