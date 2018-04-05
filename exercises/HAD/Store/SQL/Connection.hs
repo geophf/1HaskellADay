@@ -1,87 +1,48 @@
 module Store.SQL.Connection where
 
+{--
+We're basically rewriting Store.SQL.Connection. Good module, if you only have
+one database to manage, but now I have multiple SQL databases, so I have to
+make all these functions confirgurable.
+--}
+
 import Database.PostgreSQL.Simple
 import System.Environment
 
-{--
-Okay, we're going to start talking with the outside world, that is, beyond
-the age-old putStrLn and print.
+-- let's codify which databases we're talking about here:
 
-So, data-stores, DaaS, all that. But part of that whole infrastructure is
-putting your username and password in place where people don't see that in
-your source code.
+data Database = WPJ | PILOT -- ... and we just add as we grow our scope
+   deriving (Eq, Show)
 
-Today's Haskell problem.
+-- these functions get your database's information from the environment
 
-1. If you don't have a SQL DaaS, start thinking about getting one, or, alter-
-natively, use your local SQL database for next week, if you have one of those.
+dbUserName, dbPassword, dbmsServer, dbName :: Database -> IO String
+dbUserName = ge "USERNAME"
+dbPassword = ge "PASSWORD"
+dbmsServer = ge "SERVER_URL"
+dbName = ge "DB_NAME"
 
-2. Download and install the Persistent cabal framework for Haskell.
+ge :: String -> Database -> IO String
+ge str dbname = getEnv ("SQL_DAAS_" ++ str ++ ('_':show dbname))
 
-3. For today, pretend you have a username and password and a connection URL
-written down on a post-it note, because that's Industry-standard.
+dbPort :: Database -> IO Int
+dbPort = fmap read . ge "SERVER_PORT"
 
-In your OS environment, create the variables SQL_DAAS_USERNAME,
-SQL_DAAS_PASSWORD, SQL_DAAS_SERVER_URL, and SQL_DAAS_DB_NAME, populating the 
-values.
---}
+-- and with those we can do this:
 
-dbUserName, dbPassword, dbmsServer, dbName :: IO String
-dbUserName = getEnv "SQL_DAAS_USERNAME"
-dbPassword = getEnv "SQL_DAAS_PASSWORD"
-dbmsServer = getEnv "SQL_DAAS_SERVER_URL"
-dbName = getEnv "SQL_DAAS_DB_NAME"
+connectInfo :: Database -> IO ConnectInfo
+connectInfo dbname = ConnectInfo <$> dbmsServer dbname
+                          <*> (fromIntegral <$> dbPort dbname)
+                          <*> dbUserName dbname <*> dbPassword dbname
+                          <*> dbName dbname
 
-dbPort :: IO Int
-dbPort = read <$> getEnv "SQL_DAAS_SERVER_PORT"
+-- and with that we can do this:
 
-{-- 
->>> dbUserName
-"geophf"
->>> dbPassword
-"youWish"
->>> dbmsServer
-"pellefant.db.elephantsql.com"
->>> dbName
-"1HaskellADay"
->>> dbPort
-5432
---}
+withConnection :: Database -> (Connection -> IO a) -> IO ()
+withConnection db fn =
+   connectInfo db >>= connect >>= \conn -> fn conn >> close conn
 
-connectInfo :: IO ConnectInfo
-connectInfo = ConnectInfo <$> dbmsServer
-                          <*> (fromIntegral <$> dbPort)
-                          <*> dbUserName <*> dbPassword <*> dbName
+-- with all that now connect to your database and do something cutesies
+-- ('cutesies' is a technical term)
 
-{--
-Okay, using the above results, if your connection string is in the format:
-
-postgres://user:pass@server:5432/dbname
-
-have the below function take the above as arguments and output that format.
---}
-
-connectionString :: String -> String -> String -> Int -> String -> String
-connectionString username pass server port db =
-  "postgres://" ++ username ++ (foldr (\(a,b) c -> a:b ++ c) ""
-         $ zip ":@:/" [pass, server, show port, db])
-
-{--
->>> connectionString <$> dbUserName <*> dbPassword <*> dbmsServer <*> pure 5432 <*> dbName
-"postgres://geophf:youWish@pellefant.db.elephantsql.com:5432/1HaskellADay"
-
-Next week we'll be connecting to and interacting with a SQL DBMS using 
-Database.Persist.
---}
-
-connectionStringFromEnv :: IO String
-connectionStringFromEnv =
-   connectionString <$> dbUserName <*> dbPassword <*> dbmsServer
-                                   <*> dbPort     <*> dbName
-
--- moving this solution to Database.Connection
-
--- And when you want to do something with a live connection (then you're done):
-
-withConnection :: (Connection -> IO a) -> IO ()
-withConnection fn = connectInfo >>= connect >>= \conn -> fn conn >> close conn
+-- this module will replace Store.SQL.Connection
