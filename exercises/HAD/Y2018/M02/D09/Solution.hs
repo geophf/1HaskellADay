@@ -47,7 +47,7 @@ import Data.LookupTable (LookDown, lookdown)
 import Data.Logger (LogEntry(Entry), Severity(INFO))
 import Data.Stamped (Stamped(Stamped), time, stampIt)
 
-import Store.SQL.Connection (withConnection, connectInfo)
+import Store.SQL.Connection (withConnection, connectInfo, Database(PILOT))
 import Store.SQL.Util.Indexed (IxValue(IxV), val, idx, Index(Idx))
 import Store.SQL.Util.Logging (insertStampedEntries)
 import Store.SQL.Util.LookupTable (lookupTable)
@@ -168,7 +168,7 @@ entries to some file and the deletes those saved-off entries from the log table.
 main' :: [String] -> IO ()
 main' [archive] =
    putStrLn ("clean_log to " ++ archive)                             >>
-   withConnection (\conn ->
+   withConnection PILOT (\conn ->
       lookupTable conn "severity_lk"                                 >>= \sev ->
       oneWeekAgo conn                                                >>= \owa ->
       fetchLogs conn (lookdown sev) owa                              >>=
@@ -245,3 +245,6 @@ No log entries to archive today.
 --}
 
 -- Now imbibe a celebratory beverage of your choice. YAY!
+
+go :: IO ()
+go = main' ["pilot-log"]

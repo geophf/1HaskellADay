@@ -47,7 +47,7 @@ import Control.Logic.Frege ((<<-))
 
 import Data.HTML
 
-import Store.SQL.Connection (withConnection)
+import Store.SQL.Connection (withConnection, Database(PILOT))
 import Store.SQL.Util.Indexed
 
 import Y2017.M12.D20.Solution (Packet, readSample, rows)
@@ -182,7 +182,7 @@ main' [jsonFilePath] =
    readSample jsonFilePath >>= \pac ->
    let blocks = rows pac in
        zipWithM parseArticle [1..] blocks >>= \arts ->
-   withConnection (\conn -> do
+   withConnection PILOT (\conn -> do
       ixs <- insertStagedArt conn blocks
       insertArts conn ixs (catMaybes arts)) >>
    putStrLn ("Wrote " ++ (show $ length blocks) ++ " articles to the database.")

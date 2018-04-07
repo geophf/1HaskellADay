@@ -48,7 +48,7 @@ import Data.HTML (demark, plainText, htmlBlock)
 import Data.Logger
 import Data.Stamped
 
-import Store.SQL.Connection (withConnection)
+import Store.SQL.Connection (withConnection, Database(PILOT))
 import Store.SQL.Util.AuditLogging
 import Store.SQL.Util.Indexed (IxValue(IxV), Index, idx)
 import Store.SQL.Util.Logging
@@ -267,7 +267,7 @@ main' ["go"] =
    putStrLn "Running daily_update..."                            >>
    getCurrentTime                                                >>= \start ->
    putStrLn ("Start time: " ++ show start)                       >>
-   withConnection (\conn ->
+   withConnection PILOT (\conn ->
       oneWeekAgo conn                               >>= \date ->
       fetchArticleMetaData conn (addDays (-1) date) >>= \amd ->
       runWriterT (dailyUpload conn date amd)        >>= \(packs, logs) ->
@@ -300,3 +300,6 @@ Inserting 136 new articles
 Updating 24 articles
 Daily update process complete: 25.405694s
 --}
+
+go :: IO ()
+go = main' ["go"]

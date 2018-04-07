@@ -57,7 +57,7 @@ import Control.Logic.Frege ((-|))
 
 import qualified Data.MultiMap as MM
 
-import Store.SQL.Connection (connectInfo, withConnection)
+import Store.SQL.Connection (connectInfo, withConnection, Database(PILOT))
 
 import Y2017.M12.D20.Solution -- for Packet
 import Y2017.M12.D27.Solution (DatedArticle)
@@ -222,7 +222,7 @@ new, updated, and redundant articles from a REST endpoint pull.
 
 main' :: [String] -> IO ()
 main' []     = errmsg
-main' ["go"] = withConnection (\conn -> do
+main' ["go"] = withConnection PILOT (\conn -> do
    owa <- oneWeekAgo conn
    putStrLn ("Fetching articles back to " ++ show owa ++ " from REST endpoint")
    let term = addDays (-1) owa

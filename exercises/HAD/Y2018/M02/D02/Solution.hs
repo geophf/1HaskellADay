@@ -29,7 +29,7 @@ import Control.Logic.Frege (assert)
 import Data.Logger (Logger, LogEntry)
 import Data.Stamped (Stamped)
 
-import Store.SQL.Connection (withConnection)
+import Store.SQL.Connection (withConnection, Database(PILOT))
 
 import Y2017.M12.D27.Solution (DatedArticle)
 import Y2017.M12.D29.Solution (apArt)
@@ -87,7 +87,7 @@ triageSansAP conn = do
 
 main' :: [String] -> IO ()
 main' [] = errmsg
-main' ["go"] = withConnection (triageSansAP >=> \((_,tri), log) ->
+main' ["go"] = withConnection PILOT (triageSansAP >=> \((_,tri), log) ->
                  mapM_ print log            >>
                  print (Map.map length tri))
 main' _ = errmsg
