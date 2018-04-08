@@ -20,8 +20,9 @@ Today we're going to be doing a bit of structural discovery in JSON. We have
 JSON at:
 --}
 
-arts :: FilePath
-arts = "Y2018/M04/D02/posts.json"
+artsDir, arts :: FilePath
+artsDir = "Y2018/M04/D02/"
+arts = artsDir ++ "posts.json"
 
 -- part 1: read in the JSON. (how?)
 
@@ -65,7 +66,6 @@ instance FromJSON Article' where
 22378
 >>> date (head ans)
 Nothing
-
 --}
 
 fromRendered :: (Article' -> Value) -> Article' -> Parser (String, String)

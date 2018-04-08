@@ -28,7 +28,7 @@ writeJSON outfile json = undefined
 -- the JSON into that data structure
 
 data Article = YourStructureDeclaration
-   deriving (Eq, Show)
+   deriving Show
 
 instance FromJSON Article where
    parseJSON (Object o) = undefined
