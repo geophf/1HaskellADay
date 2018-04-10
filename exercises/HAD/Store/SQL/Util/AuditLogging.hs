@@ -39,28 +39,31 @@ import Database.PostgreSQL.Simple.ToRow
 import Data.AuditLogger
 import Data.LookupTable
 
+import Data.Time.Stamped
+
 import Store.SQL.Util.Indexed
+import Store.SQL.Util.Stamping
 
 -- we create the ToRow instance of an audit log entry:
 
 instance ToRow AuditEntry where
-   toRow (AE app user tab col delt row act time) =
-      toField row:toField time:map toField [app, user, tab, delt]
+   toRow (AE app user tab col delt row act) =
+      toField row:map toField [app, user, tab, delt]
 
 -- and the field representation of an action (using the action_lk table)
 
 instance ToField Action' where
    toField (Act' act lk) = toField (lk Map.! show act)
 
--- so and AuditEntry' is the indexed action value:
+-- so an AuditEntry' is the indexed action value:
 
 instance ToRow AuditEntry' where
    toRow (AE' ent lk) = toRow ent ++ [toField (aud2act' ent lk)]
 
 -- given, of course, you have a mapping from Action -> Action'
 
-aud2act' :: AuditEntry -> LookupTable -> Action'
-aud2act' (AE _ _ _ _ _ _ a _) = Act' a
+aud2act' :: Stamped AuditEntry -> LookupTable -> Action'
+aud2act' = Act' . action . stamped
 
 {--
 Great, we have the preliminaries out of the way.
@@ -77,18 +80,15 @@ action: INSERT
 change: show next packet value
 --}
 
-mkAuditStmt :: String -> IxValue packet -> IO AuditEntry
+mkAuditStmt :: String -> IxValue packet -> IO (Stamped AuditEntry)
 mkAuditStmt nextPac packet =
-   getCurrentTime >>= \utc ->
-   getCurrentTimeZone >>= \tz ->
-   return (AE "ETL" "SYSTEM" "packet" Nothing nextPac
-              (idx packet) INSERT (utcToLocalTime tz utc))
+   stampIt (AE "ETL" "SYSTEM" "packet" Nothing nextPac (idx packet) INSERT)
 
 -- then insert that statement into the database
 
 insertAuditEntryStmt :: Query
 insertAuditEntryStmt =
-   [sql|INSERT INTO audit (row_number,time,application,user_name,table_name,change,action)
+   [sql|INSERT INTO audit (time,row_number,application,user_name,table_name,change,action)
         VALUES (?,?,?,?,?,?,?)|]
 
 insertAuditEntries :: Connection -> LookupTable -> String -> IxValue a -> IO ()

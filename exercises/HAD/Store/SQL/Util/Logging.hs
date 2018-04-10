@@ -17,7 +17,7 @@ import Database.PostgreSQL.Simple.ToRow
 
 import Data.Logger
 import Data.LookupTable (LookupTable)
-import Data.Stamped
+import Data.Time.Stamped
 
 import Store.SQL.Util.Stamping -- for ToRow instance
 

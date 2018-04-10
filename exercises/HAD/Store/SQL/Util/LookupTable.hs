@@ -68,8 +68,8 @@ fromList [("DEBUG",2),("ERROR",5),("FATAL",6),("INFO",3),("TRACE",1),("WARN",4)]
 fromList [("DELETE",3),("INSERT",1),("UPDATE",2)]
 --}
 
--- The above retrieves lookup table information, now let's look at (progressively)
--- storing lookup information:
+-- The above retrieves lookup table information, now let's look at
+-- (progressively) storing lookup information:
 
 memoizeStoreM :: ToRow a => Ord a => Connection
               -> (Connection -> [a] -> IO [Index])
@@ -78,7 +78,8 @@ memoizeStoreM :: ToRow a => Ord a => Connection
 memoizeStoreM conn storer pivotQuery getter ixarts =
    get >>= \mem ->
    let (ids,arts) = unzip (map ix2tup ixarts)
-       stat = execState (zipWithM_ MT.triageM ids (map getter arts)) (mem,Map.empty)
+       infos = map getter arts
+       stat = execState (zipWithM_ MT.triageM ids infos) (mem,Map.empty)
        substate = Set.toList (MT.newValues (fst stat))
    in  lift (storer conn substate) >>= \ixnewvals ->
    let table = MT.update (zip (map idx ixnewvals) substate) (fst stat)

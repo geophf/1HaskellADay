@@ -1,4 +1,4 @@
-module Data.Stamped where
+module Data.Time.Stamped where
 
 -- A protocol to add a timestamp to values
 
@@ -8,14 +8,16 @@ import Data.Time
 import Data.Time.Clock
 import Data.Time.LocalTime
 
+-- below imports available via 1HaskellADay git repository
+
 import Control.DList (DList, dl')
+import Data.Time.Now (now)
 
 data Stamped a = Stamped { stamped :: a, time :: LocalTime }
    deriving Show
 
 stampIt :: a -> IO (Stamped a)
-stampIt e =
-   getCurrentTime >>= \t -> Stamped e <$> (`utcToLocalTime` t) <$> getTimeZone t
+stampIt e = Stamped e <$> now
 
 -- takes a log entry and puts the current timestamp on it
 

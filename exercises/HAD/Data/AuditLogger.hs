@@ -21,11 +21,10 @@ article successfully processed along with any (meta-)data associated with
 that article that will allow us to pick up where we left off.
 --}
 
-import Data.Time.LocalTime
-
 -- below import available via 1HaskellADay git repository
 
 import Data.LookupTable
+import Data.Time.Stamped
 
 {-- 
 First up, load the audit actions from action_lk to get a LookupTable
@@ -42,8 +41,7 @@ data AuditEntry =
         column           :: Maybe String,
         change           :: String,
         row              :: Integer,
-        action           :: Action,
-        time             :: LocalTime }
+        action           :: Action }
       deriving (Eq, Show)
 
 -- the actions are:
@@ -66,7 +64,7 @@ data Active = ACTIVE | INACTIVE
    
 -- so with that instance declaration, we make our audit entry to-row-able:
 
-data AuditEntry' = AE' { entry :: AuditEntry, aeLk :: LookupTable }
+data AuditEntry' = AE' { entry :: Stamped AuditEntry, aeLk :: LookupTable }
 
 {--
 Great, we have the preliminaries out of the way.
@@ -81,11 +79,4 @@ table_name: "article"
 row_number: article id column value
 action: INSERT
 change: show next packet value
-
-mkAuditStmt :: Packet -> IxValue article -> IO AuditEntry
-mkAuditStmt pac article =
-   getCurrentTime >>= \utc ->
-   getCurrentTimeZone >>= \tz ->
-   return (AE "ETL" "SYSTEM" "article" Nothing (show (next pac))
-              (idx article) INSERT (utcToLocalTime tz utc))
 --}
