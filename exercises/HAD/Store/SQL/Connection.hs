@@ -11,7 +11,7 @@ import System.Environment
 
 -- let's codify which databases we're talking about here:
 
-data Database = WPJ | PILOT -- ... and we just add as we grow our scope
+data Database = WPJ | PILOT | ARCHIVE
    deriving (Eq, Show)
 
 -- these functions get your database's information from the environment
