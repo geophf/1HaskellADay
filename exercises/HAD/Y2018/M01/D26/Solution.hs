@@ -37,7 +37,7 @@ import Data.Time.LocalTime
 -- below imports available via 1HaskellADay git repositry
 
 import Data.Logger
-import Data.Stamped
+import Data.Time.Stamped
 
 -- of course, we've accessed the REST endpoint before so:
 

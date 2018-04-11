@@ -27,7 +27,7 @@ import Control.DList (dlToList)
 import Control.Logic.Frege (assert)
 
 import Data.Logger (Logger, LogEntry)
-import Data.Stamped (Stamped)
+import Data.Time.Stamped (Stamped)
 
 import Store.SQL.Connection (withConnection, Database(PILOT))
 

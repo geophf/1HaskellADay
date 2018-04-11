@@ -46,7 +46,7 @@ import Control.DList (dlToList)
 
 import Data.HTML (demark, plainText, htmlBlock)
 import Data.Logger
-import Data.Stamped
+import Data.Time.Stamped
 
 import Store.SQL.Connection (withConnection, Database(PILOT))
 import Store.SQL.Util.AuditLogging

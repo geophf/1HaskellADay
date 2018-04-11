@@ -31,7 +31,7 @@ import Database.PostgreSQL.Simple.ToRow
 
 -- below imports available via 1HaskellADay git repository
 
-import Data.Stamped (Stamped, stampIt)
+import Data.Time.Stamped (Stamped, stampIt)
 
 import Store.SQL.Util.Indexed (IxValue, Index)
 import Store.SQL.Util.Pivots (Pivot, joinValue)
