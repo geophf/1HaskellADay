@@ -45,7 +45,7 @@ import Control.Scan.CSV (uncsv)
 
 import Data.LookupTable (LookDown, lookdown)
 import Data.Logger (LogEntry(Entry), Severity(INFO))
-import Data.Stamped (Stamped(Stamped), time, stampIt)
+import Data.Time.Stamped (Stamped(Stamped), time, stampIt)
 
 import Store.SQL.Connection (withConnection, connectInfo, Database(PILOT))
 import Store.SQL.Util.Indexed (IxValue(IxV), val, idx, Index(Idx))
