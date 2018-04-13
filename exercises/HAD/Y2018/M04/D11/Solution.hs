@@ -24,6 +24,8 @@ packet information to the PostgreSQL database.
 
 import Control.Monad ((>=>))
 
+import Data.Aeson (Value)
+
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
 import Database.PostgreSQL.Simple.ToField
@@ -37,13 +39,11 @@ import Store.SQL.Connection
 import Store.SQL.Util.Indexed
 import Store.SQL.Util.Stamping
 
-import Y2018.M04.D02.Solution (Article)
-
 type PageNumber = Int
 
 type Count = Int
 
-data Protec = Pro { page :: PageNumber, count :: Count, arts :: [Article] }
+data Protec = Pro { page :: PageNumber, count :: Count, arts :: [Value] }
    deriving Show
 
 -- (I call it Protec for 'reasons' ... yes, I'm weird)
@@ -51,7 +51,7 @@ data Protec = Pro { page :: PageNumber, count :: Count, arts :: [Article] }
 instance ToRow Protec where
    toRow (Pro p c arts) = [toField p, toField c]
 
-instance ToRow Article where
+instance ToRow Value where
    toRow = undefined  -- we don't care right now... we'll update laterz
 
 protecStmt :: Query

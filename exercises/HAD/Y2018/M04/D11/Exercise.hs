@@ -22,6 +22,8 @@ Y2018.M04.D12.Exercise), for today, given the below structures, upload the
 packet information to the PostgreSQL database.
 --}
 
+import Data.Aeson (Value)
+
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
 import Database.PostgreSQL.Simple.ToRow
@@ -33,13 +35,11 @@ import Data.Time.Stamped
 import Store.SQL.Connection
 import Store.SQL.Util.Indexed
 
-import Y2018.M04.D02.Exercise (Article)
-
 type PageNumber = Int
 
 type Count = Int
 
-data Protec = Pro { page :: PageNumber, count :: Count, arts :: [Article] }
+data Protec = Pro { page :: PageNumber, count :: Count, arts :: [Value] }
    deriving Show
 
 -- (I call it Protec for 'reasons' ... yes, I'm weird)
