@@ -9,7 +9,7 @@ import Data.Maybe (mapMaybe)
 
 -- the below import is available via 1HaskellADay git repository
 
-import Y2018.M04.D02.Solution
+import Y2018.M04.D02.Solution -- for Article
 
 {--
 Okay, yesterday we discovered some structure to the sample JSON (see the import
