@@ -44,19 +44,6 @@ instance ToJSON Protec where
    toJSON (Pro n c arts) =
       object ["page" .= n, "count" .= c, "articles" .= arts]
 
-{--
-instance ToJSON Article where
-   toJSON (Art art pl ht ti su) =
-      object ["art" .= art, "plain" .= pl, "html" .= ht, "titl" .= ti,
-              "summ" .= su]
-
-instance ToJSON Article' where
-   toJSON (Art' i d t ex co ta ca li) =
-      object ["id" .= i, "date_gmt" .= d, "title" .= t, "excerpt" .= ex,
-              "content" .= co, "tags" .= ta, "categories" .= ca,
-              "link" .= li]
---}
-
 pack2protec :: Packet Value -> PageNumber -> Protec
 pack2protec (Pack arts) n = Pro n (length arts) arts
 

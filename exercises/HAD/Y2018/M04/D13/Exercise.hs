@@ -21,7 +21,6 @@ import Network.HTTP.Conduit
 
 -- below import available via 1HaskellADay git repository
 
-import Y2018.M04.D02.Exercise   -- for Article
 import Y2018.M04.D11.Exercise (PageNumber)
 
 -- our REST endpoint is of the form:
