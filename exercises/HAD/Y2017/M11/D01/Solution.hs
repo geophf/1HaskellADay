@@ -33,8 +33,8 @@ import Store.SQL.Connection (withConnection)
 
 import Y2017.M09.D25.Solution (parseHeader)
 import Y2017.M10.D02.Solution  -- for block
-import Y2017.M10.D13.Exercise (compressedArchives)
-import Y2017.M10.D13.Solution (transformLoad)
+-- import Y2017.M10.D13.Exercise (compressedArchives)
+-- import Y2017.M10.D13.Solution (transformLoad)
 import Y2017.M10.D23.Solution  -- for article
 import Y2017.M10.D30.Solution  -- for parsing special chars
 import Y2017.M10.D31.Solution (printSpecialCharContext)
@@ -189,7 +189,6 @@ In the updated archive, are there any special characters? List them.
 Hint: Y2017.M10.D30.Solution.identify
 
 Also: write an application that does all the above.
---}
 
 main' :: [String] -> IO ()
 main' (configfile:archivefiles) =
@@ -206,9 +205,8 @@ main' [] = putStrLn (unlines ["","replace <config> <archive1> [archive2, ...]",
 
 replaceAndLoad :: SpecialCharTable -> [Block] -> () -> IO ()
 replaceAndLoad chars blk _ =
-   withConnection (flip transformLoad (map (replaceSpecialChars chars) blk))
+   withConnection NYT (flip transformLoad (map (replaceSpecialChars chars) blk))
 
-{--
 I'm of two minds.
 
 On the one hand, I could just simply, instead of writing out a new, sanitized,
