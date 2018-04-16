@@ -29,7 +29,7 @@ import Control.DList (emptyDL)
 import Control.Scan.Config
 import Data.MemoizingTable (MemoizingTable)
 import qualified Data.MemoizingTable as MT
-import Store.SQL.Connection (withConnection)
+-- import Store.SQL.Connection (withConnection)
 
 import Y2017.M09.D25.Solution (parseHeader)
 import Y2017.M10.D02.Solution  -- for block
@@ -73,7 +73,7 @@ readSpecialChars =
       . parseConfig
 
 {--
->>> chars <- readSpecialChars "Y2017/M10/D31/spcChars.prop" 
+>>> chars <- readSpecialChars specialCharsConfig
 >>> length (fromTable chars)
 47
 >>> take 3 (Map.toList (fromTable chars))
@@ -164,7 +164,7 @@ ctxn2Set :: [Context] -> Set String
 ctxn2Set = Set.unions . map (Map.keysSet . spcCharCtx)
 
 {--
->>> either (const (print "huh?")) (updateConfig chars "Y2017/M10/D31/spcChars.prop") found
+>>> either (const (print "huh?")) (updateConfig chars specialCharsConfig) found
 
 ... and the config file is updated with the new special characters and the
 contexten as the context of the new special characters (we can print those out)
@@ -225,7 +225,7 @@ Why did you go with the option you chose?
 I chose leaving the source articles undisturbed. I transformed them in memory
 and uploaded the transformed set to the database.
 
->>> main' ["Y2017/M10/D31/spcChars.prop",repository]
+>>> main' [specialCharsConfig,repository]
 For archive file: Y2017/M11/D01/NYTOnline_08-29-17_09-05-17_pt3a.txt.gz
 
 And in the database:
