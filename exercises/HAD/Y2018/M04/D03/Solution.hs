@@ -37,7 +37,11 @@ article.
 type Author = String
 
 author :: Article -> Maybe Author
-author = authorish . head . lines . plain 
+author = mbauthor . lines . plain 
+
+mbauthor :: [String] -> Maybe Author
+mbauthor [] = Nothing
+mbauthor (h:_) = authorish h
 
 authorish :: String -> Maybe Author
 authorish = fmap trim . stripPrefix "By "

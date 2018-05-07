@@ -134,9 +134,9 @@ refineString chars str@(_:_) =
    let (pre, post) = break (\c -> ord c > 127) str
        (spc, rest) = charing post emptyDL
        replacement = case Map.lookup spc (MT.fromTable chars) of
-               Just DELETE -> ""
+               Just DELETE -> " "
                Just (REPLACE str) -> str
-               Nothing -> "" -- end of block ffs
+               Nothing -> " " -- end of block ffs
                  -- error ("Could not lookup key " ++ show (map ord spc))
    in pre ++ replacement ++ refineString chars rest
 refineString _ [] = []

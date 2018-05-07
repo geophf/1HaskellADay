@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings, ViewPatterns #-}
 
 module Y2018.M04.D02.Solution where
 
@@ -9,6 +9,7 @@ import Data.Aeson.Types
 import Data.Aeson.Encode.Pretty
 import qualified Data.ByteString.Lazy.Char8 as BL
 import Data.Maybe (fromJust)
+import Data.Text (Text)
 import Data.Time
 
 -- the below imports are available via 1HaskellADay git repository
@@ -48,7 +49,7 @@ writeJSON outfile = BL.writeFile outfile .  encodePretty
 
 data Article' =
    Art' { idx                     :: Int,
-          date                    :: Maybe ZonedTime,
+          date, updated           :: Maybe ZonedTime,
           title, excerpt, content :: Value,
           tags, categories        :: [Int],
           link                    :: FilePath }
@@ -56,7 +57,8 @@ data Article' =
 
 instance FromJSON Article' where
    parseJSON obj@(Object o) =
-      Art' <$> o .: "id"    <*> parseDate obj
+      Art' <$> o .: "id"    <*> parseDate "date_gmt" obj
+           <*> parseDate "modified" obj
            <*> o .: "title" <*> o .: "excerpt"    <*> o .: "content"
            <*> o .: "tags"  <*> o .: "categories" <*> o .: "link"
 
@@ -70,7 +72,7 @@ Nothing
 
 fromRendered :: (Article' -> Value) -> Article' -> Parser (String, String)
 fromRendered f =
-   fmap (id &&& mbdemark)
+   fmap (id &&& fixDemark)
       . (\obj -> obj >>= (\(Object o) -> o .: "rendered")) . pure . f
 
 -- nicked from Y2017.M12.D27.Solution:
@@ -81,9 +83,9 @@ fromRendered f =
 iso8601like :: String
 iso8601like = "%FT%T"
 
-parseDate :: Value -> Parser (Maybe ZonedTime)
-parseDate (Object o) =
-   o.:? "date_gmt" >>= \mbstr -> return (case mbstr of
+parseDate :: Text -> Value -> Parser (Maybe ZonedTime)
+parseDate key (Object o) =
+   o.:? key >>= \mbstr -> return (case mbstr of
          Nothing -> Nothing
          Just t  -> parseTimeM True defaultTimeLocale iso8601like t)
 
@@ -97,13 +99,21 @@ sampleDate = BL.unlines ["{",
                 "\"utc\": \"1513134000000\",",
                 "\"iso8601\": \"2017-12-12T22:00:00-05:00\"",
             "}"]
---}
 
 -- note that changing -05:00 to -04:00 does NOT change the time zone
 
 mbdemark :: String -> String
 mbdemark str@('<':_) = demark str
 mbdemark str         = str
+--}
+
+-- figured out fixDemark in Y2018.M04.D24.Solution
+
+fixDemark :: String -> String
+fixDemark text = fd' text text
+
+fd' :: String -> String -> String
+fd' t (demark -> d) = if t == d then t else fd' d d
 
 rend :: (Article' -> Value) -> Article' -> Parser String
 rend f = fmap snd . fromRendered f

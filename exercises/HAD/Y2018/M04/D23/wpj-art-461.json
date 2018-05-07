@@ -1,0 +1,112 @@
+{
+    "status": "publish",
+    "sticky": false,
+    "slug": "world-policy-on-air-ep-94-challenges-and-opportunities-in-the-arctic",
+    "link": "https://worldpolicy.org/2016/11/18/world-policy-on-air-ep-94-challenges-and-opportunities-in-the-arctic/",
+    "modified_gmt": "2018-03-30T21:56:53",
+    "format": "standard",
+    "featured_media": 10392,
+    "categories": [
+        7603,
+        7582,
+        7599,
+        7598
+    ],
+    "content": {
+        "protected": false,
+        "rendered": "<p><iframe src=\"https://embed.iono.fm/epi/360859\" width=\"100%\" height=\"135\" frameborder=\"0\">&lt;a data-cke-saved-href=&#8221;http://iono.fm/e/360859&#8243; href=&#8221;http://iono.fm/e/360859&#8243; rel=&#8221;nofollow&#8221;&gt;Content hosted by iono.fm&lt;/a&gt;</iframe></p>\n<p><a href=\"https://iono.fm/c/2574\" target=\"_blank\" rel=\"nofollow noopener\">World Policy On Air</a>Â is a podcast from the pages and website ofÂ <em>World Policy Journal.</em></p>\n<p>As the effects of climate change pose new challenges in the Arctic, melting ice and warmer temperatures also present economic opportunities. On the latest episode of World Policy On Air, Inuuteq Holm Olsen, the first Greenland representative at the Danish embassy in Washington, explains how the semi-autonomous nation is working to balance an emerging tourism industry and natural resource extraction with environmental sustainability.</p>\n<p>Subscribe to World Policy On Air onÂ <a href=\"https://itunes.apple.com/us/podcast/world-policy-on-air-iono/id1060131856\" target=\"_blank\" rel=\"nofollow noopener\">iTunes</a>Â today.</p>\n<p>[Photo courtesy of <a href=\"https://commons.wikimedia.org/wiki/File:Tasiilaq_-_Greenland_summer_2009.jpg\" target=\"_blank\" rel=\"nofollow noopener\">Wikimedia Commons</a>]</p>\n<p><em>Olsen also participated in the One Arctic symposium in April 2016, hosted by the Polar Initiative at the Woodrow Wilson International Center for Scholars in Washington. <strong>This podcast was made possible, in part, by funding from the International Policy Institute</strong> (supported by funding from Carnegie Corporation of New York), <strong>Henry M. Jackson School of International Studies, University of Washington</strong>. Find a full list of sponsors and a summary of the event <a href=\"https://worldpolicy.org/blog/2016/05/05/one-arctic-agenda\">here</a>.</em></p>\n"
+    },
+    "modified": "2018-03-30T21:56:53",
+    "date": "2016-11-18T11:09:08",
+    "_links": {
+        "wp:attachment": [
+            {
+                "href": "https://worldpolicy.org/wp-json/wp/v2/media?parent=10391"
+            }
+        ],
+        "version-history": [
+            {
+                "href": "https://worldpolicy.org/wp-json/wp/v2/posts/10391/revisions"
+            }
+        ],
+        "curies": [
+            {
+                "templated": true,
+                "href": "https://api.w.org/{rel}",
+                "name": "wp"
+            }
+        ],
+        "collection": [
+            {
+                "href": "https://worldpolicy.org/wp-json/wp/v2/posts"
+            }
+        ],
+        "replies": [
+            {
+                "href": "https://worldpolicy.org/wp-json/wp/v2/comments?post=10391",
+                "embeddable": true
+            }
+        ],
+        "self": [
+            {
+                "href": "https://worldpolicy.org/wp-json/wp/v2/posts/10391"
+            }
+        ],
+        "about": [
+            {
+                "href": "https://worldpolicy.org/wp-json/wp/v2/types/post"
+            }
+        ],
+        "author": [
+            {
+                "href": "https://worldpolicy.org/wp-json/wp/v2/users/1",
+                "embeddable": true
+            }
+        ],
+        "wp:term": [
+            {
+                "href": "https://worldpolicy.org/wp-json/wp/v2/categories?post=10391",
+                "taxonomy": "category",
+                "embeddable": true
+            },
+            {
+                "href": "https://worldpolicy.org/wp-json/wp/v2/tags?post=10391",
+                "taxonomy": "post_tag",
+                "embeddable": true
+            }
+        ],
+        "wp:featuredmedia": [
+            {
+                "href": "https://worldpolicy.org/wp-json/wp/v2/media/10392",
+                "embeddable": true
+            }
+        ]
+    },
+    "guid": {
+        "rendered": "http://127.0.0.1/blog/world-policy-on-air-ep-94-challenges-and-opportunities-in-the-arctic/"
+    },
+    "author": 1,
+    "id": 10391,
+    "date_gmt": "2016-11-18T11:09:08",
+    "excerpt": {
+        "protected": false,
+        "rendered": "<p><iframe frameborder=\"0\" height=\"135\" src=\"https://embed.iono.fm/epi/360859\" width=\"100%\">&lt;a data-cke-saved-href=&quot;http://iono.fm/e/360859&quot; href=&quot;http://iono.fm/e/360859&quot; rel=&quot;nofollow&quot;&gt;Content hosted by iono.fm&lt;/a&gt;</iframe></p>\n"
+    },
+    "meta": [],
+    "comment_status": "closed",
+    "title": {
+        "rendered": "World Policy On Air, Ep. 94: Challenges and Opportunities in the Arctic"
+    },
+    "type": "post",
+    "template": "",
+    "ping_status": "closed",
+    "tags": [
+        198,
+        8283,
+        8282,
+        1969,
+        7964,
+        2912,
+        8284
+    ]
+}
