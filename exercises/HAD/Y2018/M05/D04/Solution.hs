@@ -69,12 +69,12 @@ import Y2018.M04.D02.Solution -- for FromJSON Article
 
 -- 2. Fetch a set of articles from the rest endpoint upto (date)
 
-type ParsedPacket = (Packet Value, [Article])
+type ParsedPacket = (Packet Value, [(Value, Article)])
 
-pack2arts :: Packet Value -> [Article]
-pack2arts (Pack arts) = mapMaybe (r2m . fromJSON) arts
-   where r2m (Success x) = Just x
-         r2m _           = Nothing
+pack2arts :: Packet Value -> [(Value, Article)]
+pack2arts (Pack arts) = mapMaybe (r2m . (id &&& fromJSON)) arts
+   where r2m (y, Success x) = Just (y, x)
+         r2m _              = Nothing
 
 -- and from there you can convert a packet to a parsed packet
 
@@ -97,7 +97,7 @@ accumPacket :: Day -> PageNumber -> [ParsedPacket] -> Packet Value
 accumPacket day pn accum pack =
    let arts = pack2arts pack
        newaccum = (pack, arts):accum
-       today = fmap (localDay . zonedTimeToLocalTime) . date . art
+       today = fmap (localDay . zonedTimeToLocalTime) . date . art . snd
        downloadedDay = minimum (mapMaybe today arts) in
    if downloadedDay < day then return newaccum
    else loggerr ("Loaded packet " ++ show pn) >> pr' pn newaccum day 0
