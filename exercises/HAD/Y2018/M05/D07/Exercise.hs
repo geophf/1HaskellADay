@@ -71,7 +71,7 @@ fetchArticleMetaDataStmt =
 -- that the column name is only slightly different, but eh, this happens in the
 -- real world, so ... ... oh! also: improved declaration.
 
-fetchArticleMetaData :: Connection -> Day -> IO [IxValue (ArticleMetaData Integer)]
+fetchArticleMetaData :: Connection -> Day -> IO [IxValue (ArticleMetaData Int)]
 fetchArticleMetaData conn day = undefined
 
 -- How many AMDs from the WPJ did you download?
