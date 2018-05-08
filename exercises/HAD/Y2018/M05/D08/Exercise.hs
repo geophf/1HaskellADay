@@ -22,6 +22,7 @@ import Database.PostgreSQL.Simple
 -- below imports available via 1HaskellADay git repository
 
 import Store.SQL.Connection
+import Store.SQL.Util.Indexed
 
 -- import Y2018.M01.D30.Exercise -- template for our ArticleTriageInformation
 
@@ -43,7 +44,7 @@ instance Monoid Triage where
 data ArticleTriageInformation package block article idx =
    ATI { pack :: package,
          art  :: (block, article),
-         amd  :: Maybe (ArticleMetaData idx) }
+         amd  :: Maybe (IxValue (ArticleMetaData idx)) }
       deriving Show
 
 {--
@@ -52,9 +53,10 @@ ArticleMetadata set) and the articles downloaded from the REST endpoint (the
 ParsedPackage values) is the triaged article set
 --}
 
-type WPJATI = ArticleTriageInformation (Packet Value) Value Article Integer
+type WPJATI = ArticleTriageInformation (Packet Value) Value Article Int
+type MapTri = Map Triage WPJATI
 
-triageArticles :: [ArticleMetaData Integer] -> [ParsedPacket] -> Map Triage [WPJATI]
+triageArticles :: [IxValue (ArticleMetaData Int)] -> [ParsedPacket] -> MapTri
 triageArticles amd packets = undefined
 
 {--
