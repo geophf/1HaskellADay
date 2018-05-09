@@ -1,3 +1,5 @@
+{-# LANGUAGE TupleSections, ViewPatterns #-}
+
 module Y2018.M05.D04.Solution where
 
 {--
@@ -28,6 +30,7 @@ So: 1. get the most recent audit log entry and offset that by one week.
 --}
 
 import Control.Arrow ((&&&))
+import Control.Monad (guard)
 import Control.Monad.Writer
 
 import Data.Aeson
@@ -69,12 +72,21 @@ import Y2018.M04.D02.Solution -- for FromJSON Article
 
 -- 2. Fetch a set of articles from the rest endpoint upto (date)
 
-type ParsedPacket = (Packet Value, [Article])
+type ParsedPacket = (Packet Value, [(Value, Article)])
 
-pack2arts :: Packet Value -> [Article]
-pack2arts (Pack arts) = mapMaybe (r2m . fromJSON) arts
-   where r2m (Success x) = Just x
-         r2m _           = Nothing
+pack2arts :: Day -> Packet Value -> [(Value, Article)]
+pack2arts day (Pack arts) = mapMaybe (r2m . (id &&& fromJSON)) arts
+   where r2m (y, Success x) = Just (y, x)
+         r2m _              = Nothing
+
+-- but we also need to weed out articles too old in the packet:
+
+include :: Day -> Article -> Bool
+include day (date . art -> d) = i' day d
+
+i' :: Day -> Maybe ZonedTime -> Bool
+i' day Nothing = False
+i' day (Just d) = localDay (zonedTimeToLocalTime d) >= day
 
 -- and from there you can convert a packet to a parsed packet
 
@@ -95,12 +107,17 @@ pr' pn accum day tries = if tries > 3
 accumPacket :: Day -> PageNumber -> [ParsedPacket] -> Packet Value
             -> StampedWriter LogEntry [ParsedPacket]
 accumPacket day pn accum pack =
-   let arts = pack2arts pack
-       newaccum = (pack, arts):accum
-       today = fmap (localDay . zonedTimeToLocalTime) . date . art
+   let arts = pack2arts day pack in
+   if null arts then return accum
+   else
+   let newaccum = (pack, prune day arts):accum
+       today = fmap (localDay . zonedTimeToLocalTime) . date . art . snd
        downloadedDay = minimum (mapMaybe today arts) in
    if downloadedDay < day then return newaccum
    else loggerr ("Loaded packet " ++ show pn) >> pr' pn newaccum day 0
+
+prune :: Day -> [(a, Article)] -> [(a, Article)]
+prune day = filter (include day . snd)
 
 -- the accumulator function on successful read
 
@@ -116,9 +133,10 @@ loggerr msg = sayIO (Entry ERROR "daily upload" "Y2018.M05.D04.Solution" msg) >>
 
 -- How many packets did you consume for a week's worth of articles from today?
 
-downloader :: IO [ParsedPacket]
-downloader = connectInfo WPJ >>= connect >>= \conn ->
-   oneWeekAgo conn >>= \day ->
-   close conn >>
-   putStrLn ("A week ago is " ++ show day) >>
-   fmap fst (runWriterT (packetReader day 0))
+downloader :: IO (Day, [ParsedPacket])
+downloader = connectInfo WPJ >>= connect      >>= \conn ->
+   oneWeekAgo conn                            >>= \day ->
+   close conn                                 >>
+   putStrLn ("A week ago is " ++ show day)    >>
+   fmap fst (runWriterT (packetReader day 0)) >>=
+   return . (day,)

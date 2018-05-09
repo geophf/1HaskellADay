@@ -57,7 +57,7 @@ import Y2018.M04.D02.Exercise -- for FromJSON Article
 
 -- 2. Fetch a set of articles from the rest endpoint upto (date)
 
-type ParsedPacket = (Packet Value, [Article])
+type ParsedPacket = (Packet Value, [(Value, Article)])
 
 pack2arts :: Packet Value -> [Article]
 pack2arts pack = undefined

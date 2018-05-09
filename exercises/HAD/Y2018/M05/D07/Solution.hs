@@ -1,6 +1,6 @@
-{-# LANGUAGE OverloadedStrings, QuasiQuotes #-}
+{-# LANGUAGE FlexibleInstances, OverloadedStrings, QuasiQuotes #-}
 
-module Y2018.M05.D07.Exercise where
+module Y2018.M05.D07.Solution where
 
 {--
 Continuing on the daily-upload vein we started in Y2018.M05.D04...
@@ -20,15 +20,19 @@ import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.FromField
 import Database.PostgreSQL.Simple.FromRow
 import Database.PostgreSQL.Simple.SqlQQ
+import Database.PostgreSQL.Simple.Time
 
 -- below imports available via 1HaskellADay git repository.
 
+import Control.List (singleton)
+
 import Store.SQL.Connection
 import Store.SQL.Util.Indexed
+import Store.SQL.Util.Time
 
-import Y2018.M01.D29.Exercise (oneWeekAgo)
--- import Y2018.M01.D30.Exercise hiding (fetchArticleMetaData, fetchArticleMetadataStmt)  -- for ArticleMetaData
-import Y2018.M05.D04.Exercise
+import Y2018.M01.D29.Solution (oneWeekAgo)
+-- import Y2018.M01.D30.Solution hiding (fetchArticleMetaData, fetchArticleMetadataStmt)  -- for ArticleMetaData
+import Y2018.M05.D04.Solution
 
 -- download the article meta data up to from one week ago. How many metadata
 -- did you accumulate?
@@ -47,17 +51,23 @@ import Y2018.M05.D04.Exercise
 So, okay, we have to rewrite the fetch statement for this database
 
 Also, as the article id here integer (whereas in Pilot it's a string (uuid)),
-so we need to generalize the AMD (ArticleMetaData type) 
+so we need to generalize the AMD (ArticleMetaData type)
 --}
 
-data ArticleMetaData a = AMD { artId :: a, published, lastUpdate :: Maybe Day }
-   deriving (Eq, Show)
+data ArticleMetaData a =
+   AMD { artId :: a, published, lastUpdate :: Maybe Day }
+      deriving (Eq, Show)
 
 -- and now let's write the FromRow instance for this thing (recalling that it
 -- will be an IxValue type, too
 
-instance FromField a => FromRow (ArticleMetaData a) where
-   fromRow = undefined
+instance FromField a => FromRow (ArticleMD a) where
+   fromRow = AMD' <$> field <*> field <*> (Just <$> field) <*> field
+
+data ArticleMD a = AMD' Integer a (Maybe LocalTimestamp) (Maybe LocalTimestamp)
+
+amd2amd :: ArticleMD a -> IxValue (ArticleMetaData a)
+amd2amd (AMD' ix id d u) = IxV ix (AMD id (d >>= d2d) (u >>= d2d))
 
 -- for the query
 
@@ -71,7 +81,22 @@ fetchArticleMetaDataStmt =
 -- that the column name is only slightly different, but eh, this happens in the
 -- real world, so ... ... oh! also: improved declaration.
 
-fetchArticleMetaData :: Connection -> Day -> IO [IxValue (ArticleMetaData Int)]
-fetchArticleMetaData conn day = undefined
+fetchArticleMetaData :: Connection -> Day
+                     -> IO [IxValue (ArticleMetaData Int)]
+fetchArticleMetaData conn =
+   fmap (map amd2amd) . query conn fetchArticleMetaDataStmt . singleton
 
 -- How many AMDs from the WPJ did you download?
+
+{--
+>>> amd <- fetchArticleMetaData conn wk
+>>> close conn
+>>> length amd
+5
+>>> mapM_ print amd
+IxV {ix = 1, val = AMD {artId = 22565, published = Just 2018-04-20, lastUpdate = Just 2018-04-20}}
+IxV {ix = 2, val = AMD {artId = 22976, published = Just 2018-04-19, lastUpdate = Just 2018-04-20}}
+IxV {ix = 3, val = AMD {artId = 22969, published = Just 2018-04-19, lastUpdate = Just 2018-04-20}}
+IxV {ix = 4, val = AMD {artId = 22934, published = Just 2018-04-17, lastUpdate = Just 2018-04-17}}
+IxV {ix = 5, val = AMD {artId = 22914, published = Just 2018-04-16, lastUpdate = Just 2018-04-19}}
+--}
