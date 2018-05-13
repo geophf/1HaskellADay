@@ -44,7 +44,10 @@ type PageNumber = Int
 type Count = Int
 
 data Protec = Pro { page :: PageNumber, count :: Count, arts :: [Value] }
-   deriving Show
+
+instance Show Protec where
+   show (Pro p c _) = "Protec { page :: " ++ show p ++ ", article_count :: "
+        ++ show c ++ " }"
 
 -- (I call it Protec for 'reasons' ... yes, I'm weird)
 
@@ -59,7 +62,7 @@ protecStmt = [sql|INSERT INTO packet (time, page, count)
                   VALUES (?, ?, ?) returning id|]
 
 insertProtec :: Connection -> Protec -> IO [Index]
-insertProtec conn = stampIt >=> returning conn protecStmt . pure
+insertProtec conn prot = stampIt prot >>= \st -> returning conn protecStmt [st]
 
 protec :: Protec
 protec = Pro 1 100 []
