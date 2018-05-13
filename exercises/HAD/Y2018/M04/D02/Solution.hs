@@ -48,7 +48,7 @@ writeJSON outfile = BL.writeFile outfile .  encodePretty
 -- the JSON into that data structure
 
 data Article' =
-   Art' { idx                     :: Int,
+   Art' { idx                     :: Integer,
           date, updated           :: Maybe ZonedTime,
           title, excerpt, content :: Value,
           tags, categories        :: [Int],

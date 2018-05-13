@@ -60,7 +60,7 @@ trim line | last line == ' ' = trim (init line)
 -- article author. A Nothing for author means that the article doesn't have
 -- one (so will not be inserted into the map).
 
-type Idx = Int
+type Idx = Integer
 
 authors :: [Article] -> Map Idx Author
 authors = fromList . mapMaybe (sequence . (idx . art &&& author))
