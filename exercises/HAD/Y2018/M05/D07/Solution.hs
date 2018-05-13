@@ -1,4 +1,4 @@
-{-# LANGUAGE FlexibleInstances, OverloadedStrings, QuasiQuotes #-}
+{-# LANGUAGE FlexibleInstances, OverloadedStrings #-}
 
 module Y2018.M05.D07.Solution where
 
@@ -14,17 +14,21 @@ we use that to build our context here with the World Policy journal? Let's find
 out!
 --}
 
+import qualified Data.ByteString.Char8 as BL
+
 import Data.Time
 
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.FromField
 import Database.PostgreSQL.Simple.FromRow
-import Database.PostgreSQL.Simple.SqlQQ
+-- import Database.PostgreSQL.Simple.SqlQQ
 import Database.PostgreSQL.Simple.Time
+import Database.PostgreSQL.Simple.Types
 
 -- below imports available via 1HaskellADay git repository.
 
 import Control.List (singleton)
+import Control.Logic.Frege ((<<-))
 
 import Store.SQL.Connection
 import Store.SQL.Util.Indexed
@@ -65,26 +69,37 @@ instance FromField a => FromRow (ArticleMD a) where
    fromRow = AMD' <$> field <*> field <*> (Just <$> field) <*> field
 
 data ArticleMD a = AMD' Integer a (Maybe LocalTimestamp) (Maybe LocalTimestamp)
+   deriving Show
 
 amd2amd :: ArticleMD a -> IxValue (ArticleMetaData a)
 amd2amd (AMD' ix id d u) = IxV ix (AMD id (d >>= d2d) (u >>= d2d))
 
 -- for the query
 
-fetchArticleMetaDataStmt :: Query
-fetchArticleMetaDataStmt =
+fetchArticleMetaDataStmt :: Day -> Query
+fetchArticleMetaDataStmt d =
+   Query (BL.pack ("SELECT id,art_id,publish_dt,update_dt FROM article "
+                ++ " WHERE publish_dt > '" ++ show d ++ "'"))
+
+{--
+rewrote the query from --v as the below was causing an unexplained SQL database
+disconnection.
+
    [sql|SELECT id,art_id,publish_dt,update_dt
         FROM article
         WHERE publish_dt > ?|]
+--}
 
 -- it's kind of embarrassing that this statement is exactly the same except
 -- that the column name is only slightly different, but eh, this happens in the
 -- real world, so ... ... oh! also: improved declaration.
 
 fetchArticleMetaData :: Connection -> Day
-                     -> IO [IxValue (ArticleMetaData Int)]
-fetchArticleMetaData conn =
-   fmap (map amd2amd) . query conn fetchArticleMetaDataStmt . singleton
+                     -> IO [IxValue (ArticleMetaData Integer)]
+fetchArticleMetaData = fmap (map amd2amd) <<- famd'
+
+famd' :: Connection -> Day -> IO [ArticleMD Integer]
+famd' conn d = query_ conn (fetchArticleMetaDataStmt d)
 
 -- How many AMDs from the WPJ did you download?
 
