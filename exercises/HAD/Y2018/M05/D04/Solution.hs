@@ -110,9 +110,10 @@ accumPacket day pn accum pack =
    let arts = pack2arts day pack in
    if null arts then return accum
    else
-   let newaccum = (pack, prune day arts):accum
-       today = fmap (localDay . zonedTimeToLocalTime) . date . art . snd
-       downloadedDay = minimum (mapMaybe today arts) in
+   let today = fmap (localDay . zonedTimeToLocalTime) . date . art . snd
+       downloadedDay = minimum (mapMaybe today arts)
+       pruned = prune day arts
+       newaccum = (Pack (map fst pruned), pruned):accum in
    if downloadedDay < day then return newaccum
    else loggerr ("Loaded packet " ++ show pn) >> pr' pn newaccum day 0
 
@@ -133,8 +134,8 @@ loggerr msg = sayIO (Entry ERROR "daily upload" "Y2018.M05.D04.Solution" msg) >>
 
 -- How many packets did you consume for a week's worth of articles from today?
 
-downloader :: IO (Day, [ParsedPacket])
-downloader = connectInfo WPJ >>= connect      >>= \conn ->
+downloader :: Connection -> IO (Day, [ParsedPacket])
+downloader conn = -- connectInfo WPJ >>= connect      >>= \conn ->
    oneWeekAgo conn                            >>= \day ->
    close conn                                 >>
    putStrLn ("A week ago is " ++ show day)    >>
