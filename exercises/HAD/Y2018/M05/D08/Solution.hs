@@ -36,11 +36,11 @@ import Data.MultiMap (MultiMap)
 import qualified Data.MultiMap as MM
 
 import Store.SQL.Connection
+import Store.SQL.Util.AuditLogging (oneWeekAgo)
 import Store.SQL.Util.Indexed hiding (idx)
 
 -- import Y2018.M01.D30.Solution -- template for our ArticleTriageInformation
 
-import Y2018.M01.D29.Solution (oneWeekAgo)
 import Y2018.M04.D02.Solution  -- for Article type
 import Y2018.M04.D13.Solution  -- for Packet type
 import Y2018.M05.D04.Solution  -- for articles from the rest endpoint

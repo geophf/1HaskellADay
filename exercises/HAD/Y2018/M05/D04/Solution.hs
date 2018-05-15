@@ -48,12 +48,13 @@ import Data.Logger
 import Data.Time.Stamped
 
 import Store.SQL.Connection
+import Store.SQL.Util.AuditLogging (oneWeekAgo)
 
-import Y2018.M01.D29.Solution (oneWeekAgo)
+-- Y2018.M01.D29.Solution (oneWeekAgo)
 
 -- we can't use:
 
--- import Y2018.M01.D26.Solution (ow)
+-- Y2018.M01.D26.Solution
 
 -- because that's based on PILOT data structures, not WPJ ones. We fetch
 -- WPJ packets from:
@@ -153,7 +154,5 @@ loggerr msg = sayIO (Entry ERROR "daily upload" "Y2018.M05.D04.Solution" msg) >>
 downloader :: Connection -> IO (Day, [ParsedPacket])
 downloader conn = -- connectInfo WPJ >>= connect      >>= \conn ->
    oneWeekAgo conn                            >>= \day ->
-   close conn                                 >>
-   putStrLn ("A week ago is " ++ show day)    >>
    fmap fst (runWriterT (packetReader day 0)) >>=
    return . (day,)
