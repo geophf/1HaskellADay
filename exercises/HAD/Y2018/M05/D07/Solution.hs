@@ -1,4 +1,4 @@
-{-# LANGUAGE FlexibleInstances, OverloadedStrings #-}
+{-# LANGUAGE FlexibleInstances, OverloadedStrings, QuasiQuotes #-}
 
 module Y2018.M05.D07.Solution where
 
@@ -21,7 +21,7 @@ import Data.Time
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.FromField
 import Database.PostgreSQL.Simple.FromRow
--- import Database.PostgreSQL.Simple.SqlQQ
+import Database.PostgreSQL.Simple.SqlQQ
 import Database.PostgreSQL.Simple.Time
 import Database.PostgreSQL.Simple.Types
 
@@ -34,16 +34,16 @@ import Store.SQL.Connection
 import Store.SQL.Util.Indexed
 import Store.SQL.Util.Time
 
-import Y2018.M01.D29.Solution (oneWeekAgo)
--- import Y2018.M01.D30.Solution hiding (fetchArticleMetaData, fetchArticleMetadataStmt)  -- for ArticleMetaData
-import Y2018.M05.D04.Solution
-
 -- download the article meta data up to from one week ago. How many metadata
 -- did you accumulate?
 
 {--
 >>> conn <- connectInfo WPJ >>= connect
 >>> wk <- oneWeekAgo conn
+
+or:
+
+>>> wk = fromGregorian 2018 4 15
 >>> wk
 2018-04-15
 >>> amd <- fetchArticleMetaData conn wk
@@ -76,19 +76,11 @@ amd2amd (AMD' ix id d u) = IxV ix (AMD id (d >>= d2d) (u >>= d2d))
 
 -- for the query
 
-fetchArticleMetaDataStmt :: Day -> Query
-fetchArticleMetaDataStmt d =
-   Query (BL.pack ("SELECT id,art_id,publish_dt,update_dt FROM article "
-                ++ " WHERE publish_dt > '" ++ show d ++ "'"))
-
-{--
-rewrote the query from --v as the below was causing an unexplained SQL database
-disconnection.
-
+fetchArticleMetaDataStmt :: Query
+fetchArticleMetaDataStmt =
    [sql|SELECT id,art_id,publish_dt,update_dt
         FROM article
         WHERE publish_dt > ?|]
---}
 
 -- it's kind of embarrassing that this statement is exactly the same except
 -- that the column name is only slightly different, but eh, this happens in the
@@ -99,7 +91,7 @@ fetchArticleMetaData :: Connection -> Day
 fetchArticleMetaData = fmap (map amd2amd) <<- famd'
 
 famd' :: Connection -> Day -> IO [ArticleMD Integer]
-famd' conn d = query_ conn (fetchArticleMetaDataStmt d)
+famd' conn = query conn fetchArticleMetaDataStmt . Only
 
 -- How many AMDs from the WPJ did you download?
 
@@ -114,4 +106,22 @@ IxV {ix = 2, val = AMD {artId = 22976, published = Just 2018-04-19, lastUpdate =
 IxV {ix = 3, val = AMD {artId = 22969, published = Just 2018-04-19, lastUpdate = Just 2018-04-20}}
 IxV {ix = 4, val = AMD {artId = 22934, published = Just 2018-04-17, lastUpdate = Just 2018-04-17}}
 IxV {ix = 5, val = AMD {artId = 22914, published = Just 2018-04-16, lastUpdate = Just 2018-04-19}}
+--}
+
+{--
+Note on intermingling of paradigms.
+
+It's a funny thing. When I import this module:
+
+-- import Y2018.M01.D29.Solution (oneWeekAgo)
+
+(with its superfluous dependency on Pilot structures, which I have since 
+removed)
+
+That has no lexical impact, the database connection fails.
+
+When I do not import it, the database connection works.
+
+The take-away here from me is to build modules small and not to import mega-
+modules.
 --}
