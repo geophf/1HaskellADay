@@ -35,6 +35,7 @@ import Control.Monad.Writer
 
 import Data.Aeson
 import Data.Maybe
+import Data.Monoid
 import Data.Time
 
 import Database.PostgreSQL.Simple
@@ -72,7 +73,22 @@ import Y2018.M04.D02.Solution -- for FromJSON Article
 
 -- 2. Fetch a set of articles from the rest endpoint upto (date)
 
-type ParsedPacket = (Packet Value, [(Value, Article)])
+data ParsedPacket = PP (Packet Value, [(Value, Article)])
+   deriving Show
+
+-- the monoid instance for list-processing comes in handy for dealing with
+-- multiple parsed packets later.
+
+-- with a seed packet of
+
+seedPacket :: ParsedPacket
+seedPacket = PP (Pack [], [])
+
+-- a very weird-lookin' monoid, indeed! ... but it is a monoid, so:
+
+instance Monoid ParsedPacket where
+   mempty = seedPacket
+   mappend (PP (Pack as, xs)) (PP (Pack bs, ys)) = PP (Pack (as ++ bs), xs ++ ys)
 
 pack2arts :: Day -> Packet Value -> [(Value, Article)]
 pack2arts day (Pack arts) = mapMaybe (r2m . (id &&& fromJSON)) arts
@@ -113,7 +129,7 @@ accumPacket day pn accum pack =
    let today = fmap (localDay . zonedTimeToLocalTime) . date . art . snd
        downloadedDay = minimum (mapMaybe today arts)
        pruned = prune day arts
-       newaccum = (Pack (map fst pruned), pruned):accum in
+       newaccum = (PP (Pack (map fst pruned), pruned)):accum in
    if downloadedDay < day then return newaccum
    else loggerr ("Loaded packet " ++ show pn) >> pr' pn newaccum day 0
 
