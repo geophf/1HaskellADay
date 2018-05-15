@@ -47,14 +47,13 @@ import Database.PostgreSQL.Simple.Time hiding (Date)
 
 -- below imports available via 1HaskellADay git repository
 
-import Store.SQL.Connection (connectInfo)
+import Store.SQL.Connection
 
 import Y2018.M01.D15.Solution (time) -- see bonus
 import Y2018.M01.D17.Solution (fetchActiveAuditEntry)
-import Y2018.M01.D26.Solution
 
 {--
->>> connectInfo 
+>>> connectInfo WPJ
 ConnectInfo {connectHost = "...", ...}
 >>> conn <- connect it
 --}
