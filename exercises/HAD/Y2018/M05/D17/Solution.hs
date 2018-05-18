@@ -32,8 +32,10 @@ import Database.PostgreSQL.Simple.Types
 
 import Data.Logger
 import Data.LookupTable
+import Data.Time.Stamped (stampIt)
 
 import Store.SQL.Util.Indexed
+import Store.SQL.Util.Logging (insertStampedEntries)
 
 import Y2017.M11.D01.Solution (SpecialCharTable)
 import Y2018.M04.D02.Solution -- Article
@@ -68,9 +70,13 @@ processArts conn pidx lk spc (NEW, infos) = undefined
 -- simply log that they are redundant, so we need a logging function:
 
 roff :: Connection -> LookupTable -> Severity -> String -> MemoizedAuthors IO
-roff conn severityLookup level message = undefined
+roff conn severityLookup level msg = lift (roff' conn severityLookup level msg)
 
--- define this function in the MemoizedAuthors IO monad
+roff' :: Connection -> LookupTable -> Severity -> String -> IO ()
+roff' conn sev lvl =
+   stampIt . Entry lvl "ETL" "Y2018.M05.D09.Solution" >=> \ent ->
+   if lvl > DEBUG then print ent else return () >>
+   insertStampedEntries conn sev [ent]
 
 -- For updating articles we need to define updateArts and updateJSON
 
@@ -110,16 +116,12 @@ updateArts conn arts =
 
    concat <$> mapM (query_ conn . updateArtStmt) arts
 
--- define updateArts
-
 -- we also have to update the JSON block for the article
 
 updateJSON :: Connection -> WPJATI -> [Index] -> IO ()
 updateJSON conn wpj =
    void . execute_ conn . Query . B.pack
         . intercalate "; " . map (updateJSONStmt (fst $ article wpj))
-
--- define updateJSON given the SQL statement:
 
 updateJSONStmt :: Value -> Index -> String
 updateJSONStmt val ix =
