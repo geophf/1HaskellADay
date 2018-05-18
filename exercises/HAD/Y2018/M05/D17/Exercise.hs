@@ -87,7 +87,7 @@ updateArtStmt (ATI _ (_, Art (Art' ix _ up _ _ _ _ _ _) pl ht tit sum) (Just (Ix
        strfn (a,b) = a ++ ('=':enquote b)
        rendered = strfn p ++ concatMap ((", " ++) . strfn) arams
    in Query (B.pack ("UPDATE article SET " ++ rendered
-                   ++ " WHERE id=" ++ show ix ++ " returning json_id"))
+                   ++ " WHERE art_id=" ++ show ix ++ " returning json_id"))
 
 enquote :: String -> String
 enquote str = quote ++ convert' "LATIN1" "UTF8" str ++ quote
