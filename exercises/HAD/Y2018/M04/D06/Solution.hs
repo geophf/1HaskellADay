@@ -33,6 +33,11 @@ I gotcher categories right here, fam:
 cats :: FilePath
 cats = "Y2018/M04/D06/cats.json"
 
+{-- The full set of categories are located at:
+
+https://worldpolicy.org/wp-json/wp/v2/categories
+--}
+
 data Cat = Cat { mouse :: String }
 
 instance ToRow Cat where
