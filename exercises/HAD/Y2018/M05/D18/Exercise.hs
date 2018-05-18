@@ -33,3 +33,15 @@ downloadTags = undefined
 -- hint: see definitions in Y2018.M04.D13 for downloading packets and use
 -- a similar approach
 
+{-- BONUS -----------------------------------------------------------------
+
+Create an application that downloads all the tags from the REST endpoint and
+then uploads those tags to a PostgreSQL data table as described in the module
+Y2018.M04.D09.
+
+-- BONUS-BONUS ------------------------------------------------------------
+
+Create an application that does the same thing, but for categories this time.
+
+See Y2018.M04.D06 for information on categories (very (VERY)) much like tags.
+--}
