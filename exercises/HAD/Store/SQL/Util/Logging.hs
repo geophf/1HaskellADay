@@ -4,6 +4,8 @@ module Store.SQL.Util.Logging where
 
 -- stores log entries in a SQL log table
 
+import Control.Monad ((>=>))
+
 import Data.Functor (void)
 
 import qualified Data.Map as Map
@@ -19,7 +21,22 @@ import Data.Logger
 import Data.LookupTable (LookupTable)
 import Data.Time.Stamped
 
+import Store.SQL.Util.LookupTable (lookupTable)
 import Store.SQL.Util.Stamping -- for ToRow instance
+
+-- we also provide a convenience logging function:
+
+roff :: Connection -> LookupTable -> Severity -> String -> String -> String -> IO ()
+roff conn sev lvl app mod =
+   stampIt . Entry lvl app mod >=> \ent ->
+   if lvl > DEBUG then print ent else return () >>
+   insertStampedEntries conn sev [ent]
+
+-- roff for 'run-off' from programming days of olde
+-- e.g. (in the IO monad): roff conn lk INFO "ETL" "Y2018.M05.D09.Solution" msg
+
+initLogger :: Connection -> IO LookupTable
+initLogger = flip lookupTable "severity_lk"
 
 instance ToRow LogEntry where
    toRow (Entry _ a m e) = map toField [a,m,e]
