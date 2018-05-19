@@ -32,6 +32,9 @@ roff conn sev lvl app mod =
    if lvl > DEBUG then print ent else return () >>
    insertStampedEntries conn sev [ent]
 
+mkInfo :: String -> String -> LookupTable -> Connection -> String -> IO ()
+mkInfo app mod sev conn = roff conn sev INFO app mod
+
 -- roff for 'run-off' from programming days of olde
 -- e.g. (in the IO monad): roff conn lk INFO "ETL" "Y2018.M05.D09.Solution" msg
 
