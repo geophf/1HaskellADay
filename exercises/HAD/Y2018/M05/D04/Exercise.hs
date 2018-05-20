@@ -78,3 +78,6 @@ errOut :: Day -> Tries -> String -> [ParsedPacket] -> IO [ParsedPacket]
 errOut weekAgo retries errmsg accum = undefined
 
 -- How many packets did you consume for a week's worth of articles from today?
+
+downloader :: Connection -> IO (Day, [ParsedPacket])
+downloader conn = undefined
