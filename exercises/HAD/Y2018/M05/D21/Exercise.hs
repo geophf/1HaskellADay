@@ -23,7 +23,7 @@ and Haskell is not because Python is ...
 
 Anyway, now that I'm done trollin' on the Great Language Debate Flame War ...
 
-For all NEW and UPDATED articles in your triaged set, insert the art_id into
+For all NEW and UPDATED articles in your triaged set, insert the id into
 a new data table: unclean. Later a Python batch job will pick up these ids and
 process the associated articles.
 --}
@@ -45,7 +45,7 @@ import Y2018.M05.D08.Exercise -- for Triage and WPJATI
 markDirtyArticles :: Connection -> Map Triage [WPJATI] -> IO ()
 markDirtyArticles triaged = undefined
 
--- Above function takes NEW and UPDATED articles and inserts art_id into unclean
+-- Above function takes NEW and UPDATED articles and inserts id into unclean
 -- To do that, you need to define the below function
 
 storeUncleanArtIds :: Connection -> [Integer] -> IO ()
