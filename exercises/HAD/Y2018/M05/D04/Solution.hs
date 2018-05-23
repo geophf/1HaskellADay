@@ -35,6 +35,7 @@ import Control.Monad.Writer
 
 import Data.Aeson
 import Data.Maybe
+import Data.Monoid
 import Data.Time
 
 import Database.PostgreSQL.Simple
@@ -47,12 +48,13 @@ import Data.Logger
 import Data.Time.Stamped
 
 import Store.SQL.Connection
+import Store.SQL.Util.AuditLogging (oneWeekAgo)
 
-import Y2018.M01.D29.Solution (oneWeekAgo)
+-- Y2018.M01.D29.Solution (oneWeekAgo)
 
 -- we can't use:
 
--- import Y2018.M01.D26.Solution (ow)
+-- Y2018.M01.D26.Solution
 
 -- because that's based on PILOT data structures, not WPJ ones. We fetch
 -- WPJ packets from:
@@ -72,7 +74,22 @@ import Y2018.M04.D02.Solution -- for FromJSON Article
 
 -- 2. Fetch a set of articles from the rest endpoint upto (date)
 
-type ParsedPacket = (Packet Value, [(Value, Article)])
+data ParsedPacket = PP (Packet Value, [(Value, Article)])
+   deriving Show
+
+-- the monoid instance for list-processing comes in handy for dealing with
+-- multiple parsed packets later.
+
+-- with a seed packet of
+
+seedPacket :: ParsedPacket
+seedPacket = PP (Pack [], [])
+
+-- a very weird-lookin' monoid, indeed! ... but it is a monoid, so:
+
+instance Monoid ParsedPacket where
+   mempty = seedPacket
+   mappend (PP (Pack as, xs)) (PP (Pack bs, ys)) = PP (Pack (as ++ bs), xs ++ ys)
 
 pack2arts :: Day -> Packet Value -> [(Value, Article)]
 pack2arts day (Pack arts) = mapMaybe (r2m . (id &&& fromJSON)) arts
@@ -110,9 +127,10 @@ accumPacket day pn accum pack =
    let arts = pack2arts day pack in
    if null arts then return accum
    else
-   let newaccum = (pack, prune day arts):accum
-       today = fmap (localDay . zonedTimeToLocalTime) . date . art . snd
-       downloadedDay = minimum (mapMaybe today arts) in
+   let today = fmap (localDay . zonedTimeToLocalTime) . date . art . snd
+       downloadedDay = minimum (mapMaybe today arts)
+       pruned = prune day arts
+       newaccum = (PP (Pack (map fst pruned), pruned)):accum in
    if downloadedDay < day then return newaccum
    else loggerr ("Loaded packet " ++ show pn) >> pr' pn newaccum day 0
 
@@ -133,10 +151,8 @@ loggerr msg = sayIO (Entry ERROR "daily upload" "Y2018.M05.D04.Solution" msg) >>
 
 -- How many packets did you consume for a week's worth of articles from today?
 
-downloader :: IO (Day, [ParsedPacket])
-downloader = connectInfo WPJ >>= connect      >>= \conn ->
+downloader :: Connection -> IO (Day, [ParsedPacket])
+downloader conn = -- connectInfo WPJ >>= connect      >>= \conn ->
    oneWeekAgo conn                            >>= \day ->
-   close conn                                 >>
-   putStrLn ("A week ago is " ++ show day)    >>
    fmap fst (runWriterT (packetReader day 0)) >>=
    return . (day,)

@@ -14,6 +14,8 @@ we use that to build our context here with the World Policy journal? Let's find
 out!
 --}
 
+import qualified Data.ByteString.Char8 as BL
+
 import Data.Time
 
 import Database.PostgreSQL.Simple
@@ -21,18 +23,16 @@ import Database.PostgreSQL.Simple.FromField
 import Database.PostgreSQL.Simple.FromRow
 import Database.PostgreSQL.Simple.SqlQQ
 import Database.PostgreSQL.Simple.Time
+import Database.PostgreSQL.Simple.Types
 
 -- below imports available via 1HaskellADay git repository.
 
 import Control.List (singleton)
+import Control.Logic.Frege ((<<-))
 
 import Store.SQL.Connection
 import Store.SQL.Util.Indexed
 import Store.SQL.Util.Time
-
-import Y2018.M01.D29.Solution (oneWeekAgo)
--- import Y2018.M01.D30.Solution hiding (fetchArticleMetaData, fetchArticleMetadataStmt)  -- for ArticleMetaData
-import Y2018.M05.D04.Solution
 
 -- download the article meta data up to from one week ago. How many metadata
 -- did you accumulate?
@@ -40,6 +40,10 @@ import Y2018.M05.D04.Solution
 {--
 >>> conn <- connectInfo WPJ >>= connect
 >>> wk <- oneWeekAgo conn
+
+or:
+
+>>> wk = fromGregorian 2018 4 15
 >>> wk
 2018-04-15
 >>> amd <- fetchArticleMetaData conn wk
@@ -65,6 +69,7 @@ instance FromField a => FromRow (ArticleMD a) where
    fromRow = AMD' <$> field <*> field <*> (Just <$> field) <*> field
 
 data ArticleMD a = AMD' Integer a (Maybe LocalTimestamp) (Maybe LocalTimestamp)
+   deriving Show
 
 amd2amd :: ArticleMD a -> IxValue (ArticleMetaData a)
 amd2amd (AMD' ix id d u) = IxV ix (AMD id (d >>= d2d) (u >>= d2d))
@@ -82,9 +87,11 @@ fetchArticleMetaDataStmt =
 -- real world, so ... ... oh! also: improved declaration.
 
 fetchArticleMetaData :: Connection -> Day
-                     -> IO [IxValue (ArticleMetaData Int)]
-fetchArticleMetaData conn =
-   fmap (map amd2amd) . query conn fetchArticleMetaDataStmt . singleton
+                     -> IO [IxValue (ArticleMetaData Integer)]
+fetchArticleMetaData = fmap (map amd2amd) <<- famd'
+
+famd' :: Connection -> Day -> IO [ArticleMD Integer]
+famd' conn = query conn fetchArticleMetaDataStmt . Only
 
 -- How many AMDs from the WPJ did you download?
 
@@ -99,4 +106,22 @@ IxV {ix = 2, val = AMD {artId = 22976, published = Just 2018-04-19, lastUpdate =
 IxV {ix = 3, val = AMD {artId = 22969, published = Just 2018-04-19, lastUpdate = Just 2018-04-20}}
 IxV {ix = 4, val = AMD {artId = 22934, published = Just 2018-04-17, lastUpdate = Just 2018-04-17}}
 IxV {ix = 5, val = AMD {artId = 22914, published = Just 2018-04-16, lastUpdate = Just 2018-04-19}}
+--}
+
+{--
+Note on intermingling of paradigms.
+
+It's a funny thing. When I import this module:
+
+-- import Y2018.M01.D29.Solution (oneWeekAgo)
+
+(with its superfluous dependency on Pilot structures, which I have since 
+removed)
+
+That has no lexical impact, the database connection fails.
+
+When I do not import it, the database connection works.
+
+The take-away here from me is to build modules small and not to import mega-
+modules.
 --}

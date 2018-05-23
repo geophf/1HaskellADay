@@ -36,11 +36,11 @@ import Data.MultiMap (MultiMap)
 import qualified Data.MultiMap as MM
 
 import Store.SQL.Connection
+import Store.SQL.Util.AuditLogging (oneWeekAgo)
 import Store.SQL.Util.Indexed hiding (idx)
 
 -- import Y2018.M01.D30.Solution -- template for our ArticleTriageInformation
 
-import Y2018.M01.D29.Solution (oneWeekAgo)
 import Y2018.M04.D02.Solution  -- for Article type
 import Y2018.M04.D13.Solution  -- for Packet type
 import Y2018.M05.D04.Solution  -- for articles from the rest endpoint
@@ -68,13 +68,13 @@ ArticleMetadata set) and the articles downloaded from the REST endpoint (the
 ParsedPackage values) is the triaged article set
 --}
 
-type WPJATI = ArticleTriageInformation (Packet Value) Value Article Int
+type WPJATI = ArticleTriageInformation (Packet Value) Value Article Integer
 
-triageArticles :: [IxValue (ArticleMetaData Int)] -> [ParsedPacket]
+triageArticles :: [IxValue (ArticleMetaData Integer)] -> [ParsedPacket]
                -> Map Triage [WPJATI]
 triageArticles amd = ta' (Map.fromList (map (artId . val &&& id) amd)) MM.empty
 
-type MapAMD = Map Int (IxValue (ArticleMetaData Int))
+type MapAMD a = Map a (IxValue (ArticleMetaData a))
 
 {--
 So, with the above.
@@ -92,10 +92,10 @@ packet has 100 articles, there 'may' be a lot of redundant articles. Do your
 results bear this out?
 --}
 
-ta' :: MapAMD -> MultiMap Triage WPJATI (DList WPJATI) -> [ParsedPacket]
+ta' :: MapAMD Integer -> MultiMap Triage WPJATI (DList WPJATI) -> [ParsedPacket]
     -> Map Triage [WPJATI]
 ta' _ result [] = Map.map dlToList (MM.store result)
-ta' context accum ((p, arts):packs) =
+ta' context accum ((PP (p, arts)):packs) =
    ta' context (foldr (uncurry MM.insert) accum (map (classify context p) arts))
        packs
 
@@ -104,7 +104,7 @@ ta' context accum ((p, arts):packs) =
 --     a id date _         not in context -> new
 --     a id date update        in context -> updated or redundant
 
-classify :: MapAMD -> Packet Value -> (Value, Article) -> (Triage, WPJATI)
+classify :: MapAMD Integer -> Packet Value -> (Value, Article) -> (Triage, WPJATI)
 classify context p (v, arti) =
    let atx = art arti in
    fromJust ((Map.lookup (idx atx) context >>= \amd ->

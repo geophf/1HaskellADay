@@ -24,6 +24,11 @@ import Y2018.M04.D06.Solution
 tags :: FilePath
 tags = "Y2018/M04/D09/tags.json"
 
+{-- The tags are stored on the REST endpoint here:
+
+https://worldpolicy.org/wp-json/wp/v2/tags?per_page=100
+--}
+
 -- welp, since the tags.json has the same structure (that we care about) as
 -- the cats.json, we just copy-over the type
 

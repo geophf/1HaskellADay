@@ -26,11 +26,14 @@ that article that will allow us to pick up where we left off.
 import Control.Monad (void)
 
 import qualified Data.Map as Map
-import Data.Time
+import Data.Time hiding (parseTime)
 import Data.Time.Clock
 
 import Database.PostgreSQL.Simple
+import Database.PostgreSQL.Simple.FromField
+import Database.PostgreSQL.Simple.FromRow
 import Database.PostgreSQL.Simple.SqlQQ
+import Database.PostgreSQL.Simple.Time
 import Database.PostgreSQL.Simple.ToField hiding (Action)
 import Database.PostgreSQL.Simple.ToRow
 
@@ -113,20 +116,47 @@ storeAuditInfo conn activ actn nextPack pack =
    deactivatePriorAuditEntries conn activ >>
    insertAuditEntries conn actn nextPack pack
 
-{-- BONUS -----------------------------------------------------------------
+-- Fetching the active audit entry ----------------------------------------
 
-Rewrite the ETL to insert an audit entry for the packet uploaded.
+fetchActiveAuditEntryStmt :: Query
+fetchActiveAuditEntryStmt =
+   [sql|SELECT    application,user_name,table_name,column_name,change,
+                  row_number,action,time
+        FROM      audit a
+        LEFT JOIN active_lk l ON l.id = a.active_ind
+        WHERE     l.active = 'ACTIVE' AND a.application = 'ETL'|]
 
-example of audit logging:
+instance FromRow AuditEntry where
+   fromRow = AE <$> field <*> field <*> field <*> field
+                <*> field <*> field <*> field
 
-etl :: BlockParser Identity Authors
-    -> (Connection -> [IxValue (DatedArticle Authors)] -> IO ())
-    -> Connection -> FilePath -> IO ()
-etl generator ancillaryFn conn json =
-   lookupTable conn "active_lk"                 >>= \actv ->
-   lookupTable conn "action_lk"                 >>= \actn ->
-   lookupTable conn "severity_lk"               >>= \sev  ->
-   readStorePacket conn json                    >>= \pac  ->
-   gruntWerk sev generator ancillaryFn conn pac >>=
-   storeAuditInfo conn actv actn pac
+-- of course, to read in an audit entry, we need to read in an action ...
+-- ... but I just don't care at this point:
+
+instance FromField Action where
+   fromField = \a -> const (return INSERT)
+
+fetchActiveAuditEntry :: Connection -> IO [Stamped AuditEntry]
+fetchActiveAuditEntry conn = query_ conn fetchActiveAuditEntryStmt
+
+-- How many entries were fetched? What do they look like?
+-- What was the most-recent change value?
+
+{--
+>>> withConnection (\conn -> fetchActiveAuditEntry conn >>= print)
+[AE {app = "ETL", user = "SYSTEM", table = "article", column = Nothing, change = "100", row = 98, action = INSERT}]
 --}
+
+-- Convert the most recent change value to an Integer
+
+offset :: AuditEntry -> Integer
+offset = read . change
+
+{--
+>>> withConnection (\conn -> fetchActiveAuditEntry conn >>= print . map offset)
+[100]
+--}
+
+oneWeekAgo :: Connection -> IO Day
+oneWeekAgo =
+   fmap (addDays (-7) . maximum . map (localDay . time)) . fetchActiveAuditEntry

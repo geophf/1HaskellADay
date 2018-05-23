@@ -43,26 +43,28 @@ type PageNumber = Int
 
 type Count = Int
 
-data Protec = Pro { page :: PageNumber, count :: Count, arts :: [Value] }
+data Protec = Pro { page :: PageNumber, count :: Count }
    deriving Show
 
 -- (I call it Protec for 'reasons' ... yes, I'm weird)
 
 instance ToRow Protec where
-   toRow (Pro p c arts) = [toField p, toField c]
-
-instance ToRow Value where
-   toRow = undefined  -- we don't care right now... we'll update laterz
+   toRow (Pro p c) = [toField p, toField c]
 
 protecStmt :: Query
 protecStmt = [sql|INSERT INTO packet (time, page, count)
                   VALUES (?, ?, ?) returning id|]
 
+-- but what happens when we try to insert articles?
+
 insertProtec :: Connection -> Protec -> IO [Index]
-insertProtec conn = stampIt >=> returning conn protecStmt . pure
+insertProtec conn prot =
+   stampIt prot >>= \p ->
+   print ("Entering insertProtec with " ++ show p) >>
+   returning conn protecStmt [p]
 
 protec :: Protec
-protec = Pro 1 100 []
+protec = Pro 1 100
 
 -- insert this value. What value do you get in return?
 

@@ -29,8 +29,8 @@ import Y2018.M04.D11.Solution
 -- our REST endpoint is of the form:
 
 endpoint :: PageNumber -> FilePath
-endpoint pn = "https://worldpolicy.org/wp-json/wp/v2/posts?per_page=100&page="
-   ++ show pn
+endpoint = ("https://worldpolicy.org/wp-json/wp/v2/posts?per_page=100&page=" ++)
+   . show
 
 -- now we ... 'know' that there are less than 1000 pages in the archive.
 
@@ -41,11 +41,10 @@ data Packet a = Pack [a]
    deriving Show
 
 instance ToJSON Protec where
-   toJSON (Pro n c arts) =
-      object ["page" .= n, "count" .= c, "articles" .= arts]
+   toJSON (Pro n c) = object ["page" .= n, "count" .= c]
 
 pack2protec :: Packet Value -> PageNumber -> Protec
-pack2protec (Pack arts) n = Pro n (length arts) arts
+pack2protec (Pack arts) n = Pro n (length arts)
 
 instance FromJSON a => FromJSON (Packet a) where
    parseJSON o = Pack <$> parseJSONList o
