@@ -3,8 +3,6 @@
 module Y2018.M05.D24.Exercise where
 
 {--
-One more bit before we insert rows.
-
 We need to inform the wider audience which articles we've inserted and
 updated so they can do stuff. The 'stuff,' in particular, that they are going
 to do is the python-y cleaning of these new and updated articles, and they are
@@ -48,8 +46,9 @@ storeUncleanArtIdStmt = [sql|INSERT INTO unclean (article_id) VALUES (?)|]
 {-- 
 Now, with the articles you downloaded from the REST endpoint 
 (Y2018.M05.D04.Exercise.downloader) and the triage information from the
-ArticleMetaData extracted from the database Y2018.M05.D07.fetchArticleMetaData)
-store the dirty articles that you (will have) uploaded. How many were there?
+ArticleMetaData extracted from the database
+Y2018.M05.D07.Exercise.fetchArticleMetaData) store the dirty articles that 
+you (will have) uploaded. How many were there?
 --} 
 
 main' :: [String] -> IO ()
