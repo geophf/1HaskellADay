@@ -58,10 +58,7 @@ protecStmt = [sql|INSERT INTO packet (time, page, count)
 -- but what happens when we try to insert articles?
 
 insertProtec :: Connection -> Protec -> IO [Index]
-insertProtec conn prot =
-   stampIt prot >>= \p ->
-   print ("Entering insertProtec with " ++ show p) >>
-   returning conn protecStmt [p]
+insertProtec conn = stampIt >=> returning conn protecStmt . pure
 
 protec :: Protec
 protec = Pro 1 100
