@@ -88,6 +88,7 @@ insertAuthors :: Connection -> MemoizedAuthors IO
 insertAuthors conn = get                    >>= \(mt@(MT _ _ news), _) ->
    let authors = Set.toList news
        auths   = map AV authors in
+   if null auths then return () else
    lift ((returning conn authorStmt auths) :: IO [Index]) >>= \idxen ->
    put (MT.update (zip (map idx idxen) authors) mt, Map.empty)
 
