@@ -29,7 +29,7 @@ import Store.SQL.Util.Stamping -- for ToRow instance
 roff :: Connection -> LookupTable -> Severity -> String -> String -> String -> IO ()
 roff conn sev lvl app mod =
    stampIt . Entry lvl app mod >=> \ent ->
-   if lvl > DEBUG then print ent else return () >>
+   (if lvl > DEBUG then print ent else return ()) >>
    insertStampedEntries conn sev [ent]
 
 mkInfo :: String -> String -> LookupTable -> Connection -> String -> IO ()
