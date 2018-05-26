@@ -72,8 +72,8 @@ checkFile fn = let
 -- 
 -- check "HAD.Y2014.M02.D24"
 checkModule :: String -> IO ()
-checkModule = doctest . ("-iexercises":) . return
+checkModule = doctest . ("-iexercises/HAD":) . return
 
 -- helper that build modules list
 modules :: DateCommand [String]
-modules (y,m,d) = "HAD": zipWith printf ["Y%4d", "M%02d", "D%02d"] [y,m,d]
+modules (y,m,d) = zipWith printf ["Y%4d", "M%02d", "D%02d"] [y,m,d]
