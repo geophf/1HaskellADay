@@ -1,8 +1,8 @@
-module HAD.Y2114.M03.D21.Solution where
+module HAD.Y2014.M03.D21.Solution where
 
-import Control.Applicative
-import Control.Arrow
-import Data.Maybe
+import           Control.Applicative
+import           Control.Arrow
+import           Data.Maybe
 
 -- $setup
 -- >>> import Test.QuickCheck
@@ -28,7 +28,7 @@ import Data.Maybe
 -- prop> \(NonEmpty(xs)) -> maximum xs == (snd . fromJust . minmax) xs
 --
 minmax :: Ord a => [a] -> Maybe (a,a)
-minmax = 
+minmax =
   listToMaybe
   . scanr1 (flip (liftA2 (&&&) (min . fst) (max . snd)) . fst)
   . (zip <*> id)
@@ -36,6 +36,10 @@ minmax =
 minmaxNoPF :: Ord a => [a] -> Maybe (a,a)
 minmaxNoPF []     = Nothing
 minmaxNoPF (x:xs) =
-  listToMaybe 
+  listToMaybe
   . scanr (flip (liftA2 (&&&) (min . fst) (max . snd))) (x,x)
   $ xs
+
+minmax' :: Ord a => [a] -> Maybe (a,a)
+minmax' [] = Nothing
+minmax' xs = Just $ (,) <$> minimum <*> maximum $ xs
