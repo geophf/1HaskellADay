@@ -8,6 +8,7 @@ import Control.Monad ((>=>))
 
 import Data.Functor (void)
 
+import Data.List (intercalate)
 import qualified Data.Map as Map
 
 import Database.PostgreSQL.Simple
@@ -27,9 +28,11 @@ import Store.SQL.Util.Stamping -- for ToRow instance
 -- we also provide a convenience logging function:
 
 roff :: Connection -> LookupTable -> Severity -> String -> String -> String -> IO ()
-roff conn sev lvl app mod =
-   stampIt . Entry lvl app mod >=> \ent ->
-   (if lvl > DEBUG then print ent else return ()) >>
+roff conn sev lvl app mod msg =
+   stampIt (Entry lvl app mod msg) >>= \ent ->
+   (if lvl > DEBUG
+    then putStrLn (intercalate "\t" [show $ time ent,app,mod,msg])
+    else return ()) >>
    insertStampedEntries conn sev [ent]
 
 mkInfo :: String -> String -> LookupTable -> Connection -> String -> IO ()
