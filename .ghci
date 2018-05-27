@@ -1,4 +1,4 @@
 :set prompt ">>> "
-:set -iexercises:src
+:set -iexercises/HAD:src
 :m + Test.DocTest
 :l HAD
