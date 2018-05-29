@@ -2,6 +2,8 @@ module Data.Logger where
 
 -- Logging functionality
 
+import Prelude hiding (mod)
+
 import Control.Monad.Writer
 
 import qualified Data.Map as Map

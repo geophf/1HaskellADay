@@ -3,6 +3,7 @@
 module Y2018.M05.D25.Solution where
 
 import Control.Arrow ((&&&))
+import Control.Concurrent (threadDelay)
 
 import qualified Data.ByteString.Char8 as B
 import qualified Data.ByteString.Lazy.Char8 as BL
@@ -70,11 +71,12 @@ fetchIxArticle conn n = query_ conn . fetchStmt n
 -- Question: IDs are not sequential. What is the max id of the fetch?
 
 curlCmd :: Conn1 -> Int -> IxValue S -> IO (Status, String)
-curlCmd = cc' 30
+curlCmd = cc' 30 0
 
-cc' :: Int -> Conn1 -> Int -> IxValue S -> IO (Status, String)
-cc' secs conn n msg =
-   newManager tlsManagerSettings >>= \mgr ->
+cc' :: Int -> Int -> Conn1 -> Int -> IxValue S -> IO (Status, String)
+cc' secs tries conn n msg =
+   if tries > 3 then return (Status 504 "failed", "")
+   else (newManager tlsManagerSettings >>= \mgr ->
    parseRequest nerEndpoint >>= \req -> 
    let jsn = BL.pack ("{ \"text\": " ++ show (txt (val msg)) ++ " }")
        req' = req { responseTimeout = responseTimeoutMicro (secs * 1000000),
@@ -82,28 +84,30 @@ cc' secs conn n msg =
                  -- requestHeaders = [(CI "application", "json")],
                     requestBody = RequestBodyLBS jsn } in
    httpLbs req' mgr >>= \((responseStatus &&& BL.unpack . responseBody) -> it) ->
-   logStatus conn n msg it >>
+   logStatus conn n tries msg it >>
    (if n `mod` 100 == 0
     then info conn ("NER processed " ++ show n ++ " articles")
     else return ())        >>
-   return it
+   return it)
 
 -- sends text, gets a response and status
 
-logStatus :: Conn1 -> Int -> IxValue a -> (Status, String) -> IO ()
-logStatus conn n (IxV x _) (stat, resp) =
+logStatus :: Conn1 -> Int -> Int -> IxValue S -> (Status, String) -> IO ()
+logStatus conn n tries art@(IxV x _) (stat, resp) =
    if statusCode stat == 200
    then debug conn n x resp
-   else warn conn n x stat resp
+   else warn conn tries n x stat resp >> cc' 30 (succ tries) conn n art >> return ()
       where debug (conn,lk) n x msg =
                roff conn lk DEBUG "Load Tester" "Y2018.M05.D25.Solution"
                     ("Row " ++ show n ++ ", entities (article " ++ show x
                             ++ "): " ++ take 200 resp)
-            warn (conn,lk) n x stat msg =
-               roff conn lk WARN "Load Tester" "Y2018.M05.D25.Solution"
+
+warn :: Conn1 -> Int -> Int -> Integer -> Status -> String -> IO ()
+warn (conn,lk) tries n x stat msg =
+   roff conn lk WARN "Load Tester" "Y2018.M05.D25.Solution"
                     ("WARNING Row " ++ show n ++ ", code: "
                           ++ show (statusCode stat) ++ " for article " ++ show x
-                          ++ ": " ++ resp)
+                          ++ ": " ++ msg)
 
 info :: Conn1 -> String -> IO ()
 info (conn,lk) = mkInfo "Load Tester" "Y2018.M05.D25.Solution" lk conn
@@ -120,7 +124,7 @@ main' [n, offset] =
       log ("Load testing API Gateway with " ++ n ++ " articles from " ++ offset) >>
       fetchIxArticle conn n1 off1 >>= \arts ->
       log ("Fetched " ++ n ++ " articles") >>
-      mapM_ (\(x, art) -> curlCmd (conn, lk) x art) (zip [1..] arts) >>
+      mapM_ (\(x, art) -> curlCmd (conn, lk) x art >> threadDelay 2000) (zip [1..] arts) >>
       log ("Processed entities for " ++ n ++ " articles") >>
       log ("Max ID is " ++ show (maximum (map idx arts))))
 
