@@ -93,11 +93,8 @@ data Article2 a = Art2 { text :: String, meta :: Article' a }
 
 -- find some way to match up articles with their texts and merge them
 
-arts2arts2 :: BucketList a -> [IxValue Str] -> Map Index (Article2 a)
+arts2arts2 :: BucketList a -> [IxValue Str] -> Map Integer (Article2 a)
 arts2arts2 arts texts = undefined
-
-instance ToJSON Index where
-   toJSON idx = undefined
 
 instance ToJSON a => ToJSON (Article2 a) where
    toJSON art = undefined
