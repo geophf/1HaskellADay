@@ -83,6 +83,11 @@ instance FromRow Str where
 fullTexts :: Connection -> [Index] -> [IxValue Str]
 fullTexts conn idxn = undefined
 
+-- of course, we need to extract the indices from the article set to do above
+
+articleIndex :: Article a -> Index
+articleIndex art = undefined
+
 data Article2 a = Art2 { text :: String, meta :: Article' a }
    deriving (Eq, Ord, Show)
 
