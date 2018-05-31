@@ -80,7 +80,7 @@ data Str = S String
 instance FromRow Str where
    fromRow = undefined
 
-fullTexts :: Connection -> [Index] -> [IxValue Str]
+fullTexts :: Connection -> [Index] -> IO [IxValue Str]
 fullTexts conn idxn = undefined
 
 -- of course, we need to extract the indices from the article set to do above
