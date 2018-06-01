@@ -72,7 +72,7 @@ and VENTI, insert those articles into the JSON. Then declare Miller Time (tm)
 --}
 
 fullTextStmt :: Query
-fullTextStmt = [sql|SELECT id,full_text FROM article WHERE id in (?)|]
+fullTextStmt = [sql|SELECT id,full_text FROM article WHERE id in ?|]
 
 data Str = S String
    deriving (Eq, Show)
@@ -101,5 +101,5 @@ instance ToJSON a => ToJSON (Article2 a) where
 
 -- and write that out as pretty-printed JSON
 
-printBucketListWithText :: FilePath -> BucketList a -> [IxValue Str] -> IO ()
-printBucketListWithText output bl texts = undefined
+printBucketListWithText :: FilePath -> BucketList a -> IO ()
+printBucketListWithText output bl = undefined
