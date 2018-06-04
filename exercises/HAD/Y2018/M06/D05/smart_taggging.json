@@ -5,7 +5,7 @@ Smart Tagging JSON:
 		"Name": "Fleet Week New York",
 		"WikiSummary": "Fleet Week is a United States Navy, United States Marine Corps, and United States Coast Guard tradition in which active military ships recently deployed in overseas operations dock in a variety of major cities for one week. Once the ships dock, the crews can enter the city and visit its tourist attractions. At certain hours, the public can take a guided tour of the ships. Often, Fleet Week is accompanied by military demonstrations and air shows such as those provided by the Blue Angels.",
 		"WikiName": "Fleet Week",
-		"WikiImage": "https://upload.wikimedia.org/wikipedia/commons/b/b3/US_Navy_040526-N-6371Q-049_he_guided_missile_cruiser_USS_Anzio_%28CG_68%29_sails_past_the_Statue_of_Liberty_in_New_York_Harbor.jpg",
+		"WikiImages": ["https://upload.wikimedia.org/wikipedia/commons/b/b3/US_Navy_040526-N-6371Q-049_he_guided_missile_cruiser_USS_Anzio_%28CG_68%29_sails_past_the_Statue_of_Liberty_in_New_York_Harbor.jpg"],
 		"WikiLink": "https://en.wikipedia.org/wiki/Fleet_Week",
 		"Related Articles": [
 			{ 	"Title": "3 Norfolk-based Navy ships to participate in Fleet Week New York",
@@ -29,7 +29,7 @@ Smart Tagging JSON:
 		"Name": "USS Mitscher",
 		"WikiSummary": "USS Mitscher (DDG-57) became the second United States Navy warship named to honor Admiral Marc A. Mitscher, famed naval aviator and World War II aircraft carrier task force commander.",
 		"WikiName": "USS Mitscher",
-		"WikiImage":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/US_Navy_070620-N-8861F-054_The_guided-missile_destroyer_USS_Mitscher_%28DDG_57%29_operates_in_the_Pacific_Ocean_in_support_of_UNITAS_Pacific_2007_which_supports_Partnership_of_the_Americas_%28POA%29_2007.jpg/600px-thumbnail.jpg",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/US_Navy_070620-N-8861F-054_The_guided-missile_destroyer_USS_Mitscher_%28DDG_57%29_operates_in_the_Pacific_Ocean_in_support_of_UNITAS_Pacific_2007_which_supports_Partnership_of_the_Americas_%28POA%29_2007.jpg/600px-thumbnail.jpg"],
 		"WikiLink": "https://en.wikipedia.org/wiki/USS_Mitscher_(DDG-57)",
 		"Related Articles": [
 			{ 	"Title": "Navy contractor sold $19,000 military binoculars for $100. Now he'll serve 15 months in prison.",
@@ -53,7 +53,7 @@ Smart Tagging JSON:
 		"Name": "USS Arlington",
 		"WikiSummary": "USS Arlington (LPD-24), a San Antonio-class amphibious transport dock, is the third ship of the United States Navy to be named for Arlington, Virginia, the location of the Pentagon. Like her sister ships, USS New York and Somerset, she is named in commemoration of the 11 September 2001 attacks. Steel taken from the Pentagon after the 11 September attacks is displayed aboard in the ship's museum.",
 		"WikiName": "USS Arlington",
-		"WikiImage":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/USS_Arlington_%28LPD-24%29_underway_in_August_2014.JPG/600px-USS_Arlington_%28LPD-24%29_underway_in_August_2014.JPG",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/USS_Arlington_%28LPD-24%29_underway_in_August_2014.JPG/600px-USS_Arlington_%28LPD-24%29_underway_in_August_2014.JPG"],
 		"WikiLink": "https://en.wikipedia.org/wiki/USS_Arlington_(LPD-24)",
 		"Related Articles": [
 			{ 	"Title": "Mission to Mars: NASA spacecraft gets important paint job at Langley AFB",
@@ -77,7 +77,7 @@ Smart Tagging JSON:
 		"Name": "U.S. Navy",
 		"WikiSummary": "The United States Navy is the naval warfare service branch of the United States Armed Forces and one of the seven uniformed services of the United States.",
 		"WikiName": "United States Navy",
-		"WikiImage":"https://upload.wikimedia.org/wikipedia/commons/b/bd/Emblem_of_the_United_States_Navy.png",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/b/bd/Emblem_of_the_United_States_Navy.png"],
 		"WikiLink": "https://en.wikipedia.org/wiki/United_States_Navy",
 		"Related Articles": [
 			{ 	"Title": "German warship to embark with US Navy carrier strike group",
@@ -101,7 +101,7 @@ Smart Tagging JSON:
 		"Name": "Marines",
 		"WikiSummary": "The United States Marine Corps, also known as the United States Marines, is a branch of the United States Armed Forces responsible for conducting amphibious operations with the United States Navy.",
 		"WikiName": "United States Marine Corps",
-		"WikiImage":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Emblem_of_the_United_States_Marine_Corps.svg/440px-Emblem_of_the_United_States_Marine_Corps.svg.png",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Emblem_of_the_United_States_Marine_Corps.svg/440px-Emblem_of_the_United_States_Marine_Corps.svg.png"],
 		"WikiLink": "https://en.wikipedia.org/wiki/United_States_Marine_Corps",
 		"Related Articles": [
 			{ 	"Title": "Marines killed in California crash include new dad, Iraq vet",
@@ -125,7 +125,7 @@ Smart Tagging JSON:
 		"Name": "Coast Guard",
 		"WikiSummary": "The United States Coast Guard (USCG) is a branch of the United States Armed Forces and one of the country's seven uniformed services. The Coast Guard is a maritime, military, multi-mission service unique among the U.S. military branches for having a maritime law enforcement mission (with jurisdiction in both domestic and international waters) and a federal regulatory agency mission as part of its mission set.",
 		"WikiName": "United States Coast Guard",
-		"WikiImage":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/USCG_W.svg/440px-USCG_W.svg.png",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/USCG_W.svg/440px-USCG_W.svg.png"],
 		"WikiLink": "https://en.wikipedia.org/wiki/United_States_Coast_Guard",
 		"Related Articles": [
 			{ 	"Title": "China plans Taiwan Strait live-fire exercises amid tensions",
@@ -149,7 +149,7 @@ Smart Tagging JSON:
 		"Name": "Royal Canadian Navy",
 		"WikiSummary": "The Royal Canadian Navy is the naval force of Canada. The RCN is one of three environmental commands within the unified Canadian Armed Forces. As of 2017, Canada's navy operates 12 frigates, 4 patrol submarines, 12 coastal defence vessels and 8 unarmed patrol/training vessels, as well as several auxiliary vessels.",
 		"WikiName": "Royal Canadian Navy",
-		"WikiImage":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/RCN_Emblem.svg/440px-RCN_Emblem.svg.png",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/RCN_Emblem.svg/440px-RCN_Emblem.svg.png"],
 		"WikiLink": "https://en.wikipedia.org/wiki/Royal_Canadian_Navy",
 		"Related Articles": [
 			{ 	"Title": "Just back from deployment, Norfolk-based destroyers training with NATO allies in anti-submarine warfare",
@@ -173,7 +173,7 @@ Smart Tagging JSON:
 		"Name": "Sep 11 terrorist attacks",
 		"WikiSummary": "The September 11 attacks were a series of four coordinated terrorist attacks by the Islamic terrorist group al-Qaeda on the United States on the morning of Tuesday, September 11, 2001. The attacks killed 2,996 people, injured over 6,000 others, and caused at least $10 billion in infrastructure and property damage.",
 		"WikiName": "September 11 attacks",
-		"WikiImage":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/September_11_Photo_Montage.jpg/500px-September_11_Photo_Montage.jpg",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/September_11_Photo_Montage.jpg/500px-September_11_Photo_Montage.jpg"],
 		"WikiLink": "https://en.wikipedia.org/wiki/September_11_attacks",
 		"Related Articles": [
 			{ 	"Title": "9/11 families to announce next steps in Saudi Arabia lawsuit",
@@ -197,7 +197,7 @@ Smart Tagging JSON:
 		"Name": "USS New York",
 		"WikiSummary": "USS New York (LPD-21), the fifth San Antonio-class amphibious transport dock, is the fifth ship of the United States Navy to be named after the state of New York. New York has a crew of 360 and can carry up to 700 Marines.",
 		"WikiName": "USS New York",
-		"WikiImage":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/USS_New_York_in_the_Hudson_River_200911.jpg/600px-USS_New_York_in_the_Hudson_River_200911.jpg",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/USS_New_York_in_the_Hudson_River_200911.jpg/600px-USS_New_York_in_the_Hudson_River_200911.jpg"],
 		"WikiLink": "https://en.wikipedia.org/wiki/USS_New_York_(LPD-21)",
 		"Related Articles": [
 			{ 	"Title": "A Navy pilot reflects on his service at 102: 'You always tried to do your best'",
@@ -221,7 +221,7 @@ Smart Tagging JSON:
 		"Name": "USS Somerset",
 		"WikiSummary": "USS Somerset (LPD-25) is a San Antonio-class amphibious transport dock of the United States Navy. Somerset is the fourth Navy vessel, and the second warship to bear the name; the first two being a wooden-hulled motorboat and a ferry.",
 		"WikiName": "USS Somerset",
-		"WikiImage":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/USS_Somerset_transits_the_Pacific_Ocean._%2828580101294%29.jpg/600px-USS_Somerset_transits_the_Pacific_Ocean._%2828580101294%29.jpg",
+		"WikiImages":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/USS_Somerset_transits_the_Pacific_Ocean._%2828580101294%29.jpg/600px-USS_Somerset_transits_the_Pacific_Ocean._%2828580101294%29.jpg"],
 		"WikiLink": "https://en.wikipedia.org/wiki/USS_Somerset_(LPD-25)",
 		"Related Articles": [
 			{ 	"Title": "Man, 25, shot to death in Norfolk; Navy confirms a USS Bush sailor was killed",
@@ -245,7 +245,7 @@ Smart Tagging JSON:
 		"Name": "USS Little Rock",
 		"WikiSummary": "USS Little Rock (LCS-9) is a Freedom-class littoral combat ship of the United States Navy. She is the second ship named after Little Rock, the capital city of Arkansas.",
 		"WikiName": "USS Little Rock",
-		"WikiImage":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/USS_Little_Rock_Buffalo_Harbor.jpg/600px-USS_Little_Rock_Buffalo_Harbor.jpg",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/USS_Little_Rock_Buffalo_Harbor.jpg/600px-USS_Little_Rock_Buffalo_Harbor.jpg"],
 		"WikiLink": "https://en.wikipedia.org/wiki/USS_Little_Rock_(LCS-9)",
 		"Related Articles": [
 			{ 	"Title": "Secretary of the Navy Mabus to speak to Norfolk business community",
@@ -269,7 +269,7 @@ Smart Tagging JSON:
 		"Name": "USNS City of Bismarck",
 		"WikiSummary": "USNS City of Bismarck (T-EPF-9), is the ninth Spearhead-class expeditionary fast transport and operated by the Military Sealift Command. The name was originally announced as Bismarck.",
 		"WikiName": "USNS City of Bismarck",
-		"WikiImage":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/180213-N-SX614-016.JPG/600px-180213-N-SX614-016.JPG",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/180213-N-SX614-016.JPG/600px-180213-N-SX614-016.JPG"],
 		"WikiLink": "https://en.wikipedia.org/wiki/USNS_City_of_Bismarck_(T-EPF-9)",
 		"Related Articles": [
 			{ 	"Title": "Navy accepts delivery of USNS City of Bismarck",
