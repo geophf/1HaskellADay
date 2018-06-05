@@ -1,4 +1,4 @@
-module Y2018.M06.D01.Solution where
+module Y2018.M06.D04.Solution where
 
 {--
 Today, in Haskell, we're going to ... ADD TWO NUMBERS!
