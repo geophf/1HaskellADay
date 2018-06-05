@@ -219,7 +219,7 @@
 		"Name": "USS Somerset",
 		"WikiSummary": "USS Somerset (LPD-25) is a San Antonio-class amphibious transport dock of the United States Navy. Somerset is the fourth Navy vessel, and the second warship to bear the name; the first two being a wooden-hulled motorboat and a ferry.",
 		"WikiName": "USS Somerset",
-		"WikiImages":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/USS_Somerset_transits_the_Pacific_Ocean._%2828580101294%29.jpg/600px-USS_Somerset_transits_the_Pacific_Ocean._%2828580101294%29.jpg"],
+		"WikiImages": ["https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/USS_Somerset_transits_the_Pacific_Ocean._%2828580101294%29.jpg/600px-USS_Somerset_transits_the_Pacific_Ocean._%2828580101294%29.jpg"],
 		"WikiLink": "https://en.wikipedia.org/wiki/USS_Somerset_(LPD-25)",
 		"Related Articles": [
 			{ 	"Title": "Man, 25, shot to death in Norfolk; Navy confirms a USS Bush sailor was killed",
