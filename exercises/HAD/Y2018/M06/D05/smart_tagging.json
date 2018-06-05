@@ -1,0 +1,291 @@
+{
+	"Entities": [ {
+		"Name": "Fleet Week New York",
+		"WikiSummary": "Fleet Week is a United States Navy, United States Marine Corps, and United States Coast Guard tradition in which active military ships recently deployed in overseas operations dock in a variety of major cities for one week. Once the ships dock, the crews can enter the city and visit its tourist attractions. At certain hours, the public can take a guided tour of the ships. Often, Fleet Week is accompanied by military demonstrations and air shows such as those provided by the Blue Angels.",
+		"WikiName": "Fleet Week",
+		"WikiImages": ["https://upload.wikimedia.org/wikipedia/commons/b/b3/US_Navy_040526-N-6371Q-049_he_guided_missile_cruiser_USS_Anzio_%28CG_68%29_sails_past_the_Statue_of_Liberty_in_New_York_Harbor.jpg"],
+		"WikiLink": "https://en.wikipedia.org/wiki/Fleet_Week",
+		"Related Articles": [
+			{ 	"Title": "3 Norfolk-based Navy ships to participate in Fleet Week New York",
+				"Article URL": "https://pilotonline.com/news/military/local/article_50f8e2fd-24fb-5247-a980-6846dc0a03a2.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "May 8, 2017"
+			},
+			{ 	"Title": "Hampton Roads ships to participate in inaugural Maryland Fleet Week",
+				"Article URL": "https://pilotonline.com/news/military/local/article_f46eba03-0a4c-5240-88ff-b2d97f494a53.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Sep 29, 2016"
+			},
+			{ 	"Title": "Hello Sailor! It's Fleet Week in NYC",
+				"Article URL": "https://pilotonline.com/news/media/videos/youtube_c17956a0-d257-5ced-94a0-16477c04447a.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "May 25, 2016"
+			}
+	]
+	},
+	{
+		"Name": "USS Mitscher",
+		"WikiSummary": "USS Mitscher (DDG-57) became the second United States Navy warship named to honor Admiral Marc A. Mitscher, famed naval aviator and World War II aircraft carrier task force commander.",
+		"WikiName": "USS Mitscher",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/US_Navy_070620-N-8861F-054_The_guided-missile_destroyer_USS_Mitscher_%28DDG_57%29_operates_in_the_Pacific_Ocean_in_support_of_UNITAS_Pacific_2007_which_supports_Partnership_of_the_Americas_%28POA%29_2007.jpg/600px-thumbnail.jpg"],
+		"WikiLink": "https://en.wikipedia.org/wiki/USS_Mitscher_(DDG-57)",
+		"Related Articles": [
+			{ 	"Title": "Navy contractor sold $19,000 military binoculars for $100. Now he'll serve 15 months in prison.",
+				"Article URL": "https://pilotonline.com/news/local/crime/article_f66c17dc-faf0-51c8-ba25-645fb536b7d1.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Oct 12, 2017"
+			},
+			{ 	"Title": "Navy commodore was stripped of command over lies about encounter at Chesapeake bar, report says",
+				"Article URL": "https://pilotonline.com/news/military/local/article_5b11e72e-4e11-536e-b88d-da6f85796b09.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Oct 6, 2016"
+			},
+			{ 	"Title": "Warship commodore relieved for lack of confidence, failure to follow exemplary conduct, Navy says",
+				"Article URL": "https://pilotonline.com/news/military/local/article_558a2972-64b7-5653-b415-3e293239f541.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Aug 24, 2016"
+			}
+	]
+	},
+	{
+		"Name": "USS Arlington",
+		"WikiSummary": "USS Arlington (LPD-24), a San Antonio-class amphibious transport dock, is the third ship of the United States Navy to be named for Arlington, Virginia, the location of the Pentagon. Like her sister ships, USS New York and Somerset, she is named in commemoration of the 11 September 2001 attacks. Steel taken from the Pentagon after the 11 September attacks is displayed aboard in the ship's museum.",
+		"WikiName": "USS Arlington",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/USS_Arlington_%28LPD-24%29_underway_in_August_2014.JPG/600px-USS_Arlington_%28LPD-24%29_underway_in_August_2014.JPG"],
+		"WikiLink": "https://en.wikipedia.org/wiki/USS_Arlington_(LPD-24)",
+		"Related Articles": [
+			{ 	"Title": "Mission to Mars: NASA spacecraft gets important paint job at Langley AFB",
+				"Article URL": "https://pilotonline.com/news/military/local/article_ca5dab4e-5b85-57f5-8d3c-0097d2e5bdbd.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Feb 9, 2018"
+			},
+			{ 	"Title": "USS Arlington Sailors Return to Norfolk Naval Station",
+				"Article URL": "https://pilotonline.com/youtube_5ebaa3c8-1221-11e6-99ac-6770a363c0a2.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "May 4, 2016"
+			},
+			{ 	"Title": "USS Kearsarge Amphibious Ready Group leaves Mediterranean area on return to Virginia",
+				"Article URL": "https://pilotonline.com/news/military/local/article_912c521e-dda0-53d1-b2a5-97798da41a39.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Apr 6, 2016"
+			}
+	]
+	},
+	{
+		"Name": "U.S. Navy",
+		"WikiSummary": "The United States Navy is the naval warfare service branch of the United States Armed Forces and one of the seven uniformed services of the United States.",
+		"WikiName": "United States Navy",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/b/bd/Emblem_of_the_United_States_Navy.png"],
+		"WikiLink": "https://en.wikipedia.org/wiki/United_States_Navy",
+		"Related Articles": [
+			{ 	"Title": "German warship to embark with US Navy carrier strike group",
+				"Article URL": "https://pilotonline.com/news/nation-world/national/article_896e101e-c45f-555d-9560-4c2ff4dc0507.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Apr 11, 2018"
+			},
+			{ 	"Title": "Funeral for US Navy LT Caleb King",
+				"Article URL": "https://pilotonline.com/youtube_1339b8bc-3439-11e8-aeb9-83b9219428a7.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Mar 30, 2018"
+			},
+			{ 	"Title": "NOT REAL NEWS: US Navy didn't do new autopsy of Vince Foster",
+				"Article URL": "https://pilotonline.com/news/government/nation/article_0711550c-da1d-553b-a558-0a1439d23868.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Mar 29, 2018"
+			}
+	]
+	},
+	{
+		"Name": "Marines",
+		"WikiSummary": "The United States Marine Corps, also known as the United States Marines, is a branch of the United States Armed Forces responsible for conducting amphibious operations with the United States Navy.",
+		"WikiName": "United States Marine Corps",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Emblem_of_the_United_States_Marine_Corps.svg/440px-Emblem_of_the_United_States_Marine_Corps.svg.png"],
+		"WikiLink": "https://en.wikipedia.org/wiki/United_States_Marine_Corps",
+		"Related Articles": [
+			{ 	"Title": "Marines killed in California crash include new dad, Iraq vet",
+				"Article URL": "https://pilotonline.com/news/military/nation/article_9d0caa58-7f32-59bd-bbdd-fdeffa7256b0.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Apr 5, 2018"
+			},
+			{ 	"Title": "Body found near highway identified as missing Marine recruit",
+				"Article URL": "https://pilotonline.com/news/military/nation/article_15fd8839-156f-515c-ace9-1cd843017edd.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Mar 29, 2018"
+			},
+			{ 	"Title": "Lawyers for Marine call serviceman's stabbing an accident",
+				"Article URL": "https://pilotonline.com/news/military/nation/article_4927ecb3-8c5e-50af-9def-e6b9c6c56324.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Mar 22, 2018"
+			}
+	]
+	},
+	{
+		"Name": "Coast Guard",
+		"WikiSummary": "The United States Coast Guard (USCG) is a branch of the United States Armed Forces and one of the country's seven uniformed services. The Coast Guard is a maritime, military, multi-mission service unique among the U.S. military branches for having a maritime law enforcement mission (with jurisdiction in both domestic and international waters) and a federal regulatory agency mission as part of its mission set.",
+		"WikiName": "United States Coast Guard",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/USCG_W.svg/440px-USCG_W.svg.png"],
+		"WikiLink": "https://en.wikipedia.org/wiki/United_States_Coast_Guard",
+		"Related Articles": [
+			{ 	"Title": "China plans Taiwan Strait live-fire exercises amid tensions",
+				"Article URL": "https://pilotonline.com/news/nation-world/world/article_4ff1be8c-62af-57b7-969f-53d5323ef71b.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Apr 12, 2018"
+			},
+			{ 	"Title": "Cargo ship crash, spill, closes river at New Orleans",
+				"Article URL": "https://pilotonline.com/news/nation-world/national/article_d805f1f5-72e3-552c-a373-db9197df82d9.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Apr 12, 2018"
+			},
+			{ 	"Title": "Coast Guard Cutter Bear returns to Portsmouth after 3-month patrol",
+				"Article URL": "https://pilotonline.com/news/military/local/article_91630e8a-3e95-11e8-9806-4b387c909355.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Apr 12, 2018"
+			}
+	]
+	},
+	{
+		"Name": "Royal Canadian Navy",
+		"WikiSummary": "The Royal Canadian Navy is the naval force of Canada. The RCN is one of three environmental commands within the unified Canadian Armed Forces. As of 2017, Canada's navy operates 12 frigates, 4 patrol submarines, 12 coastal defence vessels and 8 unarmed patrol/training vessels, as well as several auxiliary vessels.",
+		"WikiName": "Royal Canadian Navy",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/RCN_Emblem.svg/440px-RCN_Emblem.svg.png"],
+		"WikiLink": "https://en.wikipedia.org/wiki/Royal_Canadian_Navy",
+		"Related Articles": [
+			{ 	"Title": "Just back from deployment, Norfolk-based destroyers training with NATO allies in anti-submarine warfare",
+				"Article URL": "https://pilotonline.com/news/military/local/article_28bfb5cc-ff30-54c7-b189-f9af3038bebe.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Sep 23, 2016"
+			},
+			{ 	"Title": "Cutlass Fury",
+				"Article URL": "https://pilotonline.com/youtube_760ed5b4-bd03-59e0-a7d3-4f8878b7bd00.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Sep 23, 2016"
+			},
+			{ 	"Title": "Hampton Roads-based Navy, Coast Guard ships get under way for annual Fleet Week New York",
+				"Article URL": "https://pilotonline.com/news/military/local/article_4b822985-7cb3-5eb4-af1f-15e91e979798.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "May 23, 2016"
+			}
+	]
+	},
+	{
+		"Name": "Sep 11 terrorist attacks",
+		"WikiSummary": "The September 11 attacks were a series of four coordinated terrorist attacks by the Islamic terrorist group al-Qaeda on the United States on the morning of Tuesday, September 11, 2001. The attacks killed 2,996 people, injured over 6,000 others, and caused at least $10 billion in infrastructure and property damage.",
+		"WikiName": "September 11 attacks",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/September_11_Photo_Montage.jpg/500px-September_11_Photo_Montage.jpg"],
+		"WikiLink": "https://en.wikipedia.org/wiki/September_11_attacks",
+		"Related Articles": [
+			{ 	"Title": "9/11 families to announce next steps in Saudi Arabia lawsuit",
+				"Article URL": "https://pilotonline.com/news/nation-world/national/article_2c401e29-d862-5a07-b519-e7d4c53e447b.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Apr 7, 2018"
+			},
+			{ 	"Title": "Churches that survived 9/11 give in, install metal detectors",
+				"Article URL": "https://pilotonline.com/news/nation-world/national/article_59fb7317-c50d-5239-ad5a-841f49d1784e.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Mar 25, 2018"
+			},
+			{ 	"Title": "Firefighter who evacuated hundreds on 9/11 dies of cancer",
+				"Article URL": "https://pilotonline.com/news/nation-world/national/article_d7c68720-84be-5a16-bfa0-a350892f0449.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Mar 19, 2018"
+			}
+	]
+	},
+	{
+		"Name": "USS New York",
+		"WikiSummary": "USS New York (LPD-21), the fifth San Antonio-class amphibious transport dock, is the fifth ship of the United States Navy to be named after the state of New York. New York has a crew of 360 and can carry up to 700 Marines.",
+		"WikiName": "USS New York",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/USS_New_York_in_the_Hudson_River_200911.jpg/600px-USS_New_York_in_the_Hudson_River_200911.jpg"],
+		"WikiLink": "https://en.wikipedia.org/wiki/USS_New_York_(LPD-21)",
+		"Related Articles": [
+			{ 	"Title": "A Navy pilot reflects on his service at 102: 'You always tried to do your best'",
+				"Article URL": "https://pilotonline.com/news/military/local/article_3e517d70-2d1b-11e8-8e90-f788ebb940e4.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Mar 23, 2018"
+			},
+			{ 	"Title": "After providing hurricane relief, USS Oak Hill to leave Virginia Beach for Middle East",
+				"Article URL": "https://pilotonline.com/news/military/local/article_a3673ced-4e1c-5222-81e3-51274bfe1ccf.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Feb 8, 2018"
+			},
+			{ 	"Title": "US military preparations for Hurricane Irma now include 5 Navy ships and thousands of troops",
+				"Article URL": "https://pilotonline.com/news/military/local/article_aa48e90d-4db7-5012-a299-0e6d0c81453a.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Sep 7, 2017"
+			}
+	]
+	},
+	{
+		"Name": "USS Somerset",
+		"WikiSummary": "USS Somerset (LPD-25) is a San Antonio-class amphibious transport dock of the United States Navy. Somerset is the fourth Navy vessel, and the second warship to bear the name; the first two being a wooden-hulled motorboat and a ferry.",
+		"WikiName": "USS Somerset",
+		"WikiImages":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/USS_Somerset_transits_the_Pacific_Ocean._%2828580101294%29.jpg/600px-USS_Somerset_transits_the_Pacific_Ocean._%2828580101294%29.jpg"],
+		"WikiLink": "https://en.wikipedia.org/wiki/USS_Somerset_(LPD-25)",
+		"Related Articles": [
+			{ 	"Title": "Man, 25, shot to death in Norfolk; Navy confirms a USS Bush sailor was killed",
+				"Article URL": "https://pilotonline.com/news/local/crime/article_470b7116-9451-500e-b0f3-0be11cd4325c.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Nov 5, 2016"
+			},
+			{ 	"Title": "New Navy ship Arlington arrives to home in Norfolk",
+				"Article URL": "https://pilotonline.com/news/military/article_dc388274-71a8-52e5-8ff9-00cfbb79a103.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Mar 23, 2013"
+			},
+			{ 	"Title": "New warship, built of World Trade Center steel, to call Norfolk home",
+				"Article URL": "https://pilotonline.com/news/military/article_39aab472-3135-5fbd-82d2-54215cad456f.html",
+				"Source": "The Virginian-Pilot",
+				"Date": "Feb 28, 2008"
+			}
+	]
+	},
+	{
+		"Name": "USS Little Rock",
+		"WikiSummary": "USS Little Rock (LCS-9) is a Freedom-class littoral combat ship of the United States Navy. She is the second ship named after Little Rock, the capital city of Arkansas.",
+		"WikiName": "USS Little Rock",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/USS_Little_Rock_Buffalo_Harbor.jpg/600px-USS_Little_Rock_Buffalo_Harbor.jpg"],
+		"WikiLink": "https://en.wikipedia.org/wiki/USS_Little_Rock_(LCS-9)",
+		"Related Articles": [
+			{ 	"Title": "Secretary of the Navy Mabus to speak to Norfolk business community",
+				"Article URL": "https://pilotonline.com/inside-business/article_db1c47bd-5a43-5dc5-a1e9-540236d1e8c4.html",
+				"Source": "Inside Business",
+				"Date": "Oct 10, 2016"
+			},
+			{ 	"Title": "USS Little Rock reaches homeport in Florida",
+				"Article URL": "http://www.arkansasonline.com/news/2018/apr/13/uss-little-rock-reaches-homeport-florida/",
+				"Source": "Arkansas Online",
+				"Date": "Apr 13, 2018"
+			},
+			{ 	"Title": "Sailors aboard USS Little Rock arrive in Jacksonville",
+				"Article URL": "http://www.firstcoastnews.com/article/news/local/sailors-aboard-uss-little-rock-arrive-in-jacksonville/77-537608337",
+				"Source": "First Coast News",
+				"Date": "Apr 13, 2018"
+			}
+	]
+	},
+	{
+		"Name": "USNS City of Bismarck",
+		"WikiSummary": "USNS City of Bismarck (T-EPF-9), is the ninth Spearhead-class expeditionary fast transport and operated by the Military Sealift Command. The name was originally announced as Bismarck.",
+		"WikiName": "USNS City of Bismarck",
+		"WikiImages":["https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/180213-N-SX614-016.JPG/600px-180213-N-SX614-016.JPG"],
+		"WikiLink": "https://en.wikipedia.org/wiki/USNS_City_of_Bismarck_(T-EPF-9)",
+		"Related Articles": [
+			{ 	"Title": "Navy accepts delivery of USNS City of Bismarck",
+				"Article URL": "http://bismarcktribune.com/news/national/navy-accepts-delivery-of-usns-city-of-bismarck/article_b63e4edb-1aba-5b9c-aee8-a4dd7b5bf904.html",
+				"Source": "Bismarck Tribune",
+				"Date": "Dec 19, 2017"
+			},
+			{ 	"Title": "One-day cruise available on USNS City of Bismarck",
+				"Article URL": "http://bismarcktribune.com/news/local/one-day-cruise-available-on-usns-city-of-bismarck/article_30bf1038-d21e-56b9-8645-93a4b33400bf.html",
+				"Source": "Bismarck Tribune",
+				"Date": "Feb 18, 2018"
+			},
+			{ 	"Title": "US Navy’s ninth EPF USNS City of Bismarck completes builder’s trials",
+				"Article URL": "https://www.naval-technology.com/news/newsus-navys-ninth-epf-usns-city-of-bismarck-completes-builders-trials-5929117/",
+				"Source": "Naval Technology",
+				"Date": "Sep 19, 2017"
+			}
+	]
+	}
+	]
+}
