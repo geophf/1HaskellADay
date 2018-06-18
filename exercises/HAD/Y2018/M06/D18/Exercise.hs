@@ -2,7 +2,7 @@ module Y2018.M06.D18.Exercise where
 
 {--
 Yesterday we wrote a SQL DELETE statement, but, NOT SO FAST! Yesterday
-we discovered duplicates in the data set, ... but are there 'non-dpulicates'?
+we discovered duplicates in the data set, ... but are there 'non-duplicates'?
 
 Let's find out today.
 --}
