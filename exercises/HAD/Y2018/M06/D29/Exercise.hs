@@ -34,7 +34,7 @@ Here we go.
 import Data.Map (Map)
 
 exDir, lsiSlice :: FilePath
-exDir = "Y2018/M06/D28/"
+exDir = "Y2018/M06/D29/"
 lsiSlice = "lsi_slice.txt"
 
 -- lsi means "Latent semantic indexing," by the way.
