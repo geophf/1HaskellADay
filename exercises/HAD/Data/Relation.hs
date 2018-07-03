@@ -1,14 +1,32 @@
-{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
+{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies, RankNTypes #-}
 
 module Data.Relation where
 
 -- defines relations as a "thing." So we have nodes, relations, and from those,
 -- we can model anything, right? ... well, constructively, that is.
 
+-- below import available via 1HaskellADay git repository
+
+import Control.List (weave)
+
 class Node a where
    asNode :: a -> String
 
 -- example: asNode (Nd f) = "Node { name: '" ++ show f ++ "' }"
+
+type Attribute a = (String, a)
+
+-- constructs nodes and edges
+
+constr :: forall a. Show a => String -> [Attribute a] -> String
+constr typ attrs = typ ++ " { " ++ weave (map shower attrs) ++ " }"
+
+shower :: Show a => Attribute a -> String
+shower (x,y) = x ++ ": " ++ show y
+
+-- so you can now define node and edge instances as
+
+-- asNode x = constr "Node" xsattributes (whatever they are)
 
 class Edge a where
    asEdge :: a -> String
