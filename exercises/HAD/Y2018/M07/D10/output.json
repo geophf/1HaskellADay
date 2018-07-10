@@ -1,0 +1,578 @@
+{
+    "donald trump": {
+        "wiki_info": {
+            "Entity": "Donald Trump",
+            "Page_title": "Donald_Trump",
+            "WikiURL": "https://en.wikipedia.org/wiki/Donald_Trump",
+            "Full_text": "Donald John Trump (born June 14, 1946) is the 45th and current President of the United States. Before entering politics, he was a businessman and television personality.\nTrump was born and raised in the New York City borough of Queens, and received an economics degree from the Wharton School of the University of Pennsylvania. He took charge of his family's real estate business in 1971, renamed it The Trump Organization, and expanded it into Manhattan. The company built or renovated several skyscrapers, hotels, casinos, and golf courses. Trump later started various side ventures, including licensing his name for real estate and consumer products. He managed the company until his 2017 inauguration. He co-authored several books, including The Art of the Deal. He owned the Miss Universe and Miss USA beauty pageants from 1996 to 2015, and he produced and hosted the reality television show The Apprentice from 2003 to 2015. According to March 2018 estimates by Forbes, he is the world's 766th richest person, with a net worth of US$3.1 billion.\nTrump entered the 2016 presidential race as a Republican and defeated sixteen opponents in the primaries. Commentators described his political positions as populist, protectionist, and nationalist. His campaign received extensive free media coverage; many of his public statements were controversial or false. Trump was elected president in a surprise victory over Democratic nominee Hillary Clinton. He became the oldest and wealthiest person ever to assume the presidency, the first without prior military or government service, and the fifth to have won the election while losing the popular vote. His election and policies have sparked numerous protests.\nDuring his presidency, Trump ordered a travel ban on citizens from several Muslim-majority countries, citing security concerns; after several legal challenges, the Supreme Court upheld the policy's third revision. He signed tax cut legislation, rescinded the individual insurance mandate provision of the Affordable Care Act, and opened the Arctic Refuge for oil drilling. He enacted a partial repeal of the Dodd-Frank Act that had imposed stricter constraints on banks in the aftermath of the 2008 financial crisis. He pursued his America First agenda in foreign policy, withdrawing the U.S. from the Trans-Pacific Partnership trade negotiations, the Paris Agreement on climate change, and the Iran nuclear deal. He recognized Jerusalem as the capital of Israel. He imposed import tariffs on various goods from China, Canada, Mexico and the European Union, triggering a trade war with China. \nAfter Trump dismissed FBI Director James Comey, the Justice Department appointed Robert Mueller as Special Counsel to investigate coordination or links between the Trump campaign and the Russian government in its election interference. Trump has repeatedly denied accusations of collusion and obstruction of justice, calling the investigation a politically motivated \"witch hunt\".",
+            "WikiSummary": "Donald John Trump (born June 14, 1946) is the 45th and current President of the United States. Before entering politics, he was a businessman and television personality",
+            "WikiLanguage": "en",
+            "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/256px-Donald_Trump_official_portrait.jpg"
+        },
+        "scores": [
+            {
+                "uid": "8100",
+                "weighted_score": 1.5392357992168653
+            },
+            {
+                "uid": "274199",
+                "weighted_score": 1.1486705488248405
+            },
+            {
+                "uid": "270813",
+                "weighted_score": 1.0651891166688359
+            }
+        ],
+        "query_entity_score": 1
+    },
+    "north": {
+        "wiki_info": {
+            "Entity": "North",
+            "Page_title": "North",
+            "WikiURL": "https://en.wikipedia.org/wiki/North",
+            "Full_text": "North is one of the four compass points or cardinal directions. It is the opposite of south and is perpendicular to east and west. North is a noun, adjective, or adverb indicating direction or geography.",
+            "WikiSummary": "North is one of the four compass points or cardinal directions. It is the opposite of south and is perpendicular to east and west",
+            "WikiLanguage": "en",
+            "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Compass_Rose_English_North.svg/256px-Compass_Rose_English_North.svg.png"
+        },
+        "scores": [
+            {
+                "uid": "5901",
+                "weighted_score": 3.4479862659346705
+            },
+            {
+                "uid": "608",
+                "weighted_score": 1.7033828501810615
+            },
+            {
+                "uid": "8635",
+                "weighted_score": 1.2688137189587285
+            }
+        ],
+        "query_entity_score": 1
+    },
+    "state department": {
+        "wiki_info": {
+            "Entity": "State Department",
+            "Page_title": "",
+            "WikiURL": "",
+            "WikiLanguage": "en",
+            "Full_text": null,
+            "WikiSummary": null,
+            "WikiImg": null
+        },
+        "scores": [
+            {
+                "uid": "273176",
+                "weighted_score": 1.8158938357577328
+            },
+            {
+                "uid": "8100",
+                "weighted_score": 1.5392357992168653
+            },
+            {
+                "uid": "12833",
+                "weighted_score": 1.1990453329946675
+            }
+        ],
+        "query_entity_score": 1
+    },
+    "white house": {
+        "wiki_info": {
+            "Entity": "White House",
+            "Page_title": "White_House",
+            "WikiURL": "https://en.wikipedia.org/wiki/White_House",
+            "Full_text": "The White House is the official residence and workplace of the President of the United States. It is located at 1600 Pennsylvania Avenue NW in Washington, D.C. and has been the residence of every U.S. President since John Adams in 1800. The term is often used as a metonym for the president and his advisers.\nThe residence was designed by Irish-born architect James Hoban in the neoclassical style. Construction took place between 1792 and 1800 using Aquia Creek sandstone painted white. When Thomas Jefferson moved into the house in 1801, he (with architect Benjamin Henry Latrobe) added low colonnades on each wing that concealed stables and storage.  In 1814, during the War of 1812, the mansion was set ablaze by the British Army in the Burning of Washington, destroying the interior and charring much of the exterior. Reconstruction began almost immediately, and President James Monroe moved into the partially reconstructed Executive Residence in October 1817. Exterior construction continued with the addition of the semi-circular South portico in 1824 and the North portico in 1829.\nBecause of crowding within the executive mansion itself, President Theodore Roosevelt had all work offices relocated to the newly constructed West Wing in 1901. Eight years later in 1909, President William Howard Taft expanded the West Wing and created the first Oval Office, which was eventually moved as the section was expanded. In the main mansion, the third-floor attic was converted to living quarters in 1927 by augmenting the existing hip roof with long shed dormers. A newly constructed East Wing was used as a reception area for social events; Jefferson's colonnades connected the new wings. East Wing alterations were completed in 1946, creating additional office space. By 1948, the residence's load-bearing exterior walls and internal wood beams were found to be close to failure. Under Harry S. Truman, the interior rooms were completely dismantled and a new internal load-bearing steel frame constructed inside the walls. Once this work was completed, the interior rooms were rebuilt.\nThe modern-day White House complex includes the Executive Residence, West Wing, East Wing, the Eisenhower Executive Office Building\u2014the former State Department, which now houses offices for the President's staff and the Vice President\u2014and Blair House, a guest residence. The Executive Residence is made up of six stories\u2014the Ground Floor, State Floor, Second Floor, and Third Floor, as well as a two-story basement. The property is a National Heritage Site owned by the National Park Service and is part of the President's Park. In 2007, it was ranked second on the American Institute of Architects list of \"America's Favorite Architecture\".",
+            "WikiSummary": "The White House is the official residence and workplace of the President of the United States. It is located at 1600 Pennsylvania Avenue NW in Washington, D.C",
+            "WikiLanguage": "en",
+            "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/White_House_north_and_south_sides.jpg/256px-White_House_north_and_south_sides.jpg"
+        },
+        "scores": [
+            {
+                "uid": "275194",
+                "weighted_score": 2.430469730020456
+            },
+            {
+                "uid": "12959",
+                "weighted_score": 2.2985978677946353
+            },
+            {
+                "uid": "270813",
+                "weighted_score": 2.0651891166688356
+            }
+        ],
+        "query_entity_score": 1
+    },
+    "pyongyang": {
+        "wiki_info": {
+            "Entity": "Pyongyang",
+            "Page_title": "Pyongyang",
+            "WikiURL": "https://en.wikipedia.org/wiki/Pyongyang",
+            "Full_text": "Pyongyang, or P'y\u014fngyang (UK: , US: ; Korean pronunciation: [p\u02b0j\u028c\u014b.ja\u014b]), is the capital and largest city of North Korea.\nPyongyang is located on the Taedong River about 109 kilometres (68 mi) upstream from its mouth on the Yellow Sea. According to the 2008 population census, it has a population of 3,255,288. The city was split from the South Pyongan province in 1946. It is administered as a directly-administered city (chikhalsi, \uc9c1\ud560\uc2dc/\u76f4\u8f44\u5e02) on the same level as provincial governments, as opposed to special cities of South Korea (teukbyeolsi, \ud2b9\ubcc4\uc2dc/\u7279\u5225\u5e02) such as Seoul.",
+            "WikiSummary": "Pyongyang, or P'y\u014fngyang (UK: , US: ; Korean pronunciation: [p\u02b0j\u028c\u014b.ja\u014b]), is the capital and largest city of North Korea. Pyongyang is located on the Taedong River about 109 kilometres (68 mi) upstream from its mouth on the Yellow Sea",
+            "WikiLanguage": "en",
+            "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Pyongyang_montage.png"
+        },
+        "scores": [
+            {
+                "uid": "273164",
+                "weighted_score": 3.487093845932573
+            },
+            {
+                "uid": "270813",
+                "weighted_score": 3.0651891166688356
+            },
+            {
+                "uid": "275194",
+                "weighted_score": 2.930469730020456
+            }
+        ],
+        "query_entity_score": 1
+    },
+    "big brother": {
+        "scores": "",
+        "query_entity_score": ""
+    },
+    "purple heart": {
+        "wiki_info": {
+            "Entity": "Purple Heart",
+            "Page_title": "Purple_Heart",
+            "WikiURL": "https://en.wikipedia.org/wiki/Purple_Heart",
+            "Full_text": "The Purple Heart is a United States military decoration awarded in the name of the president to those wounded or killed while serving, on or after April 5, 1917, with the U.S. military. With its forerunner, the Badge of Military Merit, which took the form of a heart made of purple cloth, the Purple Heart is the oldest military award still given to U.S. military members \u2013 the only earlier award being the obsolete Fidelity Medallion. The National Purple Heart Hall of Honor is located in New Windsor, New York.",
+            "WikiSummary": "The Purple Heart is a United States military decoration awarded in the name of the president to those wounded or killed while serving, on or after April 5, 1917, with the U.S. military",
+            "WikiLanguage": "en",
+            "WikiImg": ""
+        },
+        "scores": [
+            {
+                "uid": "30712",
+                "weighted_score": 2.1592333109977817
+            },
+            {
+                "uid": "273558",
+                "weighted_score": 1.6288264109480504
+            },
+            {
+                "uid": "26929",
+                "weighted_score": 1.201662353879124
+            }
+        ],
+        "query_entity_score": 1
+    },
+    "chuck prichard": {
+        "wiki_info": {
+            "Entity": "Chuck Prichard",
+            "Page_title": "",
+            "WikiURL": "",
+            "WikiLanguage": "en",
+            "Full_text": null,
+            "WikiSummary": null,
+            "WikiImg": null
+        },
+        "scores": [],
+        "query_entity_score": 1
+    },
+    "north koreans": {
+        "wiki_info": {
+            "Entity": "North Koreans",
+            "Page_title": "",
+            "WikiURL": "",
+            "WikiLanguage": "en",
+            "Full_text": null,
+            "WikiSummary": null,
+            "WikiImg": null
+        },
+        "scores": [
+            {
+                "uid": "8340",
+                "weighted_score": 1.548978904789951
+            },
+            {
+                "uid": "19879",
+                "weighted_score": 1.5409919586223637
+            },
+            {
+                "uid": "275194",
+                "weighted_score": 1.4304697300204559
+            }
+        ],
+        "query_entity_score": 1
+    },
+    "arlington": {
+        "wiki_info": {
+            "Entity": "Arlington",
+            "Page_title": "Arlington",
+            "WikiURL": "https://en.wikipedia.org/wiki/Arlington",
+            "Full_text": "Arlington may refer to:",
+            "WikiSummary": "Arlington may refer to:",
+            "WikiLanguage": "en",
+            "WikiImg": ""
+        },
+        "scores": [
+            {
+                "uid": "243991",
+                "weighted_score": 2.2670454109604847
+            },
+            {
+                "uid": "7639",
+                "weighted_score": 0.7361288497849882
+            },
+            {
+                "uid": "13903",
+                "weighted_score": 0.7279958647182656
+            }
+        ],
+        "query_entity_score": 1
+    },
+    "pentagon": {
+        "wiki_info": {
+            "Entity": "Pentagon",
+            "Page_title": "Pentagon",
+            "WikiURL": "https://en.wikipedia.org/wiki/Pentagon",
+            "Full_text": "In geometry, a pentagon (from the Greek \u03c0\u03ad\u03bd\u03c4\u03b5 pente and \u03b3\u03c9\u03bd\u03af\u03b1 gonia, meaning five and angle) is any five-sided polygon or 5-gon.  The sum of the internal angles in a simple pentagon is 540\u00b0.\nA pentagon may be simple or self-intersecting. A self-intersecting regular pentagon (or star pentagon) is called a pentagram.",
+            "WikiSummary": "In geometry, a pentagon (from the Greek \u03c0\u03ad\u03bd\u03c4\u03b5 pente and \u03b3\u03c9\u03bd\u03af\u03b1 gonia, meaning five and angle) is any five-sided polygon or 5-gon.  The sum of the internal angles in a simple pentagon is 540\u00b0",
+            "WikiLanguage": "en",
+            "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Regular_polygon_5_annotated.svg/256px-Regular_polygon_5_annotated.svg.png"
+        },
+        "scores": [
+            {
+                "uid": "1695",
+                "weighted_score": 2.738402594714731
+            },
+            {
+                "uid": "8677",
+                "weighted_score": 2.2076629374196717
+            },
+            {
+                "uid": "12959",
+                "weighted_score": 1.7985978677946353
+            }
+        ],
+        "query_entity_score": 1
+    },
+    "us army": {
+        "wiki_info": {
+            "Entity": "US Army",
+            "Page_title": "",
+            "WikiURL": "",
+            "WikiLanguage": "en",
+            "Full_text": null,
+            "WikiSummary": null,
+            "WikiImg": null
+        },
+        "scores": [
+            {
+                "uid": "67331",
+                "weighted_score": 1.0141233712882396
+            },
+            {
+                "uid": "172835",
+                "weighted_score": 0.8263006677817557
+            },
+            {
+                "uid": "271002",
+                "weighted_score": 0.7731063233666989
+            }
+        ],
+        "query_entity_score": 1
+    },
+    "jean waite": {
+        "wiki_info": {
+            "Entity": "Jean Waite",
+            "Page_title": "",
+            "WikiURL": "",
+            "WikiLanguage": "en",
+            "Full_text": null,
+            "WikiSummary": null,
+            "WikiImg": null
+        },
+        "scores": [],
+        "query_entity_score": 1
+    },
+    "justin higgins": {
+        "wiki_info": {
+            "Entity": "Justin Higgins",
+            "Page_title": "",
+            "WikiURL": "",
+            "WikiLanguage": "en",
+            "Full_text": null,
+            "WikiSummary": null,
+            "WikiImg": null
+        },
+        "scores": [],
+        "query_entity_score": 1
+    },
+    "korean war": {
+        "wiki_info": {
+            "Entity": "Korean War",
+            "Page_title": "Korean_War",
+            "WikiURL": "https://en.wikipedia.org/wiki/Korean_War",
+            "Full_text": "The Korean War (in South Korean Hangul: \ud55c\uad6d\uc804\uc7c1; Hanja: \u97d3\u570b\u6230\u722d; RR: Hanguk Jeonjaeng, \"Korean War\"; in North Korean Chos\u014fn'g\u016dl: \uc870\uad6d\ud574\ubc29\uc804\uc7c1; Hancha: \u7956\u570b\u89e3\u653e\u6230\u722d; MR: Choguk haebang ch\u01d2njaeng, \"Fatherland: Liberation War\"; 25 June 1950 \u2013 27 July 1953) was a war between North Korea (with the support of China and the Soviet Union) and South Korea (with the principal support of the United States). The war began on 25 June 1950 when North Korea invaded South Korea following a series of clashes along the border. The United Nations, with the United States as the principal force, came to the aid of South Korea. China came to the aid of North Korea, and the Soviet Union also gave some assistance to the North.\nAs a product of the Cold War between the Soviet Union and the United States, Korea was split into two regions with separate governments. Both claimed to be the legitimate government of all of Korea, and neither accepted the border as permanent. The conflict escalated into open warfare when North Korean forces\u2014supported by the Soviet Union and China\u2014moved into the south on 25 June 1950.  The United Nations Security Council  authorized the formation and dispatch of UN forces to Korea to repel what was recognized as a North Korean invasion. Twenty-one countries of the United Nations eventually contributed to the UN force, with the United States providing around 90% of the military personnel.After the first two months of war, South Korean and U.S. forces rapidly dispatched to Korea were on the point of defeat, forced back to a small area in the south known as the Pusan Perimeter. In September 1950, an amphibious UN counter-offensive was launched at Incheon, and cut off many North Korean troops. Those who escaped envelopment and capture were forced back north. UN forces rapidly approached the Yalu River\u2014the border with China\u2014but in October 1950, mass Chinese forces crossed the Yalu and entered the war. The surprise Chinese intervention triggered a retreat of UN forces which continued until mid-1951.\nAfter these reversals of fortune, which saw Seoul change hands four times, the last two years of fighting became a war of attrition, with the front line close to the 38th parallel. The war in the air, however, was never a stalemate. North Korea was subject to a massive bombing campaign. Jet fighters confronted each other in air-to-air combat for the first time in history, and Soviet pilots covertly flew in defense of their communist allies.\nThe fighting ended on 27 July 1953, when an armistice was signed. The agreement created the Korean Demilitarized Zone to separate North and South Korea, and allowed the return of prisoners. However, no peace treaty has been signed, and according to some sources the two Koreas are technically still at war, engaged in a frozen conflict. In April 2018, the leaders of North and South Korea met at the demilitarized zone and agreed to sign a treaty by the end of the year to formally end the Korean War.As a war undeclared by all participants, the conflict helped bring the term \"police action\" into common use. It also led to the permanent alteration of the balance of power within the United Nations, where Resolution 377\u2014passed in 1950 to allow a bypassing of the Security Council if that body could not reach an agreement\u2014led to the General Assembly displacing the Security Council as the primary organ of the UN.",
+            "WikiSummary": "The Korean War (in South Korean Hangul: \ud55c\uad6d\uc804\uc7c1; Hanja: \u97d3\u570b\u6230\u722d; RR: Hanguk Jeonjaeng, \"Korean War\"; in North Korean Chos\u014fn'g\u016dl: \uc870\uad6d\ud574\ubc29\uc804\uc7c1; Hancha: \u7956\u570b\u89e3\u653e\u6230\u722d; MR: Choguk haebang ch\u01d2njaeng, \"Fatherland: Liberation War\"; 25 June 1950 \u2013 27 July 1953) was a war between North Korea (with the support of China and the Soviet Union) and South Korea (with the principal support of the United States). The war began on 25 June 1950 when North Korea invaded South Korea following a series of clashes along the border",
+            "WikiLanguage": "en",
+            "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Korean_War_Montage_2.png"
+        },
+        "scores": [
+            {
+                "uid": "117968",
+                "weighted_score": 3.8759753802845425
+            },
+            {
+                "uid": "172835",
+                "weighted_score": 1.3263006677817557
+            },
+            {
+                "uid": "274199",
+                "weighted_score": 1.1486705488248405
+            }
+        ],
+        "query_entity_score": 1
+    },
+    "george w. bush": {
+        "wiki_info": {
+            "Entity": "George W. Bush",
+            "Page_title": "George_W._Bush",
+            "WikiURL": "https://en.wikipedia.org/wiki/George_W._Bush",
+            "Full_text": "George Walker Bush (born July 6, 1946) is an American politician who served as the 43rd President of the United States from 2001 to 2009. He was also the 46th Governor of Texas from 1995 to 2000.\nBush was born on July 6, 1946, in New Haven, Connecticut. After graduating from Yale University in 1968 and Harvard Business School in 1975, he worked in the oil industry. Bush married Laura Welch in 1977 and unsuccessfully ran for the U.S. House of Representatives shortly thereafter. He later co-owned the Texas Rangers baseball team before defeating Ann Richards in the 1994 Texas gubernatorial election. Bush was elected President of the United States in 2000 when he defeated Democratic incumbent Vice President Al Gore after a close and controversial win that involved a stopped recount in Florida. He became the fourth person to be elected president while receiving fewer popular votes than his opponent. Bush is a member of a prominent political family and is the eldest son of Barbara and George H. W. Bush, the 41st President of the United States. He is only the second president to assume the nation's highest office after his father, following the footsteps of John Adams and his son, John Quincy Adams. His brother, Jeb Bush, a former Governor of Florida, was a candidate for the Republican presidential nomination in the 2016 presidential election. His paternal grandfather, Prescott Bush, was a United States Senator from Connecticut.\nThe September 11 terrorist attacks occurred eight months into Bush's first term. Bush responded with what became known as the Bush Doctrine: launching a \"War on Terror\", an international military campaign that included the war in Afghanistan in 2001 and the Iraq War in 2003. He signed into law broad tax cuts, the Patriot Act, the No Child Left Behind Act, the Partial-Birth Abortion Ban Act, Medicare prescription drug benefits for seniors, and funding for the AIDS relief program known as PEPFAR. His tenure included national debates on immigration, Social Security, electronic surveillance, and torture. In the 2004 presidential race, Bush defeated Democratic Senator John Kerry in another relatively close election. After his re-election, Bush received increasingly heated criticism from across the political spectrum for his handling of the Iraq War, Hurricane Katrina, and other challenges. Amid this criticism, the Democratic Party regained control of Congress in the 2006 elections. In December 2007, the United States entered its longest post-World War II recession, often referred to as the \"Great Recession\", prompting the Bush administration to obtain congressional passage of multiple economic programs intended to preserve the country's financial system.\nNationally, Bush was both one of the most popular and unpopular U.S. presidents in history, having received the highest recorded presidential approval ratings in the wake of the September 11 attacks, as well as one of the lowest approval ratings during the 2008 financial crisis. Bush finished his term in office in 2009 and returned to Texas, where he had purchased a home in Dallas. In 2010, he published his memoir, Decision Points. His presidential library was opened in 2013. His presidency has been ranked among the worst in historians' polls that were published in the late 2000s and 2010s\u2014he has consistently fallen in the bottom two sextiles. However, his favorability ratings with the public have increased since leaving office.",
+            "WikiSummary": "George Walker Bush (born July 6, 1946) is an American politician who served as the 43rd President of the United States from 2001 to 2009. He was also the 46th Governor of Texas from 1995 to 2000",
+            "WikiLanguage": "en",
+            "WikiImg": ""
+        },
+        "scores": [
+            {
+                "uid": "274750",
+                "weighted_score": 1.0822010725295985
+            },
+            {
+                "uid": "13278",
+                "weighted_score": 1.0619575919016684
+            },
+            {
+                "uid": "8340",
+                "weighted_score": 1.048978904789951
+            }
+        ],
+        "query_entity_score": 1
+    },
+    "obama": {
+        "wiki_info": {
+            "Entity": "Obama",
+            "Page_title": "",
+            "WikiURL": "",
+            "WikiLanguage": "en",
+            "Full_text": null,
+            "WikiSummary": null,
+            "WikiImg": null
+        },
+        "scores": [
+            {
+                "uid": "17237",
+                "weighted_score": 6.171897956227744
+            },
+            {
+                "uid": "267807",
+                "weighted_score": 1.81246872367877
+            },
+            {
+                "uid": "12833",
+                "weighted_score": 1.6990453329946675
+            }
+        ],
+        "query_entity_score": 1
+    },
+    "danny russel": {
+        "wiki_info": {
+            "Entity": "Danny Russel",
+            "Page_title": "",
+            "WikiURL": "",
+            "WikiLanguage": "en",
+            "Full_text": null,
+            "WikiSummary": null,
+            "WikiImg": null
+        },
+        "scores": [],
+        "query_entity_score": 1
+    },
+    "mia accounting agency": {
+        "wiki_info": {
+            "Entity": "MIA Accounting Agency",
+            "Page_title": "",
+            "WikiURL": "",
+            "WikiLanguage": "en",
+            "Full_text": null,
+            "WikiSummary": null,
+            "WikiImg": null
+        },
+        "scores": [
+            {
+                "uid": "52938",
+                "weighted_score": 0.7569867859283146
+            },
+            {
+                "uid": "1591",
+                "weighted_score": 0.6923772383590007
+            },
+            {
+                "uid": "272259",
+                "weighted_score": 0.6900822018749289
+            }
+        ],
+        "query_entity_score": 1
+    },
+    "victor gallerani": {
+        "wiki_info": {
+            "Entity": "Victor Gallerani",
+            "Page_title": "",
+            "WikiURL": "",
+            "WikiLanguage": "en",
+            "Full_text": null,
+            "WikiSummary": null,
+            "WikiImg": null
+        },
+        "scores": [],
+        "query_entity_score": 1
+    },
+    "kim jong un": {
+        "wiki_info": {
+            "Entity": "Kim Jong Un",
+            "Page_title": "",
+            "WikiURL": "",
+            "WikiLanguage": "en",
+            "Full_text": null,
+            "WikiSummary": null,
+            "WikiImg": null
+        },
+        "scores": [
+            {
+                "uid": "274750",
+                "weighted_score": 5.082201072529599
+            },
+            {
+                "uid": "270813",
+                "weighted_score": 2.5651891166688356
+            },
+            {
+                "uid": "8340",
+                "weighted_score": 2.548978904789951
+            }
+        ],
+        "query_entity_score": 1
+    },
+    "the united states": {
+        "wiki_info": {
+            "Entity": "The United States",
+            "Page_title": "",
+            "WikiURL": "",
+            "WikiLanguage": "en",
+            "Full_text": null,
+            "WikiSummary": null,
+            "WikiImg": null
+        },
+        "scores": [],
+        "query_entity_score": 1
+    },
+    "koreas": {
+        "wiki_info": {
+            "Entity": "Koreas",
+            "Page_title": "",
+            "WikiURL": "",
+            "WikiLanguage": "en",
+            "Full_text": null,
+            "WikiSummary": null,
+            "WikiImg": null
+        },
+        "scores": [
+            {
+                "uid": "268047",
+                "weighted_score": 2.3522755250730687
+            },
+            {
+                "uid": "273343",
+                "weighted_score": 1.3799624341966275
+            },
+            {
+                "uid": "274750",
+                "weighted_score": 1.0822010725295985
+            }
+        ],
+        "query_entity_score": 1
+    },
+    "joint base pearl": {
+        "wiki_info": {
+            "Entity": "Joint Base Pearl",
+            "Page_title": "",
+            "WikiURL": "",
+            "WikiLanguage": "en",
+            "Full_text": null,
+            "WikiSummary": null,
+            "WikiImg": null
+        },
+        "scores": [],
+        "query_entity_score": 1
+    },
+    "arlington national cemetery": {
+        "wiki_info": {
+            "Entity": "Arlington National Cemetery",
+            "Page_title": "Arlington_National_Cemetery",
+            "WikiURL": "https://en.wikipedia.org/wiki/Arlington_National_Cemetery",
+            "Full_text": "Arlington National Cemetery is a United States military cemetery in Arlington County, Virginia, across the Potomac River from Washington, D.C., in whose 624 acres (253 ha) the dead of the nation's conflicts have been buried, beginning with the Civil War, as well as reinterred dead from earlier wars. The United States Department of the Army, a component of the United States Department of Defense (DoD), controls the cemetery.\nThe national cemetery was established during the Civil War on the grounds of Arlington House, which had been the estate of Confederate general Robert E. Lee's wife Mary Anna (Custis) Lee (a great-granddaughter of Martha Washington). The Cemetery, along with Arlington House, Memorial Drive, the Hemicycle, and the Arlington Memorial Bridge, form the Arlington National Cemetery Historic District, listed on the National Register of Historic Places in April 2014.In recent years, the Department of the Army has expanded the cemetery onto public lands and restricted bicycle use within the cemetery. Some of these actions have been controversial.",
+            "WikiSummary": "Arlington National Cemetery is a United States military cemetery in Arlington County, Virginia, across the Potomac River from Washington, D.C., in whose 624 acres (253 ha) the dead of the nation's conflicts have been buried, beginning with the Civil War, as well as reinterred dead from earlier wars. The United States Department of the Army, a component of the United States Department of Defense (DoD), controls the cemetery",
+            "WikiLanguage": "en",
+            "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Arlington_National_Cemetery_Seal.png/256px-Arlington_National_Cemetery_Seal.png"
+        },
+        "scores": [
+            {
+                "uid": "36749",
+                "weighted_score": 1.1869910007518585
+            },
+            {
+                "uid": "34717",
+                "weighted_score": 1.1770127438228273
+            },
+            {
+                "uid": "111348",
+                "weighted_score": 1.128070396985196
+            }
+        ],
+        "query_entity_score": 1
+    },
+    "hawaii joint base pearl harbor": {
+        "wiki_info": {
+            "Entity": "Hawaii Joint Base Pearl Harbor",
+            "Page_title": "",
+            "WikiURL": "",
+            "WikiLanguage": "en",
+            "Full_text": null,
+            "WikiSummary": null,
+            "WikiImg": null
+        },
+        "scores": [],
+        "query_entity_score": 1
+    },
+    "washington": {
+        "wiki_info": {
+            "Entity": "Washington",
+            "Page_title": "Washington",
+            "WikiURL": "https://en.wikipedia.org/wiki/Washington",
+            "Full_text": "Washington most commonly refers to:\nGeorge Washington (1732\u20131799), the first President of the United States\nWashington (state), United States\nWashington, D.C., the capital of the United States\nThe Washington metropolitan area, the metropolitan area centered on Washington, D.C.\nA metonym for the Federal government of the United States\nWashington may also refer to:",
+            "WikiSummary": "Washington most commonly refers to: George Washington (1732\u20131799), the first President of the United States Washington (state), United States Washington, D.C., the capital of the United States The Washington metropolitan area, the metropolitan area centered on Washington, D.C. A metonym for the Federal government of the United States Washington may also refer to:",
+            "WikiLanguage": "en",
+            "WikiImg": ""
+        },
+        "scores": [
+            {
+                "uid": "12587",
+                "weighted_score": 3.0723600868855985
+            },
+            {
+                "uid": "100185",
+                "weighted_score": 2.093451157722512
+            },
+            {
+                "uid": "253367",
+                "weighted_score": 1.600854284813991
+            }
+        ],
+        "query_entity_score": 1
+    }
+}
