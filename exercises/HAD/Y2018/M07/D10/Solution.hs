@@ -23,15 +23,6 @@ import Data.Maybe (fromJust)
 import Data.Scientific (toRealFloat)
 import Data.Time
 
-import Database.PostgreSQL.Simple
-import Database.PostgreSQL.Simple.FromRow
-import Database.PostgreSQL.Simple.SqlQQ
-
--- the below imports are available via 1HaskellADay git repository
-
-import Store.SQL.Connection
-import Store.SQL.Util.Indexed
-
 -- the input JSON (being output from an analysis tool)
 
 exDir, input :: FilePath
