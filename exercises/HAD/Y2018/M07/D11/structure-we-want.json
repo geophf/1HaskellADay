@@ -1,0 +1,384 @@
+{
+    "Entities": [
+        {
+            "Wiki": {
+                "Summary": "The Battle of Midway was a decisive naval battle in the Pacific Theater of World War II which occurred between 4 and 7 June 1942, only six months after Japan's attack on Pearl Harbor and one month after the Battle of the Coral Sea",
+                "Images": [
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/SBD-3_Dauntless_bombers_of_VS-8_over_the_burning_Japanese_cruiser_Mikuma_on_6_June_1942.jpg/440px-SBD-3_Dauntless_bombers_of_VS-8_over_the_burning_Japanese_cruiser_Mikuma_on_6_June_1942.jpg"
+                ],
+                "Link": "https://en.wikipedia.org/wiki/Battle_of_Midway",
+                "Name": "Battle of Midway"
+            },
+            "Related Articles": [
+                {
+                    "Article URL": "https://pilotonline.com/news/military/nation/article_66aaac72-8ac9-512b-9f17-bb86cff460ff.html",
+                    "Date": "Jun 5, 2017",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "'None of them came back': Remembering the unsung heroes of the Battle of Midway"
+                },
+                {
+                    "Article URL": "https://pilotonline.com/news/military/nation/collection_63a12d52-22f6-5ec3-bd60-e7d77e130721.html",
+                    "Date": "Jun 5, 2017",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "'The single most decisive aerial attack in naval history': Remembering the Battle of Midway"
+                },
+                {
+                    "Article URL": "https://pilotonline.com/news/military/nation/article_73184ea8-0e69-565f-b2ed-e2f83c8b9047.html",
+                    "Date": "Jun 5, 2017",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "Unsealed after 75 years, court records show an alarming WWII press leak after the Battle of Midway"
+                }
+            ],
+            "Name": "Battle of Midway"
+        },
+        {
+            "Wiki": {
+                "Summary": "Naval Air Station Oceana or NAS Oceana is a military airport located in Virginia Beach, Virginia, and is a United States Navy Master Jet Base.",
+                "Images": [
+                    "https://upload.wikimedia.org/wikipedia/commons/1/1d/OCEANA_LOGO_3.gif"
+                ],
+                "Link": "https://en.wikipedia.org/wiki/Naval_Air_Station_Oceana",
+                "Name": "Naval Air Station Oceana"
+            },
+            "Related Articles": [
+                {
+                    "Article URL": "https://pilotonline.com/news/military/local/article_f288a10e-27d7-11e8-b6ab-b37288789aba.html",
+                    "Date": "Mar 14, 2018",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "Two aviators die after Oceana-based fighter jet crashes near Key West"
+                },
+                {
+                    "Article URL": "https://pilotonline.com/news/military/local/article_f64565ca-ad50-58fc-94a9-7eb831e7bd6d.html",
+                    "Date": "Mar 12, 2018",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "Surfer. Cyclist. Fighter pilot. Meet Oceana's new commanding officer."
+                },
+                {
+                    "Article URL": "https://pilotonline.com/news/military/local/article_309970e6-66e3-5426-b85b-739775c4702e.html",
+                    "Date": "Aug 25, 2017",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "Navy investigators looking into 'suspicious' fire at Oceana air base that destroyed urine samples"
+                }
+            ],
+            "Name": "Naval Air Station Oceana"
+        },
+        {
+            "Wiki": {
+                "Summary": "The French Frigate Shoals is the largest atoll in the Northwestern Hawaiian Islands. Its name commemorates French explorer Jean-François de La Pérouse, who nearly lost two frigates when attempting to navigate the shoals.",
+                "Images": [
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/French_frigateISS004-E-11926.PNG/440px-French_frigateISS004-E-11926.PNG"
+                ],
+                "Link": "https://en.wikipedia.org/wiki/French_Frigate_Shoals",
+                "Name": "French Frigate Shoals"
+            },
+            "Related Articles": [
+                {
+                    "Article URL": "https://pilotonline.com/news/military/local/article_ea5f4c48-47ea-58bd-910d-b9840268d7fa.html",
+                    "Date": "Jun 2, 2017",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "75 years later, naval aviator recalls his role as scout at Battle of Midway"
+                }
+            ],
+            "Name": "French Frigate Shoals"
+        },
+        {
+            "Wiki": {
+                "Summary": "World War II, also known as the Second World War, was a global war that lasted from 1939 to 1945, although related conflicts began earlier.",
+                "Images": [
+                    "https://upload.wikimedia.org/wikipedia/commons/5/54/Infobox_collage_for_WWII.PNG"
+                ],
+                "Link": "https://en.wikipedia.org/wiki/World_War_II",
+                "Name": "World War II"
+            },
+            "Related Articles": [
+                {
+                    "Article URL": "https://pilotonline.com/news/local/history/article_881b471d-9165-5013-a5f9-1c448f0328cb.html",
+                    "Date": "Feb 23, 2018",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "New research into German POWs in Virginia Beach during World War II"
+                },
+                {
+                    "Article URL": "https://pilotonline.com/news/local/history/article_5fbac207-f090-5561-956b-23974d142196.html",
+                    "Date": "May 10, 201y",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "World War II aviation tower moved from England to Virginia Beach"
+                },
+                {
+                    "Article URL": "https://pilotonline.com/news/local/article_ff59a2b6-5455-11e8-8349-7ba226cd65f2.html",
+                    "Date": "May 10, 2018",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "'He had the fire in his belly': WWII Navy veteran from Chesapeake turns 100"
+                }
+            ],
+            "Name": "World War II's"
+        },
+        {
+            "Wiki": {
+                "Summary": "The United States Marine Corps, also known as the United States Marines, is a branch of the United States Armed Forces responsible for conducting amphibious operations with the United States Navy.",
+                "Images": [
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Emblem_of_the_United_States_Marine_Corps.svg/440px-Emblem_of_the_United_States_Marine_Corps.svg.png"
+                ],
+                "Link": "https://en.wikipedia.org/wiki/United_States_Marine_Corps",
+                "Name": "United States Marine Corps"
+            },
+            "Related Articles": [
+                {
+                    "Article URL": "https://pilotonline.com/news/military/nation/article_9d0caa58-7f32-59bd-bbdd-fdeffa7256b0.html",
+                    "Date": "Apr 5, 2018",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "Marines killed in California crash include new dad, Iraq vet"
+                },
+                {
+                    "Article URL": "https://pilotonline.com/news/military/nation/article_15fd8839-156f-515c-ace9-1cd843017edd.html",
+                    "Date": "Mar 29, 2018",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "Body found near highway identified as missing Marine recruit"
+                },
+                {
+                    "Article URL": "https://pilotonline.com/news/military/nation/article_4927ecb3-8c5e-50af-9def-e6b9c6c56324.html",
+                    "Date": "Mar 22, 2018",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "Lawyers for Marine call serviceman's stabbing an accident"
+                }
+            ],
+            "Name": "Marines"
+        },
+        {
+            "Wiki": {
+                "Summary": "Midway Atoll is a 2.4-square-mile atoll in the North Pacific Ocean at 28°12′N 177°21′W. Midway is roughly equidistant between North America and Asia. Midway Atoll is an unorganized, unincorporated territory of the United States.",
+                "Images": [
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Pacific_Ocean_laea_location_map.svg/500px-Pacific_Ocean_laea_location_map.svg.png"
+                ],
+                "Link": "https://en.wikipedia.org/wiki/Midway_Atoll",
+                "Name": "Midway Atoll"
+            },
+            "Related Articles": [
+                {
+                    "Article URL": "https://pilotonline.com/news/military/veterans/article_4645123d-282d-5f55-ad98-d854ea06f195.html",
+                    "Date": "Jun 2, 2017",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "Think the Navy won the Battle of Midway? This Norfolk man wants you to know the Army was there, too"
+                },
+                {
+                    "Article URL": "https://pilotonline.com/news/military/local/article_ea5f4c48-47ea-58bd-910d-b9840268d7fa.html",
+                    "Date": "Jun 2, 2017",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "75 years later, naval aviator recalls his role as scout at Battle of Midway"
+                },
+                {
+                    "Article URL": "https://pilotonline.com/news/military/nation/article_66aaac72-8ac9-512b-9f17-bb86cff460ff.html",
+                    "Date": "Jun 5, 2017",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "'None of them came back': Remembering the unsung heroes of the Battle of Midway"
+                }
+            ],
+            "Name": "Midway Island"
+        },
+        {
+            "Wiki": {
+                "Summary": "Commander, Carrier Strike Group FOUR is the U.S. Fleet Forces Command formation charged with training and certifying Atlantic Fleet Carrier Strike Groups, Amphibious Ready Groups, and independently deploying surface ships.",
+                "Images": [
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/CSG4_Logo.png/400px-CSG4_Logo.png"
+                ],
+                "Link": "https://en.wikipedia.org/wiki/Commander_Strike_Force_Training_Atlantic",
+                "Name": "Commander Strike Force Training Atlantic"
+            },
+            "Related Articles": [
+                {
+                    "Article URL": "https://pilotonline.com/news/military/local/article_d627961a-4ee6-11e8-8fc4-1b8802dd2b0c.html",
+                    "Date": "May 3, 2018",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "Adm. Phil Davidson to hand over Navy's Fleet Forces Command"
+                },
+                {
+                    "Article URL": "https://pilotonline.com/news/military/local/article_1fd33df8-610a-55dc-b41a-3f6aa9e3f389.html",
+                    "Date": "Aug 21, 2017",
+                    "Source": "Bush carrier strike group returns to hugs, tears and sweat at Naval Station Norfolk",
+                    "Title": "Cutlass Fury"
+                }
+            ],
+            "Name": "Royal Canadian Navy"
+        },
+        {
+            "Wiki": {
+                "Summary": "The Boeing F/A-18E and F/A-18F Super Hornet are twin-engine, carrier-capable, multirole fighter aircraft variants based on the McDonnell Douglas F/A-18 Hornet.",
+                "Images": [
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/FA-18_Hornet_VFA-41_retusche.jpg/600px-FA-18_Hornet_VFA-41_retusche.jpg"
+                ],
+                "Link": "https://en.wikipedia.org/wiki/Boeing_F/A-18E/F_Super_Hornet",
+                "Name": "Boeing F/A-18E/F Super Hornet"
+            },
+            "Related Articles": [
+                {
+                    "Article URL": "https://pilotonline.com/news/military/nation/article_8a2febd3-ebea-500e-a783-e89378c6d2c3.html",
+                    "Date": "Feb 2, 2018",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "The Navy said it needed more Boeing Super Hornets. Trump is seeking 24 in the budget."
+                },
+                {
+                    "Article URL": "https://pilotonline.com/news/military/local/article_94c02a00-31d3-11e8-87dc-a336033045ce.html",
+                    "Date": "Mar 27, 2018",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "Virginia Beach-based Navy jet that crashed near Key West was flying with 1 engine, document says"
+                },
+                {
+                    "Article URL": "https://pilotonline.com/opinion/editorial/article_cf608026-288f-11e8-8596-c7279ad1546d.html",
+                    "Date": "Mar 16, 2018",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "Editorial: Mourning the loss of 2 Navy aviators who died in Oceana-based fighter jet crash"
+                }
+            ],
+            "Name": "F/A-18 Super Hornets"
+        },
+        {
+            "Wiki": {
+                "Summary": "USS New York (LPD-21), the fifth San Antonio-class amphibious transport dock, is the fifth ship of the United States Navy to be named after the state of New York. New York has a crew of 360 and can carry up to 700 Marines.",
+                "Images": [
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/USS_New_York_in_the_Hudson_River_200911.jpg/600px-USS_New_York_in_the_Hudson_River_200911.jpg"
+                ],
+                "Link": "https://en.wikipedia.org/wiki/USS_New_York_(LPD-21)",
+                "Name": "USS New York"
+            },
+            "Related Articles": [
+                {
+                    "Article URL": "https://pilotonline.com/news/military/local/article_3e517d70-2d1b-11e8-8e90-f788ebb940e4.html",
+                    "Date": "Mar 23, 2018",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "A Navy pilot reflects on his service at 102: 'You always tried to do your best'"
+                },
+                {
+                    "Article URL": "https://pilotonline.com/news/military/local/article_a3673ced-4e1c-5222-81e3-51274bfe1ccf.html",
+                    "Date": "Feb 8, 2018",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "After providing hurricane relief, USS Oak Hill to leave Virginia Beach for Middle East"
+                },
+                {
+                    "Article URL": "https://pilotonline.com/news/military/local/article_aa48e90d-4db7-5012-a299-0e6d0c81453a.html",
+                    "Date": "Sep 7, 2017",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "US military preparations for Hurricane Irma now include 5 Navy ships and thousands of troops"
+                }
+            ],
+            "Name": "USS New York"
+        },
+        {
+            "Wiki": {
+                "Summary": "VFA-31 or Strike Fighter Squadron 31 is known as the Tomcatters, callsign 'Felix', a United States Navy strike fighter squadron stationed at Naval Air Station Oceana flying the F/A-18E Super Hornet.",
+                "Images": [
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Felix_VF-31_logo.svg/440px-Felix_VF-31_logo.svg.png"
+                ],
+                "Link": "https://en.wikipedia.org/wiki/VFA-31",
+                "Name": "VFA-31"
+            },
+            "Related Articles": [
+                {
+                    "Article URL": "https://pilotonline.com/news/local/crime/article_470b7116-9451-500e-b0f3-0be11cd4325c.html",
+                    "Date": "Nov 5, 2016",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "Man, 25, shot to death in Norfolk; Navy confirms a USS Bush sailor was killed"
+                },
+                {
+                    "Article URL": "https://pilotonline.com/news/military/article_dc388274-71a8-52e5-8ff9-00cfbb79a103.html",
+                    "Date": "Mar 23, 2013",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "New Navy ship Arlington arrives to home in Norfolk"
+                },
+                {
+                    "Article URL": "https://pilotonline.com/news/military/article_39aab472-3135-5fbd-82d2-54215cad456f.html",
+                    "Date": "Feb 28, 2008",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "New warship, built of World Trade Center steel, to call Norfolk home"
+                }
+            ],
+            "Name": "Strike Fighter Squadrons 31"
+        },
+        {
+            "Wiki": {
+                "Summary": "Strike Fighter Squadron 37, also known as the 'Ragin' Bulls', are a United States Navy F/A-18C Hornet fighter squadron stationed at Naval Air Station Oceana. They are a part of Carrier Air Wing 8 and are attached to USS George H. W. Bush. ",
+                "Images": [
+                    "https://upload.wikimedia.org/wikipedia/commons/6/6d/Vfa-37.png"
+                ],
+                "Link": "https://en.wikipedia.org/wiki/VFA-37",
+                "Name": "VFA-37"
+            },
+            "Related Articles": [
+                {
+                    "Article URL": "https://pilotonline.com/news/military/local/article_da9113ef-7087-5ff3-9c14-7cee7d5b05c5.html",
+                    "Date": "Aug 10, 2017",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "Jet fighter squadron deployed on USS George H.W. Bush was grounded in July over air-quality concerns"
+                },
+                {
+                    "Article URL": "https://pilotonline.com/news/military/article_5501efcc-f442-573a-922a-e8abbbfe7dbd.html",
+                    "Date": "Mar 22, 2014",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "Aircraft carrier Truman nearing end of deployment"
+                }
+            ],
+            "Name": "the Ragin’ Bulls"
+        },
+        {
+            "Wiki": {
+                "Summary": "The Strike Fighter Squadron 87 is a United States Navy strike fighter squadron based at Naval Air Station Oceana. Nicknamed the Golden Warriors, its call sign is War Party, its tail code is AJ, and it flies the Boeing F/A-18E Super Hornet.",
+                "Images": [
+                    "https://upload.wikimedia.org/wikipedia/commons/5/59/Strike_Fighter_Squadron_87_%28US_Navy%29_insignia_2015.png"
+                ],
+                "Link": "https://en.wikipedia.org/wiki/VFA-87",
+                "Name": "VFA-87"
+            },
+            "Related Articles": [
+            ],
+            "Name": "Golden Warriors"
+        },
+        {
+            "Wiki": {
+                "Summary": "Strike Fighter Squadron 213 Blacklions is an aviation unit of the United States Navy based at Naval Air Station Oceana, Virginia. It was established in 1955 and is currently equipped with the F/A-18F Super Hornet.",
+                "Images": [
+                    "https://upload.wikimedia.org/wikipedia/commons/b/b8/Strike_Fighter_Squadron_213_%28US_Navy%29_insignia_2015.png"
+                ],
+                "Link": "https://en.wikipedia.org/wiki/VFA-213",
+                "Name": "VFA-213"
+            },
+            "Related Articles": [
+                {
+                    "Article URL": "https://pilotonline.com/news/military/local/article_2669f712-db31-533f-97d1-6a449ee52661.html",
+                    "Date": "Jun 15, 2017",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "Navy fighter jets aren't consistently providing pilots with high-quality breathing air, report says"
+                },
+                {
+                    "Article URL": "https://pilotonline.com/news/military/local/article_acbc1432-2884-11e8-857e-1372e005b3ce.html",
+                    "Date": "Mar 15, 2018",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "Navy identifies aviators who died in Oceana-based fighter jet crash"
+                },
+                {
+                    "Article URL": "https://pilotonline.com/news/military/local/article_3f350f44-3438-11e8-a593-8b399aed6b4d.html",
+                    "Date": "Mar 30, 2018",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "Humble, talented, good dudes: Navy remembers fallen Virginia Beach-based aviators"
+                }
+            ],
+            "Name": "Blacklions"
+        },
+        {
+            "Wiki": {
+                "Summary": "The Grumman F4F Wildcat is an American carrier-based fighter aircraft that began service with both the United States Navy and the British Royal Navy in 1940, where it was initially known by the latter as the Martlet.",
+                "Images": [
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/F4F-3_new_pitot_tube_of_later_model.jpg/600px-F4F-3_new_pitot_tube_of_later_model.jpg"
+                ],
+                "Link": "https://en.wikipedia.org/wiki/Grumman_F4F_Wildcat",
+                "Name": "Grumman F4F Wildcat"
+            },
+            "Related Articles": [
+                {
+                    "Article URL": "https://pilotonline.com/news/military/local/article_d2bdb4bf-676c-50e0-8463-6ea7eea9017d.html",
+                    "Date": "Aug 1, 2017",
+                    "Source": "The Virginian-Pilot",
+                    "Title": "First fighter jet launch and landing on new USS Ford was 'almost like a scene from 'Top Gun' '"
+                }
+            ],
+            "Name": "F4F Wildcat"
+        },
+    ]
+}
