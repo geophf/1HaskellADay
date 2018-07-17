@@ -23,6 +23,10 @@ data Article = Art { uuid :: String, previewImg :: Maybe FilePath }
 instance FromJSON Article where
    parseJSON json = undefined
 
+exDir, artJSON :: FilePath
+exDir = "Y2018/M07/D17/"
+artJSON = "pilot-art-blocks.json"
+
 previews :: FilePath -> IO [Article]
 previews file = undefined
 
