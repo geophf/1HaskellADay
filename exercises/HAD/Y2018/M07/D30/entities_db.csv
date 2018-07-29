@@ -1,0 +1,24 @@
+entities db
+-------------------------------------------------------
+public.article_entity_related_content
+public.report_kind_lk
+public.article_stats
+public.entity_stats
+public.log
+public.audit
+public.action_lk
+public.article_entity_stats
+public.severity_lk
+public.active_lk
+public.nearest_neighbors
+public.report
+public.file
+public.wiki_image
+public.wiki
+public.entity
+public.information
+public.image
+public.information_image
+public.publication
+public.scoring
+public.article_entity
