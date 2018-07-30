@@ -31,4 +31,5 @@ executable 1had
                      , http-conduit
                      , mtl
                      , postgresql-simple
+                     , containers
   hs-source-dirs:      src, exercises/HAD
