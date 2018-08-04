@@ -12,7 +12,7 @@ import Data.List (intercalate)
 import Text.Printf (printf)
 import Test.DocTest (doctest)
 import System.FilePath.Posix (joinPath)
-import System.Cmd (rawSystem)
+import System.Process (rawSystem)
 import HAD.Date
 
 type DateCommand a = (Int, Int, Int) -> a
