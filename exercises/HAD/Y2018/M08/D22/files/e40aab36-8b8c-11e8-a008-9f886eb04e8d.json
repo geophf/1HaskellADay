@@ -1,0 +1,134 @@
+{
+  "ann williams": {
+    "related_content": [
+      {
+        "uid": "67082d7b-9200-533a-a461-8c47b9929d79", 
+        "weighted_score": 26973539470.597626
+      }, 
+      {
+        "uid": "4ddc162c-c053-5c77-afca-ce4a3d8f9a1f", 
+        "weighted_score": 3600873.553825192
+      }
+    ], 
+    "wiki_info": null
+  }, 
+  "creek uso center": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "dawn feldt": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "farm fresh": {
+    "query_entity_score": 2.0, 
+    "related_content": [
+      {
+        "uid": "d5642820-a9cf-5d9d-8c6f-06ebfdb7e573", 
+        "weighted_score": 6582166813644148.0
+      }, 
+      {
+        "uid": "14b9a0e4-c3bb-5421-847f-e8d1e1268d1a", 
+        "weighted_score": 1337570094797072.5
+      }, 
+      {
+        "uid": "55946879-76ff-5826-80df-d4553a46b5e0", 
+        "weighted_score": 1309566806324412.5
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Farm Fresh", 
+      "Full_text": "Farm Fresh Food & Pharmacy was a supermarket chain with seventeen stores, primarily in Virginia. Its headquarters were located in Virginia Beach and its largest presence was in the surrounding Norfolk/Virginia Beach (Hampton Roads) metropolitan area. The company was a wholly owned subsidiary of Eden Prairie, Minnesota-based SuperValu. On March 14th 2018, it was revealed that parent company, SuperValu, would be selling 21 stores to Kroger (under Kroger Mid-Atlantic and Harris Teeter) and Ahold Delhaize (under Food Lion).", 
+      "Page_title": "Farm_Fresh_Food_%26_Pharmacy", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/en/a/a4/Farmfresh_small.jpg", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Farm Fresh Food & Pharmacy was a supermarket chain with seventeen stores, primarily in Virginia. Its headquarters were located in Virginia Beach and its largest presence was in the surrounding Norfolk/Virginia Beach (Hampton Roads) metropolitan area", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Farm_Fresh_Food_%26_Pharmacy"
+    }
+  }, 
+  "jackie warn": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "john rehme": {
+    "query_entity_score": 2.0, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "karen licari": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "licari": {
+    "query_entity_score": 1.0, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "miss jackie": {
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "miss rita": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "norfolk naval station": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "d5642820-a9cf-5d9d-8c6f-06ebfdb7e573", 
+        "weighted_score": 6582166813644148.0
+      }, 
+      {
+        "uid": "e26a763a-5981-54f7-8ba7-29f120cee483", 
+        "weighted_score": 30784566917.188244
+      }, 
+      {
+        "uid": "46444a4f-7d2c-5905-b448-f3cd34d6017b", 
+        "weighted_score": 16083197888.21677
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Norfolk Naval Station", 
+      "Full_text": "Naval Station Norfolk, is a United States Navy base in Norfolk, Virginia. It supports naval forces in the United States Fleet Forces Command, those operating in the Atlantic Ocean, Mediterranean Sea, and the Indian Ocean. The installation occupies about 4 miles (6.4 km) of waterfront space and 11 miles (18 km) of pier and wharf space of the Hampton Roads peninsula known as Sewell's Point.  It is the world's largest naval station, with the largest concentration of U.S. Navy forces through 75 ships alongside 14 piers and with 134 aircraft and 11 aircraft hangars at the adjacently operated Chambers Field and  Port Services controls more than 3,100 ships' movements annually as they arrive and depart their berths.\nAir Operations conducts over 100,000 flight operations each year, an average of 275 flights per day or one every six minutes. Over 150,000 passengers and 264,000 tons of mail and cargo depart annually on Air Mobility Command (AMC) aircraft and other AMC-chartered flights from the airfield's AMC Terminal.", 
+      "Page_title": "Naval_Station_Norfolk", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/9_Flattops_at_Norfolk_naval_base%2C_December_20%2C_2012.jpg/256px-9_Flattops_at_Norfolk_naval_base%2C_December_20%2C_2012.jpg", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Naval Station Norfolk, is a United States Navy base in Norfolk, Virginia. It supports naval forces in the United States Fleet Forces Command, those operating in the Atlantic Ocean, Mediterranean Sea, and the Indian Ocean", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Naval_Station_Norfolk"
+    }
+  }, 
+  "rita swan": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "b2cb8920-e5fc-5507-9ac1-ca7ded17ab30", 
+        "weighted_score": 2.1115938817291994e+18
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Rita Swan", 
+      "Full_text": "Children's Healthcare Is a Legal Duty (CHILD) is an American nonprofit membership organization that works to stop child abuse and neglect based on religious beliefs, cultural traditions, and quackery. CHILD opposes religious exemptions from child health and safety laws. These exemptions have been used as a defense in criminal cases when parents have withheld lifesaving medical care on religious grounds. These exemptions also have discouraged reporting and investigation of religion-based medical neglect of children and spawned many outbreaks of vaccine-preventable diseases and deaths. CHILD publicizes the ideological abuse and neglect of children, lobbies for equal protection laws for children, and files lawsuits and amicus curiae briefs in related cases.\nCHILD was founded in 1983 by Rita and Douglas Swan after the death of their son, Matthew. When Matthew developed a high fever in 1977, several Christian Science practitioners, who claimed they were healing Matthew, persuaded the Swans not to seek medical treatment for him. After he had been ill for 12 days, the Swans did take Matthew to the hospital, but his illness had progressed too far and he died of meningitis.According to the National Association of Counsel for Children, which gave an award to Rita Swan for her efforts, \"Due in large part to CHILD's efforts, Colorado, Massachusetts, Maryland, South Dakota, Hawaii, and Oregon have removed laws which provided exemptions from prosecution to parents who fail to provide medical care for their sick children based on religion\".", 
+      "Page_title": "Children%27s_Healthcare_is_a_Legal_Duty", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/3/38/CHILD_Inc._logo.jpg", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Children's Healthcare Is a Legal Duty (CHILD) is an American nonprofit membership organization that works to stop child abuse and neglect based on religious beliefs, cultural traditions, and quackery. CHILD opposes religious exemptions from child health and safety laws", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Children%27s_Healthcare_is_a_Legal_Duty"
+    }
+  }, 
+  "united service organizations of hampton roads": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "9a122f44-4727-11e8-9d50-f308c43c22ea", 
+        "weighted_score": 1.4090435339351186
+      }
+    ], 
+    "wiki_info": null
+  }
+}

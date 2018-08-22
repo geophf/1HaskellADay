@@ -1,0 +1,299 @@
+{
+  "1st cavalry division association": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "3rd battalion": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "0516a33b-9401-5e1e-b631-9248006a1402", 
+        "weighted_score": 1.2954450465080956e+16
+      }, 
+      {
+        "uid": "de6b0b1b-3a53-5fa5-8bda-17785eac3be8", 
+        "weighted_score": 8862354992906648.0
+      }, 
+      {
+        "uid": "1e1ca810-0bbc-5aea-a8d8-bae92fc00079", 
+        "weighted_score": 6433284535229380.0
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "3rd Battalion", 
+      "Full_text": "The 3rd Battalion was an infantry battalion of the Australian Army. Originally raised as part of the First Australian Imperial Force for service during World War I, the battalion formed part of the 1st Brigade, attached to the 1st Division. It was formed shortly after the war broke out and was among the first Australian units to be sent overseas, arriving in Egypt in December 1914. In April 1915 the battalion participated in the Landing at Anzac Cove, coming ashore in the second and third waves. In December 1915 the 3rd Battalion was evacuated from the Gallipoli peninsula and withdrawn to Egypt again, where it took part in the defence of the Suez Canal before being sent to France to fight on the Western Front in March 1916. For the next two and a half years the unit would serve in the trenches in France and Belgium and would take part in many of the major battles fought during that time. In May 1919, following the end of the war, the battalion was disbanded and its personnel repatriated back to Australia.\nIn 1921, the AIF was officially disbanded and the previously-existing militia units of the Australian Military Forces were reorganised in order to perpetuate the designations and battle honours of their associated AIF units. As a result, the 3rd Battalion (The Werriwa Regiment), was raised around the area to the west of Sydney. Between 1921 and 1939 the battalion underwent a number of reorganisations and merges due to the economic pressures brought about by the Great Depression and subsequently in 1930 the battalion was merged with the 4th Battalion (Australian Rifles), before being delinked in 1937, when it was amalgamated with the 53rd Battalion (West Sydney Regiment).\nFollowing the outbreak of World War II, many members of the battalion volunteered for service with the Second Australian Imperial Force and were allocated to the 2/3rd Battalion, with whom they served in North Africa, Syria, Greece, Crete and then later in New Guinea. In 1942, following the entry of Japan into the war, the 3rd Battalion (The Werriwa Regiment) was mobilised and brought up to its full wartime establishment with national servicemen. In May 1942 the battalion was sent to Port Moresby, where it joined the rest of the 30th Brigade, to undertake garrison duties. In July the Japanese landed around Gona and as reinforcements were brought up from Australia, elements of the 30th Brigade began a number of delaying actions around Kokoda. In September 1942, the 3rd Battalion was sent up the Kokoda Trail, where it had the distinction of being one of only two militia units to fight alongside its associated AIF unit. Over the next couple of months it assisted in the recapturing of Kokoda, before participating in the fighting around Buna and Gona. In 1943, the battalion was withdrawn to Australia along with the rest of the 30th Brigade, where it was subsequently disbanded in July and its personnel absorbed into its associated AIF unit, the 2/3rd Battalion.\nIn 1948, the battalion was re-raised as part of the Citizens Military Force, based around Canberra. In 1960, when the Australian Army was reorganised along Pentropic lines, the battalion was reduced to a company-sized unit and formed 'C' Company, 3rd Battalion, Royal New South Wales Regiment (3 RNSWR). In 1965, this company was expanded to become a full battalion again when the Pentropic divisional structure was abandoned; however, in 1987, 3 RNSWR was amalgamated with 4 RNSWR to form the 4th/3rd Battalion, Royal New South Wales Regiment.", 
+      "Page_title": "3rd_Battalion_(Australia)", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Australian_3rd_Battalion_on_parade_Egypt_December_1914_AWM_H00521.jpg", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "The 3rd Battalion was an infantry battalion of the Australian Army. Originally raised as part of the First Australian Imperial Force for service during World War I, the battalion formed part of the 1st Brigade, attached to the 1st Division", 
+      "WikiURL": "https://en.wikipedia.org/wiki/3rd_Battalion_(Australia)"
+    }
+  }, 
+  "8th cavalry": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": {
+      "Entity": "8th Cavalry", 
+      "Full_text": "The 8th Virginia Volunteer Cavalry Regiment was a cavalry regiment raised in Virginia for service in the Confederate States Army during the American Civil War. It fought mostly as part of the Army of Northern Virginia.\nVirginia\u2019s 8th Cavalry Regiment was organized early in 1862 with nine companies but increased its number to eleven to July. Many of the men were recruited in Cabell, Wayne, Mercer, Fayette, Greenbrier, Bland, Smyth, Nelson, Kanawha, and Tazewell counties.The unit confronted the Union in western Virginia, fought in East Tennessee then returned to western Virginia. Later it participated in Early's Shenandoah Valley operations and the Appomattox Campaign.\nThis regiment contained 225 effectives in April, 1864. Some claim that none were included in the surrender at Appomattox because it had cut through the Federal lines and disbanded, and that the field officers were Colonels James M. Corns and Walter H. Jenifer; Lieutenant Colonels Thomas P. Bowen, A.F. Cook, Henry Fitzhugh, and Albert G. Jenkins; and Major P.M. Edmondson. However, 2nd Lt. Hezekiah Harmon of Company A swore as a witness to the pension application of Angelina James, widow of S.P. James of the same company, that he and James surrendered at Appomattox on April 9, 1865, and that he \"was present and saw all that I have stated\".  Validating Harmon's statement is the statement of the Adjutant General of the War Department of the United States, Brigadier General George Andrews, on November 21, 1912, on Angelina James' pension application, that \"the records show that one S.P. James (not found as Stephen Porter James), private, Company A, 8th Virginia Cavalry, Confederate States Army, was enlisted June 27, 1863; that he was surrendered at Appomattox Court House, Virginia, and was paroled at that place April 9, 1865.\"  This evidence lends strong weight to the 8th Cavalry having been at Appomattox at the surrender.\nFormer U.S. Congressman and Confederate Congressman Albert G. Jenkins recruited one of the unit's companies as a company of partisan rangers, before it was attached to the regiment and he became commanding officer of the 8th Virginia.  He was killed at the Battle of Cloyd's Mountain", 
+      "Page_title": "8th_Virginia_Cavalry", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Flag_of_Virginia_%281861-1950%29.png", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "The 8th Virginia Volunteer Cavalry Regiment was a cavalry regiment raised in Virginia for service in the Confederate States Army during the American Civil War. It fought mostly as part of the Army of Northern Virginia", 
+      "WikiURL": "https://en.wikipedia.org/wiki/8th_Virginia_Cavalry"
+    }
+  }, 
+  "armed forces medical examiner system": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "8b19c9ac-fcbc-59d3-8dbd-cbefe70b5669", 
+        "weighted_score": 7870427.583602272
+      }
+    ], 
+    "wiki_info": null
+  }, 
+  "cavalry regiment s 3rd battalion": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "charles hobert mcdaniel sr": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "cold war": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "0200c019-a004-5160-8c11-10c911559261", 
+        "weighted_score": 482.05815232384185
+      }, 
+      {
+        "uid": "c5ce0708-75a6-5287-8d0d-83f224cb68e5", 
+        "weighted_score": 454.92919606051856
+      }, 
+      {
+        "uid": "057ac13c-0b92-5069-a4d0-01bab55ca046", 
+        "weighted_score": 421.88994709214506
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Cold War", 
+      "Full_text": "The Cold War was a state of geopolitical tension after World War II between powers in the Eastern Bloc (the Soviet Union and its satellite states) and powers in the Western Bloc (the United States, its NATO allies and others). Historians do not fully agree on the dates, but a common timeframe is the period between 1947, the year the Truman Doctrine, a U.S. foreign policy pledging to aid nations threatened by Soviet expansionism, was announced, and either 1989, when communism fell in Eastern Europe, or 1991, when the Soviet Union collapsed. The term \"cold\" is used because there was no large-scale fighting directly between the two sides, but they each supported major regional wars known as proxy wars.\nThe Cold War split the temporary wartime alliance against Nazi Germany, leaving the Soviet Union and the United States as two superpowers with profound economic and political differences. The USSR was a Marxist\u2013Leninist state led by its Communist Party, which in turn was dominated by a leader with different titles over time, and a small committee called the Politburo. The Party controlled the press, the military, the economy and many organizations. It also controlled the other states in the Eastern Bloc, and funded Communist parties around the world, sometimes in competition with Communist China, particularly following the Sino-Soviet split of the 1960s. In opposition stood the capitalist West, led by the United States, a federal republic with a two-party presidential system. The First World nations of the Western Bloc were generally liberal democratic with a free press and independent organizations, but were economically and politically entwined with a network of banana republics and other authoritarian regimes throughout the Third World, most of which were the Western Bloc's former colonies. Some major Cold War frontlines such as Vietnam, Indonesia, and the Congo were still Western colonies in 1947.\nA neutral bloc arose with the Non-Aligned Movement, which sought good relations with both sides. The two superpowers never engaged directly in full-scale armed combat, but they were heavily armed in preparation for a possible all-out nuclear world war. Each side had a nuclear strategy that discouraged an attack by the other side, on the basis that such an attack would lead to the total destruction of the attacker\u2014the doctrine of mutually assured destruction (MAD). Aside from the development of the two sides\u2019 nuclear arsenals, and their deployment of conventional military forces, the struggle for dominance was expressed via proxy wars around the globe, psychological warfare, massive propaganda campaigns and espionage, far-reaching embargos, rivalry at sports events, and technological competitions such as the Space Race.\nThe first phase of the Cold War began in the first two years after the end of the Second World War in 1945. The USSR consolidated its control over the states of the Eastern Bloc, while the United States began a strategy of global containment to challenge Soviet power, extending military and financial aid to the countries of Western Europe (for example, supporting the anti-communist side in the Greek Civil War) and creating the NATO alliance. The Berlin Blockade (1948\u201349) was the first major crisis of the Cold War. With the victory of the communist side in the Chinese Civil War and the outbreak of the Korean War (1950\u201353), the conflict expanded. The USSR and the USA competed for influence in Latin America and the decolonizing states of Africa and Asia. The Hungarian Revolution of 1956 was stopped by the Soviets. The expansion and escalation sparked more crises, such as the Suez Crisis (1956), the Berlin Crisis of 1961, and the Cuban Missile Crisis of 1962. Meanwhile, an international peace movement took root and grew among citizens around the world, first in Japan from 1954, when people became concerned about nuclear weapons testing, but soon also in Europe and the US. The peace movement, and in particular the anti-nuclear movement, gained pace and popularity from the late 1950s and early 1960s, and continued to grow through the '70s and '80s with large protest marches, demonstrations and various non-parliamentary activism opposing war and calling for global nuclear disarmament. Following the Cuban Missile Crisis, a new phase began that saw the Sino-Soviet split complicate relations within the communist sphere, while US allies, particularly France, demonstrated greater independence of action. The USSR crushed the 1968 Prague Spring liberalization program in Czechoslovakia, and the Vietnam War (1955\u201375) ended with the defeat of the US-backed Republic of Vietnam, prompting further adjustments.\nBy the 1970s, both sides had become interested in making allowances in order to create a more stable and predictable international system, ushering in a period of d\u00e9tente that saw Strategic Arms Limitation Talks and the US opening relations with the People's Republic of China as a strategic counterweight to the Soviet Union. D\u00e9tente collapsed at the end of the decade with the beginning of the Soviet\u2013Afghan War in 1979. The early 1980s were another period of elevated tension, with the Soviet downing of Korean Air Lines Flight 007 (1983), and the \"Able Archer\" NATO military exercises (1983). The United States increased diplomatic, military, and economic pressures on the Soviet Union, at a time when the communist state was already suffering from economic stagnation. On 12 June 1982, a million protesters gathered in Central Park, New York to call for an end to the Cold War arms race and nuclear weapons in particular. In the mid-1980s, the new Soviet leader Mikhail Gorbachev introduced the liberalizing reforms of perestroika (\"reorganization\", 1987) and glasnost (\"openness\", c. 1985) and ended Soviet involvement in Afghanistan. Pressures for national independence grew stronger in Eastern Europe, especially Poland. Gorbachev meanwhile refused to use Soviet troops to bolster the faltering Warsaw Pact regimes as had occurred in the past. The result in 1989 was a wave of revolutions that peacefully (with the exception of the Romanian Revolution) overthrew all of the communist regimes of Central and Eastern Europe. The Communist Party of the Soviet Union itself lost control and was banned following an abortive coup attempt in August 1991. This in turn led to the formal dissolution of the USSR in December 1991 and the collapse of communist regimes in other countries such as Mongolia, Cambodia and South Yemen. The United States remained as the world's only superpower.\nThe Cold War and its events have left a significant legacy. It is often referred to in popular culture, especially in media featuring themes of espionage (notably the internationally successful James Bond book and film franchise) and the threat of nuclear warfare. Meanwhile, a renewed state of tension between the Soviet Union\u2019s successor state, Russia, and the United States in the 2010s (including its Western allies) has been referred to as the Second Cold War.", 
+      "Page_title": "Cold_War", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/8/80/Berlin_Wall_1961-11-20.jpg", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "The Cold War was a state of geopolitical tension after World War II between powers in the Eastern Bloc (the Soviet Union and its satellite states) and powers in the Western Bloc (the United States, its NATO allies and others). Historians do not fully agree on the dates, but a common timeframe is the period between 1947, the year the Truman Doctrine, a U.S", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Cold_War"
+    }
+  }, 
+  "consul general angela kerwin": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "defense pow/mia accounting agency": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "134956ff-27dd-527b-8ab5-ecda46dce229", 
+        "weighted_score": 25951.914966672655
+      }, 
+      {
+        "uid": "3a6925dd-7e57-5326-ab5e-396a88def350", 
+        "weighted_score": 23513.197966391555
+      }, 
+      {
+        "uid": "7e5a95f0-7e9b-5f3b-96e9-7b00dce286a1", 
+        "weighted_score": 141.79147096755435
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Defense Pow/Mia Accounting Agency", 
+      "Full_text": "The Defense POW/MIA Accounting Agency is an agency within the United States Department of Defense whose mission is to recover missing personnel who are listed as Prisoners of War (POW), or Missing In Action (MIA), from all past wars and conflicts and from countries around the world.  It was formed on January 30, 2015, as the result of a merger of the Joint POW/MIA Accounting Command, the Defense Prisoner of War/Missing Personnel Office, and parts of the Air Force's Life Sciences Lab.", 
+      "Page_title": "Defense_POW/MIA_Accounting_Agency", 
+      "WikiImg": "", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "The Defense POW/MIA Accounting Agency is an agency within the United States Department of Defense whose mission is to recover missing personnel who are listed as Prisoners of War (POW), or Missing In Action (MIA), from all past wars and conflicts and from countries around the world.  It was formed on January 30, 2015, as the result of a merger of the Joint POW/MIA Accounting Command, the Defense Prisoner of War/Missing Personnel Office, and parts of the Air Force's Life Sciences Lab.", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Defense_POW/MIA_Accounting_Agency"
+    }
+  }, 
+  "department of the army": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "dd86a636-b9cd-5169-ac9a-95ed7a387713", 
+        "weighted_score": 8.256527362450323e+18
+      }, 
+      {
+        "uid": "7d97c57d-11fa-531c-b520-5b3344aa4c54", 
+        "weighted_score": 3.0155103568647816e+16
+      }, 
+      {
+        "uid": "1001075f-56df-5a64-8700-cd22e7175d04", 
+        "weighted_score": 381885534216.91
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Department Of The Army", 
+      "Full_text": "The Department of the Army (DA) is one of the three military departments within the Department of Defense of the United States of America. The Department of the Army is the Federal Government agency within which the United States Army is organized, and it is led by the Secretary of the Army who has statutory authority under 10 U.S.C. \u00a7 3013 to conduct its affairs and to prescribe regulations for its government, subject to the limits of the law, and the directions of the Secretary of Defense and the President.\nThe Secretary of the Army is a civilian official appointed by the President and confirmed by the Senate. The highest-ranking military officer in the department is the Chief of Staff of the Army, who is also a member of the Joint Chiefs of Staff. Other senior officials of the Department are the Under Secretary of the Army (principal deputy to the Secretary) and the Vice Chief of Staff of the Army (principal deputy to the Chief of Staff.)\nThe Department of War was originally formed in 1789 as an Executive Department of the United States, and was split by the National Security Act of 1947 into the Department of the Army and Department of the Air Force on September 18, 1947. By amendments to the National Security Act of 1947 in 1949, the Department of the Army was transformed to its present-day status.", 
+      "Page_title": "United_States_Department_of_the_Army", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Emblem_of_the_United_States_Department_of_the_Army.svg/256px-Emblem_of_the_United_States_Department_of_the_Army.svg.png", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "The Department of the Army (DA) is one of the three military departments within the Department of Defense of the United States of America. The Department of the Army is the Federal Government agency within which the United States Army is organized, and it is led by the Secretary of the Army who has statutory authority under 10 U.S.C", 
+      "WikiURL": "https://en.wikipedia.org/wiki/United_States_Department_of_the_Army"
+    }
+  }, 
+  "donald trump": {
+    "query_entity_score": 2.0, 
+    "related_content": [
+      {
+        "uid": "0200c019-a004-5160-8c11-10c911559261", 
+        "weighted_score": 863.4104060681683
+      }, 
+      {
+        "uid": "c5ce0708-75a6-5287-8d0d-83f224cb68e5", 
+        "weighted_score": 204.68590134111676
+      }, 
+      {
+        "uid": "cd7c4d4a-64e8-55e8-a409-e52c898a0952", 
+        "weighted_score": 65.30189383967947
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Donald Trump", 
+      "Full_text": "Donald John Trump (born June 14, 1946) is the 45th and current President of the United States. Before entering politics, he was a businessman and television personality.\nTrump was born and raised in the New York City borough of Queens, and received an economics degree from the Wharton School of the University of Pennsylvania. He took charge of his family's real estate business in 1971, renamed it to The Trump Organization, and expanded it into Manhattan. The company built or renovated skyscrapers, hotels, casinos, and golf courses. Trump later started various side ventures, including licensing his name for real estate and consumer products. He managed the company until his 2017 inauguration. He co-authored several books, including The Art of the Deal. He owned the Miss Universe and Miss USA beauty pageants from 1996 to 2015, and he produced and hosted the reality television show The Apprentice from 2003 to 2015. Forbes estimates his net worth to be $3.1 billion.\nTrump entered the 2016 presidential race as a Republican and defeated sixteen opponents in the primaries. Commentators described his political positions as populist, protectionist, and nationalist. His campaign received extensive free media coverage; many of his public statements were controversial or false. Trump was elected president in a surprise victory over Democratic nominee Hillary Clinton. He became the oldest and wealthiest person ever to assume the presidency, the first without prior military or government service, and the fifth to have won the election while losing the popular vote. His election and policies have sparked numerous protests. Many of his comments and actions have been perceived as racially charged.\nDuring his presidency, Trump ordered a travel ban on citizens from several Muslim-majority countries, citing security concerns; after several legal challenges, the Supreme Court upheld the policy's third revision. He signed tax cut legislation which also rescinded the individual insurance mandate provision of the Affordable Care Act and opened the Arctic Refuge for oil drilling. He enacted a partial repeal of the Dodd-Frank Act that had imposed stricter constraints on banks in the aftermath of the 2008 financial crisis. He pursued his America First agenda in foreign policy, withdrawing the U.S. from the Trans-Pacific Partnership trade negotiations, the Paris Agreement on climate change, and the Iran nuclear deal. He recognized Jerusalem as the capital of Israel, and imposed import tariffs on various goods from China, Canada, Mexico and the European Union, triggering a trade war with China. \nAfter Trump dismissed FBI Director James Comey, the Justice Department appointed Robert Mueller as Special Counsel to investigate \"any links and/or coordination\" between the Trump campaign and the Russian government in its election interference. Trump has repeatedly denied accusations of collusion and obstruction of justice, calling the investigation a politically motivated \"witch hunt\" and saying that it  should be terminated.", 
+      "Page_title": "Donald_Trump", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/256px-Donald_Trump_official_portrait.jpg", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Donald John Trump (born June 14, 1946) is the 45th and current President of the United States. Before entering politics, he was a businessman and television personality", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Donald_Trump"
+    }
+  }, 
+  "dpaa": {
+    "query_entity_score": 1.0, 
+    "related_content": [], 
+    "wiki_info": {
+      "Entity": "DPAA", 
+      "Full_text": "", 
+      "Page_title": "Data_Path_Acceleration_Architecture_(DPAA)", 
+      "WikiImg": "", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Data_Path_Acceleration_Architecture_(DPAA)"
+    }
+  }, 
+  "john byrd": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "0e9a7f53-1631-5a9e-ab6f-416fe3dd6f8f", 
+        "weighted_score": 30077065.19698123
+      }, 
+      {
+        "uid": "0581fcf0-f78e-54a5-b3b7-92c319acc394", 
+        "weighted_score": 10716960.568371696
+      }, 
+      {
+        "uid": "045e5c13-bb86-5dea-b43e-584cd1ac90d6", 
+        "weighted_score": 50918.557649785675
+      }
+    ], 
+    "wiki_info": null
+  }, 
+  "kim jong un": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "c5ce0708-75a6-5287-8d0d-83f224cb68e5", 
+        "weighted_score": 329.8075487008177
+      }, 
+      {
+        "uid": "cd7c4d4a-64e8-55e8-a409-e52c898a0952", 
+        "weighted_score": 142.64833627131355
+      }, 
+      {
+        "uid": "ae1c6ec2-99a0-5a7b-a2ed-a689dab4a768", 
+        "weighted_score": 70.29561270016636
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Kim Jong Un", 
+      "Full_text": "Kim Jong-un (officially transcribed Kim Jong Un; Chos\u014fn'g\u016dl: \uae40\uc815\uc740; Korean pronunciation: [kim.dz\u0254\u014b.\u026fn]; born 8 January 1983) is a North Korean politician serving as leader of North Korea since 2011 and Leader of the Workers' Party of Korea since 2012.  \nKim is the second child of Kim Jong-il (1941\u20132011) and Ko Yong-hui (1952\u20132004). The grandson of Kim Il-sung, the first leader of North Korea from 1948 to 1994, he is the first North Korean leader to have been born after the country's founding.From late 2010, Kim Jong-un was viewed as heir apparent to the leadership of the DPRK, and following the elder Kim's death, he was announced as the \"Great Successor\" by North Korean state television. Kim holds the titles of Chairman of the Workers' Party of Korea (as First Secretary between 2012 and 2016), Chairman of the Central Military Commission, Chairman of the State Affairs Commission, Supreme Commander of the Korean People's Army, and member of the Presidium of the Politburo of the Workers' Party of Korea, the highest decision-making body in North Korea. Kim was promoted to the rank of Marshal of North Korea in the Korean People's Army on 18 July 2012, consolidating his position as the Supreme Commander of the Armed Forces and is often referred to as Marshal Kim Jong-un or \"the Marshal\" by state media. Kim obtained two degrees, one in physics at Kim Il-sung University, and another as an Army officer at the Kim Il-sung Military University.Forbes magazine ranked Kim as the 46th most powerful person in the world in 2013 and the third highest amongst Koreans after Ban Ki-moon and Lee Kun-hee. On 12 December 2013, North Korean news outlets reported that Kim Jong-un had ordered the execution of his uncle Jang Song-thaek due to \"treachery\". On 9 March 2014, Kim was elected unopposed to the Supreme People's Assembly. He is widely believed to have ordered the assassination of his half-brother, Kim Jong-nam, in Malaysia in February 2017.Despite tense relations, North Korea agreed to participate in the 2018 Winter Olympics in Pyeongchang, and enter with South Korea during the opening ceremony as a unified Korea, and field a unified team in women's ice hockey. Following the Olympics, Kim Jong-un and President Moon Jae-in conducted the April 2018 inter-Korean summit. It was the first time since the end of the Korean War in 1953 that a North Korean leader entered the South's territory. On 12 June 2018, Kim Jong-un and US President Donald Trump met for the 2018 North Korea\u2013United States summit in Singapore, the first-ever talks held between a North Korean leader and a sitting US President, to discuss the North Korean nuclear program.", 
+      "Page_title": "Kim_Jong-un", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/4/40/Kim_Jong_Un_with_Honor_Guard_portrait.jpg", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Kim Jong-un (officially transcribed Kim Jong Un; Chos\u014fn'g\u016dl: \uae40\uc815\uc740; Korean pronunciation: [kim.dz\u0254\u014b.\u026fn]; born 8 January 1983) is a North Korean politician serving as leader of North Korea since 2011 and Leader of the Workers' Party of Korea since 2012.   Kim is the second child of Kim Jong-il (1941\u20132011) and Ko Yong-hui (1952\u20132004)", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Kim_Jong-un"
+    }
+  },  
+  "larry mcdaniel": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "renaissance arlington capital view hotel": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "timothy mcmahon": {
+    "query_entity_score": 2.0, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "unsan": {
+    "query_entity_score": 1.0, 
+    "related_content": [], 
+    "wiki_info": {
+      "Entity": "Unsan", 
+      "Full_text": "Unsan County is a kun, or county, in eastern North P'y\u014fngan province, North Korea.  Within the province, it borders Hyangsan in the east, Kujang and Ny\u014fngby\u014fn in the south, and Tongch'ang and T'aech'\u014fn in the west. In addition, it is bordered by Chagang province to the east (H\u016dich'\u014fn) and north (Songw\u014fn).", 
+      "Page_title": "Unsan_County", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/c/c6/DPRK_Pyongbuk-Unsan.PNG", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Unsan County is a kun, or county, in eastern North P'y\u014fngan province, North Korea.  Within the province, it borders Hyangsan in the east, Kujang and Ny\u014fngby\u014fn in the south, and Tongch'ang and T'aech'\u014fn in the west", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Unsan_County"
+    }
+  }, 
+  "unsan in north korea": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": {
+      "Entity": "Battle of Unsan", 
+      "Full_text": "The Battle of Unsan (Hangul: \uc6b4\uc0b0\uc804\ud22c; Hanja: \u96f2\u5c71\u6230\u9b2a; RR: Unsan jeontu; MR: Unsan ch\u014fnt'u), also known as the Battle of Yunshan (Chinese: \u4e91\u5c71\u6218\u6597; pinyin: Y\u00fan Sh\u0101n Zh\u00e0n D\u00f2u), was a series of engagements of the Korean War that took place from 25 October to 4 November 1950 near Unsan, North Pyongan province in present-day North Korea. As part of the Chinese First Phase Campaign, the People's Republic of China's People's Volunteer Army made repeated attacks against the Republic of Korea 1st Infantry Division near Unsan beginning on 25 October, in an attempt to take advancing United Nations forces by surprise. In an accidental first encounter with the United States military during the Korean War, the Chinese 39th Corps attacked the unprepared US 8th Cavalry Regiment in Unsan on 1 November, resulting in one of the most devastating US losses of the Korean War.", 
+      "Page_title": "Battle_of_Unsan", 
+      "WikiImg": "", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "The Battle of Unsan (Hangul: \uc6b4\uc0b0\uc804\ud22c; Hanja: \u96f2\u5c71\u6230\u9b2a; RR: Unsan jeontu; MR: Unsan ch\u014fnt'u), also known as the Battle of Yunshan (Chinese: \u4e91\u5c71\u6218\u6597; pinyin: Y\u00fan Sh\u0101n Zh\u00e0n D\u00f2u), was a series of engagements of the Korean War that took place from 25 October to 4 November 1950 near Unsan, North Pyongan province in present-day North Korea. As part of the Chinese First Phase Campaign, the People's Republic of China's People's Volunteer Army made repeated attacks against the Republic of Korea 1st Infantry Division near Unsan beginning on 25 October, in an attempt to take advancing United Nations forces by surprise", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Battle_of_Unsan"
+    }
+  },  
+  "world war ii": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "0200c019-a004-5160-8c11-10c911559261", 
+        "weighted_score": 482.05815232384185
+      }, 
+      {
+        "uid": "cd7c4d4a-64e8-55e8-a409-e52c898a0952", 
+        "weighted_score": 65.30189383967947
+      }, 
+      {
+        "uid": "425a9641-5f15-5d0a-abf5-c2d1471d705e", 
+        "weighted_score": 64.9383357434575
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "World War Ii", 
+      "Full_text": "World War II (often abbreviated to WWII or WW2), also known as the Second World War, was a global war that lasted from 1939 to 1945, although conflicts reflecting the ideological clash between what would become the Allied and Axis blocs began earlier. The vast majority of the world's countries\u2014including all of the great powers\u2014eventually formed two opposing military alliances: the Allies and the Axis. It was the most global war in history; it directly involved more than 100 million people from over 30 countries. In a state of total war, the major participants threw their entire economic, industrial, and scientific capabilities behind the war effort, blurring the distinction between civilian and military resources. World War II was the deadliest conflict in human history, marked by 50 to 85 million fatalities, most of whom were civilians in the Soviet Union and China. It included massacres, the genocide of the Holocaust, strategic bombing, premeditated death from starvation and disease and the only use of nuclear weapons in war.The Empire of Japan aimed to dominate Asia and the Pacific and was already at war with the Republic of China in 1937, but the world war is generally said to have begun on 1 September 1939, the day of the invasion of Poland by Nazi Germany and the subsequent declarations of war on Germany by France and the United Kingdom. From late 1939 to early 1941, in a series of campaigns and treaties, Germany conquered or controlled much of continental Europe, and formed the Axis alliance with Italy and Japan. Under the Molotov\u2013Ribbentrop Pact of August 1939, Germany and the Soviet Union partitioned and annexed territories of their European neighbours, Poland, Finland, Romania and the Baltic states. The war continued primarily between the European Axis powers and the coalition of the United Kingdom and the British Commonwealth, with campaigns including the North Africa and East Africa campaigns, the aerial Battle of Britain, the Blitz bombing campaign, and the Balkan Campaign, as well as the long-running Battle of the Atlantic. On 22 June 1941, the European Axis powers launched an invasion of the Soviet Union, opening the largest land theatre of war in history, which trapped the Axis, most crucially the German Wehrmacht, into a war of attrition. In December 1941, Japan attacked the United States and European colonies in the Pacific Ocean, and quickly conquered much of the Western Pacific. The Japanese conquests were perceived by many in Asia as liberation from Western dominance; as such, several armies from the conquered territories aided the Japanese.\nThe Axis advance halted in 1942 when Japan lost the critical Battle of Midway, and Germany and Italy were defeated in North Africa and then, decisively, at Stalingrad in the Soviet Union. In 1943, with a series of German defeats on the Eastern Front, the Allied invasions of Sicily and Italy which brought about Italian surrender, and Allied victories in the Pacific, the Axis lost the initiative and was forced into strategic retreat on all fronts. In 1944, the Western Allies invaded German-occupied France, while the Soviet Union regained all of its territorial losses and invaded Germany and its allies. During 1944 and 1945 the Japanese suffered major reverses in mainland Asia in South Central China and Burma, while the Allies crippled the Japanese Navy and captured key Western Pacific islands.\nThe war in Europe concluded with an invasion of Germany by the Western Allies and the Soviet Union, culminating in the capture of Berlin by Soviet troops, the suicide of Adolf Hitler and the subsequent German unconditional surrender on 8 May 1945. Following the Potsdam Declaration by the Allies on 26 July 1945 and the refusal of Japan to surrender under its terms, the United States dropped atomic bombs on the Japanese cities of Hiroshima and Nagasaki on 6 and 9 August respectively. With an invasion of the Japanese archipelago imminent, the possibility of additional atomic bombings and the Soviet invasion of Manchuria, Japan formally surrendered on 2 September 1945. Thus ended the war in Asia, cementing the total victory of the Allies.\nWorld War II changed the political alignment and social structure of the world. The United Nations (UN) was established to foster international co-operation and prevent future conflicts. The victorious great powers\u2014China, France, the Soviet Union, the United Kingdom, and the United States\u2014became the permanent members of the United Nations Security Council. The Soviet Union and the United States emerged as rival superpowers, setting the stage for the Cold War, which lasted for the next 46 years. Meanwhile, the influence of European great powers waned, while the decolonisation of Africa and Asia began. Most countries whose industries had been damaged moved towards economic recovery. Political integration, especially in Europe, emerged as an effort to end pre-war enmities and to create a common identity.", 
+      "Page_title": "World_War_II", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/5/54/Infobox_collage_for_WWII.PNG", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "World War II (often abbreviated to WWII or WW2), also known as the Second World War, was a global war that lasted from 1939 to 1945, although conflicts reflecting the ideological clash between what would become the Allied and Axis blocs began earlier. The vast majority of the world's countries\u2014including all of the great powers\u2014eventually formed two opposing military alliances: the Allies and the Axis", 
+      "WikiURL": "https://en.wikipedia.org/wiki/World_War_II"
+    }
+  }
+}

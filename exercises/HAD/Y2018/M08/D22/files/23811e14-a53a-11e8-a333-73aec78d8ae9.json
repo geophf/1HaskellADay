@@ -1,0 +1,428 @@
+{
+  "access hollywood": {
+    "query_entity_score": 2.0, 
+    "related_content": [
+      {
+        "uid": "7c271e76-d9bf-5027-8eca-c6a2a025079b", 
+        "weighted_score": 1.058454972846645e+18
+      }, 
+      {
+        "uid": "df350c36-0b74-5641-b769-36435dfe7e90", 
+        "weighted_score": 6.228859672158444e+17
+      }, 
+      {
+        "uid": "345c41e7-4ac5-538a-a4c1-d929343efef3", 
+        "weighted_score": 3.4259540673334605e+17
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Access Hollywood", 
+      "Full_text": "", 
+      "Page_title": "Access_(U.S._TV_series)", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/en/9/93/AH_2007_Logo.png", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Access_(U.S._TV_series)"
+    }
+  }, 
+  "air force atlantic": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "e003be58-77b9-529e-b472-14f63154d67c", 
+        "weighted_score": 74.7425189844499
+      }, 
+      {
+        "uid": "694b4b37-9061-54f1-bccc-e0a30a0ec249", 
+        "weighted_score": 42.85984125994797
+      }
+    ], 
+    "wiki_info": null
+  }, 
+  "air forces": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "51cf9618-587f-11e8-a947-c7378770714c", 
+        "weighted_score": 1.093784536780662
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Air Forces", 
+      "Full_text": "An air force, also known in some countries as an aerospace force or air army, is in the broadest sense, the national military branch that primarily conducts aerial warfare. More specifically, it is the branch of a nation's armed services that is responsible for aerial warfare as distinct from an army, navy, or a marine corps. Typically, air forces are responsible for gaining control of the air, carrying out strategic and tactical bombing missions, and providing support to land and naval forces.\nThe term \"air force\" may also refer to a tactical air force or numbered air force, which is an operational formation either within a national air force or comprising several air components from allied nations. Air forces typically consist of a combination of fighters, bombers, helicopters, transport planes and other aircraft.\nMany air forces are also responsible for operations of the military space, intercontinental ballistic missiles (ICBM), and communications equipment. Some air forces may command and control other air defence assets such as anti-aircraft artillery, surface-to-air missiles, or anti-ballistic missile warning networks and defensive systems.  Some nations, principally Russia, the former Soviet Union and countries who modelled their militaries along Soviet lines, have or had an air defence force which is organizationally separate from their air force.\nPeace-time/non-wartime activities of air forces may include air policing and air-sea rescue.\nAir forces are not just composed of pilots, but also rely on a significant amount of support from other personnel to operate. Logistics, security, intelligence, special operations, cyber space support, maintenance, weapons loaders, and many other specialties are required by all air forces.", 
+      "Page_title": "Air_force", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Usaf.f15.f16.kc135.750pix.jpg", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "An air force, also known in some countries as an aerospace force or air army, is in the broadest sense, the national military branch that primarily conducts aerial warfare. More specifically, it is the branch of a nation's armed services that is responsible for aerial warfare as distinct from an army, navy, or a marine corps", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Air_force"
+    }
+  }, 
+  "air station north island": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "anthony edwards": {
+    "query_entity_score": 2.0, 
+    "related_content": [
+      {
+        "uid": "bcec164c-5d4b-5760-bc1b-b2ac88ca7024", 
+        "weighted_score": 1.5426621929218227e+18
+      }, 
+      {
+        "uid": "eb7c92c1-aee3-581c-974d-07439c3c5e34", 
+        "weighted_score": 644498344725845.5
+      }, 
+      {
+        "uid": "fd9a80f7-d04d-5775-bb23-bdf375f930f7", 
+        "weighted_score": 14027835459659.293
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Anthony Edwards", 
+      "Full_text": "Anthony Charles Edwards (born July 19, 1962) is an American actor and director. He is best known for his role as Dr. Mark Greene on the first eight seasons of ER, for which he received a Golden Globe award and six Screen Actors Guild Awards, and was nominated for four consecutive Primetime Emmy Awards. Additionally, he has appeared in various movies and television shows, including Top Gun, Zodiac,  Miracle Mile, Revenge of the Nerds, Planes, and Northern Exposure.", 
+      "Page_title": "Anthony_Edwards", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/9/93/AnthonyEdwards.jpg", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Anthony Charles Edwards (born July 19, 1962) is an American actor and director. He is best known for his role as Dr", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Anthony_Edwards"
+    }
+  }, 
+  "bruckheimer films": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "carrier air wing seven": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "f2d12fe8-c7fc-5ce7-96f9-90fe61b3da9d", 
+        "weighted_score": 2.9936023878962285e+17
+      }, 
+      {
+        "uid": "a9d62ffb-eb96-5905-b677-c5471a740cc4", 
+        "weighted_score": 9748936845665806.0
+      }, 
+      {
+        "uid": "45e8ac7f-6511-52db-906b-999834634996", 
+        "weighted_score": 499312448591891.3
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Carrier Air Wing Seven", 
+      "Full_text": "Carrier Air Wing Seven (CVW-7) is a United States Navy aircraft carrier air wing based at Naval Air Station Oceana, Virginia. The air wing is attached to the aircraft carrier USS Abraham Lincoln (CVN-72) which is the flagship of Carrier Strike Group Twelve. The Tail Code of aircraft assigned to CVW-7 is AG.", 
+      "Page_title": "Carrier_Air_Wing_Seven", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Carrier_Air_Wing_7_patch_%28US_Navy%29_2015.png/256px-Carrier_Air_Wing_7_patch_%28US_Navy%29_2015.png", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Carrier Air Wing Seven (CVW-7) is a United States Navy aircraft carrier air wing based at Naval Air Station Oceana, Virginia. The air wing is attached to the aircraft carrier USS Abraham Lincoln (CVN-72) which is the flagship of Carrier Strike Group Twelve", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Carrier_Air_Wing_Seven"
+    }
+  }, 
+  "danger zone": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "88e95b08-51b5-513a-bd6a-b339e9b854ef", 
+        "weighted_score": 152295257.2841959
+      }, 
+      {
+        "uid": "6b22571d-3999-5e4b-a389-e229c40b67ef", 
+        "weighted_score": 2743595.3706933185
+      }, 
+      {
+        "uid": "fa30acd7-2c05-52cd-9d3d-c8c1efed2b6d", 
+        "weighted_score": 1994472.8794937758
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Danger Zone", 
+      "Full_text": "\"Danger Zone\" is a song, with music composed by Giorgio Moroder and lyrics written by Tom Whitlock, which American singer-songwriter Kenny Loggins recorded and released in 1986. The song was one of the hit singles from the soundtrack to the 1986 American motion picture Top Gun, the best selling soundtrack of 1986 and one of the best selling of all time.  According to Allmusic.com, the album \"remains a quintessential artifact of the mid-'80s\" and the album's hits \"still define the bombastic, melodramatic sound that dominated the pop charts of the era.\"", 
+      "Page_title": "Danger_Zone_(song)", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/en/2/2c/Loggins_-_Danger_Zone_single_cover.png", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "\"Danger Zone\" is a song, with music composed by Giorgio Moroder and lyrics written by Tom Whitlock, which American singer-songwriter Kenny Loggins recorded and released in 1986. The song was one of the hit singles from the soundtrack to the 1986 American motion picture Top Gun, the best selling soundtrack of 1986 and one of the best selling of all time", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Danger_Zone_(song)"
+    }
+  }, 
+  "dave hecht": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "1de76c87-94d8-5576-9a93-1c4100ed7247", 
+        "weighted_score": 444.98525366498575
+      }, 
+      {
+        "uid": "67d1b7f0-8ca2-5e55-82b6-0dd1e0876d9d", 
+        "weighted_score": 329.555613223091
+      }, 
+      {
+        "uid": "470b7116-9451-500e-b0f3-0be11cd4325c", 
+        "weighted_score": 328.71869155022773
+      }
+    ], 
+    "wiki_info": null
+  }, 
+  "f-14": {
+    "query_entity_score": 1.0, 
+    "related_content": [
+      {
+        "uid": "34d74e59-08f6-53bf-a7b9-92feec1d2ab4", 
+        "weighted_score": 2.59342356458842e+19
+      }, 
+      {
+        "uid": "03acb557-5da7-5153-a4f1-9503d423a07d", 
+        "weighted_score": 5.443991358557471e+18
+      }, 
+      {
+        "uid": "36c1ba78-47bc-5553-afc4-1adce7e3c132", 
+        "weighted_score": 9.983200949589185e+17
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "F-14", 
+      "Full_text": "The Grumman F-14 Tomcat is an American supersonic, twin-engine, two-seat, twin-tail, variable-sweep wing fighter aircraft. The Tomcat was developed for the United States Navy's Naval Fighter Experimental (VFX) program after the collapse of the F-111B project. The F-14 was the first of the American teen-series fighters, which were designed incorporating air combat experience against MiG fighters during the Vietnam War.\nThe F-14 first flew in December 1970 and made its first deployment in 1974 with the U.S. Navy aboard USS Enterprise (CVN-65), replacing the McDonnell Douglas F-4 Phantom II. The F-14 served as the U.S. Navy's primary maritime air superiority fighter, fleet defense interceptor, and tactical aerial reconnaissance platform into the 1990s. The Low Altitude Navigation and Targeting Infrared for Night (LANTIRN) pod system were added in the 1990s and the Tomcat began performing precision ground-attack missions.In the 1980s F-14s were used as land-based interceptors by the Islamic Republic of Iran Air Force during the Iran\u2013Iraq War, where they saw combat against Iraqi warplanes. Iranian F-14s reportedly shot down at least 160 Iraqi aircraft during the war, while only 12 to 16 Tomcats were lost; at least half of these losses were due to accidents.The Tomcat was retired from the U.S. Navy's active fleet on 22 September 2006, having been supplanted by the Boeing F/A-18E/F Super Hornet. The F-14 remains in service with the Iranian Air Force, having been exported to Iran in 1976. F-14s operated by the IRIAF have recently seen use against ISIL in the Middle East, and have been recorded escorting and accompanying Russian Air Force Tu-95 and Tu-160 strategic bombers on missions over Syria.", 
+      "Page_title": "Grumman_F-14_Tomcat", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/US_Navy_051105-F-5480T-005_An_F-14D_Tomcat_conducts_a_mission_over_the_Persian_Gulf-region.jpg/256px-US_Navy_051105-F-5480T-005_An_F-14D_Tomcat_conducts_a_mission_over_the_Persian_Gulf-region.jpg", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "The Grumman F-14 Tomcat is an American supersonic, twin-engine, two-seat, twin-tail, variable-sweep wing fighter aircraft. The Tomcat was developed for the United States Navy's Naval Fighter Experimental (VFX) program after the collapse of the F-111B project", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Grumman_F-14_Tomcat"
+    }
+  }, 
+  "f/a-18 super hornet": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "34d74e59-08f6-53bf-a7b9-92feec1d2ab4", 
+        "weighted_score": 2.59342356458842e+19
+      }, 
+      {
+        "uid": "03acb557-5da7-5153-a4f1-9503d423a07d", 
+        "weighted_score": 3.205170985864668e+18
+      }, 
+      {
+        "uid": "36c1ba78-47bc-5553-afc4-1adce7e3c132", 
+        "weighted_score": 9.983200949589185e+17
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "F/A-18 Super Hornet", 
+      "Full_text": "The Boeing F/A-18E and F/A-18F Super Hornet are twin-engine, carrier-capable, multirole fighter aircraft variants based on the McDonnell Douglas F/A-18 Hornet. The F/A-18E single-seat and F/A-18F tandem-seat variants are larger and more advanced derivatives of the F/A-18C and D Hornet. The Super Hornet has an internal 20 mm M61 rotary cannon and can carry air-to-air missiles and air-to-surface weapons. Additional fuel can be carried in up to five external fuel tanks and the aircraft can be configured as an airborne tanker by adding an external air refueling system.\nDesigned and initially produced by McDonnell Douglas, the Super Hornet first flew in 1995. Low-rate production began in early 1997 with full-rate production starting in September 1997, after the merger of McDonnell Douglas and Boeing the previous month. The Super Hornet entered service with the United States Navy in 1999, replacing the Grumman F-14 Tomcat, which was retired in 2006; the Super Hornet serves alongside the original Hornet. The Royal Australian Air Force (RAAF), which has operated the F/A-18A as its main fighter since 1984, ordered the F/A-18F in 2007 to replace its aging F-111C fleet. RAAF Super Hornets entered service in December 2010.", 
+      "Page_title": "Boeing_F/A-18E/F_Super_Hornet", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/FA-18_Hornet_VFA-41_retusche.jpg/256px-FA-18_Hornet_VFA-41_retusche.jpg", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "The Boeing F/A-18E and F/A-18F Super Hornet are twin-engine, carrier-capable, multirole fighter aircraft variants based on the McDonnell Douglas F/A-18 Hornet. The F/A-18E single-seat and F/A-18F tandem-seat variants are larger and more advanced derivatives of the F/A-18C and D Hornet", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Boeing_F/A-18E/F_Super_Hornet"
+    }
+  }, 
+  "f/a-18e super hornet": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "instagram": {
+    "query_entity_score": 1.0, 
+    "related_content": [
+      {
+        "uid": "02dd2fef-198f-55c9-91ca-511f668bd8ca", 
+        "weighted_score": 24.05015584841936
+      }, 
+      {
+        "uid": "f1406e44-c4a5-5588-b871-9212317c9f9b", 
+        "weighted_score": 17.983574902896105
+      }, 
+      {
+        "uid": "9af16b14-8375-59bb-b60b-a9921bf9a14c", 
+        "weighted_score": 16.064350491401548
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Instagram", 
+      "Full_text": "Instagram (short for Instant Telegram) is a photo and video-sharing social networking service owned by Facebook, Inc. It was created by Kevin Systrom and Mike Krieger, and launched in October 2010 exclusively on iOS. A version for Android devices was released a year later, in April 2012, followed by a feature-limited website interface in November 2012, and apps for Windows 10 Mobile and Windows 10 in April 2016 and October 2016 respectively.\nThe app allows users to upload photos and videos to the service, which can be edited with various filters, and organized with tags and location information. An account's posts can be shared publicly or with pre-approved followers. Users can browse other users' content by tags and locations, and view trending content. Users can \"like\" photos, and follow other users to add their content to a feed.\nThe service was originally distinguished by only allowing content to be framed in a square (1:1) aspect ratio, but these restrictions were eased in 2015. The service also added messaging features, the ability to include multiple images or videos in a single post, as well as \"Stories\"\u2014similar to its main competitor Snapchat\u2014which allows users to post photos and videos to a sequential feed, with each post accessible by others for 24 hours each.\nAfter its launch in 2010, Instagram rapidly gained popularity, with one million registered users in two months, 10 million in a year, and ultimately 800 million as of September 2017. In April 2012, Facebook acquired the service for approximately US$1 billion in cash and stock. As of  October 2015, over 40 billion photos have been uploaded to the service. Although praised for its influence, Instagram has been the subject of criticism, most notably for policy and interface changes, allegations of censorship, and illegal or improper content uploaded by users.", 
+      "Page_title": "Instagram", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/256px-Instagram_logo.svg.png", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Instagram (short for Instant Telegram) is a photo and video-sharing social networking service owned by Facebook, Inc. It was created by Kevin Systrom and Mike Krieger, and launched in October 2010 exclusively on iOS", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Instagram"
+    }
+  }, 
+  "jerry bruckheimer films": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "kenny loggins": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "47bf32c7-90ec-5f41-b9e3-006cf2d76e43", 
+        "weighted_score": 2.8141922962857304e+16
+      }, 
+      {
+        "uid": "77782957-9e35-559e-9cb3-ed3e5c5b32cf", 
+        "weighted_score": 1.6043025718477828e+16
+      }, 
+      {
+        "uid": "fca9d935-633b-5e7c-8023-bd2f58e00361", 
+        "weighted_score": 801717538447247.0
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Kenny Loggins", 
+      "Full_text": "Kenneth Clark Loggins (born January 7, 1948) is an American singer-songwriter and guitarist. His early songwriting compositions were recorded with the Nitty Gritty Dirt Band in 1970, which led to seven albums, performing as the group Loggins and Messina from 1972 to 1977. As a solo artist, Loggins experienced a string of soundtrack successes, including an Academy Award nomination for \"Footloose\" in 1984. His early soundtrack contributions date back to the film A Star Is Born in 1976, and for much of the 1980s and 1990s, he was known as \"The Soundtrack King\". Finally Home was released in 2013, shortly after Loggins formed the group Blue Sky Riders with Gary Burr and Georgia Middleman.", 
+      "Page_title": "Kenny_Loggins", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/en/3/3c/Kenny_Loggins.jpg", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Kenneth Clark Loggins (born January 7, 1948) is an American singer-songwriter and guitarist. His early songwriting compositions were recorded with the Nitty Gritty Dirt Band in 1970, which led to seven albums, performing as the group Loggins and Messina from 1972 to 1977", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Kenny_Loggins"
+    }
+  }, 
+  "maverick.": {
+    "query_entity_score": 1.0, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "michael singer": {
+    "query_entity_score": 2.0, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "miles teller": {
+    "related_content": [
+      {
+        "uid": "7440f1f0-56ba-5c6e-af97-f824dc2a6300", 
+        "weighted_score": 517780131241.4521
+      }, 
+      {
+        "uid": "4bd76b8b-0f9f-5975-bf0e-fcdaefa93093", 
+        "weighted_score": 291888185.0312464
+      }, 
+      {
+        "uid": "021ee622-4b60-5ecb-9344-b7362c3320bd", 
+        "weighted_score": 40355836.30859904
+      }
+    ], 
+    "wiki_info": null
+  }, 
+  "paramount pictures": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "7482cade-b0ad-5ab5-a2c3-8f698932fc0c", 
+        "weighted_score": 5.623893395073851e+18
+      }, 
+      {
+        "uid": "488fac2a-aa65-5e6d-ad6f-6f9dbfeabd49", 
+        "weighted_score": 2.5481148512675676e+18
+      }, 
+      {
+        "uid": "9f591df1-5cdf-5adc-b54a-39fa621bf5ba", 
+        "weighted_score": 4.763830727423031e+17
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Paramount Pictures", 
+      "Full_text": "Paramount Pictures Corporation (also known simply as Paramount) is an American film studio based in Hollywood, California, that has been a subsidiary of the American media conglomerate Viacom since 1994. Paramount is the fifth oldest surviving film studio in the world, the second oldest in the United States, and the sole member of the \"Big Six\" film studios still located in the Los Angeles neighborhood of Hollywood. \nIn 1916, film producer Adolph Zukor put 22 actors and actresses under contract and honored each with a star on the logo. These fortunate few would become the first \"movie stars.\" In 2014, Paramount Pictures became the first major Hollywood studio to distribute all of its films in digital form only. The company's headquarters and studios are located at 5555 Melrose Avenue, Hollywood, California, United States.Paramount Pictures is a member of the Motion Picture Association of America (MPAA).\n\n", 
+      "Page_title": "Paramount_Pictures", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4d/Paramount_Pictures_2010.svg/256px-Paramount_Pictures_2010.svg.png", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Paramount Pictures Corporation (also known simply as Paramount) is an American film studio based in Hollywood, California, that has been a subsidiary of the American media conglomerate Viacom since 1994. Paramount is the fifth oldest surviving film studio in the world, the second oldest in the United States, and the sole member of the \"Big Six\" film studios still located in the Los Angeles neighborhood of Hollywood", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Paramount_Pictures"
+    }
+  }, 
+  "tom cruise": {
+    "related_content": [
+      {
+        "uid": "c362c1df-197e-5178-8140-ef5652b29a09", 
+        "weighted_score": 52187373109601.11
+      }, 
+      {
+        "uid": "f1fc7d98-4d3b-5b7f-a767-08c7cd8cb49a", 
+        "weighted_score": 9999789595586.305
+      }, 
+      {
+        "uid": "e1901a24-ac31-5508-adc1-6a6350745dc9", 
+        "weighted_score": 3187159.1405168516
+      }
+    ], 
+    "wiki_info": null
+  }, 
+  "tonight show starring jimmy fallon": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": {
+      "Entity": "Tonight Show Starring Jimmy Fallon", 
+      "Full_text": "The Tonight Show Starring Jimmy Fallon is an American late-night talk show hosted by Jimmy Fallon, on NBC. The show premiered on February 17, 2014, and is produced by Broadway Video and Universal Television. It is the seventh incarnation of NBC's long-running Tonight Show franchise, with Fallon serving as the sixth host. The show also stars sidekick and announcer Steve Higgins and house band The Roots. The Tonight Show is produced by Katie Hockmeyer and executive-produced by Lorne Michaels. The show records from Studio 6B in Rockefeller Center, New York City. This was where The Tonight Show Starring Johnny Carson was filmed until 1972.\nThe program airs weeknights at 11:34 p.m. ET/PT. The show opens with Fallon's topical monologue, then transitions into comedic sketches/games, concluding with a guest interview and musical performance. The Tonight Show Starring Jimmy Fallon attracted high ratings from its 2014 premiere. Many moments from the series have generated viral videos. The show has been nominated for nine Primetime Emmy Awards, winning two.\nOn August 13, 2015, NBC announced that Fallon signed a contract to remain as host until at least 2021.", 
+      "Page_title": "The_Tonight_Show_Starring_Jimmy_Fallon", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/en/2/28/TSSJF_Logo.png", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "The Tonight Show Starring Jimmy Fallon is an American late-night talk show hosted by Jimmy Fallon, on NBC. The show premiered on February 17, 2014, and is produced by Broadway Video and Universal Television", 
+      "WikiURL": "https://en.wikipedia.org/wiki/The_Tonight_Show_Starring_Jimmy_Fallon"
+    }
+  }, 
+  "top gun maverick": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": {
+      "Entity": "Top Gun Maverick", 
+      "Full_text": "Top Gun: Maverick is an upcoming American military action drama film directed by Joseph Kosinski with a screenplay written by Peter Craig, Justin Marks, Ashley Edward Miller and Zack Stentz. It is the sequel to Top Gun (1986), intended to be the second installment in the Top Gun film series, and stars Tom Cruise, Miles Teller, Val Kilmer, Jennifer Connelly, and Glen Powell. It will be released on July 12, 2019 by Paramount Pictures.", 
+      "Page_title": "Top_Gun:_Maverick", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/en/f/f6/Top_Gun_Maverick_poster.png", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Top Gun: Maverick is an upcoming American military action drama film directed by Joseph Kosinski with a screenplay written by Peter Craig, Justin Marks, Ashley Edward Miller and Zack Stentz. It is the sequel to Top Gun (1986), intended to be the second installment in the Top Gun film series, and stars Tom Cruise, Miles Teller, Val Kilmer, Jennifer Connelly, and Glen Powell", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Top_Gun:_Maverick"
+    }
+  }, 
+  "uss abraham lincoln": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "7b186460-52a3-5820-9fed-a54561d2ef46", 
+        "weighted_score": 3566365710.8570685
+      }, 
+      {
+        "uid": "36420c48-c413-5549-81e8-e699bfca2ee2", 
+        "weighted_score": 277120709.27455306
+      }, 
+      {
+        "uid": "e847d075-7af2-56c2-855a-a1c0142ed899", 
+        "weighted_score": 204091003.23797658
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Uss Abraham Lincoln", 
+      "Full_text": "Two ships have borne the name Abraham Lincoln, in honor of the 16th President of the United States.\n\nUSS Abraham Lincoln (SSBN-602), a ballistic missile submarine\nUSS Abraham Lincoln (CVN-72), an aircraft carrier currently in serviceSee also\n\nUSS President Lincoln", 
+      "Page_title": "USS_Abraham_Lincoln", 
+      "WikiImg": "", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Two ships have borne the name Abraham Lincoln, in honor of the 16th President of the United States.  USS Abraham Lincoln (SSBN-602), a ballistic missile submarine USS Abraham Lincoln (CVN-72), an aircraft carrier currently in serviceSee also  USS President Lincoln", 
+      "WikiURL": "https://en.wikipedia.org/wiki/USS_Abraham_Lincoln"
+    }
+  }, 
+  "val kilmer": {
+    "query_entity_score": 2.0, 
+    "related_content": [
+      {
+        "uid": "1184bdb6-639a-5fe2-a527-631b28559744", 
+        "weighted_score": 1.9792176624700298e+18
+      }, 
+      {
+        "uid": "1e1c6193-8391-51d2-a17a-5e09540d7e5a", 
+        "weighted_score": 1.4641899375631662e+18
+      }, 
+      {
+        "uid": "1c3495df-d8db-5fcd-9974-27d7f2820600", 
+        "weighted_score": 455303437622883.4
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Val Kilmer", 
+      "Full_text": "Val Edward Kilmer (born December 31, 1959) is an American actor. Originally a stage actor, Kilmer became popular in the mid-1980s after a string of appearances in comedy films, starting with Top Secret! (1984), then the cult classic Real Genius (1985), as well as the military action film Top Gun (1986), the fantasy film Willow (1988), and Doc Holliday in Tombstone (1993).\nSome of his other notable film roles include Jim Morrison in The Doors (1991), \"Mentor\" Elvis Presley in True Romance (1993), armed robber Chris Shiherlis in Heat (1995), Bruce Wayne / Batman in Batman Forever (1995), Simon Templar in The Saint (1997), astronaut Robby Gallagher in Red Planet (2000), a meth-using informant in The Salton Sea (2002), FBI Special Agent Paul Pryzwarra in D\u00e9j\u00e0 Vu (2006) and Dieter Von Cunth in MacGruber (2010).", 
+      "Page_title": "Val_Kilmer", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/2/22/Val_Kilmer_Cannes.jpg", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Val Edward Kilmer (born December 31, 1959) is an American actor. Originally a stage actor, Kilmer became popular in the mid-1980s after a string of appearances in comedy films, starting with Top Secret! (1984), then the cult classic Real Genius (1985), as well as the military action film Top Gun (1986), the fantasy film Willow (1988), and Doc Holliday in Tombstone (1993)", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Val_Kilmer"
+    }
+  }
+}

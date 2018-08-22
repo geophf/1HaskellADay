@@ -1,0 +1,545 @@
+{
+  "2018 skillsusa": {
+    "query_entity_score": 2.0, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "abby craft": {
+    "query_entity_score": 2.0, 
+    "related_content": [
+      {
+        "uid": "77849bac-36ff-5faf-91b0-4773d6e80dfa", 
+        "weighted_score": 13533.288533487075
+      }, 
+      {
+        "uid": "d9c24c9a-3a4d-57db-bc59-c7bad23d3567", 
+        "weighted_score": 528.7702365865457
+      }
+    ], 
+    "wiki_info": null
+  }, 
+  "advanced technology center": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "6e76ad28-cdcf-5305-b6b5-a80d57e6520c", 
+        "weighted_score": 1.547985669796744e+16
+      }, 
+      {
+        "uid": "785a796c-8135-56b2-9abb-8ac1c8529f37", 
+        "weighted_score": 9500943677495162.0
+      }, 
+      {
+        "uid": "ca7c247a-8683-55d2-80ad-dc0261b0c7c3", 
+        "weighted_score": 15870923000047.775
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Advanced Technology Center", 
+      "Full_text": "The Advanced Technology College (ATC) is a four-year technical college located in Daytona Beach, Florida in the United States. This technical college carries courses such as computer technology, construction, manufacturing, engineering, and automotive services.\nThe ATC is involved in a joint-partnership program with Volusia County and Flagler County school districts. The Advanced Technology Center provides high school students in their junior and senior years the ability to dual-enroll and receive college credits. There is no longer transportation to and from the home high schools to the ATC. The ATC also allows for adult students from Daytona State College to take courses at the ATC.", 
+      "Page_title": "Advanced_Technology_College", 
+      "WikiImg": "", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "The Advanced Technology College (ATC) is a four-year technical college located in Daytona Beach, Florida in the United States. This technical college carries courses such as computer technology, construction, manufacturing, engineering, and automotive services", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Advanced_Technology_College"
+    }
+  }, 
+  "art institute of virginia beach": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "aa9a0052-d784-5139-bfee-f4cfa31685dc", 
+        "weighted_score": 1133835.2945386912
+      }, 
+      {
+        "uid": "498d4c9c-39e5-5b0b-893c-946abf40cd78", 
+        "weighted_score": 762216.8606580085
+      }, 
+      {
+        "uid": "54cebd28-567c-57aa-b502-f17cc81a81f9", 
+        "weighted_score": 319325.07478503755
+      }
+    ], 
+    "wiki_info": null
+  }, 
+  "career education": {
+    "query_entity_score": 2.0, 
+    "related_content": [
+      {
+        "uid": "576d3f27-d8ab-52b4-8713-79facbdb1289", 
+        "weighted_score": 1.4513106377534351e+19
+      }, 
+      {
+        "uid": "9259df44-b2d1-5c4d-bff6-1b7dd870562a", 
+        "weighted_score": 3240600189.0471625
+      }, 
+      {
+        "uid": "8bfc8217-6544-5e7e-81dc-97af660451df", 
+        "weighted_score": 10393.780940985305
+      }
+    ], 
+    "wiki_info": null
+  }, 
+  "christopher thomas": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "7fbe6b83-c9b0-525c-9e7d-e7a68d92cd45", 
+        "weighted_score": 440848328811.9256
+      }, 
+      {
+        "uid": "81db4d5c-6829-11e8-b55f-37a60b9ec1fc", 
+        "weighted_score": 1.1664903298007558
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Christopher Thomas", 
+      "Full_text": "Christopher Yancy Thomas (March 24, 1818 \u2013 February 11, 1879) was a politician and lawyer from Virginia.", 
+      "Page_title": "Christopher_Thomas", 
+      "WikiImg": "", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Christopher Yancy Thomas (March 24, 1818 \u2013 February 11, 1879) was a politician and lawyer from Virginia.", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Christopher_Thomas"
+    }
+  }, 
+  "clemson university": {
+    "query_entity_score": 2.0, 
+    "related_content": [
+      {
+        "uid": "8a198b86-9113-5f6b-bd58-f1f256c37ffa", 
+        "weighted_score": 4432365561224.928
+      }, 
+      {
+        "uid": "d8ced3a7-b915-5983-b518-bda0505b2451", 
+        "weighted_score": 16914188161.951962
+      }, 
+      {
+        "uid": "a55cf811-e1d0-5cbb-84dc-729a3027fc40", 
+        "weighted_score": 9294255746.204622
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Clemson University", 
+      "Full_text": "Clemson University () is an American public, coeducational, land-grant research university in Clemson, South Carolina, United States. Founded in 1889, Clemson is the second-largest university in student population in South Carolina. For the fall 2017 semester, the university enrolled a total of 19,402 undergraduate students and 4,985 graduate students, and the student/faculty ratio was 18:1. Clemson's 1,400 acre campus  is located in the foothills of the Blue Ridge Mountains and sits next to Lake Hartwell. The university manages the nearby 17,500 acre Clemson Experimental Forest that is used for research, education, and recreation.\nClemson University consists of seven colleges: Agriculture, Forestry and Life Sciences; Architecture, Arts and Humanities; Business; Behavioral, Social and Health Sciences; Education; Engineering, Computing and Applied Sciences; and Science. U.S. News & World Report ranks Clemson University 21st among all \"national\" public universities. Clemson University is classified as a \"Doctoral university [with] highest research activity\".", 
+      "Page_title": "Clemson_University", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9c/Clemson_University_Seal.svg/256px-Clemson_University_Seal.svg.png", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Clemson University () is an American public, coeducational, land-grant research university in Clemson, South Carolina, United States. Founded in 1889, Clemson is the second-largest university in student population in South Carolina", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Clemson_University"
+    }
+  }, 
+  "coast guard station little creek": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "35fc1b15-a754-5c16-8f18-14b6a4e72621", 
+        "weighted_score": 448936736062.2917
+      }, 
+      {
+        "uid": "841ca51f-0885-5cb3-8ccc-da87249bd7cb", 
+        "weighted_score": 1788518587.6577637
+      }, 
+      {
+        "uid": "130fde72-f1e5-50d0-a9bb-11805255e345", 
+        "weighted_score": 5225667.674896861
+      }
+    ], 
+    "wiki_info": null
+  }, 
+  "cox high school future teachers": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "croix richardt": {
+    "query_entity_score": 2.0, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "eating healthy": {
+    "query_entity_score": 2.0, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "gina elise": {
+    "query_entity_score": 2.0, 
+    "related_content": [], 
+    "wiki_info": {
+      "Entity": "Gina Elise", 
+      "Full_text": "Pin-ups For Vets is a non-profit charitable organization dedicated to helping injured and ill American Soldiers, Marines, Airmen, Guards, and Sailors\u2014and current active-duty personnel. The project is the work of Gina Elise who sells and distributes the Pin-ups For Vets Calendar, which hearkens back to 1940s and 1950-style vintage pretty-girl images. The calendars are considered very tasteful by today's standards; they contain no frontal nudity, or nudity of any kind. Elise appears in various types of period costume and lingerie. Several other women are involved in the project as models besides Elise. Some of these women have served in the U.S. Armed Forces themselves. To date, the organization has donated over $50,000 to veterans hospitals.\nVintage hardware often features in Pin-ups For Vets photography, including old bikes, aircraft and military tanks. Elise also takes the time to travel to stateside military hospitals personally, delivering the calendars, posters, and T-shirts to wounded vets, soldiers, airmen, Marines, and seamen at their bedsides, and thanking them for their service.Elise was awarded the Volunteer of the Year award by the Los Angeles Business Journal on May 5, 2009 (as part of the newspaper's \"Women Making a Difference\" award series). In November 2010, Gina was featured on an Oprah Winfrey Show episode honoring American volunteers. Also in 2010, the movie Red (Bruce Willis and Helen Mirren, Summit Entertainment) featured Gina Elise in a scene showing her pin-up in a locker in the CIA headquarters.\nElise has so far raised over $50,000 for rehab programs that have gone to military and VA hospitals, and in 2007 won the Outstanding Young Californian award from the Junior Chamber of Commerce and California Jaycees. Eight flags have been flown in honor of the \"Pin-ups For Vets\" calendar project on various military bases worldwide. Gina hopes to eventually visit a VA hospital in each of the fifty States.", 
+      "Page_title": "Pin-ups_for_Vets", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/en/0/0a/Pin-ups_for_Vets_%28logo%29.JPG", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Pin-ups For Vets is a non-profit charitable organization dedicated to helping injured and ill American Soldiers, Marines, Airmen, Guards, and Sailors\u2014and current active-duty personnel. The project is the work of Gina Elise who sells and distributes the Pin-ups For Vets Calendar, which hearkens back to 1940s and 1950-style vintage pretty-girl images", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Pin-ups_for_Vets"
+    }
+  }, 
+  "hannah provost": {
+    "query_entity_score": 2.0, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "inside our schools first place award": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "joint base san antonio-lackland": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "joshua sewell": {
+    "query_entity_score": 2.0, 
+    "related_content": [
+      {
+        "uid": "b7810a2e-5216-11e8-bbdf-73bd6042840f", 
+        "weighted_score": 1.7739646520825507
+      }, 
+      {
+        "uid": "4901e46a-732c-11e8-b8cb-73284f109183", 
+        "weighted_score": 0.9855935333101765
+      }
+    ], 
+    "wiki_info": null
+  }, 
+  "karley thomas": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "bf4ede82-3aba-54bf-80b5-37a60c71fad5", 
+        "weighted_score": 8.581308794798213
+      }, 
+      {
+        "uid": "81db4d5c-6829-11e8-b55f-37a60b9ec1fc", 
+        "weighted_score": 1.1664903298007558
+      }
+    ], 
+    "wiki_info": null
+  }, 
+  "katherine stauch": {
+    "query_entity_score": 2.0, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "kylee hines": {
+    "query_entity_score": 2.0, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "laportia perkins": {
+    "query_entity_score": 0.6666666666666666, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "linkhorn park elementary": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "0c9b8ce2-81f7-5ec2-85dd-e3058b95d020", 
+        "weighted_score": 8023759147295680.0
+      }, 
+      {
+        "uid": "be47e676-47a4-5b18-9b7f-8d69b24d821f", 
+        "weighted_score": 3970114362265067.0
+      }, 
+      {
+        "uid": "72d6a2ca-30c5-571f-8ae7-29846ca81fb5", 
+        "weighted_score": 8366789626925.369
+      }
+    ], 
+    "wiki_info": null
+  }, 
+  "luna-lei": {
+    "query_entity_score": 1.0, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "mackenzie hohman": {
+    "query_entity_score": 2.0, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "madeline arndt": {
+    "query_entity_score": 2.0, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "ocean lakes high school": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "53379da1-3113-508d-b3e1-0b036ab42637", 
+        "weighted_score": 1.483497519772633e+17
+      }, 
+      {
+        "uid": "20d2388f-489c-5f61-a259-f215ceed7eb7", 
+        "weighted_score": 6.53508459548266e+16
+      }, 
+      {
+        "uid": "69dbb131-3a7a-58db-962c-9fec861e0f50", 
+        "weighted_score": 21058006780446.473
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Ocean Lakes High School", 
+      "Full_text": "Ocean Lakes High School (OLHS) is a public high school in Virginia Beach, Virginia and is located in the city's southeastern section.", 
+      "Page_title": "Ocean_Lakes_High_School", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/en/7/77/OLLogo.png", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Ocean Lakes High School (OLHS) is a public high school in Virginia Beach, Virginia and is located in the city's southeastern section.", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Ocean_Lakes_High_School"
+    }
+  }, 
+  "pin-ups": {
+    "query_entity_score": 1.0, 
+    "related_content": [], 
+    "wiki_info": {
+      "Entity": "Pin-Ups", 
+      "Full_text": "A pin-up model (known as a pin-up girl for a female and less commonly male pin-up for a male) is a model whose mass-produced pictures see wide appeal as popular culture. Pin-ups are intended for informal display, i.e. meant to be \"pinned-up\" on a wall. Pin-up models may be glamour models, fashion models, or actors. These pictures are also sometimes known as cheesecake photos.The term pin-up may refer to drawings, paintings, and other illustrations as well as photographs (see the list of pin-up artists). The term was first attested to in English in 1941; however, the practice is documented back at least to the 1890s. Pin-up images could be cut out of magazines or newspapers, or on a postcard or lithograph. Such pictures often appear on walls, desks, or calendars. Posters of pin-ups were mass-produced, and became popular from the mid 20th century.\nMale pin-ups were less common than their female counterparts throughout the 20th century, although a market for homoerotica has always existed as well as pictures of popular male celebrities targeted at women or girls. Examples include James Dean and Jim Morrison.", 
+      "Page_title": "Pin-up_model", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Betty_Grable_20th_Century_Fox.jpg/256px-Betty_Grable_20th_Century_Fox.jpg", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "A pin-up model (known as a pin-up girl for a female and less commonly male pin-up for a male) is a model whose mass-produced pictures see wide appeal as popular culture. Pin-ups are intended for informal display, i.e", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Pin-up_model"
+    }
+  }, 
+  "post traumatic stress disorder": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "cea946ac-3181-5649-bc98-2c650de08ed0", 
+        "weighted_score": 1.7504299745219336e+16
+      }, 
+      {
+        "uid": "3418f8ef-e9df-5f82-8229-97e7c235b013", 
+        "weighted_score": 135447250914833.5
+      }, 
+      {
+        "uid": "ea5aeff0-bf4e-5816-8414-15f4770d00f4", 
+        "weighted_score": 2997647173479.9556
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Post Traumatic Stress Disorder", 
+      "Full_text": "Posttraumatic stress disorder (PTSD) is a mental disorder that can develop after a person is exposed to a traumatic event, such as sexual assault, warfare, traffic collisions, or other threats on a person's life. Symptoms may include disturbing thoughts, feelings, or dreams related to the events, mental or physical distress to trauma-related cues, attempts to avoid trauma-related cues, alterations in how a person thinks and feels, and an increase in the fight-or-flight response. These symptoms last for more than a month after the event. Young children are less likely to show distress, but instead may express their memories through play. A person with PTSD is at a higher risk for suicide and intentional self-harm.Most people who have experienced a traumatic event will not develop PTSD. People who experience interpersonal trauma (for example rape or child abuse) are more likely to develop PTSD, as compared to people who experience non-assault based trauma, such as accidents and natural disasters. About half of people develop PTSD following rape. Children are less likely than adults to develop PTSD after trauma, especially if they are under 10 years of age. Diagnosis is based on the presence of specific symptoms following a traumatic event.Prevention may be possible when therapy is targeted at those with early symptoms but is not effective when provided to all individuals whether or not symptoms are present. The main treatments for people with PTSD are counselling and medication. A number of different types of therapy may be useful. This may occur one-on-one or in a group. Antidepressants of the selective serotonin reuptake inhibitor type are the first-line medications for PTSD and result in benefit in about half of people. These benefits are less than those seen with therapy. It is unclear if using medications and therapy together has greater benefit.  Other medications do not have enough evidence to support their use, and in the case of benzodiazepines, may worsen outcomes.In the United States about 3.5% of adults have PTSD in a given year, and 9% of people develop it at some point in their life. In much of the rest of the world, rates during a given year are between 0.5% and 1%. Higher rates may occur in regions of armed conflict. It is more common in women than men. Symptoms of trauma-related mental disorders have been documented since at least the time of the ancient Greeks. During the World Wars the condition was known under various terms including \"shell shock\" and \"combat neurosis\". The term \"posttraumatic stress disorder\" came into use in the 1970s in large part due to the diagnoses of U.S. military veterans of the Vietnam War. It was officially recognized by the American Psychiatric Association in 1980 in the third edition of the Diagnostic and Statistical Manual of Mental Disorders (DSM-III).", 
+      "Page_title": "Posttraumatic_stress_disorder", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/USMC-120503-M-9426J-001.jpg/256px-USMC-120503-M-9426J-001.jpg", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Posttraumatic stress disorder (PTSD) is a mental disorder that can develop after a person is exposed to a traumatic event, such as sexual assault, warfare, traffic collisions, or other threats on a person's life. Symptoms may include disturbing thoughts, feelings, or dreams related to the events, mental or physical distress to trauma-related cues, attempts to avoid trauma-related cues, alterations in how a person thinks and feels, and an increase in the fight-or-flight response", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Posttraumatic_stress_disorder"
+    }
+  }, 
+  "princess anne high": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "ca034b57-c977-57df-b90c-bf1f4e59761b", 
+        "weighted_score": 3460238289325.439
+      }, 
+      {
+        "uid": "456bb65b-873c-5855-ac67-25f57aafe424", 
+        "weighted_score": 444179144426.473
+      }, 
+      {
+        "uid": "ff42054d-56cc-59ef-8824-9f32020b54cb", 
+        "weighted_score": 93766.66092898199
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Princess Anne High School", 
+      "Full_text": "Princess Anne High School (PAHS) is one of 11 high schools in the Virginia Beach City Public School System.  Opened in 1954, it is the oldest remaining high school in Virginia Beach, Virginia, United States.  The school is named after the now extinct Princess Anne County, Virginia (itself named after the British Royal, Queen Anne, titled at the time and prior to ascension, Princess of Denmark) which was annexed with the founding of Virginia Beach.", 
+      "Page_title": "Princess_Anne_High_School", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/en/a/a9/PAHS.jpg", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Princess Anne High School (PAHS) is one of 11 high schools in the Virginia Beach City Public School System.  Opened in 1954, it is the oldest remaining high school in Virginia Beach, Virginia, United States", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Princess_Anne_High_School"
+    }
+  }, 
+  "ptsd": {
+    "query_entity_score": 1.0, 
+    "related_content": [
+      {
+        "uid": "c301b53d-9565-5052-b07a-673fb6ce134d", 
+        "weighted_score": 38014882740809.1
+      }, 
+      {
+        "uid": "f4f9ae4b-088b-5638-bcbc-4a94becc2841", 
+        "weighted_score": 242532010.2740344
+      }, 
+      {
+        "uid": "83a1a276-cddb-5529-8273-eec0c6035304", 
+        "weighted_score": 208153350.4621418
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "PTSD", 
+      "Full_text": "PTSD: Post Traumatic Stress Disorder is the fourth studio album by American hip hop recording artist Pharoahe Monch, released on April 15, 2014 under his independent label, W.A.R. Media, in partnership with Fontana Distribution. The album features guest appearances from Black Thought, Talib Kweli, Denaun, The Stepkids and Vernon Reid, as well as production from Lee Stone, Marco Polo, Jesse West and Quelle Chris amongst others. The album was promoted by two Lee Stone-produced singles: \"Damage\" and \"Bad M.F.\".", 
+      "Page_title": "PTSD_(album)", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/en/8/8f/Pharoahe_Monch_PTSD.jpg", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "PTSD: Post Traumatic Stress Disorder is the fourth studio album by American hip hop recording artist Pharoahe Monch, released on April 15, 2014 under his independent label, W.A.R. Media, in partnership with Fontana Distribution", 
+      "WikiURL": "https://en.wikipedia.org/wiki/PTSD_(album)"
+    }
+  }, 
+  "queen mary": {
+    "query_entity_score": 2.0, 
+    "related_content": [
+      {
+        "uid": "46b60453-a0c2-5fae-a088-9a214b90cf12", 
+        "weighted_score": 2.6652372590400573e+17
+      }, 
+      {
+        "uid": "dad2bf9b-ff67-57e7-b974-c6c7f1d478ed", 
+        "weighted_score": 2.1537373899441392e+17
+      }, 
+      {
+        "uid": "1552e3d5-a450-5e80-95c2-3c0c7207f19f", 
+        "weighted_score": 2.1537373899441392e+17
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Queen Mary", 
+      "Full_text": "Queen Mary University of London (QMUL) is a public research university in London, England, and a constituent college of the federal University of London. It dates back to the foundation of London Hospital Medical College in 1785. Queen Mary College, named after Mary of Teck, was admitted to the University of London in 1915 and in 1989 merged with Westfield College to form Queen Mary and Westfield College. In 1995 Queen Mary and Westfield College merged with St Bartholomew's Hospital Medical College and the London Hospital Medical College to form the School of Medicine and Dentistry.\nIts main campus is in the Mile End area of Tower Hamlets, with other campuses in Holborn, Smithfield and Whitechapel. In 2015/16 it had 17,140 students and 4,000 staff. Queen Mary is organised into three faculties \u2013 the Faculty of Humanities and Social Sciences, the Faculty of Science and Engineering and Barts and The London School of Medicine and Dentistry \u2013 within which there are 21 academic departments and institutes.\nQueen Mary is a member of the Russell Group of leading British research universities, the Association of Commonwealth Universities and Universities UK. Queen Mary is a major centre for medical teaching and research and is part of UCL Partners, the world's largest academic health science centre. It has a strategic partnership with the University of Warwick, including research collaboration and joint teaching of English, history and computer science undergraduates. Queen Mary also collaborated with Royal Holloway, University of London, to run programmes at the University of London Institute in Paris. However, from September 2016, Queen Mary took over the functions provided by Royal Holloway. Queen Mary also collaborates with University of London International Programmes to offer its post graduate law and Global MBA program. For 2016-17, Queen Mary had a turnover of \u00a3428.8 million, including \u00a3107.6 million from research grants and contracts.Times Higher Education ranks Queen Mary 48th in its 2018 ranking of European universities. U.S. News and World Report ranks Queen Mary 116th overall in its 2018 ranking of world universities. In Times Higher Education Best universities in the UK 2017, it has been ranked 15th. Queen Mary is ranked in the top 5 universities in London in the Complete University Guide 2017 League Table. Queen Mary School of Law was ranked 34th in the world by QS World University Rankings 2018.  Queen Mary's Schools of English and Drama have both been ranked in the top 35 in the world, with the School of History ranking in the global top 50 by QS World University Rankings. There are eight Nobel Laureates amongst Queen Mary's alumni and current and former staff.", 
+      "Page_title": "Queen_Mary_University_of_London", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Queen_Mary%2C_University_of_London_Crest.svg/256px-Queen_Mary%2C_University_of_London_Crest.svg.png", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Queen Mary University of London (QMUL) is a public research university in London, England, and a constituent college of the federal University of London. It dates back to the foundation of London Hospital Medical College in 1785", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Queen_Mary_University_of_London"
+    }
+  }, 
+  "red mill": {
+    "query_entity_score": 2.0, 
+    "related_content": [
+      {
+        "uid": "20d2388f-489c-5f61-a259-f215ceed7eb7", 
+        "weighted_score": 6.53508459548266e+16
+      }, 
+      {
+        "uid": "6e76ad28-cdcf-5305-b6b5-a80d57e6520c", 
+        "weighted_score": 1.547985669796744e+16
+      }, 
+      {
+        "uid": "0c9b8ce2-81f7-5ec2-85dd-e3058b95d020", 
+        "weighted_score": 8023759147295680.0
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Red Mill", 
+      "Full_text": "Opened in 2001, Red Mill Commons is a large regional shopping center located in southeast Virginia Beach, Virginia, on Nimmo Pkwy between General Booth Blvd and Upton Dr containing about 130 shops and businesses.\nRetailers at the site include: Wal Mart Supercenter, TJ Maxx, Home Depot, Michaels, Fat Frogs Bike & Fitness, Pier 1 Imports, Dollar Tree, Home Depot, Petco, Kay Jewelers, Anytime Fitness, ABC and others; restaurants include: Outback Steakhouse, Chili's, Golden Corral, Sonic Drive In, Wendy's, Burger King, Starbucks, Panera Bread, La Bella Italia, Se\u00f1or Fox Mexican Restaurant, Rigoletto, Nawab, Tida Thai, Flip Flops Grill + Chill, Zero's Subs, Cold Stone Creamery, Red Robin, and Chipotle Mexican Grill.\nRed Mill Commons received several design awards and was voted \"Best of the Beach\" by the citizens of Virginia Beach in 2006.\nIn early 2008, Red Mill Walk, an expansion of the complex that is anchored by a Target, opened across Elson Green Ave. It also contains an Office Max store, Primo Pizza, Pearle Vision, AT&T, Once Upon a Child and several other businesses.  \"Red Mill Landing\" was built soon after and includes Fire Brew restaurant, Linxx Martial Arts Academy, The Skinny Dip Frozen Yogurt Bar and a Sprint store.\nRed Mill Commons contains 775,000 and Red Mill Walk 240,000 square feet (22,000 m2) of retail space.", 
+      "Page_title": "Red_Mill_Commons", 
+      "WikiImg": "", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Opened in 2001, Red Mill Commons is a large regional shopping center located in southeast Virginia Beach, Virginia, on Nimmo Pkwy between General Booth Blvd and Upton Dr containing about 130 shops and businesses. Retailers at the site include: Wal Mart Supercenter, TJ Maxx, Home Depot, Michaels, Fat Frogs Bike & Fitness, Pier 1 Imports, Dollar Tree, Home Depot, Petco, Kay Jewelers, Anytime Fitness, ABC and others; restaurants include: Outback Steakhouse, Chili's, Golden Corral, Sonic Drive In, Wendy's, Burger King, Starbucks, Panera Bread, La Bella Italia, Se\u00f1or Fox Mexican Restaurant, Rigoletto, Nawab, Tida Thai, Flip Flops Grill + Chill, Zero's Subs, Cold Stone Creamery, Red Robin, and Chipotle Mexican Grill", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Red_Mill_Commons"
+    }
+  }, 
+  "robyn sanders": {
+    "query_entity_score": 2.0, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "sarah baust": {
+    "query_entity_score": 2.0, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "savannah smith": {
+    "query_entity_score": 2.0, 
+    "related_content": [], 
+    "wiki_info": {
+      "Entity": "Savannah Smith", 
+      "Full_text": "Savannah Smith  (born 1992) is an American All State basketball player from Dallas. She is the youngest of four children.", 
+      "Page_title": "Savannah_Smith", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Savannah_Smith_working_at_Olympic_Park_London_2012.JPG/256px-Savannah_Smith_working_at_Olympic_Park_London_2012.JPG", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Savannah Smith  (born 1992) is an American All State basketball player from Dallas. She is the youngest of four children.", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Savannah_Smith"
+    }
+  }, 
+  "skill point certificate": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "three virginia beach": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "d7173ead-f505-5aea-a5c4-503c9d123f68", 
+        "weighted_score": 6.114342678912971e+16
+      }, 
+      {
+        "uid": "6c1ba07c-2c06-5218-b5d1-33e3f4ebe11f", 
+        "weighted_score": 116036859688045.48
+      }, 
+      {
+        "uid": "519b7ed3-af8f-5e51-8921-69e6142b1cd6", 
+        "weighted_score": 10811201650556.615
+      }
+    ], 
+    "wiki_info": null
+  }, 
+  "tracy \"byrdie\" gibbons": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "u.s. coast guard station": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "virginia beach city public school": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "5e6bd4ff-1d0f-5eb3-bd3c-8b0fab5eb4ba", 
+        "weighted_score": 302303743989475.0
+      }, 
+      {
+        "uid": "3d198db3-1f29-5edb-a49a-19cfa8db0f6d", 
+        "weighted_score": 34603.97726515108
+      }, 
+      {
+        "uid": "e29ef89a-4e7c-540f-afb1-7c6dda0f957d", 
+        "weighted_score": 5093.324904254667
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Virginia Beach City Public Schools", 
+      "Full_text": "Virginia Beach City Public Schools is the branch of the government of the city of Virginia Beach, Virginia responsible for public K-12 education. Like all public school systems in the state, it is legally classified as a school division instead of a school district. Although Virginia school divisions perform the functions of school districts in other U.S. states, they have no taxing authority, instead relying on appropriations from their local governments,\nThe school system is the second largest in Virginia, and among the 50 largest school systems in the United States (based on student enrollment). All of the division's 80+ schools are fully accredited in the Virginia Standards of Learning (SOL).Virginia Beach City Public Schools currently serves approximately 70,000 students, and includes nearly 90 schools.The division has a fleet of nearly 800 school buses, which is serviced by two bus garages and is the second largest employer in the city, following Naval Air Station Oceana.", 
+      "Page_title": "Virginia_Beach_City_Public_Schools", 
+      "WikiImg": "", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Virginia Beach City Public Schools is the branch of the government of the city of Virginia Beach, Virginia responsible for public K-12 education. Like all public school systems in the state, it is legally classified as a school division instead of a school district", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Virginia_Beach_City_Public_Schools"
+    }
+  }, 
+  "world war ii": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "53379da1-3113-508d-b3e1-0b036ab42637", 
+        "weighted_score": 1.483497519772633e+17
+      }, 
+      {
+        "uid": "c301b53d-9565-5052-b07a-673fb6ce134d", 
+        "weighted_score": 38014882740809.1
+      }, 
+      {
+        "uid": "69dbb131-3a7a-58db-962c-9fec861e0f50", 
+        "weighted_score": 21058006780446.473
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "World War Ii", 
+      "Full_text": "World War II (often abbreviated to WWII or WW2), also known as the Second World War, was a global war that lasted from 1939 to 1945, although conflicts reflecting the ideological clash between what would become the Allied and Axis blocs began earlier. The vast majority of the world's countries\u2014including all of the great powers\u2014eventually formed two opposing military alliances: the Allies and the Axis. It was the most global war in history; it directly involved more than 100 million people from over 30 countries. In a state of total war, the major participants threw their entire economic, industrial, and scientific capabilities behind the war effort, blurring the distinction between civilian and military resources. World War II was the deadliest conflict in human history, marked by 50 to 85 million fatalities, most of whom were civilians in the Soviet Union and China. It included massacres, the genocide of the Holocaust, strategic bombing, premeditated death from starvation and disease and the only use of nuclear weapons in war.The Empire of Japan aimed to dominate Asia and the Pacific and was already at war with the Republic of China in 1937, but the world war is generally said to have begun on 1 September 1939, the day of the invasion of Poland by Nazi Germany and the subsequent declarations of war on Germany by France and the United Kingdom. From late 1939 to early 1941, in a series of campaigns and treaties, Germany conquered or controlled much of continental Europe, and formed the Axis alliance with Italy and Japan. Under the Molotov\u2013Ribbentrop Pact of August 1939, Germany and the Soviet Union partitioned and annexed territories of their European neighbours, Poland, Finland, Romania and the Baltic states. The war continued primarily between the European Axis powers and the coalition of the United Kingdom and the British Commonwealth, with campaigns including the North Africa and East Africa campaigns, the aerial Battle of Britain, the Blitz bombing campaign, and the Balkan Campaign, as well as the long-running Battle of the Atlantic. On 22 June 1941, the European Axis powers launched an invasion of the Soviet Union, opening the largest land theatre of war in history, which trapped the Axis, most crucially the German Wehrmacht, into a war of attrition. In December 1941, Japan attacked the United States and European colonies in the Pacific Ocean, and quickly conquered much of the Western Pacific. The Japanese conquests were perceived by many in Asia as liberation from Western dominance; as such, several armies from the conquered territories aided the Japanese.\nThe Axis advance halted in 1942 when Japan lost the critical Battle of Midway, and Germany and Italy were defeated in North Africa and then, decisively, at Stalingrad in the Soviet Union. In 1943, with a series of German defeats on the Eastern Front, the Allied invasions of Sicily and Italy which brought about Italian surrender, and Allied victories in the Pacific, the Axis lost the initiative and was forced into strategic retreat on all fronts. In 1944, the Western Allies invaded German-occupied France, while the Soviet Union regained all of its territorial losses and invaded Germany and its allies. During 1944 and 1945 the Japanese suffered major reverses in mainland Asia in South Central China and Burma, while the Allies crippled the Japanese Navy and captured key Western Pacific islands.\nThe war in Europe concluded with an invasion of Germany by the Western Allies and the Soviet Union, culminating in the capture of Berlin by Soviet troops, the suicide of Adolf Hitler and the subsequent German unconditional surrender on 8 May 1945. Following the Potsdam Declaration by the Allies on 26 July 1945 and the refusal of Japan to surrender under its terms, the United States dropped atomic bombs on the Japanese cities of Hiroshima and Nagasaki on 6 and 9 August respectively. With an invasion of the Japanese archipelago imminent, the possibility of additional atomic bombings and the Soviet invasion of Manchuria, Japan formally surrendered on 2 September 1945. Thus ended the war in Asia, cementing the total victory of the Allies.\nWorld War II changed the political alignment and social structure of the world. The United Nations (UN) was established to foster international co-operation and prevent future conflicts. The victorious great powers\u2014China, France, the Soviet Union, the United Kingdom, and the United States\u2014became the permanent members of the United Nations Security Council. The Soviet Union and the United States emerged as rival superpowers, setting the stage for the Cold War, which lasted for the next 46 years. Meanwhile, the influence of European great powers waned, while the decolonisation of Africa and Asia began. Most countries whose industries had been damaged moved towards economic recovery. Political integration, especially in Europe, emerged as an effort to end pre-war enmities and to create a common identity.", 
+      "Page_title": "World_War_II", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/5/54/Infobox_collage_for_WWII.PNG", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "World War II (often abbreviated to WWII or WW2), also known as the Second World War, was a global war that lasted from 1939 to 1945, although conflicts reflecting the ideological clash between what would become the Allied and Axis blocs began earlier. The vast majority of the world's countries\u2014including all of the great powers\u2014eventually formed two opposing military alliances: the Allies and the Axis", 
+      "WikiURL": "https://en.wikipedia.org/wiki/World_War_II"
+    }
+  }
+}

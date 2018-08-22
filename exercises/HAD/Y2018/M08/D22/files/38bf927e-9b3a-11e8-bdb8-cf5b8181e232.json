@@ -1,0 +1,218 @@
+{
+  "auburn university": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "d06cb961-6ce0-525a-8f1f-6c5c4cd87c6b", 
+        "weighted_score": 4267080393.711214
+      }, 
+      {
+        "uid": "e1bf6448-6516-5486-af08-d47040698718", 
+        "weighted_score": 7681297.072845842
+      }, 
+      {
+        "uid": "d436c51c-e8c1-5809-b9fc-a0a4e93d146d", 
+        "weighted_score": 5971298.854992912
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Auburn University", 
+      "Full_text": "Auburn University (AU or Auburn) is a land-grant and public research university in Auburn, Alabama, United States. With more than 23,000 undergraduate students and a total enrollment of more than 29,000 with 1,260 faculty members, Auburn is the second largest university in Alabama. Auburn University is one of the state's two public flagship universities.Auburn was chartered on February 1, 1856, as East Alabama Male College, a private liberal arts school affiliated with the Methodist Episcopal Church, South.  In 1872, under the Morrill Act, it became the state's first public land-grant university and was renamed as the Agricultural and Mechanical College of Alabama. In 1892, it became the first four-year coeducational school in Alabama, and in 1899 was renamed Alabama Polytechnic Institute (API) to reflect its changing mission. In 1960, its name was changed to Auburn University to acknowledge the varied academic programs and larger curriculum of a major university. In 1964, under Federal Court mandate, AU admitted its first African American student.Auburn is among the few American universities designated as a land-grant, sea-grant, and space-grant research center.", 
+      "Page_title": "Auburn_University", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7f/Auburn_University_seal.svg/256px-Auburn_University_seal.svg.png", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Auburn University (AU or Auburn) is a land-grant and public research university in Auburn, Alabama, United States. With more than 23,000 undergraduate students and a total enrollment of more than 29,000 with 1,260 faculty members, Auburn is the second largest university in Alabama", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Auburn_University"
+    }
+  }, 
+  "grant robertson": {
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "joint expeditionary base little creek-fort story": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "fe90c2f0-4d91-5e19-b424-5af167f1751e", 
+        "weighted_score": 481696696150.0155
+      }, 
+      {
+        "uid": "6f139407-d3c9-5df7-898c-cae4a4f0e304", 
+        "weighted_score": 141169.71646386632
+      }, 
+      {
+        "uid": "b3b7f0b5-8706-53c8-9f5f-ad1bb00938d2", 
+        "weighted_score": 2.525090854439443
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Joint Expeditionary Base Little Creek-Fort Story", 
+      "Full_text": "Joint Expeditionary Base Little Creek\u2013Fort Story (JEBLC-FS), is a Joint Base of the United States military that is located in Virginia Beach, Virginia. The installation is made up of former U.S Army post Fort Story and Naval Amphibious Base Little Creek. It was created as the result of the Base Realignment and Closure, 2005 process. It is commanded by the United States Navy.", 
+      "Page_title": "Joint_Expeditionary_Base_Little_Creek\u2013Fort_Story", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/en/6/69/Fort_Storey_Shield.jpg", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Joint Expeditionary Base Little Creek\u2013Fort Story (JEBLC-FS), is a Joint Base of the United States military that is located in Virginia Beach, Virginia. The installation is made up of former U.S Army post Fort Story and Naval Amphibious Base Little Creek", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Joint_Expeditionary_Base_Little_Creek\u2013Fort_Story"
+    }
+  }, 
+  "jonathan ashton": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "josh jackson": {
+    "related_content": [
+      {
+        "uid": "323d8f72-7f25-56cf-8c8b-4e8a879ea1ba", 
+        "weighted_score": 38.245722726108475
+      }, 
+      {
+        "uid": "f6281dfb-e9db-5401-90dd-c8645a4afdc5", 
+        "weighted_score": 18.236588104137123
+      }, 
+      {
+        "uid": "5a451564-a4ac-581d-8fd9-c25272a6bee5", 
+        "weighted_score": 14.66576606303059
+      }
+    ], 
+    "wiki_info": null
+  }, 
+  "naval academy": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "c17542db-30de-5303-b365-ec775adfeae2", 
+        "weighted_score": 1504049517739396.8
+      }, 
+      {
+        "uid": "239de89f-d034-5603-aea4-1f0d12143e10", 
+        "weighted_score": 47100660037669.89
+      }, 
+      {
+        "uid": "d5191b22-ac81-50d5-96b2-1293044ce10c", 
+        "weighted_score": 9748480929059.371
+      }
+    ], 
+    "wiki_info": null
+  },
+  "nrotc": {
+    "query_entity_score": 1.0, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "ordnance disposal group 2": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "riverines": {
+    "query_entity_score": 1.0, 
+    "related_content": [
+      {
+        "uid": "f54506e7-9fd5-595c-b023-522d80f67fc5", 
+        "weighted_score": 709076873.3409926
+      }, 
+      {
+        "uid": "4fb1fa35-7656-5a51-913f-32914a72adf7", 
+        "weighted_score": 5.969757625298449
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Riverines", 
+      "Full_text": "In the Vietnam War, the Mobile Riverine Force (MRF) (after May 1967), initially designated Mekong Delta Mobile Afloat Force, and later the Riverines, were a joint US Army and US Navy force that comprised a substantial part of the Brown Water Navy. It was modeled after lessons learned by the French experience in the First Indochina War and had the task of both transport (of soldiers and equipment) and combat. The primary base was at \u0110\u1ed3ng T\u00e2m Base Camp, with a floating base at the base of the Mekong River. It played a key role in the Tet Offensive.", 
+      "Page_title": "Mobile_Riverine_Force", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/0/08/US_riverboat_using_napalm_in_Vietnam.jpg", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "In the Vietnam War, the Mobile Riverine Force (MRF) (after May 1967), initially designated Mekong Delta Mobile Afloat Force, and later the Riverines, were a joint US Army and US Navy force that comprised a substantial part of the Brown Water Navy. It was modeled after lessons learned by the French experience in the First Indochina War and had the task of both transport (of soldiers and equipment) and combat", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Mobile_Riverine_Force"
+    }
+  },
+  "ty britt": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "university of colorado": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "d06cb961-6ce0-525a-8f1f-6c5c4cd87c6b", 
+        "weighted_score": 4267080393.711214
+      }, 
+      {
+        "uid": "e3bd6251-3af9-53f1-9057-8ad8c60b8f93", 
+        "weighted_score": 3095417865.5462313
+      }, 
+      {
+        "uid": "8dc9feaa-b9d2-53b5-bd88-15559dd3f24e", 
+        "weighted_score": 2989753651.3512135
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "University Of Colorado", 
+      "Full_text": "The University of Colorado system is a system of public universities in Colorado consisting of four campuses: University of Colorado Boulder, University of Colorado Colorado Springs, University of Colorado Denver in downtown Denver and at the Anschutz Medical Campus in Aurora. It is governed by the elected, nine-member Board of Regents of the University of Colorado.", 
+      "Page_title": "University_of_Colorado", 
+      "WikiImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/USA_Colorado_location_map.svg/256px-USA_Colorado_location_map.svg.png", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "The University of Colorado system is a system of public universities in Colorado consisting of four campuses: University of Colorado Boulder, University of Colorado Colorado Springs, University of Colorado Denver in downtown Denver and at the Anschutz Medical Campus in Aurora. It is governed by the elected, nine-member Board of Regents of the University of Colorado.", 
+      "WikiURL": "https://en.wikipedia.org/wiki/University_of_Colorado"
+    }
+  }, 
+  "university of pennsylvania.": {
+    "query_entity_score": 2, 
+    "related_content": [], 
+    "wiki_info": null
+  }, 
+  "uss oak hill": {
+    "query_entity_score": 2, 
+    "related_content": [
+      {
+        "uid": "e003be58-77b9-529e-b472-14f63154d67c", 
+        "weighted_score": 69.4200277199486
+      }, 
+      {
+        "uid": "bc29fbed-b4e6-5531-8107-b0517d176bc0", 
+        "weighted_score": 22.465262492415395
+      }, 
+      {
+        "uid": "be0098a4-5f46-52f7-bf14-c9c5f9d79d3f", 
+        "weighted_score": 21.660631324018166
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Uss Oak Hill", 
+      "Full_text": "Two ships of the United States Navy have borne the name USS Oak Hill, in honor of Oak Hill plantation, the estate of James Monroe, the fifth U.S. President, in Loudoun County, Virginia.\n\nThe first, USS Oak Hill (LSD-7), was an Ashland-class dock landing ship, launched in 1943 and struck in 1969.\nThe second, USS Oak Hill (LSD-51), is a Harpers Ferry-class dock landing ship, launched in 1994. Active in service as of  2011.", 
+      "Page_title": "USS_Oak_Hill", 
+      "WikiImg": "", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Two ships of the United States Navy have borne the name USS Oak Hill, in honor of Oak Hill plantation, the estate of James Monroe, the fifth U.S. President, in Loudoun County, Virginia", 
+      "WikiURL": "https://en.wikipedia.org/wiki/USS_Oak_Hill"
+    }
+  }, 
+  "villanova": {
+    "query_entity_score": 1.0, 
+    "related_content": [
+      {
+        "uid": "830d42a2-3f4e-55aa-8fe0-3cfbbf6aa3dd", 
+        "weighted_score": 8070.800145685554
+      }, 
+      {
+        "uid": "bc8bf68a-4323-537f-a989-7ec5df5ffd2d", 
+        "weighted_score": 291.321149446628
+      }, 
+      {
+        "uid": "dbe725d1-37dc-58ec-ad24-89f7b10d041c", 
+        "weighted_score": 141.63571265481858
+      }
+    ], 
+    "wiki_info": {
+      "Entity": "Villanova", 
+      "Full_text": "Villanova is a name of Latin origin, meaning new town. It is equivalent to Italian Villanuova, French Villeneuve, Spanish Villanueva, and Galician, Occitan and Portuguese Vilanova. It may refer to:", 
+      "Page_title": "Villanova", 
+      "WikiImg": "", 
+      "WikiLanguage": "en", 
+      "WikiSummary": "Villanova is a name of Latin origin, meaning new town. It is equivalent to Italian Villanuova, French Villeneuve, Spanish Villanueva, and Galician, Occitan and Portuguese Vilanova", 
+      "WikiURL": "https://en.wikipedia.org/wiki/Villanova"
+    }
+  } 
+}
