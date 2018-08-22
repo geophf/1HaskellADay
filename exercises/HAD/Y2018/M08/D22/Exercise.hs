@@ -15,7 +15,7 @@ exDir = "Y2018/M08/D22/files/"
 
 -- what are the names of these JSON files?
 
-jsonfilenames :: FilePath -> [FilePath]
+jsonfilenames :: FilePath -> IO [FilePath]
 jsonfilenames dir = undefined
 
 {--
