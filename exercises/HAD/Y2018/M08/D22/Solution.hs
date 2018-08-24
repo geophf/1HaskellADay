@@ -83,9 +83,6 @@ type Endpoint = FilePath
 url :: Endpoint
 url = "https://some-url"
 
--- remove me: url = "https://lj4yu80wdk.execute-api.us-east-1.amazonaws.com/entity-storer"
-
-
 processJSON :: Endpoint -> FilePath -> IO ()
 processJSON url jsonfile =
    restructureJSON exDir jsonfile >>= \json ->
