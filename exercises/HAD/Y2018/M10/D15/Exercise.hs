@@ -11,7 +11,7 @@ your thumbdrive, what assests do you need to move off your iPod without
 moving assets that you already have on your thumbdrives?
 --}
 
-type Assets = [String]
+type Asset = String
 
 iPod, thumb1, thumb2, exDir :: FilePath
 exDir = "Y2018/M10/D15/"
@@ -21,5 +21,5 @@ thumb2 = "thumb2.sha"
 
 -- Given the files with the assets, what assets need to be moved off the iPod?
 
-assetsToMove :: FilePath -> FilePath -> FilePath -> IO Assets
+assetsToMove :: FilePath -> FilePath -> FilePath -> IO [Asset]
 assetsToMove ipod th1 th2 = undefined
