@@ -1,0 +1,17 @@
+{
+  "category_type":
+  [
+    {"id": "16", "cat": "primary", "parent": null},
+    {"id": "17", "cat": "channel", "parent": "16"},
+    {"id": "18", "cat": "section", "parent": "17"},
+    {"id": "19", "cat": "link", "parent": "17"},
+    {"id": "20", "cat": "display", "parent": null},
+    {"id": "21", "cat": "channel", "parent": "20"},
+    {"id": "22", "cat": "section", "parent": "20"},
+    {"id": "23", "cat": "channel", "parent": null},
+    {"id": "24", "cat": "section", "parent": "23"},
+    {"id": "25", "cat": "link", "parent": "23"},
+    {"id": "26", "cat": "stock", "parent": null},
+    {"id": "27", "cat": "symbol", "parent": "26"}
+  ]
+}
