@@ -30,9 +30,10 @@ Today's Haskell exercise is to verify this.
 So:
 --}
 
-exDir, catFile :: FilePath
+exDir, catFile, catTypesFile :: FilePath
 exDir = "Y2018/M10/D18/"
 catFile = "categories.txt"
+catTypesFile = "cat_types.json"
 
 type Category = String
 
