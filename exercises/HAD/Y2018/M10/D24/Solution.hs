@@ -39,7 +39,7 @@ instance Show BFState where
 -- given the initial state of the machine to be this:
 
 start :: BFState
-start = BF 0 ([72,101,108,108,111,44,32,119,111,114,108,100,33] ++ repeat 0)
+start = BF 0 ([72,101,108,108,111,44,32,119,111,114,108,100,33,10] ++ repeat 0)
 
 -- what does the following bf program do?
 
