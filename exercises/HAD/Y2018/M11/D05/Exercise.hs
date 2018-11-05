@@ -48,6 +48,16 @@ allRectangularNumbers calculator = undefined
 
 -- How many rectangular numbers are there?
 
+-- are the following rectangular numbers in that set?
+
+inRectangularSet :: Set RectangularNumber -> [RectangularNumber] -> Bool
+inRectangularSet rects samples = undefined
+
+-- use the following rectangular numbers as a sample set:
+
+samples :: [RectangularNumber]
+samples = [(5,6,2,3),(2,8,7,1)]
+
 -- Next, partition the rectangular numbers into two heaps: one that has numbers
 -- divisible by 11 and the other that has numbers that are not divisible by 11.
 
