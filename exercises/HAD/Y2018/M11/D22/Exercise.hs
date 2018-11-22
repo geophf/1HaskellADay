@@ -5,6 +5,8 @@ Happy Thanksgiving from the U.S.A.!
 
 From @fermatslibrary:
 
+url: https://twitter.com/fermatslibrary/status/1064519419303550976
+
 A visual proof that
 1/4 + 1/4² + 1/4³ + ... = 1/3
 
