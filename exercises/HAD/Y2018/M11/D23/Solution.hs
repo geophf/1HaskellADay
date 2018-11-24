@@ -113,36 +113,6 @@ ha4 f (x:xs) (ans:anss) =
 ha4' :: Eq a => (Answer -> a) -> a -> [Answer] -> [Answer]
 ha4' f x (a:anss) = if x == f a then anss else a:ha4' f x anss
 
-{--
-Generalized to the above
-
-hasAll4Girls :: Clue -> Bool
-hasAll4Girls = ha4g [Alberta .. Tamara] . Set.toList
-
-ha4g :: [Girl] -> [Answer] -> Bool
-ha4g [] [] = True
-ha4g (_:_) [] = False
-ha4g [] (_:_) = False
-ha4g (g:gs) (a@(Ans g1 _ _):anss) = 
-   ha4g gs (if g == g1 then anss else (a:ha4g' g anss))
-
-ha4g' :: Girl -> [Answer] -> [Answer]
-ha4g' g (a@(Ans g1 _ _):anss) = if g == g1 then anss else a:ha4g' g anss
-
-hasAll4Birds :: Clue -> Bool
-hasAll4Birds = ha4b [Canary .. Parrot] . Set.toList
-
-ha4b :: [Bird] -> [Answer] -> Bool
-ha4b [] [] = True
-ha4b (_:_) [] = False
-ha4b [] (_:_) = False
-ha4b (b:bs) (a@(Ans _ b1 _):anss) =
-   ha4b bs (if b == b1 then anss else (a:ha4b' b anss))
-
-ha4b' :: Bird -> [Answer] -> [Answer]
-ha4b' b (a@(Ans _ b1 _):anss) = if b == b1 then anss else a:ha4b' b anss
---}
-
 solver :: [Clue] -> Set Clue
 solver = Set.fromList
        . filter (\ans -> hasAll4 bird [Canary .. Parrot] ans
