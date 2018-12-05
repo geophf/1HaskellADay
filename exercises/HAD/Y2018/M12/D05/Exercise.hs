@@ -16,14 +16,14 @@ palindromes = ["AJAJA","ALALA","ALULA","ANANA","ARARA","CIVIC","KAYAK","KAZAK",
  
 -- (declarations for Grid, grid, printGrid imported above)
 
-hasWordInRowOrColumn :: Grid -> Bool
-hasWordInRowOrColumn grid = undefined
+hasWordInRowOrColumn :: Grid -> String -> Bool
+hasWordInRowOrColumn grid word = undefined
 
-hasWordInDiagonals :: Grid -> Bool
-hasWordInDiagonals grid = undefined
+hasWordInDiagonals :: Grid -> String -> Bool
+hasWordInDiagonals grid word = undefined
 
-wordCount :: Grid -> Int
-wordCount grid = undefined
+wordCount :: Grid -> String -> Int
+wordCount grid word = undefined
 
 -- BONUS -----------------------------------------------------------------
 
