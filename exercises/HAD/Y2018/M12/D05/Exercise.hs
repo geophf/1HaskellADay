@@ -24,3 +24,11 @@ hasWordInDiagonals grid = undefined
 
 wordCount :: Grid -> Int
 wordCount grid = undefined
+
+-- BONUS -----------------------------------------------------------------
+
+-- For any five-letter word, generate a grid of its letters, then find the
+-- number of times that word appears in that grid.
+
+fiveLetterGrid :: Size -> String -> IO Grid
+fiveLetterGrid n word = undefined
