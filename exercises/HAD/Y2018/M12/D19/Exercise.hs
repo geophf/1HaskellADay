@@ -39,5 +39,5 @@ but what you need is
 read in the above file then output the file in the correct format.
 --}
 
-correctNumberFormat :: FilePath -> FilePath
-correctNumberFormat inputfile = undefined
+correctNumberFormat :: FilePath -> FilePath -> IO ()
+correctNumberFormat inputfile outputFile = undefined
