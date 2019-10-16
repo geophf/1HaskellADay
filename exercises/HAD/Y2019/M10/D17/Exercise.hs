@@ -33,3 +33,6 @@ totalPrice = Map.fromList [(ChooseOne, 0.79), (FivePack, 3.0), (SelectSix, 3.49)
 
 pricePerBagel :: Map Deal USD -> Map Deal USD
 pricePerBagel storePrices = undefined
+
+bestDeal :: Map Deal USD -> (Deal, USD)
+bestDeal bagelPrices = undefined
