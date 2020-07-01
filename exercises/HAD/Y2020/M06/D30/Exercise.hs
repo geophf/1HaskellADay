@@ -15,12 +15,11 @@ data Arc = Arc Node Node Int
 
 graphArcs :: [Arc]
 graphArcs = 
-   let arcs = zipWith ap (zipWith Arc [A,A,B,B,C,D,D,D,E,F,G]
+   let arcs = zipWith id (zipWith Arc [A,A,B,B,C,D,D,D,E,F,G]
                                       [B,D,C,E,E,E,F,G,H,G,H])
                   [5,3,2,4,6,7,4,3,5,4,1]
    in  arcs ++ map flipNodes arcs
       where flipNodes (Arc a b c) = Arc b a c
-            ap a b = a b
 
 {--
 We're going to be studying paths, cycles, and spanning trees of graphs, but to
