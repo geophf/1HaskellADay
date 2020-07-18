@@ -3,7 +3,7 @@ module Y2020.M07.D17.Exercise where
 {--
 #MathProblem
 
-At 6 AM, this clock was accurate. It is now 11 AM. How many minutes pass in
+At 6 AM, this clock was accurate. It is now 11 AM. How many minutes pass in 
 the real world for one minute on this clock?
 
 (clock image at slow-clock.png)
