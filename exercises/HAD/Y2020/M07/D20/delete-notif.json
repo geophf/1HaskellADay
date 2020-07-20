@@ -1,0 +1,24 @@
+{
+"Records": [
+{
+"EventSource": "aws:sns",
+"EventVersion": "1.0",
+"EventSubscriptionArn": "arn:aws:sns:us-west-2:la:delete_airspace:blah",
+"Sns": {
+"Type": "Notification",
+"MessageId": "896743bf-sumthin",
+"TopicArn": "arn:aws:sns:us-west-2:la:delete_airspace",
+"Subject": "AIRSPACE_DELETE",
+"Message": "MIRANDA",
+"Timestamp": "2020-07-20T19:22:44.797Z",
+"SignatureVersion": "1",
+"Signature": "[sig]",
+"SigningCertUrl": "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-pem.pem",
+"UnsubscribeUrl": "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-west-2:la:delete_airspace:blah",
+"MessageAttributes": 
+{}
+
+}
+}
+]
+}
