@@ -9,7 +9,7 @@ So, this message/notification:
 import Data.Aeson
 
 deleteMsg :: FilePath
-deleteMsg = "Y2020/M07/D20/delete_notif.json"
+deleteMsg = "Y2020/M07/D20/delete-notif.json"
 
 -- is it valid JSON? Can you parse it
 
