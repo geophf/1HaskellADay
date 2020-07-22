@@ -26,5 +26,6 @@ getInfos :: FilePath -> IO ()
 getInfos = simpleHttp >=> L.putStrLn
 
 {--
-
+> getInfos publicAPIEndpoint 
+{"count":642,"entries":[{"API":"Cat Facts","Description":"Daily cat facts",...
 --}
