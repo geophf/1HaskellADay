@@ -41,7 +41,33 @@ data API = API Name Description IsHttps URL Category
 instance FromJSON API where
    parseJSON = undefined
 
-partitionedAPIs :: ByteString -> Map Name API
+partitionedAPIs :: ByteString -> Map IsHttps (Map Name API)
 partitionedAPIs response = undefined
 
 -- How many public APIs are HTTP? How many public APIs are HTTPS?
+
+{--
+>>> let maps = simpleHttp publicAPIEndpoint >>= return . partitionedAPIs
+>>> Map.map Map.size maps
+fromList [(False,93),(True,546)]
+>>> map (second (take 2 . Map.toList)) (Map.toList maps)
+[(False,[("18F",API {name = "18F",
+                     desc = "Unofficial US Federal Government API Development",
+                     isHttps = False,
+                     url = "http://18f.github.io/API-All-the-X/",
+                     cat = "Open Data"}),
+         ("7Timer!",API {name = "7Timer!",
+                         desc = "Weather, especially for Astroweather",
+                         isHttps = False,
+                         url = "http://www.7timer.info/doc.php?lang=en",
+                         cat = "Weather"})]),
+ (True,[("1Forge",API {name = "1Forge", desc = "Forex currency market data",
+                       isHttps = True,
+                       url = "https://1forge.com/forex-data-api/api-documentation",
+                       cat = "Currency Exchange"}),
+        ("24 Pull Requests",API {name = "24 Pull Requests",
+                                 desc = "Project to promote open source collaboration during December",
+                                 isHttps = True,
+                                 url = "https://24pullrequests.com/api",
+                                 cat = "Development"})])]
+--}
