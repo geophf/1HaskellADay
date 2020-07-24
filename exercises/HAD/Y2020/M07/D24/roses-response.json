@@ -1,0 +1,181 @@
+{
+    "Labels": [
+        {
+            "Name": "Plant",
+            "Confidence": 99.67227935791016,
+            "Instances": [
+                {
+                    "BoundingBox": {
+                        "Width": 0.9474245309829712,
+                        "Height": 0.9065918326377869,
+                        "Left": 0.04687206447124481,
+                        "Top": 0.03174421563744545
+                    },
+                    "Confidence": 73.42694854736328
+                }
+            ],
+            "Parents": []
+        },
+        {
+            "Name": "Flower",
+            "Confidence": 98.58538818359375,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Plant"
+                }
+            ]
+        },
+        {
+            "Name": "Geranium",
+            "Confidence": 98.58538818359375,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Flower"
+                },
+                {
+                    "Name": "Plant"
+                }
+            ]
+        },
+        {
+            "Name": "Blossom",
+            "Confidence": 98.58538818359375,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Plant"
+                }
+            ]
+        },
+        {
+            "Name": "Petal",
+            "Confidence": 90.09733581542969,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Flower"
+                },
+                {
+                    "Name": "Plant"
+                }
+            ]
+        },
+        {
+            "Name": "Hibiscus",
+            "Confidence": 78.0924301147461,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Flower"
+                },
+                {
+                    "Name": "Plant"
+                }
+            ]
+        },
+        {
+            "Name": "Potted Plant",
+            "Confidence": 71.44005584716797,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Pottery"
+                },
+                {
+                    "Name": "Jar"
+                },
+                {
+                    "Name": "Plant"
+                },
+                {
+                    "Name": "Vase"
+                }
+            ]
+        },
+        {
+            "Name": "Pottery",
+            "Confidence": 71.44005584716797,
+            "Instances": [],
+            "Parents": []
+        },
+        {
+            "Name": "Jar",
+            "Confidence": 71.44005584716797,
+            "Instances": [],
+            "Parents": []
+        },
+        {
+            "Name": "Vase",
+            "Confidence": 71.44005584716797,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Jar"
+                },
+                {
+                    "Name": "Pottery"
+                }
+            ]
+        },
+        {
+            "Name": "Leaf",
+            "Confidence": 66.05538177490234,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Plant"
+                }
+            ]
+        },
+        {
+            "Name": "Planter",
+            "Confidence": 62.92831802368164,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Pottery"
+                },
+                {
+                    "Name": "Potted Plant"
+                },
+                {
+                    "Name": "Jar"
+                },
+                {
+                    "Name": "Plant"
+                },
+                {
+                    "Name": "Vase"
+                }
+            ]
+        },
+        {
+            "Name": "Herbs",
+            "Confidence": 56.88031768798828,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Potted Plant"
+                },
+                {
+                    "Name": "Pottery"
+                },
+                {
+                    "Name": "Plant"
+                },
+                {
+                    "Name": "Jar"
+                },
+                {
+                    "Name": "Vase"
+                },
+                {
+                    "Name": "Planter"
+                }
+            ]
+        }
+    ],
+    "LabelModelVersion": "2.0"
+}

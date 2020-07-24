@@ -1,0 +1,128 @@
+{
+    "Labels": [
+        {
+            "Name": "Plant",
+            "Confidence": 99.28963470458984,
+            "Instances": [
+                {
+                    "BoundingBox": {
+                        "Width": 0.9810841083526611,
+                        "Height": 0.9383663535118103,
+                        "Left": 0.018585164099931717,
+                        "Top": 0.040269456803798676
+                    },
+                    "Confidence": 52.64641189575195
+                }
+            ],
+            "Parents": []
+        },
+        {
+            "Name": "Flower",
+            "Confidence": 97.7240982055664,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Plant"
+                }
+            ]
+        },
+        {
+            "Name": "Blossom",
+            "Confidence": 97.7240982055664,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Plant"
+                }
+            ]
+        },
+        {
+            "Name": "Asteraceae",
+            "Confidence": 91.77802276611328,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Flower"
+                },
+                {
+                    "Name": "Plant"
+                }
+            ]
+        },
+        {
+            "Name": "Field",
+            "Confidence": 84.06829833984375,
+            "Instances": [],
+            "Parents": []
+        },
+        {
+            "Name": "Daisy",
+            "Confidence": 81.40070343017578,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Flower"
+                },
+                {
+                    "Name": "Plant"
+                }
+            ]
+        },
+        {
+            "Name": "Daisies",
+            "Confidence": 81.40070343017578,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Flower"
+                },
+                {
+                    "Name": "Plant"
+                }
+            ]
+        },
+        {
+            "Name": "Rug",
+            "Confidence": 74.32662200927734,
+            "Instances": [
+                {
+                    "BoundingBox": {
+                        "Width": 0.9834271669387817,
+                        "Height": 0.9629078507423401,
+                        "Left": 0.01624213345348835,
+                        "Top": 0.03635851666331291
+                    },
+                    "Confidence": 74.32662200927734
+                }
+            ],
+            "Parents": []
+        },
+        {
+            "Name": "Sunflower",
+            "Confidence": 65.28817749023438,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Flower"
+                },
+                {
+                    "Name": "Plant"
+                }
+            ]
+        },
+        {
+            "Name": "Petal",
+            "Confidence": 58.12976837158203,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Flower"
+                },
+                {
+                    "Name": "Plant"
+                }
+            ]
+        }
+    ],
+    "LabelModelVersion": "2.0"
+}
