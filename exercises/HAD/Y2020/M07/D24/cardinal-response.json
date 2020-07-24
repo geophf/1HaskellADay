@@ -1,0 +1,109 @@
+{
+    "Labels": [
+        {
+            "Name": "Bird",
+            "Confidence": 99.50123596191406,
+            "Instances": [
+                {
+                    "BoundingBox": {
+                        "Width": 0.1887630820274353,
+                        "Height": 0.11798793822526932,
+                        "Left": 0.6554882526397705,
+                        "Top": 0.2186919003725052
+                    },
+                    "Confidence": 99.50123596191406
+                },
+                {
+                    "BoundingBox": {
+                        "Width": 0.0935601145029068,
+                        "Height": 0.0733097717165947,
+                        "Left": 0.5563872456550598,
+                        "Top": 0.5678325295448303
+                    },
+                    "Confidence": 96.68358612060547
+                },
+                {
+                    "BoundingBox": {
+                        "Width": 0.10441140085458755,
+                        "Height": 0.10580123215913773,
+                        "Left": 0.34247636795043945,
+                        "Top": 0.3720252215862274
+                    },
+                    "Confidence": 93.77661895751953
+                },
+                {
+                    "BoundingBox": {
+                        "Width": 0.12313558906316757,
+                        "Height": 0.09718959033489227,
+                        "Left": 0.19700592756271362,
+                        "Top": 0.8045511841773987
+                    },
+                    "Confidence": 83.54810333251953
+                }
+            ],
+            "Parents": [
+                {
+                    "Name": "Animal"
+                }
+            ]
+        },
+        {
+            "Name": "Animal",
+            "Confidence": 99.50123596191406,
+            "Instances": [],
+            "Parents": []
+        },
+        {
+            "Name": "Cardinal",
+            "Confidence": 92.3027114868164,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Animal"
+                },
+                {
+                    "Name": "Bird"
+                }
+            ]
+        },
+        {
+            "Name": "Bee Eater",
+            "Confidence": 79.80430603027344,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Animal"
+                },
+                {
+                    "Name": "Bird"
+                }
+            ]
+        },
+        {
+            "Name": "Nature",
+            "Confidence": 67.54881286621094,
+            "Instances": [],
+            "Parents": []
+        },
+        {
+            "Name": "Beak",
+            "Confidence": 58.042728424072266,
+            "Instances": [],
+            "Parents": [
+                {
+                    "Name": "Animal"
+                },
+                {
+                    "Name": "Bird"
+                }
+            ]
+        },
+        {
+            "Name": "Outdoors",
+            "Confidence": 56.922935485839844,
+            "Instances": [],
+            "Parents": []
+        }
+    ],
+    "LabelModelVersion": "2.0"
+}
