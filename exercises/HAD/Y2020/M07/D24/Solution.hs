@@ -40,7 +40,7 @@ excited and classified things left, right, and center.
 
 I guess the classifer likes birds, then?
 
-So, three images are in this directly, along with their processed results
+So, three images are in this directory, along with their processed results
 as both images and JSON. For your perusal.
 
 Today, we'll focus on the interesting response and gather some information
