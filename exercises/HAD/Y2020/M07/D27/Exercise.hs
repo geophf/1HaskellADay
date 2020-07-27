@@ -49,4 +49,16 @@ callOut app = undefined
 p.s.: You see the_wall.py is a python app, so you can install python app if
 you don't have it, or you can replace my example external app with any kind
 of app that works for you. Say: use FORTH, instead, or ... FORTRAN, or ... F#.
+
+>>> callOut (exerciseDir ++ externalApp)
+"Goodbye, cruel world.\n\n"
+
+p.p.s: remember to set execute-permission on the external app.
+
+p.p.p.s.: ... and check where your python executable is reposed, and set that
+file path in the external app ... or invoke python in your function.
+
+Your choice.
+
+p.p.p.p.s: Hi. How are you? I hope you're having a nice day.
 --}
