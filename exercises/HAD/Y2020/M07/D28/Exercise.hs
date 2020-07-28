@@ -38,8 +38,8 @@ app = "summer.py"
 callUndVerify :: FilePath -> String -> IO String
 callUndVerify exe arg = undefined
 
-verify :: String -> Bool
-verify answer = undefined
+verify :: String -> String -> Bool
+verify arg answer = undefined
 
 {--
 So: verify that calling the app with 10 returns 45, and calling the app with
