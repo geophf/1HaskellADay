@@ -43,8 +43,8 @@ callUndVerify exe arg =
    readProcessWithExitCode exe [arg] "" >>= \(code, ans, _) ->
    return (let errOut = "Whazzamattahfur you? I can't do no sum o' no " ++ arg
                answer = chomp ans
-           in  if code == ExitSuccess
-               then if verify arg answer then answer else errOut
+           in  if code == ExitSuccess && verify arg answer 
+               then answer
                else errOut)
 
 verify :: String -> String -> Bool
