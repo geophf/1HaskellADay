@@ -17,7 +17,7 @@ them from 1 to n, because this is Prolog, all of the sudden, then, first:
 a) generate some random between 1 and n.
 --}
 
-import System.Random
+import Data.Random
 
 rnd :: Monad m => Int -> m Int
 rnd hi = undefined
