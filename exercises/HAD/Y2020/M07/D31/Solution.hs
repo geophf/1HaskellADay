@@ -55,12 +55,13 @@ rnds = rnds' Set.empty 0 []
 
 rnds' :: Set Int -> Int -> [Int] -> Int -> IO [Int]
 rnds' set len accum hi | len == hi = return accum
-                       | otherwise = rnd hi >>= rnds'' set len accum hi
+                       | otherwise =
+   rnd hi >>= rnds'' set len accum hi <*> flip Set.insert set
 
-rnds'' :: Set Int -> Int -> [Int] -> Int -> Int -> IO [Int]
-rnds'' set len accum hi val | Set.member val set = rnds' set len accum hi
-                            | otherwise = 
-   rnds' (Set.insert val set) (succ len) (val:accum) hi
+rnds'' :: Set Int -> Int -> [Int] -> Int -> Int -> Set Int -> IO [Int]
+rnds'' set len accum hi val newset | set == newset = rnds' set len accum hi
+                                   | otherwise = 
+   rnds' newset (succ len) (val:accum) hi
 
 {--
 >>> rnds 9
@@ -73,4 +74,13 @@ rnds'' set len accum hi val | Set.member val set = rnds' set len accum hi
 [7,6,4,3,5,8,1,2,9]
 
 So, ... yeah.
+--}
+
+{-- ----- BONUS --------------------------------------------------------------
+
+Here's a thought experiment, when len == hi - 1, there is only one number
+left to pick, the last one, meaning that there's no point in generating
+random numbers until you hit that number. Is there an efficient way to say:
+"Hey, this is the last number to pick, so just pick that number, please." in
+Haskell?
 --}
