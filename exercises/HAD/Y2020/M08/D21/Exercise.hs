@@ -34,8 +34,19 @@ data Hint = SomeDataStructureYouComeUpWith
 type Word = String
 type WordList = Map Int (Set Word)
 
-chooseFrom :: WordList -> Length -> [Hint] -> Set Word
-chooseFrom wordlist wordLength hints = undefined
+wordLengths :: Set Word -> WordList
+wordLengths allwords = undefined
+
+{-- 
+>>> Map.map length . wordLengths <$> allWords dicts
+{(1,26),(2,139),(3,1294),(4,4994),(5,9972),(6,17462),(7,23713),(8,29842),...}
+
+... it'd be nice if the printer curtailed long evaluations, ... like most
+prolog systems do. #justsayin
+--}
+
+chooseFrom :: Length -> [Hint] -> WordList -> Set Word
+chooseFrom wordLength hints wordlist = undefined
 
 {--
 And we've already loaded our word lists from the solution to 
