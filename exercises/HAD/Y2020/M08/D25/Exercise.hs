@@ -51,4 +51,13 @@ own. How'msoeverest you want to do it, JUST SHOW ME ANSWERS!
 
 
 DO IT, ... TO IT!
+
+>>> gutenbergIndex (workingDir ++ gutenbergTop100Index)
+{...,
+ ("A Dictionary of Cebuano Visayan by John U. Wolff (256)",
+  "http://www.gutenberg.org//ebooks/40074"),
+ ("A Journal of the Plague Year by Daniel Defoe (278)",
+  "http://www.gutenberg.org//ebooks/376"),
+ ("A Modest Proposal by Jonathan Swift (736)",
+  "http://www.gutenberg.org//ebooks/1080"),...}
 --}
