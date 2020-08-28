@@ -40,6 +40,7 @@ gutenberg books into your very own Library.
 --}
 
 import Control.Arrow ((&&&))
+import Control.Monad (join)
 
 import qualified Data.Text as T
 
