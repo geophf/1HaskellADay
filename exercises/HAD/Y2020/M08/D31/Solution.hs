@@ -1,4 +1,4 @@
-module Y2020.M08.D31.Exercise where
+module Y2020.M08.D31.Solution where
 
 {--
 
@@ -39,7 +39,7 @@ Today's Haskell problem.
 Yesterday* ...
 --}
 
-import Y2020.M08.D28.Exercise
+import Y2020.M08.D28.Solution
 
 {--
 ... we created a word-frequency analysis of the cleaned-text of Charles
@@ -53,27 +53,23 @@ TODAY,* ...
 --}
 
 import Data.List (sortOn)
-
 import Data.Map (Map)
 import qualified Data.Map as Map
 import Data.Ord
 import Data.Set (Set)
+import qualified Data.Set as Set
 
-import Y2020.M08.D25.Exercise (workingDir, gutenbergTop100Index)
+import Y2020.M08.D25.Solution (workingDir, gutenbergTop100Index)
 
 stopwords :: FilePath
 stopwords = "/usr/share/dict/connectives"
 
 loadStopwords :: FilePath -> IO (Set String)
-loadStopwords connectives = undefined
-
-{--
->>> take 5 . Set.toList <$> loadStopwords stopwords 
-["a","about","after","against","all"]
---}
+loadStopwords connectives = Set.fromList . lines <$> readFile connectives
 
 removeStopwords :: Set String -> Map String Int -> Map String Int
-removeStopwords stoppers wordfreqs = undefined
+removeStopwords stopwords =
+   Map.filterWithKey (const . not . flip Set.member stopwords)
 
 {--
 What is Charles Dickens most-frequent word in "A Christmas Carol," having
@@ -91,8 +87,16 @@ removed all stopwords?
 >>> length <$> keywords
 4702
 
->>> take 5 . sortOn (Down . snd) . Map.toList <$> keywords
+>>> take 5 . sortOn (Down . snd) . Map.toList <$> keywords 
 [("scrooge",314),("upon",120),("ghost",93),("christmas",92),("project",87)]
 
 Okay, NOW we're talking!
 --}
+
+go :: IO [(String, Int)]
+go = let weirdos = Set.fromList "!\"#$%'()*,-./0123456789:;?@[]\182\187\191"
+     in  study (workingDir ++ gutenbergTop100Index) >>=
+         return . wordFreq . cleanDoc weirdos       >>= \wordus ->
+         loadStopwords stopwords                    >>=
+         return . take 5 . sortOn (Down . snd)
+                . Map.toList . flip removeStopwords wordus
