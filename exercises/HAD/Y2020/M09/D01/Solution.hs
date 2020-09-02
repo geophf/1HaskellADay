@@ -1,4 +1,4 @@
-module Y2020.M09.D01.Exercise where
+module Y2020.M09.D01.Solution where
 
 {--
 OKAY! SCROOGE!
@@ -17,18 +17,29 @@ So, now, let's ingest and word-count the top-100 books from project gutenberg.
 That's going to be the easy part of today's Haskell exercise.
 --}
 
-import Data.Map (Map)
-import Data.Set (Set)
+import Control.Monad ((>=>))
 
-import Y2020.M08.D26.Exercise (importLibrary, Library, BookInfo)
-import Y2020.M08.D25.Exercise (gutenbergIndex, workingDir, gutenbergTop100Index)
-import Y2020.M08.D28.Exercise (cleanDoc, wordFreq)
-import Y2020.M08.D31.Exercise (removeStopwords, stopwords, loadStopwords)
+import Data.List (sortOn)
+import Data.Map (Map)
+import qualified Data.Map as Map
+import Data.Ord
+
+import Data.Set (Set)
+import qualified Data.Set as Set
+
+import Y2020.M08.D26.Solution (importLibrary, Library, BookInfo)
+import Y2020.M08.D25.Solution (gutenbergIndex, workingDir, gutenbergTop100Index)
+import Y2020.M08.D28.Solution (cleanDoc, wordFreq)
+import Y2020.M08.D31.Solution (removeStopwords, stopwords, loadStopwords)
+
+import qualified Data.Bag as Bag
 
 type Ontology = Map BookInfo (Map String Int)
 
 bookVec :: Set String -> Library -> Ontology
-bookVec stopwords books = undefined
+bookVec stops =
+     let weirdos = Set.fromList "!\"#$%'()*,-./0123456789:;?@[]\182\187\191"
+     in  Map.map (removeStopwords stops . wordFreq . cleanDoc weirdos)
 
 {--
 >>> let nupes = loadStopwords stopwords
@@ -56,7 +67,7 @@ You tell me.
 --}
 
 ontology :: Ontology -> Map String Int
-ontology allbooksvecs = undefined
+ontology = Bag.asMap . Bag.fromList . concat . map Map.keys . Map.elems
 
 {--
 `ontology` has an interesting type-signature. It takes a map of word-counts
