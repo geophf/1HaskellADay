@@ -95,7 +95,6 @@ via @noaheasterly
 >>> let truncatePrint = putStrLn . take 60
 >>> let listofy ((a,b),c) = [a,b,c]
 >>> take 3 . Map.toList <$> lib
-> take 3 . Map.toList <$> lib
 [(("A Christmas Carol in Prose; Being a Ghost Story of Christmas by "...,
    "http://www.gutenberg.org//ebooks/46"),
   "\239\187\191The Project Gutenberg EBook of A Christmas Carol, by" ...),...]
