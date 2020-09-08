@@ -26,8 +26,8 @@ What other assertions can we make of these data we collected?
 Today's Haskell Exercise: data analyses.
 --}
 
-import Data.Map as Map
-import Data.Set as Set
+import Data.Map (Map)
+import Data.Set (Set)
 
 type WordOccurrences = Map String Int
  
