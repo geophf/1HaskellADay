@@ -56,7 +56,11 @@ oneWordInBook :: Ontology -> Set String
 oneWordInBook bookswords = undefined
 
 -- 4. Okay. Remove all the one-word and all-books-words from out ontology.
--- Recompute the WordOccurrences from that trimmed Ontology. What is 
+
+removeInfreqs :: Set String -> Ontology -> Ontology
+removeInfreqs infrequentWords ont = undefined
+
+-- Recompute the WordOccurrences from that trimmed Ontology. What is
 -- allWordsCount now?
 
 -- BONUS -------------------------------------------------------
