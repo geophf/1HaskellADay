@@ -23,12 +23,14 @@ For today's #haskell problem, let's compile those 2,000 words into a Haskell
 program, so we have those words right away, and get rid of that pesky monad: IO.
 --}
 
-compile :: Ontology -> FilePath -> IO ()
-compile bookwordnet outputfile = undefined
+type ModuleName = String
+
+compile :: Ontology -> ModuleName -> IO ()
+compile bookwordnet modularus = undefined
 
 {--
 The function `compile` compiles `bookwordnet` to a Haskell module, named in
-`outputfile` and placed that Ontology value and the corresponding 
+`modularus` and placed that Ontology value and the corresponding 
 WordOccurrences value into that file, so, when imported, is available for
 immediate use.
 
