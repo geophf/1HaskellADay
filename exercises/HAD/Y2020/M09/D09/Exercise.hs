@@ -34,3 +34,14 @@ immediate use.
 
 DO IT TO IT!
 --}
+
+{-- BONUS! -------------------------------------------------------
+
+Eh. Why NOT save the large ontology? We can analyze and mine it later if
+we'd like, or we can let it languish, gathering bit-rot, sad, ... and alone.
+
+OR NOT, BECAUSE, AT SOME FUTURE DATE, WE SHALL USE THAT KNOWLEDGE AND RULE
+THE WORLD! MWA-HAHA!
+
+... either way.
+--}
