@@ -42,76 +42,10 @@ compile bookwordnet modularus =
 heading :: String -> [String]
 heading m = ["module " ++ m ++ " where", "", "import Data.Map", ""]
 
-{--
-Well, this was a "Nice Idea," and all, but ... (smh)
-
-class Show a => Printable a where
-   prnt :: a -> [String]
-
-instance (Show a, Show b) => Printable (Map a b) where
-   prnt = map show . Map.toList
-
-instance Printable Int where
-   prnt x = [show x]
---}
-
-pprint :: (Show a, Show b) => String -> Map a b -> [String]
-{--
-pprint :: (Show a, Printable b) => String -> Map a b -> [String]
-pprint var mmap =
-           [var ++ " = Map.fromList ["]
-        ++ concat (map kv (Map.toList mmap))
-        ++ ["]", ""]
-
-kv :: (Show a, Printable b) => (a, b) -> [String]
-kv (k, v) = (("(" ++ show k ++ ","): prnt v) ++ ["),"]
-
->>> putStrLn (unlines (pprint "foo" ((Map.fromList [("bar", 1),("quux",2)]) :: Map String Int)))
-foo = Map.fromList [
-("bar",
-1
-),
-("quux",
-2
-),
-]
-
-... ugh.
-
-Or, and I'm just spitballing here, we could just vomit the state without
-'prettifying'... because that, there, is a pretty ugly prettifier, smh
-
-pprint var map = [var ++ " = Map." ++ show map]
-
->>> putStrLn (unlines (pprint "foo" ((Map.fromList [("bar", 1),("quux",2)]) :: Map String Int)))
-foo = Map.fromList [("bar",1),("quux",2)]
-
-Or, and I'm just spitballing here ... [lotsa spitballs flying around in this
-undisciplined class, I've noticed] ... we could put each entry on it's own,
-like, line, like.
-
-pprint var mappo = [var ++ " = Map.fromList ["]
-                 ++ map (kv 6) (Map.toList mappo)
-                 ++ ["   ]"]
---}
-
 kv :: (Show a, Show b) => Int -> (a, b) -> String
 kv indent entry = replicate indent ' ' ++ show entry
 
-{--
->>> putStrLn (unlines (pprint "foo" (Map.fromList [("bar", 1),("quux",2)])))
-foo = Map.fromList [
-      ("bar",1)
-      ("quux",2)
-   ]
-
-This looks possibly compilably spitball-free.... except for the comma-issue.
-
-Le sigh.
-
-ONCE MORE! INTO THE BREECH! WITH FEELING!
---}
-
+pprint :: (Show a, Show b) => String -> Map a b -> [String]
 pprint var mappo = [var ++ " = fromList ["]
                  ++ [intercalate ",\n" (map (kv 6) (Map.toList mappo))]
                  ++ ["   ]"]
