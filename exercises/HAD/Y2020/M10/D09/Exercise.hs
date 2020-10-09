@@ -45,6 +45,13 @@ What. is. that. byte!
 
 import Data.Set (Set)
 
+workingDir :: FilePath
+workingDir = "Y2020/M10/D09/"
+
+cleanFile, ickyFile :: FilePath
+cleanFile = "clean-aggregate.json"
+ickyFile = "1aggregate.json"
+
 fileDiff :: FilePath -> FilePath -> IO (Set Int)
 fileDiff a b = undefined
 
