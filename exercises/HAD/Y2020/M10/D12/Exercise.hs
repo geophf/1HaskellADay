@@ -38,15 +38,16 @@ type Key = String
 type Entity = String
 type Icao = String
 type Country = String
-data LatLong = Point Double Double
+
+data LongLat = Point Double Double
    deriving (Eq, Ord, Show)
 
-data AirBase = Base Key Entity Icao Country LatLong
+data AirBase = Base Key Entity Icao Country LongLat
    deriving (Eq, Ord, Show)
 
 -- 1. Load in the airbases.
 
-instance FromJSON LatLong where
+instance FromJSON LongLat where
    parseJSON = undefined
 
 instance FromJSON AirBase where
