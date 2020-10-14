@@ -1,0 +1,253 @@
+Continents of the World and their countries
+
+Source:
+	https://simple.wikipedia.org/wiki/List_of_countries_by_continents
+
+Africa:
+	Algeria - Algiers
+	Angola - Luanda
+	Benin - Porto Novo, Cotonou
+	Botswana - Gaborone
+	Burkina Faso - Ouagadougou
+	Burundi - Gitega
+	Cameroon (also spelled Cameroun) - Yaoundé
+	Cape Verde - Praia
+	Central African Republic - Bangui
+	Chad (Tchad) - N'Djamena
+	Comoros - Moroni
+	Republic of the Congo - Brazzaville
+	Democratic Republic of the Congo (Zaire) - Kinshasa
+	Côte d'Ivoire (Ivory Coast) - Yamoussoukro
+	Djibouti - Djibouti
+	Egypt (Misr) - Cairo
+	Equatorial Guinea - Malabo
+	Eritrea - Asmara
+	Ethiopia (Abyssinia) - Addis Ababa
+	Gabon - Libreville
+	The Gambia - Banjul
+	Ghana - Accra
+	Guinea - Conakry
+	Guinea-Bissau - Bissau
+	Kenya - Nairobi
+	Lesotho - Maseru
+	Liberia - Monrovia
+	Libya - Tripoli
+	Madagascar - Antananarivo
+	Malawi - Lilongwe
+	Mali - Bamako
+	Mauritania - Nouakchott
+	Mauritius - Port Louis
+	Morocco (Al Maghrib) - Rabat
+	Mozambique - Maputo
+	Namibia - Windhoek
+	Niger - Niamey
+	Nigeria - Abuja
+	Rwanda - Kigali
+	São Tomé and Príncipe - São Tomé
+	Senegal - Dakar
+	Seychelles - Victoria, Seychelles
+	Sierra Leone - Freetown
+	Somalia - Mogadishu
+	South Africa - Pretoria
+	South Sudan - Juba
+	Sudan - Khartoum
+	Swaziland (Eswatini) - Mbabane
+	Tanzania - Dodoma
+	Togo - Lome
+	Tunisia - Tunis
+	Uganda - Kampala
+	Western Sahara - El Aaiún (disputed)
+	Zambia - Lusaka
+	Zimbabwe - Harare
+
+Antarctica:
+
+Asia:
+	Afghanistan - Kabul
+	Armenia - Yerevan
+	Azerbaijan - Baku
+	Bahrain - Manama
+	Bangladesh [1](বাংলাদেশ) - Dhaka (ঢাকা)
+	Bhutan - Thimphu
+	Brunei - Bandar Seri Begawan
+	Cambodia (Kampuchea) - Phnom Penh
+	China - Beijing
+	East Timor (Timor Leste) - Dili
+	Georgia - Tbilisi
+	India - New Delhi
+	Indonesia - Jakarta
+	Iran - Tehran
+	Iraq - Baghdad
+	Israel - Jerusalem
+	Japan - Tokyo
+	Jordan (Al Urdun) - Amman
+	Kazakhstan - nursultan
+	Kuwait - Kuwait city
+	Kyrgyzstan - Bishkek
+	Laos - Vientiane
+	Lebanon (Lubnan) - Beirut
+	Malaysia - Kuala Lumpur
+	Maldives - Malé
+	Mongolia - Ulaanbaatar
+	Myanmar (Burma) - Naypyidaw
+	Nepal - Kathmandu
+	North Korea - Pyongyang
+	Oman - Muscat
+	Pakistan - Islamabad
+	Philippines - Manila
+	Qatar - Doha
+	Russia - Moscow (Russia is a part of Asia geographically, but politically it is a part of Europe)
+	Saudi Arabia - Riyadh
+	Singapore - Singapore
+	South Korea - Seoul
+	Sri Lanka - Sri Jayawardenapura Kotte (administrative), Colombo (commercial)
+	Syria - Damascus
+	Tajikistan - Dushanbe
+	Thailand (Muang Thai) - Bangkok
+	Turkey - Ankara
+	Turkmenistan - Aşgabat
+	Taiwan - Taipei
+	United Arab Emirates - Abu Dhabi
+	Uzbekistan - Tashkent
+	Vietnam - Hanoi
+	Yemen - Sana'a
+
+Europe:
+	Albania (Shqipëria) - Tirana
+	Andorra - Andorra la Vella
+	Austria (Österreich) - Vienna
+	Belarus (Беларусь) - Minsk
+	Belgium (Dutch: België, French: Belgique, German: Belgien) - Brussels
+	Bosnia and Herzegovina (Bosna i Hercegovina) - Sarajevo
+	Bulgaria (България) - Sofia
+	Croatia (Hrvatska) - Zagreb
+	Cyprus (Κύπρος) - Nicosia
+	Czech Republic (Česko) - Prague
+	Denmark (Danmark) - Copenhagen
+	Estonia (Eesti) - Tallinn
+	Finland (Suomi) - Helsinki
+	France - Paris
+	Georgia - Tbilisi
+	Germany (Deutschland) - Berlin
+	Greece (Ελλάδα) - Athens
+	Hungary (Magyarország) - Budapest
+	Iceland** (Island) - Reykjavik
+	Republic of Ireland (Éire) - Dublin
+	Italy (Italia) - Rome
+	Kazakhstan - nursultan
+	Kosovo** - Pristina
+	Latvia (Latvija) - Riga
+	Liechtenstein - Vaduz
+	Lithuania (Lietuva) - Vilnius
+	Luxembourg - Luxembourg City
+	North Macedonia (Македонија) - Skopje
+	Malta - Valletta
+	Moldova - Chisinau
+	Monaco - Monte Carlo Quarter
+	Montenegro (Crna Gora, Црна Гора) - Podgorica
+	Netherlands (Nederland) - Amsterdam (Capital), The Hague (Government)
+	Norway (Norge) - Oslo
+	Poland (Polska) - Warsaw
+	Portugal - Lisbon
+	Romania - Bucharest
+	Russia** Moscow (Europe up to the Ural Mountains; Asia: the rest to Vladivostok)
+	San Marino - San Marino
+	Serbia (Србија) - Belgrade
+	Slovakia (Slovensko) - Bratislava
+	Slovenia (Slovenija) - Ljubljana
+	Spain (España) - Madrid
+	Sweden (Sverige) - Stockholm
+	Switzerland (German: Schweiz, French: Suisse, Italian: Svizzera, Romansh: Svizra) - Bern
+	Turkey - Ankara
+	Ukraine (Україна) - Kyiv or Kiev
+	United Kingdom - London
+	Vatican City** (Italian: Città del Vaticano, Latin: Civitas Vaticana) - Vatican City
+
+North America:
+	Antigua and Barbuda - St. John's
+	Anguilla - The Valley (territory of U.K.)
+	Aruba - Oranjestad (Constituent country of the Kingdom of the Netherlands)
+	The Bahamas - Nassau
+	Barbados - Bridgetown
+	Belize - Belmopan ( Central America)
+	Bermuda - Hamilton (territory of U.K.)
+	Bonaire - part of the Netherlands
+	British Virgin Islands - Road Town (territory of U.K.)
+	Canada - Ottawa
+	Cayman Islands - George Town (territory of U.K.)
+	Clipperton Island - (territory of France)
+	Costa Rica - San José ( Central America)
+	Cuba - Havana
+	Curaçao - Willemstad (Constituent country of the Kingdom of the Netherlands)
+	Dominica - Roseau
+	Dominican Republic (Republica Dominicana) - Santo Domingo
+	El Salvador - San Salvador ( Central America)
+	Greenland - Nuuk (territory of Denmark)
+	Grenada - St George's
+	Guadeloupe - (territory of France)
+	Guatemala - Guatemala
+	Haiti - Port-au-Prince
+	Honduras - Tegucigalpa ( Central America)
+	Jamaica - Kingston
+	Martinique - Fort-de-France Bay (territory of France)
+	Mexico - Mexico City
+	Montserrat - Plymouth, Brades, Little Bay (territory of U.K.)
+	Navassa Island - Washington, D.C. (territory of U.S.)
+	Nicaragua - Managua ( Central America)
+	Panama (Panamá) - Panama City ( Central America)
+	Puerto Rico - San Juan (territory of U.S.)
+	Saba - The Bottom (territory of Netherlands)
+	Saint Barthelemy - Gustavia (territory of France)
+	Saint Kitts and Nevis - Basseterre
+	Saint Lucia - Castries
+	Saint Martin - Marigot (territory of France)
+	Saint Pierre and Miquelon - Saint-Pierre (territory of France)
+	Saint Vincent and the Grenadines - Kingstown
+	Sint Eustatius - Oranjestad (territory of Netherlands)
+	Sint Maarten - Philipsburg (Constituent country of the Kingdom of the Netherlands)
+	Trinidad and Tobago - Port of Spain
+	Turks and Caicos - Cockburn Town (British Overseas Territory)
+	United States of America - Washington, District of Columbia
+	US Virgin Islands - Charlotte Amalie (territory of U.S.)
+
+South America:
+	Argentina - Buenos Aires
+	Bolivia - Sucré
+	Brazil (Brasil) - Brasília
+	Chile - Santiago
+	Colombia - Bogotá
+	Ecuador - Quito
+	Falkland Islands - Stanley (territory of U.K.)
+	French Guiana - Cayenne (territory of France)
+	Guyana - Georgetown
+	Paraguay - Asunción
+	Peru - Lima
+	South Georgia and the South Sandwich Islands - (territory of U.K.)
+	Suriname - Paramaribo
+	Uruguay - Montevideo
+	Venezuela - Caracas
+
+Oceania:
+	Australia - Canberra
+	Federated States of Micronesia - Palikir
+	Fiji - suva
+	Kiribati - South Tarawa
+	Marshall Islands - Majuro
+	Nauru - no capital; biggest city is Yaren
+	New Zealand - Wellington
+	Palau - Melekeok
+	Papua New Guinea - Port Moresby
+	Samoa - Apia
+	Solomon Islands - Honiara
+	Tonga - Nuku'alofa
+	Tuvalu - Funafuti
+	Vanuatu - Port Vila
+	Australia
+	Flores
+	Lombok
+	Melanesia
+	New Caledonia
+	New Guinea
+	Sulawesi
+	Sumbawa
+	Timor
