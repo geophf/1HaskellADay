@@ -6,7 +6,7 @@ Source:
 Scraped:
 	2020-10-13
 
-Africa:
+Continent: Africa
 	Algeria - Algiers
 	Angola - Luanda
 	Benin - Porto Novo, Cotonou
@@ -63,9 +63,9 @@ Africa:
 	Zambia - Lusaka
 	Zimbabwe - Harare
 
-Antarctica:
+Continent: Antarctica
 
-Asia:
+Continent: Asia
 	Afghanistan - Kabul
 	Armenia - Yerevan
 	Azerbaijan - Baku
@@ -115,7 +115,7 @@ Asia:
 	Vietnam - Hanoi
 	Yemen - Sana'a
 
-Europe:
+Continent: Europe
 	Albania (Shqipëria) - Tirana
 	Andorra - Andorra la Vella
 	Austria (Österreich) - Vienna
@@ -166,7 +166,7 @@ Europe:
 	United Kingdom - London
 	Vatican City** (Italian: Città del Vaticano, Latin: Civitas Vaticana) - Vatican City
 
-North America:
+Continent: North America
 	Antigua and Barbuda - St. John's
 	Anguilla - The Valley (territory of U.K.)
 	Aruba - Oranjestad (Constituent country of the Kingdom of the Netherlands)
@@ -213,7 +213,7 @@ North America:
 	United States of America - Washington, District of Columbia
 	US Virgin Islands - Charlotte Amalie (territory of U.S.)
 
-South America:
+Continent: South America
 	Argentina - Buenos Aires
 	Bolivia - Sucré
 	Brazil (Brasil) - Brasília
@@ -230,7 +230,7 @@ South America:
 	Uruguay - Montevideo
 	Venezuela - Caracas
 
-Oceania:
+Continent: Oceania
 	Australia - Canberra
 	Federated States of Micronesia - Palikir
 	Fiji - suva
