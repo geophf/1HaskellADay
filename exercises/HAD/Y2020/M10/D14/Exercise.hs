@@ -6,7 +6,8 @@ I really hate wikidata sometimes.
 The query:
 
 # Continents/Countries
-SELECT ?continent ?continentLabel ?country ?countryLabel # ?region ?regionLabel # ?particularRegion ?particularRegionLabel 
+SELECT ?continent ?continentLabel ?country ?countryLabel
+     # ?region ?regionLabel # ?particularRegion ?particularRegionLabel 
 WHERE 
 {
   ?continent wdt:P31 wd:Q5107.
@@ -47,7 +48,9 @@ cbc = "countries.txt"
 type Continent = String
 type Country = String
 
-countriesByContinent :: FilePath -> IO (Map Continent [Country])
+type ContinentMap = Map Continent [Country]
+
+countriesByContinent :: FilePath -> IO ContinentMap
 countriesByContinent countriesFile = undefined
 
 {--
