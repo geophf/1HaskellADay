@@ -37,6 +37,8 @@ scrape of that page.
 Today's Haskell problem, let's convert that scrape to Haskell data.
 --}
 
+import Y2020.M10.D12.Exercise  -- Country-type
+
 import Data.Map (Map)
 
 workingDir :: FilePath
@@ -46,7 +48,6 @@ cbc :: FilePath
 cbc = "countries.txt"
 
 type Continent = String
-type Country = String
 
 type ContinentMap = Map Continent [Country]
 

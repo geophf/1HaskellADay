@@ -21,6 +21,7 @@ import Graph.Query
 
 import Data.Graph
 
+import Y2020.M10.D12.Exercise -- Country-type
 import Y2020.M10.D14.Exercise
 
 {--
