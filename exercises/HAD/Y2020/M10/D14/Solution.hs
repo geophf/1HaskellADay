@@ -37,6 +37,8 @@ scrape of that page.
 Today's Haskell problem, let's convert that scrape to Haskell data.
 --}
 
+import Y2020.M10.D12.Solution  -- for Country-type
+
 import Data.List (isPrefixOf, stripPrefix)
 
 import Data.Map (Map)
@@ -49,7 +51,6 @@ cbc :: FilePath
 cbc = "countries.txt"
 
 type Continent = String
-type Country = String
 
 type ContinentMap = Map Continent [Country]
 

@@ -1,5 +1,6 @@
 module Y2020.M10.D15.Solution where
 
+import Y2020.M10.D12.Solution          -- for Country-type
 import Y2020.M10.D14.Solution
 
 {--
