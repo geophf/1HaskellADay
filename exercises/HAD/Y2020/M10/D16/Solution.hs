@@ -64,7 +64,7 @@ relit :: (Country, Continent) -> Cy
 relit (country, continent) = Rel (Country country) IN (Continent continent)
 
 {--
->>> countriesByContinent (workingDir ++ cbc)
+>>> countriesByContinent (Y2020.M10.D14.Solution.workingDir ++ cbc)
 >>> let m = it
 >>> let cm = countryMap m
 >>> graphEndpoint
