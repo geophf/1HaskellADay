@@ -37,11 +37,17 @@ d. What are the countries of all the airbases?
 e. what are the countries of the graph?
 --}
 
+-- import Control.Lens -- nah, I don't to redefine types
+
 import Data.List (isPrefixOf)
 import Data.Map (Map)
 import qualified Data.Map as Map
+import Data.Maybe (mapMaybe)
 import Data.Set (Set)
 import qualified Data.Set as Set
+
+import Graph.Query
+import Graph.JSON.Cypher
 
 {--
 countries :: Map Icao AirBase -> Set Country
@@ -228,13 +234,24 @@ So: first pass, we change those 4 countries in their airbases.
 Fingers crossed and watching the logs.
 --}
 
-firstPassFilter :: Country -> Country
-firstPassFilter "Yugoslavia" = "Serbia"
-firstPassFilter "Saint Helena, Ascension and Tristan da Cunha" = "United Kingdom"
-firstPassFilter "People's Republic of China" = "China"
-firstPassFilter "Turkish Republic of Northern Cypress" = "Turkey"
+firstPassFilter :: Country -> Maybe Country
+firstPassFilter "Yugoslavia" = Just "Serbia"
+firstPassFilter "Saint Helena, Ascension and Tristan da Cunha" = Just "United Kingdom"
+firstPassFilter "People's Republic of China" = Just "China"
+firstPassFilter "Turkish Republic of Northern Cypress" = Just "Turkey"
+firstPassFilter _ = Nothing
 
 -- okay, that was easy.
+
+updateCountry :: AirBase -> Maybe AirBase
+updateCountry ab@(Base _ _ _ c _) = 
+   firstPassFilter c >>= \c' -> return ab { country = c' }
+
+firstPass :: Map Icao AirBase -> Map Icao AirBase
+firstPass = foldr (myUpdate updateCountry) <*> Map.keys -- from @noaheasterly
+
+myUpdate :: Ord k => (a -> Maybe a) -> k -> Map k a -> Map k a
+myUpdate f k m = maybe m (flip (Map.insert k) m) (Map.lookup k m >>= f)
 
 {--
 The second-pass filter needs to replace the key of the CountryMap with the
@@ -270,18 +287,44 @@ updateKey :: Country -> Country -> Cypher
 updateKey sh lo = "MATCH (c:Country { name: \"" ++ lo ++ "\" }) SET c.name=\""
                ++ sh ++ "\"; "
 
+secondPass :: Set Country -> Set Country -> [Cypher]
+secondPass ccs = mapMaybe (flip secondPassFilter ccs) . Set.toList
+
+{--
+>>> let newmbs = firstPass mbs
+>>> Map.size newmbs
+921
+
+>>> let newccs = secondPass setb seta
+>>> length newccs
+43
+
+>>> take 2 newccs
+["MATCH (c:Country { name: \"Albania (Shqip\235ria)\" }) SET c.name=\"Albania\"; ",
+ "MATCH (c:Country { name: \"Austria (\214sterreich)\" }) SET c.name=\"Austria\"; "]
+--}
+
 -- with the above filters in place, we have airbases with revised countries
 -- and our graph with truncated countries. EVERYTHING SHOULD WORK(tm)
 
 -- we'll find tha out when I do that, lol.
 
-repair :: Map Country Country -> Graph -> Graph
-repair = undefined
+repair :: Map Icao AirBase -> CountryMap -> Graph -> IO (Map Icao AirBase)
+repair airBaseMap countryMap url =
+   let ccs = countries fst countryMap
+       newabm = firstPass airBaseMap
+       abc = countries (country . snd) newabm
+       cyphs = secondPass ccs abc
+   in  getGraphResponse url cyphs >> return newabm
+
+-- Okay, the repair-function works, but now the graph needs time to reindex.
 
 -- With the repaired-graph, upload the airbases to it, relating airbases to
 -- countries in the graph.
 
 uploadAirbases :: Map Icao AirBase -> Graph -> Graph
 uploadAirbases = undefined
+
+-- ... this, of course, means we need a graph-representation of airbases.
 
 -- NOW answer a., b., and c.
