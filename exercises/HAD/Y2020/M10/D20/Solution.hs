@@ -1,3 +1,5 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Y2020.M10.D20.Solution where
 
 {--
@@ -45,6 +47,8 @@ import qualified Data.Map as Map
 import Data.Maybe (mapMaybe)
 import Data.Set (Set)
 import qualified Data.Set as Set
+import Data.Text (Text)
+import qualified Data.Text as T
 
 import Graph.Query
 import Graph.JSON.Cypher
@@ -285,8 +289,8 @@ spf a (Just b) | a == b = Nothing
                | otherwise = Just (updateKey a b)
 
 updateKey :: Country -> Country -> Cypher
-updateKey sh lo = "MATCH (c:Country { name: \"" ++ lo ++ "\" }) SET c.name=\""
-               ++ sh ++ "\"; "
+updateKey sh lo = 
+   T.concat ["MATCH (c:Country { name: \"", lo, "\" }) SET c.name=\"", sh, "\"; "]
 
 secondPass :: Set Country -> Set Country -> [Cypher]
 secondPass ccs = mapMaybe (flip secondPassFilter ccs) . Set.toList
@@ -341,15 +345,16 @@ loadIt (_, base) = Rel base OF (Country (country base))
 
 -- ... this, of course, means we need a graph-representation of airbases.
 
-data Showinista = S String | P LongLat
+data Showinista = S String | P LongLat | T Text
 
 instance Show Showinista where
    show (S s) = show s
    show (P p) = show p
+   show (T t) = show t
 
 instance Node AirBase where
    asNode (Base url name icao _country loc) = 
-      constr "Base" [("url",S url),("name",S name),("icao",S icao),
+      constr "Base" [("url",T url),("name",T name),("icao",T icao),
                      ("location",P loc)]
 
 data OF = OF

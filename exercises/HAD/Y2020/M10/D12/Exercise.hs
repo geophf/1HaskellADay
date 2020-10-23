@@ -1,6 +1,7 @@
 module Y2020.M10.D12.Exercise where
 
 import Data.Map (Map)
+import Data.Text
 
 import Data.Aeson
 
@@ -35,7 +36,7 @@ file = "airbases.json"
 -- As you see above, the data model is something like this:
 
 type Key = String
-type Entity = String
+type Entity = Text
 type Icao = String
 type Country = String
 

@@ -44,13 +44,16 @@ import Data.List (isPrefixOf, stripPrefix)
 import Data.Map (Map)
 import qualified Data.Map as Map
 
+import Data.Text (Text)
+import qualified Data.Text as T
+
 workingDir :: FilePath
 workingDir = "Y2020/M10/D14/"
 
 cbc :: FilePath
 cbc = "countries.txt"
 
-type Continent = String
+type Continent = Text
 
 type ContinentMap = Map Continent [Country]
 
@@ -76,7 +79,7 @@ process lines@(l:ines) acc =
 
 processContinent :: [String] -> (Maybe (Continent, [Country]), [String])
 processContinent (conti:countrsAnd) =
-   maybe (Nothing, []) (pc countrsAnd) (stripPrefix "Continent: " conti)
+   maybe (Nothing, []) (pc countrsAnd . T.pack) (stripPrefix "Continent: " conti)
 
 pc :: [String] -> Continent -> (Maybe (Continent, [Country]), [String])
 pc resti counti = 
@@ -89,7 +92,7 @@ processCountries (l:ines) acc | l == "" = (acc, ines)
                               | otherwise = processCountries ines (q:acc)
    where m = tail l
          (n, o) = break (== '-') m
-         q = (if o == "" then id else init) n
+         q = T.pack ((if o == "" then id else init) n)
 
 {--
 >>> countriesByContinent (workingDir ++ cbc)

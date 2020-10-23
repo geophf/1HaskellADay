@@ -10,6 +10,8 @@ import Data.List (stripPrefix)
 import Data.Map (Map)
 import qualified Data.Map as Map
 
+import Data.Text (Text)
+
 import Data.Aeson
 
 -- Okay, we have a query that we want to make to wikidata. Let's make it.
@@ -42,13 +44,17 @@ file = "airbases.json"
 
 -- As you see above, the data model is something like this:
 
-type Key = String
-type Entity = String
-type Icao = String
-type Country = String
+type Key = Text
+type Entity = Text
+type Icao = Text
+type Country = Text
 
 data LongLat = Point { lon :: Double, lat :: Double }
-   deriving (Eq, Ord, Show)
+   deriving (Eq, Ord)
+
+instance Show LongLat where
+   show (Point lon lat) = "point({ latitude: " ++ show lat ++ ", longitude: "
+                       ++ show lon ++ " })"
 
 data AirBase = Base { k       :: Key,
                       val     :: Entity,

@@ -1,35 +1,42 @@
-{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies, RankNTypes #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE FunctionalDependencies #-}
+{-# LANGUAGE RankNTypes #-}
+{-# LANGUAGE OverloadedStrings #-}
 
 module Data.Relation where
 
 -- defines relations as a "thing." So we have nodes, relations, and from those,
 -- we can model anything, right? ... well, constructively, that is.
 
+import Data.Text (Text)
+import qualified Data.Text as T
+
 -- below import available via 1HaskellADay git repository
 
-import Control.List (weave)
-
 class Node a where
-   asNode :: a -> String
+   asNode :: a -> Text
 
--- example: asNode (Nd f) = "Node { name: '" ++ show f ++ "' }"
+-- example: asNode (Nd f) = T.pack ("Node { name: '" ++ show f ++ "' }")
 
-type Attribute a = (String, a)
+type Attribute a = (Text, a)
+
+weave :: [Text] -> Text
+weave = T.intercalate ","
 
 -- constructs nodes and edges
 
-constr :: forall a. Show a => String -> [Attribute a] -> String
-constr typ attrs = typ ++ " { " ++ weave (map shower attrs) ++ " }"
+constr :: forall a. Show a => Text -> [Attribute a] -> Text
+constr typ attrs = T.concat [typ, " { ", weave (map shower attrs), " }"]
 
-shower :: Show a => Attribute a -> String
-shower (x,y) = x ++ ": " ++ show y
+shower :: Show a => Attribute a -> Text
+shower (x,y) = T.concat [x, ": ", T.pack (show y)]
 
 -- so you can now define node and edge instances as
 
 -- asNode x = constr "Node" xsattributes (whatever they are)
 
 class Edge a where
-   asEdge :: a -> String
+   asEdge :: a -> Text
 
 -- an example for asEdge would be "USING" or "RETWEETS"
 
@@ -45,14 +52,14 @@ instance Show Direction where
    show GoingTo = ">"
    show ComingFrom = "<"
 
-type Label = String
+type Label = Text
 
 data Dart a = Drt Direction Label a
    deriving (Eq, Ord)
 
 instance Show a => Show (Dart a) where
-   show (Drt GoingTo lbl val) = '-':lbl ++ ">" ++ show val
-   show (Drt ComingFrom lbl val) = '<':lbl ++ "-" ++ show val
+   show (Drt GoingTo lbl val) = '-':(T.unpack lbl) ++ ">" ++ show val
+   show (Drt ComingFrom lbl val) = '<':(T.unpack lbl) ++ "-" ++ show val
 
 -- RELATABLE -----------------------------------------------------------------
 

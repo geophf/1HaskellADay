@@ -1,5 +1,6 @@
-module Y2020.M10.D16.Solution where
+{-# LANGUAGE OverloadedStrings #-}
 
+module Y2020.M10.D16.Solution where
 
 {--
 `sequence` is really cool: a neat trick.
@@ -22,6 +23,7 @@ import Graph.JSON.Cypher.Read.Rows (justRows, QueryResult)
 import Data.Relation
 
 import qualified Data.Map as Map
+import qualified Data.Text as T
 
 import Y2020.M10.D12.Solution   -- for Country-type
 import Y2020.M10.D14.Solution
@@ -42,8 +44,8 @@ data Geo = Country Country | Continent Continent
    deriving (Eq, Show)
 
 instance Node Geo where
-   asNode (Country coun) = "Country { name: \"" ++ coun ++ "\" }"
-   asNode (Continent cont) = "Continent { name: '" ++ cont ++ "' }"
+   asNode (Country coun) = T.concat ["Country { name: \"", coun, "\" }"]
+   asNode (Continent cont) = T.concat ["Continent { name: '", cont, "' }"]
 
 data IN = IN
    deriving Show
@@ -85,7 +87,7 @@ continentOf url countr = getGraphResponse url (query (Country countr))
 --}
 
 query :: Geo -> [Cypher]
-query a = ["MATCH (" ++ asNode a ++ ")-[:IN]-(b) RETURN b"]
+query a = [T.concat ["MATCH (", asNode a, ")-[:IN]-(b) RETURN b"]]
 
 countriesOf :: Graph -> Continent -> IO QueryResult
 countriesOf url conti = getGraphResponse url (query (Continent conti))
