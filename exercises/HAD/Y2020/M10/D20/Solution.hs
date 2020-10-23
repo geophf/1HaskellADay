@@ -48,6 +48,7 @@ import qualified Data.Set as Set
 
 import Graph.Query
 import Graph.JSON.Cypher
+import Data.Relation
 
 {--
 countries :: Map Icao AirBase -> Set Country
@@ -317,14 +318,54 @@ repair airBaseMap countryMap url =
        cyphs = secondPass ccs abc
    in  getGraphResponse url cyphs >> return newabm
 
--- Okay, the repair-function works, but now the graph needs time to reindex.
+{-- 
+>>> graphEndpoint 
+>>> let url = it
+>>> repair mbs cm url
+fromList [("AYEE",Base {k = "http://www.wikidata.org/entity/Q5372593", 
+                        val = "Emirau Airport", icao = "AYEE", 
+                        country = "Papua New Guinea", 
+                        pos = Point {lon = 149.975, lat = -1.64166667}}), ...]
+
+Okay, the repair-function works, but now the graph needs time to reindex.
+--}
 
 -- With the repaired-graph, upload the airbases to it, relating airbases to
 -- countries in the graph.
 
-uploadAirbases :: Map Icao AirBase -> Graph -> Graph
-uploadAirbases = undefined
+uploadAirbases :: Graph -> Map Icao AirBase -> IO String
+uploadAirbases url = cyphIt url . map loadIt . Map.toList
+
+loadIt :: (Icao, AirBase) -> Relation AirBase OF Geo
+loadIt (_, base) = Rel base OF (Country (country base))
 
 -- ... this, of course, means we need a graph-representation of airbases.
 
+data Showinista = S String | P LongLat
+
+instance Show Showinista where
+   show (S s) = show s
+   show (P p) = show p
+
+instance Node AirBase where
+   asNode (Base url name icao _country loc) = 
+      constr "Base" [("url",S url),("name",S name),("icao",S icao),
+                     ("location",P loc)]
+
+data OF = OF
+   deriving Show
+
+instance Edge OF where
+   asEdge _ = "OF"
+
 -- NOW answer a., b., and c.
+
+{--
+I would, but:
+
+\"errors\":[{\"code\":\"Neo.ClientError.Statement.SyntaxError\",\"message\":\"Invalid input '2': expected '\\\\', ''', '\\\"', 'b', 'f', 'n', 'r', 't', UTF16 or UTF32 (line 1, column 73 (offset: 72))\\n\\\"MERGE (a:Base { url: \\\"http://www.wikidata.org/entity/Q43363\\\",name: \\\"Chi\\\\232vres Air Base\\\",icao: \\\"EBCV\\\"
+
+... sigh ... more work to be done on data un-de-unicodification.
+
+Last I checked we WERE in the 21st century, but oh, well.
+--}
