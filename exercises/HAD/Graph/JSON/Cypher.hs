@@ -18,17 +18,20 @@ import Data.Map (Map)
 
 import Data.Relation
 
+import Data.Text (Text)
+import qualified Data.Text as T
+
 -- Okay, one view of a set of relations is a Graph.
 
 -- One view of a graph is expressed using OpenCypher:
 
-type Cypher = String
-type Var = String
+type Cypher = Text
+type Var = Text
 
 mkCypher :: (Node a, Node b, Edge rel)
          => Var -> Var -> Var -> Relation a rel b -> Cypher
 mkCypher vara varrel varb r@(Rel a rel b) =
-   unwords [mergeNode vara a, mergeNode varb b, mergeRel r vara varrel varb]
+   T.unwords [mergeNode vara a, mergeNode varb b, mergeRel r vara varrel varb]
 
 data CypherOp = MATCH | MERGE | CREATE deriving Show
 
@@ -36,13 +39,14 @@ mergeNode, match :: Node a => Var -> a -> Cypher
 mergeNode = varNode MERGE
 match = varNode MATCH
 
-varNode :: Node a => CypherOp -> Var -> a -> String
-varNode op var node = show op ++ " (" ++ var ++ (':' : asNode node) ++ ")"
+varNode :: Node a => CypherOp -> Var -> a -> Text
+varNode op var node =
+   T.concat [T.pack (show op), " (", var, ":", asNode node, ")"]
 
 mergeRel :: Edge rel => Relation a rel b -> Var -> Var -> Var -> Cypher
 mergeRel (Rel _ rel _) vara varrel varb =
-   "MERGE (" ++ vara ++ ")-[" ++ varrel ++ (':' : asEdge rel ++ "]->("
-             ++ varb ++ ")")
+   T.concat ["MERGE (", vara, ")-[", varrel, ":", asEdge rel, "]->(",
+             varb, ")"]
 
 -- Okay, now we need to convert these Cypher queries to JSON for REST calls
 
