@@ -1,3 +1,5 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Y2020.M10.D23.Exercise where
 
 import Y2020.M10.D12.Exercise    -- for AirBase
