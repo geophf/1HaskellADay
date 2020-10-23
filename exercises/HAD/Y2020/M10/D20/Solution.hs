@@ -363,7 +363,11 @@ instance Edge OF where
 {--
 I would, but:
 
-\"errors\":[{\"code\":\"Neo.ClientError.Statement.SyntaxError\",\"message\":\"Invalid input '2': expected '\\\\', ''', '\\\"', 'b', 'f', 'n', 'r', 't', UTF16 or UTF32 (line 1, column 73 (offset: 72))\\n\\\"MERGE (a:Base { url: \\\"http://www.wikidata.org/entity/Q43363\\\",name: \\\"Chi\\\\232vres Air Base\\\",icao: \\\"EBCV\\\"
+\"errors\":[{\"code\":\"Neo.ClientError.Statement.SyntaxError\",
+\"message\":\"Invalid input '2': expected '\\\\', ''', '\\\"', 'b', 'f', 'n', 
+ 'r', 't', UTF16 or UTF32 (line 1, column 73 (offset: 72))\\n\\
+ \"MERGE (a:Base { url: \\\"http://www.wikidata.org/entity/Q43363\\\",
+  name: \\\"Chi\\\\232vres Air Base\\\",icao: \\\"EBCV\\\"
 
 ... sigh ... more work to be done on data un-de-unicodification.
 
