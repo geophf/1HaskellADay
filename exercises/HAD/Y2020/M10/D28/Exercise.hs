@@ -79,12 +79,15 @@ obj *: label = WD <$> undefined <*> undefined
 
 -- and with this new operator, we can do this naturally:
 
+type Alliance = Text
+
 data AllianceMember = AllianceMember { alliance :: WikiDatum,
                                        country :: WikiDatum }
    deriving (Eq, Ord, Show)
 
 instance FromJSON AllianceMember where
-   parseJSON = undefined
+   parseJSON = withObject "AllianceMember" $ \v -> AllianceMember
+     <$> v *: "alliance" <*> v *: "country"
 
 -- also, please filter out the (one) alliance that does not have membership
 -- value the same as all the other members (that's an indirect hint that
@@ -125,7 +128,7 @@ countries = undefined
 
 -- How many alliances are there?
 
-alliances :: [AllianceMember] -> Set Country
+alliances :: [AllianceMember] -> Set Alliance
 alliances = undefined
 
 {-- BONUS -------------------------------------------------------
