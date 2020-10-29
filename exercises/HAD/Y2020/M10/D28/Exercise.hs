@@ -41,7 +41,10 @@ structures declared below, then answer the questions following.
 import Y2020.M10.D12.Exercise   -- for Country
 
 import Data.Aeson
+import Data.Aeson.Types
+
 import Data.ByteString.Lazy.Char8 (ByteString)
+import qualified Data.ByteString.Lazy.Char8 as BL
 
 import Data.Set (Set)
 import Data.Text (Text)
@@ -57,14 +60,24 @@ alliancesFile = "military-alliances.json"
 type Qname = Text
 type Name = Text
 
-data WikiDatum = WD { label :: Text, qid :: Qname, name :: Name }
+data WikiDatum = WD { qid :: Qname, name :: Name }
    deriving (Eq, Ord, Show)
 
 -- this is a ... 'little' (?) tricky, because we need to parse a datum by
 -- its labels.
 
+{--
 instance FromJSON WikiDatum where
    parseJSON = undefined
+
+This --^ doesn't work because we need to know the label at the time of
+parse. Let's, instead, create a 'smart'-parser that uses the entire arrow:
+--}
+
+(*:) :: Object -> Text -> Parser WikiDatum
+obj *: label = WD <$> undefined <*> undefined
+
+-- and with this new operator, we can do this naturally:
 
 data AllianceMember = AllianceMember { alliance :: WikiDatum,
                                        country :: WikiDatum }
@@ -76,6 +89,25 @@ instance FromJSON AllianceMember where
 -- also, please filter out the (one) alliance that does not have membership
 -- value the same as all the other members (that's an indirect hint that
 -- `memberOf` isn't always a `memberOf`-property).
+
+-- let's try this out on a sample first:
+
+samp :: ByteString
+samp = BL.pack (concat ["{\"alliance\":\"http://www.wikidata.org/entity/Q7184\",",
+       "\"allianceLabel\":\"NATO\",",
+       "\"country\":\"http://www.wikidata.org/entity/Q142\",",
+       "\"countryLabel\":\"France\"}"])
+
+{--
+>>> (decode samp) :: Maybe AllianceMember
+Just (AllianceMember {
+        alliance = WD {qid = "http://www.wikidata.org/entity/Q7184", 
+                       name = "NATO"}, 
+        country  = WD {qid = "http://www.wikidata.org/entity/Q142",
+                       name = "France"}})
+
+WOOT!
+--}
 
 allianceMembers :: ByteString -> [AllianceMember]
 allianceMembers = undefined
