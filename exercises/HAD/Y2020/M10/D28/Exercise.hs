@@ -199,5 +199,5 @@ weirdOppositions = undefined
 
 -- but to do weirdness we have to map alliances to countries:
 
-memberCountries :: [Alliance] -> Map Alliance (Set Country)
+memberCountries :: [AllianceMember] -> Map Alliance (Set Country)
 memberCountries = undefined
