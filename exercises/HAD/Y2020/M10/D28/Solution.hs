@@ -80,7 +80,7 @@ class Tagged t where
 (*:) :: Object -> Text -> Parser WikiDatum
 obj *: label = WD <$> obj .: label <*> obj .: (T.concat [label, "Label"])
 
--- and with this new operator, we can do this:
+-- and with this new operator, we can do this naturally:
 
 data AllianceMember = AllianceMember { alliance :: WikiDatum,
                                        country :: WikiDatum }
@@ -94,13 +94,24 @@ instance FromJSON AllianceMember where
 -- value the same as all the other members (that's an indirect hint that
 -- `memberOf` isn't always a `memberOf`-property).
 
--- let's try this out on a sample:
+-- let's try this out on a sample first:
 
 samp :: ByteString
 samp = BL.pack (concat ["{\"alliance\":\"http://www.wikidata.org/entity/Q7184\",",
        "\"allianceLabel\":\"NATO\",",
        "\"country\":\"http://www.wikidata.org/entity/Q142\",",
        "\"countryLabel\":\"France\"}"])
+
+{--
+>>> (decode samp) :: Maybe AllianceMember 
+Just (AllianceMember {
+        alliance = WD {qid = "http://www.wikidata.org/entity/Q7184", 
+                       name = "NATO"}, 
+        country  = WD {qid = "http://www.wikidata.org/entity/Q142", 
+                       name = "France"}})
+
+WOOT!
+--}
 
 allianceMembers :: ByteString -> [AllianceMember]
 allianceMembers = undefined
