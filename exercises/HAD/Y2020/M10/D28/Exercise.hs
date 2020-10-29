@@ -57,8 +57,11 @@ alliancesFile = "military-alliances.json"
 type Qname = Text
 type Name = Text
 
-data WikiDatum = WD { qid :: Qname, name :: Name }
+data WikiDatum = WD { label :: Text, qid :: Qname, name :: Name }
    deriving (Eq, Ord, Show)
+
+-- this is a ... 'little' (?) tricky, because we need to parse a datum by
+-- its labels.
 
 instance FromJSON WikiDatum where
    parseJSON = undefined
