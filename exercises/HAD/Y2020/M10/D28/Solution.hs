@@ -44,6 +44,7 @@ import Data.Aeson
 import Data.Aeson.Types
 
 import Data.ByteString.Lazy.Char8 (ByteString)
+import qualified Data.ByteString.Lazy.Char8 as BL
 
 import Data.Set (Set)
 import Data.Text (Text)
@@ -79,19 +80,27 @@ class Tagged t where
 (*:) :: Object -> Text -> Parser WikiDatum
 obj *: label = WD <$> obj .: label <*> obj .: (T.concat [label, "Label"])
 
-instance FromJSON WikiDatum where
-   parseJSON = undefined
+-- and with this new operator, we can do this:
 
 data AllianceMember = AllianceMember { alliance :: WikiDatum,
                                        country :: WikiDatum }
    deriving (Eq, Ord, Show)
 
 instance FromJSON AllianceMember where
-   parseJSON = undefined
+   parseJSON = withObject "AllianceMember" $ \v -> AllianceMember
+     <$> v *: "alliance" <*> v *: "country"
 
 -- also, please filter out the (one) alliance that does not have membership
 -- value the same as all the other members (that's an indirect hint that
 -- `memberOf` isn't always a `memberOf`-property).
+
+-- let's try this out on a sample:
+
+samp :: ByteString
+samp = BL.pack (concat ["{\"alliance\":\"http://www.wikidata.org/entity/Q7184\",",
+       "\"allianceLabel\":\"NATO\",",
+       "\"country\":\"http://www.wikidata.org/entity/Q142\",",
+       "\"countryLabel\":\"France\"}"])
 
 allianceMembers :: ByteString -> [AllianceMember]
 allianceMembers = undefined
@@ -115,13 +124,13 @@ alliances = undefined
 {-- BONUS -------------------------------------------------------
 
 Read in the oppositions. How many oppositions are there?
+
 ... n.b.: Opposition a b === Opposition b a
 
 Also: Please explain to me why Poland is in opposition to Poland? For I seek
 knowledge to learn and to know.
 
 Are there other such oppositions?
-
 --}
 
 oppositionsFile :: FilePath
