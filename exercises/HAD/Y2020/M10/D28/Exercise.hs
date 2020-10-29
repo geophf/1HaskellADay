@@ -46,6 +46,7 @@ import Data.Aeson.Types
 import Data.ByteString.Lazy.Char8 (ByteString)
 import qualified Data.ByteString.Lazy.Char8 as BL
 
+import Data.Map (Map)
 import Data.Set (Set)
 import Data.Text (Text)
 
@@ -115,6 +116,20 @@ WOOT!
 allianceMembers :: ByteString -> [AllianceMember]
 allianceMembers = undefined
 
+{--
+>>> BL.readFile (deer ++ alliancesFile)
+...
+>>> let af = it
+>>> let allis = allianceMembers af
+>>> length allis
+42
+>>> head allis
+AllianceMember {alliance = WD {qid = "http://www.wikidata.org/entity/Q7184",
+                               name = "NATO"},
+                country = WD {qid = "http://www.wikidata.org/entity/Q30",
+                              name = "United States of America"}}
+--}
+
 -- We're going to have to explore alliances further, as wikidata is woefully
 -- underrepresentative, i.e.:
 
@@ -126,10 +141,27 @@ allianceMembers = undefined
 countries :: [AllianceMember] -> Set Country
 countries = undefined
 
+{--
+>>> countries allis
+fromList ["Australia","Bulgaria","Canada","Croatia","Denmark","France",
+          "Germany","Italy","Kazakhstan","Kingdom of Denmark","Kyrgyzstan",
+          "Latvia","Montenegro","Netherlands","New Zealand","Norway","Pakistan",
+          "Philippines","Poland","Portugal","Romania","Slovakia","Tajikistan",
+          "Thailand","Turkey","United Kingdom","United States of America",
+          "Uzbekistan"]
+--}
+
 -- How many alliances are there?
 
 alliances :: [AllianceMember] -> Set Alliance
 alliances = undefined
+
+{--                            
+>>> alliances allis
+fromList ["Anzus","Collective Security Treaty Organisation","Five Eyes","NATO",
+          "Southeast Asia Treaty Organization","Warsaw Pact",
+          "Western European Union","polla"]
+--}
 
 {-- BONUS -------------------------------------------------------
 
@@ -140,7 +172,6 @@ Also: Please explain to me why Poland is in opposition to Poland? For I seek
 knowledge to learn and to know.
 
 Are there other such oppositions?
-
 --}
 
 oppositionsFile :: FilePath
@@ -165,3 +196,8 @@ weirdOppositions :: Set Opposition -> Set Country
 weirdOppositions = undefined
 
 -- returns a set of countries that oppose themselves.
+
+-- but to do weirdness we have to map alliances to countries:
+
+memberCountries :: [Alliance] -> Map Alliance (Set Country)
+memberCountries = undefined
