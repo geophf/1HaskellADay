@@ -41,7 +41,7 @@ data Alliance = Alliance Name (Set Alias) (Set Country)
 
 type AllianceMap = Map Name Alliance
 
-parseAlliances :: String -> AllianceMap
+parseAlliances :: FilePath -> IO AllianceMap
 parseAlliances wikitext = undefined
 
 {-- 
