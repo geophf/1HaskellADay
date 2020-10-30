@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Y2020.M10.D29.Exercise where
+module Y2020.M10.D30.Exercise where
 
 {--
 So, the wikipedia entry for all alliances of the world:
@@ -18,7 +18,7 @@ The listing of modern military alliances is archived here:
 --}
 
 dear :: FilePath
-dear = "Y2020/M10/D29/"    -- ... geddit?
+dear = "Y2020/M10/D30/"    -- ... geddit?
 
 moderns :: FilePath
 moderns = "modern-alliances.wtxt"
