@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TupleSections #-}
 
 module Y2020.M10.D30.Solution where
 
@@ -17,13 +18,20 @@ https://meta.wikimedia.org/wiki/Help:Wikitext_examples
 The listing of modern military alliances is archived here:
 --}
 
-import Control.Arrow ((&&&), first)
+import Control.Arrow ((&&&), (***), first)
+
+import Data.List (stripPrefix)
 
 import Data.Map (Map)
 import qualified Data.Map as Map
 
+import Data.Maybe (fromMaybe)
+
 import Data.Set (Set)
+import qualified Data.Set as Set
+
 import Data.Text (Text)
+import qualified Data.Text as T
 
 import Y2020.M10.D12.Solution     -- for Country
 import Y2020.M10.D14.Solution     -- for ContinentMap
@@ -73,14 +81,18 @@ pa' acc l@(_:ines) =
    maybe (pa' acc ines) (uncurry pa' . first (:acc)) (pa'' l)
 
 pa'' :: [String] -> Maybe (Alliance, [String])
-pa'' (l:ines) =
-   parseStar l          >>=
+pa'' (l:ines) = pa''' l >>= \(n, cs) ->
+   optionalAliases ines >>=
+   return . first (flip (Alliance n) cs)
+
+pa''' :: String -> Maybe (Name, Set Country)
+pa''' line = 
+   parseStar line       >>=
    consumeSpaces        >>=
    optionalFlagIcon     >>=
    allianceName         >>= \(n,r0) ->
-   countryFlags r0      >>= \flags  ->
-   optionalAliases ines >>= 
-   return . first (flip (Alliance n) flags)
+   countryFlags r0      >>=
+   return . (n,)
 
 {-- 
 Parsing alliances should be (once you get to an alliance block):
@@ -101,20 +113,61 @@ parseStar ('*':rest) = Just rest
 parseStar _          = Nothing
 
 consumeSpaces :: String -> Maybe String
-consumeSpaces = undefined
+consumeSpaces [] = Nothing
+consumeSpaces (' ':rest) = consumeSpaces rest
+consumeSpaces elsewise = Just elsewise
 
 optionalFlagIcon :: String -> Maybe String
-optionalFlagIcon = undefined
+optionalFlagIcon s = Just (fromMaybe s (snd <$> flagIcon s))
 
-allianceName :: String -> Maybe (Text, String)
-allianceName = undefined
+flagIcon :: String -> Maybe (Country, String)
+flagIcon = unbox "{{flagicon|" '}'
+
+allianceName :: String -> Maybe (Name, String)
+allianceName = unbox "[[" ']'
+
+unbox :: String -> Char -> String -> Maybe (Text, String)
+unbox pre post s = (T.pack *** drop 2) . break (== post) <$> stripPrefix pre s
 
 countryFlags :: String -> Maybe (Set Country)
-countryFlags = undefined
+countryFlags = Just . cf' Set.empty
+
+cf' :: Set Country -> String -> Set Country
+cf' acc s = maybe acc (uncurry (addCountry acc)) (consumeSpaces s >>= flagIcon)
+
+addCountry :: Set Country -> Country -> String -> Set Country
+addCountry acc c = cf' (Set.insert c acc)
+
+-- countryFlags is a fun one. Let's take it for a spin:
+
+flaggies :: String
+flaggies = " {{flagicon|Estonia}} {{flagicon|Latvia}} {{flagicon|Lithuania}}"
+
+{--
+>>> countryFlags flaggies 
+Just (fromList ["Estonia","Latvia","Lithuania"])
+--}
 
 optionalAliases :: [String] -> Maybe (Set Alias, [String])
-optionalAliases = undefined
+optionalAliases = Just . (Set.empty,) -- TODO
 
+-- let's try a whole line:
+
+samp0 :: String
+samp0 = "*[[Economic Community of Central African States]] {{flagicon|Angola}}"
+     ++ " {{flagicon|Burundi}} {{flagicon|Cameroon}} {{flagicon|Chad}}"
+     ++ " {{flagicon|Central African Republic}} {{flagicon|Democratic Republic"
+     ++ " of the Congo}} {{flagicon|Gabon}} {{flagicon|Republic of the Congo}}"
+     ++ " {{flagicon|Equatorial Guinea}} {{flagicon|Sao Tome and Principe}}"
+
+
+{--
+>>> pa''' samp0
+Just ("Economic Community of Central African States",
+      fromList ["Angola","Burundi","Cameroon","Central African Republic","Chad",
+                "Democratic Republic of the Congo","Equatorial Guinea","Gabon",
+                "Republic of the Congo","Sao Tome and Principe"])
+--}
 -- Except: --v
 
 -- data clean-up --------------------------------------------------
