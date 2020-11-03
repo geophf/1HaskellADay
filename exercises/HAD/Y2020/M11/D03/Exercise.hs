@@ -76,6 +76,12 @@ newFunkyAllianceMap :: AllianceMap -> AllianceMap -> AllianceMap
 newFunkyAllianceMap = undefined
 
 {--
+Refine newFunkyAllianceMap until you have no empty alliances or until you want
+to pull your hair out and stomp up and down, up and down and run around the
+house, screaming, ...
+
+... whichever comes first.
+
 With this new, funky alliance map, answer the questions from the previous 
 exercise. Which answers have changed?
 --}
