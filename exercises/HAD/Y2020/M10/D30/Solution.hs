@@ -18,14 +18,15 @@ https://meta.wikimedia.org/wiki/Help:Wikitext_examples
 The listing of modern military alliances is archived here:
 --}
 
-import Control.Arrow ((&&&), (***), first)
+import Control.Arrow ((&&&), (***), first, second)
 
-import Data.List (stripPrefix)
+import Data.List (stripPrefix, sortOn)
 
 import Data.Map (Map)
 import qualified Data.Map as Map
 
 import Data.Maybe (fromMaybe)
+import Data.Ord                  -- for Down
 
 import Data.Set (Set)
 import qualified Data.Set as Set
@@ -33,9 +34,10 @@ import qualified Data.Set as Set
 import Data.Text (Text)
 import qualified Data.Text as T
 
-import Y2020.M10.D12.Solution     -- for Country
-import Y2020.M10.D14.Solution     -- for ContinentMap
-import Y2020.M10.D28.Solution hiding (Alliance, name)    -- for Name
+import Y2020.M10.D12.Solution hiding (workingDir)     -- for Country
+import Y2020.M10.D14.Solution                         -- for ContinentMap
+import Y2020.M10.D15.Solution (countryMap)
+import Y2020.M10.D28.Solution hiding (Alliance, name, countries) -- for Name
 
 dear :: FilePath
 dear = "Y2020/M10/D30/"    -- ... geddit?
@@ -168,6 +170,15 @@ Just ("Economic Community of Central African States",
                 "Democratic Republic of the Congo","Equatorial Guinea","Gabon",
                 "Republic of the Congo","Sao Tome and Principe"])
 --}
+
+{--
+So: all of that put together:
+
+>>> parseAlliances (dear ++ moderns)
+...
+>>> let allis = it
+--}
+
 -- Except: --v
 
 -- data clean-up --------------------------------------------------
@@ -181,14 +192,96 @@ What are the 58 African nations? Replace the free text with those nations.
 Use the ContinentMap to guide you.
 --}
 
-updateAfricanUnion :: ContinentMap -> Alliance -> Alliance
-updateAfricanUnion = undefined
+updateAfricanUnion :: ContinentMap -> Continent -> Alliance -> Alliance
+updateAfricanUnion cm conti alli@(Alliance n a _) =
+   maybe alli (Alliance n a . Set.fromList) (Map.lookup conti cm)
+
+{--
+>>> countriesByContinent (workingDir ++ cbc)
+>>> let m = it
+
+>>> Map.lookup (T.pack "African Union") allis
+Nothing
+
+... it didn't parse, so:
+
+>>> let uau = updateAfricanUnion m (T.pack "Africa") 
+                         (Alliance (T.pack "African Union") Set.empty Set.empty)
+Alliance {name = "African Union", 
+          aliases = fromList [], 
+          countries = fromList ["Algeria","Angola","Benin","Botswana",
+                         "Burkina Faso","Burundi",
+                         "Cameroon (also spelled Cameroun)","Cape Verde",
+                         "Central African Republic","Chad (Tchad)","Comoros",
+                         "C\244te d'Ivoire (Ivory Coast)",
+                         "Democratic Republic of the Congo (Zaire)","Djibouti",
+                         "Egypt (Misr)","Equatorial Guinea","Eritrea",
+                         "Ethiopia (Abyssinia)","Gabon","Ghana","Guine",
+                         "Guinea","Kenya","Lesotho","Liberia","Libya",
+                         "Madagascar","Malawi","Mali","Mauritania","Mauritius",
+                         "Morocco (Al Maghrib)","Mozambique","Namibia","Niger",
+                         "Nigeria","Republic of the Congo","Rwanda","Senegal",
+                         "Seychelles","Sierra Leone","Somalia","South Africa",
+                         "South Sudan","Sudan","Swaziland (Eswatini)",
+                         "S\227o Tom\233 and Pr\237ncipe","Tanzania",
+                         "The Gambia","Togo","Tunisia","Uganda","Western Sahara",
+                         "Zambia","Zimbabwe"]}
+
+>>> let allis1 = Map.insert (T.pack "African Union") uau allis
+
+Yay!-...ish.
+--}
 
 -- Okay. Now that we have the modern alliances
 
--- 1. How many alliances are there?
+{-- 
+1. How many alliances are there?
+
+>>> Map.size allis1
+23
 
 -- 2.a. How many countries are in multiple alliances?
 -- 2.b. list those countries with their multiple alliances
 
--- 3. What Countries here are not in the CountryMap?
+First we have to get all the countries:
+
+>>> let ctries = Set.unions . map countries $ Map.elems allis1
+>>> Set.size ctries
+113
+>>> take 3 $ Set.toList ctries 
+["Angola","Argentina","Australia"]
+
+Then, we reverse the map, sorting by the length of the associated alliances
+--}
+
+alliancesOf :: Country -> Map Name Alliance -> Set Alliance
+alliancesOf country = Set.fromList . filter (countryIn country) . Map.elems
+
+countryIn :: Country -> Alliance -> Bool
+countryIn c = Set.member c . countries
+
+countryAlliances :: Map Name Alliance -> Set Country -> Map Country (Set Alliance)
+countryAlliances allis =
+   Map.fromList . map (id &&& flip alliancesOf allis) . Set.toList
+
+{--
+>>> let ca = countryAlliances allis1 ctries 
+>>> Map.size ca
+113
+
+>>> let multis = sortOn (Down . Set.size . snd) $ Map.toList ca
+>>> take 5 $ map (second Set.size) multis 
+[("Angola",2),("Argentina",2),("Benin",2),("Brazil",2),("Burkina Faso",2)]
+
+3. What Countries here are not in the CountryMap?
+
+>>> Set.difference (Map.keysSet ca) (Map.keysSet cm)
+fromList ["Brazil","Cabo Verde","Cambodia","Cameroon","Chad",
+          "Democratic Republic of the Congo","Dominican Republic",
+          "Guinea-Bissau","Hezbollah","Italy","Ivory Coast","Jordan","Morocco",
+          "Myanmar","Netherlands","Palestine","Panama","Sao Tome and Principe",
+          "Spain","Thailand","Timor_Leste","UK","USA","Ukraine"]
+
+>>> Set.size $ Set.difference (Map.keysSet ca) (Map.keysSet cm)
+24
+--}
