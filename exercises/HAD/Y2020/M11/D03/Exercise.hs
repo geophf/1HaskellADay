@@ -23,7 +23,7 @@ import Y2020.M10.D12.Solution hiding (workingDir)     -- for Country
 import Y2020.M10.D14.Solution                         -- for ContinentMap
 import Y2020.M10.D28.Solution hiding (Alliance, name, countries) -- for Name
 
-militaryAlliances :: IO (Map Name Alliance)
+militaryAlliances :: IO AllianceMap
 militaryAlliances =
    parseAlliances (dear ++ moderns)         >>= \allis0 ->
    countriesByContinent (workingDir ++ cbc) >>= \m ->
@@ -45,7 +45,7 @@ An alliance of no countries. There's more than one of these. How many 'empty'
 alliances are there? What are these alliances?
 --}
 
-emptyAlliances :: Map Name Alliance -> Set Name
+emptyAlliances :: AllianceMap -> Set Name
 emptyAlliances = undefined
 
 {--
