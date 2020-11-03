@@ -57,7 +57,7 @@ emptyAlliances = undefined
 {--
 The problem that created these empty alliances could be a parsing one, because
 some person MIGHT have changed the data format mid-way of how an alliance is
-lists, arbitrarily, because this person wanted to make my life less boring.
+listed, arbitrarily, because this person wanted to make my life less boring.
 
 Thank you, some person. No, really, you're doing a great job. Love your work.
 
@@ -76,6 +76,6 @@ newFunkyAllianceMap :: AllianceMap -> AllianceMap -> AllianceMap
 newFunkyAllianceMap = undefined
 
 {--
-With this new, funky alliance map, answer the questions from the previous day.
-Which answers have changed?
+With this new, funky alliance map, answer the questions from the previous 
+exercise. Which answers have changed?
 --}
