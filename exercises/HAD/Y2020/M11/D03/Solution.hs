@@ -10,10 +10,16 @@ import Y2020.M10.D30.Solution
 
 -- first, let's load and ... 'semi'-correct (?) those data:
 
+import Control.Arrow (second)
+
+import Data.List (sortOn)
+
 import Data.Map (Map)
 import qualified Data.Map as Map
 
 import Data.Maybe (fromJust)
+
+import Data.Ord          -- for Down
 
 import Data.Set (Set)
 import qualified Data.Set as Set
@@ -23,6 +29,7 @@ import qualified Data.Text as T
 
 import Y2020.M10.D12.Solution hiding (workingDir)     -- for Country
 import Y2020.M10.D14.Solution                         -- for ContinentMap
+import Y2020.M10.D15.Solution (countryMap)
 import Y2020.M10.D28.Solution hiding (Alliance, name, countries) -- for Name
 
 militaryAlliances :: IO (Map Name Alliance)
@@ -105,7 +112,12 @@ exercise. Which answers have changed?
 type AA = AllianceMap -> AllianceMap
 
 refinements :: AA
-refinements = sinoRussian . fiveEyes . turkeyAzerbaijan . takm . guam. nato
+refinements = sinoRussian
+            . fiveEyes 
+            . turkeyAzerbaijan
+            . takm . guam. nato
+            . prosur . imsc . ima
+            . nonNato . multinats . zpcas . us
 
 sinoRussian :: AA
 sinoRussian = let treat =  "2001 Sino-Russian Treaty of Friendship" in
@@ -174,7 +186,8 @@ natoFlags = concat ["{{flagicon|USA}} {{flagicon|UK}} ",
       "{{flagicon|Denmark}} {{flagicon|Iceland}} {{flagicon|Italy}} ",
       "{{flagicon|Luxembourg}}  {{flagicon|Netherlands}} ",
       "{{flagicon|Norway}} {{flagicon|Portugal}} {{flagicon|Greece}} ",
-      "{{flagicon|Turkey}} {{flagicon|Germany}} {{flagicon|Spain}} ",                 "{{flagicon|Czech Republic}} {{flagicon|Hungary}} ",
+      "{{flagicon|Turkey}} {{flagicon|Germany}} {{flagicon|Spain}} ",
+      "{{flagicon|Czech Republic}} {{flagicon|Hungary}} ",
       "{{flagicon|Poland}} {{flagicon|Bulgaria}} ",
       "{{flagicon|Estonia}} {{flagicon|Latvia}} ",
       "{{flagicon|Lithuania}} {{flagicon|Romania}} ",
@@ -182,14 +195,103 @@ natoFlags = concat ["{{flagicon|USA}} {{flagicon|UK}} ",
       "{{flagicon|Albania}} {{flagicon|Croatia}} ",
       "{{flagicon|Montenegro}} {{flagicon|North Macedonia}}"]
 
+cfs :: String -> Set Country
+cfs = fromJust . countryFlags
+
 nato :: AA
 nato = let neato = "North Atlantic Treaty Organization"
            icko  = "File:NATO flag.svg|22px"
        in  Map.delete icko
-         . Map.insert neato (Alliance neato (Set.singleton "NATO") cf)
-   where cf = fromJust (countryFlags natoFlags)
+         . Map.insert neato (Alliance neato (Set.singleton "NATO") 
+                                      (cfs natoFlags))
 
 -- coffee-break!
+
+-- end: coffee-break! Okay!
+
+{--
+HEY!
+
+>>> Map.lookup (T.pack "Union of South American Nations") ma1
+Nothing
+
+... we have more work to do :/
+--}
+
+prosurFlags :: String
+prosurFlags = concat ["{{flagicon|Brazil}} {{flagicon|Chile}} ",
+      "{{flagicon|Argentina}} {{flagicon|Colombia}} {{flagicon|Peru}} ",
+      "{{flagicon|Ecuador}} {{flagicon|Paraguay}} {{flagicon|Guyana}}"]
+
+prosur :: AA
+prosur = let proness = "Forum for the Progress and Development of South America"
+         in  Map.insert proness (Alliance proness (Set.singleton "PROSUR")
+                                          (cfs prosurFlags))
+
+imscFlags :: String
+imscFlags = concat ["{{flagicon|Albania}} {{flagicon|Australia}} ",
+     "{{flagicon|Bahrain}} {{flagicon|Kuwait}} {{flagicon|Lithuania}} ",
+     "{{flagicon|Saudi Arabia}} {{flagicon|UAE}} {{flagicon|UK}} ",
+     "{{flagicon|USA}}"]
+
+imsc :: AA
+imsc = let namei = "International Maritime Security Construct"
+       in  Map.insert namei (Alliance namei Set.empty (cfs imscFlags))
+
+imaFlags :: String
+imaFlags = concat ["{{flagicon|Saudi Arabia}} {{flagicon|Egypt}} ",
+     "{{flagicon|Libya}} {{flagicon|Tunisia}} {{flagicon|Morocco}} ",
+     "{{flagicon|Mali}} {{flagicon|Mauritania}} {{flagicon|Sudan}} ",
+     "{{flagicon|Somalia}} {{flagicon|Chad}} {{flagicon|Nigeria}} ",
+     "{{flagicon|Niger}} {{flagicon|UAE}} {{flagicon|Yemen}} ",
+     "{{flagicon|Qatar}} {{flagicon|Bahrain}} {{flagicon|Turkey}} ",
+     "{{flagicon|Pakistan}} {{flagicon|Bangladesh}} {{flagicon|Malaysia}} ",
+     "{{flagicon|Djibouti}} {{flagicon|Benin}} {{flagicon|Jordan}} ",
+     "{{flagicon|Kuwait}} {{flagicon|Lebanon}} {{flagicon|Maldives}} ",
+     "{{flagicon|Oman}} {{flagicon|Palestine}} {{flagicon|Senegal}} ",
+     "{{flagicon|Sierra Leone}} {{flagicon|Togo}} {{flagicon|Gabon}} ",
+     "{{flagicon|Eritrea}} {{flagicon|Comoros}} {{flagicon|Ivory Coast}} ",
+     "{{flagicon|Afghanistan}}"]
+
+ima :: AA
+ima = let iman = "Islamic Military Alliance"
+      in  Map.insert iman (Alliance iman (Set.singleton "IMAFT") (cfs imaFlags))
+
+nonNatoFlags :: String
+nonNatoFlags = concat ["{{flagicon|Afghanistan}} {{flagicon|Argentina}} ",
+     "{{flagicon|Australia}} {{flagicon|Bahrain}} {{flagicon|Brazil}} ",
+     "{{flagicon|Egypt}}  {{flagicon|Israel}} {{flagicon|Japan}} ",
+     "{{flagicon|Jordan}} {{flagicon|Kuwait}} {{flagicon|Morocco}} ",
+     "{{flagicon|New Zealand}} {{flagicon|Pakistan}} {{flagicon|Philippines}} ",
+     "{{flagicon|South Korea}}  {{flagicon|Thailand}} {{flagicon|Tunisia}} ",
+     "{{flagicon|Taiwan}}"]
+
+nonNato :: AA
+nonNato = let maj = "Major non-NATO Ally" in
+          Map.insert maj (Alliance maj Set.empty (cfs nonNatoFlags))
+
+multinats :: AA
+multinats = Map.delete "Multinational Force and Observers"
+
+zpcasFlags :: String
+zpcasFlags = concat ["{{flagicon|Brazil}} {{flagicon|Argentina}} ",
+     "{{flagicon|Uruguay}} {{flagicon|South Africa}} {{flagicon|Angola}} ",
+     "{{flagicon|Nigeria}} {{flagicon|Benin}} {{flagicon|Cameroon}} ",
+     "{{flagicon|Cabo Verde}} {{flagicon|Republic of the Congo}} ",
+     "{{flagicon|Democratic Republic of the Congo}} {{flagicon|Ivory Coast}} ",
+     "{{flagicon|Ghana}} {{flagicon|Guinea-Bissau}} {{flagicon|Guinea}} ",
+     "{{flagicon|Liberia}} {{flagicon|Namibia}} {{flagicon|Gabon}} ",
+     "{{flagicon|Equatorial Guinea}} {{flagicon|The Gambia}} ",
+     "{{flagicon|Togo}} {{flagicon|Senegal}} {{flagicon|Sierra Leone}} ",
+     "{{flagicon|Sao Tome and Principe}}"]
+
+zpcas :: AA
+zpcas = let zippy = "South Atlantic Peace and Cooperation Zone"
+        in Map.insert zippy (Alliance zippy (Set.singleton "ZPCAS")
+                                      (cfs zpcasFlags))
+
+us :: AA
+us = newFunkyInsert "Union State" (T.words "Russia Belarus")
 
 reviseAlliance :: Name -> [Text] -> Alliance
 reviseAlliance = reviseAlliance1 []
@@ -203,3 +305,50 @@ newFunkyInsert1 aliases n allies =
 
 reviseAlliance1 :: [Alias] -> Name -> [Text] -> Alliance
 reviseAlliance1 ali n = Alliance n (Set.fromList ali) . Set.fromList
+
+{--
+>>> let ma1 = refinements ma
+>>> emptyAlliances ma1
+fromList []
+
+YUS!
+
+SO:
+
+1. How many alliances are there?
+
+>>> Map.size ma1
+22
+
+-- 2.a. How many countries are in multiple alliances?
+-- 2.b. list those countries with their multiple alliances
+
+>>> let ctries = Set.unions . map countries $ Map.elems ma1 
+>>> Set.size ctries 
+160
+
+(it was 113 before)
+
+>>> let ca = countryAlliances ma1 ctries 
+>>> Map.size ca
+160
+
+>>> let multis = sortOn (Down . Set.size . snd) $ Map.toList ca
+>>> take 5 $ map (second Set.size) multis 
+[("Argentina",5),("Brazil",5),("Turkey",5),("Australia",4),("Benin",4)]
+
+3. What Countries here are not in the CountryMap?
+
+>>> countriesByContinent (workingDir ++ cbc)
+>>> let m = it
+>>> let cm = countryMap m
+
+>>> let missing = Set.difference (Map.keysSet ca) (Map.keysSet cm)
+>>> take 5 $ Set.toList missing
+["Albania","Ansarullah","Bangladesh","Belarus","Belgium"]
+
+>>> Set.size missing
+50
+
+WOOT! ... almost *.~
+--}
