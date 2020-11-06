@@ -34,13 +34,18 @@ The EU comes from wikidata.org as JSON, and we have an Alliance structure.
 Let's do this.
 --}
 
-import Y2020.M10.D30.Exercise             -- for everything alliance-y
-import Y2020.M11.D05.Solution (todoPrep)  -- for the updated alliance-parse
+import Y2020.M10.D28.Exercise hiding (Alliance) -- for WikiDatum
+import Y2020.M10.D30.Exercise                   -- for everything alliance-y
+import Y2020.M11.D05.Solution (todoPrep)        -- for the updated alliance-parse
 
 import Data.Aeson
 
-instance FromJSON Alliance where
-   parseJSON = undefined
+data MemberNation = Member { nation :: WikiDatum, kind :: WikiDatum }
+   deriving (Eq, Ord, Show)
+
+instance FromJSON MemberNation where
+   parseJSON = withObject "Member Nation" $ \v ->
+      Member <$> v *: "country" <*> v *: "kind"
 
 euDir :: FilePath
 euDir = "Y2020/M11/D06/"
