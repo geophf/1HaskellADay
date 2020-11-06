@@ -48,6 +48,19 @@ euDir = "Y2020/M11/D06/"
 eu :: FilePath
 eu = "eu.json"
 
+{--
+These data are the result of this SPARQL query:
+
+# European Union member countries
+SELECT ?country ?countryLabel ?kind ?kindLabel
+WHERE 
+{
+  wd:Q458 wdt:P150 ?country.
+  ?country wdt:P31 ?kind.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
+--}
+
 parseEU :: FilePath -> IO Alliance
 parseEU = undefined
 
