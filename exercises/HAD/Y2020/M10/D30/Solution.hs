@@ -110,6 +110,19 @@ With that, you should be able to retrieve each alliance.
 
 --}
 
+-- but why does the Arab League not parse?
+
+arabLeague :: String
+arabLeague = concat ["* {{flagicon|Arab League}} [[Arab League]] ",
+     "{{flagicon|Saudi Arabia}} {{flagicon|Yemen}} {{flagicon|UAE}} ",
+     "{{flagicon|Bahrain}} {{flagicon|Oman}} {{flagicon|Iraq}} ",
+     "{{flagicon|Syria}} {{flagicon|Jordan}} {{flagicon|Lebanon}} ",
+     "{{flagicon|Egypt}} {{flagicon|Libya}} {{flagicon|Tunisia}} ",
+     "{{flagicon|Algeria}} {{flagicon|Morocco}} {{flagicon|Palestine}} ",
+     "{{flagicon|Sudan}} {{flagicon|Djibouti}} {{flagicon|Somalia}} ",
+     "{{flagicon|Comoros}} {{flagicon|Kuwait}} {{flagicon|Qatar}} ",
+     "{{flagicon|Mauritania}}"]
+
 parseStar :: String -> Maybe String
 parseStar ('*':rest) = Just rest
 parseStar _          = Nothing
@@ -123,13 +136,28 @@ optionalFlagIcon :: String -> Maybe String
 optionalFlagIcon s = Just (fromMaybe s (snd <$> flagIcon s))
 
 flagIcon :: String -> Maybe (Country, String)
-flagIcon = unbox "{{flagicon|" '}'
+flagIcon = prolog [unbox "{{flagicon|" '}', unbox "{{Flagicon|" '}',
+                   unboxr (head . words) "{{Flagicon image|" '}']
+
+prolog :: [a -> Maybe b] -> a -> Maybe b
+prolog [] _ = Nothing
+prolog (f:fs) a = maybe (prolog fs a) return (f a)
+
+-- eheh: `prolog`
 
 allianceName :: String -> Maybe (Name, String)
 allianceName = unbox "[[" ']'
 
 unbox :: String -> Char -> String -> Maybe (Text, String)
-unbox pre post s = (T.pack *** drop 2) . break (== post) <$> stripPrefix pre s
+unbox = unboxr id
+
+-- unboxr is unbox, but we're just taking the first word to unbox
+
+unboxr :: (String -> String) -> String -> Char -> String -> Maybe (Text, String)
+unboxr f pre post s =
+   consumeSpaces s >>=
+   stripPrefix pre >>=
+   return . (T.pack . f *** drop 2) . break (== post)
 
 countryFlags :: String -> Maybe (Set Country)
 countryFlags = Just . cf' Set.empty
