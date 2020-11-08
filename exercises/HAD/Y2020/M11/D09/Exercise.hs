@@ -22,8 +22,13 @@ Let's parse in the member nations of the United Nations and add that ...
 I'll provide the seed alliance map. You provide the UN and add it to that map.
 
 hint: we may (?) have parsed in nation flags (?) before (?) from wikitext?
+
+post-hint: oh. It's not {{flagicon|<country>}}, now it's {{flag|<country>}}
+
+The Funzorx continuezorx. :/
 --}
 
+import Y2020.M10.D12.Exercise    -- ALL the way back when for Country.
 import Y2020.M10.D30.Solution (Alliance(Alliance), AllianceMap, dear, moderns)
 import qualified Y2020.M10.D30.Solution as A  -- look for flaggie stuff here
 import Y2020.M11.D05.Solution (todoPrep)    -- for the updated alliance-parse
@@ -47,6 +52,13 @@ unDir = "Y2020/M11/D09/"
 
 un :: FilePath
 un = "un.wtxt"
+
+unFlag :: String -> Maybe Country
+unFlag line = undefined
+
+-- unFlag is the same flagicon, but for "{{flag|", ... so it's different. :/
+
+-- and with that --^ we can do this --v
 
 unitedNationsParser :: FilePath -> IO Alliance
 unitedNationsParser file = undefined
