@@ -113,7 +113,10 @@ YUS!
 --}
 
 addEU :: AllianceMap -> FilePath -> IO AllianceMap
-addEU ma file = uncurry (inserter ma) . (A.name &&& id) <$> parseEU file
+addEU = adder parseEU
+
+adder :: (FilePath -> IO Alliance) -> AllianceMap -> FilePath -> IO AllianceMap
+adder f ma file = uncurry (inserter ma) . (A.name &&& id) <$> f file
       where inserter m k v = Map.insert k v m
 
 {--
