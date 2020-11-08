@@ -64,6 +64,11 @@ parseOAS line = undefined
 
 -- parseOAS, given a line, parses `|{{Country|Barbados}} [... and stuff]`
 
+-- which means you can now write:
+
+oasParser :: FilePath -> IO Alliance
+oasParser = undefined
+
 addOAS :: AllianceMap -> FilePath -> IO AllianceMap
 addOAS am merkanFile = undefined
 
