@@ -58,6 +58,17 @@ unFlag line = undefined
 
 -- unFlag is the same flagicon, but for "{{flag|", ... so it's different. :/
 
+exUnFlagPass, exUnFlagFail :: String
+exUnFlagPass = "|{{flag|China}}"
+exUnFlagFail = "|1971, replaced the [[Republic of China]]"
+
+{--
+>>> unFlag exUnFlagPass
+Just "China"
+>>> unFlag exUnFlagFail
+Nothing
+--}
+
 -- and with that --^ we can do this --v
 
 unitedNationsParser :: FilePath -> IO Alliance
