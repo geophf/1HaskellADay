@@ -75,5 +75,5 @@ addEU :: FilePath -> AllianceMap -> IO AllianceMap
 addEU = undefined
 
 -- You'll note that the EU has wikidata Q-identifiers ... we may, at some
--- future time, which to update our graph (do you remember our graph?) with
+-- future time, wish to update our graph (do you remember our graph?) with
 -- these identifiers. ... but that's a story to tell for another day.
