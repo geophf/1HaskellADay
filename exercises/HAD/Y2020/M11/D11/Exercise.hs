@@ -1,6 +1,4 @@
 {-# LANGUAGE OverloadedStrings    #-}
-{-# LANGUAGE TypeSynonymInstances #-}
-{-# LANGUAGE FlexibleInstances    #-}
 
 module Y2020.M11.D11.Exercise where 
 
@@ -23,19 +21,19 @@ import Graph.Query
 
 data Member = MEMBER_OF
 
-allianceGraph :: AllianceMap -> [Relation Name Member Country]
+data AllianceNode = Ally Name | Nation Country
+   deriving Eq
+
+allianceGraph :: AllianceMap -> [Relation AllianceNode Member AllianceNode]
 allianceGraph = undefined
 
 -- which means these things have to be instanced for this:
 
-instance Node Name where
+instance Node AllianceNode where
    asNode = undefined
 
 instance Edge Member where
    asEdge = undefined
-
-instance Node Country where
-   asNode = undefined
 
 -- with these relations we should be able to upload these Alliances to the Graph
 
