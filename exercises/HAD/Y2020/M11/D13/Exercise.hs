@@ -107,8 +107,13 @@ It looks something like this strawman:
 </Document> 
 </kml>
 
+This file is archived at this directory as kml-playground.kml.
+
 ... but let's not do anything with Placemark at this juncture
 --}
+
+kmlPlayground :: FilePath
+kmlPlayground = "kml-playground.kml"
 
 type Description = Text
 
