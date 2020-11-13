@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.0"> 
+<Document>
+
+<open>1</open>
+<Folder>
+ <open>1</open>
+  <name>New Folder</name>
+ <description>This is a new folder. No, really. I'm not kidding. Oh, and go to the <a href="http://logicaltypes.blogspot.com/">Haskell Problems page</a>.</description>
+
+ <Placemark>  <visibility>0</visibility>
+   <name> Near Oecho Nika.</name>
+   <description>The southern fields of a farm</description>
+ <Point>
+   <coordinates>135.2, 35.4, 0. </coordinates>
+ </Point></Placemark>
+
+ <Placemark>
+   <name>Nihonheso Park</name>
+   <description>Strolls and play in a popular family spot</description>
+ <Point>
+   <coordinates>135.0, 35.0, 0. </coordinates>
+ </Point></Placemark>
+ <Folder>
+  <name>A Folder in a Folder</name>
+  <description>This is a folder, within a folder. Like a donut hole, in a donut's hole.</description>
+ </Folder>
+
+</Folder>
+</Document> 
+</kml>
