@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Airpowers and Alliances</name>
+	<description>Shows the countries with airbases. Shows alliances between countries.</description>
+	<gx:CascadingStyle kml:id="__managed_style_086BA4C12016EEA8C836">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=fbc02d&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<gx:displayMode>card</gx:displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_12DF0A1B0A16EEA8C835">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=fbc02d&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<gx:displayMode>card</gx:displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_005175BFC716EEA8C835">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_12DF0A1B0A16EEA8C835</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_086BA4C12016EEA8C836</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark id="08AABAA23F16EEA8C7D7">
+		<name>Sint-Truiden Air Base</name>
+		<gx:mid>/m/080g745</gx:mid>
+		<gx:fid>0x47c11097f46ec2f3:0x5336e822bf9fef30</gx:fid>
+		<LookAt>
+			<longitude>5.1958343</longitude>
+			<latitude>50.7899795</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>638.4559183418033</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_005175BFC716EEA8C835</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>5.1958343,50.7899795,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="00F1AE3AC316EEAAF7A0">
+		<name>Aérodrome de Saint-Hubert</name>
+		<gx:mid>/g/1tpljwds</gx:mid>
+		<gx:fid>0x47c02e371f844b23:0x4a52dc049c8d7bb9</gx:fid>
+		<LookAt>
+			<longitude>5.405550399999999</longitude>
+			<latitude>50.04099609999999</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>649.4502127988186</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_005175BFC716EEA8C835</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>5.4055504,50.0409961,0</coordinates>
+		</Point>
+	</Placemark>
+</Document>
+</kml>
