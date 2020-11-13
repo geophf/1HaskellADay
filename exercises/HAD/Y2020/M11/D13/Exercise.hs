@@ -137,6 +137,10 @@ instance XML KML where
    rep = undefined
    kind = undefined
 
+instance XML Key where
+   rep = undefined
+   kind = undefined
+
 instance XML Folder where
    rep = undefined
    kind = undefined
