@@ -31,12 +31,21 @@ td val cont = Elt "td" [Attrib "class" val] [cont]
 instance Show Attribute where
    show (Attrib name value) = name ++ "=\"" ++ value ++ "\""
 
-data Content = E Element | S String -- for now
+type VersionNumber = String
+
+data ProcessingInstruction = PI VersionNumber
+   deriving (Eq, Ord)
+
+instance Show ProcessingInstruction where
+   show (PI ver) =  concat ["<?xml version=\"", ver, "\" encoding=\"UTF-8\"?>"]
+
+data Content = E Element | S String | P ProcessingInstruction
    deriving (Eq, Ord)
 
 instance Show Content where
    show (E elt) = show elt
    show (S str) = str
+   show (P p) = show p
 
 data Element = Elt Name [Attribute] [Content]
    deriving (Eq, Ord)
@@ -83,14 +92,17 @@ spaces = flip replicate ' '
 printContent :: Content -> Int -> IO ()
 printContent (E elt) n = printElementWithOffset elt n
 printContent (S str) n = putStrLn (spaces n ++ str)
+printContent (P p) _ = putStrLn (show p)
 
-data Document heads bodyElts = Doc [heads] [bodyElts]
+data XMLDoc = XDoc ProcessingInstruction Element
 
-instance (XML headElts, XML bodyElts) => XML (Document headElts bodyElts) where
+data HTML heads bodyElts = Doc [heads] [bodyElts]
+
+instance (XML headElts, XML bodyElts) => XML (HTML headElts bodyElts) where
    rep (Doc heads bods) =
       Elt "html" [] [E (Elt "head" [] (map (E . rep) heads)),
                      E (Elt "body" [] (map (E . rep) bods))]
-   kind doc = "xmldocument"
+   kind doc = "xhtmldocument"
 
 -- Now we need a way to represent rows of some data type as an HTML table:
 
