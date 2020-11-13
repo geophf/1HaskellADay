@@ -1,6 +1,6 @@
 module Data.XHTML where
 
-import Control.Arrow
+import Control.Monad (void)
 
 {--
 
@@ -78,7 +78,7 @@ showAttribs :: [Attribute] -> String
 showAttribs = concatMap ((:) ' ' . show)
 
 printXML :: XML xml => xml -> IO Element
-printXML xml = (\elt -> printElementWithOffset elt 0 >> return elt) (rep xml)
+printXML = (\elt -> printElementWithOffset elt 0 >> return elt) . rep
 
 printElementWithOffset :: Element -> Int -> IO ()
 printElementWithOffset elt@(Elt _ _ content) indent =
@@ -94,7 +94,10 @@ printContent (E elt) n = printElementWithOffset elt n
 printContent (S str) n = putStrLn (spaces n ++ str)
 printContent (P p) _ = putStrLn (show p)
 
-data XMLDoc = XDoc ProcessingInstruction Element
+data XMLDoc elt = XDoc ProcessingInstruction elt
+
+printXMLDoc :: XML elt => XMLDoc elt -> IO ()
+printXMLDoc (XDoc pi elt) = printContent (P pi) 0 >> void (printXML elt)
 
 data HTML heads bodyElts = Doc [heads] [bodyElts]
 
