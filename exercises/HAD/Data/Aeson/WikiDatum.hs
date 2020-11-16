@@ -5,6 +5,8 @@ module Data.Aeson.WikiDatum where
 import Data.Aeson
 import Data.Aeson.Types
 
+import Data.List (stripPrefix)
+
 import Data.Text (Text)
 import qualified Data.Text as T
 
@@ -53,4 +55,66 @@ WOOT!
 implementation from Y2020.M10.D28.Solution.hs
 --}
 
+-- now: for LongLat values
 
+data LongLat = Point { lon :: Double, lat :: Double }
+   deriving (Eq, Ord)
+
+instance Show LongLat where
+   show (Point lon lat) = "point({ latitude: " ++ show lat ++ ", longitude: "
+                       ++ show lon ++ " })"
+
+-- the Show-instance is for exporting data to neo4j graph database.
+
+instance ToJSON LongLat where
+   toJSON (Point lon lat) = object ["longitude" .= lon, "latitude" .= lat]
+
+-- we parse: "Point(28.2125 47.8625)"
+ll :: String -> [LongLat]
+
+-- "Point" +++ = -- yeah, I'm writing a String DCG in Haskell, wheeeeeeee!
+
+ll str = maybe [] ll' (stripPrefix "Point(" str)
+
+ll' :: String -> [LongLat]
+ll' str = reads str            >>= \(lat, r:est) ->
+          reads est            >>=
+          return . Point lat . fst
+
+{--
+>>> ll "Point(28.2125 47.8625)"
+[point({ latitude: 47.8625, longitude: 28.2125 })]
+
+So: ...
+--}
+
+(@:) :: Object -> Text -> Parser LongLat
+obj @: label = head . ll <$> obj .: label
+
+{--
+usage, e.g.:
+
+data CountryInfo = CI { country :: WikiDatum,
+                        capital :: WikiDatum,
+                        latLong :: LongLat }
+   deriving (Eq, Show)
+
+instance FromJSON CountryInfo where
+    parseJSON = withObject "CountryInfo" $ \v ->
+       CI <$> v *: "country" <*> v *: "capital" <*> v @: "latlongLabel"
+
+samp :: ByteString
+samp = BL.concat ["{\"country\":\"http://www.wikidata.org/entity/Q31\"",
+       ",\"countryLabel\":\"Belgium\",\"capital\":\"http://www.wikidata.org/",
+       "entity/Q239\",\"capitalLabel\":\"Brussels\",\"latlongLabel\":\"Point",
+       "(4.351666666 50.846666666)\"}"]
+
+>>> (decode samp) :: Maybe CountryInfo
+Just (CI {country = WD {qid = "http://www.wikidata.org/entity/Q31",
+                        name = "Belgium"},
+          capital = WD {qid = "http://www.wikidata.org/entity/Q239",
+                        name = "Brussels"},
+          latLong = point({ latitude: 50.846666666, longitude: 4.351666666 })})
+
+WOOT!
+--}
