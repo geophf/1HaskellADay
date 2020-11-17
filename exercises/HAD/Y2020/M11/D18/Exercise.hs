@@ -38,7 +38,7 @@ Wut.
 import Data.Aeson
 import Data.Aeson.WikiDatum
 
-import Y2020.M10.D14.Exercise    -- for Continent and such-like
+import Y2020.M10.D14.Solution    -- for Continent and such-like
 
 import Data.Map (Map)
 
@@ -65,6 +65,12 @@ parseContinents :: FilePath -> IO ContinentInfoMap
 parseContinents = undefined
 
 -- Now, filter out `weird` continents from the above from our given ContinentMap
+
+{--
+>>> countriesByContinent (workingDir ++ cbc)
+...
+>>> let contis = it
+--}
 
 validateContinents :: ContinentMap -> ContinentInfoMap -> ContinentInfoMap
 validateContinents = undefined
