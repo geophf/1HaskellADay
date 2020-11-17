@@ -64,6 +64,12 @@ countriesByContinent countriesFile =
           . dropWhile (not . isPrefixOf "Continent") . lines
 
 {--
+>>> countriesByContinent (workingDir ++ cbc)
+...
+>>> let contis = it
+--}
+
+{--
 A note about formatting:
 
 deal with it.

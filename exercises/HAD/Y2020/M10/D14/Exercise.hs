@@ -55,6 +55,11 @@ countriesByContinent :: FilePath -> IO ContinentMap
 countriesByContinent countriesFile = undefined
 
 {--
+
+>>> countriesByContinent (workingDir ++ cbc)
+...
+>>> let contis = it
+
 A note about formatting:
 
 deal with it.
