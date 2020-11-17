@@ -150,6 +150,8 @@ instance XML Folder where
    rep = undefined
    kind = undefined
 
+-- you don't need to implement the below instance declarations:
+
 instance XML Placemark where
    rep = undefined
    kind = undefined
@@ -157,6 +159,8 @@ instance XML Placemark where
 instance XML Point where
    rep = undefined
    kind = undefined
+
+-- but do implement the rest, below:
 
 skeletonKML :: FilePath -> KML -> IO ()
 skeletonKML outfile = undefined
