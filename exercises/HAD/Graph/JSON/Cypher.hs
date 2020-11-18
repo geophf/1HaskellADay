@@ -43,6 +43,10 @@ varNode :: Node a => CypherOp -> Var -> a -> Text
 varNode op var node =
    T.concat [T.pack (show op), " (", var, ":", asNode node, ")"]
 
+matchSet :: (Node a, Show b) => Var -> a -> Attribute b -> Cypher
+matchSet var n (k,v) =
+   T.concat [match var n, " SET ", var, ".", k, "=", T.pack (show v)]
+
 mergeRel :: Edge rel => Relation a rel b -> Var -> Var -> Var -> Cypher
 mergeRel (Rel _ rel _) vara varrel varb =
    T.concat ["MERGE (", vara, ")-[", varrel, ":", asEdge rel, "]->(",
