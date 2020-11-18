@@ -234,3 +234,20 @@ cci = uncurry (matchSet "a") . (Countri &&& ("qid",) . qid) . country
 
 cyphCapitals :: CountryInfoMap -> Set Country -> [RelC1CaC2]
 cyphCapitals = citer countryCapitalCoordinates
+
+-- So, let's cyph these data!
+{--
+>>> graphEndpoint 
+...
+>>> let url = it
+>>> getGraphResponse url (cyphCountryInfo caps cs)
+"...\"columns\":[],\"data\":[]}],\"errors\":[]}"
+
+The following countries have capitals that have unicode points in their names:
+
+>>> let newCountries = Set.delete "Brazil" cs
+>>> let newCountries1 = Set.delete "Colombia" newCountries  
+>>> let newCountries2 = Set.delete "Moldova" newCountries1
+>>> cyphIt url (cyphCapitals caps newCountries2)
+"...ns\":[],\"data\":[]}],\"errors\":[]}"
+--}
