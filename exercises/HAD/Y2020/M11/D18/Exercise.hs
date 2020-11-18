@@ -41,6 +41,7 @@ import Data.Aeson.WikiDatum
 import Y2020.M10.D14.Solution    -- for Continent and such-like
 
 import Data.Map (Map)
+import Data.Set (Set)
 
 import Data.Relation
 import Graph.Query
@@ -72,10 +73,31 @@ parseContinents = undefined
 >>> let contis = it
 --}
 
-validateContinents :: ContinentMap -> ContinentInfoMap -> ContinentInfoMap
-validateContinents = undefined
+{-- 
+We want to, again, validate what are continents (real ones), but before we do
+that, we have a midge of data-cleansing to do. There are some continents we
+have that are not matched, exactly, in the wikidata returned, but if we 
+rename the mismatches, we're back to good. We have to do that to our
+wikidata-set.
 
--- Now, upload the info on each continent to our graph-store
+First off: which continents are missing?
+--}
+
+missingContinents :: ContinentMap -> ContinentInfoMap -> Set Continent
+missingContinents = undefined
+
+-- then: fix the wikidata:
+
+fixWikidataContinents :: Set Continent -> ContinentInfoMap -> ContinentInfoMap
+fixWikidataContinents missingContinents wikidata = undefined
+
+-- now, with the fixed wikidata set, we validate in the wikidata-set which
+-- continents are "real" and which are malarky.
+
+validateContinents :: ContinentMap -> ContinentInfoMap -> ContinentInfoMap
+validateContinents mycontis fixedwiki = undefined
+
+-- Now, upload the q-id info on each continent to our graph-store
 
 instance Node ContinentInfo where
    asNode = undefined
