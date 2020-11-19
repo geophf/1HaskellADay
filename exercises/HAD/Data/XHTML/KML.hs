@@ -39,11 +39,12 @@ We want to model, or to output, the follow kinds of documents:
 </kml>
 --}
 
+import Data.List (intercalate)
 import Data.Maybe (maybeToList)
 
 import Data.XHTML hiding (P)
 
-data KML = KML [Key]
+data KML = KML Name [Key]
    deriving Show
 
 data Key = F Folder | P Placemark
@@ -68,14 +69,14 @@ data Point = Coord Latitude Longitude Height
 
 type Latitude = Double
 type Longitude = Double
-type Height = Float
+type Height = Double
 
 -- so that means we need an XML-representation of the above types
 
 instance XML KML where
-   rep (KML content) =
+   rep (KML n content) =
       Elt "kml" [Attrib "xmlns" "http://earth.google.com/kml/2.0"]
-          [E $ Elt "Document" [] (map (E . rep) content)]
+          [E $ Elt "Document" [] (map E (mkElt "name" n:map rep content))]
    kind = const "Keyhole Markup Language root"
 
 instance XML Key where 
@@ -89,20 +90,28 @@ instance XML Folder where
    kind = const "Folder"
 
 instance XML Placemark where
-   rep = undefined
-   kind = undefined
+   rep = enXMLification . P
+   kind = const "Placemark"
 
 instance XML PointOrLine where
-   rep = undefined
-   kind = undefined
+   rep (Pt p) = rep p
+   rep (Ln l) = rep l
+   kind (Pt p) = kind p
+   kind (Ln l) = kind l
 
 instance XML Point where
-   rep = undefined
-   kind = undefined
+   rep = Elt "Point" [] . return . E . coords . return
+   kind = const "Point"
+
+coords :: [Point] -> Element
+coords = Elt "coordinates" [] . map coord
+
+coord :: Point -> Content
+coord (Coord la lon ht) = S $ intercalate "," (map show [lon, la, ht])
 
 instance XML Line where
-   rep = undefined
-   kind = undefined
+   rep (Line pts) = Elt "LineString" [] (return . E $ coords pts)
+   kind = const "Line"
 
 -- internal function to convert KML values to XML
 
