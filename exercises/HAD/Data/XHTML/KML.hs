@@ -130,8 +130,8 @@ e' (Thunk tag n md as) =
 mkElt :: String -> String -> Element
 mkElt tag content = Elt tag [] [S content]
 
-skeletonKML :: FilePath -> KML -> IO ()
-skeletonKML outfile = printXMLDoc . XDoc (PI "1.0")
+skeletonKML :: KML -> IO ()
+skeletonKML = printXMLDoc . XDoc (PI "1.0")
 
 {--
 ... and, in case anyone was wondering, the KML reference card is here:
