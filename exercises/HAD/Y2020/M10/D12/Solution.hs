@@ -80,7 +80,7 @@ instance FromJSON Airbase' where
        <*> v .: "countryLabel"
        <*> v .: "loc"
 
-ab2ab :: Airbase' -> [AirBase]
+ab2ab :: Airbase' -> [AirBase]   -- a simpler approach would be to use (@:)
 ab2ab (B' k e i c s) = Base k e i c <$> ll s
 
 {--
