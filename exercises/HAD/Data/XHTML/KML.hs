@@ -66,8 +66,8 @@ data Line = Line [Point]
 data Point = Coord Latitude Longitude Height
    deriving (Eq, Show)
 
-type Latitude = Float
-type Longitude = Float
+type Latitude = Double
+type Longitude = Double
 type Height = Float
 
 -- so that means we need an XML-representation of the above types
