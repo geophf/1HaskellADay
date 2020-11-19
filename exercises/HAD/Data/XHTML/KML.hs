@@ -54,7 +54,7 @@ type Description = String
 data Folder = Folder Name (Maybe Description) [Key]
    deriving (Eq, Show)
 
-data Placemark = Placemark Name (Maybe Description) PointOrLine
+data Placemark = Placemark Name (Maybe Description) [PointOrLine]
    deriving (Eq, Show)
 
 data PointOrLine = Pt Point | Ln Line
@@ -117,7 +117,7 @@ instance XML PointOrKey where
 
 enThunkify :: Key -> Thunk
 enThunkify (F (Folder n md ks)) = Thunk "Folder" n md (map K ks)
-enThunkify (P (Placemark n md pt)) = Thunk "Placemark" n md ([PoL pt])
+enThunkify (P (Placemark n md pts)) = Thunk "Placemark" n md (map PoL pts)
    
 enXMLification :: Key -> Element
 enXMLification = e' . enThunkify 
