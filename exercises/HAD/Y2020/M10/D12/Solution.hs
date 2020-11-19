@@ -13,6 +13,7 @@ import qualified Data.Map as Map
 import Data.Text (Text)
 
 import Data.Aeson
+import Data.Aeson.WikiDatum
 
 -- Okay, we have a query that we want to make to wikidata. Let's make it.
 
@@ -49,12 +50,16 @@ type Entity = Text
 type Icao = Text
 type Country = Text
 
+{--
+Moved to Data.Aeson.WikiDatum
+
 data LongLat = Point { lon :: Double, lat :: Double }
    deriving (Eq, Ord)
 
 instance Show LongLat where
    show (Point lon lat) = "point({ latitude: " ++ show lat ++ ", longitude: "
                        ++ show lon ++ " })"
+--}
 
 data AirBase = Base { k       :: Key,
                       val     :: Entity,
@@ -78,6 +83,9 @@ instance FromJSON Airbase' where
 ab2ab :: Airbase' -> [AirBase]
 ab2ab (B' k e i c s) = Base k e i c <$> ll s
 
+{--
+Moved to Data.Aeson.WikiDatum
+
 -- we parse: "Point(28.2125 47.8625)"
 ll :: String -> [LongLat]
 
@@ -85,17 +93,16 @@ ll :: String -> [LongLat]
 
 ll str = maybe [] ll' (stripPrefix "Point(" str)
 
-{--
-> :t fromMaybe
+>>> :t fromMaybe
 fromMaybe :: a -> Maybe a -> a
-> :t maybe
+>>> :t maybe
 maybe :: b -> (a -> b) -> Maybe a -> b
---}
 
 ll' :: String -> [LongLat]
 ll' str = reads str            >>= \(lat, r:est) ->
           reads est            >>= \(lon, _)     ->
           return (Point lat lon)
+--}
 
 loadBases :: FilePath -> IO [AirBase]
 loadBases fil = BL.readFile fil >>= \f -> 
