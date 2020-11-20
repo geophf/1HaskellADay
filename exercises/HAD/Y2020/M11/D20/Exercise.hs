@@ -121,7 +121,14 @@ Just (AirPower (CI {country = WD {qid = "http://www.wikidata.org/entity/Q31",...
     </Folder>
 ...
 
+A sample, demonstrative, KML is located in this directory.
 --}
+
+belgianDir :: FilePath
+belgianDir = "Y2020/M11/D20/"
+
+belgianKML :: FilePath
+belgianKML = "belgian-airbases.kml"
 
 airpower2KML :: AirPower -> KML
 airpower2KML = undefined
