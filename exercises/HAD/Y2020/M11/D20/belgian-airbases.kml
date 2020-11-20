@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.0">
+ <Document>
+  <name>
+   Belgium's Air Power
+  </name>
+  <Folder>
+   <name>
+    Belgium
+   </name>
+   <Description>
+    It's Tuesday
+   </Description>
+   <Placemark>
+    <name>
+     Brussels
+    </name>
+    <Description>
+     Capital
+    </Description>
+    <Point>
+     <coordinates>
+      4.351666666,50.846666666,1000.0
+     </coordinates>
+    </Point>
+   </Placemark>
+   <Folder>
+    <name>
+     Air Bases
+    </name>
+    <Folder>
+     <name>
+      Jehonville Air Base
+     </name>
+     <Placemark>
+      <name>
+       Jehonville Air Base
+      </name>
+      <Point>
+       <coordinates>
+        5.22389,49.89167,1000.0
+       </coordinates>
+      </Point>
+     </Placemark>
+     <Placemark>
+      <name>
+       Brussels - Jehonville Air Base
+      </name>
+      <LineString>
+       <coordinates>
+        4.351666666,50.846666666,1000.0
+        5.22389,49.89167,1000.0
+       </coordinates>
+      </LineString>
+     </Placemark>
+    </Folder>
+    <Folder>
+     <name>
+      Saint-Hubert Air Base
+     </name>
+     <Placemark>
+      <name>
+       Saint-Hubert Air Base
+      </name>
+      <Point>
+       <coordinates>
+        5.43951,50.0341,1000.0
+       </coordinates>
+      </Point>
+     </Placemark>
+     <Placemark>
+      <name>
+       Brussels - Saint-Hubert Air Base
+      </name>
+      <LineString>
+       <coordinates>
+        4.351666666,50.846666666,1000.0
+        5.43951,50.0341,1000.0
+       </coordinates>
+      </LineString>
+     </Placemark>
+    </Folder>
+    <Folder>
+     <name>
+      Florennes Air Base
+     </name>
+     <Placemark>
+      <name>
+       Florennes Air Base
+      </name>
+      <Point>
+       <coordinates>
+        4.645555,50.243333,1000.0
+       </coordinates>
+      </Point>
+     </Placemark>
+     <Placemark>
+      <name>
+       Brussels - Florennes Air Base
+      </name>
+      <LineString>
+       <coordinates>
+        4.351666666,50.846666666,1000.0
+        4.645555,50.243333,1000.0
+       </coordinates>
+      </LineString>
+     </Placemark>
+    </Folder>
+    <Folder>
+     <name>
+      Kleine Brogel Air Base
+     </name>
+     <Placemark>
+      <name>
+       Kleine Brogel Air Base
+      </name>
+      <Point>
+       <coordinates>
+        5.469722,51.168333,1000.0
+       </coordinates>
+      </Point>
+     </Placemark>
+     <Placemark>
+      <name>
+       Brussels - Kleine Brogel Air Base
+      </name>
+      <LineString>
+       <coordinates>
+        4.351666666,50.846666666,1000.0
+        5.469722,51.168333,1000.0
+       </coordinates>
+      </LineString>
+     </Placemark>
+    </Folder>
+    <Folder>
+     <name>
+      Sint-Truiden Air Base
+     </name>
+     <Placemark>
+      <name>
+       Sint-Truiden Air Base
+      </name>
+      <Point>
+       <coordinates>
+        5.194558333,50.788952777,1000.0
+       </coordinates>
+      </Point>
+     </Placemark>
+     <Placemark>
+      <name>
+       Brussels - Sint-Truiden Air Base
+      </name>
+      <LineString>
+       <coordinates>
+        4.351666666,50.846666666,1000.0
+        5.194558333,50.788952777,1000.0
+       </coordinates>
+      </LineString>
+     </Placemark>
+    </Folder>
+    <Folder>
+     <name>
+      Koksijde Air Base
+     </name>
+     <Placemark>
+      <name>
+       Koksijde Air Base
+      </name>
+      <Point>
+       <coordinates>
+        2.65278,51.09028,1000.0
+       </coordinates>
+      </Point>
+     </Placemark>
+     <Placemark>
+      <name>
+       Brussels - Koksijde Air Base
+      </name>
+      <LineString>
+       <coordinates>
+        4.351666666,50.846666666,1000.0
+        2.65278,51.09028,1000.0
+       </coordinates>
+      </LineString>
+     </Placemark>
+    </Folder>
+    <Folder>
+     <name>
+      Moorsele Airfield
+     </name>
+     <Placemark>
+      <name>
+       Moorsele Airfield
+      </name>
+      <Point>
+       <coordinates>
+        3.14722,50.85278,1000.0
+       </coordinates>
+      </Point>
+     </Placemark>
+     <Placemark>
+      <name>
+       Brussels - Moorsele Airfield
+      </name>
+      <LineString>
+       <coordinates>
+        4.351666666,50.846666666,1000.0
+        3.14722,50.85278,1000.0
+       </coordinates>
+      </LineString>
+     </Placemark>
+    </Folder>
+    <Folder>
+     <name>
+      Bierset Airbase
+     </name>
+     <Placemark>
+      <name>
+       Bierset Airbase
+      </name>
+      <Point>
+       <coordinates>
+        5.44306,50.6372,1000.0
+       </coordinates>
+      </Point>
+     </Placemark>
+     <Placemark>
+      <name>
+       Brussels - Bierset Airbase
+      </name>
+      <LineString>
+       <coordinates>
+        4.351666666,50.846666666,1000.0
+        5.44306,50.6372,1000.0
+       </coordinates>
+      </LineString>
+     </Placemark>
+    </Folder>
+    <Folder>
+     <name>
+      Ursel Airbase
+     </name>
+     <Placemark>
+      <name>
+       Ursel Airbase
+      </name>
+      <Point>
+       <coordinates>
+        3.47528,51.14444,1000.0
+       </coordinates>
+      </Point>
+     </Placemark>
+     <Placemark>
+      <name>
+       Brussels - Ursel Airbase
+      </name>
+      <LineString>
+       <coordinates>
+        4.351666666,50.846666666,1000.0
+        3.47528,51.14444,1000.0
+       </coordinates>
+      </LineString>
+     </Placemark>
+    </Folder>
+    <Folder>
+     <name>
+      Chièvres Air Base
+     </name>
+     <Placemark>
+      <name>
+       Chièvres Air Base
+      </name>
+      <Point>
+       <coordinates>
+        3.83111,50.57583,1000.0
+       </coordinates>
+      </Point>
+     </Placemark>
+     <Placemark>
+      <name>
+       Brussels - Chièvres Air Base
+      </name>
+      <LineString>
+       <coordinates>
+        4.351666666,50.846666666,1000.0
+        3.83111,50.57583,1000.0
+       </coordinates>
+      </LineString>
+     </Placemark>
+    </Folder>
+    <Folder>
+     <name>
+      Beauvechain Air Base
+     </name>
+     <Placemark>
+      <name>
+       Beauvechain Air Base
+      </name>
+      <Point>
+       <coordinates>
+        4.76833,50.75861,1000.0
+       </coordinates>
+      </Point>
+     </Placemark>
+     <Placemark>
+      <name>
+       Brussels - Beauvechain Air Base
+      </name>
+      <LineString>
+       <coordinates>
+        4.351666666,50.846666666,1000.0
+        4.76833,50.75861,1000.0
+       </coordinates>
+      </LineString>
+     </Placemark>
+    </Folder>
+    <Folder>
+     <name>
+      Melsbroek Air Base
+     </name>
+     <Placemark>
+      <name>
+       Melsbroek Air Base
+      </name>
+      <Point>
+       <coordinates>
+        4.484444444,50.901388888,1000.0
+       </coordinates>
+      </Point>
+     </Placemark>
+     <Placemark>
+      <name>
+       Brussels - Melsbroek Air Base
+      </name>
+      <LineString>
+       <coordinates>
+        4.351666666,50.846666666,1000.0
+        4.484444444,50.901388888,1000.0
+       </coordinates>
+      </LineString>
+     </Placemark>
+    </Folder>
+    <Folder>
+     <name>
+      Zutendaal Air Base
+     </name>
+     <Placemark>
+      <name>
+       Zutendaal Air Base
+      </name>
+      <Point>
+       <coordinates>
+        5.593889,50.95,1000.0
+       </coordinates>
+      </Point>
+     </Placemark>
+     <Placemark>
+      <name>
+       Brussels - Zutendaal Air Base
+      </name>
+      <LineString>
+       <coordinates>
+        4.351666666,50.846666666,1000.0
+        5.593889,50.95,1000.0
+       </coordinates>
+      </LineString>
+     </Placemark>
+    </Folder>
+   </Folder>
+  </Folder>
+ </Document>
+</kml>
