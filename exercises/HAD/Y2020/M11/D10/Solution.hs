@@ -81,7 +81,8 @@ parseOAS line = pack . fst . break (=='}') <$> stripPrefix "|{{Country|" line
 -- parseOAS, given a line, parses `|{{Country|Barbados}} [... and stuff]`
 
 exOASbon, exOASmal :: String
-exOASbon = concat ["|{{Country|Antigua and Barbuda}} || [[St. John's, Antigua ",                   "and Barbuda|St. John's]] || 1981 || 1.78 || $20,977 || ",
+exOASbon = concat ["|{{Country|Antigua and Barbuda}} || [[St. John's, Antigua ",
+                   "and Barbuda|St. John's]] || 1981 || 1.78 || $20,977 || ",
                    "0.780 || [[Eastern Caribbean dollar]] || [[English ",
                    "language|English]]"]
 
