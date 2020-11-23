@@ -33,4 +33,7 @@ import Y2020.M10.D30.Exercise     -- for Alliance
 kmlifyAlliance :: AllianceMap -> Alliance -> Maybe KML
 kmlifyAlliance = undefined
 
+-- with that KMLified alliance, you should be able to output that as XML, using
+-- the KML-library.
+
 -- post a picture of your alliance in this exercise's replies.
