@@ -64,7 +64,7 @@ data PointOrLine = Pt Point | Ln Line
 data Line = Line [Point]
    deriving (Eq, Show)
 
-data Point = Coord Longitude Latitude Height
+data Point = Coord Latitude Longitude Height
    deriving (Eq, Show)
 
 type Latitude = Double
