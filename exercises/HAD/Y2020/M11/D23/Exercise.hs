@@ -20,6 +20,7 @@ import qualified Y2020.M11.D17.Solution as Capitals
 -- ... and we also built out countries in alliances:
 
 import qualified Y2020.M11.D10.Solution as Alliances
+import Y2020.M10.D28.Solution (Name)
 
 -- ... and we now have a way to map to KML from values:
 
@@ -30,7 +31,7 @@ import Y2020.M10.D30.Exercise     -- for Alliance
 -- with these piece, please pick an alliance and KMLify it, its countries,
 -- and the countries' capitals.
 
-kmlifyAlliance :: AllianceMap -> Alliance -> Maybe KML
+kmlifyAlliance :: AllianceMap -> Name -> Maybe KML
 kmlifyAlliance = undefined
 
 -- with that KMLified alliance, you should be able to output that as XML, using
