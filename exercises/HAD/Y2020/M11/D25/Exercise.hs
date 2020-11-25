@@ -36,7 +36,7 @@ data Morse = DA | DIT | SPACE  -- ... the final frontier, or nah?
 data MorseTable = Table Char [Morse]
    deriving (Eq, Show)         -- this can be a Map or a Graph or whatever
 
-morse :: Char -> [Morse]
+morse :: MorseTable -> Char -> [Morse]
 morse = undefined
 
 -- what is the morse code of:
@@ -44,5 +44,5 @@ morse = undefined
 ciceroOnPain :: String
 ciceroOnPain = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
 
-morseCodify :: String -> [[Morse]]
+morseCodify :: MorseTable -> String -> [[Morse]]
 morseCodify = undefined
