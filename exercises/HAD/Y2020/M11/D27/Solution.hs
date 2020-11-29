@@ -28,13 +28,6 @@ import qualified Data.Vector as V
 
 import qualified Data.ByteString.Lazy.Char8 as BL
 
-import Data.Char (toUpper)
-import Data.Map (Map)
-import Data.Set (Set)
-
-import Data.Text (Text)
-import qualified Data.Text as T
-
 import Data.Relation
 
 import Graph.Query
@@ -42,18 +35,38 @@ import Graph.JSON.Cypher
 import Graph.JSON.Cypher.Read.Rows
 
 import Data.Char (toUpper)
-import Data.Aeson (decode)
 
 import Data.Map (Map)
 import qualified Data.Map as Map
 
-import Data.Maybe (mapMaybe)
+import Data.Maybe (mapMaybe, fromMaybe)
 
-duplicates :: MorseTable -> Map [Morse] [Char]
-duplicates = undefined
+import Data.Set (Set)
+import qualified Data.Set as Set
+
+import Data.Text (Text)
+import qualified Data.Text as T
+
+import Data.Tuple (swap)
+
+type Dups = Map [Morse] [Char]
+
+duplicates :: MorseTable -> Dups
+duplicates = foldr inserter Map.empty . map swap . Map.toList
+
+instance Ord Morse where
+   compare m1 m2 = compare (show m1) (show m2)
+
+inserter :: ([Morse], Char) -> Dups -> Dups
+inserter (m,c) md = Map.insert m (fromMaybe [c] (Map.lookup m md)) md
 
 {-- 
-Okay, so there were (weren't) duplicates. Fine. But, were all the 
+>>> take 5 . Map.toList $ duplicates morseTable
+[( ," "),(-,"T"),(--,"M"),(---,"O"),(--.,"G")]
+>>> filter ((> 1) . length . snd) . Map.toList $ duplicates morseTable
+[]
+
+Okay, so there were (weren't?) duplicates. Fine. But, were all the 
 representations correct? Tougher question. And that's today's Haskell problem:
 to build the morse table the 'right' way: automated, from the graph.
 
@@ -86,27 +99,70 @@ morseGraph =
 -- okay, but how many (unique) 'letters' are there in this graph?
 
 uniqueLetters :: [MorseRel] -> Set Letter
-uniqueLetters = undefined
+uniqueLetters = foldr sinserter Set.empty
 
--- now, using the above graph, spit out the morse table ... THE SEQUEL:
+sinserter :: MorseRel -> Set Letter -> Set Letter
+sinserter (Rel l1 _ l2) = Set.insert l1 . Set.insert l2
 
-morseTable :: [MorseRel] -> MorseTable
-morseTable = undefined
+{--
+>>> uniqueLetters morseGraph 
+fromList [START_HERE,Chr 'A',Chr 'B',Chr 'C',Chr 'D',Chr 'E',Chr 'F',...]
+>>> Set.size it
+27
+--}
 
 -- in this NEW AND IMPROVED Morse table, are there any duplicate?
 
 anyDuplicatesInTheNewAndImprovedMorseTable :: MorseTable -> Map [Morse] [Char]
-anyDuplicatesInTheNewAndImprovedMorseTable = undefined
+anyDuplicatesInTheNewAndImprovedMorseTable = duplicates
+
+{--
+... from the work on the bonus:
+
+>>> graphEndpoint
+>>> let url = it
+>>> getGraphResponse url [cyphQuery]
+>>> let padme = (justRows it) :: [TableRow Path]
+>>> let nmt = newMorseTable (map row padme)
+
+>>> anyDuplicatesInTheNewAndImprovedMorseTable nmt
+>>> filter ((> 1) . length . snd) $ Map.toList it
+[]
+
+THERE BETTER NOT BE! :<
+--}
 
 -- are there any differences between the old and unimproved table and the new one?
 
 morseTableDifferences :: MorseTable -> MorseTable -> Set Char
-morseTableDifferences = undefined
+morseTableDifferences mt1 nmt = Set.filter (cmp mt1 nmt) (Map.keysSet mt1)
 
--- and, using our NEW AND IMPROVED MORSE TABLE!!!, translate the following:
+cmp :: MorseTable -> MorseTable -> Char -> Bool
+cmp mt1 nmt = maybe True (flip (cmp1 c) nmt) . flip Map.lookup mt1
+
+cmp1 :: Char -> [Morse] -> MorseTable -> Bool
+cmp1 c morse = maybe True (/= morse) . Map.lookup c
+
+{--
+>>> morseTableDifferences morseTable nmt
+fromList " "
+
+... so I guess we'd better add that, then! :<
+
+>>> let nmt0 = Map.insert ' ' [SPACE] nmt
+>>> let nmt = nmt0
+--}
+
+-- and -- using our NEW AND IMPROVED MORSE TABLE!!! -- translate the following:
 
 konamiCode :: String
 konamiCode = "Up up down down left right left right b a"
+
+{--
+>>> morseCodify nmt konamiCode 
+[..-,.--., ,..-,.--., ,-..,---,.--,-., ,-..,---,.--,-., ,.-..,.,..-.,-, ,
+ .-.,..,--.,....,-, ,.-..,.,..-.,-, ,.-.,..,--.,....,-, ,-..., ,.-]
+--}
 
 ----- BONUS -------------------------------------------------------
 
@@ -207,8 +263,12 @@ where the first {} represents (:START_HERE).
 instance FromJSON Path where
    parseJSON = withArray "morse code" $ pathify . unarray . V.toList
 
+{--
+moved to Graph.JSON.Cypher.Read.Rows
+
 unarray :: [Value] -> Parser [Value]
 unarray = withArray "an array of arrays" (return . V.toList) . head
+--}
 
 {--
 nupe
@@ -231,8 +291,9 @@ pathy' acc (a:b:rest) =
    parseJSON a >>= \m ->
    parseJSON b >>= \l ->
 {--
-  withObject "morse" (\v -> v .: "rep") a >>= \m ->
-                        withObject "letter" (\v -> v .: "letter") b >>= \l ->
+instance definitions (below) replacing:
+   withObject "morse" (\v -> v .: "rep") a >>= \m ->
+   withObject "letter" (\v -> v .: "letter") b >>= \l ->
 --}
    pathy' ((m, l):acc) rest 
 
@@ -309,4 +370,7 @@ newMorseTable = Map.fromList . concat . map path2Morses
 26
 
 Woot!
+
+okay. So: let's circle  back to the questions at hand.
+* executes INTERCAL's COME FROM statement. ^^)
 --}
