@@ -6,7 +6,8 @@ import Data.Aeson
 import Data.Foldable (toList)
 import qualified Data.ByteString.Lazy.Char8 as BL
 
-import Network.HTTP.Conduit
+-- import Network.HTTP.Conduit
+import Network.HTTP
 
 import System.Environment
 
@@ -74,6 +75,7 @@ a String. We'll look at parsing out the response as JSON tomorrow.
 --}
 
 getGraphResponse :: Foldable t => Endpoint -> t (Cypher) -> IO String
+{--
 getGraphResponse transactionEndpoint queries = do
    url <- parseRequest transactionEndpoint
    let post = url { method="POST",
@@ -82,13 +84,17 @@ getGraphResponse transactionEndpoint queries = do
    response <- httpLbs post manager
    return (BL.unpack (responseBody response))
 
-{--
 *Main> getGraphResponse (endpoint ++ ('/':transaction)) [queryStocks] ~>
 "{\"results\":[{\"columns\":[\"s.symbol\"],\"data\":[{\"row\":[\"RDS.B\"]},
 ...{\"row\":[\"AAAP\"]},{\"row\":[\"CPGX\"]}]}],\"errors\":[]}"
 
-YAY!
+YAY! ... yeah, but when they change protocols on you... :/
 --}
+
+getGraphResponse url queries =
+   let ct = "application/json" in
+   simpleHTTP (postRequestWithBody url ct (BL.unpack $ cypher2JSON queries)) >>=
+   getResponseBody
 
 -- now we want to automate translation of relations to Cypher
 
