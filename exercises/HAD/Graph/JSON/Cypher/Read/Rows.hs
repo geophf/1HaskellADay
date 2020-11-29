@@ -8,58 +8,87 @@ import Data.Maybe (fromJust)
 
 -- Reads in rows of JSON from a Cypher query result
 
-data GraphResults = GR { results :: [TabledResults], errors :: [Errors] }
+data GraphResults a = GR { results :: [TabledResults a], errors :: [Errors] }
    deriving Show
 
-instance FromJSON GraphResults where
+instance FromJSON a => FromJSON (GraphResults a) where
    parseJSON (Object v) = GR <$> v .: "results" <*> v .: "errors"
 
-data TabledResults = Table { columns :: [String], rows :: [TableRow] }
+data TabledResults a = Table { columns :: [String], rows :: [TableRow a] }
    deriving Show
 
-instance FromJSON TabledResults where
+instance FromJSON a => FromJSON (TabledResults a) where
    parseJSON (Object v) = Table <$> v .: "columns" <*> v .: "data"
 
 type Errors = Object
 
-data TableRow = TR { row :: Value } deriving Show
+data TableRow a = TR { row :: a } deriving Show
 
-instance FromJSON TableRow where
+instance FromJSON a => FromJSON (TableRow a) where
    parseJSON (Object v) = TR <$> v .: "row"
 
 {--
-*Main> getGraphResponse (endpoint ++ ('/': transaction)) queryTop5shows ~> ans
-see Graph.Query                   -- http://lpaste.net/6813513488191717376
-for getGraphResponse
-*Main> let json = BL.pack ans
-*Main> let (Just (GR res errs)) = (decode json) :: Maybe GraphResults 
-*Main> length res ~> 1
-*Main> columns (head res) ~> ["Security","Date"]
-*Main> last . rows $ head res ~> 
-TR {row = Array [String "ZSPH",
-                 Array [String "2015-09-10",String "2015-10-07",...]]}
-... the above gets you parsed to any Cypher query to graph DaaS
-Now, to translate a TableRow into your structure, you need simply translate
-that Value to your structure.
-e.g.:
-row2Top5s :: TableRow -> Top5sAppearance
-row2Top5s = parseTop5sShow . init . tail . BL.unpack . encode . row 
-Then, given that, you can take the string (the untyped-JSON response) and 
-convert that to a data set you can work with directly, e.g.:
+>>> getGraphResponse url ["match ()-[]->(n) where not (n)-[]->() return n.letter"]
+>>> let ans = it
 --}
 
 type QueryResult = String
 
+justRows :: FromJSON a => QueryResult -> [TableRow a]
+justRows = rows . head . results . fromJust . decode . BL.pack
+
 {--
-top5shows :: QueryResult -> [Top5sAppearance]
-top5shows = map row2Top5s . rows . head . results . fromJust . decode . BL.pack
-*Main> let tops = top5shows ans
-*Main> head tops
-Top5Show AA [2015-07-22,2015-07-08,2015-06-22,...]
-*Main> last tops
-Top5Show ZSPH [2015-09-10,2015-10-07,2015-10-22,2015-11-05,2015-11-06]
-let's codify that:
+>>> concat $ map (head . row) ((justRows ans) :: [TableRow [String]])
+"HVFLPJOYCXBZQ"
 --}
 
-justRows :: QueryResult -> [TableRow]
-justRows = rows . head . results . fromJust . decode . BL.pack
+-- to parse pathed result-sets:
+
+unarray :: [Value] -> Parser [Value]
+unarray = withArray "an array of arrays" (return . V.toList) . head
+
+{--
+Another, more complex, example:
+
+From a sample row returned of:
+
+theLetterQ :: String
+theLetterQ = "[[{},{\"rep\":\"-\"},{\"letter\":\"T\"},{\"rep\":\"-\"},"
+          ++ "{\"letter\":\"M\"},{\"rep\":\".\"},{\"letter\":\"G\"},"
+          ++ "{\"rep\":\"-\"},{\"letter\":\"Q\"}]]"
+
+(note that an array of arrays is returned for paths)
+
+Given the parsers:
+
+instance FromJSON Path where
+   parseJSON = withArray "morse code" $ pathify . unarray . V.toList
+
+pathify :: Parser [Value] -> Parser Path
+pathify pvs = pvs >>= pathy' [] . tail
+
+pathy' :: [MorsePair] -> [Value] -> Parser Path
+pathy' path [] = return (Path $ reverse path)
+pathy' acc (a:b:rest) =
+   parseJSON a >>= \m ->
+   parseJSON b >>= \l ->
+   pathy' ((m, l):acc) rest
+
+instance FromJSON Morse where
+   parseJSON = withObject "da-dit" $ \v -> v .: "rep" >>= return . read
+
+instance FromJSON Letter where
+   parseJSON = withObject "ltr" $ \v -> Chr <$> v .: "letter"
+
+we can do:
+
+>>> getGraphResponse url [cyphQuery]
+>>> let padme = (justRows it) :: [TableRow Path]
+>>> let nmt = newMorseTable (map row padme)
+>>> take 5 $ Map.toList nmt
+[('A',.-),('B',-...),('C',-.-.),('D',-..),('E',.)]
+
+>>> Map.size nmt
+26
+
+--}
