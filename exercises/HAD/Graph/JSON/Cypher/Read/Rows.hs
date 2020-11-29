@@ -50,7 +50,11 @@ unarray = withArray "an array of arrays" (return . V.toList) . head
 {--
 Another, more complex, example:
 
-From a sample row returned of:
+From the Cypher query:
+
+>>> getGraphResponse url ["match p=(:START_HERE)-[*]->(l:Letter { letter: 'Q' }) return p"]
+
+is a sample row returned of:
 
 theLetterQ :: String
 theLetterQ = "[[{},{\"rep\":\"-\"},{\"letter\":\"T\"},{\"rep\":\"-\"},"
