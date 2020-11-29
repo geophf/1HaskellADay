@@ -3,8 +3,13 @@
 module Graph.JSON.Cypher.Read.Rows where
 
 import Data.Aeson
+import Data.Aeson.Types (Parser)
+
 import qualified Data.ByteString.Lazy.Char8 as BL
+
 import Data.Maybe (fromJust)
+
+import qualified Data.Vector as V
 
 -- Reads in rows of JSON from a Cypher query result
 
