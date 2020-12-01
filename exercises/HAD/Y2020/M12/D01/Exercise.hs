@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Y2020.M11.D30.Exercise where
+module Y2020.M12.D01.Exercise where
 
 {--
 Why is the USA and the UK not part of NATO?
