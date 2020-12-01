@@ -211,5 +211,11 @@ fetchCountry = undefined
 fetchContinent :: Set Continent -> String -> Maybe Continent
 fetchContinent = undefined
 
--- This is as far as we get today! Tomorrow we'll look at updating the graph
--- from the results of this triage.
+{--
+This is as far as we get today! Tomorrow we'll look at updating the graph
+from the results of this triage.
+
+How many new countries did you find? How many aliases did you create?
+How many `countries` (that aren't countries (any more (Yugoslavia))) did
+you choose to sideline?
+--}
