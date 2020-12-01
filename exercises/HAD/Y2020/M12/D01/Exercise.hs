@@ -164,7 +164,7 @@ type AliasMap = Map Country (Set OrphanedCountry)
 
 data CountryTriage = Triage {
       linked :: AliasMap,
-      news   :: Set OrphanedCountry,
+      news   :: Map OrphanedCountry Continent,
       others :: Set OrphanedCountry
    }
    deriving (Eq, Ord, Show)
