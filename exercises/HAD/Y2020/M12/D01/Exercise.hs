@@ -19,6 +19,8 @@ and correct the aliased data to point to the entity, then remove the (now-
 orphaned) aliases.
 --}
 
+import Control.Monad.State
+
 import Data.Aeson
 
 import Data.Map (Map)
@@ -74,7 +76,14 @@ fromList [...,OrphanedCountry {name = "Yugoslavia", qid = Nothing}]
 
 Ugh. So we have our work cut out for us.
 
-Also: a country can have multiple aliases, e.g.: "United States" and "USA"
+Also: look at this:
+
+>>> Set.map qid ocs
+fromList [Nothing]
+
+Good to know this, post-query :/
+
+Also-also: a country can have multiple aliases, e.g.: "United States" and "USA"
 are aliases for "United States of America." Ugh.
 
 Okay: enough "ugh"-ing. Let's get to work.
@@ -153,9 +162,57 @@ Now let's link orphaned countries to proper countries
 
 type AliasMap = Map Country (Set OrphanedCountry)
 
-linkOrphanedCountries :: Set Country -> Set OrphanedCountry
-                      -> (AliasMap, Set OrphanedCountry)
+data CountryTriage = Triage {
+      linked :: AliasMap,
+      news   :: Set OrphanedCountry,
+      others :: Set OrphanedCountry
+   }
+   deriving (Eq, Ord, Show)
+
+linkOrphanedCountries :: Set Continent -> Set Country -> Set OrphanedCountry 
+                      -> CountryTriage
 linkOrphanedCountries = undefined
 
--- linkOrphanedCountries gives a map of links and the remaining (unlinked)
--- orphaned countries.
+{-- 
+linkOrphanedCountries gives a map of links, the remaining (unlinked)
+orphaned countries, and 'others' that aren't a country or aren't something
+I want to think about for now.
+
+BUT! To get to that point, we need to create a set of matchers that take an
+OrphanedCountry and knows EXACTLY what to do with it and where to put it.
+--}
+
+type CountryTriageState a = State CountryTriage a
+
+orphanMatcher :: Set Continent -> Set Country -> OrphanedCountry 
+              -> CountryTriageState ()
+orphanMatcher cnts cs = ocs' cnts cs . name
+
+-- these helper methods may, well, ... help:
+
+ocs' :: Set Continent -> Set Country -> String -> CountryTriageState ()
+ocs' = undefined
+
+add2others :: String -> CountryTriageState ()
+add2others n = undefined
+
+addAlias :: Set Country -> String -> String -> CountryTriageState ()
+addAlias = undefined
+
+newCountry :: Set Continent -> String -> String -> CountryTriageState ()
+newCountry = undefined
+
+mkOC :: String -> OrphanedCountry
+mkOC = undefined
+
+mkCont :: String -> Continent
+mkCont = undefined
+
+fetchCountry :: Set Country -> String -> Maybe Country
+fetchCountry = undefined
+
+fetchContinent :: Set Continent -> String -> Maybe Continent
+fetchContinent = undefined
+
+-- This is as far as we get today! Tomorrow we'll look at updating the graph
+-- from the results of this triage.
