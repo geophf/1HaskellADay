@@ -13,7 +13,7 @@ Same for the UK / United Kingdom ... (dare I say: England?)
 
 Today's Haskell problem is that of this:
 
-Okay, we now have data in our graph databse: some data associated with the
+Okay, we now have data in our graph database: some data associated with the
 country entity by name, and some associated with its alias. Find the problems
 and correct the aliased data to point to the entity, then remove the (now-
 orphaned) aliases.
@@ -204,9 +204,6 @@ newCountry = undefined
 
 mkOC :: String -> OrphanedCountry
 mkOC = undefined
-
-mkCont :: String -> Continent
-mkCont = undefined
 
 fetchCountry :: Set Country -> String -> Maybe Country
 fetchCountry = undefined
