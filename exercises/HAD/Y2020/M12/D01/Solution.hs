@@ -216,6 +216,7 @@ ocs' _ cs name@"Éire" = addAlias cs "Republic of Ireland" name
 ocs' _ cs name@"Ireland" = addAlias cs "Republic of Ireland" name
 ocs' _ cs name@"Ivory Coast" = addAlias cs "Côte d'Ivoire" name
 ocs' _ cs name@"Црна Гора" = addAlias cs "Montenegro" name
+ocs' _ cs name@"Κύπρος" = addAlias cs "Cyprus" name
 ocs' _ cs name@"Al Maghrib" = addAlias cs "Morocco" name
 ocs' _ cs name@"Македонија" = addAlias cs "North Macedonia" name
 ocs' _ cs name@"People's Republic of China" = addAlias cs "China" name
