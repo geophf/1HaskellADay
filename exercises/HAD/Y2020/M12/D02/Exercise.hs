@@ -43,7 +43,7 @@ data IN = IN
 instance Edge IN where
    asEdge = undefined
 
-instance Node Country where
+instance Node OrphanedCountry where
    asNode = undefined
 
 instance Node Continent where
