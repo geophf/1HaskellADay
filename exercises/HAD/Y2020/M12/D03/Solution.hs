@@ -132,7 +132,7 @@ addAliasesNamesM url triage =
    getGraphResponse url
 
 aanm' :: Country -> Set OrphanedCountry -> IO Cypher
-aanm' c alis = aliasesForM c alis >>= return . matchSet "c" c
+aanm' c alis = matchSet "c" c <$> aliasesForM c alis
 
 {--
 >>> addAliasesNamesM url triage
