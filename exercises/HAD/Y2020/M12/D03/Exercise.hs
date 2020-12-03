@@ -99,7 +99,7 @@ Report out which aliases we don't do due (three 'do'-sounding words in a row)
 to unicode point-issues.
 --}
 
-aliasesForM :: Set OrphanedCountry -> IO (Attribute [String])
+aliasesForM :: Country -> Set OrphanedCountry -> IO (Attribute [String])
 aliasesForM orphans = undefined
 
 addAliasesNamesM :: Endpoint -> CountryTriage -> IO String
