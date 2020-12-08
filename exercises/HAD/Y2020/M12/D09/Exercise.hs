@@ -177,7 +177,7 @@ mkCountryAlliances = undefined
 -- from a row in the alias-alliance map, create a set of relations for uploading
 
 {--
->>> let cas = concat $ map (uncurry (mkCountryAlliances acm)) $ Map.toList
+>>> let cas = concat . map (uncurry (mkCountryAlliances acm)) $ Map.toList aas
 >>> cas
 [Rel (Alliance "African Union") MEMBER_OF (Country {country = "Ethiopia"}),
  Rel (Alliance "African Union") MEMBER_OF (Country {country = "Morocco"}),...]
