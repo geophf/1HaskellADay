@@ -68,7 +68,11 @@ fetchAliasedAlliances =
 {--
 Our query
 
+>>> graphEndpoint 
+>>> let url = it
 >>> getGraphResponse url [fetchAliasedAlliances]
+...
+>>> let aaq = it
 
 returns the JSON of `sampleAliasesAlliances`
 --}
@@ -93,8 +97,7 @@ toAliasAlliance :: [Text] -> AliasAlliance
 toAliasAlliance = undefined
 
 {--
->>> let aas = map (toAliasAlliance . RR.row) (RR.justRows sampleAliasesAlliances)
->>> aas
+>>> map (toAliasAlliance . RR.row) (RR.justRows aaq)
 [AA {alias = "USA", alliance = "Moroccan-American Treaty of Friendship"},
  AA {alias = "USA", alliance = "U.S.-Afghanistan Strategic Partnership Agreement"}]
 --}
@@ -110,9 +113,10 @@ aliasedAlliances = undefined
 -- For an aliased country, collect and associate alliances to it in a map.
 
 {--
->>> aliasedAlliances aas 
+>>> let aas = aliasedAlliances $ map (toAliasAlliance . RR.row) (RR.justRows aaq)
+>>> aas
 {("USA",{"Moroccan-American Treaty of Friendship",
-         "U.S.-Afghanistan Strategic Partnership Agreement"})}
+         "U.S.-Afghanistan Strategic Partnership Agreement"}), ...}
 
 Okay! Now we need to replace the aliases with the source countries.
 
@@ -178,6 +182,15 @@ mkCountryAlliances = undefined
 
 {--
 >>> let cas = concat . map (uncurry (mkCountryAlliances acm)) $ Map.toList aas
+
+... to show the relations we need a Show instance for Member
+
+instance Show Member where show _ = "MEMBER_OF"
+
+... moving this to the Member type-declaration module.
+
+So we can do this:
+
 >>> cas
 [Rel (Alliance "African Union") MEMBER_OF (Country {country = "Ethiopia"}),
  Rel (Alliance "African Union") MEMBER_OF (Country {country = "Morocco"}),...]

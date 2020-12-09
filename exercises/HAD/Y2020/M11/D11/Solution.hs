@@ -25,6 +25,7 @@ import qualified Data.Set as Set
 -- that means converting our AllianceMap into a set of Relation-values
 
 data Member = MEMBER_OF
+   deriving Show
 
 data AllianceNode = Ally Name | Nation Country
    deriving Eq
