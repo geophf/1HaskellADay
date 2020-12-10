@@ -119,13 +119,11 @@ toAliasedCapital :: [Text] -> AliasedCapital
 toAliasedCapital = undefined
 
 {--          
->>> graphEndpoint 
-...
->>> let url = it
 >>> getGraphResponse url [capitalQuery]
 ...
 >>> let cq = it                                 
->>> map (toAliasedCapital . RR.row) $ RR.justRows cq
+>>> let ccs = map (toAliasedCapital . RR.row) $ RR.justRows cq
+>>> ccs
 [AC {alias = "People's Republic of China", capital = "Beijing"},
  AC {alias = "Saint Helena, Ascension and Tristan da Cunha", capital = "Jamestown"},
  AC {alias = "Yugoslavia", capital = "Belgrade"}]
@@ -170,8 +168,8 @@ instance Node Capital where
 
 type RelCountryCapital = Relation Country CapAt Capital
 
-relinkCapitals :: AliasCountryMap -> Alias -> Capital -> [RelCountryCapital]
-relinkCapitals acm ali cap = undefined
+relinkCapitals :: AliasCountryMap -> AliasedCapital -> Maybe RelCountryCapital
+relinkCapitals acm alicap = undefined
 
 mkRelink :: Capital -> Country -> RelCountryCapital
 mkRelink = undefined
