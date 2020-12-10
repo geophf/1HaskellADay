@@ -38,13 +38,15 @@ import Data.Set (Set)
 import Data.Text (Text)
 import qualified Data.Text as T
 
+import Data.Relation
+
 import Graph.Query
 import Graph.JSON.Cypher
 import Graph.JSON.Cypher.Read.Rows (TableRow)
 import qualified Graph.JSON.Cypher.Read.Rows as RR
 
 import Y2020.M10.D28.Solution (Name)
-import Y2020.M11.D17.Solution    -- for Capital, and such-like
+import Y2020.M11.D17.Solution (CapAt)
 
 import Y2020.M12.D01.Solution (Country, Country(Country))
 import Y2020.M12.D09.Solution (Alias, AliasCountryMap)
@@ -160,18 +162,19 @@ As was yesterday, so today: we copy the relation of the aliased capital to
 the source country. We can leverage the work we did in Y2020.M11.D17.Solution.
 --}
 
-type Capital = Name
+data Capital = Capital Name
+   deriving (Eq, Ord, Show)
 
-relinkCapitals :: AliasCountryMap -> Alias -> Capital -> [RelC1CaC2]
-relinkCapitals = undefined
+instance Node Capital where
+   asNode = undefined
 
--- to do that, we need to translate Countries to CC1-types and Capitals to CC2
+type RelCountryCapital = Relation Country CapAt Capital
 
-country2CC1 :: Country -> CC1
-country2CC1 = undefined
-     
-capital2CC2 :: Capital -> CC2
-capital2CC2 = undefined
+relinkCapitals :: AliasCountryMap -> Alias -> Capital -> [RelCountryCapital]
+relinkCapitals acm ali cap = undefined
+
+mkRelink :: Capital -> Country -> RelCountryCapital
+mkRelink = undefined
 
 {-- BONUS -------------------------------------------------------
 
