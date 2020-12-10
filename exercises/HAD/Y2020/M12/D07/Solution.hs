@@ -139,7 +139,7 @@ For Morocco:
 	skipping []
 For North Macedonia:
 	adding: []
-	skipping ["\1052\1072\1082\1077\1076\1086\1085\1080\1112\1072"] -- idk
+	skipping ["\1052\1072\1082\1077\1076\1086\1085\1080\1112\1072"] -- Македонија
 For Republic of Ireland:
 	adding: ["Ireland"]
 	skipping []
