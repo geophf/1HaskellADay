@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Y2020.M12.D10.Exercise where
+module Y2020.M12.D10.Solution where
 
 {--
 Okay, I have a confession to make.
@@ -31,7 +31,11 @@ First, we need to get those now-redundant relations. But we already did that:
 yesterday.
 --}
 
+import Control.Arrow ((&&&))
+
 import qualified Data.Map as Map
+
+import Data.Maybe (mapMaybe)
 
 import Data.Set (Set)
 import qualified Data.Set as Set
@@ -47,8 +51,7 @@ import Graph.JSON.Cypher.Read.Rows (TableRow)
 import qualified Graph.JSON.Cypher.Read.Rows as RR
 
 import Y2020.M10.D28.Solution (Name)
-import Y2020.M11.D17.Solution (CapAt)
-
+import Y2020.M11.D17.Solution (CapAt, CapAt(CAPITAL))
 import Y2020.M12.D01.Solution (Country, Country(Country))
 import Y2020.M12.D09.Solution (Alias, AliasCountryMap)
 import qualified Y2020.M12.D09.Solution as AA -- for aliased alliances
@@ -117,12 +120,12 @@ data AliasedCapital = AC { alias :: Text, capital :: Text }
    deriving (Eq, Ord, Show)
 
 toAliasedCapital :: [Text] -> AliasedCapital
-toAliasedCapital = undefined
+toAliasedCapital = AC . head <*> last
 
-{--          
+{--
 >>> getGraphResponse url [capitalQuery]
 ...
->>> let cq = it                                 
+>>> let cq = it
 >>> let ccs = map (toAliasedCapital . RR.row) $ RR.justRows cq
 >>> ccs
 [AC {alias = "People's Republic of China", capital = "Beijing"},
@@ -138,7 +141,7 @@ aliasCountryQuery =
    T.concat ["MATCH (c:Country)--(:Capital) ",
              "WHERE NOT (c)--(:Continent) ",
              "WITH c.name as alias ",
-             "MATCH (c1:Country) ", 
+             "MATCH (c1:Country) ",
              "WHERE alias in c1.aliases ",
              "RETURN alias, c1.name as country"]
 
@@ -165,15 +168,16 @@ data Capital = Capital Name
    deriving (Eq, Ord, Show)
 
 instance Node Capital where
-   asNode = undefined
+   asNode (Capital c) = constr "Capital" [("name", c)]
 
 type RelCountryCapital = Relation Country CapAt Capital
 
 relinkCapitals :: AliasCountryMap -> AliasedCapital -> Maybe RelCountryCapital
-relinkCapitals acm alicap = undefined
+relinkCapitals acm alicap =
+   mkRelink (Capital $ capital alicap) <$> Map.lookup (alias alicap) acm
 
 mkRelink :: Capital -> Country -> RelCountryCapital
-mkRelink = undefined
+mkRelink cap country = Rel country CAPITAL cap
 
 {--
 >>> let rels = mapMaybe (relinkCapitals acm) ccs
@@ -241,9 +245,9 @@ When we execute that Cypher against the graph store, our query:
 
 >>> getGraphResponse url [singletonNodesQuery]
 "{\"results\":[{\"columns\":[\"c.name\"],\"data\":[]}],\"errors\":[]}"
-             
+
 ... now returns the empty set of nodes.
-             
+
 Mission accomplished.
 --}
 
@@ -258,11 +262,11 @@ With the countries that do not have capitals, can we populate that information?
 How?
 
 The query to see which countries-in-alliances that do not have capitals is:
---}
+--} 
 
 noCAPSquery :: Cypher
 noCAPSquery =
-   T.concat ["MATCH (a:Alliance)--(c:Country) ", 
+   T.concat ["MATCH (a:Alliance)--(c:Country) ",
              "WHERE not (c)--(:Capital) ", 
              "RETURN DISTINCT c.name"]
 
@@ -272,9 +276,34 @@ data-store.
 --}
 
 capitalless :: Endpoint -> Cypher -> IO (Set Name)
-capitalless url cyph = undefined
+capitalless url cyph =
+   getGraphResponse url [cyph] >>= \resp ->
+   let ncq = (RR.justRows resp) :: [TableRow [Text]] in
+   return . Set.fromList $ map (head . RR.row) ncq
 
 {--
+>>> > capitalless url noCAPSquery 
+{"Albania","Angola","Antigua and Barbuda","Armenia","Austria","Bangladesh",
+ "Barbados","Belize","Benin","Botswana","Brazil","Brunei","Burkina Faso",
+ "Burundi","Cambodia","Cameroon","Cape Verde","Central African Republic",
+ "Colombia","Comoros","Costa Rica","Cuba","Cyprus","Dominica","East Timor",
+ "Equatorial Guinea","Gabon","Ghana","Grenada","Guatemala","Guine","Guinea",
+ "Guinea-Bissau","Guyana","Haiti","Iceland","Italy","Jamaica","Japan","Kenya",
+ "Laos","Lesotho","Liberia","Luxembourg","Malawi","Maldives","Mali","Malta",
+ "Mauritania","Mauritius","Moldova","Mongolia","Montenegro","Montserrat",
+ "Morocco","Mozambique","Namibia","Netherlands","Nicaragua","Nigeria",
+ "Palestine","Paraguay","Republic of Ireland","Republic of the Congo","Rwanda",
+ "Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines",
+ "Senegal","Seychelles","Sierra Leone","Singapore","Slovenia","Somalia",
+ "South Sudan","Spain","Suriname","Swaziland (Eswatini)","Tajikistan",
+ "The Bahamas","The Gambia","Togo","Trinidad and Tobago","Uganda",
+ "Western Sahara","Yemen","Zambia"]
+
+>>> Set.size it
+87
+
+Oh, dear me!
+
 Also. I just realized something that saddened me. Y2020.M11.D17.Solution
 had the lat/long data of capitals, but I did not load that information
 to the graph store, but, instead, dropped the lat/longs on the floor.
