@@ -282,7 +282,7 @@ capitalless url cyph =
    return . Set.fromList $ map (head . RR.row) ncq
 
 {--
->>> > capitalless url noCAPSquery 
+>>> capitalless url noCAPSquery 
 {"Albania","Angola","Antigua and Barbuda","Armenia","Austria","Bangladesh",
  "Barbados","Belize","Benin","Botswana","Brazil","Brunei","Burkina Faso",
  "Burundi","Cambodia","Cameroon","Cape Verde","Central African Republic",
