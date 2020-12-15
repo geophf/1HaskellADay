@@ -164,7 +164,7 @@ instance Node CC2 where
       constr "Capital" [("name", name wd), ("qid", qid wd)]
 
 data CapAt = CAPITAL
-   deriving (Eq, Show)
+   deriving (Eq, Ord, Show)
 
 instance Edge CapAt where
    asEdge = T.pack . show 

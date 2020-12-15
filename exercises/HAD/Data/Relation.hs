@@ -40,7 +40,8 @@ class Edge a where
 
 -- an example for asEdge would be "USING" or "RETWEETS"
 
-data Relation a rel b = Rel a rel b deriving (Eq, Show)
+data Relation a rel b = Rel a rel b
+   deriving (Eq, Ord, Show)
 
 -- Now we have a directional relation: a dart, that expresses how this datum
 -- (tweet) is related to other data.

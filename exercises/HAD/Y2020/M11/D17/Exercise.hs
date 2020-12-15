@@ -125,7 +125,7 @@ instance Node CC where
    asNode = undefined
 
 data CapAt = CAPITOL | AT
-   deriving Eq
+   deriving (Eq, Ord, Show)
 
 instance Edge CapAt where
    asEdge = undefined
