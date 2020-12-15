@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Y2020.M12.D15.Exercise where
+module Y2020.M12.D15.Solution where
 
 {--
 If you recall from yesterday's exercise, we saw, in the bonus, that there
@@ -25,19 +25,21 @@ WHERE
 You see this query differs from the previous attempt at:
 --}
 
-import Y2020.M11.D17.Solution (CountryInfoMap, CapAt)
+import Y2020.M11.D17.Solution (CountryInfoMap, CapAt, CapAt(CAPITAL))
 import qualified Y2020.M11.D17.Solution as Caps
 
-import Y2020.M12.D01.Solution (Country, mkCountry)
+import Y2020.M10.D30.Solution hiding (name)     -- for Alliance
+
+import Y2020.M12.D01.Solution (Country, mkCountry, Country(Country))
 import Y2020.M12.D03.Solution               -- for Country-Node instance
 import qualified Y2020.M12.D10.Solution as Missn
 
-import Data.Aeson.WikiDatum (Name, WikiDatum, LongLat)
+import Data.Aeson.WikiDatum (Name, WikiDatum, WikiDatum(WD), LongLat)
 import qualified Data.Aeson.WikiDatum as WD
 
 import Data.Relation
 
-import Graph.Query (graphEndpoint, cyphIt, Endpoint)
+import Graph.Query (graphEndpoint, cyphIt, Endpoint, getGraphResponse)
 import Graph.JSON.Cypher
 
 import Control.Arrow ((***))
@@ -45,7 +47,10 @@ import Control.Monad (join)
 
 import Data.Aeson
 
+import Data.Char (ord)
+
 import qualified Data.Map as Map
+import Data.Maybe (fromJust)
 
 import Data.Set (Set)
 import qualified Data.Set as Set
@@ -67,17 +72,17 @@ to do our next data correction.
 
 >>> Caps.readCapitals (newCapsDir ++ newCapsJSON)
 ...
->>> let caps = it
->>> Map.size it
+>>> let cim = it
+>>> Map.size cim
 168
 >>> :set -XOverloadedStrings 
->>> Map.lookup "Brazil" caps
+>>> Map.lookup "Brazil" cim
 Just (CI {country = WD {qid = "http://www.wikidata.org/entity/Q155", 
                        name = "Brazil"},
           capital = WD {qid = "http://www.wikidata.org/entity/Q2844", 
                         name = "Bras\237lia"},
           latLong = point({ latitude: -14.0, longitude: -53.0 })})
->>> Map.lookup "Singapore" caps
+>>> Map.lookup "Singapore" cim
 Just (CI {country = WD {qid = "http://www.wikidata.org/entity/Q334", 
                         name = "Singapore"}, 
           capital = WD {qid = "http://www.wikidata.org/entity/Q334", 
@@ -107,12 +112,12 @@ by the new wikidata set here?
 --}
 
 missinFindin :: CountryInfoMap -> Set Name -> (Set Name, Set Name)
-missinFindin = undefined
+missinFindin cim = Set.partition (not . flip Set.member (Map.keysSet cim))
 
 -- partitions countries into ones without capitals and ones with
 
 {--
->>> let ans@(stillMissins, foundins) = missinFindin caps missins
+>>> let ans@(stillMissins, foundins) = missinFindin cim missins
 >>> join (***) Set.size ans
 (21,66)
 
@@ -123,7 +128,7 @@ fromList ["Republic of Ireland"]
 
 and:
 
->>> Set.filter (T.isInfixOf "Irel") (Map.keysSet caps)
+>>> Set.filter (T.isInfixOf "Irel") (Map.keysSet cim)
 fromList ["Ireland"]
 
 So we have to address aliasing. But not right now.
@@ -144,8 +149,16 @@ Let's recitify that now.
 data Capital = Capital WikiDatum LongLat
    deriving (Eq, Ord, Show)
 
+data Shower = N Name | LL LongLat
+
+instance Show Shower where
+   show (N n) = show n
+   show (LL ll) = show ll
+
 instance Node Capital where
-   asNode = undefined
+   asNode (Capital wd ll) =
+      constr "Capital" [("name", N $ WD.name wd), ("qid", N $ WD.qid wd),
+                        ("location", LL ll)]
 
 {-- 
 With that Capital-declaration, above, and the CapAt and Capital-types
@@ -156,18 +169,22 @@ to `foundins`.
 type CountryCapRel = Relation Country CapAt Capital
 
 foundCountryCapitals :: CountryInfoMap -> Set Name -> Set CountryCapRel
-foundCountryCapitals = undefined
+foundCountryCapitals = Set.map . mkrel
+   where mkrel cim nm =
+            fromJust (Rel (mkCountry $ T.unpack nm) CAPITAL . mkCap
+                          <$> Map.lookup nm cim)
+         mkCap = Capital . Caps.capital <*> Caps.latLong
 
 {--
 >>> let ccrels = foundCountryCapitals cim foundins
->>> Set.size ccrels
+>>> Set.size ccrels 
 66
 
->>> head $ Set.toList ccrels
+>>> head $ Set.toList ccrels 
 Rel (Country {country = "Antigua and Barbuda"}) 
     CAPITAL 
     (Capital (WD {qid = "http://www.wikidata.org/entity/Q36262", 
-                  name = "St. John's"}) 
+                  name = "St. John's"})
              point({ latitude: 17.116666666, longitude: -61.85 }))
 
 ... let's upload these new relations to the graph store.
@@ -182,10 +199,11 @@ Okay, let's filter out unicode-pointed capitals, ... and suchlike:
 --}
 
 asciiOnly :: CountryCapRel -> Bool
-asciiOnly = undefined
+asciiOnly (Rel (Country c) _ (Capital (WD _qid n) _)) =
+   all ((< 128) . ord) (concat [c, T.unpack n])
 
 {--
->>> let (doThese, notThese) = Set.partition asciiOnly ccrels
+>>> let (doThese, notThese) = Set.partition asciiOnly ccrels 
 >>> join (***) Set.size (doThese, notThese)
 (60,6)
 
@@ -207,14 +225,16 @@ So we just need the country, the capital, its qid and lat/long:
 --}
 
 printNotThese :: Set CountryCapRel -> IO ()
-printNotThese = undefined
+printNotThese = mapM_ printNT . Set.toList
+   where printNT (Rel (Country c) _ (Capital (WD q n) ll)) =
+            putStrLn (show [N (T.pack c), N q, N n, LL ll])
 
 {--
 >>> printNotThese notThese
-["Brazil","http://www.wikidata.org/entity/Q2844","Bras\237lia",point({ latitude: -14.0, longitude: -53.0 })]
-["Cameroon","http://www.wikidata.org/entity/Q3808","Yaound\233",point({ latitude: 7.0, longitude: 12.0 })]
-["Costa Rica","http://www.wikidata.org/entity/Q3070","San Jos\233",point({ latitude: 10.0, longitude: -84.0 })]
-["Maldives","http://www.wikidata.org/entity/Q9347","Mal\233",point({ latitude: 4.18, longitude: 73.51 })]
-["Paraguay","http://www.wikidata.org/entity/Q2933","Asunci\243n",point({ latitude: -23.5, longitude: -58.0 })]      
-["Togo","http://www.wikidata.org/entity/Q3792","Lom\233",point({ latitude: 8.25, longitude: 1.183333 })]
+["Brazil","http://www.wikidata.org/entity/Q2844","Bras\237lia",point({ latitude: -14.0, longitude: -53.0 })]     -- Done
+["Cameroon","http://www.wikidata.org/entity/Q3808","Yaound\233",point({ latitude: 7.0, longitude: 12.0 })]       -- Done
+["Costa Rica","http://www.wikidata.org/entity/Q3070","San Jos\233",point({ latitude: 10.0, longitude: -84.0 })]  -- Done
+["Maldives","http://www.wikidata.org/entity/Q9347","Mal\233",point({ latitude: 4.18, longitude: 73.51 })]        -- Done
+["Paraguay","http://www.wikidata.org/entity/Q2933","Asunci\243n",point({ latitude: -23.5, longitude: -58.0 })]   -- Done
+["Togo","http://www.wikidata.org/entity/Q3792","Lom\233",point({ latitude: 8.25, longitude: 1.183333 })]         -- Done
 --}
