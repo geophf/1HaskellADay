@@ -228,3 +228,5 @@ fivePowers :: Endpoint -> Alliance -> IO String
 fivePowers = undefined
 
 -- ... you have to fetch that alliance, ... somehow, and the associated data.
+
+-- look to, e.g.: Y2020.M11.D23.Solution.nato for an approach for this
