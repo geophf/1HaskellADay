@@ -104,7 +104,8 @@ fetchAllianceCountries url allianceName = undefined
 
 {--
 >>> fetchAlliance url fpda
-Just (Alliance {name = "Five Power Defence Arrangements", aliases = fromList [],                countries = fromList ["Australia","Malaysia","New Zealand",
+Just (Alliance {name = "Five Power Defence Arrangements", aliases = fromList [],
+                countries = fromList ["Australia","Malaysia","New Zealand",
                                       "Singapore","United Kingdom"]})
 
 Okay. Great. Now, let's get the capitals of the countries:
