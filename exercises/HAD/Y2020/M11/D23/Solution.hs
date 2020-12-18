@@ -87,10 +87,11 @@ countryCap :: Point -> CountryInfoMap -> Set Country -> [Key]
 countryCap = set2countryInfosSomthing . countryFolder
 
 countryFolder :: Point -> CountryInfo -> Key
-countryFolder pt (CI _ cap ll) =
+countryFolder pt (CI cntry cap ll) =
    let namei = tstr (name cap)
+       cname = tstr (name cntry)
        capPt = ll2coord ll
-   in  F (Folder namei Nothing (map (P . Placemark namei Nothing . return)
+   in  F (Folder cname Nothing (map (P . Placemark namei Nothing . return)
                  [Pt capPt, Ln (Line [capPt, pt])]))
 
 set2countryInfosSomthing :: (CountryInfo -> a)
