@@ -132,7 +132,7 @@ First things first. Let's get our alliance and its countries:
 [TR {row = [Country {country = "United Kingdom", ...}]}]
 
 So we have a list of countries, but, for an Alliance, we need the Set of
-countries, the create our Alliance
+countries to create our Alliance
 
 fetchAlliance :: Endpoint -> Name -> IO (Maybe Alliance)
 fetchAlliance url allianceName = undefined
@@ -198,6 +198,19 @@ alliance along with the CountryInfoMap.
 fetchAllianceInfo :: Endpoint -> Name -> IO (Maybe (Alliance, CountryInfoMap))
 fetchAllianceInfo url allianceName = undefined
 
+{--
+... and
+
+>>> fetchAllianceInfo url fpda
+Just (Alliance {name = "Five Power Defence Arrangements", ...}, ...)
+
+works, returning the Alliance and the map of country infos.
+
+So, for the bonus:
+
+>>> let (Just (ali, cim)) = it
+--}
+
 {-- BONUS -------------------------------------------------------
 
 Now that we have an alliance, we can build (a very simple) AllianceMap,
@@ -206,4 +219,8 @@ its countries.
 
 Using kmlifyAlliances, on a global-viewer, show the Five Power Defence 
 Arrangements.
+
+>>> let (Just kml) = kmlifyAlliance cim (Map.fromList [(fpda, ali)]) fpda
+>>> skeletonKML kml
+... output saved to five-power.kml
 --}
