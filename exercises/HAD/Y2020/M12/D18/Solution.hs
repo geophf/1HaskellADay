@@ -92,7 +92,6 @@ A sample capital returned from the graph-store is:
  "meta":[{"id":1292,"type":"node","deleted":false}]}]}],"errors":[]}
 
 Sheesh.
---}
 
 convertPoint :: Value -> Parser LongLat
 convertPoint = withObject  "location" $ \v ->  (v .: "coordinates") >>=
@@ -101,9 +100,10 @@ convertPoint = withObject  "location" $ \v ->  (v .: "coordinates") >>=
 convertPoint' :: [Double] -> Parser LongLat
 convertPoint' = return . (Point . head <*> last)
 
-{--
-nupe:
+So, nupe:
    withArray "Coordinates" ((\[lon,lat] -> return (Point lon lat)) . V.toList)
+
+moved convertPoint-function to Data.Aeson.WikiDatum
 --}
 
 -- We also need a query to extract the capital for a given country:

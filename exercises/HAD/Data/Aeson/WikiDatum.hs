@@ -117,4 +117,36 @@ Just (CI {country = WD {qid = "http://www.wikidata.org/entity/Q31",
           latLong = point({ latitude: 50.846666666, longitude: 4.351666666 })})
 
 WOOT!
+
+Now, to get a point from the graph-store, e.g.:
+
+instance FromJSON Capital where
+   parseJSON = withObject "Capital" $ \v ->
+      Capital <$> (WD <$> v .: "qid" <*> v .: "name")
+              <*> (v .: "location" >>= convertPoint)
+
+A sample capital returned from the graph-store is:
+
+>>> getGraphResponse url [capitalOfQuery (Country "Malaysia" Nothing [])]
+{"results":[{"columns":["c"],
+             "data":[{"row":[{"name":"Kuala Lumpur",
+                              "location":{"type":"Point",
+                                  "coordinates":[101.695277777,3.147777777],
+                                  "crs":{"srid":4326,"name":"wgs-84",
+                                         "type":"link",
+                                         "properties":{"href":"http://spatialreference.org/ref/epsg/4326/ogcwkt/",
+                                                 "type":"ogcwkt"}}},
+                              "qid":"http://www.wikidata.org/entity/Q1865"}],
+ "meta":[{"id":1292,"type":"node","deleted":false}]}]}],"errors":[]}
+
+Sheesh.
+
+Anyway, we use the following:
 --}
+
+convertPoint :: Value -> Parser LongLat
+convertPoint =
+   withObject  "location" $ \v ->  (v .: "coordinates") >>= convertPoint'
+
+convertPoint' :: [Double] -> Parser LongLat
+convertPoint' = return . (Point . head <*> last)
