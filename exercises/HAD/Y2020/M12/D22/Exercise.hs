@@ -42,8 +42,9 @@ import Y2020.M11.D17.Solution hiding (Capital)  -- for CountryInfo and ..-Map
 
 import Data.Aeson.WikiDatum
 
-everythingFor :: Endpoint -> Name 
-              -> IO (Maybe (Alliance, AirBaseByCountry, CountryInfoMap))
+type Enchilada = Maybe (Alliance, AirBaseByCountry, CountryInfoMap)
+
+everythingFor :: Endpoint -> Name -> IO Enchilada
 everythingFor url allianceName = undefined
 
 {-- 
@@ -59,6 +60,6 @@ allianceAsKML alliance airbases countriesInfo = undefined
 {--
 There you go!
 
-So your results.
+Show your results.
 --}
 
