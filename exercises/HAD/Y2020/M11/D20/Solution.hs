@@ -171,12 +171,13 @@ airpower2KML :: AirPower -> KML
 airpower2KML (AirPower (CI country cap latlong) airbases) = 
    KML "Belgium's Air Power"
        [F (Folder (sname country) (Just "It's Tuesday")
-                  [place cap latlong, foldAirs cap latlong airbases])]
+                  (place cap latlong:foldAirs cap latlong airbases))]
 
-foldAirs :: WikiDatum -> LongLat -> Set AirBase -> Key
-foldAirs cap latlong =
-    F . Folder "Air Bases" Nothing 
-      . map (airbnb cap latlong) . Set.toList
+foldAirs :: WikiDatum -> LongLat -> Set AirBase -> [Key]
+foldAirs cap latlong abs | Set.size abs == 0 = []
+                         | otherwise         =
+    [F . Folder "Air Bases" Nothing 
+       . map (airbnb cap latlong) $ Set.toList abs]
 
 place :: WikiDatum -> LongLat -> Key
 place cap = P . Placemark (sname cap) (Just "Capital") . return . Pt . pt
