@@ -30,6 +30,8 @@ import Data.Aeson.WikiDatum            -- for LongLat
 import Y2020.M10.D30.Solution hiding (name)     -- for Alliance
 import Y2020.M10.D12.Solution (Country)
 import Y2020.M11.D10.Solution (go)              -- for the AllianceMap
+import Y2020.M11.D20.Solution (AirBaseByCountry)
+import qualified Y2020.M11.D20.Solution as ABC
 
 import Control.Arrow ((***))
 import Control.Monad (join)
@@ -38,7 +40,7 @@ import Data.List (genericLength,intercalate)
 
 import qualified Data.Map as Map
 
-import Data.Maybe (mapMaybe)
+import Data.Maybe (mapMaybe, fromMaybe)
 
 import Data.Set (Set)
 import qualified Data.Set as Set
@@ -59,11 +61,17 @@ alliances2kml :: CountryInfoMap -> [Alliance] -> KML
 alliances2kml cim = KML "World Alliances" . map (alliance2folder cim)
 
 alliance2folder :: CountryInfoMap -> Alliance -> Key
-alliance2folder cim (Alliance name aliases countries) =
+alliance2folder cim = alliance2folder' cim Map.empty
+
+-- adding in airbase-roll-in. Buckle your seatbelts, sports fans
+-- which means we have this helper function:
+
+alliance2folder' :: CountryInfoMap -> AirBaseByCountry -> Alliance -> Key
+alliance2folder' cim abc (Alliance name aliases countries) =
    let cent = centroid name cim countries
        kent = P (Placemark (tstr name) Nothing [Pt cent])
    in  F (Folder (tstr name) (alis aliases)
-                 (kent:countryCap cent cim countries))
+                 (kent:countryCaps cent abc cim countries))
 
 centroid :: Name -> CountryInfoMap -> Set Country -> Point
 centroid alliance cim = cent . set2countryInfosSomthing Capitals.latLong cim
@@ -83,16 +91,24 @@ tup2Pt (a,b) = Coord b a 5.0
 avg :: Fractional a => [a] -> a
 avg = (/) . sum <*> genericLength
 
-countryCap :: Point -> CountryInfoMap -> Set Country -> [Key]
-countryCap = set2countryInfosSomthing . countryFolder
+countryCaps :: Point -> AirBaseByCountry -> CountryInfoMap -> Set Country -> [Key]
+countryCaps pt abc = set2countryInfosSomthing (countryFolder pt abc)
 
-countryFolder :: Point -> CountryInfo -> Key
-countryFolder pt (CI cntry cap ll) =
-   let namei = tstr (name cap)
+countryFolder :: Point -> AirBaseByCountry -> CountryInfo -> Key
+countryFolder pt abc (CI cntry cap ll) =
+   let capn = name cap
+       namei = tstr capn
        cname = tstr (name cntry)
        capPt = ll2coord ll
-   in  F (Folder cname Nothing (map (P . Placemark namei Nothing . return)
-                 [Pt capPt, Ln (Line [capPt, pt])]))
+       airbases = fromMaybe Set.empty (Map.lookup capn abc)
+       airbasesFolder = ABC.foldAirs cap ll airbases
+       capKeys = placeCapital namei capPt pt
+   in  F (Folder cname Nothing (capKeys ++ airbasesFolder))
+
+placeCapital :: String -> Point -> Point -> [Key]
+placeCapital capName capPt centroid =
+   map (P . Placemark capName Nothing . return)
+       [Pt capPt, Ln (Line [capPt, centroid])]
 
 set2countryInfosSomthing :: (CountryInfo -> a)
                          -> CountryInfoMap -> Set Country -> [a]
