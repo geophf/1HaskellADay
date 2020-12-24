@@ -23,6 +23,8 @@ like, with its assets, on the globe.
 First, let's get back to the state where we ended yesterday.
 --}
 
+import Data.XHTML.KML
+
 import Graph.Query
 
 import Y2020.M12.D21.Solution
@@ -37,14 +39,16 @@ import qualified Y2020.M12.D18.Solution as Fetch
 -- I am going to make `Fetch` happen. Today.
 
 import Y2020.M11.D20.Solution (AirBaseByCountry)
+import qualified Y2020.M11.D20.Solution as KMLr
+
 import Y2020.M10.D30.Solution hiding (name)     -- for Alliance
 import Y2020.M11.D17.Solution hiding (Capital)  -- for CountryInfo and ..-Map
 
 import Data.Aeson.WikiDatum
 
-type Enchilada = Maybe (Alliance, AirBaseByCountry, CountryInfoMap)
+type Enchilada = (Alliance, AirBaseByCountry, CountryInfoMap)
 
-everythingFor :: Endpoint -> Name -> IO Enchilada
+everythingFor :: Endpoint -> Name -> IO (Maybe Enchilada)
 everythingFor url allianceName = undefined
 
 {-- 
@@ -54,12 +58,52 @@ kmlifyAlliances doesn't work with air bases ... does it need to be modified
 to do so?
 --}
 
-allianceAsKML :: Alliance -> AirBaseByCountry -> CountryInfoMap -> IO ()
-allianceAsKML alliance airbases countriesInfo = undefined
-
 {--
 There you go!
 
 Show your results.
+
+Well, I think this is a rather straightforward application of the continuation-
+passing style (CPS). Instead of straight-up calling kmlifyAlliance, we pass in a
+
+(Country -> KML) ... or better: (Point -> KML elements) ... because that's
+what we care about.
+
+function, f, to the CPS-version of kmlifyAlliance and have f do the work of
+adding the airbases to each country-folder, and that function simply uses
+the work we did on ... 'Tuesday' (Belgium's air bases. Keep up, fam.)
+
+kmlifyAllianceM :: (Point -> [Key]) -> CountryInfoMap -> AllianceMap -> Name 
+                                    -> Maybe KML
+
+... actually, no.
+
+Y2020.M11.D20.Solution.airbasesOf is
+
+AirBaseByCountry -> CountryInfoMap -> Country -> Maybe AirPower
+
+... (where the Country-type, here, is just a Name)
+
+... and, using that airport is the genesis of the resulting plotted airbases.
+
+Unfortunately, I have to rewrite the follow-on function:
+
+Y2020.M11.D20.Solution.airpower2KML
+
+... because it's comically Belgium-centric, but such is life, and I can reuse 
+the helper-functions, so there's that.
+
+Given all these constraints, does CPS make all that much sense? I don't know.
+
+--}
+
+-- All that discussion above talks to the implementation of allianceAsKML.
+
+allianceAsKML :: Enchilada -> IO ()
+allianceAsKML (alliance, airbases, countriesInfo) = undefined
+
+{--
+I think what we need to do here is to rewrite the alliances2kml function in
+CPS, so that it works for the original usage, then call that CPS function.
 --}
 
