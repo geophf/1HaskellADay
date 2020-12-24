@@ -1,0 +1,3532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.0">
+ <Document>
+  <name>
+   World Alliances
+  </name>
+  <Folder>
+   <name>
+    Five Power Defence Arrangements
+   </name>
+   <Placemark>
+    <name>
+     Five Power Defence Arrangements
+    </name>
+    <Point>
+     <coordinates>
+      105.85438888859998,-4.125388888800002,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+   <Folder>
+    <name>
+     Australia
+    </name>
+    <Placemark>
+     <name>
+      Canberra
+     </name>
+     <Point>
+      <coordinates>
+       149.126944444,-35.293055555,5.0
+      </coordinates>
+     </Point>
+    </Placemark>
+    <Placemark>
+     <name>
+      Canberra
+     </name>
+     <LineString>
+      <coordinates>
+       149.126944444,-35.293055555,5.0
+       105.85438888859998,-4.125388888800002,5.0
+      </coordinates>
+     </LineString>
+    </Placemark>
+    <Folder>
+     <name>
+      Air Bases
+     </name>
+     <Folder>
+      <name>
+       RAAF Base Darwin
+      </name>
+      <Placemark>
+       <name>
+        RAAF Base Darwin
+       </name>
+       <Point>
+        <coordinates>
+         130.876666666,-12.414722222,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - RAAF Base Darwin
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         130.876666666,-12.414722222,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAAF Base Richmond
+      </name>
+      <Placemark>
+       <name>
+        RAAF Base Richmond
+       </name>
+       <Point>
+        <coordinates>
+         150.780833333,-33.600555555,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - RAAF Base Richmond
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         150.780833333,-33.600555555,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Gorrie Airfield
+      </name>
+      <Placemark>
+       <name>
+        Gorrie Airfield
+       </name>
+       <Point>
+        <coordinates>
+         133.18023333,-15.48708889,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - Gorrie Airfield
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         133.18023333,-15.48708889,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Port Pirie Airport
+      </name>
+      <Placemark>
+       <name>
+        Port Pirie Airport
+       </name>
+       <Point>
+        <coordinates>
+         137.995,-33.238888888,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - Port Pirie Airport
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         137.995,-33.238888888,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Mungalalu Truscott Airbase
+      </name>
+      <Placemark>
+       <name>
+        Mungalalu Truscott Airbase
+       </name>
+       <Point>
+        <coordinates>
+         126.380833333,-14.089722222,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - Mungalalu Truscott Airbase
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         126.380833333,-14.089722222,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAAF Williams
+      </name>
+      <Placemark>
+       <name>
+        RAAF Williams
+       </name>
+       <Point>
+        <coordinates>
+         144.75389,-37.93113,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - RAAF Williams
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         144.75389,-37.93113,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAAF Base Tindal
+      </name>
+      <Placemark>
+       <name>
+        RAAF Base Tindal
+       </name>
+       <Point>
+        <coordinates>
+         132.377777777,-14.521111111,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - RAAF Base Tindal
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         132.377777777,-14.521111111,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAAF Base Townsville
+      </name>
+      <Placemark>
+       <name>
+        RAAF Base Townsville
+       </name>
+       <Point>
+        <coordinates>
+         146.765,-19.253333333,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - RAAF Base Townsville
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         146.765,-19.253333333,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Tamworth Regional Airport
+      </name>
+      <Placemark>
+       <name>
+        Tamworth Regional Airport
+       </name>
+       <Point>
+        <coordinates>
+         150.8511111,-31.081666666,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - Tamworth Regional Airport
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         150.8511111,-31.081666666,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Bathurst Island Airport
+      </name>
+      <Placemark>
+       <name>
+        Bathurst Island Airport
+       </name>
+       <Point>
+        <coordinates>
+         130.62,-11.7692,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - Bathurst Island Airport
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         130.62,-11.7692,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Snake Bay Airport
+      </name>
+      <Placemark>
+       <name>
+        Snake Bay Airport
+       </name>
+       <Point>
+        <coordinates>
+         130.653611111,-11.422777777,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - Snake Bay Airport
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         130.653611111,-11.422777777,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Bacchus Marsh Airfield
+      </name>
+      <Placemark>
+       <name>
+        Bacchus Marsh Airfield
+       </name>
+       <Point>
+        <coordinates>
+         144.421666666,-37.733333333,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - Bacchus Marsh Airfield
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         144.421666666,-37.733333333,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Laverton Airport
+      </name>
+      <Placemark>
+       <name>
+        Laverton Airport
+       </name>
+       <Point>
+        <coordinates>
+         144.745833,-37.863612,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - Laverton Airport
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         144.745833,-37.863612,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Kalumburu Airport
+      </name>
+      <Placemark>
+       <name>
+        Kalumburu Airport
+       </name>
+       <Point>
+        <coordinates>
+         126.63614,-14.28518,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - Kalumburu Airport
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         126.63614,-14.28518,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAAF Base Wagga
+      </name>
+      <Placemark>
+       <name>
+        RAAF Base Wagga
+       </name>
+       <Point>
+        <coordinates>
+         147.466388888,-35.165277777,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - RAAF Base Wagga
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         147.466388888,-35.165277777,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Jervis Bay Airport
+      </name>
+      <Placemark>
+       <name>
+        Jervis Bay Airport
+       </name>
+       <Point>
+        <coordinates>
+         150.696666666,-35.146666666,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - Jervis Bay Airport
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         150.696666666,-35.146666666,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Oakey Army Aviation Centre
+      </name>
+      <Placemark>
+       <name>
+        Oakey Army Aviation Centre
+       </name>
+       <Point>
+        <coordinates>
+         151.735277777,-27.411388888,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - Oakey Army Aviation Centre
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         151.735277777,-27.411388888,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Holsworthy Barracks
+      </name>
+      <Placemark>
+       <name>
+        Holsworthy Barracks
+       </name>
+       <Point>
+        <coordinates>
+         150.951666666,-33.995,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - Holsworthy Barracks
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         150.951666666,-33.995,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Gawler Aerodrome
+      </name>
+      <Placemark>
+       <name>
+        Gawler Aerodrome
+       </name>
+       <Point>
+        <coordinates>
+         138.719,-34.6,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - Gawler Aerodrome
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         138.719,-34.6,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAAF Base Woomera
+      </name>
+      <Placemark>
+       <name>
+        RAAF Base Woomera
+       </name>
+       <Point>
+        <coordinates>
+         136.81694444,-31.14416667,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - RAAF Base Woomera
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         136.81694444,-31.14416667,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Bundaberg Airport
+      </name>
+      <Placemark>
+       <name>
+        Bundaberg Airport
+       </name>
+       <Point>
+        <coordinates>
+         152.318612,-24.903888,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - Bundaberg Airport
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         152.318612,-24.903888,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Batchelor Airfield
+      </name>
+      <Placemark>
+       <name>
+        Batchelor Airfield
+       </name>
+       <Point>
+        <coordinates>
+         131.028,-13.0559,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - Batchelor Airfield
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         131.028,-13.0559,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Gallipoli Barracks
+      </name>
+      <Placemark>
+       <name>
+        Gallipoli Barracks
+       </name>
+       <Point>
+        <coordinates>
+         152.983333333,-27.425,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - Gallipoli Barracks
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         152.983333333,-27.425,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       HMAS Stirling
+      </name>
+      <Placemark>
+       <name>
+        HMAS Stirling
+       </name>
+       <Point>
+        <coordinates>
+         115.683333333,-32.241666666,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - HMAS Stirling
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         115.683333333,-32.241666666,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAAF Base East Sale
+      </name>
+      <Placemark>
+       <name>
+        RAAF Base East Sale
+       </name>
+       <Point>
+        <coordinates>
+         147.149445,-38.098888,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - RAAF Base East Sale
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         147.149445,-38.098888,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAAF Base Glenbrook
+      </name>
+      <Placemark>
+       <name>
+        RAAF Base Glenbrook
+       </name>
+       <Point>
+        <coordinates>
+         150.636666666,-33.763333333,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - RAAF Base Glenbrook
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         150.636666666,-33.763333333,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAAF Gingin
+      </name>
+      <Placemark>
+       <name>
+        RAAF Gingin
+       </name>
+       <Point>
+        <coordinates>
+         115.863333333,-31.465,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - RAAF Gingin
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         115.863333333,-31.465,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAAF Curtin
+      </name>
+      <Placemark>
+       <name>
+        RAAF Curtin
+       </name>
+       <Point>
+        <coordinates>
+         123.828333333,-17.581388888,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - RAAF Curtin
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         123.828333333,-17.581388888,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAAF Learmonth
+      </name>
+      <Placemark>
+       <name>
+        RAAF Learmonth
+       </name>
+       <Point>
+        <coordinates>
+         114.088611111,-22.235833333,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - RAAF Learmonth
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         114.088611111,-22.235833333,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAAF Scherger
+      </name>
+      <Placemark>
+       <name>
+        RAAF Scherger
+       </name>
+       <Point>
+        <coordinates>
+         142.086666666,-12.623333333,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - RAAF Scherger
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         142.086666666,-12.623333333,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Sattler Airfield
+      </name>
+      <Placemark>
+       <name>
+        Sattler Airfield
+       </name>
+       <Point>
+        <coordinates>
+         131.052,-12.61,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - Sattler Airfield
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         131.052,-12.61,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Scone Airport
+      </name>
+      <Placemark>
+       <name>
+        Scone Airport
+       </name>
+       <Point>
+        <coordinates>
+         150.8344444,-32.031666666,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - Scone Airport
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         150.8344444,-32.031666666,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAAF Base Williamtown
+      </name>
+      <Placemark>
+       <name>
+        RAAF Base Williamtown
+       </name>
+       <Point>
+        <coordinates>
+         151.8427778,-32.798333333,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - RAAF Base Williamtown
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         151.8427778,-32.798333333,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAAF Base Amberley
+      </name>
+      <Placemark>
+       <name>
+        RAAF Base Amberley
+       </name>
+       <Point>
+        <coordinates>
+         152.711666666,-27.64,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - RAAF Base Amberley
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         152.711666666,-27.64,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAAF Base Pearce
+      </name>
+      <Placemark>
+       <name>
+        RAAF Base Pearce
+       </name>
+       <Point>
+        <coordinates>
+         116.015,-31.667777777,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - RAAF Base Pearce
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         116.015,-31.667777777,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAAF Base Edinburgh
+      </name>
+      <Placemark>
+       <name>
+        RAAF Base Edinburgh
+       </name>
+       <Point>
+        <coordinates>
+         138.620833333,-34.7025,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Canberra - RAAF Base Edinburgh
+       </name>
+       <LineString>
+        <coordinates>
+         149.126944444,-35.293055555,1000.0
+         138.620833333,-34.7025,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+    </Folder>
+   </Folder>
+   <Folder>
+    <name>
+     Malaysia
+    </name>
+    <Placemark>
+     <name>
+      Kuala Lumpur
+     </name>
+     <Point>
+      <coordinates>
+       101.695277777,3.147777777,5.0
+      </coordinates>
+     </Point>
+    </Placemark>
+    <Placemark>
+     <name>
+      Kuala Lumpur
+     </name>
+     <LineString>
+      <coordinates>
+       101.695277777,3.147777777,5.0
+       105.85438888859998,-4.125388888800002,5.0
+      </coordinates>
+     </LineString>
+    </Placemark>
+    <Folder>
+     <name>
+      Air Bases
+     </name>
+     <Folder>
+      <name>
+       Simpang Airport
+      </name>
+      <Placemark>
+       <name>
+        Simpang Airport
+       </name>
+       <Point>
+        <coordinates>
+         101.7025,3.112222222,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Kuala Lumpur - Simpang Airport
+       </name>
+       <LineString>
+        <coordinates>
+         101.695277777,3.147777777,1000.0
+         101.7025,3.112222222,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RMAF Butterworth
+      </name>
+      <Placemark>
+       <name>
+        RMAF Butterworth
+       </name>
+       <Point>
+        <coordinates>
+         100.391111111,5.466111111,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Kuala Lumpur - RMAF Butterworth
+       </name>
+       <LineString>
+        <coordinates>
+         101.695277777,3.147777777,1000.0
+         100.391111111,5.466111111,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Sultan Haji Ahmad Shah Airport
+      </name>
+      <Placemark>
+       <name>
+        Sultan Haji Ahmad Shah Airport
+       </name>
+       <Point>
+        <coordinates>
+         103.208572222,3.775175,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Kuala Lumpur - Sultan Haji Ahmad Shah Airport
+       </name>
+       <LineString>
+        <coordinates>
+         101.695277777,3.147777777,1000.0
+         103.208572222,3.775175,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RMAF Gong Kedak
+      </name>
+      <Placemark>
+       <name>
+        RMAF Gong Kedak
+       </name>
+       <Point>
+        <coordinates>
+         102.490277777,5.798888888,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Kuala Lumpur - RMAF Gong Kedak
+       </name>
+       <LineString>
+        <coordinates>
+         101.695277777,3.147777777,1000.0
+         102.490277777,5.798888888,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+    </Folder>
+   </Folder>
+   <Folder>
+    <name>
+     New Zealand
+    </name>
+    <Placemark>
+     <name>
+      Wellington
+     </name>
+     <Point>
+      <coordinates>
+       174.777222222,-41.288888888,5.0
+      </coordinates>
+     </Point>
+    </Placemark>
+    <Placemark>
+     <name>
+      Wellington
+     </name>
+     <LineString>
+      <coordinates>
+       174.777222222,-41.288888888,5.0
+       105.85438888859998,-4.125388888800002,5.0
+      </coordinates>
+     </LineString>
+    </Placemark>
+    <Folder>
+     <name>
+      Air Bases
+     </name>
+     <Folder>
+      <name>
+       RNZAF Base Auckland
+      </name>
+      <Placemark>
+       <name>
+        RNZAF Base Auckland
+       </name>
+       <Point>
+        <coordinates>
+         174.630277777,-36.787777777,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Wellington - RNZAF Base Auckland
+       </name>
+       <LineString>
+        <coordinates>
+         174.777222222,-41.288888888,1000.0
+         174.630277777,-36.787777777,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RNZAF Base Woodbourne
+      </name>
+      <Placemark>
+       <name>
+        RNZAF Base Woodbourne
+       </name>
+       <Point>
+        <coordinates>
+         173.87,-41.5179,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Wellington - RNZAF Base Woodbourne
+       </name>
+       <LineString>
+        <coordinates>
+         174.777222222,-41.288888888,1000.0
+         173.87,-41.5179,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Wigram Aerodrome
+      </name>
+      <Placemark>
+       <name>
+        Wigram Aerodrome
+       </name>
+       <Point>
+        <coordinates>
+         172.553,-43.5511,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Wellington - Wigram Aerodrome
+       </name>
+       <LineString>
+        <coordinates>
+         174.777222222,-41.288888888,1000.0
+         172.553,-43.5511,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+    </Folder>
+   </Folder>
+   <Folder>
+    <name>
+     Singapore
+    </name>
+    <Placemark>
+     <name>
+      Singapore
+     </name>
+     <Point>
+      <coordinates>
+       103.8,1.3,5.0
+      </coordinates>
+     </Point>
+    </Placemark>
+    <Placemark>
+     <name>
+      Singapore
+     </name>
+     <LineString>
+      <coordinates>
+       103.8,1.3,5.0
+       105.85438888859998,-4.125388888800002,5.0
+      </coordinates>
+     </LineString>
+    </Placemark>
+    <Folder>
+     <name>
+      Air Bases
+     </name>
+     <Folder>
+      <name>
+       Tengah Air Base
+      </name>
+      <Placemark>
+       <name>
+        Tengah Air Base
+       </name>
+       <Point>
+        <coordinates>
+         103.708611111,1.387222222,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Singapore - Tengah Air Base
+       </name>
+       <LineString>
+        <coordinates>
+         103.8,1.3,1000.0
+         103.708611111,1.387222222,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Sembawang Air Base
+      </name>
+      <Placemark>
+       <name>
+        Sembawang Air Base
+       </name>
+       <Point>
+        <coordinates>
+         103.812777777,1.425277777,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Singapore - Sembawang Air Base
+       </name>
+       <LineString>
+        <coordinates>
+         103.8,1.3,1000.0
+         103.812777777,1.425277777,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Paya Lebar Air Base
+      </name>
+      <Placemark>
+       <name>
+        Paya Lebar Air Base
+       </name>
+       <Point>
+        <coordinates>
+         103.909444444,1.360277777,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        Singapore - Paya Lebar Air Base
+       </name>
+       <LineString>
+        <coordinates>
+         103.8,1.3,1000.0
+         103.909444444,1.360277777,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+    </Folder>
+   </Folder>
+   <Folder>
+    <name>
+     United Kingdom
+    </name>
+    <Placemark>
+     <name>
+      London
+     </name>
+     <Point>
+      <coordinates>
+       -0.1275,51.507222222,5.0
+      </coordinates>
+     </Point>
+    </Placemark>
+    <Placemark>
+     <name>
+      London
+     </name>
+     <LineString>
+      <coordinates>
+       -0.1275,51.507222222,5.0
+       105.85438888859998,-4.125388888800002,5.0
+      </coordinates>
+     </LineString>
+    </Placemark>
+    <Folder>
+     <name>
+      Air Bases
+     </name>
+     <Folder>
+      <name>
+       RAF South Cerney
+      </name>
+      <Placemark>
+       <name>
+        RAF South Cerney
+       </name>
+       <Point>
+        <coordinates>
+         -1.92444,51.6908,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF South Cerney
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.92444,51.6908,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Farnborough Airport
+      </name>
+      <Placemark>
+       <name>
+        Farnborough Airport
+       </name>
+       <Point>
+        <coordinates>
+         -0.7775,51.275277777,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Farnborough Airport
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.7775,51.275277777,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Binbrook
+      </name>
+      <Placemark>
+       <name>
+        RAF Binbrook
+       </name>
+       <Point>
+        <coordinates>
+         -0.208889,53.4458,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Binbrook
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.208889,53.4458,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Fairford
+      </name>
+      <Placemark>
+       <name>
+        RAF Fairford
+       </name>
+       <Point>
+        <coordinates>
+         -1.79,51.6822,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Fairford
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.79,51.6822,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Kingsfield Airfield Airport
+      </name>
+      <Placemark>
+       <name>
+        Kingsfield Airfield Airport
+       </name>
+       <Point>
+        <coordinates>
+         33.71605556,35.01430556,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Kingsfield Airfield Airport
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         33.71605556,35.01430556,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Goose Green Airfield
+      </name>
+      <Placemark>
+       <name>
+        Goose Green Airfield
+       </name>
+       <Point>
+        <coordinates>
+         -58.97666667,-51.82388889,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Goose Green Airfield
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -58.97666667,-51.82388889,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Beccles Airport
+      </name>
+      <Placemark>
+       <name>
+        Beccles Airport
+       </name>
+       <Point>
+        <coordinates>
+         1.618333333,52.435277777,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Beccles Airport
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         1.618333333,52.435277777,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Cotswold Airport
+      </name>
+      <Placemark>
+       <name>
+        Cotswold Airport
+       </name>
+       <Point>
+        <coordinates>
+         -2.056944444,51.668055555,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Cotswold Airport
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -2.056944444,51.668055555,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Denham Aerodrome
+      </name>
+      <Placemark>
+       <name>
+        Denham Aerodrome
+       </name>
+       <Point>
+        <coordinates>
+         -0.513055555,51.588333333,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Denham Aerodrome
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.513055555,51.588333333,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Puerto Caldern Airport
+      </name>
+      <Placemark>
+       <name>
+        Puerto Caldern Airport
+       </name>
+       <Point>
+        <coordinates>
+         -59.580175,-51.33134167,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Puerto Caldern Airport
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -59.580175,-51.33134167,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RNAS Merryfield
+      </name>
+      <Placemark>
+       <name>
+        RNAS Merryfield
+       </name>
+       <Point>
+        <coordinates>
+         -2.935667,50.9625,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RNAS Merryfield
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -2.935667,50.9625,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Chalgrove Airfield
+      </name>
+      <Placemark>
+       <name>
+        Chalgrove Airfield
+       </name>
+       <Point>
+        <coordinates>
+         -1.080833333,51.674722222,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Chalgrove Airfield
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.080833333,51.674722222,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Ascension Island
+      </name>
+      <Placemark>
+       <name>
+        RAF Ascension Island
+       </name>
+       <Point>
+        <coordinates>
+         -14.393667,-7.969667,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Ascension Island
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -14.393667,-7.969667,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Waddington
+      </name>
+      <Placemark>
+       <name>
+        RAF Waddington
+       </name>
+       <Point>
+        <coordinates>
+         -0.530833333,53.1725,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Waddington
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.530833333,53.1725,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Duxford Aerodrome
+      </name>
+      <Placemark>
+       <name>
+        Duxford Aerodrome
+       </name>
+       <Point>
+        <coordinates>
+         0.131944444,52.090833333,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Duxford Aerodrome
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         0.131944444,52.090833333,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Kinloss
+      </name>
+      <Placemark>
+       <name>
+        RAF Kinloss
+       </name>
+       <Point>
+        <coordinates>
+         -3.56056,57.6494,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Kinloss
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -3.56056,57.6494,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Army Air Corps Middle Wallop
+      </name>
+      <Placemark>
+       <name>
+        Army Air Corps Middle Wallop
+       </name>
+       <Point>
+        <coordinates>
+         -1.57,51.14916667,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Army Air Corps Middle Wallop
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.57,51.14916667,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Hucknall Airfield
+      </name>
+      <Placemark>
+       <name>
+        Hucknall Airfield
+       </name>
+       <Point>
+        <coordinates>
+         -1.218333333,53.014444444,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Hucknall Airfield
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.218333333,53.014444444,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Manston
+      </name>
+      <Placemark>
+       <name>
+        RAF Manston
+       </name>
+       <Point>
+        <coordinates>
+         1.35028,51.3478,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Manston
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         1.35028,51.3478,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Casement Aerodrome
+      </name>
+      <Placemark>
+       <name>
+        Casement Aerodrome
+       </name>
+       <Point>
+        <coordinates>
+         -6.451111111,53.301666666,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Casement Aerodrome
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -6.451111111,53.301666666,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Tangmere
+      </name>
+      <Placemark>
+       <name>
+        RAF Tangmere
+       </name>
+       <Point>
+        <coordinates>
+         -0.706388888,50.845833333,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Tangmere
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.706388888,50.845833333,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       MOD St Athan
+      </name>
+      <Placemark>
+       <name>
+        MOD St Athan
+       </name>
+       <Point>
+        <coordinates>
+         -3.435833333,51.404722222,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - MOD St Athan
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -3.435833333,51.404722222,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       MOD St Athan
+      </name>
+      <Placemark>
+       <name>
+        MOD St Athan
+       </name>
+       <Point>
+        <coordinates>
+         -3.435833333,51.404722222,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - MOD St Athan
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -3.435833333,51.404722222,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       MoD Boscombe Down
+      </name>
+      <Placemark>
+       <name>
+        MoD Boscombe Down
+       </name>
+       <Point>
+        <coordinates>
+         -1.7475,51.152222222,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - MoD Boscombe Down
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.7475,51.152222222,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Dunkeswell Aerodrome
+      </name>
+      <Placemark>
+       <name>
+        Dunkeswell Aerodrome
+       </name>
+       <Point>
+        <coordinates>
+         -3.234722222,50.86,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Dunkeswell Aerodrome
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -3.234722222,50.86,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Stapleford Aerodrome
+      </name>
+      <Placemark>
+       <name>
+        Stapleford Aerodrome
+       </name>
+       <Point>
+        <coordinates>
+         0.156111111,51.6525,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Stapleford Aerodrome
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         0.156111111,51.6525,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Sleap Airfield
+      </name>
+      <Placemark>
+       <name>
+        Sleap Airfield
+       </name>
+       <Point>
+        <coordinates>
+         -2.770277777,52.834722222,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Sleap Airfield
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -2.770277777,52.834722222,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Sherburn-in-Elmet Airfield
+      </name>
+      <Placemark>
+       <name>
+        Sherburn-in-Elmet Airfield
+       </name>
+       <Point>
+        <coordinates>
+         -1.217777777,53.784166666,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Sherburn-in-Elmet Airfield
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.217777777,53.784166666,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Turweston Aerodrome
+      </name>
+      <Placemark>
+       <name>
+        Turweston Aerodrome
+       </name>
+       <Point>
+        <coordinates>
+         -1.095555555,52.040833333,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Turweston Aerodrome
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.095555555,52.040833333,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Lashenden (Headcorn) Airfield
+      </name>
+      <Placemark>
+       <name>
+        Lashenden (Headcorn) Airfield
+       </name>
+       <Point>
+        <coordinates>
+         0.6425,51.1567,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Lashenden (Headcorn) Airfield
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         0.6425,51.1567,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Fairoaks Airport
+      </name>
+      <Placemark>
+       <name>
+        Fairoaks Airport
+       </name>
+       <Point>
+        <coordinates>
+         -0.558611111,51.348055555,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Fairoaks Airport
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.558611111,51.348055555,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Redhill Aerodrome
+      </name>
+      <Placemark>
+       <name>
+        Redhill Aerodrome
+       </name>
+       <Point>
+        <coordinates>
+         -0.138611111,51.213611111,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Redhill Aerodrome
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.138611111,51.213611111,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       White Waltham Airfield
+      </name>
+      <Placemark>
+       <name>
+        White Waltham Airfield
+       </name>
+       <Point>
+        <coordinates>
+         -0.774444444,51.500833333,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - White Waltham Airfield
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.774444444,51.500833333,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Warton Aerodrome
+      </name>
+      <Placemark>
+       <name>
+        Warton Aerodrome
+       </name>
+       <Point>
+        <coordinates>
+         -2.883888888,53.745,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Warton Aerodrome
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -2.883888888,53.745,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Perth Airport
+      </name>
+      <Placemark>
+       <name>
+        Perth Airport
+       </name>
+       <Point>
+        <coordinates>
+         -3.372222222,56.439166666,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Perth Airport
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -3.372222222,56.439166666,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Lasham Airfield
+      </name>
+      <Placemark>
+       <name>
+        Lasham Airfield
+       </name>
+       <Point>
+        <coordinates>
+         -1.03361,51.1872,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Lasham Airfield
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.03361,51.1872,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Shobdon Aerodrome
+      </name>
+      <Placemark>
+       <name>
+        Shobdon Aerodrome
+       </name>
+       <Point>
+        <coordinates>
+         -2.881111111,52.241666666,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Shobdon Aerodrome
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -2.881111111,52.241666666,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Wolverhampton Airport
+      </name>
+      <Placemark>
+       <name>
+        Wolverhampton Airport
+       </name>
+       <Point>
+        <coordinates>
+         -2.259722222,52.5175,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Wolverhampton Airport
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -2.259722222,52.5175,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Old Sarum Airfield
+      </name>
+      <Placemark>
+       <name>
+        Old Sarum Airfield
+       </name>
+       <Point>
+        <coordinates>
+         -1.784166666,51.098888888,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Old Sarum Airfield
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.784166666,51.098888888,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Aberporth Airport
+      </name>
+      <Placemark>
+       <name>
+        Aberporth Airport
+       </name>
+       <Point>
+        <coordinates>
+         -4.559444444,52.114722222,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Aberporth Airport
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -4.559444444,52.114722222,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Rochester Airport
+      </name>
+      <Placemark>
+       <name>
+        Rochester Airport
+       </name>
+       <Point>
+        <coordinates>
+         0.502777777,51.351944444,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Rochester Airport
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         0.502777777,51.351944444,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Cosford
+      </name>
+      <Placemark>
+       <name>
+        RAF Cosford
+       </name>
+       <Point>
+        <coordinates>
+         -2.305555555,52.64,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Cosford
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -2.305555555,52.64,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Enstone Airfield
+      </name>
+      <Placemark>
+       <name>
+        Enstone Airfield
+       </name>
+       <Point>
+        <coordinates>
+         -1.4275,51.9297,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Enstone Airfield
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.4275,51.9297,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Church Fenton
+      </name>
+      <Placemark>
+       <name>
+        RAF Church Fenton
+       </name>
+       <Point>
+        <coordinates>
+         -1.1955,53.83433,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Church Fenton
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.1955,53.83433,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Alconbury
+      </name>
+      <Placemark>
+       <name>
+        RAF Alconbury
+       </name>
+       <Point>
+        <coordinates>
+         -0.22367,52.37487,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Alconbury
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.22367,52.37487,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Cranfield Airport
+      </name>
+      <Placemark>
+       <name>
+        Cranfield Airport
+       </name>
+       <Point>
+        <coordinates>
+         -0.616666666,52.072222222,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Cranfield Airport
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.616666666,52.072222222,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       MDPGA Wethersfield
+      </name>
+      <Placemark>
+       <name>
+        MDPGA Wethersfield
+       </name>
+       <Point>
+        <coordinates>
+         0.506011,51.9739,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - MDPGA Wethersfield
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         0.506011,51.9739,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       Llanbedr Airport
+      </name>
+      <Placemark>
+       <name>
+        Llanbedr Airport
+       </name>
+       <Point>
+        <coordinates>
+         -4.12722,52.805,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - Llanbedr Airport
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -4.12722,52.805,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Sculthorpe
+      </name>
+      <Placemark>
+       <name>
+        RAF Sculthorpe
+       </name>
+       <Point>
+        <coordinates>
+         0.760556,52.8483,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Sculthorpe
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         0.760556,52.8483,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Abingdon
+      </name>
+      <Placemark>
+       <name>
+        RAF Abingdon
+       </name>
+       <Point>
+        <coordinates>
+         -1.31667,51.6908,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Abingdon
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.31667,51.6908,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Barkston Heath
+      </name>
+      <Placemark>
+       <name>
+        RAF Barkston Heath
+       </name>
+       <Point>
+        <coordinates>
+         -0.561666666,52.962222222,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Barkston Heath
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.561666666,52.962222222,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Boulmer
+      </name>
+      <Placemark>
+       <name>
+        RAF Boulmer
+       </name>
+       <Point>
+        <coordinates>
+         -1.623,55.407,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Boulmer
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.623,55.407,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Breighton
+      </name>
+      <Placemark>
+       <name>
+        RAF Breighton
+       </name>
+       <Point>
+        <coordinates>
+         -0.913611,53.8019,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Breighton
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.913611,53.8019,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Coltishall
+      </name>
+      <Placemark>
+       <name>
+        RAF Coltishall
+       </name>
+       <Point>
+        <coordinates>
+         1.357222222,52.754722222,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Coltishall
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         1.357222222,52.754722222,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Cottesmore
+      </name>
+      <Placemark>
+       <name>
+        RAF Cottesmore
+       </name>
+       <Point>
+        <coordinates>
+         -0.651388888,52.729444444,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Cottesmore
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.651388888,52.729444444,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Deanland
+      </name>
+      <Placemark>
+       <name>
+        RAF Deanland
+       </name>
+       <Point>
+        <coordinates>
+         0.1525,50.8806,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Deanland
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         0.1525,50.8806,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Deenethorpe
+      </name>
+      <Placemark>
+       <name>
+        RAF Deenethorpe
+       </name>
+       <Point>
+        <coordinates>
+         -0.585,52.5025,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Deenethorpe
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.585,52.5025,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Dishforth
+      </name>
+      <Placemark>
+       <name>
+        RAF Dishforth
+       </name>
+       <Point>
+        <coordinates>
+         -1.420277777,54.137222222,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Dishforth
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.420277777,54.137222222,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Doncaster
+      </name>
+      <Placemark>
+       <name>
+        RAF Doncaster
+       </name>
+       <Point>
+        <coordinates>
+         -1.105,53.5072,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Doncaster
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.105,53.5072,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Dounreay
+      </name>
+      <Placemark>
+       <name>
+        RAF Dounreay
+       </name>
+       <Point>
+        <coordinates>
+         -3.72778,58.5833,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Dounreay
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -3.72778,58.5833,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Finningley
+      </name>
+      <Placemark>
+       <name>
+        RAF Finningley
+       </name>
+       <Point>
+        <coordinates>
+         -1.010833333,53.479722222,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Finningley
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.010833333,53.479722222,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Fowlmere
+      </name>
+      <Placemark>
+       <name>
+        RAF Fowlmere
+       </name>
+       <Point>
+        <coordinates>
+         5.79917e-2,52.0787,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Fowlmere
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         5.79917e-2,52.0787,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Greenham Common
+      </name>
+      <Placemark>
+       <name>
+        RAF Greenham Common
+       </name>
+       <Point>
+        <coordinates>
+         -1.282222222,51.378611111,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Greenham Common
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.282222222,51.378611111,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Halton
+      </name>
+      <Placemark>
+       <name>
+        RAF Halton
+       </name>
+       <Point>
+        <coordinates>
+         -0.736111,51.7917,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Halton
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.736111,51.7917,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Henlow
+      </name>
+      <Placemark>
+       <name>
+        RAF Henlow
+       </name>
+       <Point>
+        <coordinates>
+         -0.303333,52.0156,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Henlow
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.303333,52.0156,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Hullavington
+      </name>
+      <Placemark>
+       <name>
+        RAF Hullavington
+       </name>
+       <Point>
+        <coordinates>
+         -2.13333,51.525,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Hullavington
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -2.13333,51.525,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Jurby Head
+      </name>
+      <Placemark>
+       <name>
+        RAF Jurby Head
+       </name>
+       <Point>
+        <coordinates>
+         -4.54083333,54.33666667,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Jurby Head
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -4.54083333,54.33666667,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Leconfield
+      </name>
+      <Placemark>
+       <name>
+        RAF Leconfield
+       </name>
+       <Point>
+        <coordinates>
+         -0.4375,53.876944444,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Leconfield
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.4375,53.876944444,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Little Rissington
+      </name>
+      <Placemark>
+       <name>
+        RAF Little Rissington
+       </name>
+       <Point>
+        <coordinates>
+         -1.7,51.8667,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Little Rissington
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.7,51.8667,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Machrihanish
+      </name>
+      <Placemark>
+       <name>
+        RAF Machrihanish
+       </name>
+       <Point>
+        <coordinates>
+         -5.68639,55.4372,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Machrihanish
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -5.68639,55.4372,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Newton
+      </name>
+      <Placemark>
+       <name>
+        RAF Newton
+       </name>
+       <Point>
+        <coordinates>
+         -0.9895,52.9665,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Newton
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.9895,52.9665,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Shipdham
+      </name>
+      <Placemark>
+       <name>
+        RAF Shipdham
+       </name>
+       <Point>
+        <coordinates>
+         0.92,52.62,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Shipdham
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         0.92,52.62,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF St Mawgan
+      </name>
+      <Placemark>
+       <name>
+        RAF St Mawgan
+       </name>
+       <Point>
+        <coordinates>
+         -5.013055555,50.434722222,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF St Mawgan
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -5.013055555,50.434722222,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Ternhill
+      </name>
+      <Placemark>
+       <name>
+        RAF Ternhill
+       </name>
+       <Point>
+        <coordinates>
+         -2.533611111,52.871111111,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Ternhill
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -2.533611111,52.871111111,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Topcliffe
+      </name>
+      <Placemark>
+       <name>
+        RAF Topcliffe
+       </name>
+       <Point>
+        <coordinates>
+         -1.382222222,54.205555555,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Topcliffe
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.382222222,54.205555555,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Upavon
+      </name>
+      <Placemark>
+       <name>
+        RAF Upavon
+       </name>
+       <Point>
+        <coordinates>
+         -1.77833,51.2906,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Upavon
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.77833,51.2906,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Upper Heyford
+      </name>
+      <Placemark>
+       <name>
+        RAF Upper Heyford
+       </name>
+       <Point>
+        <coordinates>
+         -1.25333,51.9369,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Upper Heyford
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -1.25333,51.9369,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Wattisham
+      </name>
+      <Placemark>
+       <name>
+        RAF Wattisham
+       </name>
+       <Point>
+        <coordinates>
+         0.956,52.128,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Wattisham
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         0.956,52.128,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF West Malling
+      </name>
+      <Placemark>
+       <name>
+        RAF West Malling
+       </name>
+       <Point>
+        <coordinates>
+         0.4025,51.271111111,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF West Malling
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         0.4025,51.271111111,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Wickenby
+      </name>
+      <Placemark>
+       <name>
+        RAF Wickenby
+       </name>
+       <Point>
+        <coordinates>
+         -0.348888888,53.316944444,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Wickenby
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.348888888,53.316944444,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Wyton
+      </name>
+      <Placemark>
+       <name>
+        RAF Wyton
+       </name>
+       <Point>
+        <coordinates>
+         -0.107778,52.3572,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Wyton
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -0.107778,52.3572,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Ballykelly
+      </name>
+      <Placemark>
+       <name>
+        RAF Ballykelly
+       </name>
+       <Point>
+        <coordinates>
+         -7.02,55.06,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Ballykelly
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         -7.02,55.06,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+     <Folder>
+      <name>
+       RAF Mildenhall
+      </name>
+      <Placemark>
+       <name>
+        RAF Mildenhall
+       </name>
+       <Point>
+        <coordinates>
+         0.480833333,52.365,1000.0
+        </coordinates>
+       </Point>
+      </Placemark>
+      <Placemark>
+       <name>
+        London - RAF Mildenhall
+       </name>
+       <LineString>
+        <coordinates>
+         -0.1275,51.507222222,1000.0
+         0.480833333,52.365,1000.0
+        </coordinates>
+       </LineString>
+      </Placemark>
+     </Folder>
+    </Folder>
+   </Folder>
+  </Folder>
+ </Document>
+</kml>
