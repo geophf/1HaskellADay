@@ -26,7 +26,7 @@ type Wineries = Map Name Winery
 
 wineriesJSON, wineriesDir :: FilePath
 wineriesJSON = "winery-locations.json"
-wineriesDir = "Y2021/M01/D21/"
+wineriesDir = "Y2021/M01/D20/"
 
 readWineries :: FilePath -> IO Wineries
 readWineries = undefined
