@@ -2,7 +2,7 @@
 
 module Y2021.M01.D20.Exercise where
 
-import Data.XHTML.KML
+import Data.Aeson
 import Data.Aeson.WikiDatum
 
 import Graph.Query
@@ -16,8 +16,13 @@ We have a JSON file from wikidata with wineries and their geo-locations.
 Parse it.
 --}
 
-type Winery = String
-type Wineries = Map Winery LongLat
+data Winery = Winery { name :: WikiDatum, location :: LongLat }
+   deriving (Eq, Ord, Show)
+
+instance FromJSON Winery where
+   parseJSON = undefined
+
+type Wineries = Map Name Winery
 
 wineriesJSON, wineriesDir :: FilePath
 wineriesJSON = "winery-locations.json"
