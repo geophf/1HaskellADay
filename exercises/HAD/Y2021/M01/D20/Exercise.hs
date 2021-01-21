@@ -11,9 +11,18 @@ import Graph.JSON.Cypher
 import Data.Map (Map)
 
 {--
-We have a JSON file from wikidata with wineries and their geo-locations.
+We have a JSON file from wikidata with wineries and their geo-locations, from
+this SPARQL query:
 
-Parse it.
+SELECT ?item ?itemLabel ?location
+WHERE 
+{
+  ?item wdt:P31 wd:Q156362.
+  ?item wdt:P625 ?location.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
+
+Parse the JSON.
 --}
 
 data Winery = Winery { name :: WikiDatum, location :: LongLat }
