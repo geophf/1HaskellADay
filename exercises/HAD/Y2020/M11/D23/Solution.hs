@@ -96,11 +96,11 @@ countryCaps pt abc = set2countryInfosSomthing (countryFolder pt abc)
 
 countryFolder :: Point -> AirBaseByCountry -> CountryInfo -> Key
 countryFolder pt abc (CI cntry cap ll) =
-   let capn = name cap
-       namei = tstr capn
-       cname = tstr (name cntry)
+   let namei = tstr (name cap)
+       countrn = name cntry
+       cname = tstr countrn
        capPt = ll2coord ll
-       airbases = fromMaybe Set.empty (Map.lookup capn abc)
+       airbases = fromMaybe Set.empty (Map.lookup countrn abc)
        airbasesFolder = ABC.foldAirs cap ll airbases
        capKeys = placeCapital namei capPt pt
    in  F (Folder cname Nothing (capKeys ++ airbasesFolder))
