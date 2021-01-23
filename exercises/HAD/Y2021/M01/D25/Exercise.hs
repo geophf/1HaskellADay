@@ -10,6 +10,11 @@ import Data.Relation
 import Graph.Query
 import Graph.JSON.Cypher
 
+import Data.Map (Map)
+import Data.Set (Set)
+
+import qualified Data.Text as T
+
 {--
 So, yesterday, we saw disparities between countries, with some obvious 
 differences in names for the same countries.
@@ -47,10 +52,10 @@ data WikiCountry = WC Name
 instance Node WikiCountry where
    asNode = undefined
 
-data Neo4JCountry = Neo Name
+data Neo4jCountry = Neo Name
    deriving (Eq, Ord, Show)
 
-instance Node Neo4JCountry where
+instance Node Neo4jCountry where
    asNode = undefined
 
 data ALIAS_OF = ALIAS_OF
@@ -59,10 +64,56 @@ data ALIAS_OF = ALIAS_OF
 instance Edge ALIAS_OF where
    asEdge = undefined
 
-type AliasRel = Relation WikiCountry ALIAS_OF Neo4JCountry
+type AliasRel = Relation WikiCountry ALIAS_OF Neo4jCountry
 
 {-- 
 We have an alias relation declared. Now, take the countries exclusive to the
 wiki-set and either alias them to a corresponding neo4j country, or, if it's
 actually exclusive, upload that country to the graph-store.
 --}
+
+aliasTheseCountries :: Endpoint -> Map WikiCountry Neo4jCountry -> IO String
+aliasTheseCountries url mappage = undefined
+
+-- the cypher falls out from the relation created from the wiki-country to
+-- the neo4j country ... so, go figure! :D
+
+-- How many countries were aliased?
+
+-- Now, we've got to add the non-aliased countries from wikidata:
+
+nonAliasedCountries :: Map WikiCountry a -> Set WikiCountry -> Set Neo4jCountry
+nonAliasedCountries mac wcs = undefined
+
+addTheseCountries :: Endpoint -> Set Neo4jCountry -> IO String
+addTheseCountries url neos = undefined
+
+-- using this Cypher
+
+addCountryQuery :: Neo4jCountry -> Cypher
+addCountryQuery = varNode CREATE "foo"
+
+-- How many countries did you add to the graph database?
+
+-- Now that we've put our alias 'table' into the graph, let's create the
+-- alias resolver:
+
+countryAliases :: Endpoint -> IO (Map WikiCountry Neo4jCountry)
+countryAliases = undefined
+
+-- to define the above you need you some cypher to get the aliases from the
+-- graph store:
+
+countryAliasesQuery :: Cypher
+countryAliasesQuery =
+   T.concat ["MATCH (alias:Country)-[:ALIAS_OF]->(country:Country) ",
+             "RETURN alias.name, country.name"]
+
+countryAliasResolver :: Map WikiCountry Neo4jCountry -> WikiCountry -> Neo4jCountry
+countryAliasResolver = undefined
+
+-- the behavior here is: "United States of America" -> "US"
+-- and:                  "Denmark"                  -> "Denmark"
+
+-- Run all your wiki countries through the alias resolver. How many countries
+-- were altered?
