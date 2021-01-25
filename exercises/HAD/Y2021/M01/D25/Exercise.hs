@@ -115,5 +115,5 @@ countryAliasResolver = undefined
 -- the behavior here is: "United States of America" -> "US"
 -- and:                  "Denmark"                  -> "Denmark"
 
--- Run all your wiki countries through the alias resolver. How many countries
+-- Run all your wiki countries through the alias resolver. Which countries
 -- were altered?
