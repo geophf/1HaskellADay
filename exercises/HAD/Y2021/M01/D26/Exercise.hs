@@ -14,6 +14,7 @@ From each data set, return a wineries-by-country mapping.
 --}
 
 import Data.Map (Map)
+import Data.Set (Set)
 
 import qualified Data.Text as T
 
@@ -25,7 +26,7 @@ import qualified Graph.JSON.Cypher.Read.Rows as RR
 import Y2021.M01.D22.Solution (Wineries, Winery)
 import qualified Y2021.M01.D22.Solution as WW  -- WikiWineries
 
-type WineriesByCountry = Map Country Winery
+type WineriesByCountry = Map Country (Set Winery)
 type Country = Name
 
 wikiWineriesByCountry :: Wineries -> WineriesByCountry
