@@ -35,7 +35,7 @@ type ByCountry thing = Map Country (Set thing)
 type WineriesByCountry = ByCountry Winery
 type Country = Name
 
-wikiWineriesByCountry :: Wineries -> ByCountry Winery
+wikiWineriesByCountry :: Wineries -> WineriesByCountry
 wikiWineriesByCountry = foldr build Map.empty
    . map (name . WW.country &&& id)
    . Map.elems
@@ -44,11 +44,14 @@ build :: Ord a => (Name, a) -> ByCountry a -> ByCountry a
 build (n, w) m =
    Map.insert n (maybe (Set.singleton w) (Set.insert w) (Map.lookup n m)) m
 
+loadWikiWineries :: IO WineriesByCountry
+loadWikiWineries = 
+   wikiWineriesByCountry <$> WW.readWineries (WW.wineriesDir ++ WW.wineriesJSON)
+
 {--
->>> WW.readWineries (WW.wineriesDir ++ WW.wineriesJSON)
+>>> loadWikiWineries
 ...
->>> let wikiwineries = it
->>> let wws = wikiWineriesByCountry wikiwineries 
+>>> let wws = it
 >>> Map.size wws
 27
 >>> head $ Map.toList wws
