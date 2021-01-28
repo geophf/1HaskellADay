@@ -101,3 +101,7 @@ addCountryQids url = getGraphResponse url
 -- We've found the matching wineries in a previous exercise. Tomorrow, let's
 -- upload those wineries' qid's and geo-locations to the neo4j graph store,
 -- using the graph's indexed value to add these data to each node.
+
+correctedCountries :: Endpoint -> IO WineriesByCountry
+correctedCountries url =
+   correctCountries <$> WW.countryAliases url <*> WbC.loadWikiWineries
