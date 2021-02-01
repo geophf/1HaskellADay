@@ -16,6 +16,13 @@ wineReviewsCSV = "https://raw.githubusercontent.com/lju-lazarevic/wine/master/da
 What is that?
 
 Collect the rows in this data-set that are flagged as 'dupe?'
+
+So, first of all:
+
+>>> length . BL.lines <$> simpleHttp wineReviewsCSV
+119993
+
+So there some things to get through.
 --}
 
 collectDupeRows :: FilePath -> IO [String]
