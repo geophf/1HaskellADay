@@ -1,6 +1,7 @@
 module Y2021.M02.D01.Exercise where
 
 import Network.HTTP.Conduit
+import Data.ByteString.Lazy.Char8 (ByteString)
 
 {--
 So, I have a problem. I want to upload the wine-reviews to my graph-store,
@@ -25,7 +26,7 @@ So, first of all:
 So there some things to get through.
 --}
 
-collectDupeRows :: FilePath -> IO [String]
+collectDupeRows :: FilePath -> IO [ByteString]
 collectDupeRows = undefined
 
 -- How many rows is that? What do these rows look like?
