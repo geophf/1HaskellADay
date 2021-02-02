@@ -44,3 +44,6 @@ instance FromJSON Taster where
    parseJSON = undefined
 
 -- using the matchSet function, upload the twitter handles to the graph store
+
+toCyph :: Taster -> Cypher
+toCyph = undefined
