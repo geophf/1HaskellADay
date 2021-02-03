@@ -25,9 +25,11 @@ The CSV file from yesterday has reviews, prices and ratings. I've pulled those,
 along with the reviewer and the wine reviewed, into a JSON file here.
 --}
 
-wineReviewsDir, wineReviewsJSON :: FilePath
+wineReviewsDir :: FilePath
 wineReviewsDir = "Y2021/M02/D03/"
-wineReviewsJSON = "wine-reviews.json"
+
+wineReviewsJSON :: String -> FilePath
+wineReviewsJSON post = wineReviewsDir ++ "wine-reviews" ++ post ++ ".json"
 
 {--
 But there's a problem.
@@ -71,29 +73,40 @@ data RawReview = Raw { reviewer :: Maybe Name, wine :: Name,
 instance FromJSON RawReview where
    parseJSON = undefined
 
-sampJSON, sampJSONnoPrice, sampJSONnoReviewer :: ByteString
-sampJSON = BL.pack (unlines ["{",
-    "\"reviewer\": \"Roger Voss\", ",
-    "\"wine\": \"Winzer Krems 2011 Edition Chremisa Sandgrube 13 Grüner Veltliner (Niederösterreich)\",",
-    "\"review\": \"\\\"Chremisa,\\\" the ancient name of Krems, is ...\",",
-    "\"score\": \"85\",",
-    "\"price\": \"24\"",
-    "}"])
-sampJSONnoPrice = BL.pack (unlines ["  {",
-    "\"reviewer\": \"Roger Voss\", ",
-    "\"wine\": \"Château Rieussec 2011 Carmes de Rieussec  (Sauternes)\",",
-    "\"review\": \"2011 was a great year for Sauternes and this...\",",
-    "\"score\": \"90\",",
-    "\"price\": null"," }"])
-
-sampJSONnoReviewer = BL.pack (unlines ["{",
-    "\"reviewer\": null,",
-    "\"wine\": \"Jamieson Ranch 2011 Whiplash Chardonnay (California)\",",
-    "\"review\": \"$14 is a pretty good price for a Chardonnay that ...\",",
-    "\"score\": \"86\",",
-    "\"price\": \"14\"", "}"])
+sampJSONTiny, sampJSONSmol, sampJSONYuge :: FilePath
+sampJSONTiny = wineReviewsJSON "-tiny"
+sampJSONSmol = wineReviewsJSON "-smol"
+sampJSONYuge = wineReviewsJSON ""
  
 {--
+>>> BL.readFile sampJSONTiny
+...
+>>> let vl = it
+>>> (decode vl) :: Maybe [RawReview]
+Just [Raw {reviewer = Just "Roger Voss", 
+           wine = "Winzer Krems 2011 Edition Chremisa Sandgrube ...",
+           reviewtxt = "\"Chremisa,\" the ancient name of Krems, is ...",
+           scoreVal = "85", mbprice = Just "24"}]
+
+... also, nulls in JSON are converted to Nothings here:
+
+>>> BL.readFile sampJSONSmol
+...
+>>> let vl = it
+>>> (decode vl) :: Maybe [RawReview]
+Just [Raw {reviewer = Just "Roger Voss", 
+           wine = "Winzer Krems 2011 Edition Chremisa Sandgrube 13 ...",
+           reviewtxt = "\"Chremisa,\" the ancient name of Krems, is ...",
+           scoreVal = "85", mbprice = Just "24"},
+      Raw {reviewer = Nothing, 
+           wine = "Jamieson Ranch 2011 Whiplash Chardonnay (California)", 
+           reviewtxt = "$14 is a pretty good price for a Chardonnay that...",
+           scoreVal = "86", mbprice = Just "14"},
+      Raw {reviewer = Just "Roger Voss", 
+           wine = "Ch\226teau Rieussec 2011 Carmes de Rieussec  (Sauternes)", 
+           reviewtxt = "2011 was a great year for Sauternes and this ...",
+           scoreVal = "90", mbprice = Nothing}]
+
 I call this thing a RawReview because there are bunches of things wrong with
 it.
 
