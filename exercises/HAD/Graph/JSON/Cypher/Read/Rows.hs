@@ -7,7 +7,9 @@ import Data.Aeson.Types (Parser)
 
 import qualified Data.ByteString.Lazy.Char8 as BL
 
-import Data.Maybe (fromJust)
+import Data.Map (Map)
+import qualified Data.Map as Map
+import Data.Maybe (fromJust, mapMaybe)
 
 import qualified Data.Vector as V
 
@@ -99,5 +101,21 @@ we can do:
 
 >>> Map.size nmt
 26
-
 --}
+
+-- Here's another decoding approach:
+
+mapIt :: (FromJSON a, FromJSON b, Ord a) => QueryResult -> Map a b
+mapIt = Map.fromList . mapMaybe (toPair . row) . justRows
+
+toPair :: (FromJSON a, FromJSON b) => [Value] -> Maybe (a,b)
+toPair [a,b] = fromJSON1 a >>= \alef ->
+               fromJSON1 b >>= \beth ->
+               return (alef, beth)
+
+fromJSON1 :: FromJSON a => Value -> Maybe a
+fromJSON1 = reifySuccess . fromJSON
+
+reifySuccess :: Result a -> Maybe a
+reifySuccess (Success a) = Just a
+reifySuccess _           = Nothing
