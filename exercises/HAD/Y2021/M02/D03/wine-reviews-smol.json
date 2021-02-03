@@ -1,0 +1,23 @@
+[
+  {
+    "reviewer": "Roger Voss",
+    "wine": "Winzer Krems 2011 Edition Chremisa Sandgrube 13 Grüner Veltliner (Niederösterreich)",
+    "review": "\"Chremisa,\" the ancient name of Krems, is commemorated in this wine that comes from Krems vineyards. It has tight, tangy apple-driven acidity, with a bright, light, citrusy character. Not for aging.",
+    "score": "85",
+    "price": "24"
+  },
+  {
+    "reviewer": null,
+    "wine": "Jamieson Ranch 2011 Whiplash Chardonnay (California)",
+    "review": "$14 is a pretty good price for a Chardonnay that shows such ripe, succulent fruit. It's rich in oranges, pineapples, limes and mangoes, brightened with crisp acidity. Entirely unoaked, the finish is dry, pure and clean.",
+    "score": "86",
+    "price": "14"
+  },
+  {
+    "reviewer": "Roger Voss",
+    "wine": "Château Rieussec 2011 Carmes de Rieussec  (Sauternes)",
+    "review": "2011 was a great year for Sauternes and this second wine of Rieussec shows great botrytis weight and richness as well as a floral and fruity character. Bitter orange marmalade and honey give this still-youthful wine its sweeter and fruitier side. Drink from 2016.",
+    "score": "90",
+    "price": null
+  }
+]
