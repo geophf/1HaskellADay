@@ -71,7 +71,14 @@ data RawReview = Raw { reviewer :: Maybe Name, wine :: Name,
 instance FromJSON RawReview where
    parseJSON = undefined
 
-sampJSONnoPrice, sampJSONnoReviewer :: ByteString
+sampJSON, sampJSONnoPrice, sampJSONnoReviewer :: ByteString
+sampJSON = BL.pack (unlines ["{",
+    "\"reviewer\": \"Roger Voss\", ",
+    "\"wine\": \"Winzer Krems 2011 Edition Chremisa Sandgrube 13 Grüner Veltliner (Niederösterreich)\",",
+    "\"review\": \"\\\"Chremisa,\\\" the ancient name of Krems, is ...\",",
+    "\"score\": \"85\",",
+    "\"price\": \"24\"",
+    "}"])
 sampJSONnoPrice = BL.pack (unlines ["  {",
     "\"reviewer\": \"Roger Voss\", ",
     "\"wine\": \"Château Rieussec 2011 Carmes de Rieussec  (Sauternes)\",",
