@@ -60,6 +60,24 @@ nodeMap :: Endpoint -> Name -> Name -> IO NodeIds
 nodeMap = undefined
 
 {--
+>>> graphEndpoint
+...
+>>> let url = it
+>>> :set -XOverloadedStrings
+>>> nodeMap url "Taster" "name"
+fromList [("Alexander Peartree",55207),("Anna Lee C. Iijima",55209),
+          ("Anne Krebiehl\160MW",55216),("Carrie Dykes",55221),
+          ("Christina Pickard",55223),("Fiona Adams",55222),
+          ("Jeff Jenssen",55219),("Jim Gordon",55214),("Joe Czerwinski",55215),
+          ("Kerin O\8217Keefe",55204),("Lauren Buzzeo",55217),
+          ("Matt Kettmann",55211),("Michael Schachner",55208),
+          ("Mike DeSimone",55218),("No Taster",55212),("Paul Gregutt",55206),
+          ("Roger Voss",55205),("Sean P. Sullivan",55213),
+          ("Susan Kostrzewa",55220),("Virginie Boone",55210)]
+>>> let tasty = it
+>>> Map.size tasty
+20
+
 With the nodeMap-function, what are the mappings for the Taster-name's and for
 the Wine-title's? How many tasters are there? How many wines?
 
@@ -117,6 +135,9 @@ Also, score and price should be Integer values.
 Also-also, the reviewer and the wine should have their indexed values from
 above. Please confirm the "No Taster" index.
 
+>>> Map.lookup "No Taster" tasty
+Just 55212
+
 Give the above caveats, convert the RawReview to a review
 --}
 
@@ -124,8 +145,8 @@ data Review = Review { reviewerIx, wineIx :: Idx, review :: Text,
                        score :: Integer, price :: Maybe Integer }
    deriving (Eq, Ord, Show)
 
-rr2r :: NodeIds -> NodeIds -> RawReview -> Review
-rr2r = undefined
+rr2r :: NodeIds -> NodeIds -> RawReview -> Maybe Review
+rr2r reviewerz winez (Raw rreviewer win rev sc mbp) = undefined
 
 {--
 Now that you have the revised reviews, you can upload the properties to the
