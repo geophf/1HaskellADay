@@ -9,9 +9,14 @@ import qualified Data.ByteString.Lazy.Char8 as BL
 
 import Data.Map (Map)
 import qualified Data.Map as Map
+
 import Data.Maybe (fromJust, mapMaybe)
 
+import Data.Set (Set)
+
 import qualified Data.Vector as V
+
+import Control.Map (snarf)
 
 -- Reads in rows of JSON from a Cypher query result
 
@@ -119,3 +124,9 @@ fromJSON1 = reifySuccess . fromJSON
 reifySuccess :: Result a -> Maybe a
 reifySuccess (Success a) = Just a
 reifySuccess _           = Nothing
+
+-- and, if we want to map rows to a multimap:
+
+multimap :: (FromJSON a, FromJSON b, Ord a, Ord b) => 
+            QueryResult -> Map a (Set b)
+multimap = snarf id . map (toPair . row) . justRows
