@@ -55,7 +55,6 @@ type NodeIds = Map Name (Set Idx)
 
 nodeMap :: Endpoint -> Name -> Name -> IO NodeIds
 nodeMap url nodeName attribName =
-   -- snarf id . map (RR.toPair . RR.row) . RR.justRows, or, simply:
    RR.multimap <$> getGraphResponse url [nodeMapQuery nodeName attribName]
 
 {--
