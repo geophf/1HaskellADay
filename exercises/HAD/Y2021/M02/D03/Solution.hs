@@ -18,6 +18,8 @@ import qualified Data.ByteString.Lazy.Char8 as BL
 import Data.Map (Map)
 import qualified Data.Map as Map
 
+import Data.Maybe (fromMaybe, mapMaybe)
+
 import Data.Text (Text)
 import qualified Data.Text as T
 
@@ -79,7 +81,11 @@ fromList [("Alexander Peartree",55207),("Anna Lee C. Iijima",55209),
 >>> let tasty = it
 >>> Map.size tasty 
 20
- 
+
+>>> let winy = nodeMap url "Wine" "title"
+>>> Map.size <$> winy
+118840
+
 With the nodeMap-function, what are the mappings for the Taster-name's and for
 the Wine-title's? How many tasters are there? How many wines?
 
@@ -101,6 +107,34 @@ sampJSONSmol = wineReviewsJSON "-smol"
 sampJSONYuge = wineReviewsJSON ""
  
 {--
+>>> BL.readFile sampJSONTiny
+...
+>>> let vl = it
+>>> (decode vl) :: Maybe [RawReview]
+Just [Raw {reviewer = Just "Roger Voss", 
+           wine = "Winzer Krems 2011 Edition Chremisa Sandgrube ...",
+           reviewtxt = "\"Chremisa,\" the ancient name of Krems, is ...",
+           scoreVal = "85", mbprice = Just "24"}]
+
+... also, nulls in JSON are converted to Nothings here:
+
+>>> BL.readFile sampJSONSmol
+...
+>>> let (Just rawRevsSmol) = (decode it) :: Maybe [RawReview]
+>>> rawRevsSmol
+[Raw {reviewer = Just "Roger Voss", 
+      wine = "Winzer Krems 2011 Edition Chremisa Sandgrube 13 ...",
+      reviewtxt = "\"Chremisa,\" the ancient name of Krems, is ...",
+      scoreVal = "85", mbprice = Just "24"},
+ Raw {reviewer = Nothing, 
+      wine = "Jamieson Ranch 2011 Whiplash Chardonnay (California)",
+      reviewtxt = "$14 is a pretty good price for a Chardonnay that...",
+      scoreVal = "86", mbprice = Just "14"},
+ Raw {reviewer = Just "Roger Voss", 
+      wine = "Ch\226teau Rieussec 2011 Carmes de Rieussec  (Sauternes)", 
+      reviewtxt = "2011 was a great year for Sauternes and this ...",
+      scoreVal = "90", mbprice = Nothing}]
+
 I call this thing a RawReview because there are bunches of things wrong with
 it.
 
@@ -111,6 +145,9 @@ Also, score and price should be Integer values.
 Also-also, the reviewer and the wine should have their indexed values from
 above. Please confirm the "No Taster" index.
 
+>>> Map.lookup "No Taster" tasty
+Just 55212
+
 Give the above caveats, convert the RawReview to a review
 --}
 
@@ -118,10 +155,28 @@ data Review = Review { reviewerIx, wineIx :: Idx, review :: Text,
                        score :: Integer, price :: Maybe Integer }
    deriving (Eq, Ord, Show)
 
-rr2r :: NodeIds -> NodeIds -> RawReview -> Review
-rr2r = undefined
+rr2r :: NodeIds -> NodeIds -> RawReview -> Maybe Review
+rr2r reviewerz winez (Raw rreviewer win rev scstr mbp) =
+   Map.lookup (fromMaybe "No Taster" rreviewer) reviewerz >>= \rid ->
+   Map.lookup win winez                                   >>= \wid ->
+   return (Review rid wid rev (r scstr) (r <$> mbp))
+      where r = read . T.unpack
 
 {--
+>>> flip mapMaybe rawRevsSmol <$> (rr2r tasty <$> winy)
+[...]
+>>> let revsSmol = it
+>>> revsSmol 
+[Review {reviewerIx = 55205, wineIx = 145037, 
+         review = "\"Chremisa,\" the ancient name of Krems, is ...",
+         score = 85, price = Just 24},
+ Review {reviewerIx = 55212, wineIx = 166918, 
+         review = "$14 is a pretty good price for a Chardonnay that ...",
+         score = 86, price = Just 14},
+ Review {reviewerIx = 55205, wineIx = 136264, 
+         review = "2011 was a great year for Sauternes and this second ...",
+         score = 90, price = Nothing}]
+
 Now that you have the revised reviews, you can upload the properties to the
 review relations.
 --}
@@ -138,3 +193,11 @@ showPrice Nothing = ""
 showPrice (Just p) = ", price: " ++ show p
 
 -- upload the reviews, prices and scores to the graph-store.
+
+{--
+>>> getGraphResponse url (map uploadReviewQuery revsSmol)
+"{\"results\":[{\"columns\":[],\"data\":[]},...],\"errors\":[]}"
+
+... but we may have a problem uploading all reviews, because of possible
+unicode issues in the reviews.
+--}
