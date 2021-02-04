@@ -16,3 +16,26 @@ snarf f = foldr inserter Map.empty . mapMaybe f
 inserter :: (Ord a, Ord b) => (a, b) -> Map a (Set b) -> Map a (Set b)
 inserter (a, b) m =
    Map.insert a (maybe (Set.singleton b) (Set.insert b) (Map.lookup a m)) m
+
+{--
+for example:
+
+to make a simple multimap from a [(k,v)]
+
+snarf return
+
+If we have something like:
+
+match :: Map Name Winery -> (Neo4jIxWinery, Country) -> Maybe (Country, IxWikiWinery)
+match m (neo, c) = (c,) . flip IxWiki (ix neo) <$> Map.lookup (namei neo) m
+
+see Y2021.M01.D29.Solution
+
+then
+
+snarf (match . byName) (translateByCountry)
+
+gets you WineriesByCountry
+
+(the ByCountry a map-type is used here)
+--}
