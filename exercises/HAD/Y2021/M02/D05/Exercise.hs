@@ -68,3 +68,8 @@ removeWinesQuery l@(_:_) =
 -- Remove all the duplicate wines and all RATES_WINE relations. You may want 
 -- to try this on one wine, then 10 wines, then 100 wines, ... just to see how 
 -- work flows.
+
+-- Verify, after running removeDuplicateWines, that there are, in fact, no
+-- duplicate wines remaining in the graph store.
+
+-- When you verify no dupes, run an index on the Wine.title.

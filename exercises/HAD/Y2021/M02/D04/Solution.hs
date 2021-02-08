@@ -98,3 +98,7 @@ Oh, yeah. There are some dupes! :<
 Okay, now that we have our duplicates, let's examine their structures and
 see how we can start to consolidate them. ... We'll do this tomorrow.
 --}
+
+dupes :: Endpoint -> Name -> Name -> IO NodeIds
+dupes url nodeName attribName = 
+   Map.filter ((> 1) . Set.size) <$> nodeMap url nodeName attribName

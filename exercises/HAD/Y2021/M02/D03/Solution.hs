@@ -92,14 +92,15 @@ the Wine-title's? How many tasters are there? How many wines?
 Okay, let's put those mappings to good use.
 --}
 
-data RawReview = Raw { reviewer :: Maybe Name, wine :: Name,
-                       reviewtxt, scoreVal :: Text, mbprice :: Maybe Text }
+data RawReview = Raw { reviewer, wine :: Maybe Name,
+                       reviewtxt, scoreVal :: Maybe Text,
+                       mbprice :: Maybe Text }
    deriving (Eq, Ord, Show)
 
 instance FromJSON RawReview where
    parseJSON = withObject "Wine review" $ \v ->
-      Raw <$> v .:? "reviewer" <*> v .: "wine" <*> v .: "review"
-          <*> v .: "score" <*> v .:? "price"
+      Raw <$> v .:? "reviewer" <*> v .:? "wine" <*> v .:? "review"
+          <*> v .:? "score" <*> v .:? "price"
 
 sampJSONTiny, sampJSONSmol, sampJSONYuge :: FilePath
 sampJSONTiny = wineReviewsJSON "-tiny"
@@ -152,14 +153,16 @@ Give the above caveats, convert the RawReview to a review
 --}
 
 data Review = Review { reviewerIx, wineIx :: Idx, review :: Text,
-                       score :: Integer, price :: Maybe Integer }
+                       score, price :: Maybe Integer }
    deriving (Eq, Ord, Show)
 
 rr2r :: NodeIds -> NodeIds -> RawReview -> Maybe Review
 rr2r reviewerz winez (Raw rreviewer win rev scstr mbp) =
    Map.lookup (fromMaybe "No Taster" rreviewer) reviewerz >>= \rid ->
-   Map.lookup win winez                                   >>= \wid ->
-   return (Review rid wid rev (r scstr) (r <$> mbp))
+   win                                                    >>=
+   flip Map.lookup winez                                  >>= \wid ->
+   rev                                                    >>= \rew ->
+   return (Review rid wid rew (r <$> scstr) (r <$> mbp))
       where r = read . T.unpack
 
 {--
@@ -183,14 +186,14 @@ review relations.
 
 uploadReviewQuery :: Review -> Cypher
 uploadReviewQuery r =
-   T.pack (concat ["match (t:Taster)-[r:RATES_WINE]->(w:Wine) ",
-                   "where id(t) = ", show (reviewerIx r), " and id(w) = ",
-                   show (wineIx r), " SET r += { review: ", show (review r),
-                   showPrice (price r), ", score: ", show (score r), " }"])
+   T.pack (unwords ["match (t:Taster)-[r:RATES_WINE]->(w:Wine)",
+                    "where id(t) = ", show (reviewerIx r), " and id(w) =",
+                    show (wineIx r), " SET r += { review:", show (review r),
+                    showInt "price" (price r), showInt "score" (score r), "}"])
 
-showPrice :: Maybe Integer -> String
-showPrice Nothing = ""
-showPrice (Just p) = ", price: " ++ show p
+showInt :: String -> Maybe Integer -> String
+showInt _ Nothing = ""
+showInt attr (Just n) = unwords [",", attr, ":", show n]
 
 -- upload the reviews, prices and scores to the graph-store.
 
