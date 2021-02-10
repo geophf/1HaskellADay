@@ -115,3 +115,20 @@ needle in the haystack with the record in JSON causing a parse error.
 
 And we still have unicode-y things to take care of, as well.
 --}
+
+grind :: Endpoint -> FilePath -> IO String
+grind url file =
+   WR.nodeMap url "Taster" "name" >>= \tasty  ->
+   WR.nodeMap url "Wine" "title"  >>= \winy   ->
+   BL.readFile file               >>= \rawrev ->
+   let (Just rawRevs1) = decode rawrev
+       revs = mapMaybe (WR.rr2r tasty winy) rawRevs1
+       (asc, uni) = partitionReviews revs
+   in  mesg asc uni >> getGraphResponse url (map uploadReviewQuery asc)
+
+mesg :: [a] -> [b] -> IO ()
+mesg xs ys =
+   pu ["Uploading", sl xs, "wine reviews."] >>
+   pu ["Ignoring", sl ys, "wine reviews (due to unicode)."]
+      where sl = show . length
+            pu = putStrLn . unwords
