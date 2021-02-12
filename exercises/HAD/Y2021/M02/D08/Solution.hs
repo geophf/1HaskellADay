@@ -4,7 +4,7 @@ module Y2021.M02.D08.Solution where
 
 -- Now, let's upload the reviews!
 
-import Y2021.M02.D03.Solution (Review, Review(Review), RawReview)
+import Y2021.M02.D03.Solution (Review, Review(Review), RawReview, NodeIds)
 import qualified Y2021.M02.D03.Solution as WR
 
 import Graph.Query
@@ -116,15 +116,23 @@ needle in the haystack with the record in JSON causing a parse error.
 And we still have unicode-y things to take care of, as well.
 --}
 
-grind :: Endpoint -> FilePath -> IO String
-grind url file =
+type WineContext = (NodeIds, NodeIds)
+
+fetchWineContext :: Endpoint -> IO WineContext
+fetchWineContext url =
    WR.nodeMap url "Taster" "name" >>= \tasty  ->
    WR.nodeMap url "Wine" "title"  >>= \winy   ->
+   return (tasty, winy)
+
+grind :: Endpoint -> FilePath -> WineContext -> IO [Review]
+grind url file (tasty, winy) =
    BL.readFile file               >>= \rawrev ->
    let (Just rawRevs1) = decode rawrev
        revs = mapMaybe (WR.rr2r tasty winy) rawRevs1
        (asc, uni) = partitionReviews revs
-   in  mesg asc uni >> getGraphResponse url (map uploadReviewQuery asc)
+   in  mesg asc uni                                     >>
+       getGraphResponse url (map uploadReviewQuery asc) >>
+       return uni
 
 mesg :: [a] -> [b] -> IO ()
 mesg xs ys =
@@ -132,3 +140,26 @@ mesg xs ys =
    pu ["Ignoring", sl ys, "wine reviews (due to unicode)."]
       where sl = show . length
             pu = putStrLn . unwords
+
+{--
+>>> graphEndpoint
+...
+>>> let url = it
+>>> fetchWineContext url
+fromList ...
+>>> let ctx = it
+>>> grind url (winePart "ai-ab-aa-aa-ab-aa-ab-ab-aa-ab-aa-aa") ctx
+Uploading 5 wine reviews.
+Ignoring 1 wine reviews (due to unicode).
+[Review {reviewerIx = 55210, wineIx = 161815, 
+         review = "This offers excellent refinement, with high-toned red-berry
+                   fruit and sarsaparilla that are on the edge of jammy\8212in 
+                   a good way. Noticeable yet balanced acidity and generous 
+                   tannins provide a solid structure.", 
+         score = Just 90, price = Just 26}]
+>>> let unis = it
+>>> getGraphResponse url (map uploadReviewQuery unis)
+"{\"results\":[{\"columns\":[],\"data\":[]}],\"errors\":[]}"
+
+Huh. That worked. Surprising.
+--}
