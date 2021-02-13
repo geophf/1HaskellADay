@@ -22,5 +22,17 @@ import qualified Data.Text as T
 dumpCSV :: FilePath -> [Review] -> IO ()
 dumpCSV = undefined
 
--- Remember the hint last week about putStrLn. Also, embedded quotation-marks
--- in this CSV-format are represented not as (\") but as ("") ... so: yay!
+{--
+Remember the hint last week about putStrLn. Also, embedded quotation-marks
+in this CSV-format are represented not as (\") but as ("") ... so: yay!
+
+Pensee:
+
+The neat thing about this dumpCSV-function is that the ASCII-reviews are a
+strict-subset of the unicoded-reviews.
+
+We can dump all the reviews to this CSV, the load the all into the graph-
+store using its own batch-ETL process.
+
+Do that.
+--}
