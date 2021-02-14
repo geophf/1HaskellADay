@@ -24,11 +24,8 @@ show line numbers and lines where embedded newlines break the file.
 
 import qualified Y2021.M02.D03.Solution as WR
 
-import Data.ByteString.Lazy.Char8 (ByteString)
-import qualified Data.ByteString.Lazy.Char8 as BL
-
 type LineNumber = Integer
-type Line = ByteString
+type Line = String
 
 illegalJSON :: FilePath -> IO [(LineNumber, Line)]
 illegalJSON = undefined
