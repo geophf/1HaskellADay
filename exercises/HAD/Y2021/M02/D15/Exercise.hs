@@ -30,6 +30,11 @@ type Line = String
 illegalJSON :: FilePath -> IO [(LineNumber, Line)]
 illegalJSON = undefined
 
+{--
+>>> illegalJSON WR.sampJSONYuge 
+... gives you what?
+--}
+
 {-- BONUS ------------------------------------------------------------------
 
 Now that you've identified the problem areas, ... fix the file.
