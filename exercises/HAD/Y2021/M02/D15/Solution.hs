@@ -91,4 +91,17 @@ fixedFile = "wine-reviews-fixed.json"
 >>> repairJSON WR.sampJSONYuge (thisDir ++ fixedFile)
 >>> illegalJSON (thisDir ++ "wine-reviews-fixed.json")
 []
+
+... hmmm, but in all of this, there is still one little needle in the 
+haystack that I found by, again, hand-parsing the JSON
+
+"t\Thick ..."
+
+I mean, really? Come on!
+
+Manually fixed that spuriously-placed backslash.
+
+Also, there was one wine that was out of sorts, the Carlou 2009. Fixed that.
+
+Three newlines in an 800k~ line JSON-file to ruin a day. Sheesh!
 --}
