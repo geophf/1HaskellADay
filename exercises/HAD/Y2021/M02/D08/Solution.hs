@@ -124,15 +124,19 @@ fetchWineContext url =
    WR.nodeMap url "Wine" "title"  >>= \winy   ->
    return (tasty, winy)
 
-grind :: Endpoint -> FilePath -> WineContext -> IO [Review]
-grind url file (tasty, winy) =
-   BL.readFile file               >>= \rawrev ->
-   let (Just rawRevs1) = decode rawrev
+extractReviews :: FilePath -> WineContext -> IO ([Review], [Review])
+extractReviews file (tasty, winy) =
+   BL.readFile file >>= \rawrev ->
+   let (Just rawRevs1) = decode (BL.drop 3 rawrev)
        revs = mapMaybe (WR.rr2r tasty winy) rawRevs1
-       (asc, uni) = partitionReviews revs
-   in  mesg asc uni                                     >>
-       getGraphResponse url (map uploadReviewQuery asc) >>
-       return uni
+   in  return (partitionReviews revs)
+
+grind :: Endpoint -> FilePath -> WineContext -> IO [Review]
+grind url file ctx =
+   extractReviews file ctx                          >>= \(asc, uni) ->
+   mesg asc uni                                     >>
+   getGraphResponse url (map uploadReviewQuery asc) >>
+   return uni
 
 mesg :: [a] -> [b] -> IO ()
 mesg xs ys =
@@ -162,4 +166,25 @@ Ignoring 1 wine reviews (due to unicode).
 "{\"results\":[{\"columns\":[],\"data\":[]}],\"errors\":[]}"
 
 Huh. That worked. Surprising.
+
+But the unicode point is icky :<
+
+match (w:Wine)-[r:RATES_WINE]-(t:Taster)
+where id(w) = 161815 and id(t) = 55210
+return r
+
+{
+  "identity": 413483,
+  "start": 55210,
+  "end": 161815,
+  "type": "RATES_WINE",
+  "properties": {
+"score": 90,
+"review": "This offers excellent refinement, with high-toned red-berry fruit 
+           and sarsaparilla that are on the edge of jammy\8212in a good way. 
+           Noticeable yet balanced acidity and generous tannins provide a 
+           solid structure.",
+"price": 26
+  }
+}
 --}

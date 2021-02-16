@@ -126,9 +126,11 @@ unwordsBy :: Char -> [String] -> String
 unwordsBy char = intercalate (pure char)
 
 uncsv :: Univ a => a -> String
-uncsv = weave . map enquotify . explode
+uncsv = weave . explode
 
 -- What happens when a string has an embedded comma? We quote it.
+
+-- ... um, ... on second thought: no.
 
 enquotify :: String -> String
 enquotify str | any (== ',') str = '"':str ++ pure '"'

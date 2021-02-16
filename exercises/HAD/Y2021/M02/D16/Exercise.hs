@@ -34,5 +34,23 @@ strict-subset of the unicoded-reviews.
 We can dump all the reviews to this CSV, the load the all into the graph-
 store using its own batch-ETL process.
 
-Do that.
+
+Unless, of course, you don't want to do that, in which case: create a CSV-file
+of only the unicoded wine-reviews to be later uploaded to the graph-store.
+--}
+
+saveUnicodeReviews :: FilePath -> [Review] -> IO ()
+saveUnicodeReviews outfile unicodedReviews = undefined
+
+{--
+Save the reviews into your graph store with something like:
+
+load csv with headers from 'file:///unicoded-wine-reviews.csv' AS line
+MATCH (t:Taster), (w:Wine)
+WHERE id(t) = toInteger(line.reviewer) and id(w) = toInteger(line.wine)
+CREATE (t)-[:RATES_WINE { review: line.review }]->(w)
+
+You'll get a reply of something like:
+
+Set 18615 properties, created 18615 relationships, completed after 2357 ms.
 --}
