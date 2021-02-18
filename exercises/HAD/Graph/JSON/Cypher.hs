@@ -15,6 +15,7 @@ import qualified Data.ByteString.Lazy.Char8 as BL
 import Data.Char
 import Data.Foldable (toList)
 import Data.Map (Map)
+import Data.List (intercalate)
 
 import Data.Relation
 
@@ -43,9 +44,15 @@ varNode :: Node a => CypherOp -> Var -> a -> Text
 varNode op var node =
    T.concat [T.pack (show op), " (", var, ":", asNode node, ")"]
 
-matchSet :: (Node a, Show b) => Var -> a -> Attribute b -> Cypher
-matchSet var n (k,v) =
-   T.concat [match var n, " SET ", var, ".", k, "=", T.pack (show v)]
+matchSet :: (Node a, Show b, Foldable t) => Var -> a -> t (Attribute b) -> Cypher
+matchSet var n attribs = 
+   T.concat [match var n, " SET ", var, "+=", T.pack (showAttribs attribs)]
+
+showAttribs :: (Show a, Foldable t) => t (Attribute a) -> String
+showAttribs = ("{ " ++) . (++ " }") . intercalate ", " . map showAttrib . toList
+
+showAttrib :: Show a => Attribute a -> String
+showAttrib (k, v) = concat [T.unpack k, ": ", show v]
 
 mergeRel :: Edge rel => Relation a rel b -> Var -> Var -> Var -> Cypher
 mergeRel (Rel _ rel _) vara varrel varb =
