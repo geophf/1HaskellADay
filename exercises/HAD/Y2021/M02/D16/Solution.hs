@@ -90,12 +90,11 @@ header :: String
 header = "reviewer,wine,review,score,price"
 
 {--
->>> graphEndpoint >>= fetchWineContext >>=
-    extractReviews (Fixed.thisDir ++ "/parts/wine-reviews-fixed-aa-aa-aa-aa-aa-aa")
+>>> snd <$> (graphEndpoint >>= fetchWineContext >>= extractReviews (Fixed.thisDir ++ Fixed.fixedFile))
 ...
->>> let (ascis, unis) = it
+>>> let unis = it
 >>> length unis
-445
+18615
 >>> saveUnicodeReviews "Y2021/M02/D16/unicoded-wine-reviews.csv" unis
 --}
 
