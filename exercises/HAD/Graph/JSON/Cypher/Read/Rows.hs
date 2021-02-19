@@ -127,6 +127,9 @@ reifySuccess _           = Nothing
 
 -- and, if we want to map rows to a multimap:
 
-multimap :: (FromJSON a, FromJSON b, Ord a, Ord b) => 
-            QueryResult -> Map a (Set b)
-multimap = snarf id . map (toPair . row) . justRows
+multimap :: (FromJSON a, FromJSON b, Ord a, Ord b) => QueryResult -> Map a (Set b)
+multimap = multimapBy toPair
+
+multimapBy :: (Ord a, Ord b) =>
+              ([Value] -> Maybe (a, b)) -> QueryResult -> Map a (Set b)
+multimapBy f = snarf id . map (f . row) . justRows
