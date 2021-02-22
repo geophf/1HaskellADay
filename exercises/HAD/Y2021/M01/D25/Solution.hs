@@ -51,17 +51,23 @@ upload the alias map with the arrow direction of
  (wiki country name) -[alias_of]-> (neo4j country name)
 --}
 
-data WikiCountry = WC Name
+data Wiki datum = Wiki datum
+   deriving (Eq, Ord, Show)
+
+data WikiCountry = WC (Wiki Name)
    deriving (Eq, Ord, Show)
 
 instance Node WikiCountry where
-   asNode (WC n) = constr "AliasedCountry" [("name", n)]
+   asNode (WC (Wiki n)) = constr "AliasedCountry" [("name", n)]
 
-data Neo4jCountry = Neo Name
+data Neo4j datum = Neo datum
+   deriving (Eq, Ord, Show)
+
+data Neo4jCountry = NC (Neo4j Name)
    deriving (Eq, Ord, Show)
 
 instance Node Neo4jCountry where
-   asNode (Neo n) = constr "Country" [("name", n)]
+   asNode (NC (Neo n)) = constr "Country" [("name", n)]
 
 data ALIAS_OF = ALIAS_OF
    deriving (Eq, Ord, Show)
@@ -163,7 +169,7 @@ countryAliasesQuery =
 -- and a conversion from the JSON to a set of Name-pairs
 
 toPair :: [Name] -> (WikiCountry, Neo4jCountry)
-toPair = WC . head &&& Neo . last
+toPair = WC . Wiki . head &&& NC . Neo . last
 
 {--
 >>> countryAliases url
@@ -178,7 +184,7 @@ countryAliasResolver table =
    flip maybe id . asNeoCountry <*> flip Map.lookup table
 
 asNeoCountry :: WikiCountry -> Neo4jCountry
-asNeoCountry (WC n) = Neo n
+asNeoCountry (WC (Wiki n)) = NC (Neo n)
 
 -- the behavior here is: "United States of America" -> "US"
 -- and:                  "Denmark"                  -> "Denmark"
