@@ -6,7 +6,7 @@ import Y2021.M01.D26.Solution (ByCountry, WineriesByCountry, Country)
 import qualified Y2021.M01.D26.Solution as WbC
 
 import Y2021.M01.D22.Solution (Wineries, Winery, country)
-import Y2021.M01.D25.Solution (WikiCountry(WC), Neo4jCountry(Neo))
+import Y2021.M01.D25.Solution (WikiCountry(WC), Neo4jCountry(NC), Neo4j(Neo), Wiki(Wiki))
 import qualified Y2021.M01.D25.Solution as WW
 
 import qualified Data.Text as T
@@ -55,7 +55,7 @@ correctCountries :: Map WikiCountry Neo4jCountry -> WineriesByCountry -> Winerie
 correctCountries resolver = Map.fromList
                           . map (unNeo . fst . head &&& Set.unions . map snd)
                           . groupOn fst
-                          . map (first (WW.countryAliasResolver resolver . WC))
+                          . map (first (WW.countryAliasResolver resolver . WC . Wiki))
                           . Map.toList
 
 -- groupOn from: https://hackage.haskell.org/package/extra-1.7.9/docs/src/Data.List.Extra.html#groupOn
@@ -66,7 +66,7 @@ groupOn f = groupBy ((==) `on2` f)
     where (.*.) `on2` f = \x -> let fx = f x in \y -> fx .*. f y
 
 unNeo :: Neo4jCountry -> Country
-unNeo (Neo x) = x
+unNeo (NC (Neo x)) = x
 
 {--
 >>> let ccm = correctCountries cam wws
@@ -90,7 +90,8 @@ addCountryQidQuery c qid = matchSet "c" c [("qid", qid)]
 
 addCountryQids :: Endpoint -> WineriesByCountry -> IO String
 addCountryQids url = getGraphResponse url
-            . map (uncurry addCountryQidQuery . (Neo *** qid . country . head . Set.toList))
+            . map (uncurry addCountryQidQuery
+                         . (NC . Neo *** qid . country . head . Set.toList))
             . Map.toList
 
 {--
