@@ -86,7 +86,7 @@ US and UK (England) are renamed.
 -- 2. Add QNames of countries to the graph-store from the wikidata set
 
 addCountryQidQuery :: Neo4jCountry -> Qname -> Cypher
-addCountryQidQuery c qid = matchSet "c" c ("qid", qid)
+addCountryQidQuery c qid = matchSet "c" c [("qid", qid)]
 
 addCountryQids :: Endpoint -> WineriesByCountry -> IO String
 addCountryQids url = getGraphResponse url
