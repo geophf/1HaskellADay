@@ -147,7 +147,8 @@ normalizeWikiCountry countryMap winery = undefined
 >>> head (Map.toList normWikiw)  
 ("21 Cellars",Winery {winery = WD {qid = "http://www.wikidata.org/entity/Q4630984", 
                                    name = "21 Cellars"}, 
-                      country = WD {qid = "http://www.wikidata.org/entity/Q30",                                     name = "US"}, 
+                      country = WD {qid = "http://www.wikidata.org/entity/Q30",
+                                    name = "US"}, 
                       location = point({ latitude: 47.2675, longitude: -122.471 })})
 
 BOOM!
