@@ -110,8 +110,11 @@ we can do:
 
 -- Here's another decoding approach:
 
+mapBy :: Ord a => ([Value] -> Maybe (a,b)) -> QueryResult -> Map a b
+mapBy pairf = Map.fromList . mapMaybe (pairf . row) . justRows
+
 mapIt :: (FromJSON a, FromJSON b, Ord a) => QueryResult -> Map a b
-mapIt = Map.fromList . mapMaybe (toPair . row) . justRows
+mapIt = mapBy toPair
 
 toPair :: (FromJSON a, FromJSON b) => [Value] -> Maybe (a,b)
 toPair [a,b] = fromJSON1 a >>= \alef ->
