@@ -56,7 +56,9 @@ Now, 16K+ wineries called one-by-one ... 'may' be a pain? But let's use
 today's Haskell exercise to interoperate with other systems. Call the 
 doubleMetaphone with at least one winery and show the result.
 
-(That, of course, means you have the double-metaphone installed, so do that.)
+(That, of course, means you have the double-metaphone installed, so do that.
+You'll also have to automate the double-metaphone application so you can call
+it and get a result (writing a very simple __main__ function worked for me.)
 
 That's it! That's today's Haskell exercise. DOIT! TOIT!
 --}
