@@ -32,10 +32,12 @@ Convert those hours into a bill, and you begin to see the immediate benefits
 of a software solution.
 
 Okay, so, today, let's use the double-metaphone name-matching algorithm. The one
-I'm selecting to use here is written in Python:
+I'm selecting to use here is written in Python.
 
-$ python metaphone.py Doug Auclair
-('TKKLR', '')
+For example: The Al Este winery in Argentina encodes as:
+
+$ python metaphone.py Al Este
+('ALST', '')
 
 The repository is here:
 
