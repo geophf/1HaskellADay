@@ -46,9 +46,15 @@ https://github.com/oubiwann/metaphone
 So, first we need to send a winery to metaphone and get back the encoding:
 --}
 
+import Data.Set (Set)
 import Data.Text (Text)
 
 import System.Process
+
+-- for the bonus problem:
+
+import Y2021.M01.D29.Solution hiding (toPair)   -- Namei
+import Y2021.M02.D22.Solution (wineriesWIP)
 
 doubleMetaphone :: Text -> IO (String, String)
 doubleMetaphone winery = undefined
@@ -64,3 +70,16 @@ it and get a result (writing a very simple __main__ function worked for me.)
 
 That's it! That's today's Haskell exercise. DOIT! TOIT!
 --}
+
+{-- BONUS -------------------------------------------------------
+
+All right, all right! A little bonus.
+
+Output one of the winery-sets as names to a file, one winery per line.
+
+I'll write a python script to scan that file and return the double-metaphone
+encodings for each line.
+--}
+
+wineriesFile :: Namei a => FilePath -> Set a -> IO ()
+wineriesFile outputFile wineries = undefined
