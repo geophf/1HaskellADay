@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Y2021.M02.D23.Exercise where
+module Y2021.M02.D23.Solution where
 
 {--
 Name matching is the name of the game for today's Haskell problem.
@@ -47,17 +47,39 @@ So, first we need to send a winery to metaphone and get back the encoding:
 --}
 
 import Data.Set (Set)
-import Data.Text (Text)
+import qualified Data.Set as Set
 
-import System.Process
+import Data.Text (Text)
+import qualified Data.Text as T
+
+import System.Process (proc, readCreateProcess, CreateProcess, cwd)
+import System.Environment (getEnv)
 
 -- for the bonus problem:
 
+import Graph.Query (graphEndpoint)
 import Y2021.M01.D29.Solution hiding (toPair)   -- Namei
 import Y2021.M02.D22.Solution (wineriesWIP)
+import Y2021.M01.D22.Solution    -- for wikidata wineries
+
+python :: Text -> IO CreateProcess
+python winery =
+   getEnv "METAPHONE" >>= \metaphone ->
+   return ((proc "python" ["metaphone.py", T.unpack winery])
+                 { cwd = Just metaphone })
 
 doubleMetaphone :: Text -> IO (String, String)
-doubleMetaphone winery = undefined
+doubleMetaphone winery =
+   read . map requote <$> (python winery >>= flip readCreateProcess "")
+
+requote :: Char -> Char
+requote c | c =='\'' = '"'
+          | otherwise = c
+
+{--
+>>> doubleMetaphone "Al Este"
+("ALST","")
+--}
 
 {--
 Now, 16K+ wineries called one-by-one ... 'may' be a pain? But let's use
@@ -85,7 +107,8 @@ todaysDir :: FilePath
 todaysDir = "Y2021/M02/D23/"
 
 wineriesFile :: Namei a => FilePath -> Set a -> IO ()
-wineriesFile outputFile wineries = undefined
+wineriesFile outputFile =
+   writeFile outputFile . unlines . map (T.unpack . namei) . Set.toList
 
 {--
 >>> graphEndpoint >>= wineriesWIP (wineriesDir ++ wineriesJSON)
