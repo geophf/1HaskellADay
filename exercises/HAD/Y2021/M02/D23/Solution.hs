@@ -58,6 +58,10 @@ import System.Environment (getEnv)
 
 -- for the bonus problem:
 
+import Control.Arrow ((&&&))
+import Data.Map (Map)
+import qualified Data.Map as Map
+
 import Data.Aeson hiding (KeyValue)
 
 import qualified Data.ByteString.Lazy.Char8 as BL
@@ -69,8 +73,9 @@ import Data.Aeson.WikiDatum (Name)
 import Graph.Query (graphEndpoint)
 
 import Y2021.M01.D29.Solution hiding (toPair)   -- Namei
-import Y2021.M02.D22.Solution (wineriesWIP)
-import Y2021.M01.D22.Solution    -- for wikidata wineries
+import Y2021.M02.D22.Solution (wineriesWIP, NeoWinery(NeoWinery))
+import Y2021.M01.D21.Solution (Idx, IxWineries)
+import Y2021.M01.D22.Solution                   -- for wineries
 
 python :: Text -> IO CreateProcess
 python winery =
@@ -149,19 +154,33 @@ instance ToJSON Metaphone where
       object ["metaphone" .=
               object ["primary" .= a, "secondary" .= b]]
 
-toKV :: Name -> IO (KeyValue Text Metaphone)
-toKV n = doubleMetaphone n >>= return . KV n . Meta
+data IxKeyValue a b = IxKV Idx (KeyValue a b)
+   deriving (Eq, Ord, Show)
+
+instance (ToJSON a, ToJSON b) => ToJSON (IxKeyValue a b) where
+   toJSON (IxKV ix kv) = object ["index" .= ix, "key-value" .= kv]
+
+toKV :: (Name, Idx) -> IO (IxKeyValue Name Metaphone)
+toKV (n, ix) = doubleMetaphone n >>= return . IxKV ix . KV n . Meta
 
 {-- BONUS-BONUS-BONUS!! ----------------------------------------
 
 I noticed a lot of QNames for Names in the wiki-winery data-set and a lot
 of duplicates (triplicates, ... megalons (???)) in the graph-winery data-set
 for their names. We don't need to process QNames nor (re)process multiples
-for winery names, so filter all those out.
+for winery names, so filter all those out. ... but we also need to preserve
+the index of these wineries, as well.
 --}
+
+instance Indexed Winery where
+   ix _ = 0
+
+instance Indexed NeoWinery where
+   ix (NeoWinery i _ _ _) = i
       
-removeQNames :: Namei a => Set a -> Set Name
-removeQNames = Set.filter (not . qname) . Set.map namei
+removeQNames :: Indexed a => Namei a => Set a -> IxWineries
+removeQNames =
+   Map.fromList . filter (not . qname . fst) . map (namei &&& ix) . Set.toList
 
 qname :: Name -> Bool
 qname (T.unpack -> (h:t)) = 'Q' == h && all isDigit t
@@ -170,7 +189,7 @@ qname (T.unpack -> (h:t)) = 'Q' == h && all isDigit t
 
 -- So, the updated wineriesFile is now:
 
-wineriesFile :: Namei a => FilePath -> Set a -> IO ()
+wineriesFile :: Indexed a => Namei a => FilePath -> Set a -> IO ()
 wineriesFile outputFile wineries =
-   mapM toKV (Set.toList $ removeQNames wineries) >>=
+   mapM toKV (Map.toList $ removeQNames wineries) >>=
    BL.writeFile outputFile . encode

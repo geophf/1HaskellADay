@@ -56,7 +56,9 @@ import System.Process
 -- for the bonus problem:
 
 import Y2021.M01.D29.Solution hiding (toPair)   -- Namei
-import Y2021.M02.D22.Solution (wineriesWIP)
+import Y2021.M02.D22.Solution (wineriesWIP, NeoWinery(NeoWinery))
+import Y2021.M01.D21.Solution (Idx, IxWineries)
+import Y2021.M01.D22.Solution                   -- for wineries
 
 import Data.Aeson.WikiDatum (Name)
 
@@ -88,10 +90,10 @@ encodings for each line.
 todaysDir :: FilePath
 todaysDir = "Y2021/M02/D23/"
 
+{-- ... but wait (see bonus-bonus-bonus below)
 wineriesFile :: Namei a => FilePath -> Set a -> IO ()
 wineriesFile outputFile wineries = undefined
 
-{--
 >>> graphEndpoint >>= wineriesWIP (wineriesDir ++ wineriesJSON)
 fromList [...]
 >>> let (wikiws, graphws) = it
@@ -118,18 +120,38 @@ data Metaphone = Meta (String, String)
 instance ToJSON Metaphone where
    toJSON (Meta (a,b)) = undefined
 
-toKV :: Namei a => a -> IO (KeyValue Text Metaphone)
-toKV = undefined
+data IxKeyValue a b = IxKV Idx (KeyValue a b)
+   deriving (Eq, Ord, Show)
+
+instance (ToJSON a, ToJSON b) => ToJSON (IxKeyValue a b) where
+   toJSON (IxKV ix kv) = undefined
+
+toKV :: (Name, Idx) -> IO (IxKeyValue Name Metaphone)
+toKV (n, ix) = undefined
 
 {-- BONUS-BONUS-BONUS!! ----------------------------------------
 
 I noticed a lot of QNames for Names in the wiki-winery data-set and a lot
 of duplicates (triplicates, ... megalons (???)) in the graph-winery data-set
 for their names. We don't need to process QNames nor (re)process multiples
-for winery names, so filter all those out.
+for winery names, so filter all those out. ... but we also need to preserve
+the index of these wineries, as well.
 --}
 
-removeQNames :: Namei a => Set a -> Set Name
-removeQNames wineries = undefined
+instance Indexed Winery where
+   ix _ = 0
+
+instance Indexed NeoWinery where
+   ix neo = undefined
+
+removeQNames :: Indexed a => Namei a => Set a -> IxWineries
+removeQNames = undefined
+
+-- show that removeQNames 'automagically' removes duplicate names.
+
+-- So, the updated wineriesFile is now:
+
+wineriesFile :: Indexed a => Namei a => FilePath -> Set a -> IO ()
+wineriesFile = undefined
 
 -- show that removeQNames 'automagically' removes duplicate names.
