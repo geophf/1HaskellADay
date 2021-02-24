@@ -170,8 +170,8 @@ header :: String -> IO ()
 header date =
    putStrLn (unwords ["<p>The top-10 e-coins for",date,
                       "(ranked by",
-                      "<a href='https://coinmarketcap.com'>coinmarketcap.com</a>",
-                      ") are:</p>"])
+                      "<a href='https://coinmarketcap.com'>coinmarketcap.com</a>)",
+                      "are:</p>"])
 
 report :: [ECoin] -> IO ()
 report =
