@@ -118,7 +118,7 @@ data Metaphone = Meta (String, String)
 instance ToJSON Metaphone where
    toJSON (Meta (a,b)) = undefined
 
-toKV :: Namei a => a -> KeyValue Text Metaphone
+toKV :: Namei a => a -> IO (KeyValue Text Metaphone)
 toKV = undefined
 
 {-- BONUS-BONUS-BONUS!! ----------------------------------------
