@@ -46,6 +46,8 @@ https://github.com/oubiwann/metaphone
 So, first we need to send a winery to metaphone and get back the encoding:
 --}
 
+import Data.Aeson hiding (KeyValue)
+
 import Data.Set (Set)
 import Data.Text (Text)
 
@@ -55,6 +57,8 @@ import System.Process
 
 import Y2021.M01.D29.Solution hiding (toPair)   -- Namei
 import Y2021.M02.D22.Solution (wineriesWIP)
+
+import Data.Aeson.WikiDatum (Name)
 
 doubleMetaphone :: Text -> IO (String, String)
 doubleMetaphone winery = undefined
@@ -96,4 +100,36 @@ fromList [...]
 
 >>> wineriesFile (todaysDir ++ "wiki-wineries.txt") wikiws
 >>> wineriesFile (todaysDir ++ "graph-wineries.txt") graphws
+
+-- BONUS-BONUS --------------------------------------------------
+
+OR! You could just save out resulting file as el JSONerific.
 --}
+
+data KeyValue a b = KV a b
+   deriving (Eq, Ord, Show)
+
+instance (ToJSON a, ToJSON b) => ToJSON (KeyValue a b) where
+   toJSON (KV a b) = undefined
+
+data Metaphone = Meta (String, String)
+   deriving (Eq, Ord, Show)
+
+instance ToJSON Metaphone where
+   toJSON (Meta (a,b)) = undefined
+
+toKV :: Namei a => a -> KeyValue Text Metaphone
+toKV = undefined
+
+{-- BONUS-BONUS-BONUS!! ----------------------------------------
+
+I noticed a lot of QNames for Names in the wiki-winery data-set and a lot
+of duplicates (triplicates, ... megalons (???)) in the graph-winery data-set
+for their names. We don't need to process QNames nor (re)process multiples
+for winery names, so filter all those out.
+--}
+
+removeQNames :: Namei a => Set a -> Set Name
+removeQNames wineries = undefined
+
+-- show that removeQNames 'automagically' removes duplicate names.
