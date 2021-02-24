@@ -139,7 +139,7 @@ tabulate attribs headers rows =
 -- this is a useful function to give a table a set of column headers:
 
 thdrs :: [String] -> Element
-thdrs = Elt "tr" [] . map (E . Elt "th" [] . pure . S)
+thdrs = Elt "tr" [] . map (E . Elt "th" [Attrib "align" "left"] . pure . S)
 
 -- and for making table rows...
 
