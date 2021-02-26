@@ -2,26 +2,16 @@
 
 module CryptoCoin.CoinMarketCap.Reporter where
 
-import Data.Aeson
-
-import qualified Data.ByteString.Lazy.Char8 as BL
+import Data.Aeson (decode)
 
 import Data.List (sortOn)
 
-import Data.Maybe (mapMaybe)
-import qualified Data.Set as Set
+import qualified Data.ByteString.Lazy.Char8 as BL
 
-import Data.Time
+import Data.Time (getCurrentTime)
 
 import Data.CryptoCurrency.Types
-import Data.CryptoCurrency.Graph
-
-import Data.Relation
-
 import Data.XHTML
-
-import Graph.Query
-import Graph.JSON.Cypher
 
 import CryptoCoin.CoinMarketCap.Types
 
@@ -37,33 +27,35 @@ fetchMap file = decode <$> BL.readFile file
 {--
 >>> fetchMap (ccmapJSON "2021-02-22")
 ...
->>> let (Just (MD stats coins)) = it
+>>> let (Just (MetaData stats coins)) = it
 >>> stats
-Status "2021-02-22T19:57:10.205Z" 0 Nothing 24 1 Nothing
+Status 2021-02-25 0 Nothing 22 1 Nothing
 
 >>> take 3 coins 
-[Coin' {id = 1, name = "Bitcoin", symbol = "BTC", slug = "bitcoin", rank = 1, 
-        is_active = 1, first_historical_data = "2013-04-28T18:47:21.000Z", 
-        last_historical_data = "2021-02-22T19:54:37.000Z", platform = Nothing},
- Coin' {id = 2, name = "Litecoin", symbol = "LTC", slug = "litecoin", rank = 8, 
-        is_active = 1, first_historical_data = "2013-04-28T18:47:22.000Z", 
-        last_historical_data = "2021-02-22T19:54:03.000Z", platform = Nothing},
- Coin' {id = 3, name = "Namecoin", symbol = "NMC", slug = "namecoin", 
-        rank = 541, is_active = 1, 
-        first_historical_data = "2013-04-28T18:47:22.000Z", 
-        last_historical_data = "2021-02-22T19:54:02.000Z", platform = Nothing}]
->>> take 3 $ mapMaybe platform coins
-[CR' 1839 "0xba2ae424d960c26247dd6c32edc70b295c744c43",
- CR' 1027 "0x2e98a6804e4b6c832ed0ca876a943abd3400b224",
- CR' 1027 "0x63f88a2298a5c4aee3c216aa6d926b184a4b2437"]
+[C (Coin (CoinInfo 1 "Bitcoin" "BTC" "bitcoin" True 1 
+         (Duration {first = 2013-04-28, last = 2021-02-25}))),
+ C (Coin (CoinInfo 2 "Litecoin" "LTC" "litecoin" True 8 
+         (Duration {first = 2013-04-28, last = 2021-02-25}))),
+ C (Coin (CoinInfo 3 "Namecoin" "NMC" "namecoin" True 536 
+         (Duration {first = 2013-04-28, last = 2021-02-25})))]
+>>> take 3 $ filter isToken coins
+[T (Token {coininf = CoinInfo 74 "Dogecoin" "DOGE" "dogecoin" True 14 
+                              (Duration {first = 2013-12-15, last = 2021-02-25}), 
+           coinRef = 1839, token = "0xba2ae424d960c26247dd6c32edc70b295c744c43"}),
+ T (Token {coininf = CoinInfo 217 "Bela" "BELA" "belacoin" True 1921 
+                              (Duration {first = 2014-03-20, last = 2021-02-25}), 
+           coinRef = 1027, token = "0x2e98a6804e4b6c832ed0ca876a943abd3400b224"}),
+ T (Token {coininf = CoinInfo 576 "GameCredits" "GAME" "gamecredits" True 694 
+                     (Duration {first = 2014-09-01, last = 2021-02-25}), 
+           coinRef = 1027, token = "0x63f88a2298a5c4aee3c216aa6d926b184a4b2437"})]
 >>> length coins
 4132
 
 >>> length $ filter ((== 1) . is_active) coins
 4132
 
->>> length $ filter ((/= Nothing) . platform ) coins
-2870
+>>> length $ filter isToken coins
+2914
 
 Okay, so we have tokens and we have coins, and we have ranking of both,
 and the ranking may change daily (?) ... let's graph these data.

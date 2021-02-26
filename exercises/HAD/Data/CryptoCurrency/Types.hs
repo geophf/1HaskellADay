@@ -17,4 +17,3 @@ class Cymbal a where   -- lol
 
 class Rank a where
    rank :: a -> Int
-
