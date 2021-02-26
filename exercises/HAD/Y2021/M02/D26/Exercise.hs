@@ -17,7 +17,10 @@ import Data.Aeson
 import Data.Map (Map)
 import Data.Set (Set)
 
+import qualified Data.Text as T
+
 import Graph.Query
+import Graph.JSON.Cypher (Cypher)
 import qualified Graph.JSON.Cypher.Read.Rows as RR
 
 import Y2021.M01.D22.Solution                   -- for wineries
@@ -31,6 +34,11 @@ loadWikiWineries :: FilePath -> IO WineriesMetaphones
 loadWikiWineries jsonFileNanem = undefined
 
 -- NOW! load the graph-wineries from the graph-store
+
+metaphonesQuery :: Cypher
+metaphonesQuery = 
+   T.pack (unwords ["MATCH (m:Metaphone)-[r:METAPHONE]->(w:Winery)",
+                    "RETURN m.primary, m.secondary, id(w), w.name"])
 
 fetchGraphWineries :: Endpoint -> IO WineriesMetaphones
 fetchGraphWineries url = undefined
