@@ -76,7 +76,7 @@ ci2tr (CoinInfo _i name sym _slug _activ rank _dur) =
 
 curl :: IO String
 curl = getEnv "COIN_MARKET_CAP_DIR" >>= \dir ->
-       readProcess (dir ++ "curl-command.sh") [] ""
+       readProcess (dir ++ "/curl-command.sh") [] ""
 
 go :: IO ()
 go = curl >> getCurrentTime >>= ranking . take 10 . show
