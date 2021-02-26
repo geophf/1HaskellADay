@@ -10,6 +10,9 @@ import qualified Data.ByteString.Lazy.Char8 as BL
 
 import Data.Time (getCurrentTime)
 
+import System.Environment (getEnv)
+import System.Process (readProcess)
+
 import Data.CryptoCurrency.Types
 import Data.XHTML
 
@@ -71,8 +74,12 @@ ci2tr :: CoinInfo -> [Content]
 ci2tr (CoinInfo _i name sym _slug _activ rank _dur) =
    [S (show rank), S name, S sym]
 
+curl :: IO String
+curl = getEnv "COIN_MARKET_CAP_DIR" >>= \dir ->
+       readProcess (dir ++ "curl-command.sh") [] ""
+
 go :: IO ()
-go = getCurrentTime >>= ranking . take 10 . show
+go = curl >> getCurrentTime >>= ranking . take 10 . show
 
 ranking :: String -> IO ()
 ranking date =
