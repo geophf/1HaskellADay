@@ -17,6 +17,7 @@ import Data.CryptoCurrency.Types
 import Data.XHTML
 
 import CryptoCoin.CoinMarketCap.Types
+import CryptoCoin.CoinMarketCap.State.RankMatrix (rankMatrix)
 
 ccdir :: FilePath
 ccdir = "CryptoCoin/CoinMarketCap/rankings/2021/"
