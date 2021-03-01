@@ -96,15 +96,13 @@ instance Namei IxWinery where
    namei (WN n _) = n
 
 map2FlatList :: MatchedWineries -> [(Name, IxWinery)]
-map2FlatList =
-   concat
-   . map (\(f,s) ->[(namei n, g) | n <- Set.toList f, g <- Set.toList s])
-   . Map.elems
+map2FlatList = undefined
 
 vetMatchedWineries :: MatchedWineries -> ApprovedAliases
-vetMatchedWineries = Map.fromList . filter approve . map2FlatList
+vetMatchedWineries = undefined
 
--- finally replace the wikidata winery names with the wikidata wineries
+-- Finally, replace the wikidata winery names with the wikidata wineries and
+-- indexed graph wineries with their index.
 
 type AliasedWineries = Map Idx Winery
 
