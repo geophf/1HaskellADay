@@ -37,7 +37,10 @@ loadWikiWineries jsonFileNanem = undefined
 
 metaphonesQuery :: Cypher
 metaphonesQuery = 
+metaphonesQuery =
    T.pack (unwords ["MATCH (m:Metaphone)-[r:METAPHONE]->(w:Winery)",
+                    "WHERE NOT((:AliasedWinery)-[:ALIAS_OF]->(w))",
+                    "AND w.location IS NULL",
                     "RETURN m.primary, m.secondary, id(w), w.name"])
 
 fetchGraphWineries :: Endpoint -> IO WineriesMetaphones

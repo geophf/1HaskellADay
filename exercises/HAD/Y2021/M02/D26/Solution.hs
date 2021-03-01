@@ -74,9 +74,9 @@ fromList [...]
 -- metaphones?
 
 type MergedMaps k v1 v2 = Map k (v1, v2)
+type MatchedWineries = MergedMaps M' (Set IxWinery) (Set IxWinery)
 
-matchWineries :: WineriesMetaphones -> WineriesMetaphones
-              -> MergedMaps M' (Set IxWinery) (Set IxWinery)
+matchWineries :: WineriesMetaphones -> WineriesMetaphones -> MatchedWineries
 matchWineries graphws =
    Map.fromList
    . mapMaybe (\(k,v) -> Map.lookup k graphws >>= \v1 -> return (k, (v, v1)))
