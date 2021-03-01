@@ -1,5 +1,8 @@
 module Data.CryptoCurrency.Types where
 
+import Data.Map (Map)
+import Data.Time
+
 import Data.XHTML (Name)
 
 type Idx = Int
@@ -17,3 +20,6 @@ class Cymbal a where   -- lol
 
 class Rank a where
    rank :: a -> Int
+
+type RankVector = Map Idx Int
+type Matrix = Map Day RankVector
