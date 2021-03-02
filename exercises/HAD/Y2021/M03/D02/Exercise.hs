@@ -92,7 +92,7 @@ updateGraphWineryPropertiesQuery (idx, Winery (WD qn _) _ loc) =
 
 aliasToWineryQuery :: (Idx, Winery) -> Cypher
 aliasToWineryQuery (idx, Winery n _ _) = 
-   T.pack (unwords ["CREATE (a:AliasedWinery { name:", show n, "})",
+   T.pack (unwords ["CREATE (a:AliasedWinery { name:", show (name n), "})",
                     "WITH a AS alias",
                     "MATCH (w:Winery) WHERE id(w) =", show idx,
                     "CREATE (alias)-[:ALIAS_OF]->(w)"])
