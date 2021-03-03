@@ -67,4 +67,8 @@ Just 2021-03-02
        incept = 2021-03-02},...}
 >>> length it
 11
+
+... Okay, we're reporting on these coins. We need to save them with their
+incept date and price then check back on them a month (?) later to see how
+they've done. TODO.
 --}
