@@ -29,13 +29,15 @@ import qualified Data.Set as Set
 
 import Data.Time
 
-import Data.CryptoCurrency.Types
+import Control.Scan.CSV
+import Control.Presentation
+
 import CryptoCoin.CoinMarketCap.Types
 import CryptoCoin.CoinMarketCap.Reporter
 import CryptoCoin.CoinMarketCap.State.RankMatrix
 
-import Control.Scan.CSV
-import Control.Presentation
+import Data.CryptoCurrency.Types
+import Data.Time.TimeSeries
 
 {--
 
@@ -68,8 +70,7 @@ matrix m = uncurry ansert . mkRow
 -- add that row to the matrix
 
 mkRow :: MetaData -> (Day, RankVector)
-mkRow (MetaData (Status d _ _ _ _ _) ecoins) =
-   (d, Map.fromList $ map (idx &&& rank) ecoins)
+mkRow (MetaData (Status d _ _ _ _ _) ecoins) = (d, Map.map rank ecoins)
 
 yesterday :: Matrix -> Day -> Maybe Day -- but do we even want this?
 yesterday = undefined
@@ -112,24 +113,19 @@ writeMatrix file =
    writeFile file
        . unlines
        . ((header:imps ++ mats) ++)
-       . (++ [indent 3 ++ "]", lates])
+       . (++ [indent 3 ++ "]"])
        . concat
        . interleave ","
        . map showDateRankVector
        . Map.toList
       where nl = ""
             header = "module CryptoCoin.CoinMarketCap.State.RankMatrix where"
-            impMatrix = "import Data.CryptoCurrency.Types (RankVector, Matrix)"
+            impMatrix = "import Data.CryptoCurrency.Types (Matrix)"
             impMap = "import qualified Data.Map as Map"
-            impSet = "import qualified Data.Set as Set"
-            impDate = "import Data.Time"
-            imps = [nl, impMatrix, impMap, impDate, impSet]
+            imps = [nl, impMatrix, impMap]
             decl = "rankMatrix :: Matrix"
             def = "rankMatrix = " ++ mapShow
             mats = [nl, decl, def]
-            lateDecl = "latest :: Maybe Day"
-            lateDef = "latest = fst <$> (Set.maxView $ Map.keysSet rankMatrix)"
-            lates = [nl, lateDecl, lateDef]
 
 showDateRankVector :: (Day, RankVector) -> [String]
 showDateRankVector (d, row) =
@@ -190,32 +186,25 @@ https://observablehq.com/@d3/word-cloud
 >>> latest
 Just 2021-02-28
 
->>> fetchMap $ ccmapJSON "2021-03-01"
+>>> let (Just yday) = it
+>>> let tday = addDays 1 yday
+
+>>> fetchMap $ ccmapJSON tday
 ...
 >>> let (Just md) = it
 >>> let mat = matrix rankMatrix md
 >>> length mat
-6
->>> fetchMap $ ccmapJSON "2021-03-02"
-fromList [...]
->>> let (Just md) = it
-
-(yes, again. This is what happens when you skip a day)
-
->>> let mat' = matrix mat md
->>> length mat'
-7
-
->>> length $ Map.elems mat'
-7
->>> take 5 . Map.toList . head $ Map.elems mat'
+8
+>>> take 5 . Map.toList . head $ Map.elems mat
 [(1,1),(2,8),(3,584),(4,1656),(5,748)]
->>> writeMatrix "CryptoCoin/CoinMarketCap/State/RankMatrix.hs" mat'
+>>> writeMatrix "CryptoCoin/CoinMarketCap/State/RankMatrix.hs" mat
 
 ... after a reload of this module (and, subsequently, RankMatrix):
 
 >>> latest
-Just 2021-03-02
+Just 2021-03-03
 
 WOOT!
+
+We really need to write the README.md here :/
 --}
