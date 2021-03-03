@@ -34,7 +34,7 @@ data GeoWinery = GeoWinery { idx :: Idx,
 geowineriesQuery :: Cypher
 geowineriesQuery =
    T.pack (unwords ["MATCH (w:Winery)",
-                    "WHERE w.position IS NOT NULL",
+                    "WHERE w.location IS NOT NULL",
                     "RETURN id(w), w.name, w.qid, w.position.longitude,",
                     "w.position.latitude"])
 
@@ -43,6 +43,17 @@ toGeoWinery = undefined
 
 fetchGeoWineries :: Endpoint -> IO [GeoWinery]
 fetchGeoWineries = undefined
+
+{--
+>>> graphEndpoint >>= fetchGeoWineries
+[GeoWinery {idx = 494, 
+            winery = WD {qid = "http://www.wikidata.org/entity/Q1913305", 
+                         name = "Castello di Amorosa"}, 
+            location = point({ latitude: 38.5584, longitude: -122.5427 })}, ...]
+>>> let gwins = it
+>>> length gwins
+140
+--}
 
 -- now that we got'm, let's plot'm!
 
