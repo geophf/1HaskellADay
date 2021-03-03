@@ -1,0 +1,2528 @@
+<kml xmlns="http://earth.google.com/kml/2.0">
+ <Document>
+  <name>
+   Wineries around the world!
+  </name>
+  <Folder>
+   <name>
+    Castello di Amorosa
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1913305
+   </Description>
+   <Placemark>
+    <name>
+     Castello di Amorosa
+    </name>
+    <Point>
+     <coordinates>
+      -122.5427,38.5584,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Lafon-Rochet
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090522
+   </Description>
+   <Placemark>
+    <name>
+     Château Lafon-Rochet
+    </name>
+    <Point>
+     <coordinates>
+      -0.7877722,45.229425,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Winzer Krems
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q30854240
+   </Description>
+   <Placemark>
+    <name>
+     Winzer Krems
+    </name>
+    <Point>
+     <coordinates>
+      15.617898055,48.420606111,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Yeringberg
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q66768678
+   </Description>
+   <Placemark>
+    <name>
+     Yeringberg
+    </name>
+    <Point>
+     <coordinates>
+      145.435,-37.6901,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Stags' Leap Winery
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q7596969
+   </Description>
+   <Placemark>
+    <name>
+     Stags' Leap Winery
+    </name>
+    <Point>
+     <coordinates>
+      -122.321356,38.414167,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Chateau Ste. Michelle
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q5087545
+   </Description>
+   <Placemark>
+    <name>
+     Chateau Ste. Michelle
+    </name>
+    <Point>
+     <coordinates>
+      -122.15011667,47.72881667,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Jacob's Creek
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q7103212
+   </Description>
+   <Placemark>
+    <name>
+     Jacob's Creek
+    </name>
+    <Point>
+     <coordinates>
+      138.928253,-34.580076,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Ferrière
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090437
+   </Description>
+   <Placemark>
+    <name>
+     Château Ferrière
+    </name>
+    <Point>
+     <coordinates>
+      -0.67639,45.043556,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    J Vineyards &amp; Winery
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q6109439
+   </Description>
+   <Placemark>
+    <name>
+     J Vineyards &amp; Winery
+    </name>
+    <Point>
+     <coordinates>
+      -122.84262,38.57298,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Hunt Country Vineyards
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q5943934
+   </Description>
+   <Placemark>
+    <name>
+     Hunt Country Vineyards
+    </name>
+    <Point>
+     <coordinates>
+      -77.1708,42.5983,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Brecon Estate
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q63980436
+   </Description>
+   <Placemark>
+    <name>
+     Brecon Estate
+    </name>
+    <Point>
+     <coordinates>
+      -120.8316768,35.5978941,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Casajús
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q60169787
+   </Description>
+   <Placemark>
+    <name>
+     Casajús
+    </name>
+    <Point>
+     <coordinates>
+      -3.749991666,41.760886111,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Belden Barns
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q56559589
+   </Description>
+   <Placemark>
+    <name>
+     Belden Barns
+    </name>
+    <Point>
+     <coordinates>
+      -122.604095,38.367179,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Concha y Toro
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1123957
+   </Description>
+   <Placemark>
+    <name>
+     Concha y Toro
+    </name>
+    <Point>
+     <coordinates>
+      -71.271969,-35.063392,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château de Fuissé
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q16539677
+   </Description>
+   <Placemark>
+    <name>
+     Château de Fuissé
+    </name>
+    <Point>
+     <coordinates>
+      4.740542,46.283988,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Bodega de Edgar
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q63973120
+   </Description>
+   <Placemark>
+    <name>
+     Bodega de Edgar
+    </name>
+    <Point>
+     <coordinates>
+      -120.741403,35.6509177,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Chateau Grand Traverse
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q5087533
+   </Description>
+   <Placemark>
+    <name>
+     Chateau Grand Traverse
+    </name>
+    <Point>
+     <coordinates>
+      -85.5199,44.8651,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château La Nerthe
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090498
+   </Description>
+   <Placemark>
+    <name>
+     Château La Nerthe
+    </name>
+    <Point>
+     <coordinates>
+      4.85836,44.0496,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Wolf Blass
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q2588605
+   </Description>
+   <Placemark>
+    <name>
+     Wolf Blass
+    </name>
+    <Point>
+     <coordinates>
+      139.033,-34.44,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Margaux
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1063236
+   </Description>
+   <Placemark>
+    <name>
+     Château Margaux
+    </name>
+    <Point>
+     <coordinates>
+      -0.668705555,45.044419444,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Haut-Brion
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q518582
+   </Description>
+   <Placemark>
+    <name>
+     Château Haut-Brion
+    </name>
+    <Point>
+     <coordinates>
+      -0.6126833,44.8142472,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Lynch-Bages
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090546
+   </Description>
+   <Placemark>
+    <name>
+     Château Lynch-Bages
+    </name>
+    <Point>
+     <coordinates>
+      -0.75561,45.19083,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Mouton Rothschild
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1061469
+   </Description>
+   <Placemark>
+    <name>
+     Château Mouton Rothschild
+    </name>
+    <Point>
+     <coordinates>
+      -0.7686,45.2153,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Branaire-Ducru
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090345
+   </Description>
+   <Placemark>
+    <name>
+     Château Branaire-Ducru
+    </name>
+    <Point>
+     <coordinates>
+      -0.7388,45.145,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Canon
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q2967855
+   </Description>
+   <Placemark>
+    <name>
+     Château Canon
+    </name>
+    <Point>
+     <coordinates>
+      -0.163272,44.892936,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Domaine Anderson
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q58215208
+   </Description>
+   <Placemark>
+    <name>
+     Domaine Anderson
+    </name>
+    <Point>
+     <coordinates>
+      -123.430375,39.058873,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Bouscaut
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q2967853
+   </Description>
+   <Placemark>
+    <name>
+     Château Bouscaut
+    </name>
+    <Point>
+     <coordinates>
+      -0.54842,44.7468,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Clerc Milon
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090399
+   </Description>
+   <Placemark>
+    <name>
+     Château Clerc Milon
+    </name>
+    <Point>
+     <coordinates>
+      -0.765319,45.221615,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    La Scolca
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q77822703
+   </Description>
+   <Placemark>
+    <name>
+     La Scolca
+    </name>
+    <Point>
+     <coordinates>
+      8.78185,44.708719444,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Vergelegen
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q787543
+   </Description>
+   <Placemark>
+    <name>
+     Vergelegen
+    </name>
+    <Point>
+     <coordinates>
+      18.891833333,-34.076944444,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château de Pizay
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q15947163
+   </Description>
+   <Placemark>
+    <name>
+     Château de Pizay
+    </name>
+    <Point>
+     <coordinates>
+      4.70061,46.1381,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Giscours
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q975958
+   </Description>
+   <Placemark>
+    <name>
+     Château Giscours
+    </name>
+    <Point>
+     <coordinates>
+      -0.6459611,45.0087028,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Marimar Estate
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q4891963
+   </Description>
+   <Placemark>
+    <name>
+     Marimar Estate
+    </name>
+    <Point>
+     <coordinates>
+      -122.903,38.4222,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Soutard
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q17354305
+   </Description>
+   <Placemark>
+    <name>
+     Château Soutard
+    </name>
+    <Point>
+     <coordinates>
+      -0.1503631,44.8978928,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Messina Hof
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q17108283
+   </Description>
+   <Placemark>
+    <name>
+     Messina Hof
+    </name>
+    <Point>
+     <coordinates>
+      -96.3233,30.7028,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Recuerdo
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q67201150
+   </Description>
+   <Placemark>
+    <name>
+     Recuerdo
+    </name>
+    <Point>
+     <coordinates>
+      1.786891666,41.425194444,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Beaulieu Vineyard
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q2893208
+   </Description>
+   <Placemark>
+    <name>
+     Beaulieu Vineyard
+    </name>
+    <Point>
+     <coordinates>
+      -122.42344,38.46015,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    The Eyrie Vineyards
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q7732954
+   </Description>
+   <Placemark>
+    <name>
+     The Eyrie Vineyards
+    </name>
+    <Point>
+     <coordinates>
+      -123.188,45.2143,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Stag's Leap Wine Cellars
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q3496351
+   </Description>
+   <Placemark>
+    <name>
+     Stag's Leap Wine Cellars
+    </name>
+    <Point>
+     <coordinates>
+      -122.326,38.3993,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Vasse Felix
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q7916923
+   </Description>
+   <Placemark>
+    <name>
+     Vasse Felix
+    </name>
+    <Point>
+     <coordinates>
+      115.037,-33.8225,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Pontet-Canet
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090622
+   </Description>
+   <Placemark>
+    <name>
+     Château Pontet-Canet
+    </name>
+    <Point>
+     <coordinates>
+      -0.7705639,45.2083722,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Lafite Rothschild
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090558
+   </Description>
+   <Placemark>
+    <name>
+     Château Lafite Rothschild
+    </name>
+    <Point>
+     <coordinates>
+      -0.773055555,45.225,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Pape Clément
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090616
+   </Description>
+   <Placemark>
+    <name>
+     Château Pape Clément
+    </name>
+    <Point>
+     <coordinates>
+      -0.64694444,44.80583333,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Mumm Napa
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q63762360
+   </Description>
+   <Placemark>
+    <name>
+     Mumm Napa
+    </name>
+    <Point>
+     <coordinates>
+      -122.393419,38.478315,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Gundlach Bundschu
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q5618640
+   </Description>
+   <Placemark>
+    <name>
+     Gundlach Bundschu
+    </name>
+    <Point>
+     <coordinates>
+      -122.41694444,38.28083333,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Nairac
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q2967959
+   </Description>
+   <Placemark>
+    <name>
+     Château Nairac
+    </name>
+    <Point>
+     <coordinates>
+      -0.317679,44.611509,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Rabaud-Promis
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090636
+   </Description>
+   <Placemark>
+    <name>
+     Château Rabaud-Promis
+    </name>
+    <Point>
+     <coordinates>
+      -0.33859,44.55505,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Brochelle Vineyards
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q63980478
+   </Description>
+   <Placemark>
+    <name>
+     Brochelle Vineyards
+    </name>
+    <Point>
+     <coordinates>
+      -120.656091,35.644143,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Kirwan
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090484
+   </Description>
+   <Placemark>
+    <name>
+     Château Kirwan
+    </name>
+    <Point>
+     <coordinates>
+      -0.6582194,45.0274194,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Latour-Martillac
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q2967928
+   </Description>
+   <Placemark>
+    <name>
+     Château Latour-Martillac
+    </name>
+    <Point>
+     <coordinates>
+      -0.53931,44.71156,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Cos Labory
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090414
+   </Description>
+   <Placemark>
+    <name>
+     Château Cos Labory
+    </name>
+    <Point>
+     <coordinates>
+      -0.7769806,45.230694,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Suduiraut
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090681
+   </Description>
+   <Placemark>
+    <name>
+     Château Suduiraut
+    </name>
+    <Point>
+     <coordinates>
+      -0.32,44.55638889,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Montrose
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090584
+   </Description>
+   <Placemark>
+    <name>
+     Château Montrose
+    </name>
+    <Point>
+     <coordinates>
+      -0.761825,45.2463444,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Marquis de Terme
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090575
+   </Description>
+   <Placemark>
+    <name>
+     Château Marquis de Terme
+    </name>
+    <Point>
+     <coordinates>
+      -0.6777389,45.0383222,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Golan Heights Winery
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q2905035
+   </Description>
+   <Placemark>
+    <name>
+     Golan Heights Winery
+    </name>
+    <Point>
+     <coordinates>
+      35.708644444,32.988297222,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Mount Pleasant Winery
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q6922988
+   </Description>
+   <Placemark>
+    <name>
+     Mount Pleasant Winery
+    </name>
+    <Point>
+     <coordinates>
+      -90.8859,38.5709,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Au Bon Climat
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q4818939
+   </Description>
+   <Placemark>
+    <name>
+     Au Bon Climat
+    </name>
+    <Point>
+     <coordinates>
+      -120.297881,34.919058,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Coutet
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q841657
+   </Description>
+   <Placemark>
+    <name>
+     Château Coutet
+    </name>
+    <Point>
+     <coordinates>
+      -0.32595,44.59476,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Taittinger
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q204901
+   </Description>
+   <Placemark>
+    <name>
+     Taittinger
+    </name>
+    <Point>
+     <coordinates>
+      4.04618,49.24429,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Two Paddocks
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q7859147
+   </Description>
+   <Placemark>
+    <name>
+     Two Paddocks
+    </name>
+    <Point>
+     <coordinates>
+      169.303,-45.2198,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Brown Estate
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q4976133
+   </Description>
+   <Placemark>
+    <name>
+     Brown Estate
+    </name>
+    <Point>
+     <coordinates>
+      -122.276707,38.505142,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Anglim
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q63972583
+   </Description>
+   <Placemark>
+    <name>
+     Anglim
+    </name>
+    <Point>
+     <coordinates>
+      -120.69689,35.57343,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château d'Yquem
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090764
+   </Description>
+   <Placemark>
+    <name>
+     Château d'Yquem
+    </name>
+    <Point>
+     <coordinates>
+      -0.328683,44.5436,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Rauzan-Ségla
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090652
+   </Description>
+   <Placemark>
+    <name>
+     Château Rauzan-Ségla
+    </name>
+    <Point>
+     <coordinates>
+      -0.675262,45.035564,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Chateau St. Jean
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q56547193
+   </Description>
+   <Placemark>
+    <name>
+     Chateau St. Jean
+    </name>
+    <Point>
+     <coordinates>
+      -122.548256,38.42723,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château de Lavernette
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q2969682
+   </Description>
+   <Placemark>
+    <name>
+     Château de Lavernette
+    </name>
+    <Point>
+     <coordinates>
+      4.75339,46.2611,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Chateau Montelena
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q116766
+   </Description>
+   <Placemark>
+    <name>
+     Chateau Montelena
+    </name>
+    <Point>
+     <coordinates>
+      -122.59777778,38.60377778,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Arínzano
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q4802792
+   </Description>
+   <Placemark>
+    <name>
+     Arínzano
+    </name>
+    <Point>
+     <coordinates>
+      -1.993704,42.630671,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Brane-Cantenac
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090348
+   </Description>
+   <Placemark>
+    <name>
+     Château Brane-Cantenac
+    </name>
+    <Point>
+     <coordinates>
+      -0.6736972,45.023944,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Franc Mayne
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q259910
+   </Description>
+   <Placemark>
+    <name>
+     Château Franc Mayne
+    </name>
+    <Point>
+     <coordinates>
+      -0.171184,44.89957047,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Angélus
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q462988
+   </Description>
+   <Placemark>
+    <name>
+     Château Angélus
+    </name>
+    <Point>
+     <coordinates>
+      -0.1715,44.8927,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château de Myrat
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q2399877
+   </Description>
+   <Placemark>
+    <name>
+     Château de Myrat
+    </name>
+    <Point>
+     <coordinates>
+      -0.33442,44.59724,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Cantemerle
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090388
+   </Description>
+   <Placemark>
+    <name>
+     Château Cantemerle
+    </name>
+    <Point>
+     <coordinates>
+      -0.6263167,44.9940167,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Rosemount
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q7368492
+   </Description>
+   <Placemark>
+    <name>
+     Rosemount
+    </name>
+    <Point>
+     <coordinates>
+      138.555253,-35.176297,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Beychevelle
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090342
+   </Description>
+   <Placemark>
+    <name>
+     Château Beychevelle
+    </name>
+    <Point>
+     <coordinates>
+      -0.73497,45.14504,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Bodegas Paso Robles
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q63980239
+   </Description>
+   <Placemark>
+    <name>
+     Bodegas Paso Robles
+    </name>
+    <Point>
+     <coordinates>
+      -120.6908023,35.6278783,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Cheval Blanc
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090405
+   </Description>
+   <Placemark>
+    <name>
+     Château Cheval Blanc
+    </name>
+    <Point>
+     <coordinates>
+      -0.1893,44.9195,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Malartic-Lagravière
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q734456
+   </Description>
+   <Placemark>
+    <name>
+     Château Malartic-Lagravière
+    </name>
+    <Point>
+     <coordinates>
+      -0.6026,44.7223,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Pichon Longueville Comtesse de Lalande
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q780285
+   </Description>
+   <Placemark>
+    <name>
+     Château Pichon Longueville Comtesse de Lalande
+    </name>
+    <Point>
+     <coordinates>
+      -0.752414,45.17618,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Lagrange
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090523
+   </Description>
+   <Placemark>
+    <name>
+     Château Lagrange
+    </name>
+    <Point>
+     <coordinates>
+      -0.773222,45.1495111,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Beauséjour
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090332
+   </Description>
+   <Placemark>
+    <name>
+     Château Beauséjour
+    </name>
+    <Point>
+     <coordinates>
+      -0.1647,44.8923,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Bodegas Ateca
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q62053710
+   </Description>
+   <Placemark>
+    <name>
+     Bodegas Ateca
+    </name>
+    <Point>
+     <coordinates>
+      -1.782205,41.324464,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Chateau Chantal
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q5087527
+   </Description>
+   <Placemark>
+    <name>
+     Chateau Chantal
+    </name>
+    <Point>
+     <coordinates>
+      -85.502,44.9194,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Leopard's Leap
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q20981674
+   </Description>
+   <Placemark>
+    <name>
+     Leopard's Leap
+    </name>
+    <Point>
+     <coordinates>
+      19.0780259,-33.8858459,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Desmirail
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090422
+   </Description>
+   <Placemark>
+    <name>
+     Château Desmirail
+    </name>
+    <Point>
+     <coordinates>
+      -0.65397,45.02852,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Talbot
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090679
+   </Description>
+   <Placemark>
+    <name>
+     Château Talbot
+    </name>
+    <Point>
+     <coordinates>
+      -0.7563472,45.1594944,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château de Malleret
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q2969787
+   </Description>
+   <Placemark>
+    <name>
+     Château de Malleret
+    </name>
+    <Point>
+     <coordinates>
+      -0.64222222,44.96527778,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château d'Armailhac
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q128427
+   </Description>
+   <Placemark>
+    <name>
+     Château d'Armailhac
+    </name>
+    <Point>
+     <coordinates>
+      -0.769955,45.211115,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Quinta da Pacheca
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q54475112
+   </Description>
+   <Placemark>
+    <name>
+     Quinta da Pacheca
+    </name>
+    <Point>
+     <coordinates>
+      -7.797754,41.155541,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château de Fieuzal
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q2969228
+   </Description>
+   <Placemark>
+    <name>
+     Château de Fieuzal
+    </name>
+    <Point>
+     <coordinates>
+      -0.6096,44.7158,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Caillou
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q2967856
+   </Description>
+   <Placemark>
+    <name>
+     Château Caillou
+    </name>
+    <Point>
+     <coordinates>
+      -0.341,44.59416,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Grand-Puy-Lacoste
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090450
+   </Description>
+   <Placemark>
+    <name>
+     Château Grand-Puy-Lacoste
+    </name>
+    <Point>
+     <coordinates>
+      -0.7690889,45.1900722,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Filhot
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090442
+   </Description>
+   <Placemark>
+    <name>
+     Château Filhot
+    </name>
+    <Point>
+     <coordinates>
+      -0.34186389,44.52300833,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Duhart-Milon
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090433
+   </Description>
+   <Placemark>
+    <name>
+     Château Duhart-Milon
+    </name>
+    <Point>
+     <coordinates>
+      -0.7848306,45.2193694,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château de Beaucastel
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090698
+   </Description>
+   <Placemark>
+    <name>
+     Château de Beaucastel
+    </name>
+    <Point>
+     <coordinates>
+      4.8518,44.1048,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Ausone
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090340
+   </Description>
+   <Placemark>
+    <name>
+     Château Ausone
+    </name>
+    <Point>
+     <coordinates>
+      -0.1564,44.8892,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Prieuré-Lichine
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090625
+   </Description>
+   <Placemark>
+    <name>
+     Château Prieuré-Lichine
+    </name>
+    <Point>
+     <coordinates>
+      -0.6564667,45.0287167,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Clos Mogador
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q11914155
+   </Description>
+   <Placemark>
+    <name>
+     Clos Mogador
+    </name>
+    <Point>
+     <coordinates>
+      0.85646,41.189006,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    L'Aventure
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q6455640
+   </Description>
+   <Placemark>
+    <name>
+     L'Aventure
+    </name>
+    <Point>
+     <coordinates>
+      -120.743,35.59,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Romer du Hayot
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090668
+   </Description>
+   <Placemark>
+    <name>
+     Château Romer du Hayot
+    </name>
+    <Point>
+     <coordinates>
+      -0.34265,44.59284,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Pavie
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q532686
+   </Description>
+   <Placemark>
+    <name>
+     Château Pavie
+    </name>
+    <Point>
+     <coordinates>
+      -0.1496,44.8843,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Tintara
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q7808490
+   </Description>
+   <Placemark>
+    <name>
+     Tintara
+    </name>
+    <Point>
+     <coordinates>
+      138.538022,-35.212086,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château d'Agassac
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q2968037
+   </Description>
+   <Placemark>
+    <name>
+     Château d'Agassac
+    </name>
+    <Point>
+     <coordinates>
+      -0.6088,44.9675,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Wyndham Estate
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q8040108
+   </Description>
+   <Placemark>
+    <name>
+     Wyndham Estate
+    </name>
+    <Point>
+     <coordinates>
+      151.421,-32.645,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Rieussec
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090657
+   </Description>
+   <Placemark>
+    <name>
+     Château Rieussec
+    </name>
+    <Point>
+     <coordinates>
+      -0.31134,44.53875,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Willi Schaefer
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q15690813
+   </Description>
+   <Placemark>
+    <name>
+     Willi Schaefer
+    </name>
+    <Point>
+     <coordinates>
+      7.06402,49.934,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Cricova
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q15212003
+   </Description>
+   <Placemark>
+    <name>
+     Cricova
+    </name>
+    <Point>
+     <coordinates>
+      28.85,47.133,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Latour
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090583
+   </Description>
+   <Placemark>
+    <name>
+     Château Latour
+    </name>
+    <Point>
+     <coordinates>
+      -0.745,45.176666666,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Weingut Reichsrat von Buhl
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1726298
+   </Description>
+   <Placemark>
+    <name>
+     Weingut Reichsrat von Buhl
+    </name>
+    <Point>
+     <coordinates>
+      8.18638889,49.40944444,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Lafaurie-Peyraguey
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090516
+   </Description>
+   <Placemark>
+    <name>
+     Château Lafaurie-Peyraguey
+    </name>
+    <Point>
+     <coordinates>
+      -0.33777778,44.54944444,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château d'Issan
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090725
+   </Description>
+   <Placemark>
+    <name>
+     Château d'Issan
+    </name>
+    <Point>
+     <coordinates>
+      -0.658171,45.037882,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Clos de Tart
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1102353
+   </Description>
+   <Placemark>
+    <name>
+     Clos de Tart
+    </name>
+    <Point>
+     <coordinates>
+      4.9625,47.19527778,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Shelton Vineyards
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q14708166
+   </Description>
+   <Placemark>
+    <name>
+     Shelton Vineyards
+    </name>
+    <Point>
+     <coordinates>
+      -80.7686,36.3643,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Harlan Estate
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q5658308
+   </Description>
+   <Placemark>
+    <name>
+     Harlan Estate
+    </name>
+    <Point>
+     <coordinates>
+      -122.408,38.415,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Batailley
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090324
+   </Description>
+   <Placemark>
+    <name>
+     Château Batailley
+    </name>
+    <Point>
+     <coordinates>
+      -0.7729278,45.1767972,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Chasse-Spleen
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090379
+   </Description>
+   <Placemark>
+    <name>
+     Château Chasse-Spleen
+    </name>
+    <Point>
+     <coordinates>
+      -0.740675931,45.075710232,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Clos Haut-Peyraguey
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090411
+   </Description>
+   <Placemark>
+    <name>
+     Château Clos Haut-Peyraguey
+    </name>
+    <Point>
+     <coordinates>
+      -0.33972222,44.54583333,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Bosman Family Vineyards
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q20981394
+   </Description>
+   <Placemark>
+    <name>
+     Bosman Family Vineyards
+    </name>
+    <Point>
+     <coordinates>
+      19.024722222,-33.626111111,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château de Camensac
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090369
+   </Description>
+   <Placemark>
+    <name>
+     Château de Camensac
+    </name>
+    <Point>
+     <coordinates>
+      -0.7861083,45.14635,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Heinrich Vollmer
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q2556040
+   </Description>
+   <Placemark>
+    <name>
+     Heinrich Vollmer
+    </name>
+    <Point>
+     <coordinates>
+      8.25322,49.4586,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château de Cayx
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q2968817
+   </Description>
+   <Placemark>
+    <name>
+     Château de Cayx
+    </name>
+    <Point>
+     <coordinates>
+      1.30555556,44.49055556,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Pennyroyal Farm
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q60652357
+   </Description>
+   <Placemark>
+    <name>
+     Pennyroyal Farm
+    </name>
+    <Point>
+     <coordinates>
+      -123.362523,39.002317,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château Fougas
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q2415723
+   </Description>
+   <Placemark>
+    <name>
+     Château Fougas
+    </name>
+    <Point>
+     <coordinates>
+      -0.54277778,45.06083333,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Fiddlehead Cellars
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q5446685
+   </Description>
+   <Placemark>
+    <name>
+     Fiddlehead Cellars
+    </name>
+    <Point>
+     <coordinates>
+      -120.43869444,34.64213889,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Château La Lagune
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090500
+   </Description>
+   <Placemark>
+    <name>
+     Château La Lagune
+    </name>
+    <Point>
+     <coordinates>
+      -0.6172417,44.9788917,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Haute Cabri\232re
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q5682956
+   </Description>
+   <Placemark>
+    <name>
+     Haute Cabri\232re
+    </name>
+    <Point>
+     <coordinates>
+      19.118056,-33.912222,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Ch\226teau Figeac
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090441
+   </Description>
+   <Placemark>
+    <name>
+     Ch\226teau Figeac
+    </name>
+    <Point>
+     <coordinates>
+      -0.192425,44.912833,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Ch\226teau Calon
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q2895229
+   </Description>
+   <Placemark>
+    <name>
+     Ch\226teau Calon
+    </name>
+    <Point>
+     <coordinates>
+      35.7341,32.8045,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Ch\226teau Grand-Puy Ducasse
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090452
+   </Description>
+   <Placemark>
+    <name>
+     Ch\226teau Grand-Puy Ducasse
+    </name>
+    <Point>
+     <coordinates>
+      -0.746583,45.1998694,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Ch\226teau L\233oville Las Cases
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090555
+   </Description>
+   <Placemark>
+    <name>
+     Ch\226teau L\233oville Las Cases
+    </name>
+    <Point>
+     <coordinates>
+      -0.741025,45.1629389,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Ch\226teau la Gaffeli\232re
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q965193
+   </Description>
+   <Placemark>
+    <name>
+     Ch\226teau la Gaffeli\232re
+    </name>
+    <Point>
+     <coordinates>
+      -0.15709162,44.88534775,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Ch\226teau la Coste
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q56305887
+   </Description>
+   <Placemark>
+    <name>
+     Ch\226teau la Coste
+    </name>
+    <Point>
+     <coordinates>
+      5.419722222,43.635277777,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Ch\226teau la Tour Blanche
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q464240
+   </Description>
+   <Placemark>
+    <name>
+     Ch\226teau la Tour Blanche
+    </name>
+    <Point>
+     <coordinates>
+      -0.35125,44.542222222,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Ch\226teau Sainte Roseline
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q16539657
+   </Description>
+   <Placemark>
+    <name>
+     Ch\226teau Sainte Roseline
+    </name>
+    <Point>
+     <coordinates>
+      6.513473,43.474761,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Ch\226teau de Go\235lane
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q600832
+   </Description>
+   <Placemark>
+    <name>
+     Ch\226teau de Go\235lane
+    </name>
+    <Point>
+     <coordinates>
+      -1.402777777,47.204166666,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Ch\226teau Ducru Beaucaillou
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090428
+   </Description>
+   <Placemark>
+    <name>
+     Ch\226teau Ducru Beaucaillou
+    </name>
+    <Point>
+     <coordinates>
+      -0.7333139,45.1508083,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Chateau de l'Oiselini\232re
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q2971112
+   </Description>
+   <Placemark>
+    <name>
+     Chateau de l'Oiselini\232re
+    </name>
+    <Point>
+     <coordinates>
+      -1.29278,47.1067,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Ch\226teau de Marsan
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q15943823
+   </Description>
+   <Placemark>
+    <name>
+     Ch\226teau de Marsan
+    </name>
+    <Point>
+     <coordinates>
+      4.98448,47.2673,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Ch\226teau de Rayne Vigneau
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q1090716
+   </Description>
+   <Placemark>
+    <name>
+     Ch\226teau de Rayne Vigneau
+    </name>
+    <Point>
+     <coordinates>
+      -0.344722222,44.5475,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+  <Folder>
+   <name>
+    Ch\226teau Doisy-Da\235ne
+   </name>
+   <Description>
+    wikidata QName: http://www.wikidata.org/entity/Q262435
+   </Description>
+   <Placemark>
+    <name>
+     Ch\226teau Doisy-Da\235ne
+    </name>
+    <Point>
+     <coordinates>
+      -0.33079,44.59164,5.0
+     </coordinates>
+    </Point>
+   </Placemark>
+  </Folder>
+ </Document>
+</kml>
+
