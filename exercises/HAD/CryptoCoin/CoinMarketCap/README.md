@@ -15,7 +15,8 @@ OR: ... Actually, idk the or, because we have to restart haskell, or recompile
 haskell between steps, depende.
 
 The report generates the top-10 e-coins and also the new coins for the day
-(state is maintained in rankMatrix).
+(state is maintained in rankMatrix). A sample report is here:
+http://logicalgraphs.blogspot.com/2021/03/top-10-e-coins-for-2021-03-03-with.html
 
 TODOs (besides the TODO above):
 
