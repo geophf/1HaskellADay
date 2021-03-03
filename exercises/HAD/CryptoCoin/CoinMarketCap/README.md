@@ -43,3 +43,6 @@ Do we look at all e-coins as Voronoi? or Word-cloud?
 
 * https://observablehq.com/@d3/voronoi-labels
 * https://observablehq.com/@d3/word-cloud
+
+... I have examples of running d3 under 
+https://github.com/geophf/1HaskellADay/tree/master/exercises/HAD/Graph/D3
