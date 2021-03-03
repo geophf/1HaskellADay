@@ -1,14 +1,15 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE ViewPatterns #-}
 
 module CryptoCoin.CoinMarketCap.Reporter where
 
 import Data.Aeson (decode)
 
-import Data.List (sortOn)
-
 import qualified Data.ByteString.Lazy.Char8 as BL
 
-import Data.Time (getCurrentTime)
+import Data.List (sortOn, splitAt)
+import qualified Data.Map as Map
+import qualified Data.Set as Set
+import Data.Time
 
 import System.Environment (getEnv)
 import System.Process (readProcess)
@@ -18,12 +19,13 @@ import Data.XHTML
 
 import CryptoCoin.CoinMarketCap.Types
 import CryptoCoin.CoinMarketCap.State.RankMatrix (rankMatrix)
+import CryptoCoin.CoinMarketCap.Analytics.N00Bs (noobsFor, N00B(N00B))
 
 ccdir :: FilePath
 ccdir = "CryptoCoin/CoinMarketCap/rankings/2021/"
 
-ccmapJSON :: String -> FilePath
-ccmapJSON date = ccdir ++ "coins-" ++ date ++ ".json"
+ccmapJSON :: Day -> FilePath
+ccmapJSON (take 10 . show -> date) = ccdir ++ "coins-" ++ date ++ ".json"
 
 fetchMap :: FilePath -> IO (Maybe MetaData)
 fetchMap file = decode <$> BL.readFile file
@@ -72,33 +74,62 @@ instance Rasa ECoin where
    printRow (T (Token ci _ _)) = tr (ci2tr ci ++ [S "Token"])
 
 ci2tr :: CoinInfo -> [Content]
-ci2tr (CoinInfo _i name sym _slug _activ rank _dur) =
-   [S (show rank), S name, S sym]
+ci2tr c@(CoinInfo _i name sym slug _activ rank _dur) =
+   [S (show rank), link c, S sym]
+
+link :: CoinInfo -> Content
+link (CoinInfo _i name _sym slug _activ _rank _dur) =
+   a (coinmarketcapcoinlink slug) name
+
+a :: String -> String -> Content
+a href = E . Elt "a" [Attrib "href" href] . return . S
+
+coinmarketcaphref :: String
+coinmarketcaphref = "https://coinmarketcap.com"
+
+coinmarketcapcoinlink :: String -> String
+coinmarketcapcoinlink = ((coinmarketcaphref ++ "/currencies/") ++) . (++ "/")
 
 curl :: IO String
 curl = getEnv "COIN_MARKET_CAP_DIR" >>= \dir ->
        readProcess (dir ++ "/curl-command.sh") [] ""
 
 go :: IO ()
-go = curl >> getCurrentTime >>= ranking . take 10 . show
+go = curl >> getCurrentTime >>= ranking . utctDay
 
-ranking :: String -> IO ()
+ranking :: Day -> IO ()
 ranking date =
    fetchMap (ccmapJSON date) >>= \metadata ->
-   let (Just (MetaData stats ecoins)) = metadata
-   in  header date >> report (take 10 (sortOn rank ecoins))
+   let (Just md@(MetaData stats ecoins)) = metadata
+   in  header date                                      >>
+       report (take 10 (sortOn rank $ Map.elems ecoins)) >>
+       newCoins md date
 
-header :: String -> IO ()
-header date =
-   putStrLn (unwords ["<p>The top-10 e-coins for",date,
-                      "(ranked by",
-                      "<a href='https://coinmarketcap.com'>coinmarketcap.com</a>)",
-                      "are:</p>"])
+header :: Day -> IO ()
+header (take 10 . show -> date) =
+   printContent (p [S (unwords ["The top-10 e-coins for",date,"(ranked by"]),
+                    a coinmarketcaphref "coinmarketcap.com",
+                    S "are:"]) 0
 
 report :: [ECoin] -> IO ()
 report =
    flip printContent 3 . E
       . tabulate [Attrib "border" "1"] [thdrs (words "Rank Name Symbol Type")]
+
+newCoins :: MetaData -> Day -> IO ()
+newCoins mdata date =
+   let coins  = noobsFor mdata rankMatrix date
+       sz     = Set.size coins
+       header = concat ["There are ",show sz," new coin",plural sz," today:"]
+   in  printContent (p [S header]) 0 >>
+       report (sortOn rank $ map (\(N00B coin _) -> coin) (Set.toList coins))
+
+plural :: Int -> String
+plural 1 = ""
+plural _ = "s"
+
+p :: [Content] -> Content
+p = E . Elt "p" []
 
 {--
 >>> let date = "2021-02-22"

@@ -2,20 +2,27 @@
 
 module CryptoCoin.CoinMarketCap.Types where
 
+import Control.Arrow ((&&&))
+
 import Data.Aeson
+
+import Data.Map (Map)
+import qualified Data.Map as Map
+
 import Data.Time
 
 import Data.CryptoCurrency.Types
-import CryptoCoin.CoinMarketCap.Types.Internal
+import CryptoCoin.CoinMarketCap.Types.Internal hiding (id)
 
 import Data.XHTML (Name)
 
-data MetaData = MetaData Status [ECoin]
+data MetaData = MetaData Status (Map Idx ECoin)
    deriving (Eq, Ord, Show)
 
 instance FromJSON MetaData where
    parseJSON = withObject "Metadata" $ \v ->
-      MetaData <$> v .: "status" <*> (map raw2coin <$> v .: "data")
+      MetaData <$> v .: "status"
+               <*> (Map.fromList . map ((idx &&& id) . raw2coin) <$> v .: "data")
 
 data Status = Status Day Int (Maybe String) Int Int (Maybe String)
    deriving (Eq, Ord, Show)

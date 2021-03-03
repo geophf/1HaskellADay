@@ -1,8 +1,8 @@
 module Data.CryptoCurrency.Types where
 
 import Data.Map (Map)
-import Data.Time
 
+import Data.Time.TimeSeries
 import Data.XHTML (Name)
 
 type Idx = Int
@@ -22,4 +22,4 @@ class Rank a where
    rank :: a -> Int
 
 type RankVector = Map Idx Int
-type Matrix = Map Day RankVector
+type Matrix = TimeSeries RankVector
