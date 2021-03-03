@@ -35,8 +35,8 @@ geowineriesQuery :: Cypher
 geowineriesQuery =
    T.pack (unwords ["MATCH (w:Winery)",
                     "WHERE w.location IS NOT NULL",
-                    "RETURN id(w), w.name, w.qid, w.position.longitude,",
-                    "w.position.latitude"])
+                    "RETURN id(w), w.name, w.qid, w.location.longitude,",
+                    "w.location.latitude"])
 
 toGeoWinery :: [Value] -> Maybe GeoWinery
 toGeoWinery = undefined
