@@ -1,0 +1,15 @@
+#!/usr/bin/env expect
+
+log_user 0
+spawn ghci CryptoCoin/CoinMarketCap/Ranker.hs
+log_user 1
+
+expect ".*> "
+send ":set prompt \"ghci> \"\n"
+
+expect "ghci> "
+send "go"
+expect "ghci> "
+
+send ":q\n"
+interact
