@@ -14,14 +14,9 @@ coinmarketcap.com
 
 ## What to do
 
-1. FIRST! run the shell script curl-command.sh
-2. NEXT! generate the updated rankMatrix from the downloaded JSON
-3. FINALLY! in a brand-new ghc shell, run the Reporter
-
-All of this needs to go in some execution script somewhere, so: TODO! (do that)
-
-OR: ... Actually, idk the or, because we have to restart haskell, or recompile
-haskell between steps, depende.
+The script `scripts/report.sh` fetches the latest e-coin rankings, updates
+our historical data, then reports on the Top-10 e-coins as well as new coins
+today. It also formats a tweet and title for today's report.
 
 The report generates the top-10 e-coins and also the new coins for the day
 (state is maintained in rankMatrix). A sample report is here:
@@ -35,7 +30,6 @@ TODOs (besides the TODO above):
 
 OTHER TODOs: 
 
-* convert the manual process in Ranker to a script (like Reporter)
 * track coindesk coins
 * apply analytics (WHICH ONES?) against coins
 * get d3.js tools working, e.g.s:
