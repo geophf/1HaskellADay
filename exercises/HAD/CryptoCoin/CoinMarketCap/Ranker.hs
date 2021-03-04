@@ -29,8 +29,7 @@ import qualified Data.Set as Set
 
 import Data.Time
 
-import Control.Scan.CSV
-import Control.Presentation
+import System.Environment (getEnv)
 
 import CryptoCoin.CoinMarketCap.Types
 import CryptoCoin.CoinMarketCap.Reporter
@@ -55,9 +54,6 @@ so, ... nah on the second thought. Back to the second-second thought, which is
 the first thought.
 --}
 
--- TODO: we need a matrix module and a read (that should just be import)
--- and writer function to write out the updated matrix
-
 matrix :: Matrix -> MetaData -> Matrix
 matrix m = uncurry ansert . mkRow
    where ansert k v = Map.insert k v m
@@ -75,7 +71,7 @@ mkRow (MetaData (Status d _ _ _ _ _) ecoins) = (d, Map.map rank ecoins)
 yesterday :: Matrix -> Day -> Maybe Day -- but do we even want this?
 yesterday = undefined
 
--- and we need to compute the rank-differential
+-- and we need to compute the rank-differential: TODO
 
 rankDiff :: Matrix -> RankVector
 rankDiff = undefined
@@ -101,7 +97,7 @@ adiff = (-)
 and we just lift adiff into the maybe-domain.
 --}
 
--- for analytics tools, like d3.js, mentioned below.
+-- for analytics tools, like d3.js, mentioned below. TODO
 
 writeCSVfile :: FilePath -> Matrix -> IO ()
 writeCSVfile = undefined
@@ -183,7 +179,13 @@ https://observablehq.com/@d3/word-cloud
 --}
 
 {--
->>> latest
+
+THIS PRESUPPOSES ./scripts/curl-command.sh HAS BEEN RUN, PLACING THE FETCHED-
+JSON IN THE rankings/ DIRECTORY! Caveat snarfer.
+
+THIS ALSO ASSUMES WE DO THIS ON A DAILY CANDENCE AND DON'T MISS DAYS!
+
+>>> latest rankMatrix
 Just 2021-02-28
 
 >>> let (Just yday) = it
@@ -206,5 +208,14 @@ Just 2021-03-03
 
 WOOT!
 
-We really need to write the README.md here :/
+Formalizing this:
 --}
+
+go :: IO ()
+go =
+   let (Just yday) = latest rankMatrix
+       tday = addDays 1 yday
+   in  fetchMap (ccmapJSON tday) >>= \(Just md) ->
+       getEnv "COIN_MARKET_CAP_DIR" >>= \cmcdir ->
+       writeMatrix (cmcdir ++ "/State/RankMatrix.hs") (matrix rankMatrix md) >>
+       putStrLn ("Wrote RankMatrix.hs for " ++ take 10 (show tday))
