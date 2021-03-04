@@ -39,7 +39,6 @@ import Data.CryptoCurrency.Types
 import Data.Time.TimeSeries
 
 {--
-
 HERE'S A THOUGHT! ... or: ON SECOND THOUGHT!
 
 Why don't I just CSV the ranks for now and see what external tools out there
@@ -179,7 +178,6 @@ https://observablehq.com/@d3/word-cloud
 --}
 
 {--
-
 THIS PRESUPPOSES ./scripts/curl-command.sh HAS BEEN RUN, PLACING THE FETCHED-
 JSON IN THE rankings/ DIRECTORY! Caveat snarfer.
 
@@ -189,10 +187,12 @@ THIS ALSO ASSUMES WE DO THIS ON A DAILY CANDENCE AND DON'T MISS DAYS!
 Just 2021-02-28
 
 >>> let (Just yday) = it
->>> let tday = addDays 1 yday
+>>> today
+2021-03-04
+>>> let tday = it
 
->>> fetchMap $ ccmapJSON tday
-...
+>>> ccmapJSON tday >>= fetchMap
+fromList [...]
 >>> let (Just md) = it
 >>> let mat = matrix rankMatrix md
 >>> length mat
@@ -204,7 +204,7 @@ Just 2021-02-28
 ... after a reload of this module (and, subsequently, RankMatrix):
 
 >>> latest
-Just 2021-03-03
+Just 2021-03-04
 
 WOOT!
 
@@ -216,7 +216,7 @@ go =
    let (Just yday) = latest rankMatrix
    in  today >>= go' yday
 
-go' :: Day -> Day -> IO()
+go' :: Day -> Day -> IO ()
 go' yday tday | yday < tday =
    ccmapJSON tday >>= fetchMap >>= \(Just md) ->
    getEnv "COIN_MARKET_CAP_DIR" >>= \cmcdir ->
