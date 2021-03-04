@@ -90,14 +90,12 @@ coinmarketcaphref = "https://coinmarketcap.com"
 coinmarketcapcoinlink :: String -> String
 coinmarketcapcoinlink = ((coinmarketcaphref ++ "/currencies/") ++) . (++ "/")
 
-curl :: IO String
-curl = getEnv "COIN_MARKET_CAP_DIR" >>= \dir ->
-       readProcess (dir ++ "/curl-command.sh") [] ""
-
 go :: IO ()
-go = curl >> getCurrentTime >>= ranking . utctDay
+go = getCurrentTime >>= \date ->
+     let day = utctDay date
+     in  ranking day >>= tweet day >> title day
 
-ranking :: Day -> IO ()
+ranking :: Day -> IO [ECoin]
 ranking date =
    fetchMap (ccmapJSON date) >>= \metadata ->
    let (Just md@(MetaData stats ecoins)) = metadata
@@ -116,13 +114,15 @@ report =
    flip printContent 3 . E
       . tabulate [Attrib "border" "1"] [thdrs (words "Rank Name Symbol Type")]
 
-newCoins :: MetaData -> Day -> IO ()
+newCoins :: MetaData -> Day -> IO [ECoin]
 newCoins mdata date =
    let coins  = noobsFor mdata rankMatrix date
        sz     = Set.size coins
        header = concat ["There are ",show sz," new coin",plural sz," today:"]
+       ranked = sortOn rank $ map (\(N00B coin _) -> coin) (Set.toList coins)
    in  printContent (p [S header]) 0 >>
-       report (sortOn rank $ map (\(N00B coin _) -> coin) (Set.toList coins))
+       report ranked                 >>
+       return ranked
 
 plural :: Int -> String
 plural 1 = ""
@@ -132,9 +132,8 @@ p :: [Content] -> Content
 p = E . Elt "p" []
 
 {--
->>> let date = "2021-02-22"
->>> let ecoins = map raw2coin coins
->>> ranking date ecoins
+>>> let date = (read "2021-02-22") :: Day
+>>> ranking date coins
 <p>The top-10 e-coins for 2021-02-22 (ranked by 
    <a href='https://coinmarketcap.com'>coinmarketcap.com</a> ) are:</p>
    <table border="1">
@@ -146,3 +145,16 @@ p = E . Elt "p" []
 
 need to add a twitter poster here, too.
 --}
+
+tweet :: Day -> [ECoin] -> IO ()
+tweet today newCoins =
+   let url = "http://logicalgraphs.blogspot.com/2021/03/top-10-e-coins-for-"
+       day = show today
+       urlday = url ++ day ++ ".html"
+       ncoins = length newCoins
+   in  putStrLn (unwords ["The top-10 e-coins for", day, "with",
+                          show ncoins, "new coin" ++ plural ncoins, "for",
+                          "today are archived at", urlday])
+
+title :: Day -> IO ()
+title = putStrLn . unwords . ("Top-10 E-coins for":) . return . show 
