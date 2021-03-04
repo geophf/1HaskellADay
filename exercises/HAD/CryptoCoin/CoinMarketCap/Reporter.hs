@@ -21,11 +21,12 @@ import CryptoCoin.CoinMarketCap.Types
 import CryptoCoin.CoinMarketCap.State.RankMatrix (rankMatrix)
 import CryptoCoin.CoinMarketCap.Analytics.N00Bs (noobsFor, N00B(N00B))
 
-ccdir :: FilePath
-ccdir = "CryptoCoin/CoinMarketCap/rankings/2021/"
+ccfile :: FilePath
+ccfile = "rankings/2021/coins-"
 
-ccmapJSON :: Day -> FilePath
-ccmapJSON (take 10 . show -> date) = ccdir ++ "coins-" ++ date ++ ".json"
+ccmapJSON :: Day -> IO FilePath
+ccmapJSON (take 10 . show -> date) =
+   (++ ('/':ccfile ++ date ++ ".json")) <$> getEnv "COIN_MARKET_CAP_DIR"
 
 fetchMap :: FilePath -> IO (Maybe MetaData)
 fetchMap file = decode <$> BL.readFile file
@@ -97,7 +98,8 @@ go = getCurrentTime >>= \date ->
 
 ranking :: Day -> IO [ECoin]
 ranking date =
-   fetchMap (ccmapJSON date) >>= \metadata ->
+   ccmapJSON date >>=
+   fetchMap >>= \metadata ->
    let (Just md@(MetaData stats ecoins)) = metadata
    in  header date                                      >>
        report (take 10 (sortOn rank $ Map.elems ecoins)) >>

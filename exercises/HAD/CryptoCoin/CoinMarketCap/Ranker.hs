@@ -32,7 +32,7 @@ import Data.Time
 import System.Environment (getEnv)
 
 import CryptoCoin.CoinMarketCap.Types
-import CryptoCoin.CoinMarketCap.Reporter
+import CryptoCoin.CoinMarketCap.Reporter hiding (go)
 import CryptoCoin.CoinMarketCap.State.RankMatrix
 
 import Data.CryptoCurrency.Types
@@ -214,8 +214,13 @@ Formalizing this:
 go :: IO ()
 go =
    let (Just yday) = latest rankMatrix
-       tday = addDays 1 yday
-   in  fetchMap (ccmapJSON tday) >>= \(Just md) ->
-       getEnv "COIN_MARKET_CAP_DIR" >>= \cmcdir ->
-       writeMatrix (cmcdir ++ "/State/RankMatrix.hs") (matrix rankMatrix md) >>
-       putStrLn ("Wrote RankMatrix.hs for " ++ take 10 (show tday))
+   in  today >>= go' yday
+
+go' :: Day -> Day -> IO()
+go' yday tday | yday < tday =
+   ccmapJSON tday >>= fetchMap >>= \(Just md) ->
+   getEnv "COIN_MARKET_CAP_DIR" >>= \cmcdir ->
+   writeMatrix (cmcdir ++ "/State/RankMatrix.hs") (matrix rankMatrix md) >>
+   putStrLn ("Wrote RankMatrix.hs for " ++ show tday)
+              | otherwise =
+   putStrLn "Nothing to do. RankMatrix.hs is up-to-date."
