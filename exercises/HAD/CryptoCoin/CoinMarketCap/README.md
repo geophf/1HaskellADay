@@ -3,11 +3,20 @@
 Here are the scripts and files for extracting the daily rankings from
 coinmarketcap.com and then analyzing those coins.
 
+## Setup
+
+You need the following environmental variables established in order to run
+this system:
+
+* `COIN_MARKET_CAP_DIR` pointing to this directory; and,
+* `COIN_MARKET_CAP_API_KEY` which you get by requesting an API key from 
+coinmarketcap.com
+
 ## What to do
 
-FIRST! run the shell script curl-command.sh
-NEXT! generate the updated rankMatrix from the downloaded JSON
-FINALLY! in a brand-new ghc shell, run the Reporter
+1. FIRST! run the shell script curl-command.sh
+2. NEXT! generate the updated rankMatrix from the downloaded JSON
+3. FINALLY! in a brand-new ghc shell, run the Reporter
 
 All of this needs to go in some execution script somewhere, so: TODO! (do that)
 
