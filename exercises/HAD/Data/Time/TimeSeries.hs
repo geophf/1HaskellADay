@@ -31,3 +31,6 @@ findYesterday tday day days | Set.size days == 0 = Nothing
                             | day < tday         = Just day
                             | otherwise          =
    Set.maxView days >>= uncurry (findYesterday tday)
+
+today :: IO Day
+today = utctDay <$> getCurrentTime
