@@ -39,6 +39,10 @@ greet name = undefined
 -- gently, into this dialogue.
 
 {--
+$ cd Y2021/M03/D05
+$ ghc im
+... [2 of 2] Compiling Main             ( im.hs, im.o )
+Linking im ...
 $ im
 Hi. What's your name?
 $ im geophf
