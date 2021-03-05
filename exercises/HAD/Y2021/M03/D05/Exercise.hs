@@ -32,3 +32,17 @@ greet name = undefined
 -- Now ... you can build a database to see if they were first asked and
 -- tailor (swift?) the response based upon that context, if you want to get
 -- fancy.
+
+-- BONUS-BONUS -------------------------------------------------
+
+-- What if they don't enter anything? Add an errorHandler to guide them,
+-- gently, into this dialogue.
+
+{--
+$ im
+Hi. What's your name?
+$ im geophf
+Hello, geophf! How are you?
+$  im fine
+That's good to hear. I hope you have a lovely day!
+--}
