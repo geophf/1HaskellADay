@@ -25,6 +25,8 @@ greet name = undefined
 -- greet, for 'fine' responds with the well-wishes for a good day, otherwise
 -- asks 'name' how they are.
 
+-- use the file im.hs in this directory to create your shell ... um: 'script.'
+
 -- BONUS -------------------------------------------------------
 
 -- Now ... you can build a database to see if they were first asked and
