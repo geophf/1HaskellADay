@@ -34,6 +34,10 @@ OTHER TODOs:
 * apply analytics (WHICH ONES?) against coins
 * get d3.js tools working, e.g.s:
 
+* get cmc_id for coindesk and binance traded-coins.
+* get FCAS ids for cmc_id'd coins I want to measure with FCAS
+* get price, volume, and FCAS data for monitored coins
+
 ### d3.js has the following:
 
 * https://observablehq.com/@d3/bollinger-bands

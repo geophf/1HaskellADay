@@ -1,4 +1,4 @@
-module CryptoCoin.CoinMarketCap.Ranker where
+module CryptoCoin.CoinMarketCap.ETL.RankIngest where
 
 {--
 Hoo, boy! Sparse matrices... Sorry, dense matrices! I remember doing this
@@ -14,7 +14,33 @@ idx,date n, date n-1, date n-2, ..., date 0
 
 like that.
 
-This could, I suppose, be represented as a map of maps?
+This could, I suppose, be represented as a map of maps? *
+
+* It has been, but that is getting to be a huge object file and taking a while
+to load. Maybe the CSV is the way to go?
+
+But then let's 'normalize' with Day and Idx
+
+date,idx,vect1,vect2,...,vectn
+d1,1,...
+d1,2,...
+.
+.
+.
+dn,1,...
+dn,2,...
+
+where vect is a datum we care about. Then we'll use snarf to materialize our
+multimap.
+
+But this CSV has to be a consolidated result of ranks, listings, and FCAS.
+
+FCAS: Fundamental Crypto Asset Score, a single, consistently comparable value 
+for measuring cryptocurrency project health
+
+Another advantage of the CSV-approach (or some other data store) is that I
+don't have to recompile two programs each time I add information to the 
+knowledge base.
 --}
 
 import Control.Arrow ((&&&))
