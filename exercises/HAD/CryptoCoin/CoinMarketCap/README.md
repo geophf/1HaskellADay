@@ -24,7 +24,7 @@ http://logicalgraphs.blogspot.com/2021/03/top-10-e-coins-for-2021-03-03-with.htm
 
 ## E/R D
 
-<img src="ETL/imgs/e-coin-erg.png"/>
+<img src="ETL/imgs/e-coin-erd.png"/>
 
 TODOs (besides the TODO above):
 
