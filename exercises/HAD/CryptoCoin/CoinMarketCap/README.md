@@ -22,15 +22,20 @@ The report generates the top-10 e-coins and also the new coins for the day
 (state is maintained in rankMatrix). A sample report is here:
 http://logicalgraphs.blogspot.com/2021/03/top-10-e-coins-for-2021-03-03-with.html
 
+## E/R D
+
+[ETL/imgs/e-coin-erg.png]
+
 TODOs (besides the TODO above):
 
-* look-up prices for the above (top-10s and new coins)
-* store new coins in state (graph-store?)
+* look-up prices for the above (top-10s and new coins) -- that is: download listings!
+* download FCAS scores: ... once we have cmc_id-to-flipside_crypto_uuid mapping
+* store new coins in state (postgresql)
 * check back on new coins a month later. How are they doing?
 
 OTHER TODOs: 
 
-* track coindesk coins
+* track coinbase coins / track binance coins
 * apply analytics (WHICH ONES?) against coins
 * get d3.js tools working, e.g.s:
 
