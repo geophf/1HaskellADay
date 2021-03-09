@@ -12,6 +12,15 @@ this system:
 * `COIN_MARKET_CAP_API_KEY` which you get by requesting an API key from 
 coinmarketcap.com
 
+To connect to your SQL database, you'll need the following environmental 
+variables:
+
+* `SQL_DAAS_SERVER_URL_ECOIN`
+* `SQL_DAAS_DB_NAME_ECOIN`
+* `SQL_DAAS_USERNAME_ECOIN`
+* `SQL_DAAS_PASSWORD_ECOIN`
+* `SQL_DAAS_SERVER_PORT_ECOIN`
+
 ## What to do
 
 The script `scripts/report.sh` fetches the latest e-coin rankings, updates
@@ -20,7 +29,7 @@ today. It also formats a tweet and title for today's report.
 
 The report generates the top-10 e-coins and also the new coins for the day
 (state is maintained in rankMatrix). A sample report is here:
-http://logicalgraphs.blogspot.com/2021/03/top-10-e-coins-for-2021-03-03-with.html
+http://logicalgraphs.blogspot.com/2021/03/top-10-e-coins-for-2021-03-09.html
 
 ## E/R D
 
