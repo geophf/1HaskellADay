@@ -103,6 +103,7 @@ create table "source" (
 	"source_id" serial NOT NULL,
 	"source_type_id" bigint NOT NULL,
 	"file_name" TEXT NOT NULL,
+	"processed" bool NOT NULL DEFAULT "false",
 	"file" text NOT NULL,
 	CONSTRAINT "source_pk" PRIMARY KEY ("source_id")
 ) WITH (
