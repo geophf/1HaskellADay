@@ -96,6 +96,14 @@ CREATE TABLE "score" (
   OIDS=FALSE
 );
 
+create table "source" (
+	"source_id" serial NOT NULL,
+	"file" text NOT NULL,
+	CONSTRAINT "source_pk" PRIMARY KEY ("source_id")
+) WITH (
+  OIDS=FALSE
+);
+
 -- I actually don't do foreign keys with SQL tables, but to each his own.
 
 ALTER TABLE "coin_market_cap_daily" ADD CONSTRAINT "coin_market_cap_daily_fk0" FOREIGN KEY ("cmc_id") REFERENCES "coin"("cmc_id");

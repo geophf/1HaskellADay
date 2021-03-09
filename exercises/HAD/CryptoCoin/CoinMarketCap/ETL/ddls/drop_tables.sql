@@ -24,3 +24,5 @@ DROP TABLE IF EXISTS "flipside_crypto_daily";
 
 DROP TABLE IF EXISTS "score";
 
+DROP TABLE IF EXISTS "source";
+
