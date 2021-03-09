@@ -16,6 +16,8 @@ CREATE TABLE "coin_market_cap_daily" (
 	"percent_change_60d" double precision,
 	"percent_change_90d" double precision,
 	"market_cap" double precision,
+	"rank_src_id" bigint NOT NULL,
+	"list_src_id" bigint NOT NULL,
 	CONSTRAINT "coin_market_cap_daily_pk" PRIMARY KEY ("cmc_day_id")
 ) WITH (
   OIDS=FALSE
@@ -71,6 +73,7 @@ CREATE TABLE "j_tag_coin" (
 CREATE TABLE "flipside_crypto_daily" (
 	"fsc_day_id" serial NOT NULL,
 	"cmc_id" bigint NOT NULL,
+	"fcas_src_id" bigint NOT NULL,
 	"date" DATE NOT NULL DEFAULT now(),
 	"volume_usd" double precision NOT NULL,
 	"transactions" integer NOT NULL,
@@ -98,11 +101,24 @@ CREATE TABLE "score" (
 
 create table "source" (
 	"source_id" serial NOT NULL,
+	"source_type_id" bigint NOT NULL,
+	"file_name" TEXT NOT NULL,
 	"file" text NOT NULL,
 	CONSTRAINT "source_pk" PRIMARY KEY ("source_id")
 ) WITH (
   OIDS=FALSE
 );
+
+create table "source_type_lk" (
+	"source_type_id" serial NOT NULL,
+	"source_type" TEXT NOT NULL,
+	CONSTRAINT "source_type_pk" PRIMARY KEY ("source_type_id")
+) WITH (
+  OIDS=FALSE
+);
+
+INSERT INTO source_type_lk (source_type_id, source_type)
+VALUES (1, 'RANKING'), (2, 'LISTING'), (3, 'FCAS');
 
 -- I actually don't do foreign keys with SQL tables, but to each his own.
 
