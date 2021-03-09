@@ -3,7 +3,7 @@
 module CryptoCoin.CoinMarketCap.ETL.SourceFileLoader where
 
 import Data.List (isSuffixOf)
-import qualified Data.Map as Ma
+import qualified Data.Map as Map
 
 import System.Directory
 import System.Environment (getEnv)
@@ -14,15 +14,17 @@ import Data.LookupTable
 
 import Store.SQL.Util.LookupTable
 
-import CryptoCoin.CoinMarketCap.ETL.Connector (connection)
+import Store.SQL.Connection
 
 uploadFile :: Integer -> FilePath -> Connection -> IO (FilePath, Integer)
 uploadFile sourceType filename conn =
-   readFile filename >>= \file ->
+   readFile filename                      >>= \file ->
    query conn
          "INSERT INTO source (source_type_id, file_name, file) VALUES (?, ?, ?) RETURNING source_id"
-         (sourceType, filename, file) >>= \[Only i] ->
-   putStrLn ("Uploaded " ++ filename) >>
+         (sourceType, filename, file)     >>= \[Only i] ->
+   putStrLn ("Uploaded " ++ filename)     >>
+   removeFile filename                    >>
+   putStrLn ("Removed file " ++ filename) >>
    return (filename, i)
 
 uploadAllFilesAt :: FilePath -> Integer -> Connection -> IO [(FilePath, Integer)]
@@ -67,4 +69,24 @@ Uploaded listings-2021-03-05.json
 [("listings-2021-03-05.json",16)]
 
 >>> close conn
+--}
+
+go :: IO ()
+go = withConnection ECOIN (\conn ->
+   lookupTable conn "source_type_lk" >>= \src ->
+   getEnv "COIN_MARKET_CAP_DIR"      >>= \cmcDir ->
+   let uploader dir typ = uploadAllFilesAt (cmcDir ++ ('/':dir ++ "/2021"))
+                                           (src Map.! typ) conn
+   in  uploader "rankings" "RANKING" >> uploader "listings" "LISTING")
+
+{--
+>>> go
+Uploaded coins-2021-03-09.json
+Uploaded listings-2021-03-09.json
+
+SQL query to check that the database is populated:
+
+SELECT a.source_id, b.source_type, a.file_name FROM source a
+INNER JOIN source_type_lk b ON b.source_type_id=a.source_type_id
+ORDER BY a.file_name DESC
 --}
