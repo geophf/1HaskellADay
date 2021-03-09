@@ -1,27 +1,25 @@
 CREATE TABLE "coin_market_cap_daily" (
 	"cmc_day_id" serial NOT NULL,
-	"cmc_id" bigint NOT NULL,
-	"date" DATE NOT NULL,
-	"rank" int NOT NULL,
-	"num_pairs" int,
-	"max_supply" int,
-	"circulating_supply" int,
-	"total_supply" int,
-	"quote_price" double,
-	"volume_24h" double,
-	"percent_change_1h" double,
-	"percent_change_24h" double,
-	"percent_change_7d" double,
-	"percent_change_30d" double,
-	"percent_change_60d" double,
-	"percent_change_90d" double,
-	"market_cap" double,
+	"cmc_id" integer NOT NULL,
+	"date" DATE not null default now(),
+	"rank" integer NOT NULL,
+	"num_pairs" integer,
+	"max_supply" integer,
+	"circulating_supply" integer,
+	"total_supply" integer,
+	"quote_price" double precision,
+	"volume_24h" double precision,
+	"percent_change_1h" double precision,
+	"percent_change_24h" double precision,
+	"percent_change_7d" double precision,
+	"percent_change_30d" double precision,
+	"percent_change_60d" double precision,
+	"percent_change_90d" double precision,
+	"market_cap" double precision,
 	CONSTRAINT "coin_market_cap_daily_pk" PRIMARY KEY ("cmc_day_id")
 ) WITH (
   OIDS=FALSE
 );
-
-
 
 CREATE TABLE "coin" (
 	"cmc_id" serial NOT NULL,
@@ -30,7 +28,7 @@ CREATE TABLE "coin" (
 	"flipsidecrypto_id" uuid,
 	"is_active" bool NOT NULL DEFAULT 'true',
 	"slug" TEXT,
-	"first_historical_data" TIMESTAMP,
+	"first_historical_data" date,
 	CONSTRAINT "coin_pk" PRIMARY KEY ("cmc_id")
 ) WITH (
   OIDS=FALSE
@@ -72,8 +70,9 @@ CREATE TABLE "j_tag_coin" (
 
 CREATE TABLE "flipside_crypto_daily" (
 	"fsc_day_id" serial NOT NULL,
-	"flipside_crypto_id" bigint NOT NULL,
-	"volume_usd" double NOT NULL,
+	"cmc_id" bigint NOT NULL,
+	"date" DATE NOT NULL DEFAULT now(),
+	"volume_usd" double precision NOT NULL,
 	"transactions" integer NOT NULL,
 	"unique_addresses" integer NOT NULL,
 	"fcas" integer NOT NULL,
@@ -90,7 +89,7 @@ CREATE TABLE "flipside_crypto_daily" (
 
 CREATE TABLE "score" (
 	"score_id" serial NOT NULL,
-	"score" bigint NOT NULL,
+	"score" integer NOT NULL,
 	"grade" char NOT NULL,
 	CONSTRAINT "score_pk" PRIMARY KEY ("score_id")
 ) WITH (
