@@ -1,7 +1,7 @@
 LE_DATE=$(date +%Y-%m-%d)
 
 RANKING_FILE=$COIN_MARKET_CAP_DIR/rankings/2021/coins-$LE_DATE.json
-LISTING_FILE=$COIN_MARKET_CAP_DIR/listings/2021/quots-$LE_DATE.json
+LISTING_FILE=$COIN_MARKET_CAP_DIR/listings/2021/listings-$LE_DATE.json
 
 LIST_CMD="listings/latest?start=1&limit=5000&convert=USD"
 
