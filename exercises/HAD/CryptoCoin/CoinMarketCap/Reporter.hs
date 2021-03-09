@@ -156,7 +156,7 @@ tweet today newCoins =
        ncoins = length newCoins
    in  putStrLn (unwords ["The top-10 e-coins for", day, "with",
                           show ncoins, "new coin" ++ plural ncoins, "for",
-                          "today are archived at", urlday])
+                          "today are archived at", urlday, "#cryptocurrency"])
 
 title :: Day -> IO ()
 title = putStrLn . unwords . ("Top-10 E-coins for":) . return . show 
