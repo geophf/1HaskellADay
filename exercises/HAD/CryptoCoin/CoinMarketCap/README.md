@@ -37,10 +37,10 @@ http://logicalgraphs.blogspot.com/2021/03/top-10-e-coins-for-2021-03-09.html
 
 TODOs (besides the TODO above):
 
-* look-up prices for the above (top-10s and new coins) -- that is: download listings!
 * download FCAS scores: ... once we have cmc_id-to-flipside_crypto_uuid mapping
-* store new coins in state (postgresql)
+* use coin-state from SQL data-store.
 * check back on new coins a month later. How are they doing?
+  * we need a table for new coins.
 
 OTHER TODOs: 
 
