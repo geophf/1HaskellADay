@@ -11,6 +11,7 @@ import System.Environment (getEnv)
 import Database.PostgreSQL.Simple
 
 import Data.LookupTable
+import Data.Time.TimeSeries (today)
 
 import Store.SQL.Util.LookupTable
 
@@ -18,13 +19,14 @@ import Store.SQL.Connection
 
 uploadFile :: Integer -> FilePath -> Connection -> IO (FilePath, Integer)
 uploadFile sourceType filename conn =
-   readFile filename                      >>= \file ->
+   readFile filename                        >>= \file ->
+   today                                    >>= \tday ->
    query conn
-         "INSERT INTO source (source_type_id, file_name, file) VALUES (?, ?, ?) RETURNING source_id"
-         (sourceType, filename, file)     >>= \[Only i] ->
-   putStrLn ("Uploaded " ++ filename)     >>
-   removeFile filename                    >>
-   putStrLn ("Removed file " ++ filename) >>
+         "INSERT INTO source (source_type_id, file_name, for_day, file) VALUES (?, ?, ?, ?) RETURNING source_id"
+         (sourceType, filename, tday, file) >>= \[Only i] ->
+   putStrLn ("Uploaded " ++ filename)       >>
+   removeFile filename                      >>
+   putStrLn ("Removed file " ++ filename)   >>
    return (filename, i)
 
 uploadAllFilesAt :: FilePath -> Integer -> Connection -> IO [(FilePath, Integer)]
