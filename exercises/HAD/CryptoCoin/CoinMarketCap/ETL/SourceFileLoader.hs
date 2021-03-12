@@ -88,7 +88,8 @@ Uploaded listings-2021-03-09.json
 
 SQL query to check that the database is populated:
 
-SELECT a.source_id, b.source_type, a.file_name FROM source a
+SELECT a.source_id, b.source_type, a.file_name, a.processed
+FROM source a
 INNER JOIN source_type_lk b ON b.source_type_id=a.source_type_id
 ORDER BY a.file_name DESC
 --}

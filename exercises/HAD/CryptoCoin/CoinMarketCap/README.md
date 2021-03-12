@@ -31,6 +31,15 @@ The report generates the top-10 e-coins and also the new coins for the day
 (state is maintained in rankMatrix). A sample report is here:
 http://logicalgraphs.blogspot.com/2021/03/top-10-e-coins-for-2021-03-09.html
 
+Okay! Then, after you run the report and have it all ... reported out, and
+stuff, you'll want to upload the listings and rankings (and BEARS! OH, MY!)
+to the SQL data-store:
+
+$ ghci $COIN_MARKET_CAP_DIR/ETL/SourceFileLoader.hs
+ghci> go
+
+It will tell you which files it uploaded and then deleted.
+
 ## E/R D
 
 <img src="ETL/imgs/e-coin-erd.png"/>
