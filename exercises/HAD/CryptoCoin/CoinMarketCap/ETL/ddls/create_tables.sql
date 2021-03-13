@@ -1,27 +1,36 @@
-CREATE TABLE "coin_market_cap_daily" (
-	"cmc_day_id" serial NOT NULL,
+CREATE TABLE "coin_market_cap_daily_ranking" (
+	"cmc_daily_ranking_id" serial NOT NULL,
 	"cmc_id" integer NOT NULL,
 	"date" DATE not null default now(),
 	"rank" integer NOT NULL,
-	"num_pairs" integer,
-	"max_supply" integer,
-	"circulating_supply" integer,
-	"total_supply" integer,
-	"quote_price" double precision,
-	"volume_24h" double precision,
-	"percent_change_1h" double precision,
-	"percent_change_24h" double precision,
-	"percent_change_7d" double precision,
-	"percent_change_30d" double precision,
-	"percent_change_60d" double precision,
-	"percent_change_90d" double precision,
-	"market_cap" double precision,
 	"rank_src_id" bigint NOT NULL,
-	"list_src_id" bigint NOT NULL,
-	CONSTRAINT "coin_market_cap_daily_pk" PRIMARY KEY ("cmc_day_id")
+	CONSTRAINT "coin_market_cap_daily_ranking_pk" PRIMARY KEY ("cmc_daily_ranking_id")
 ) WITH (
   OIDS=FALSE
 );
+
+CREATE TABLE "coin_market_cap_daily_listing" (
+	"cmc_daily_listing_id" serial NOT NULL,
+	"cmc_id" bigint NOT NULL,
+	"num_pairs" integer NOT NULL,
+	"max_supply" integer NOT NULL,
+	"circulating_supply" integer NOT NULL,
+	"total_supply" integer NOT NULL,
+	"quote_price" double precision NOT NULL,
+	"volume_24h" double precision NOT NULL,
+	"percent_change_1h" double precision NOT NULL,
+	"percent_change_24h" double precision NOT NULL,
+	"percent_change_7d" double precision NOT NULL,
+	"percent_change_30d" double precision NOT NULL,
+	"percent_change_60d" double precision NOT NULL,
+	"percent_change_90d" double precision NOT NULL,
+	"market_cap" double precision NOT NULL,
+	"list_src_id" bigint NOT NULL,
+	CONSTRAINT "coin_market_cap_daily_listing_pk" PRIMARY KEY ("cmc_daily_listing_id")
+) WITH (
+  OIDS=FALSE
+);
+
 
 CREATE TABLE "coin" (
 	"cmc_id" serial NOT NULL,
@@ -35,8 +44,6 @@ CREATE TABLE "coin" (
 ) WITH (
   OIDS=FALSE
 );
-
-
 
 CREATE TABLE "token" (
 	"token_id" serial NOT NULL,
@@ -121,6 +128,40 @@ create table "source_type_lk" (
 
 INSERT INTO source_type_lk (source_type_id, source_type)
 VALUES (1, 'RANKING'), (2, 'LISTING'), (3, 'FCAS');
+
+CREATE TABLE "tracked_coin" (
+	"tracked_coin_id" serial NOT NULL,
+	"cmc_id" bigint NOT NULL,
+	"tracked_from" DATE NOT NULL,
+	"tracked_price" double precision NOT NULL,
+	"tracked_type_id" bigint NOT NULL,
+	CONSTRAINT "tracked_coin_pk" PRIMARY KEY ("tracked_coin_id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE "tracked_type_lk" (
+	"tracked_type_id" serial NOT NULL,
+	"tracked_type" TEXT NOT NULL,
+	CONSTRAINT "tracked_type_lk_pk" PRIMARY KEY ("tracked_type_id")
+) WITH (
+  OIDS=FALSE
+);
+
+INSERT INTO tracked_type_lk (tracked_type_id, tracked_type)
+VALUES (1, 'NEW'), (2, 'COINBASE'), (3, 'BINANCE');
+
+CREATE TABLE "j_tracked_coin_tracked_type" (
+	"jtctt_id" serial NOT NULL,
+	"tracked_coin_id" bigint NOT NULL,
+	"tracked_type_id" bigint NOT NULL,
+	CONSTRAINT "j_tracked_coin_tracked_type_pk" PRIMARY KEY ("jtctt_id")
+) WITH (
+  OIDS=FALSE
+);
+
 
 -- I actually don't do foreign keys with SQL tables, but to each his own.
 
