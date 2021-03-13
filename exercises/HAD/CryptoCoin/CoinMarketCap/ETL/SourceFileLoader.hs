@@ -4,6 +4,8 @@ module CryptoCoin.CoinMarketCap.ETL.SourceFileLoader where
 
 import qualified Data.ByteString.Char8 as BL
 
+import Data.Char (toLower)
+
 import Data.List (isSuffixOf)
 import qualified Data.Map as Map
 
@@ -101,19 +103,22 @@ Uploaded listings-2021-03-09.json
 SQL query to check that the database is populated:
 --}
 
-data Source = Source { idx :: Integer, source :: String,
+data Source = Source { idx :: Integer, source :: String, forDay :: Day,
                        file :: String, processed :: Bool }
    deriving (Eq, Show)
 
 instance FromRow Source where
-   fromRow = Source <$> field <*> field <*> field <*> field
+   fromRow = Source <$> field <*> field <*> field <*> field <*> field
 
 instance Univ Source where
-   explode (Source i s f p) = [show i, s, f, show p]
+   explode (Source i s d f p) = [show i, s, show d, f, showBool p]
+
+showBool :: Bool -> String
+showBool = (flip (:) . tail <*> toLower . head) . show
 
 sourceQuery :: Day -> Query
 sourceQuery tday = Query . BL.pack $ unlines [
-   "SELECT a.source_id, b.source_type, a.file_name, a.processed",
+   "SELECT a.source_id, b.source_type, a.for_day, a.file_name, a.processed",
    "FROM source a",
    "INNER JOIN source_type_lk b ON b.source_type_id=a.source_type_id",
    concat ["WHERE a.for_day > '", show tday, "'"],
@@ -129,4 +134,5 @@ sources conn = getCurrentTime                     >>=
                srcs conn . addDays (-5) . utctDay >>=
                csvHeader                          >>=
                mapM_ (putStrLn . uncsv)
-  where csvHeader s = putStrLn "id,source_type,file_name,processed" >> return s
+  where csvHeader s = putStrLn "id,source_type,for_day,file_name,processed" >>
+                      return s
