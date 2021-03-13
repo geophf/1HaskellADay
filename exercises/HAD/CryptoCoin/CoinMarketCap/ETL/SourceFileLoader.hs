@@ -2,13 +2,22 @@
 
 module CryptoCoin.CoinMarketCap.ETL.SourceFileLoader where
 
+import qualified Data.ByteString.Char8 as BL
+
 import Data.List (isSuffixOf)
 import qualified Data.Map as Map
+
+import Data.Time
 
 import System.Directory
 import System.Environment (getEnv)
 
 import Database.PostgreSQL.Simple
+import Database.PostgreSQL.Simple.FromRow
+import Database.PostgreSQL.Simple.Types
+
+import Control.Presentation
+import Control.Scan.CSV
 
 import Data.LookupTable
 import Data.Time.TimeSeries (today)
@@ -79,7 +88,10 @@ go = withConnection ECOIN (\conn ->
    getEnv "COIN_MARKET_CAP_DIR"      >>= \cmcDir ->
    let uploader dir typ = uploadAllFilesAt (cmcDir ++ ('/':dir ++ "/2021"))
                                            (src Map.! typ) conn
-   in  uploader "rankings" "RANKING" >> uploader "listings" "LISTING")
+   in  uploader "rankings" "RANKING" >> 
+       uploader "listings" "LISTING" >>
+       uploader "scores"   "FCAS"    >>
+       sources conn)
 
 {--
 >>> go
@@ -87,9 +99,34 @@ Uploaded coins-2021-03-09.json
 Uploaded listings-2021-03-09.json
 
 SQL query to check that the database is populated:
-
-SELECT a.source_id, b.source_type, a.file_name, a.processed
-FROM source a
-INNER JOIN source_type_lk b ON b.source_type_id=a.source_type_id
-ORDER BY a.file_name DESC
 --}
+
+data Source = Source { idx :: Integer, source :: String,
+                       file :: String, processed :: Bool }
+   deriving (Eq, Show)
+
+instance FromRow Source where
+   fromRow = Source <$> field <*> field <*> field <*> field
+
+instance Univ Source where
+   explode (Source i s f p) = [show i, s, f, show p]
+
+sourceQuery :: Day -> Query
+sourceQuery tday = Query . BL.pack $ unlines [
+   "SELECT a.source_id, b.source_type, a.file_name, a.processed",
+   "FROM source a",
+   "INNER JOIN source_type_lk b ON b.source_type_id=a.source_type_id",
+   concat ["WHERE a.for_day > '", show tday, "'"],
+   "ORDER BY a.file_name DESC"]
+
+srcs :: Connection -> Day -> IO [Source]
+srcs conn day = 
+   let srcQuery = sourceQuery day in
+   BL.putStrLn (fromQuery srcQuery) >> query_ conn srcQuery
+
+sources :: Connection -> IO ()
+sources conn = getCurrentTime                     >>=
+               srcs conn . addDays (-5) . utctDay >>=
+               csvHeader                          >>=
+               mapM_ (putStrLn . uncsv)
+  where csvHeader s = putStrLn "id,source_type,file_name,processed" >> return s
