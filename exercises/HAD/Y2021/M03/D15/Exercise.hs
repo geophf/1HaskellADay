@@ -142,3 +142,6 @@ get the implication), write out these cleaned words as a file:
 
 cleanedDoc :: FilePath -> Bag String -> IO ()
 cleanedDoc = undefined
+
+-- tomorrow we'll look at using Natural Language Processing for a cleaner
+-- word-cloud.
