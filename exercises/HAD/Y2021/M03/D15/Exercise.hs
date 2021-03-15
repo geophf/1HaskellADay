@@ -125,6 +125,12 @@ moinsPunctuation :: Set Char -> Bag String -> Bag String
 moinsPunctuation puncts bagowords = undefined
 
 {--
+>>> let npun = moinsPunctuation punct nref
+>>> length npun
+848
+
+Note that we've eliminated more than 100 redundancies already!
+
 Now, that's all well and good, and gets us to a similar place to where word-
 cloud is. But how about same-word words ("programming" and "programs," e.g.)?
 
@@ -143,5 +149,9 @@ get the implication), write out these cleaned words as a file:
 cleanedDoc :: FilePath -> Bag String -> IO ()
 cleanedDoc = undefined
 
--- tomorrow we'll look at using Natural Language Processing for a cleaner
--- word-cloud.
+{--
+>>> cleanedDoc (graceHopperDir ++ "/cleaned.txt") npun
+
+Tomorrow we'll look at using Natural Language Processing for a cleaner
+word-cloud.
+--}
