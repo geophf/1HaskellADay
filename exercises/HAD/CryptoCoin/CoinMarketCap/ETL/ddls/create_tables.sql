@@ -151,7 +151,8 @@ CREATE TABLE "tracked_type_lk" (
 );
 
 INSERT INTO tracked_type_lk (tracked_type_id, tracked_type)
-VALUES (1, 'NEW'), (2, 'COINBASE'), (3, 'BINANCE');
+VALUES (1, 'NEW'), (2, 'COINBASE'), (3, 'BINANCE'), (4, 'RANK_VARIANCE'),
+       (5, 'PRICE_VARIANCE'), (6, 'MENTIONED_IN_NEWS');
 
 CREATE TABLE "j_tracked_coin_tracked_type" (
 	"jtctt_id" serial NOT NULL,
@@ -176,5 +177,3 @@ ALTER TABLE "j_tag_coin" ADD CONSTRAINT "j_tag_coin_fk0" FOREIGN KEY ("tag_id") 
 ALTER TABLE "j_tag_coin" ADD CONSTRAINT "j_tag_coin_fk1" FOREIGN KEY ("cmc_id") REFERENCES "coin"("cmc_id");
 
 ALTER TABLE "flipside_crypto_daily" ADD CONSTRAINT "flipside_crypto_daily_fk0" FOREIGN KEY ("flipside_crypto_id") REFERENCES "coin"("cmc_id");
-
-
