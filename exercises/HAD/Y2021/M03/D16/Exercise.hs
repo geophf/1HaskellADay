@@ -22,26 +22,50 @@ detick = undefined
 {-- 
 remember: handle key-collisions!
 
+>>> wb <- wordBagFrom (graceHopperDir ++ "/cleaned.txt")
+>>> length wb
+848
+>>> let ntic = detick wb
+>>> length ntic
+846
+
+Okay, we got rid of 2 redundancies. Good.
+
+>>> take 5 . sortOn (Down . snd) $ Map.toList ntic
+[("hopper",40),("navy",24),("language",17),("computer",15),("programming",15)]
+
+And, with a cleaner look, too.
+
 Now, let's use a natural language processor to stem our words:
+
+>>> cleanedDoc "Y2021/M03/D16/de-tick.txt" ntic
 
 The stemmer should output the token with the stemmed-representation
 
 token,stem
+
+Using a little program I wrote (stemmer.py in this directory):
+
+$ cd Y2021/M03/D16
+$ python stemmer.py de-ticked.txt > stemmed.csv
+
+We do see some common stems:
+
+...
+computation,comput
+computer,comput
+computerrelated,computerrel
+computers,comput
+computing,comput
+...
+
+Let's exploit that commonality.
 --}
 
 type Stem = String
 
 readStems :: FilePath -> Bag String -> IO (Map Stem (Bag String))
 readStems = undefined
-
-{--
-Do you see what's going on here? The stems can point to more than one token,
-so, for example: the stem 'comput' can point to the tokens 'computer' and
-'computes' and 'computers' and 'computing'; each token with their own
-word-counts.
-
-Now, re-realize the stemmed words as unified, and counted tokens:
---}
 
 rerealize :: Map Stem (Bag String) -> Bag String
 rerealize = undefined
