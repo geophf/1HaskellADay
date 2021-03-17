@@ -112,7 +112,11 @@ rerealize :: Stems -> Bag String
 rerealize = Map.fromList . mapMaybe rr' . Map.elems
 
 rr' :: Set (String, Int) -> Maybe (String, Int)
-rr' s = (,sum $ Set.map snd s) . fst . fst <$> Set.minView s
+rr' = rr'' . sortOn (Down . snd) . Set.toList
+
+rr'' :: [(String, Int)] -> Maybe (String, Int)
+rr'' [] = Nothing
+rr'' l@((popular, _):_) = Just (popular, sum $ map snd l)
 
 -- do this however you like. You could pick the first token for each stem
 -- then sum the counts of the tokens for that stem/first-token.
