@@ -65,11 +65,12 @@ Let's exploit that commonality.
 --}
 
 type Stem = String
+type Stems = Map Stem (Set (String, Int))
 
-readStems :: FilePath -> Bag String -> IO (Map Stem (Set (String, Int)))
+readStems :: FilePath -> Bag String -> IO Stems
 readStems = undefined
 
-rerealize :: Map Stem (Bag String) -> Bag String
+rerealize :: Stems -> Bag String
 rerealize = undefined
 
 -- do this however you like. You could pick the first token for each stem
