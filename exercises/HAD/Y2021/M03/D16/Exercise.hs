@@ -14,6 +14,8 @@ First, let's de-tick our cleaned-document.
 
 import Data.Map (Map)
 
+import Data.Set (Set)
+
 import Y2021.M03.D15.Solution
 
 detick :: Bag String -> Bag String
@@ -64,7 +66,7 @@ Let's exploit that commonality.
 
 type Stem = String
 
-readStems :: FilePath -> Bag String -> IO (Map Stem (Bag String))
+readStems :: FilePath -> Bag String -> IO (Map Stem (Set (String, Int)))
 readStems = undefined
 
 rerealize :: Map Stem (Bag String) -> Bag String
