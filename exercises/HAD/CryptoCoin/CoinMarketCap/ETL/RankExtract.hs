@@ -46,10 +46,12 @@ data JSONFile = JSON { file :: String }
 instance FromRow JSONFile where
    fromRow = JSON <$> field
 
-extractRanks :: Connection -> IO [MetaData]
-extractRanks conn =
-   lookupTable conn "source_type_lk"                          >>= \srcs ->
-   query conn extractRanksQuery (False, srcs Map.! "RANKING") >>=
+rankingIdx :: LookupTable -> Integer
+rankingIdx srcs = srcs Map.! "RANKING"
+
+extractRanks :: Connection -> LookupTable -> IO [MetaData]
+extractRanks conn srcs =
+   query conn extractRanksQuery (False, rankingIdx srcs) >>=
    return . mapMaybe (decode . BL.pack . file)
 
 {--
@@ -158,8 +160,18 @@ processOneRankFile conn md@(MetaData (Status d _ _ _ _ _) ecoins) =
    newCoins conn md                                >>=
    insertAllCoins conn . Map.elems
 
-{--
-Process all of them:
+setProcessed :: Connection -> LookupTable -> IO ()
+setProcessed conn srcs =
+   execute conn "UPDATE source SET processed=? WHERE source_type_id=?"
+           (True, rankingIdx srcs) >>
+   putStrLn "Set all ranking files as processed."
 
->>> withConnection ECOIN (\conn -> extractRanks conn >>= mapM_ (processOneRankFile conn))
---}
+-- Process all of them:
+
+go :: IO ()
+go =
+   withConnection ECOIN (\conn ->
+      lookupTable conn "source_type_lk" >>= \srcs ->
+      extractRanks conn srcs            >>=
+      mapM_ (processOneRankFile conn)   >>
+      setProcessed conn srcs)
