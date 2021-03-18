@@ -35,8 +35,9 @@ Okay! Then, after you run the report and have it all ... reported out, and
 stuff, you'll want to upload the listings and rankings (and BEARS! OH, MY!)
 to the SQL data-store:
 
+```BASH
 $ ghci $COIN_MARKET_CAP_DIR/ETL/SourceFileLoader.hs
-ghci> go
+ghci> go```
 
 It will tell you which files it uploaded and then deleted.
 
