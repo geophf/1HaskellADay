@@ -5,15 +5,11 @@ module CryptoCoin.CoinMarketCap.ETL.CoinExtract where
 import Control.Monad (forM_)
 
 import Database.PostgreSQL.Simple
-import Database.PostgreSQL.Simple.FromRow
 import Database.PostgreSQL.Simple.ToRow
 import Database.PostgreSQL.Simple.ToField
 import Database.PostgreSQL.Simple.Types
 
-import Data.Aeson
-
 import qualified Data.ByteString.Char8 as B
-import qualified Data.ByteString.Lazy.Char8 as BL
 
 import Data.Int (Int64)
 
@@ -22,74 +18,34 @@ import Data.List (partition)
 import Data.Map (Map)
 import qualified Data.Map as Map
 
-import Data.Maybe (mapMaybe)
-
-import Data.Set (Set)
-import qualified Data.Set as Set
+import CryptoCoin.CoinMarketCap.Types
+import CryptoCoin.CoinMarketCap.ETL.Types
 
 import Data.CryptoCurrency.Types hiding (idx)      -- Idx
-import CryptoCoin.CoinMarketCap.Types
 
 import Data.LookupTable
 
+import Store.SQL.Connection
 import Store.SQL.Util.Indexed
 import Store.SQL.Util.LookupTable
-import Store.SQL.Connection
 
-extractRanksQuery :: Query
-extractRanksQuery =
-   "SELECT file FROM SOURCE WHERE processed=? AND source_type_id=?"
+{-- 
+Remember we need to set processed to true when we're all done here!
 
-data JSONFile = JSON { file :: String }
-   deriving (Eq, Show)
+The coin table is a lookup table ... with multicolumns for the value against
+the index. The only lookupTable construct I have (so far) is a string against
+an index, so that's not working, but I need the same functionality for coin
+... except I know the index, a priori, because it's assigned from
+CoinMarketCap.
 
-instance FromRow JSONFile where
-   fromRow = JSON <$> field
+So. Here we go. From scratch.
 
-rankingIdx :: LookupTable -> Integer
-rankingIdx srcs = srcs Map.! "RANKING"
+Load the coins from the database into a lookup table
 
-extractRanks :: Connection -> LookupTable -> IO [MetaData]
-extractRanks conn srcs =
-   query conn extractRanksQuery (False, rankingIdx srcs) >>=
-   return . mapMaybe (decode . BL.pack . file)
-
-{--
->>> withConnection ECOIN (\conn -> extractRanks conn >>=
-                                   mapM_ (\(MetaData s _) -> print s))
-Status 2021-03-09 0 Nothing 20 1 Nothing
-Status 2021-03-08 0 Nothing 24 1 Nothing
-Status 2021-03-08 0 Nothing 19 1 Nothing
-...
-Status 2021-02-25 0 Nothing 22 1 Nothing
-Status 2021-02-24 0 Nothing 15 1 Nothing
-Status 2021-02-24 0 Nothing 27 1 Nothing
-Status 2021-02-22 0 Nothing 24 1 Nothing
-
-Okay, we're extracting and translating the JSON. Now we have to load these
-data into the tables... somehow.
-
-Also, note the dates. We have to correct them to local dates before we upload
-data twice for one day.
-
-TODO!
+No. Because we have the indices already, we just need to do a set-diff
+with the indices in the database vs the indices here. The indices here
+are the new coins, which we archive.
 --}
-
--- remember we need to set processed to true when we're all done here!
-
--- the coin table is a lookup table ... with multicolumns for the value against
--- the index. The only lookupTable construct I have (so far) is a string against
--- an index, so that's not working, but I need the same functionality for coin
--- ... except I know the index, a priori, because it's assigned from
--- CoinMarketCap.
-
--- So. Here we go. From scratch.
-
--- Load the coins from the database into a lookup table
-
--- No. Because we have the indices already, we just need to do a set-diff
--- with the indices in the database vs the indices here. The indices here
--- are the new coins, which we archive.
 
 newCoins :: Connection -> MetaData -> IO (Map Idx ECoin)
 newCoins conn (MetaData _ m) =
