@@ -110,8 +110,8 @@ insertAllCoins conn ecoins =
    forM_ tokens (insertCoin conn)                                >>
    putStrLn "...done."
 
-processOneRankFile :: Connection -> MetaData -> IO ()
-processOneRankFile conn md@(MetaData (Status d _ _ _ _ _) ecoins) =
+processOneRankFile :: Connection -> IxValue MetaData -> IO ()
+processOneRankFile conn (IxV _ md@(MetaData (Status d _ _ _ _ _) ecoins)) =
    putStrLn ("\n\nFor ranking file " ++ show d ++ ":") >>
    newCoins conn md                                >>=
    insertAllCoins conn . Map.elems
