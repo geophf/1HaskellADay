@@ -40,16 +40,12 @@ extractRanks conn srcs =
    return . mapMaybe (\(RankFile i f) -> IxV i <$> decode (BL.pack f))
 
 {--
->>> withConnection ECOIN (\conn -> extractRanks conn >>=
+>>> withConnection ECOIN (\conn -> lookupTable conn "source_type_lk >>=
+                                   extractRanks conn                >>=
                                    mapM_ (\(IxV i (MetaData s _)) -> print (i,s)))
-(1, Status 2021-03-09 0 Nothing 20 1 Nothing)
-(2, Status 2021-03-08 0 Nothing 24 1 Nothing)
-(3, Status 2021-03-08 0 Nothing 19 1 Nothing)
-...
-(9, Status 2021-02-25 0 Nothing 22 1 Nothing)
-(10, Status 2021-02-24 0 Nothing 15 1 Nothing)
-(11, Status 2021-02-24 0 Nothing 27 1 Nothing)
-(12, Status 2021-02-22 0 Nothing 24 1 Nothing)
+(38,Status 2021-03-19 0 Nothing 16 1 Nothing)
+
+... returns only the non-processed rank-files.
 
 Okay, we're extracting and translating the JSON. Now we have to load these
 data into the tables... somehow.
