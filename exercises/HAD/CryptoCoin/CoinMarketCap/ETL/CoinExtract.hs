@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module CryptoCoin.CoinMarketCap.ETL.RankExtract where
+module CryptoCoin.CoinMarketCap.ETL.CoinExtract where
 
 import Control.Monad (forM_)
 
