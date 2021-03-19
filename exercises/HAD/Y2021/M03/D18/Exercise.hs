@@ -11,8 +11,11 @@ map of keys and indicies.
 
 import Data.Map (Map)
 
-data LookupTable = LookupTable { values :: Map String Int, nextIndex :: Int }
-   deriving (Eq, Ord, Show)
+import Prelude hiding (lookup)
+
+data LookupTable =
+   LookupTable { values :: Map String Integer, nextIndex :: Integer }
+      deriving (Eq, Ord, Show)
 
 -- give an empty lookup table with the first-next index of 1
 
@@ -21,10 +24,10 @@ initLookupTable = undefined
 
 -- given a preexisting map, return a lookup table with the max index + 1 as next
 
-toLookupTable :: Map String Int -> LookupTable
+toLookupTable :: Map String Integer -> LookupTable
 toLookupTable = undefined
 
-lookup :: String -> LookupTable -> (Int, LookupTable)
+lookup :: String -> LookupTable -> (Integer, LookupTable)
 lookup key table = undefined
 
 {--
