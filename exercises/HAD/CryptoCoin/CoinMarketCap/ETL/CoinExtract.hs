@@ -20,6 +20,7 @@ import qualified Data.Map as Map
 
 import CryptoCoin.CoinMarketCap.Types
 import CryptoCoin.CoinMarketCap.ETL.Types
+import CryptoCoin.CoinMarketCap.ETL.RankExtract (insertRankings)
 
 import Data.CryptoCurrency.Types hiding (idx)      -- Idx
 
@@ -111,10 +112,11 @@ insertAllCoins conn ecoins =
    putStrLn "...done."
 
 processOneRankFile :: Connection -> IxValue MetaData -> IO ()
-processOneRankFile conn (IxV _ md@(MetaData (Status d _ _ _ _ _) ecoins)) =
-   putStrLn ("\n\nFor ranking file " ++ show d ++ ":") >>
-   newCoins conn md                                >>=
-   insertAllCoins conn . Map.elems
+processOneRankFile conn i@(IxV _ md) =
+   putStrLn ("\n\nFor ranking file " ++ show (date md) ++ ":") >>
+   newCoins conn md                                    >>=
+   insertAllCoins conn . Map.elems                     >>
+   insertRankings conn i
 
 setProcessed :: Connection -> LookupTable -> IO ()
 setProcessed conn srcs =
