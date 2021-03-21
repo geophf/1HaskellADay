@@ -13,6 +13,7 @@ import Data.Time
 
 import Data.CryptoCurrency.Types
 import CryptoCoin.CoinMarketCap.Types.Internal hiding (id)
+import CryptoCoin.CoinMarketCap.Types.Quote
 
 import Data.XHTML (Name)
 
@@ -101,3 +102,27 @@ raw2coin c@(Coin' _id _name _sym _slg _rnk _actv _fst _lst (Just (CR' i tok))) =
 mkci :: Coin' -> CoinInfo
 mkci (Coin' id name sym slug rank activ frist lst _) =
    CoinInfo id name sym slug (activ == 1) rank (mkdur frist lst)
+
+-- FOR LISTINGS AND QUOTES --------------------------------------------
+
+data Supplies = 
+   Supplies { circulatingSupply :: Integer,
+              totalSupply       :: Integer,
+              maxSupply         :: Integer }
+      deriving (Eq, Ord, Show)
+
+type Tag = String
+      
+data Listing =
+   Listing { cmcId :: Integer,
+             marketPairs :: Integer,
+             supplies    :: Supplies,
+             tags        :: [Tag],
+             quote       :: Quote }
+      deriving (Eq, Ord, Show)
+
+l2l :: Listing' -> Listing
+l2l (Listing' i m cs ts ms tgs q) = Listing i m (Supplies cs ts ms) tgs q
+
+instance FromJSON Listing where
+   parseJSON v = l2l <$> parseJSON v

@@ -5,6 +5,7 @@ module CryptoCoin.CoinMarketCap.Types.Internal where
 import Data.Aeson
 
 import Data.CryptoCurrency.Types   -- for indexed
+import CryptoCoin.CoinMarketCap.Types.Quote
 
 data Coin' = Coin' { id :: Idx, name, symbol, slug :: String,
                      rank', is_active :: Int,
@@ -14,9 +15,14 @@ data Coin' = Coin' { id :: Idx, name, symbol, slug :: String,
 
 instance FromJSON Coin' where
    parseJSON = withObject "Raw coin" $ \v ->
-      Coin' <$> v .: "id" <*> v .: "name" <*> v .: "symbol" <*> v .: "slug"
-            <*> v .: "rank" <*> v .: "is_active"
-            <*> v .: "first_historical_data" <*> v .: "last_historical_data"
+      Coin' <$> v .: "id"
+            <*> v .: "name"
+            <*> v .: "symbol"
+            <*> v .: "slug"
+            <*> v .: "rank"
+            <*> v .: "is_active"
+            <*> v .: "first_historical_data"
+            <*> v .: "last_historical_data"
             <*> v .:? "platform"
 
 type TokenAddress = String
@@ -31,3 +37,14 @@ instance FromJSON CoinRef' where
    parseJSON = withObject "ref" $ \v ->
       CR' <$> v .: "id" <*> v .: "token_address"
 
+data Listing' = Listing' Integer Integer Integer Integer Integer [String] Quote
+
+instance FromJSON Listing' where
+   parseJSON = withObject "listing" $ \v ->
+      Listing' <$> v .: "id" 
+               <*> v .: "num_market_pairs" 
+               <*> v .: "circulating_supply"
+               <*> v .: "total_supply"
+               <*> v .: "max_supply"
+               <*> v .: "tags"
+               <*> (v .: "quote" >>= parseQuote)

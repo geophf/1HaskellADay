@@ -19,25 +19,39 @@ import Data.LookupTable
 
 import CryptoCoin.CoinMarketCap.Types
 
+import Store.SQL.Connection
 import Store.SQL.Util.Indexed
+import Store.SQL.Util.LookupTable
 
-extractRanksQuery :: Query
-extractRanksQuery =
+extractJSONQuery :: Query
+extractJSONQuery =
    "SELECT source_id, file FROM SOURCE WHERE processed=? AND source_type_id=?"
 
-data RankFile = RankFile { fileId :: Integer, file :: String }
+data JSONFile = JSONFile { fileId :: Integer, file :: String }
    deriving (Eq, Show)
 
-instance FromRow RankFile where
-   fromRow = RankFile <$> field <*> field
+instance FromRow JSONFile where
+   fromRow = JSONFile <$> field <*> field
 
-rankingIdx :: LookupTable -> Integer
-rankingIdx srcs = srcs Map.! "RANKING"
+extractJSON :: FromJSON a => String -> Connection -> LookupTable
+                          -> IO [IxValue a]
+extractJSON lk conn srcs =
+   query conn extractJSONQuery (False, srcs Map.! lk)             >>=
+   return . mapMaybe (\(JSONFile i f) -> IxV i <$> decode (BL.pack f))
 
 extractRanks :: Connection -> LookupTable -> IO [IxValue MetaData]
-extractRanks conn srcs =
-   query conn extractRanksQuery (False, rankingIdx srcs) >>=
-   return . mapMaybe (\(RankFile i f) -> IxV i <$> decode (BL.pack f))
+extractRanks = extractJSON "RANKING"
+
+data Listings = Listings { unlist :: [Listing] }
+
+instance Show Listings where
+   show (Listings ls) = "Listings, e.g.: " ++ show (take 3 ls)
+
+instance FromJSON Listings where
+   parseJSON = withObject "data" $ \v -> Listings <$> v .: "data"
+
+extractListings :: Connection -> LookupTable -> IO [IxValue Listings]
+extractListings = extractJSON "LISTING"
 
 {--
 >>> withConnection ECOIN (\conn -> lookupTable conn "source_type_lk >>=
