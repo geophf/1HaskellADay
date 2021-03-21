@@ -45,7 +45,8 @@ extractRanks = extractJSON "RANKING"
 data Listings = Listings { unlist :: [Listing] }
 
 instance Show Listings where
-   show (Listings ls) = "Listings, e.g.: " ++ show (take 3 ls)
+   show (Listings ls) =
+      "Listings (" ++ show (length ls) ++ "), e.g.: " ++ show (take 3 ls)
 
 instance FromJSON Listings where
    parseJSON = withObject "data" $ \v -> Listings <$> v .: "data"

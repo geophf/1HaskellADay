@@ -106,9 +106,9 @@ mkci (Coin' id name sym slug rank activ frist lst _) =
 -- FOR LISTINGS AND QUOTES --------------------------------------------
 
 data Supplies = 
-   Supplies { circulatingSupply :: Integer,
-              totalSupply       :: Integer,
-              maxSupply         :: Integer }
+   Supplies { circulatingSupply :: Double,
+              totalSupply       :: Double,
+              maxSupply         :: Maybe Double }
       deriving (Eq, Ord, Show)
 
 type Tag = String
@@ -118,11 +118,12 @@ data Listing =
              marketPairs :: Integer,
              supplies    :: Supplies,
              tags        :: [Tag],
-             quote       :: Quote }
+             quote       :: Maybe Quote }
       deriving (Eq, Ord, Show)
 
 l2l :: Listing' -> Listing
-l2l (Listing' i m cs ts ms tgs q) = Listing i m (Supplies cs ts ms) tgs q
+l2l (Listing' i m cs ts ms tgs q) =
+   Listing i m (Supplies cs ts ms) tgs (Map.lookup "USA" q)
 
 instance FromJSON Listing where
    parseJSON v = l2l <$> parseJSON v

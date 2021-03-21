@@ -4,6 +4,13 @@ module CryptoCoin.CoinMarketCap.Types.Internal where
 
 import Data.Aeson
 
+import Data.ByteString.Lazy.Char8 (ByteString)
+import qualified Data.ByteString.Lazy.Char8 as BL
+
+import Data.Map (Map)
+
+import System.Environment (getEnv)
+
 import Data.CryptoCurrency.Types   -- for indexed
 import CryptoCoin.CoinMarketCap.Types.Quote
 
@@ -37,7 +44,8 @@ instance FromJSON CoinRef' where
    parseJSON = withObject "ref" $ \v ->
       CR' <$> v .: "id" <*> v .: "token_address"
 
-data Listing' = Listing' Integer Integer Integer Integer Integer [String] Quote
+data Listing' = Listing' Integer Integer Double Double (Maybe Double) [String] (Map String Quote)
+   deriving Show
 
 instance FromJSON Listing' where
    parseJSON = withObject "listing" $ \v ->
@@ -45,6 +53,11 @@ instance FromJSON Listing' where
                <*> v .: "num_market_pairs" 
                <*> v .: "circulating_supply"
                <*> v .: "total_supply"
-               <*> v .: "max_supply"
+               <*> v .:? "max_supply"
                <*> v .: "tags"
-               <*> (v .: "quote" >>= parseQuote)
+               <*> v .: "quote"
+
+sample :: String -> IO ByteString
+sample thing =
+   getEnv "COIN_MARKET_CAP_DIR" >>=
+   BL.readFile . (++ "/ETL/sample" ++ thing ++ ".json")
