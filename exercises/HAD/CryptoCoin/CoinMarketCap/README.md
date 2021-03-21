@@ -42,6 +42,16 @@ ghci> go
 
 It will tell you which files it uploaded and then deleted.
 
+Then, run the Coin extractor
+
+```BASH
+$ ghci $COIN_MARKET_CAP_DIR/ETL/CoinExtract.hs
+ghci> go
+```
+
+This will read the coins from the database and extract them, and their rankings,
+back into the database.
+
 ## E/R D
 
 <img src="ETL/imgs/e-coin-erd.png"/>
@@ -54,6 +64,9 @@ TODOs (besides the TODO above):
   * we need a table for new coins.
 
 OTHER TODOs: 
+
+* create a portfolio: positions held, money invested, current value
+* create a transaction history (you know, for tax purposes)
 
 * track coinbase coins / track binance coins
 * apply analytics (WHICH ONES?) against coins
