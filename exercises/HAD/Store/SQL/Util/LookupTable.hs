@@ -48,9 +48,10 @@ import Store.SQL.Util.Indexed
 import Store.SQL.Util.Pivots (buildPivots)
 
 lookupTable :: Connection -> String -> IO LookupTable
-lookupTable conn tablename =
-   Map.fromList . map ix2lookup
-     <$> query_ conn (Query (B.pack ("SELECT * FROM " ++ tablename)))
+lookupTable conn = lookupTableFrom conn . Query . B.pack . ("SELECT * FROM " ++)
+
+lookupTableFrom :: Connection -> Query -> IO LookupTable
+lookupTableFrom conn query = Map.fromList . map ix2lookup <$> query_ conn query
 
 -- you may need this:
 
