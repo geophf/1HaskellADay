@@ -23,7 +23,7 @@ fly.
 
 A number is pushed on the stack and an operator reads from the stack.
 
-Let's implement an RPN with * / + - and . where '.' prints pops the stack and
+Let's implement an RPN with * / + - and . where '.' pops the stack and
 prints that value.
 --}
 
