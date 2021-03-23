@@ -8,6 +8,8 @@ FORTH pi is simply defined as:
 
 : pi 355 113 */ ;
 
+(c.f.: https://www.forth.com/resources/forth-programming-language/)
+
 I LOVE IT! What's even more amazing is that Chuck Moore developed Forth
 as a telescope guidance control language, and that definition of pi got the
 telescope to point to any star. 355 113 */ was accurate enough for astronomy!
