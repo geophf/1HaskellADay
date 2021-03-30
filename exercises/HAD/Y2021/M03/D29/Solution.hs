@@ -43,9 +43,9 @@ c' _ = " and"
 {--
 >>> connector [] [Apple]
 ""
-> connector [Pear] []
+>>> connector [Pear] []
 ""
-> connector [Banana] [Lime]
+>>> connector [Banana] [Lime]
 " and"
 --}
 
