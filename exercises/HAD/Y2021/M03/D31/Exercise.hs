@@ -24,11 +24,11 @@ last50Days day = undefined
 Convert a day into POSIX seconds, because that's what some APIs require
 --}
 
-convertToPosix :: Day -> Integer
+convertToPosix :: Day -> IO Integer
 convertToPosix day = undefined
 
 -- convert the last 50 dates to POSIX seconds, because that makes the date
 -- perfect for her, ... or for him, ... or for both.
 
-convertDatesToPosix :: [Day] -> [Integer]
+convertDatesToPosix :: [Day] -> IO [Integer]
 convertDatesToPosix days = undefined
