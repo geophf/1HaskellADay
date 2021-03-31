@@ -149,3 +149,10 @@ Into 'just' this csv line:
 
 REQMT207,REQMT228,REQMT57,REQMT228,REQMT57
 --}
+
+-- and if we have to read something into the Maybe-domain:
+
+readMaybe :: Read a => String -> Maybe a
+readMaybe s = case reads s of
+                  [(val, "")] -> Just val
+                  _           -> Nothing
