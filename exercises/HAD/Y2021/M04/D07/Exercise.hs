@@ -40,5 +40,7 @@ fetchDBTable = undefined
 
 {-- BONUS -------------------------------------------------------
 
-Create a new, corrected, JSON and refetch. What do you get?
+Using the information from the error message above (SPOILER!), create a new, 
+corrected, JSON and refetch. What do you get?
+
 --}
