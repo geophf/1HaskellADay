@@ -47,4 +47,13 @@ coverLetterBody = [
 generateReport :: FilePath -> Day -> [String] -> IO ()
 generateReport toFile date body = undefined
 
+-- Also, add an officious ... sry: OFFICIAL! ... header to your document
+
+officiousHeader :: Day -> [String]
+officiousHeader date = undefined
+
+-- Make it look all Governmental and officio--.. sry: OFFICIAL!
+
+-- sheesh
+
 -- do it. to it.
