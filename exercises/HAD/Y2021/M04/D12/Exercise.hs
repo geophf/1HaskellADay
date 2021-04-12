@@ -18,7 +18,7 @@ Now, the twist.
 
 You want successors to return a list, as above, if the list has at least
 five members, if it has four members or less, you want the successors function
-to fail with Nothing, that is to say
+to fail with (e.g.:) Nothing, that is to say
 --}
 
 successorsM :: Enum a => Monad m => [a] -> m [a]
