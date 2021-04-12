@@ -1,5 +1,7 @@
 module Y2021.M04.D12.Solution where
 
+import Control.Monad.Fail (MonadFail)
+
 {--
 You want to create a "safe"-function, that is to say, depending on the
 input, you get (or you don't get) an output.
@@ -21,10 +23,10 @@ five members, if it has four members or less, you want the successors function
 to fail with Nothing, that is to say
 --}
 
-successorsM :: Enum a => Monad m => [a] -> m [a]
+successorsM :: Enum a => Monad m => MonadFail m => [a] -> m [a]
 successorsM list = sm' list (length list)
 
-sm' :: Enum a => Monad m => [a] -> Int -> m [a]
+sm' :: Enum a => Monad m => MonadFail m => [a] -> Int -> m [a]
 sm' lst len | len > 4 = successors <$> pure lst
             | otherwise = fail ("List length is " ++ show len
                                 ++ "; it needs to have at least 5 elements")

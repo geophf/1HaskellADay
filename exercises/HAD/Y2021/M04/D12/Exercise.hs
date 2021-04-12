@@ -1,5 +1,7 @@
 module Y2021.M04.D12.Exercise where
 
+import Control.Monad.Fail (MonadFail)
+
 {--
 You want to create a "safe"-function, that is to say, depending on the
 input, you get (or you don't get) an output.
@@ -21,7 +23,9 @@ five members, if it has four members or less, you want the successors function
 to fail with (e.g.:) Nothing, that is to say
 --}
 
-successorsM :: Enum a => Monad m => [a] -> m [a]
+-- Added MonadFail to type-constraints, thanks to @clementd
+
+successorsM :: Enum a => Monad m => MonadFail m => [a] -> m [a]
 successorsM list = undefined
 
 {--
