@@ -35,7 +35,7 @@ data FoodEaten = Fish | Meat | Barley | Rye | Oats | Milk | Eggs
 -- of a FoodEaten-variant, but I'm going to ignore that complexity for now.
 
 {--
-So, here's the thing these skills are stored in two tables in a data-store
+So, here's the thing: these skills are stored in two tables in a data-store,
 but one table indicates kind (food eaten or fighting style), and the other
 table has an admixture of both fighting-style and food-eaten values.
 
@@ -58,4 +58,4 @@ warrior =
        ["Fighting Style", "Food Eaten", "Food Eaten", "Food Eaten", "Fighting Style"]
 
 -- you'll also note that the data values are stored in manager-readable format
--- fix each value before parsing them
+-- fix the values before parsing them.
