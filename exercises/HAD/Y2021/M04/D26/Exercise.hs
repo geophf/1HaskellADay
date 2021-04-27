@@ -28,7 +28,7 @@ data BirthdayStuphfen =
    | PiranhafistEatingFace
    | ChocolateMoussewithCoffees
    | WhirledPeasonEarth
-      deriving (Eq, Ord, Show)
+      deriving (Eq, Ord, Enum, Show)
 
 -- convert BirthdayStuphfen values to TLAs
 
@@ -68,5 +68,4 @@ Nothing
 ... you thought I was going to write "Nothing happens," but I didn't. AHA! :<
 
 ... until now. Oh, well. :,(
---}
 --}
