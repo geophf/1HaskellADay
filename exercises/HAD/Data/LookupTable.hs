@@ -13,19 +13,19 @@ type LookupTable = Map String Integer
 
 -- Now we need to flip the table for when we're doing fetches
 
-type LookDown = Map Integer String
+type LookDown a = Map Integer a
 
-lookdown :: LookupTable -> LookDown
+lookdown :: Ord a => Map a Integer -> LookDown a
 lookdown = Map.fromList . map swap . Map.toList
 
 -- but what's the next index?
 
-nextIndex :: LookupTable -> Integer
+nextIndex :: Ord a => Map a Integer -> Integer
 nextIndex = succ . maybe 0 fst . Set.maxView . Map.keysSet . lookdown
 
 {--
 >>> nextIndex Map.empty
 1
 
-BOOM!
+BOOM! ... well, ... kinda boom
 --}
