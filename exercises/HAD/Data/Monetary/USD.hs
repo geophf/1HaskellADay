@@ -10,6 +10,7 @@ import Control.Presentation
 import Data.Monetary.Currency
 
 import Database.PostgreSQL.Simple.FromField
+import Database.PostgreSQL.Simple.ToField
 import Database.PostgreSQL.Simple.Types
 
 -- Spraken dollars, mang!
@@ -27,6 +28,12 @@ instance FromField USD where
 fromDoubleField :: FieldParser Double
 fromDoubleField f bs =
    maybe (returnError UnexpectedNull f "") (pure . read . B.unpack) bs
+
+instance ToField USD where
+   toField = toField . doubledown
+
+doubledown :: USD -> Double
+doubledown (USD d) = fromRational d
 
 -- *Main> read "$.12" :: USD ~> $0.12
 -- *Main> read "$1.12" :: USD ~> $1.12
