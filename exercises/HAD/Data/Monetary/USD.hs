@@ -3,10 +3,14 @@ module Data.Monetary.USD where
 -- Representation of US dollars as rational numbers
 -- 2015-12-07: Corrected read parse errors for stupid (AAPL) numbers like: $.12
 
+import qualified Data.ByteString.Char8 as B
 import Data.Monoid
 
 import Control.Presentation
 import Data.Monetary.Currency
+
+import Database.PostgreSQL.Simple.FromField
+import Database.PostgreSQL.Simple.Types
 
 -- Spraken dollars, mang!
 
@@ -17,6 +21,12 @@ data USD = USD Rational deriving Eq
 instance Ord USD where USD x <= USD y = x <= y
 instance Show USD where show (USD x) = '$':laxmi 2 x
 instance Read USD where readsPrec _ ('$':val) = [(mknMoney USD ('0':val), "")]
+instance FromField USD where
+    fromField f bs = USD . toRational <$> fromDoubleField f bs
+
+fromDoubleField :: FieldParser Double
+fromDoubleField f bs =
+   maybe (returnError UnexpectedNull f "") (pure . read . B.unpack) bs
 
 -- *Main> read "$.12" :: USD ~> $0.12
 -- *Main> read "$1.12" :: USD ~> $1.12
