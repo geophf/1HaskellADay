@@ -7,11 +7,16 @@ import Data.Monoid
 infixr 7 <<-
 infixr 2 -|
 
--- provides a logic operator on monoids; all very Fregescque
+-- provides a logic implication, yielding Maybe; all very Fregescque
 
-(-|) :: Monoid m => Bool -> m -> m
-True -| m = m
-False -| m = mempty
+(-|) :: Bool -> a -> Maybe a
+True -| m = Just m
+False -| m = Nothing
+
+-- Now we lift implication
+
+(=|) :: Maybe Bool -> a -> Maybe a
+p =| q = p >>= (-| q)
 
 {-- e.g.:
 
