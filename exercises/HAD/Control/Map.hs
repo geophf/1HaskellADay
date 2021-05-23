@@ -39,3 +39,11 @@ gets you WineriesByCountry
 
 (the ByCountry a map-type is used here)
 --}
+
+-- now when we which to preserve, say: two transactions that look the same, ...
+
+snarfL :: Ord c => (a -> Maybe (c,d)) -> [a] -> Map c [d]
+snarfL f = foldr inserterL Map.empty . mapMaybe f
+
+inserterL  :: Ord a => (a, b) -> Map a [b] -> Map a [b]
+inserterL (a, b) m = Map.insert a (maybe [b] (b:) (Map.lookup a m)) m
