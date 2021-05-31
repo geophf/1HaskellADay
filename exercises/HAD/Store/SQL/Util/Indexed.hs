@@ -71,20 +71,3 @@ instance Indexed (IxValue a) where
 
 ix2tup :: IxValue a -> (Integer, a)
 ix2tup = ix &&& val
-
-{-- Tagged-types -------------------------------------------------------
-
-Allows us to extract a 'row' from the database that's just one element
-
-You have no idea how useful this is, so here's a case: building kv-maps from
-tables with rows with more than an index and the value.
---}
-
-data TaggedType a = TT a
-   deriving (Eq, Ord, Show)
-
-instance FromField a => FromRow (TaggedType a) where
-   fromRow = TT <$> field
-
-instance ToField a => ToRow (TaggedType a) where
-   toRow (TT v) = [toField v]
