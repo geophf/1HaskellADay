@@ -14,7 +14,7 @@ You have no idea how useful this is, so here's a case: building kv-maps from
 tables with rows with more than an index and the value.
 --}
 
-data TaggedType a = Tag a
+data TaggedType a = Tag { untag :: a }
    deriving (Eq, Ord, Show)
 
 instance FromField a => FromRow (TaggedType a) where
