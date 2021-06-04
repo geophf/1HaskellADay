@@ -39,6 +39,11 @@ data Pivot = Pvt { srcIx, trgId :: Integer }
 joinValue :: Indexed i => i -> Index -> Pivot
 joinValue i j = Pvt (idx i) (idx j)
 
+-- and a pivot as a pair:
+
+toTup :: Pivot -> (Integer, Integer)
+toTup (Pvt a b) = (a, b)
+
 -- and now we need a pivot-inserter
 
 instance ToRow Pivot where
